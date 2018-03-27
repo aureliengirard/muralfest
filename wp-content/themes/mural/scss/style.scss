@@ -1,0 +1,403 @@
+/*
+ Theme Name:   Nom du theme
+ Template:     codemstheme
+ Author:       Codems
+ Author URI:   http://codems.ca/
+ Version:      1.0.0
+ Text Domain:  site-theme
+*/
+@import "../../codemstheme/sass/_reboot";
+@import "../../codemstheme/sass/utils";
+//@import "../../codemstheme/sass/responsive"; // Sentez-vous à l'aise de ne pas l'inclure
+
+/***************************************************
+	SCSS VARIABLES
+/***************************************************/
+/// @group Couleurs
+$color: #1d1f1e;
+
+/// general responsive value
+$c12MaxWidth: 1200px;
+/// Largeur du padding de chaque côté des sections
+$c12Gutter: 15px;
+
+/*****************************************************
+	Custom CSS
+/*****************************************************/
+
+.preload *{
+	transition: none !important;
+}
+
+/*****************************************************
+	General / Reset / Structure
+/*****************************************************/
+
+/* 1em = 10px; */
+html{
+	font-size: 62.5% !important;
+}
+
+#page{
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: stretch;
+	align-items: stretch;
+	font-size: 1.4rem;
+}
+
+main{
+	flex-grow: 1;
+}
+
+a{
+	outline: none !important;
+	
+}
+
+.tel, a[href^="tel"]{
+	// remove auto style applied by edge on phone number (required href="tel:$num")
+	color: inherit !important;
+	cursor: text;
+
+	&:hover{
+		text-decoration: none;
+	}
+}
+
+.clearfix:after{
+	content: " "; // Older browser do not support empty content
+	visibility: hidden;
+	display: block;
+	height: 0;
+	clear: both;
+}
+
+h1,
+.like-h1{
+	font-size: 3.8rem;
+	text-transform: uppercase;
+	margin: 20px 0 10px;
+	font-weight: 700;
+}
+
+h2,
+.like-h2{
+	font-size: 2.4rem;
+	text-transform: uppercase;
+	font-weight: 700;
+	margin: 10px 0 15px;
+}
+
+h3,
+.like-h3{
+	font-size: 1.8rem;
+	text-transform: uppercase;
+	font-weight: 700;
+	margin: 10px 0 5px;
+	line-height: 1;
+}
+
+h4,
+.like-h4{
+	font-size: 1.8rem;
+	text-transform: uppercase;
+	font-weight: 700;
+	margin: 10px 0 5px;
+	line-height: 1;
+}
+
+p{
+	font-size: 1.4rem;
+	margin-bottom: 18px;
+}
+
+/*****************************************************
+	Header
+/*****************************************************/
+#mmenu{
+	display: none;
+}
+
+#open-mmenu{
+	display: none;
+	
+}
+
+#masthead{
+	
+	ul{
+		list-style: none;
+	}
+}
+
+.home-link{
+	display: block;
+}
+
+#topbar{
+	background-color: blue;
+	font-size: 0;
+	z-index: 1;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	
+	ul{
+		list-style: none;
+		a{
+			text-decoration: none;
+			line-height: 36px;
+			text-transform: uppercase;
+
+			@include hover-transition;
+
+			&:hover{
+				opacity: 0.6;
+			}
+		}
+	}
+}
+
+.sociaux{
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	
+
+	a{
+		font-size: 2rem;
+		padding: 0 10px;
+	}
+
+	li:last-child a{
+		padding-right: 0px;
+	}
+}
+
+/* Menu */
+.main-menu{
+	background: red;
+	z-index: 1;
+	position: sticky;
+	top: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	
+}
+
+.navigation{
+	width: auto;
+	
+	ul{
+		padding: 0;
+		margin: 0;
+		font-size: 0;
+	}
+}
+
+.nav-menu{
+	li{
+		padding: 0 15px;
+		margin: 0 10px;
+
+		@include hover-transition(0.3s);
+
+		a{
+			padding: 0;
+			font-family: 'Roboto Condensed', sans-serif;
+			color: #373431;
+			text-transform: uppercase;
+			font-weight: 700;
+			letter-spacing: 2px;
+			font-size: 1.8rem;
+			border: 0px solid #f82b3a;
+			line-height: 52px;
+			height: 52px;
+
+			@include hover-transition;
+		}
+
+		&.current-menu-item > a,
+		&.current-page-ancestor > a{
+			border-bottom: 4px solid #f82b3a;
+		}
+
+		&:hover{
+			background-color: $color;
+
+			> a{
+				color: #f82b3a;
+				border: none;
+			}
+		}
+	}
+}
+
+/* MOBILE MENU */
+#mmenu{
+	background-color: $color;
+}
+
+/*****************************************************
+	HOME
+/*****************************************************/
+
+/*****************************************************
+	Forms
+ *****************************************************/
+@include placeholderColor(#787469);
+
+input{
+	border: none;
+	line-height: 1.3;
+	font-size: 1.4rem;
+	font-family: serif;
+	color: #787469;
+	
+	padding: 16px 20px;
+	width: 100%;
+
+	&:focus{
+		border: none;
+	}
+}
+
+textarea{
+	resize: vertical;
+	min-height: 150px;
+
+	@extend input;
+}
+
+input[type=checkbox],
+input[type=radio]{
+	border: 1px solid #b1b1b1;
+}
+
+/*****************************************************
+	Frame / Content
+/*****************************************************/
+main header{
+	//position: relative;
+	background-color: #eee;
+}
+
+.site-content{
+	background-color: #fff;
+}
+
+.content-wrap{
+	min-height: 1px;
+}
+
+.content{
+	max-width: $c12MaxWidth;
+	padding-left: $c12Gutter;
+	padding-right: $c12Gutter;
+	margin: 0 auto;
+}
+
+/* Sidebar */
+#sidebar{
+	padding-left: 25px;
+}
+
+/* Pager with pagenavi */
+.wp-pagenavi{
+	.pages{
+		display: none;
+	}
+
+	span, a{
+		background-color: #FDF5DE;
+		display: inline-block;
+		text-align: center;
+		font-size: 1.8rem;
+		border: none;
+		font-family: "Roboto Condensed",sans-serif;
+		color: #000;
+		text-decoration: none;
+		width: 30px;
+		line-height: 30px;
+
+		@include hover-transition;
+	}
+
+	a:not(.page){
+		background-color: #f82b3a;
+		color: #fff;
+	}
+
+	a:hover{
+		opacity: 0.6;
+	}
+}
+
+/* Share */
+.sharing{
+	padding: 18px 0;
+	font-size: 0;
+
+	a{
+		display: inline-block;
+		font-size: 1.4rem;
+		padding-right: 16px;
+		color: #373431;
+
+		@include hover-transition;
+
+		&:hover{
+			opacity: 0.5;
+		}
+	}
+}
+
+/*****************************************************
+	Footer
+/*****************************************************/
+#colophon{
+	padding-bottom: 50px;
+}
+
+#footer-logo{
+	margin-bottom: 40px;
+}
+
+#footer-widgets{
+	padding-bottom: 20px;
+	
+}
+
+.site-info{
+	.legal{
+		text-transform: uppercase;
+		text-align: center;
+		font-weight: 700;
+		padding-top: 18px;
+		border-top: 1px solid #b09a51;
+
+		a{
+			text-decoration: none;
+
+			@include hover-transition;
+
+			&:hover{
+				opacity: 0.5;
+			}
+		}
+	}
+}
+
+@import "responsive";

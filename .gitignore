@@ -1,0 +1,52 @@
+# Ignore everything in the root except the "wp-content" directory.
+/*
+!.gitignore
+!wp-content/
+!deploy.php
+
+# Ignore everything in the "wp-content" directory, except the "plugins" and "themes" directories.
+wp-content/*
+!wp-content/languages/
+!wp-content/plugins/
+!wp-content/themes/
+wp-content/themes/codemstheme
+ 
+# Ignore everything in the "plugins" directory, except the plugins you specify
+# wp-content/plugins/*
+# !wp-content/plugins/my-single-file-plugin.php
+# !wp-content/plugins/my-directory-plugin/
+ 
+# Ignore everything in the "themes" directory, except the themes you specify
+# wp-content/themes/*
+# !wp-content/themes/my-theme/
+
+#------------------------
+#  Log files
+#------------------------
+
+*.log
+error_log
+access_log
+dwsync.xml
+.sass-cache
+
+#------------------------
+#  OS Files
+#------------------------
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+*[Tt]humbs.db
+*.Trashes
+
+
+#------------------------
+#  Developpement Files
+#------------------------
+node_modules
+wp-content/themes/**/docs/**
+wp-content/themes/**/doc-templates/**
