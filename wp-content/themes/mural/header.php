@@ -39,31 +39,35 @@
 		
 		<header id="masthead" role="banner">
 			<div id="topbar">
-				<ul class="sociaux">
-					<?php get_template_part('parts/inc', 'sociaux'); ?>
-				</ul>
+				<div class="content">
+					<ul class="sociaux">
+						<?php get_template_part('parts/inc', 'sociaux'); ?>
+					</ul>
+				</div>
 			</div>
 			
 			<div class="main-menu">
-				<a href="#mmenu" id="open-mmenu"><i class="fas fa-bars"></i></a>
-				
-				<a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-					<?php echo wp_get_attachment_image( get_field( 'logo', 'options' ), 'original' ); ?>
-				</a>
-				
-				<nav class="navigation main-navigation" role="navigation">
-					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu', 'walker' => new MenuWalker() ) ); ?>
-				</nav>
-				
-				<nav id="mmenu">
-					<ul>
-						<li id="search-mob"><? get_search_form(); ?></li>
-						<? wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => '', 'container' => '', 'items_wrap' => '%3$s', 'walker' => new MenuWalker()) ); ?>
-						
-						<li><ul><?php get_template_part('parts/inc', 'sociaux'); ?></ul></li>
-						<? HLP()->language_selector(); ?>
-					</ul>
-				</nav>
+				<div class="content">
+					<a href="#mmenu" id="open-mmenu"><i class="fas fa-bars"></i></a>
+					
+					<a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+						<?php echo wp_get_attachment_image( get_field( 'logo', 'options' ), 'original' ); ?>
+					</a>
+					
+					<nav class="navigation main-navigation" role="navigation">
+							<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu', 'walker' => new MenuWalker() ) ); ?>
+					</nav>
+					
+					<nav id="mmenu">
+						<ul>
+							<li id="search-mob"><? get_search_form(); ?></li>
+							<? wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => '', 'container' => '', 'items_wrap' => '%3$s', 'walker' => new MenuWalker()) ); ?>
+							
+							<li><ul><?php get_template_part('parts/inc', 'sociaux'); ?></ul></li>
+							<?php language_selector(); ?>
+						</ul>
+					</nav>
+				</div>
 			</div>
 			
 		</header><!-- #masthead -->

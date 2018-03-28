@@ -36,6 +36,10 @@ $c12Gutter: 15px;
 /* 1em = 10px; */
 html{
 	font-size: 62.5% !important;
+
+	@media only screen and (max-width: 767px) {
+		font-size: 50% !important;
+	}
 }
 
 #page{
@@ -118,11 +122,18 @@ p{
 /*****************************************************/
 #mmenu{
 	display: none;
+
+	@media only screen and (max-width: 767px) {
+		display: block;
+	}
 }
 
 #open-mmenu{
 	display: none;
 	
+	@media only screen and (max-width: 767px) {
+		display: block;
+	}
 }
 
 #masthead{
@@ -203,30 +214,31 @@ p{
 	ul{
 		padding: 0;
 		margin: 0;
-		font-size: 0;
 	}
 }
 
 .nav-menu{
-	li{
-		padding: 0 15px;
-		margin: 0 10px;
+	display: flex;
 
+	li{
+		padding: 0px;
+		margin: 0 10px;
+		position: relative;
 		@include hover-transition(0.3s);
 
-		a{
-			padding: 0;
-			font-family: 'Roboto Condensed', sans-serif;
-			color: #373431;
-			text-transform: uppercase;
-			font-weight: 700;
-			letter-spacing: 2px;
-			font-size: 1.8rem;
-			border: 0px solid #f82b3a;
-			line-height: 52px;
-			height: 52px;
+		&:hover{
+			background-color: $color;
 
-			@include hover-transition;
+			> a{
+				color: #f82b3a;
+			}
+
+			.sub-menu{
+				opacity: 1;
+				width: auto;
+				height: auto;
+				clip: auto;
+			}
 		}
 
 		&.current-menu-item > a,
@@ -234,13 +246,18 @@ p{
 			border-bottom: 4px solid #f82b3a;
 		}
 
-		&:hover{
-			background-color: $color;
+		a{
+			padding: 0;
+			@include hover-transition;
+		}
 
-			> a{
-				color: #f82b3a;
-				border: none;
-			}
+		.sub-menu{
+			position: absolute;
+			opacity: 0;
+			clip: rect(0, 0, 0, 0);
+			width: 0px;
+			height: 0px;
+			@include hover-transition(0.3s, opacity);
 		}
 	}
 }
@@ -303,6 +320,7 @@ main header{
 }
 
 .content{
+	width: 100%;
 	max-width: $c12MaxWidth;
 	padding-left: $c12Gutter;
 	padding-right: $c12Gutter;
@@ -400,4 +418,5 @@ main header{
 	}
 }
 
-@import "responsive";
+@import "artwork-style";
+@import "partner-style";

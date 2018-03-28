@@ -1,0 +1,42 @@
+{
+    "key": "group_5aba6c188f8e4",
+    "title": "Lieu de l'œuvre",
+    "fields": [
+        {
+            "key": "field_5aba6c25d846f",
+            "label": "Lieu de l'œuvre",
+            "name": "lieu_de_loeuvre",
+            "type": "google_map",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "center_lat": "45.513779",
+            "center_lng": "-73.571462",
+            "zoom": "",
+            "height": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "artwork"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1522166903
+}

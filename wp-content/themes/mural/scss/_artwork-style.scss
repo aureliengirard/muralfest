@@ -1,0 +1,33 @@
+#gmap-arts{
+    height: 500px;
+
+    .artwork-data{
+        max-width: calc(100vw - 53px);
+
+        figure{
+            float: left;
+            padding-right: 5px;
+        }
+
+        .artwork-infos{
+            float: left;
+            padding-left: 5px;
+        }
+
+        .artwork-desc{
+            clear: both;
+        }
+
+        @media only screen and (max-width: 767px) {
+            figure{
+                float: none;
+                padding-right: 0px;
+            }
+
+            .artwork-infos{
+                float: none;
+                padding-left: 0px;
+            }
+        }
+    }
+}

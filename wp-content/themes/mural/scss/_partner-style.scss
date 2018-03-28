@@ -1,0 +1,23 @@
+.partners{
+    .tier{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 50px;
+
+        .partner{
+            padding: 0 15px;
+            margin-bottom: 20px;
+
+            a{
+                opacity: 1;
+                @include hover-transition;
+
+                &:hover{
+                    opacity: 0.6;
+                }
+            }
+        }
+    }
+}

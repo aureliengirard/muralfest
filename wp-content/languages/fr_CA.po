@@ -4032,13 +4032,13 @@ msgid "1 result found. Use up and down arrow keys to navigate."
 msgstr "Un résultat trouvé. Utilisez les flèches haut et bas du clavier pour les parcourir. "
 
 #. translators: %s: user name
-#: wp-includes/comment-template.php:2232
+#: wp-includes/comment-template.php:2231
 msgid "Logged in as %s. Edit your profile."
 msgstr "Connexion en tant que %s. Modifier votre profil."
 
 #. translators: 1: edit user link, 2: accessibility text, 3: user name, 4:
 #. logout URL
-#: wp-includes/comment-template.php:2229
+#: wp-includes/comment-template.php:2228
 msgid "<a href=\"%1$s\" aria-label=\"%2$s\">Logged in as %3$s</a>. <a href=\"%4$s\">Log out?</a>"
 msgstr "<a href=\"%1$s\" aria-label=\"%2$s\">Connecté(e) en tant que %3$s</a>. <a href=\"%4$s\">Déconnexion?</a>"
 
@@ -9176,7 +9176,7 @@ msgstr "<strong>Les valeurs des constantes VHOST et SUBDOMAIN_INSTALL ne corresp
 msgid "<strong>ERROR</strong>: This username is invalid because it uses illegal characters. Please enter a valid username."
 msgstr "<strong>ERREUR</strong> : cet identifiant n&rsquo;est pas valide, car il utilise des caractères non autorisés. Merci d&rsquo;utiliser un identifiant valide."
 
-#: wp-includes/comment-template.php:2207
+#: wp-includes/comment-template.php:2206
 msgid "Required fields are marked %s"
 msgstr "Les champs obligatoires sont indiqués avec %s"
 
@@ -9338,7 +9338,7 @@ msgstr "Une erreur est survenue lors de votre ajout à ce site Web. Retournez à
 msgid "This file is too big. Files must be less than %d KB in size."
 msgstr "Ce fichier est trop gros. La taille des fichiers doit être inférieure %d Ko."
 
-#: wp-includes/comment-template.php:2236
+#: wp-includes/comment-template.php:2235
 msgid "Your email address will not be published."
 msgstr "Votre adresse de courriel ne sera pas publiée."
 
@@ -10832,11 +10832,11 @@ msgstr "Cet argument a été transformé en un tableau, afin de mieux correspond
 msgid "Unapproved"
 msgstr "Désapprouvé"
 
-#: wp-includes/comment-template.php:2250
+#: wp-includes/comment-template.php:2249
 msgid "Cancel reply"
 msgstr "Annuler la réponse."
 
-#: wp-includes/comment-template.php:2251
+#: wp-includes/comment-template.php:2250
 msgid "Post Comment"
 msgstr "Laisser un commentaire"
 
@@ -11271,11 +11271,11 @@ msgstr "Afficher le contenu de l&rsquo;élément?"
 msgid "How many items would you like to display?"
 msgstr "Combien d&rsquo;entrées souhaitez-vous afficher?"
 
-#: wp-includes/comment-template.php:1874 wp-includes/comment-template.php:2245
+#: wp-includes/comment-template.php:1874 wp-includes/comment-template.php:2244
 msgid "Leave a Reply to %s"
 msgstr "Répondre à %s"
 
-#: wp-includes/comment-template.php:1873 wp-includes/comment-template.php:2244
+#: wp-includes/comment-template.php:1873 wp-includes/comment-template.php:2243
 msgid "Leave a Reply"
 msgstr "Laisser un commentaire"
 
@@ -11338,7 +11338,7 @@ msgid "Comments <abbr title=\"Really Simple Syndication\">RSS</abbr>"
 msgstr "<abbr title=\"Really Simple Syndication\">RSS</abbr> des commentaires"
 
 #. translators: %s: login URL
-#: wp-includes/comment-template.php:2223
+#: wp-includes/comment-template.php:2222
 msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
 msgstr "Vous devez <a href=\"%s\">être connecté(e)</a> pour rédiger un commentaire."
 
@@ -11387,7 +11387,7 @@ msgstr "&laquo; Page précédente"
 msgid "Widgets"
 msgstr "Widgets"
 
-#: wp-includes/comment-template.php:2203
+#: wp-includes/comment-template.php:2202
 msgid "Website"
 msgstr "Site web"
 
@@ -11536,7 +11536,7 @@ msgstr "Extension :"
 msgid "Allow people to post comments on new articles"
 msgstr "Autoriser les lecteurs à publier des commentaires sur les nouveaux articles"
 
-#: wp-includes/comment-template.php:2201 wp-login.php:809
+#: wp-includes/comment-template.php:2200 wp-login.php:809
 msgid "Email"
 msgstr "Adresse de courriel"
 
@@ -11896,7 +11896,7 @@ msgstr "Aucun"
 msgid "Description"
 msgstr "Description"
 
-#: wp-includes/comment-template.php:2199
+#: wp-includes/comment-template.php:2198
 msgid "Name"
 msgstr "Nom"
 
@@ -11967,7 +11967,7 @@ msgstr "Modifier"
 msgid "No"
 msgstr "Non"
 
-#: wp-includes/comment-template.php:1082 wp-includes/comment-template.php:2219
+#: wp-includes/comment-template.php:1082 wp-includes/comment-template.php:2218
 msgctxt "noun"
 msgid "Comment"
 msgstr "Commentaire"

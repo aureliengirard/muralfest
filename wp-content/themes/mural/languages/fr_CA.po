@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Site Theme v1.0.0\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2018-03-23 14:35-0400\n"
+"POT-Creation-Date: 2018-03-28 10:41-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Codems <support@codems.ca>\n"
@@ -23,6 +23,8 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Generator: Poedit 2.0.6\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: node_modules\n"
+"X-Poedit-SearchPathExcluded-1: docs\n"
 
 #: 404.php:14
 msgid "Oups! This is not the page you are looking for."
@@ -45,7 +47,7 @@ msgstr "Archives mensuelles: %s"
 #: archive.php:15
 msgctxt "monthly archives date format"
 msgid "F Y"
-msgstr ""
+msgstr "F Y"
 
 #: archive.php:17
 #, php-format
@@ -55,7 +57,7 @@ msgstr "Archives annuelles: %s"
 #: archive.php:17
 msgctxt "yearly archives date format"
 msgid "Y"
-msgstr ""
+msgstr "Y"
 
 #: archive.php:19
 msgid "Archives"
@@ -166,27 +168,51 @@ msgstr "Voir les %s commentaires"
 
 #: footer.php:17
 msgid "All rights reserved."
-msgstr "Tous les droits sont réservés."
+msgstr "Tous droits réservés."
 
-#: functions.php:32
+#: inc/class-Festival.php:108
 msgctxt "post type singular name"
-msgid "Activité"
-msgstr ""
+msgid "Artwork"
+msgstr "Œuvre"
 
-#: functions.php:33
+#: inc/class-Festival.php:109
 msgctxt "post type general name"
-msgid "Activités"
-msgstr ""
+msgid "Artworks"
+msgstr "Œuvres"
 
-#: functions.php:46
+#: inc/class-Festival.php:121
+msgctxt "post type singular name"
+msgid "Artist"
+msgstr "Artiste"
+
+#: inc/class-Festival.php:122
+msgctxt "post type general name"
+msgid "Artists"
+msgstr "Artistes"
+
+#: inc/class-Festival.php:134
+msgctxt "post type singular name"
+msgid "Partner"
+msgstr "Partenaire"
+
+#: inc/class-Festival.php:135
+msgctxt "post type general name"
+msgid "Partners"
+msgstr "Partenaires"
+
+#: inc/class-Festival.php:150
 msgctxt "taxonomy singular name"
-msgid "Type"
-msgstr ""
+msgid "Tier"
+msgstr "Niveau"
 
-#: functions.php:47
+#: inc/class-Festival.php:151
 msgctxt "taxonomy general name"
-msgid "Types"
-msgstr ""
+msgid "Tiers"
+msgstr "Niveaux"
+
+#: inc/class-Festival.php:289
+msgid "Festival"
+msgstr "Festival"
 
 #: search.php:11
 #, php-format

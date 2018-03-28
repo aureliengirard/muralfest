@@ -1,5 +1,5 @@
 $(function(){
-	if($('#gmap').length){
+	if($('#gmap').length && mapData.gmap != null){
 		var map;
 		var geocoder;
 		var MY_MAPTYPE_ID = 'custom_style';

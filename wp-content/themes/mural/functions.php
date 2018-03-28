@@ -1,7 +1,8 @@
 <?php
+include_once('inc/class-Festival.php');
 
 function add_google_map_key(){
-    TCore()->gmapKey = '';
+    TCore()->gmapKey = 'AIzaSyCF3WxcpgQ24K5pFkWR8en9WMyEpkY4JwQ';
 }
 add_action( 'TCore_init', 'add_google_map_key'); // on TCore init
 
@@ -26,27 +27,7 @@ add_action( 'TCore_ready', 'on_TCore_ready');
 
 
 function register_CPT(){
-    CPT()->cptOrth = 'f'; // accorde les mots au cpt
-    CPT()->register_custom_post_type('activite', array(
-        'cpt_variations' => array(
-            'singular' => _x('Activité', 'post type singular name', 'custom_post_type'),
-            'plural' => _x('Activités', 'post type general name', 'custom_post_type')
-        ),
-        'args' => array(
-            'menu_icon' => 'dashicons-portfolio',
-            'supports' => array('title')
-        )
-    ));
     
-    
-    CPT()->cptOrth = 'm';
-    CPT()->add_taxonomy('types', array(
-        'custom_posts' => array('activite'),
-        'tax_variations' => array(
-            'singular' => _x('Type', 'taxonomy singular name', 'custom_post_type'),
-            'plural' => _x('Types', 'taxonomy general name', 'custom_post_type')
-        )
-    ));
 }
 //add_action( 'CPT-ready', 'register_CPT');
 

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Site "
 "Theme v1.0.0\n"
 "POT-Creation-Date: "
-"2018-03-23 12:27-0400\n"
+"2018-03-27 11:06-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Your "
 "Name <you@example.com>\n"
@@ -48,6 +48,16 @@ msgstr ""
 "2.0.6\n"
 "X-Poedit-"
 "SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: "
+"languages/fr_CA.po\n"
+"X-Poedit-SearchPath-2: "
+"languages/fr_CA.mo\n"
+"X-Poedit-"
+"SearchPathExcluded-0: "
+"node_modules\n"
+"X-Poedit-"
+"SearchPathExcluded-1: "
+"docs\n"
 
 #: 404.php:14
 msgid ""
@@ -113,15 +123,15 @@ msgstr ""
 
 #: category.php:30
 msgid ""
-"Filtrer par catégories"
+"Filter by categories"
 msgstr ""
 
 #: category.php:31
-msgid "Tous"
+msgid "All"
 msgstr ""
 
 #: category.php:66
-msgid "Lire plus"
+msgid "Read more"
 msgstr ""
 
 #: comments.php:25
@@ -209,47 +219,60 @@ msgstr ""
 
 #: content.php:49
 #, php-format
-msgid "View all % comments"
+msgid ""
+"View all %s comments"
 msgstr ""
 
 #: footer.php:17
 msgid ""
-"Tous droits réservés."
+"All rights reserved."
 msgstr ""
 
 #: functions.php:32
 msgctxt ""
 "post type singular name"
-msgid "Activité"
+msgid "Artwork"
 msgstr ""
 
 #: functions.php:33
 msgctxt ""
 "post type general name"
-msgid "Activités"
+msgid "Artworks"
 msgstr ""
 
-#: functions.php:46
+#: functions.php:44
 msgctxt ""
-"taxonomy singular name"
-msgid "Type"
+"post type singular name"
+msgid "Artist"
 msgstr ""
 
-#: functions.php:47
+#: functions.php:45
 msgctxt ""
-"taxonomy general name"
-msgid "Types"
+"post type general name"
+msgid "Artists"
+msgstr ""
+
+#: functions.php:56
+msgctxt ""
+"post type singular name"
+msgid "Partner"
+msgstr ""
+
+#: functions.php:57
+msgctxt ""
+"post type general name"
+msgid "Partners"
 msgstr ""
 
 #: search.php:11
 #, php-format
 msgid ""
-"Résultats de recherche "
-"pour: %s"
+"Search results for: %s"
 msgstr ""
 
 #: search.php:26
-msgid "Aucun résultats..."
+#, php-format
+msgid "No result for %s."
 msgstr ""
 
 #: tag.php:12

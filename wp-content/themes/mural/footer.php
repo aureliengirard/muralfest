@@ -10,13 +10,14 @@
 		</main>
 		
 		<footer id="colophon" class="site-footer" role="contentinfo">
-			
-			<div class="site-info">
-				<div class="legal">
-					&copy; Copyright <?= date('Y'); ?>
-					<? _e('All rights reserved.', 'site-theme') ?>
-				</div>
-			</div><!-- .site-info -->
+			<div class="content">
+				<div class="site-info">
+					<div class="legal">
+						&copy; Copyright <?= date('Y'); ?>
+						<? _e('All rights reserved.', 'site-theme') ?>
+					</div>
+				</div><!-- .site-info -->
+			</div>
 			
 		</footer><!-- #colophon -->
 		
