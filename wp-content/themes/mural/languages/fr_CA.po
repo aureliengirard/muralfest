@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Site Theme v1.0.0\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2018-03-28 10:41-0400\n"
+"POT-Creation-Date: 2018-04-09 12:43-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Codems <support@codems.ca>\n"
@@ -170,47 +170,69 @@ msgstr "Voir les %s commentaires"
 msgid "All rights reserved."
 msgstr "Tous droits réservés."
 
-#: inc/class-Festival.php:108
+#: inc/class-Festival.php:110
 msgctxt "post type singular name"
 msgid "Artwork"
 msgstr "Œuvre"
 
-#: inc/class-Festival.php:109
+#: inc/class-Festival.php:111
 msgctxt "post type general name"
 msgid "Artworks"
 msgstr "Œuvres"
 
-#: inc/class-Festival.php:121
+#: inc/class-Festival.php:123
 msgctxt "post type singular name"
 msgid "Artist"
 msgstr "Artiste"
 
-#: inc/class-Festival.php:122
+#: inc/class-Festival.php:124
 msgctxt "post type general name"
 msgid "Artists"
 msgstr "Artistes"
 
-#: inc/class-Festival.php:134
+#: inc/class-Festival.php:136
 msgctxt "post type singular name"
 msgid "Partner"
 msgstr "Partenaire"
 
-#: inc/class-Festival.php:135
+#: inc/class-Festival.php:137
 msgctxt "post type general name"
 msgid "Partners"
 msgstr "Partenaires"
 
-#: inc/class-Festival.php:150
+#: inc/class-Festival.php:151
+msgctxt "post type singular name"
+msgid "Event"
+msgstr "Événement"
+
+#: inc/class-Festival.php:152
+msgctxt "post type general name"
+msgid "Events"
+msgstr "Événements"
+
+#: inc/class-Festival.php:155 inc/class-Festival.php:156
+#: inc/class-Festival.php:157
+msgctxt "masculin nouvel"
+msgid "New"
+msgstr "Nouvel"
+
+#: inc/class-Festival.php:155 inc/class-Festival.php:156
+#: inc/class-Festival.php:157
+msgctxt "post type singular name"
+msgid "event"
+msgstr "événement"
+
+#: inc/class-Festival.php:170
 msgctxt "taxonomy singular name"
 msgid "Tier"
 msgstr "Niveau"
 
-#: inc/class-Festival.php:151
+#: inc/class-Festival.php:171
 msgctxt "taxonomy general name"
 msgid "Tiers"
 msgstr "Niveaux"
 
-#: inc/class-Festival.php:289
+#: inc/class-Festival.php:384
 msgid "Festival"
 msgstr "Festival"
 

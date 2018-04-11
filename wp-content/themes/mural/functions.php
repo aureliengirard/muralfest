@@ -1,4 +1,5 @@
 <?php
+include_once('inc/mural-api.php');
 include_once('inc/class-Festival.php');
 
 function add_google_map_key(){
@@ -38,6 +39,20 @@ function register_CPT(){
 *********/
 function theme_enqueue_styles() {
 	/* enqueue script */
+	wp_enqueue_script("jqueryui-js",
+		"//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js",
+		array('jquery'),
+		wp_get_theme()->get('Version'),
+		true
+	);
+
+	wp_enqueue_script("daterange",
+		CHILDURI."/js/daterange-calendar.js",
+		array('jqueryui-js'),
+		wp_get_theme()->get('Version'),
+		true
+	);
+
 	wp_enqueue_script("map",
 		CHILDURI."/js/map.js",
 		array('theme-utils'),
@@ -53,6 +68,12 @@ function theme_enqueue_styles() {
 	);
 	
 	/* enqueue style */
+	wp_enqueue_style( 'jqueryui-style',
+		'//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css',
+		null,
+		wp_get_theme()->get('Version')
+	);
+
 	wp_enqueue_style( 'child-style',
 		CHILDURI . '/style.css',
 		null,

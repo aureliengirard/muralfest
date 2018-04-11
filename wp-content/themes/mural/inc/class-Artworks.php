@@ -114,8 +114,7 @@ class Artworks {
 						'name' => get_the_title(get_field('artiste')),
 						'link' => get_the_permalink(get_field('artiste'))
 					),
-					'formatted_date' => get_the_date(),
-                    'date' => get_the_date('Y-m-d'),
+                    'date' => get_field('annee'),
                     'coords' => get_field('lieu_de_loeuvre')
                 );
             }

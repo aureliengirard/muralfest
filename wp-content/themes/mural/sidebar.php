@@ -5,5 +5,7 @@
 ?>
 
 <aside id="sidebar">
-	The sidebar
+	<?php wp_list_categories(array(
+		
+	)); ?>
 </aside>

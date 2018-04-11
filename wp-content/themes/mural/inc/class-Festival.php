@@ -90,8 +90,10 @@ class Festival {
 
         add_action( 'CPT-ready', array( $this, 'register_festival_CPT') );
         add_filter('acf/load_field/name=festival', array( $this, 'add_all_festival_to_select' ) );
+        add_filter('acf/load_field/name=annee', array( $this, 'dynamic_add_year' ) );
         add_filter('display_post_states', array( $this, 'add_post_state_festival' ), 10, 2);
 
+        add_action( 'admin_init', array($this, 'add_festival_columns') );
         add_action( 'pre_get_posts', array( $this, 'alter_query_for_festival' ) );
     }
     
@@ -126,7 +128,6 @@ class Festival {
                 'supports' => array('title')
             )
         ));
-        $festival_CPT[] = 'artist';
 
         CPT()->cptOrth = 'm'; // accorde les mots au cpt
         CPT()->register_custom_post_type('partner', array(
@@ -142,6 +143,24 @@ class Festival {
             )
         ));
         $festival_CPT[] = 'partner';
+
+        CPT()->cptOrth = 'm'; // accorde les mots au cpt
+        CPT()->register_custom_post_type('program', array(
+            'cpt_variations' => array(
+                'singular' => _x('Event', 'post type singular name', 'site-theme'),
+                'plural' => _x('Events', 'post type general name', 'site-theme')
+            ),
+            'labels' => array(
+                'add_new' => _x('New', 'masculin nouvel', 'site-theme') .' '. _x('event', 'post type singular name', 'site-theme'),
+                'add_new_item' => _x('New', 'masculin nouvel', 'site-theme') .' '. _x('event', 'post type singular name', 'site-theme'),
+                'new_item' => _x('New', 'masculin nouvel', 'site-theme') .' '. _x('event', 'post type singular name', 'site-theme'),
+            ),
+            'args' => array(
+                'menu_icon' => 'dashicons-location-alt',
+                'supports' => array('title', 'editor')
+            )
+        ));
+        $festival_CPT[] = 'program';
         
         CPT()->cptOrth = 'm';
         CPT()->add_taxonomy('tier', array(
@@ -216,9 +235,61 @@ class Festival {
             if($this->current_festival && get_page_template_slug($page_id) == 'template-maps.php'){
                 $artworks = new Artworks();
             }
-        }
-        
+        }   
     }
+
+
+    /**
+	 * Ajoute les hooks requis pour la colonne festival dans les cpts.
+	 */
+	public function add_festival_columns(){
+        foreach($this->restricted_post_type as $post_type){
+            add_filter( 'manage_'.$post_type.'_posts_columns', array($this, 'festival_column') );
+            add_action( 'manage_'.$post_type.'_posts_custom_column', array($this, 'festival_value'), 10, 2 );
+            add_filter( 'manage_edit-'.$post_type.'_sortable_columns', array($this, 'festival_column_sortable') );
+        }
+	}
+
+
+	/**
+	 * Ajoute la colonne festival dans les cpts.
+	 * 
+	 * @param Array $cols Toutes les colonnes.
+	 * @return Array
+	 */
+	public function festival_column( $cols ) {
+        $columns = array_slice($cols, 0, 2, true);
+        $columns["festival"] = "Festival";
+        $columns = array_merge($columns, array_slice($cols, 2, count($cols)-2, true));
+
+        return $columns;
+	}
+
+	
+	/**
+	 * Nom du festival.
+	 * 
+	 * @param String $column_name
+	 * @param Int $id
+	 */
+	public function festival_value( $column_name, $id ) {
+        if($column_name == 'festival'){
+            echo trim( strip_tags( get_the_title(get_field('festival', $id)) ) );
+        }
+	}
+
+	
+	/**
+	 * Rend la colonne festival triable.
+	 * 
+	 * @param Array $cols
+	 * @return Array
+	 */
+	public function festival_column_sortable( $cols ) {
+		$cols["festival"] = "festival";
+
+		return $cols;
+	}
     
 
     /**
@@ -232,8 +303,19 @@ class Festival {
             $post_types = (Array) $query->get('post_type');
 
             if(count(array_intersect($post_types, $this->restricted_post_type))){
-                $query->set('meta_key', 'festival');
-                $query->set('meta_value', $this->current_festival);
+                $meta_query = array(
+                    'relation' => 'OR',
+                    array(
+                        'key' => 'festival',
+                        'compare' => 'NOT EXISTS'
+                    ),
+                    array(
+                        'key' => 'festival',
+                        'value' => $this->current_festival
+                    )
+                );
+
+                $query->set('meta_query', $meta_query);
             }
         }
     }
@@ -270,6 +352,27 @@ class Festival {
             }
         }
         wp_reset_postdata();
+    
+        return $field;
+    }
+
+
+    /**
+     * Ajoute dans le select de l'année toutes les années depuis la création du festival.
+     * 
+     * @param Array $field
+     * @return Array
+     */
+	public function dynamic_add_year( $field ){
+        // reset choices
+        $field['choices'] = array();
+    
+		$current_year = (Int) date('Y');
+		$starting_year = 2012;
+		
+		for ($i=$current_year; $i >= $starting_year; $i--) { 
+			$field['choices'][$i] = $i;
+		}
     
         return $field;
     }

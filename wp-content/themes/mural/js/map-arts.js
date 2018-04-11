@@ -41,7 +41,7 @@ $(function(){
 				var markerPos = new google.maps.LatLng(lat, lng);
 
 				var infowindow = new google.maps.InfoWindow({
-					content: '<div class="artwork-data"><figure>'+artwork.thumbnail+'</figure><div class="artwork-infos"><h3>'+artwork.title+'</h3><p class="artist"><a href="'+artwork.artist.link+'">'+artwork.artist.name+'</a></p><p class="date">'+artwork.formatted_date+'</p></div><div class="artwork-desc">'+artwork.description+'<p><a href="'+artwork.link+'">En lire plus</a></p></div></div>'
+					content: '<div class="artwork-data"><figure>'+artwork.thumbnail+'</figure><div class="artwork-infos"><h3>'+artwork.title+'</h3><p class="artist"><a href="'+artwork.artist.link+'">'+artwork.artist.name+'</a></p><p class="date">'+artwork.date+'</p></div><div class="artwork-desc">'+artwork.description+'<p><a href="'+artwork.link+'">En lire plus</a></p></div></div>'
 				});
 
 				infoWindows.push(infowindow);
@@ -49,9 +49,8 @@ $(function(){
 				var color = '#9b0fb0';
 
 				var currentDate = new Date();
-				var artworkDate = new Date(artwork.date);
 
-				if(artworkDate.getFullYear() == currentDate.getFullYear()){
+				if(artwork.date == currentDate.getFullYear()){
 					color = '#d8081c';
 				}
 				
