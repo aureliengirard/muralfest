@@ -104,3 +104,22 @@ function theme_fonts_url() {
 	
 	return $fonts_url;
 }// function
+
+
+/**
+ * Envoi plus de variable PHP au script map.js
+ * 
+ */
+function add_map_data($mapData){
+	$mapInfos = get_field('adresse', 'options');
+
+	if(is_singular('artwork')){
+		$mapInfos = get_field('lieu_de_loeuvre');
+	}
+
+    $mapData['gmap'] = $mapInfos;
+    $mapData['childURI'] = CHILDURI;
+    
+    return $mapData;
+}
+add_filter('php_data_to_mapjs', 'add_map_data', 10, 1 );

@@ -105,17 +105,22 @@ class Artworks {
             while ( $query->have_posts() ) {
 				$query->the_post();
 
+				ob_start();
+				get_template_part('parts/inc', 'share');
+				$share = ob_get_clean();
+
                 $artworks[] = array(
                     'title' => get_the_title(),
                     'thumbnail' => wp_get_attachment_image( get_field('image_de_loeuvre'), 'artwork-thumb' ),
-					'description' => truncate(get_the_content(), 200),
+					'description' => truncate(get_field('resume'), 150),
 					'link' => get_the_permalink(),
                     'artist' => array(
 						'name' => get_the_title(get_field('artiste')),
 						'link' => get_the_permalink(get_field('artiste'))
 					),
                     'date' => get_field('annee'),
-                    'coords' => get_field('lieu_de_loeuvre')
+					'coords' => get_field('lieu_de_loeuvre'),
+					'share' => $share
                 );
             }
         }

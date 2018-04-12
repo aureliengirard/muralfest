@@ -276,6 +276,23 @@ p{
 /*****************************************************
 	HOME
 /*****************************************************/
+.banner{
+	figure{
+		position: relative;
+
+		.banner-overlay{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%);
+			
+			h1,h2,h3,h4,h5,h6,p,li{
+				color: #ffffff;
+				text-shadow: 1px 2px 5px #000;
+			}
+		}
+	}
+}
 
 /*****************************************************
 	Forms
@@ -368,6 +385,16 @@ main header{
 				}
 			}
 		}
+
+		&.articles_du_blog{
+			.articles{
+				display: flex;
+
+				.article{
+					flex: 1 1 auto;
+				}
+			}
+		}
 	}
 }
 
@@ -381,6 +408,27 @@ main header{
 			}
 			.right-col{
 				width: 25%;
+			}
+		}
+	}
+}
+
+.single-artwork{
+	.content-wrap{
+		.col-wrapper{
+			display: flex;
+
+			.left-col{
+				width: 35%;
+			}
+			.right-col{
+				width: 65%;
+				display: flex;
+
+				#gmap{
+					min-height: 300px;
+					width: 100%;
+				}
 			}
 		}
 	}

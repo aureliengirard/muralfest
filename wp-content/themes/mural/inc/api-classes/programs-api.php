@@ -10,7 +10,7 @@ class Program_Routes extends WP_REST_Controller {
         $namespace = 'programs/v' . $version;
         $base = 'export';
 
-        register_rest_route( $namespace, '/' . $base, array(
+        $args = array(
             array(
                 'methods' => WP_REST_Server::READABLE,
                 'callback' => array( $this, 'get_events' ),
@@ -18,7 +18,10 @@ class Program_Routes extends WP_REST_Controller {
                 'format' => 'xml',
                 'args' => array(),
             ),
-        ) );
+        );
+
+        register_rest_route( $namespace, '/' . $base.'events', $args);
+        register_rest_route( $namespace, '/' . $base.'/events', $args);
     }
 
     /**

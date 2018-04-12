@@ -201,6 +201,37 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "5acf53d99f8f3": {
+                    "key": "5acf53d99f8f3",
+                    "name": "articles_du_blog",
+                    "label": "Articles du blog",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5acf53df9f8f4",
+                            "label": "Articles du blog",
+                            "name": "articles_du_blog",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_5acf538d5ddcc"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "Ajouter un élément",
@@ -236,6 +267,20 @@
                 "operator": "==",
                 "value": "template-festival.php"
             }
+        ],
+        [
+            {
+                "param": "post_template",
+                "operator": "==",
+                "value": "template-home.php"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "artwork"
+            }
         ]
     ],
     "menu_order": -1,
@@ -249,5 +294,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1523384499
+    "modified": 1523538823
 }
