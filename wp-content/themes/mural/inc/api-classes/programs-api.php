@@ -25,12 +25,23 @@ class Program_Routes extends WP_REST_Controller {
     }
 
     /**
-     * Retourne tous les événements.
+     * Retourne tous les événements et les catégories d'événements.
      *
      * @param WP_REST_Request $request Information sur la requête.
      * @return WP_Error|WP_REST_Response
      */
     public function get_events( $request ){
+        $data = array('events' => array());
+
+        $event_terms = get_terms( array(
+            'taxonomy' => 'event-category',
+            'hide_empty' => false,
+        ) );
+
+        foreach($event_terms as $term){
+            $data['events'][] = $this->prepare_terms_for_response( $term, $request );
+        }
+
         $events = get_posts(array(
             'post_type' => 'program',
             'numberposts' => -1,
@@ -38,10 +49,9 @@ class Program_Routes extends WP_REST_Controller {
             'order_by' => 'meta_value',
             'meta_key' => 'date_et_heure',
         ));
-        $data = array();
 
         foreach($events as $event){
-            $data[] = $this->prepare_event_for_response( $event, $request );
+            $data['events'][] = $this->prepare_events_for_response( $event, $request );
         }
 
         return new WP_REST_Response( $data, 200 );
@@ -49,13 +59,62 @@ class Program_Routes extends WP_REST_Controller {
 
 
     /**
-     * Prépare l'élément pour la réponse de l'API.
+     * Prépare la taxonomie pour la réponse de l'API.
      *
-     * @param mixed $item Événement en object wordpress.
+     * @param mixed $term taxonomie en object wordpress.
      * @param WP_REST_Request $request Objet de la requête.
      * @return mixed
      */
-    public function prepare_event_for_response( $event, $request ) {
+    public function prepare_terms_for_response( $term, $request ) {
+        $en_id = apply_filters( 'wpml_object_id', $term->term_id, $term->taxonomy, true, 'en' );
+        $fr_id = apply_filters( 'wpml_object_id', $term->term_id, $term->taxonomy, true, 'fr' );
+
+        $en_term = get_term($en_id, $term->taxonomy);
+        $fr_term = get_term($fr_id, $term->taxonomy);
+
+        $term_data = array(
+            'key' => 'tag',
+            'value' => array(
+                'id' => $term->term_id,
+                'title' => array(
+                    'value' => array(
+                        array(
+                            'key' => 'value',
+                            'value' => ($en_term->name ? $en_term->name : ''),
+                            'attr' => array(
+                                'lang' => 'eng'
+                            )
+                        ),
+                        array(
+                            'key' => 'value',
+                            'value' => ($fr_term->name ? $fr_term->name : ''),
+                            'attr' => array(
+                                'lang' => 'fra'
+                            )
+                        )
+                    )
+                )
+            )
+        );
+
+        return $term_data;
+    }
+
+
+    /**
+     * Prépare l'élément pour la réponse de l'API.
+     *
+     * @param mixed $event Événement en object wordpress.
+     * @param WP_REST_Request $request Objet de la requête.
+     * @return mixed
+     */
+    public function prepare_events_for_response( $event, $request ) {
+        $en_id = apply_filters( 'wpml_object_id', $event->ID, $event->post_type, true, 'en' );
+        $fr_id = apply_filters( 'wpml_object_id', $event->ID, $event->post_type, true, 'fr' );
+
+        $content_en = $this->get_dynamic_content($en_id);
+        $content_fr = $this->get_dynamic_content($fr_id);
+
         $event_data = array(
             'key' => 'event',
             'value' => array(
@@ -63,14 +122,14 @@ class Program_Routes extends WP_REST_Controller {
                     'value' => array(
                         array(
                             'key' => 'value',
-                            'value' => $event->post_title,
+                            'value' => (get_the_title($en_id) ? get_the_title($en_id) : ''),
                             'attr' => array(
                                 'lang' => 'eng'
                             )
                         ),
                         array(
                             'key' => 'value',
-                            'value' => $event->post_title,
+                            'value' => (get_the_title($fr_id) ? get_the_title($fr_id) : ''),
                             'attr' => array(
                                 'lang' => 'fra'
                             )
@@ -81,14 +140,14 @@ class Program_Routes extends WP_REST_Controller {
                     'value' => array(
                         array(
                             'key' => 'value',
-                            'value' => 'English subtitle',
+                            'value' => (get_field('sous_titre', $en_id) ? get_field('sous_titre', $en_id) : ''),
                             'attr' => array(
                                 'lang' => 'eng'
                             )
                         ),
                         array(
                             'key' => 'value',
-                            'value' => 'French subtitle',
+                            'value' => (get_field('sous_titre', $fr_id) ? get_field('sous_titre', $fr_id) : ''),
                             'attr' => array(
                                 'lang' => 'fra'
                             )
@@ -99,14 +158,14 @@ class Program_Routes extends WP_REST_Controller {
                     'value' => array(
                         array(
                             'key' => 'value',
-                            'value' => 'English description',
+                            'value' => $content_en,
                             'attr' => array(
                                 'lang' => 'eng'
                             )
                         ),
                         array(
                             'key' => 'value',
-                            'value' => 'French description',
+                            'value' => $content_fr,
                             'attr' => array(
                                 'lang' => 'fra'
                             )
@@ -118,12 +177,107 @@ class Program_Routes extends WP_REST_Controller {
                     'attr' => array(
                         'updateDate' => get_the_modified_date('Y-m-d H:i', get_field('image_de_levenement', $event->ID))
                     )
+                ),
+                'link1' => array(
+                    'value' => array(
+                        array(
+                            'key' => 'value',
+                            'value' => (get_field('lien_billets', $en_id) ? get_field('lien_billets', $en_id) : ''),
+                            'attr' => array(
+                                'lang' => 'eng'
+                            )
+                        ),
+                        array(
+                            'key' => 'value',
+                            'value' => (get_field('lien_billets', $fr_id) ? get_field('lien_billets', $fr_id) : ''),
+                            'attr' => array(
+                                'lang' => 'fra'
+                            )
+                        )
+                    )
+                ),
+                'link2' => array(
+                    'value' => array(
+                        array(
+                            'key' => 'value',
+                            'value' => (get_field('lien_evenement_facebook', $en_id) ? get_field('lien_evenement_facebook', $en_id) : ''),
+                            'attr' => array(
+                                'lang' => 'eng'
+                            )
+                        ),
+                        array(
+                            'key' => 'value',
+                            'value' => (get_field('lien_evenement_facebook', $fr_id) ? get_field('lien_evenement_facebook', $fr_id) : ''),
+                            'attr' => array(
+                                'lang' => 'fra'
+                            )
+                        )
+                    )
+                ),
+                'link3' => array(
+                    'value' => array(
+                        array(
+                            'key' => 'value',
+                            'value' => (get_field('lien_playlist', $en_id) ? get_field('lien_playlist', $en_id) : ''),
+                            'attr' => array(
+                                'lang' => 'eng'
+                            )
+                        ),
+                        array(
+                            'key' => 'value',
+                            'value' => (get_field('lien_playlist', $fr_id) ? get_field('lien_playlist', $fr_id) : ''),
+                            'attr' => array(
+                                'lang' => 'fra'
+                            )
+                        )
+                    )
                 )
-
             )
         );
+        
+
+        $terms = wp_get_post_terms( $event->ID, 'event-category' );
+        if(!empty($terms)){
+            foreach ($terms as $term) {
+                $event_data['value']['tags'] = array(
+                    'tagId' => $term->term_id
+                );
+            }
+        }
 
         return $event_data;
+    }
+
+
+    /**
+     * Tri le contenu dynamique d'une page pour en resortir le texte en format compatible avec L'API.
+     * 
+     * @param Int $post_id
+     * @return String
+     */
+    public function get_dynamic_content($post_id){
+        $valid_row = array(
+            'titre_section',
+            'texte_pleine_largeur'
+        );
+
+        $stripped_dynamic_content = '';
+
+        if ( have_rows( 'contenu', $post_id ) ) {
+            while ( have_rows('contenu', $post_id ) ) { the_row();
+                switch (get_row_layout()) {
+                    case 'titre_section':
+                        $stripped_dynamic_content .= '<strong>'.get_sub_field('titre').'</strong><br>';
+                        break;
+                    
+                    case 'texte_pleine_largeur':
+                        $stripped_dynamic_content .= strip_tags(get_sub_field('texte_pleine_largeur'), '<br><i><b><em><strong>').'<br>';
+                        break;
+                }
+            }
+        }
+
+        return trim($stripped_dynamic_content, '<br>');
     }
 
 

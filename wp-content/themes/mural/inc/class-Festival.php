@@ -171,6 +171,15 @@ class Festival {
             )
         ));
 
+        CPT()->cptOrth = 'm';
+        CPT()->add_taxonomy('event-category', array(
+            'custom_posts' => array('program'),
+            'tax_variations' => array(
+                'singular' => _x('Events category', 'taxonomy singular name', 'site-theme'),
+                'plural' => _x('Events categories', 'taxonomy general name', 'site-theme')
+            )
+        ));
+
         $this->restricted_post_type = $festival_CPT;
     }
 	

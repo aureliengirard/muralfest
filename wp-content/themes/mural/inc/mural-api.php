@@ -41,10 +41,15 @@ function multiformat_rest_pre_serve_request( $served, $result, $request, $server
             break;
             
         case 'xml':
+            //header( 'Content-Type: text/html; charset=' . get_option( 'blog_charset' )  );
             header( 'Content-Type: application/xml; charset=' . get_option( 'blog_charset' )  );
 
-            $xml_user_info = new SimpleXMLElement("<?xml version=\"1.0\" encoding=\"UTF-8\"?><events></events>");
-            eventArray_to_xml($result->get_data(), $xml_user_info);
+            $xml_data = $result->get_data();
+            reset($xml_data);
+            $first_key = (!is_numeric(key($xml_data)) ? key($xml_data) : $xml_data[0]['key']);
+            
+            $xml_user_info = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><'.$first_key.'></'.$first_key.'>');
+            eventArray_to_xml($xml_data[$first_key], $xml_user_info);
             echo $xml_user_info->asXML();
 
 			$served = true;
@@ -64,9 +69,9 @@ add_filter( 'rest_pre_serve_request', 'multiformat_rest_pre_serve_request', 10, 
 function eventArray_to_xml($array, &$xml_user_info){
     foreach($array as $key => $data){
         $key = (isset($data['key']) ? $data['key'] : $key);
-        $value = $data['value'];
+        $value = (isset($data['value']) ? $data['value'] : $data);
         $attr = (isset($data['attr']) ? $data['attr'] : array());
-
+        
         if(is_array($value)){
             if(!is_numeric($key)){
                 $subnode = $xml_user_info->addChild($key);
