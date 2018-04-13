@@ -75,7 +75,7 @@ class Artists_API extends Program_Routes {
                             'key' => 'value',
                             'value' => (get_the_title($fr_id) ? get_the_title($fr_id) : ''),
                             'attr' => array(
-                                'lang' => 'fra'
+                                'lang' => 'fre'
                             )
                         )
                     )
@@ -93,7 +93,7 @@ class Artists_API extends Program_Routes {
                             'key' => 'value',
                             'value' => (get_field('pays_dorigine', $fr_id) ? get_field('pays_dorigine', $fr_id) : ''),
                             'attr' => array(
-                                'lang' => 'fra'
+                                'lang' => 'fre'
                             )
                         )
                     )
@@ -111,7 +111,7 @@ class Artists_API extends Program_Routes {
                             'key' => 'value',
                             'value' => (get_field('style', $fr_id) ? get_field('style', $fr_id) : ''),
                             'attr' => array(
-                                'lang' => 'fra'
+                                'lang' => 'fre'
                             )
                         )
                     )
@@ -129,7 +129,7 @@ class Artists_API extends Program_Routes {
                             'key' => 'value',
                             'value' => ($content_fr ? $content_fr : ''),
                             'attr' => array(
-                                'lang' => 'fra'
+                                'lang' => 'fre'
                             )
                         )
                     )
@@ -147,7 +147,7 @@ class Artists_API extends Program_Routes {
                             'key' => 'value',
                             'value' => (get_field('siteweb', $fr_id) ? get_field('siteweb', $fr_id) : ''),
                             'attr' => array(
-                                'lang' => 'fra'
+                                'lang' => 'fre'
                             )
                         )
                     )
@@ -165,7 +165,7 @@ class Artists_API extends Program_Routes {
                             'key' => 'value',
                             'value' => (get_field('instagram', $fr_id) ? get_field('instagram', $fr_id) : ''),
                             'attr' => array(
-                                'lang' => 'fra'
+                                'lang' => 'fre'
                             )
                         )
                     )
@@ -183,7 +183,7 @@ class Artists_API extends Program_Routes {
                             'key' => 'value',
                             'value' => (get_field('facebook', $fr_id) ? get_field('facebook', $fr_id) : ''),
                             'attr' => array(
-                                'lang' => 'fra'
+                                'lang' => 'fre'
                             )
                         )
                     )
@@ -201,7 +201,7 @@ class Artists_API extends Program_Routes {
                             'key' => 'value',
                             'value' => (get_field('twitter', $fr_id) ? get_field('twitter', $fr_id) : ''),
                             'attr' => array(
-                                'lang' => 'fra'
+                                'lang' => 'fre'
                             )
                         )
                     )

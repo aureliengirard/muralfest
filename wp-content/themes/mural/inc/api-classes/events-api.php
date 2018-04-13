@@ -85,7 +85,7 @@ class Events_API extends Program_Routes {
                             'key' => 'value',
                             'value' => ($fr_term->name ? $fr_term->name : ''),
                             'attr' => array(
-                                'lang' => 'fra'
+                                'lang' => 'fre'
                             )
                         )
                     )
@@ -130,7 +130,7 @@ class Events_API extends Program_Routes {
                             'key' => 'value',
                             'value' => (get_the_title($fr_id) ? get_the_title($fr_id) : ''),
                             'attr' => array(
-                                'lang' => 'fra'
+                                'lang' => 'fre'
                             )
                         )
                     )
@@ -148,7 +148,7 @@ class Events_API extends Program_Routes {
                             'key' => 'value',
                             'value' => (get_field('sous_titre', $fr_id) ? get_field('sous_titre', $fr_id) : ''),
                             'attr' => array(
-                                'lang' => 'fra'
+                                'lang' => 'fre'
                             )
                         )
                     )
@@ -166,7 +166,7 @@ class Events_API extends Program_Routes {
                             'key' => 'value',
                             'value' => $content_fr,
                             'attr' => array(
-                                'lang' => 'fra'
+                                'lang' => 'fre'
                             )
                         )
                     )
@@ -190,7 +190,7 @@ class Events_API extends Program_Routes {
                             'key' => 'value',
                             'value' => (get_field('lien_billets', $fr_id) ? get_field('lien_billets', $fr_id) : ''),
                             'attr' => array(
-                                'lang' => 'fra'
+                                'lang' => 'fre'
                             )
                         )
                     )
@@ -208,7 +208,7 @@ class Events_API extends Program_Routes {
                             'key' => 'value',
                             'value' => (get_field('lien_evenement_facebook', $fr_id) ? get_field('lien_evenement_facebook', $fr_id) : ''),
                             'attr' => array(
-                                'lang' => 'fra'
+                                'lang' => 'fre'
                             )
                         )
                     )
@@ -226,7 +226,7 @@ class Events_API extends Program_Routes {
                             'key' => 'value',
                             'value' => (get_field('lien_playlist', $fr_id) ? get_field('lien_playlist', $fr_id) : ''),
                             'attr' => array(
-                                'lang' => 'fra'
+                                'lang' => 'fre'
                             )
                         )
                     )

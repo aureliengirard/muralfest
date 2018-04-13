@@ -93,7 +93,7 @@ class Shows_API extends Program_Routes {
                             'key' => 'value',
                             'value' => (get_field('lien_billets', $fr_id) ? get_field('lien_billets', $fr_id) : ''),
                             'attr' => array(
-                                'lang' => 'fra'
+                                'lang' => 'fre'
                             )
                         )
                     )

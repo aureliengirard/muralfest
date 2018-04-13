@@ -75,7 +75,7 @@ class Venues_API extends Program_Routes {
                             'key' => 'value',
                             'value' => (get_the_title($fr_id) ? get_the_title($fr_id) : ''),
                             'attr' => array(
-                                'lang' => 'fra'
+                                'lang' => 'fre'
                             )
                         )
                     )
@@ -93,7 +93,7 @@ class Venues_API extends Program_Routes {
                             'key' => 'value',
                             'value' => ($content_fr ? $content_fr : ''),
                             'attr' => array(
-                                'lang' => 'fra'
+                                'lang' => 'fre'
                             )
                         )
                     )
