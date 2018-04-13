@@ -511,7 +511,7 @@ main header{
 
 		.hasDatepicker{
 			position: absolute;
-			top: 100%;
+			top: 100% !important; // important pour écraser une valeur en js
 		}
 
 		.date-range-selected > .ui-state-active,

@@ -1,15 +1,11 @@
 <?php
 
-class Program_Routes extends WP_REST_Controller {
+class Events_API extends Program_Routes {
 
     /**
      * Enregistre les routes pour l'API d'export de la programmation (events).
      */
     public function register_routes(){
-        $version = '1';
-        $namespace = 'programs/v' . $version;
-        $base = 'export';
-
         $args = array(
             array(
                 'methods' => WP_REST_Server::READABLE,
@@ -20,8 +16,8 @@ class Program_Routes extends WP_REST_Controller {
             ),
         );
 
-        register_rest_route( $namespace, '/' . $base.'events', $args);
-        register_rest_route( $namespace, '/' . $base.'/events', $args);
+        register_rest_route( $this->namespace, '/' . $this->base.'events', $args);
+        register_rest_route( $this->namespace, '/' . $this->base.'/events', $args);
     }
 
     /**
@@ -118,6 +114,9 @@ class Program_Routes extends WP_REST_Controller {
         $event_data = array(
             'key' => 'event',
             'value' => array(
+                'id' => array(
+                    'value' => $event->ID
+                ),
                 'title' => array(
                     'value' => array(
                         array(
@@ -246,38 +245,6 @@ class Program_Routes extends WP_REST_Controller {
         }
 
         return $event_data;
-    }
-
-
-    /**
-     * Tri le contenu dynamique d'une page pour en resortir le texte en format compatible avec L'API.
-     * 
-     * @param Int $post_id
-     * @return String
-     */
-    public function get_dynamic_content($post_id){
-        $valid_row = array(
-            'titre_section',
-            'texte_pleine_largeur'
-        );
-
-        $stripped_dynamic_content = '';
-
-        if ( have_rows( 'contenu', $post_id ) ) {
-            while ( have_rows('contenu', $post_id ) ) { the_row();
-                switch (get_row_layout()) {
-                    case 'titre_section':
-                        $stripped_dynamic_content .= '<strong>'.get_sub_field('titre').'</strong><br>';
-                        break;
-                    
-                    case 'texte_pleine_largeur':
-                        $stripped_dynamic_content .= strip_tags(get_sub_field('texte_pleine_largeur'), '<br><i><b><em><strong>').'<br>';
-                        break;
-                }
-            }
-        }
-
-        return trim($stripped_dynamic_content, '<br>');
     }
 
 

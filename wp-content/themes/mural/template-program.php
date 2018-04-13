@@ -22,10 +22,18 @@ get_header(); ?>
                         'posts_per_page' => get_option( 'posts_per_page' ),
                         'nopaging' => false,
                         'paged' => $paged,
-                        'order' => 'ASC',
-                        'order_by' => 'meta_value',
-                        'meta_key' => 'date_et_heure',
-                        'meta_query' => array()
+                        'orderby' => array(
+                            'order_event' => 'ASC',
+                            'order_start_time' => 'ASC'
+                        ),
+                        'meta_query' => array(
+                            'order_event' => array(
+                                'key' => 'event_date'
+                            ),
+                            'order_start_time' => array(
+                                'key' => 'heure_de_debut'
+                            )
+                        )
                     );
 
                     if(isset($_GET['selected-artist']) && $_GET['selected-artist'] != ''){
@@ -37,38 +45,39 @@ get_header(); ?>
                     }
 
                     if(isset($_GET['daterange']) && $_GET['daterange'] != ''){
-                        $date_meta = array(
-                            'key' => 'date_et_heure',
-                            'type' => 'DATE'
-                        );
-
                         $posted_date = $_GET['daterange'];
 
                         if(strrpos($posted_date, ' - ')){
                             $daterange = explode(' - ', $posted_date);
 
-                            foreach($daterange as $key => $date){
-                                $date = DateTime::createFromFormat('d/m/Y', $date);
-                                $daterange[$key] = $date->format('Y-m-d');
-                            }
+                            $start_date = DateTime::createFromFormat('d/m/Y', $daterange[0]);
+                            $end_date = DateTime::createFromFormat('d/m/Y', $daterange[1]);
 
-                            $date_meta = array_merge($date_meta, array(
-                                'value' => $daterange,
-                                'compare' => 'BETWEEN'
+                            $args['meta_query'][] = array(
+                                array(
+                                    'key' => 'event_date',
+                                    'type' => 'DATE',
+                                    'value' => $end_date->format('Ymd'),
+                                    'compare' => '<='
+                                ),
+                                array(
+                                    'key' => 'event_date',
+                                    'type' => 'DATE',
+                                    'value' => $start_date->format('Ymd'),
+                                    'compare' => '>='
                                 )
                             );
 
                         }else{
                             $date = DateTime::createFromFormat('d/m/Y', $posted_date);
 
-                            $date_meta = array_merge($date_meta, array(
-                                'value' => array($date->format('Y-m-d'), $date->format('Y-m-d')),
-                                'compare' => 'BETWEEN'
-                                )
+                            $args['meta_query'][] = array(
+                                'key' => 'event_date',
+                                'type' => 'DATE',
+                                'value' => $date->format('Ymd'),
+                                'compare' => '='
                             );
                         }
-
-                        $args['meta_query'][] = $date_meta;
                     }
 
                     $query = new WP_Query( $args );
@@ -109,7 +118,13 @@ get_header(); ?>
                                         echo $artists_name;
                                         ?>
                                     </h3>
-                                    <p class="date"><?php the_field('date_et_heure'); ?></p>
+                                    <p class="date">
+                                        <?= date_i18n('j F Y', strtotime(get_field('event_date'))); ?> - <?php the_field('heure_de_debut'); ?>
+                                        <?php if(get_field('heure_de_fin')){
+                                            echo ' '.__('to', 'site-theme').' '.get_field('heure_de_fin');
+                                        } ?>
+                                    </p>
+                                    <p class="venue"><?= get_the_title(get_field('lieu')); ?></p>
                                     <?= truncate(get_field('resume'), 150, "&hellip;", true); ?>
                                     <a class="readmore" href="<?php the_permalink(); ?>"><?php _e('Read more', 'site-theme'); ?></a>
                                 </div>

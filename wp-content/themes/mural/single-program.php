@@ -30,7 +30,14 @@
                         ?>
                     </h3>
                     <?php get_template_part('parts/inc', 'share'); ?>
-                    <p class="date"><?php the_field('date_et_heure'); ?></p>
+                    <p class="date">
+                        <?= date_i18n('j F Y', strtotime(get_field('event_date'))); ?> - <?php the_field('heure_de_debut'); ?>
+                        <?php if(get_field('heure_de_fin')){
+                            echo ' '.__('to', 'site-theme').' '.get_field('heure_de_fin');
+                        } ?>
+                    </p>
+                    
+                    <p class="venue"><?= get_the_title(get_field('lieu')); ?></p>
                     
                     <?php if(get_field('lien_billets')): ?>
                         <a href="<?php the_field('lien_billets'); ?>" target="_blank" rel="nofollow"><?php _e('Buy your ticket', 'site-theme'); ?></a>

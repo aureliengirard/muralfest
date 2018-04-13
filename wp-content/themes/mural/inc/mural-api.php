@@ -1,12 +1,25 @@
 <?php
-include_once('api-classes/programs-api.php');
+include_once('api-classes/programs-routes.php');
+include_once('api-classes/events-api.php');
+include_once('api-classes/artists-api.php');
+include_once('api-classes/venues-api.php');
+include_once('api-classes/shows-api.php');
 
 /**
  * Crée les routes lorsque l'API est initialisé.
  */
 add_action('rest_api_init', function(){
-    $controller = new Program_Routes();
-    $controller->register_routes();
+    $event_controller = new Events_API();
+    $event_controller->register_routes();
+
+    $artist_controller = new Artists_API();
+    $artist_controller->register_routes();
+
+    $venue_controller = new Venues_API();
+    $venue_controller->register_routes();
+
+    $show_controller = new Shows_API();
+    $show_controller->register_routes();
 });
 
 

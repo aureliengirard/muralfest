@@ -707,7 +707,7 @@ main header {
       width: auto; }
     .program-filters #orderby-wrap .hasDatepicker {
       position: absolute;
-      top: 100%; }
+      top: 100% !important; }
     .program-filters #orderby-wrap .date-range-selected > .ui-state-active,
     .program-filters #orderby-wrap .date-range-selected > .ui-state-default {
       background: none;

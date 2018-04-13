@@ -28,9 +28,9 @@
         },
         {
             "key": "field_5acb9e320535d",
-            "label": "Date et heure",
-            "name": "date_et_heure",
-            "type": "date_time_picker",
+            "label": "Date",
+            "name": "event_date",
+            "type": "date_picker",
             "instructions": "",
             "required": 1,
             "conditional_logic": 0,
@@ -39,16 +39,48 @@
                 "class": "",
                 "id": ""
             },
-            "display_format": "d\/m\/Y g:i a",
-            "return_format": "j F Y - g:i a",
+            "display_format": "d\/m\/Y",
+            "return_format": "Ymd",
             "first_day": 1
+        },
+        {
+            "key": "field_5ad0d44bc3d96",
+            "label": "Heure de début",
+            "name": "heure_de_debut",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "g:i a",
+            "return_format": "g:i a"
+        },
+        {
+            "key": "field_5ad0d210501af",
+            "label": "Heure de fin",
+            "name": "heure_de_fin",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "g:i a",
+            "return_format": "g:i a"
         },
         {
             "key": "field_5acbc12921b88",
             "label": "Artiste",
             "name": "artiste",
             "type": "post_object",
-            "instructions": "",
+            "instructions": "L'artiste en premier sera considéré comme artiste principale.",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -89,6 +121,28 @@
             "ajax": 0,
             "return_format": "value",
             "placeholder": ""
+        },
+        {
+            "key": "field_5ad0d19a501ae",
+            "label": "Lieu",
+            "name": "lieu",
+            "type": "post_object",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "venue"
+            ],
+            "taxonomy": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "id",
+            "ui": 1
         }
     ],
     "location": [
@@ -108,5 +162,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1523563683
+    "modified": 1523649044
 }

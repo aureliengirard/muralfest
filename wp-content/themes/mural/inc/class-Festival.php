@@ -156,11 +156,25 @@ class Festival {
                 'new_item' => _x('New', 'masculin nouvel', 'site-theme') .' '. _x('event', 'post type singular name', 'site-theme'),
             ),
             'args' => array(
-                'menu_icon' => 'dashicons-location-alt',
+                'menu_icon' => 'dashicons-tickets-alt',
                 'supports' => array('title', 'editor')
             )
         ));
         $festival_CPT[] = 'program';
+
+        CPT()->cptOrth = 'm'; // accorde les mots au cpt
+        CPT()->register_custom_post_type('venue', array(
+            'cpt_variations' => array(
+                'singular' => _x('Venue', 'post type singular name', 'site-theme'),
+                'plural' => _x('Venues', 'post type general name', 'site-theme')
+            ),
+            'args' => array(
+                'menu_icon' => 'dashicons-location-alt',
+                'supports' => array('title', 'editor'),
+                'publicly_queryable'  => false,
+                'exclude_from_search' => true
+            )
+        ));
         
         CPT()->cptOrth = 'm';
         CPT()->add_taxonomy('tier', array(
@@ -308,23 +322,28 @@ class Festival {
      * @param Object $query
      */
     public function alter_query_for_festival($query){
-        if($this->current_festival){
-            $post_types = (Array) $query->get('post_type');
+        if(!is_admin()){
+            if($this->current_festival){
+                $post_types = (Array) $query->get('post_type');
 
-            if(count(array_intersect($post_types, $this->restricted_post_type))){
-                $meta_query = array(
-                    'relation' => 'OR',
-                    array(
-                        'key' => 'festival',
-                        'compare' => 'NOT EXISTS'
-                    ),
-                    array(
-                        'key' => 'festival',
-                        'value' => $this->current_festival
-                    )
-                );
+                if(count(array_intersect($post_types, $this->restricted_post_type))){
+                    $meta_query = array(
+                        'relation' => 'OR',
+                        array(
+                            'key' => 'festival',
+                            'compare' => 'NOT EXISTS'
+                        ),
+                        array(
+                            'key' => 'festival',
+                            'value' => $this->current_festival
+                        )
+                    );
 
-                $query->set('meta_query', $meta_query);
+                    $current_meta_query = $query->get('meta_query');
+                    $current_meta_query[] = $meta_query;
+
+                    $query->set('meta_query', $current_meta_query);
+                }
             }
         }
     }
