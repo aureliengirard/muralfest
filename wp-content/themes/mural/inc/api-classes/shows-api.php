@@ -62,6 +62,9 @@ class Shows_API extends Program_Routes {
         $show_data = array(
             'key' => 'show',
             'value' => array(
+                'id' => array(
+                    'value' => $show->ID
+                ),
                 'dateStart' => array(
                     'value' => date('Y-m-d', strtotime(get_field('event_date', $fr_id)))
                 ),
