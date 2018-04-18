@@ -47,7 +47,7 @@ $(function(){
 	
 	
 	/* inscription a l'infolettre */
-	$('.infolettre').submit(function(e){
+	$('.infolettre, .newsletter').submit(function(e){
 		e.preventDefault();
 
 		var messageLog = $(this).find('.error-log');
@@ -61,6 +61,7 @@ $(function(){
 			
 			// Prepare query string and send AJAX request
 			$.post( phpData.THEMEURI+'/inc/add_address.php', { ajax:true, email: $(this).find('input[name="email"]').val(), lang: phpData.lang}, function(res){
+				console.log(res);
 				
 				if(res.ok==1){				
 					var msgOk = traduction.mail_mess_success;
@@ -76,7 +77,7 @@ $(function(){
 		}
 	});
 	
-	$('.content-wrap .contenu_avec_fond .img-parallax').each(function (index, element) {
-		parallax($(this), $(this).parents('.custom-bg'));
+	$('.content-wrap .background-parallax .img-parallax').each(function (index, element) {
+		parallax($(this), $(this).parents('.background-parallax'));
 	});
 });

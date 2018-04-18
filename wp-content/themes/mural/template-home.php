@@ -43,7 +43,7 @@ get_header(); ?>
 			<?php endif; ?>
 		</div>
 		<div class="content-wrap">
-			<?php get_template_part('parts/inc', 'content'); ?>
+			<?php get_template_part('parts/inc', 'background_content'); ?>
 		</div>
 	</article>
 <?php endwhile; ?>

@@ -24,6 +24,7 @@ function extend_editor_tiny_mce_before_init($settings){
     // From http://tinymce.moxiecode.com/examples/example_24.php
     $style_formats = array(         
         array('title' => 'Bouton', 'selector' => 'a', 'classes' => 'button'),
+        array('title' => 'Lire plus', 'selector' => 'a', 'classes' => 'readmore'),
     );
     
     $settings['style_formats'] = json_encode( $style_formats );
