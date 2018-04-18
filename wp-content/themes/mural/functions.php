@@ -113,7 +113,7 @@ function theme_fonts_url() {
 	
 	$font_families = array();
 	
-	$font_families[] = 'Open Sans:300,400,600,700';
+	$font_families[] = 'Open Sans:300,400,600,700,800';
 	
 	$query_args = array(
 		'family' => urlencode( implode( '|', $font_families ) ),

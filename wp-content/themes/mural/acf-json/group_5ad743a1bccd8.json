@@ -78,6 +78,37 @@
                     "min": "",
                     "max": ""
                 },
+                "5ad7900d1c037": {
+                    "key": "5ad7900d1c037",
+                    "name": "image_pleine_largeur",
+                    "label": "Image pleine largeur",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5ad790101c038",
+                            "label": "Image pleine largeur",
+                            "name": "image_pleine_largeur",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_5ad78efa9d43c"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
                 "5ad743f67e57b": {
                     "key": "5ad743f67e57b",
                     "name": "application",
@@ -163,5 +194,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1524060825
+    "modified": 1524076569
 }

@@ -433,7 +433,31 @@ class Festival {
     public function get_festival(){
         return $this->current_festival;
     }
-	
+
+
+    /**
+     * Retour le ID de la sous page désiré
+     * 
+     * @param String $template_name
+     * @return Int
+     */
+    public function get_festival_sub_page($template_name){
+        if($this->current_festival){
+            $sub_page = get_pages(array(
+                'child_of' => $this->current_festival,
+                'meta_key' => '_wp_page_template',
+                'meta_value' => 'template-'.$template_name.'.php',
+                'number' => 1
+            ));
+
+            if($sub_page){
+                return $sub_page[0]->ID;
+            }
+        }
+
+        return false;
+    }
+     
 	
 }// Festival Class
 

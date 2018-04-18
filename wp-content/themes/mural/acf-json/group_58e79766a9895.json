@@ -78,6 +78,37 @@
                     "min": "",
                     "max": ""
                 },
+                "5ad78fee7abf0": {
+                    "key": "5ad78fee7abf0",
+                    "name": "image_pleine_largeur",
+                    "label": "Image pleine largeur",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5ad78ff67abf1",
+                            "label": "Image pleine largeur",
+                            "name": "image_pleine_largeur",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_5ad78efa9d43c"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
                 "58e55820e42fc": {
                     "key": "58e55820e42fc",
                     "name": "image_et_texte",
@@ -233,6 +264,37 @@
                     "min": "",
                     "max": ""
                 },
+                "5ad76fafc4a81": {
+                    "key": "5ad76fafc4a81",
+                    "name": "evenements_a_venir",
+                    "label": "Événements à venir",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5ad76fafc4a82",
+                            "label": "Événements à venir",
+                            "name": "evenements_a_venir",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_5ad76f79b7775"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
                 "5ad66210a415b": {
                     "key": "5ad66210a415b",
                     "name": "application",
@@ -285,6 +347,37 @@
                             },
                             "clone": [
                                 "group_5ad751f54c432"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "5ad79f65f6470": {
+                    "key": "5ad79f65f6470",
+                    "name": "partenaires",
+                    "label": "Partenaires",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5ad79f6af6471",
+                            "label": "Partenaires",
+                            "name": "partenaires",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_5ad79c97e27f5"
                             ],
                             "display": "seamless",
                             "layout": "block",
@@ -356,5 +449,5 @@
     ],
     "active": 0,
     "description": "",
-    "modified": 1524060792
+    "modified": 1524080509
 }

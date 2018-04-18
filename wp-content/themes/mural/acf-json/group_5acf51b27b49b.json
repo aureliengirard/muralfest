@@ -224,6 +224,13 @@
                 "operator": "==",
                 "value": "template-home.php"
             }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-festival.php"
+            }
         ]
     ],
     "menu_order": 0,
@@ -234,5 +241,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1523981759
+    "modified": 1524067339
 }

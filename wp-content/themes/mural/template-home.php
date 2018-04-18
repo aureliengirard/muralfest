@@ -9,39 +9,8 @@ get_header(); ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
 	<article id="post-<?php the_ID(); ?>" class="site-content">
-		<div class="banner">
-			<?php if(get_field('nombre_dimage')): // true or false, true = deux col ?>
-				<?php
-				$left_banner = get_field('banniere_gauche');
-				$right_banner = get_field('banniere_droite');
-				?>
-				<figure class="left-banner">
-					<?php echo wp_get_attachment_image( $left_banner['banniere'], 'max-banner' ); ?>
-					<?php if($left_banner['contenu_banniere']): ?>
-						<div class="banner-overlay">
-							<?= $left_banner['contenu_banniere']; ?>
-						</div>
-					<?php endif; ?>
-				</figure>
-				<figure class="right-banner">
-					<?php echo wp_get_attachment_image( $right_banner['banniere'], 'max-banner' ); ?>
-					<?php if($right_banner['contenu_banniere']): ?>
-						<div class="banner-overlay">
-							<?= $right_banner['contenu_banniere']; ?>
-						</div>
-					<?php endif; ?>
-				</figure>
-			<?php else: ?>
-				<figure>
-					<?php echo wp_get_attachment_image( get_field( 'banniere' ), 'max-banner' ); ?>
-					<?php if(get_field('contenu_banniere')): ?>
-						<div class="banner-overlay">
-							<?php the_field('contenu_banniere'); ?>
-						</div>
-					<?php endif; ?>
-				</figure>
-			<?php endif; ?>
-		</div>
+		<?php get_template_part('parts/inc', 'banner'); ?>
+
 		<div class="content-wrap">
 			<?php get_template_part('parts/inc', 'background_content'); ?>
 		</div>

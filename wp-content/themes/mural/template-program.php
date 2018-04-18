@@ -95,39 +95,7 @@ get_header(); ?>
                                 $query->the_post();
                                 ?>
                 
-                                <div class="program">
-                                    <figure>
-                                        <a href="<?php the_permalink(); ?>">
-                                            <?= wp_get_attachment_image(get_field('image_de_levenement'), 'medium'); ?>
-                                        </a>
-                                    </figure>
-                                    <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                                    <h3 class="artist">
-                                        <?php
-                                        $artists_name = '';
-                                        foreach(get_field('artiste') as $artist){
-                                            $artists_name .= get_the_title($artist).', ';
-                                        }
-                                        $artists_name = trim($artists_name, ', ');
-                                        $pos = strrpos($artists_name, ',');
-
-                                        if($pos !== false){
-                                            $artists_name = substr_replace($artists_name, ' '.__('and', 'site-theme'), $pos, strlen(','));
-                                        }
-
-                                        echo $artists_name;
-                                        ?>
-                                    </h3>
-                                    <p class="date">
-                                        <?= date_i18n('j F Y', strtotime(get_field('event_date'))); ?> - <?php the_field('heure_de_debut'); ?>
-                                        <?php if(get_field('heure_de_fin')){
-                                            echo ' '.__('to', 'site-theme').' '.get_field('heure_de_fin');
-                                        } ?>
-                                    </p>
-                                    <p class="venue"><?= get_the_title(get_field('lieu')); ?></p>
-                                    <?= truncate(get_field('resume'), 150, "&hellip;", true); ?>
-                                    <a class="readmore" href="<?php the_permalink(); ?>"><?php _e('Read more', 'site-theme'); ?></a>
-                                </div>
+                                <?php get_template_part('parts/program', 'article'); ?>
 
                             <?php endwhile; ?>
                         </div>
