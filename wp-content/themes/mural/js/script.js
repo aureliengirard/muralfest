@@ -1,7 +1,8 @@
 $(function(){
+	
 	/////// 
 	// Prevent transitions before DOM load
-	$(window).load(function() {
+	$('#ink-transition .bg-layer').one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e) {
 		$("body").removeClass("preload");
 	});
 	
@@ -75,4 +76,7 @@ $(function(){
 		}
 	});
 	
+	$('.content-wrap .contenu_avec_fond .img-parallax').each(function (index, element) {
+		parallax($(this), $(this).parents('.custom-bg'));
+	});
 });

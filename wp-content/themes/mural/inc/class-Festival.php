@@ -339,7 +339,7 @@ class Festival {
                         )
                     );
 
-                    $current_meta_query = $query->get('meta_query');
+                    $current_meta_query = (Array) $query->get('meta_query');
                     $current_meta_query[] = $meta_query;
 
                     $query->set('meta_query', $current_meta_query);

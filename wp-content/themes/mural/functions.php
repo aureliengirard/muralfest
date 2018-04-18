@@ -1,6 +1,7 @@
 <?php
 include_once('inc/mural-api.php');
 include_once('inc/class-Festival.php');
+include_once('inc/tinymce_formats.php');
 
 function add_google_map_key(){
     TCore()->gmapKey = 'AIzaSyCF3WxcpgQ24K5pFkWR8en9WMyEpkY4JwQ';
@@ -33,6 +34,16 @@ function register_CPT(){
 //add_action( 'CPT-ready', 'register_CPT');
 
 
+/**
+ * Register image sizes
+ * 
+ * @hooked init
+ */
+function cdm_add_images_sizes(){
+    add_image_size( 'cta-preview', 400, 285, array('center', 'center') );
+}
+add_action( 'init', 'cdm_add_images_sizes' );
+
 
 /*********
 /* Register script and style in relation with the parent theme
@@ -49,6 +60,13 @@ function theme_enqueue_styles() {
 	wp_enqueue_script("daterange",
 		CHILDURI."/js/daterange-calendar.js",
 		array('jqueryui-js'),
+		wp_get_theme()->get('Version'),
+		true
+	);
+
+	wp_enqueue_script("ink",
+		CHILDURI."/js/ink.js",
+		array('theme-utils'),
 		wp_get_theme()->get('Version'),
 		true
 	);
@@ -79,6 +97,8 @@ function theme_enqueue_styles() {
 		null,
 		wp_get_theme()->get('Version')
 	);
+
+	wp_dequeue_style('font-awesome-4');
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles', 11 );
 
@@ -93,8 +113,7 @@ function theme_fonts_url() {
 	
 	$font_families = array();
 	
-	$font_families[] = 'Source Sans Pro:300,400,700,300italic,400italic,700italic';  // Basic
-	$font_families[] = 'Bitter:400,700'; // Basic
+	$font_families[] = 'Open Sans:300,400,600,700';
 	
 	$query_args = array(
 		'family' => urlencode( implode( '|', $font_families ) ),
@@ -123,3 +142,16 @@ function add_map_data($mapData){
     return $mapData;
 }
 add_filter('php_data_to_mapjs', 'add_map_data', 10, 1 );
+
+
+/**
+ * Envoi plus de variable PHP au script map.js
+ * 
+ */
+function add_script_data($phpData){
+    $phpData['siteURL'] = esc_url( home_url( '/' ) );
+    $phpData['childURI'] = CHILDURI;
+    
+    return $phpData;
+}
+add_filter('php_data_to_scriptjs', 'add_script_data', 10, 1 );

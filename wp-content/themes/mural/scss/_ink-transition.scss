@@ -1,0 +1,77 @@
+@import "../../codemstheme/sass/utils";
+
+body.preload{
+    #ink-transition{
+		opacity: 1;
+        visibility: visible;
+        
+        .bg-layer{
+            @include animation(0s, 1s, cd-sequence-reverse);
+            animation-timing-function: steps(24);
+        }
+    }
+}
+
+#ink-transition{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+	visibility: hidden;
+	overflow: hidden;
+
+	.bg-layer{
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		@include transform(translateY(-50%) translateX(-2%));
+		/* its dimentions will be overwritten using jQuery to proportionally fit the viewport */
+		height: 100%;
+		/* our sprite is composed of 25 frames */ 
+		width: 2500%;
+		background: url(images/ink.png) no-repeat 0 0;
+		background-size: 100% 100%;
+	}
+
+	&.hidden{
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	&.opening .bg-layer{
+		@include animation(0s, 0.8s, cd-sequence);
+		animation-timing-function: steps(24);
+	}
+
+	&.closing .bg-layer{
+        @include animation(0s, 0.8s, cd-sequence-reverse);
+		animation-timing-function: steps(24);
+	}
+
+	.no-cssanimations & {
+		display: none;
+	}
+}
+
+@include keyframe(cd-sequence){
+	0% {
+		/* translateX(-2%) is used to horizontally center the first frame inside the viewport */
+		@include transform(translateY(-50%) translateX(-2%));
+	}
+	100% {
+		/* translateX(-98%) (2% + 96) is used to horizontally center the last frame inside the viewport  */
+   		@include transform(translateY(-50%) translateX(-98%));
+	}
+}
+
+@include keyframe(cd-sequence-reverse){
+	0% {
+		@include transform(translateY(-50%) translateX(-98%));
+	}
+	100% {
+   		@include transform(translateY(-50%) translateX(-2%));
+	}
+}

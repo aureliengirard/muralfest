@@ -1,4 +1,5 @@
 <div class="content">
+    <h2><?php _e('Latest posts', 'site-theme'); ?></h2>
     <?php
     $args = array(
         'post_type' => array( 'post' ),

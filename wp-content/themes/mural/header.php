@@ -34,18 +34,9 @@
 
 <body <?php body_class($body_class); ?>>
 <div><!--pour mmenu-->
-	
 	<div id="page" class="hfeed site">
 		
 		<header id="masthead" role="banner">
-			<div id="topbar">
-				<div class="content">
-					<ul class="sociaux">
-						<?php get_template_part('parts/inc', 'sociaux'); ?>
-					</ul>
-				</div>
-			</div>
-			
 			<div class="main-menu">
 				<div class="content">
 					<a href="#mmenu" id="open-mmenu"><i class="fas fa-bars"></i></a>
@@ -55,7 +46,7 @@
 					</a>
 					
 					<nav class="navigation main-navigation" role="navigation">
-							<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu', 'walker' => new MenuWalker() ) ); ?>
+						<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu', 'walker' => new MenuWalker() ) ); ?>
 					</nav>
 					
 					<nav id="mmenu">
@@ -73,3 +64,4 @@
 		</header><!-- #masthead -->
 
 		<main id="main" class="site-main site-content" role="main">
+			<div id="ink-transition"><div class="bg-layer"></div></div>
