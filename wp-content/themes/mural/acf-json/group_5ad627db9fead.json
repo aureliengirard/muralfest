@@ -126,13 +126,6 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "program"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
                 "value": "post"
             }
         ],
@@ -141,6 +134,13 @@
                 "param": "post_type",
                 "operator": "==",
                 "value": "artwork"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "program"
             }
         ]
     ],
@@ -155,5 +155,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1524060469
+    "modified": 1524153275
 }

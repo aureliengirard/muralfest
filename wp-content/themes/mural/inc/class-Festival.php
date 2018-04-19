@@ -358,28 +358,16 @@ class Festival {
 	public function add_all_festival_to_select( $field ){
         // reset choices
         $field['choices'] = array();
-    
-        $args = array(
-            'post_type' => 'page',
-            'posts_per_page' => -1,
-            'meta_query' => array(
-                array(
-                    'key' => '_wp_page_template',
-                    'value' => $this->template_name
-                )
-            )
-        );
-        $query = new WP_Query( $args );
+
+        $festivals = get_pages(array(
+            'child_of' => $this->current_festival,
+            'meta_key' => '_wp_page_template',
+            'meta_value' => $this->template_name,
+        ));
         
-        if( $query->have_posts() ){
-            while( $query->have_posts() ){
-                $query->the_post();
-                
-                $field['choices'][get_the_ID()] =  get_the_title();
-    
-            }
+        foreach ($festivals as $festival) {
+            $field['choices'][$festival->ID] =  $festival->post_title;
         }
-        wp_reset_postdata();
     
         return $field;
     }
