@@ -1204,48 +1204,48 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   font-size: 0; }
   .sharing a {
     display: inline-block;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     padding-right: 16px;
-    color: #373431;
+    color: #000000;
     -webkit-transition: all 0.5s;
     transition: all 0.5s; }
     .sharing a:hover {
       text-decoration: none; }
     .sharing a:hover {
-      opacity: 0.5; }
+      color: #ed3d8f; }
 
 /* programmations */
-.programs {
+.content-wrap section .programs {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap; }
-  .programs .program {
+  .content-wrap section .programs .program {
     width: calc(100% / 3 - ((30px * 2) / 3));
     /* On divise la largeur totale disponible également entre toutes les colonnes, puis on soustrait à chaque colonnes le gap désiré */
     margin-right: 30px;
     margin-bottom: 30px;
     /* On retire le margin right pour que la dernière colonne arrive égale au contenu. */ }
-    .programs .program:nth-child(3n) {
+    .content-wrap section .programs .program:nth-child(3n) {
       margin-right: 0px; }
-  .programs .program {
+  .content-wrap section .programs .program {
     background-color: #ffffff; }
-    .programs .program figure {
+    .content-wrap section .programs .program figure {
       overflow: hidden; }
-      .programs .program figure a {
+      .content-wrap section .programs .program figure a {
         display: block;
         position: relative; }
-        .programs .program figure a .regular-img {
+        .content-wrap section .programs .program figure a .regular-img {
           -webkit-filter: url("images/svg/effect-imageblur.svg#image-blur");
                   filter: url("images/svg/effect-imageblur.svg#image-blur"); }
-          .programs .program figure a .regular-img img {
+          .content-wrap section .programs .program figure a .regular-img img {
             opacity: 1;
             -webkit-transition: all 0.5s;
             transition: all 0.5s; }
-            .programs .program figure a .regular-img img:hover {
+            .content-wrap section .programs .program figure a .regular-img img:hover {
               text-decoration: none; }
-        .programs .program figure a .hover-effect-img {
+        .content-wrap section .programs .program figure a .hover-effect-img {
           position: absolute;
           top: 0;
           right: 0;
@@ -1255,40 +1255,60 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
           z-index: 1;
           -webkit-transition: all 0.5s;
           transition: all 0.5s; }
-          .programs .program figure a .hover-effect-img:hover {
+          .content-wrap section .programs .program figure a .hover-effect-img:hover {
             text-decoration: none; }
-          .programs .program figure a .hover-effect-img img {
+          .content-wrap section .programs .program figure a .hover-effect-img img {
             -webkit-mask: url(images/svg/paint-splash2.svg) no-repeat 0 0;
                     mask: url(images/svg/paint-splash2.svg) no-repeat 0 0;
             -webkit-mask-size: cover;
                     mask-size: cover; }
-        .programs .program figure a:hover .regular-img img {
+        .content-wrap section .programs .program figure a:hover .regular-img img {
           opacity: 0.3; }
-        .programs .program figure a:hover .hover-effect-img {
+        .content-wrap section .programs .program figure a:hover .hover-effect-img {
           opacity: 1; }
-    .programs .program .description {
+    .content-wrap section .programs .program .description {
       text-align: center;
       padding: 20px 15px; }
-      .programs .program .description .event-infos {
+      .content-wrap section .programs .program .description .event-infos {
         margin-bottom: 0; }
-      .programs .program .description h4 a {
+      .content-wrap section .programs .program .description h4 a {
         color: inherit; }
-        .programs .program .description h4 a:hover {
+        .content-wrap section .programs .program .description h4 a:hover {
           color: #ed3d8f; }
-      .programs .program .description p {
+      .content-wrap section .programs .program .description p {
         font-size: 1.8rem; }
-    .programs .program .event-infos {
-      color: #ed3d8f;
-      font-size: 1.8rem;
-      font-weight: 600; }
-      .programs .program .event-infos .venue {
-        font-weight: 700;
-        text-transform: uppercase; }
-      .programs .program .event-infos .date + .venue::before {
-        content: "|";
-        margin: 0 5px;
-        font-weight: 600; }
 
+.content-wrap section .content .event-infos {
+  color: #ed3d8f;
+  font-size: 1.8rem;
+  font-weight: 600; }
+  .content-wrap section .content .event-infos .venue {
+    font-weight: 700;
+    text-transform: uppercase; }
+
+.single-program .content-wrap section h1 {
+  color: #000000;
+  margin-bottom: 0; }
+
+.single-program .content-wrap section .artist {
+  color: #ed3d8f;
+  font-weight: 700; }
+  .single-program .content-wrap section .artist span {
+    font-size: 0.6em;
+    font-weight: 400;
+    color: #000000; }
+
+.single-program .content-wrap .col-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+  .single-program .content-wrap .col-wrapper .left-col {
+    width: 50%; }
+  .single-program .content-wrap .col-wrapper .right-col {
+    width: 50%;
+    padding-left: 30px; }
+
+/* filters */
 .content-wrap .filters {
   padding: 30px 0;
   overflow: visible;

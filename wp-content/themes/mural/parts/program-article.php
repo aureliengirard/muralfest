@@ -20,14 +20,15 @@
             }else{
                 echo date_i18n('j F Y', strtotime(get_field('event_date')));
             }
-            echo ' | ';
             if(get_field('heure_de_debut')){
-                echo  date_i18n('H:i', strtotime(get_field('heure_de_debut')));
+                echo  ' | '.date_i18n('H:i', strtotime(get_field('heure_de_debut')));
 
                 if(get_field('heure_de_fin')){
                     echo ' '.__('to', 'site-theme').' '. date_i18n('H:i', strtotime(get_field('heure_de_fin')));
                 }
-            } ?>
+            }
+            echo ' | ';
+            ?>
             </span>
             <span class="venue"><?= get_the_title(get_field('lieu')); ?></span>
         </p>
