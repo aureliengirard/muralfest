@@ -1,9 +1,14 @@
 <div class="program">
     <figure>
         <a href="<?php the_permalink(); ?>">
-            <?= wp_get_attachment_image(get_field('image_de_levenement'), 'cta-preview'); ?>
+            <span class="regular-img">
+                <?= wp_get_attachment_image(get_field('image_de_levenement'), 'cta-preview'); ?>
+            </span>
+
+            <span class="hover-effect-img"><?= wp_get_attachment_image(get_field('image_de_levenement'), 'cta-preview'); ?></span>
         </a>
     </figure>
+
     <div class="description">
         <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
         <p class="event-infos">

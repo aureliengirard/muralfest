@@ -2,8 +2,12 @@
 if ( have_rows( 'contenu_avec_fond' ) ){
 	while ( have_rows('contenu_avec_fond' ) ) { the_row();
 		$classes = 'bgcolor-'.get_sub_field('couleur');
-		if(get_sub_field('ajouter_une_image') && get_sub_field('ajouter_du_parallax')){
-			$classes .= ' background-parallax';
+		if(get_sub_field('ajouter_une_image')){
+			$classes .= ' has-background-image';
+
+			if(get_sub_field('ajouter_du_parallax')){
+				$classes .= ' background-parallax';
+			}
 		}
 
 		echo '<section class="'.$classes.'">';

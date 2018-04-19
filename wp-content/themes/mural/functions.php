@@ -155,3 +155,21 @@ function add_script_data($phpData){
     return $phpData;
 }
 add_filter('php_data_to_scriptjs', 'add_script_data', 10, 1 );
+
+
+/**
+ * Ajoute une Classe pour les images flush.
+ * 
+ * @param String $classes
+ * @hooked cdm_add_section_classes
+ * 
+ * @return String
+ */
+function add_section_image_text_flush($classes){
+    if(get_sub_field('retirer_le_padding')){
+        $classes .= ' no-padding';
+    }
+
+    return $classes;
+}
+add_filter('cdm_add_section_classes', 'add_section_image_text_flush');

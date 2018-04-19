@@ -17,6 +17,7 @@
             },
             "choices": {
                 "white": "Blanc",
+                "gray": "Gris",
                 "pink": "Rose",
                 "yellow": "Jaune",
                 "blue": "Bleu"
@@ -124,5 +125,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1524060540
+    "modified": 1524148256
 }

@@ -9,7 +9,11 @@
                 <div class="cta">
                     <figure>
                         <a href="<?php the_sub_field('lien_page'); ?>">
-                            <?= wp_get_attachment_image(get_sub_field('image'), 'cta-preview'); ?>
+                            <span class="regular-img">
+                                <?= wp_get_attachment_image(get_sub_field('image'), 'cta-preview'); ?>
+                            </span>
+
+                            <span class="hover-effect-img"><?= wp_get_attachment_image(get_sub_field('image'), 'cta-preview'); ?></span>
                         </a>
                     </figure>
                     <div class="description">

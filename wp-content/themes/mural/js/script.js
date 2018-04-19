@@ -80,4 +80,35 @@ $(function(){
 	$('.content-wrap .background-parallax .img-parallax').each(function (index, element) {
 		parallax($(this), $(this).parents('.background-parallax'));
 	});
+	
+
+	/*************/
+	/* ANIMATION */
+	/*************/
+	// add class .toAnimate to html element with a animate.css effect class
+	// when on screen, the animation will execute
+	$(document).ready(function(){
+		$(window).on('scroll load', function(event) {
+			$('.toAnimate').each(function(index, el) {
+				if($(this).isOnScreen() === true){
+					$(this).removeClass('toAnimate').addClass('animating');
+					var elem_class = $(this).attr('class');
+					var pos = elem_class.search('animS_');
+
+					$(this).one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e) {
+						$(this).removeClass('animating').addClass('animated');
+					});
+					
+					if(pos !== -1){
+						var anim_name = elem_class.substring(pos, elem_class.indexOf(" ", pos));
+						$(this).removeClass(anim_name);
+						
+						anim_name = anim_name.replace('animS_', '');
+						
+						$(this).addClass(anim_name);
+					}
+				}
+			});
+		}); 
+	});
 });

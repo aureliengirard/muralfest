@@ -53,7 +53,7 @@
                 </div>
             </section>
 
-            <?php get_template_part('parts/inc', 'content'); ?>
+            <?php get_template_part('parts/inc', 'background_content'); ?>
         </div>
 
 	</article><!-- #post -->
