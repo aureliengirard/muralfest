@@ -3,15 +3,76 @@
 
     .artwork-data{
         max-width: calc(100vw - 53px);
+        font-size: 1.6rem;
 
-        figure{
-            float: left;
+        &.this-year{
+            .artist{
+                color: $color_blue;
+            }
+
+            .readmore{
+                color: $color_blue;
+
+                &:hover{
+                    color: $color_pink;
+                }
+            }
+
+            .sharing{
+                p{
+                    color: $color_blue;
+                }
+
+                a:hover{
+                    color: $color_blue;
+                }
+            }
+
+            h4{
+                a:hover{
+                    color: $color_blue;
+                }
+            }
+        }
+
+        .col-wrapper{
+            display: flex;
+        }
+
+        .left-col{
             padding-right: 5px;
         }
 
-        .artwork-infos{
-            float: left;
+        .right-col{
             padding-left: 5px;
+        }
+
+        figure{
+            a{
+                opacity: 1;
+                @include hover-transition;
+
+                &:hover{
+                    opacity: 0.6;
+                }
+            }
+        }
+
+        .artwork-infos{
+            padding-top: 10px;
+
+        }
+
+        .artist{
+            font-weight: 700;
+            color: $color_pink;
+            margin-bottom: 0;
+
+            span{
+                font-size: 0.8em;
+                font-weight: 400;
+                color: #000000;
+            }
         }
 
         .artwork-desc{
@@ -19,13 +80,15 @@
         }
 
         @media only screen and (max-width: 767px) {
-            figure{
-                float: none;
+            .col-wrapper{
+                flex-direction: column;
+            }
+    
+            .left-col{
                 padding-right: 0px;
             }
-
-            .artwork-infos{
-                float: none;
+    
+            .right-col{
                 padding-left: 0px;
             }
         }

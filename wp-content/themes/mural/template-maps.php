@@ -12,10 +12,13 @@ get_header(); ?>
         <?php get_template_part('parts/inc', 'banner'); ?>
         
 		<div class="content-wrap">
-            <div class="content">
-                <h1><?php the_title(); ?></h1>
-                <?php the_content(); ?>
-            </div>
+            <section class="bgcolor-white">
+                <section class="basic-content">
+                    <div class="content">
+                        <?php the_content(); ?>
+                    </div>
+                </section>
+            </section>
             
             <div id="gmap-arts"></div>
 		</div>

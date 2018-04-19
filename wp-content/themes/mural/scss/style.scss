@@ -725,9 +725,6 @@ input[type=radio]{
 			}
 
 			.content-width{
-				display: flex;
-				justify-content: end;
-
 				.col-content{
 					width: calc(#{$c12MaxWidth} / 2);
 					max-width: calc(100vw / 2);
@@ -736,8 +733,14 @@ input[type=radio]{
 		}
 
 		.left-col{
-			> section{
-				overflow: hidden;
+			.content-width{
+				display: flex;
+				justify-content: end;
+
+				.col-content{
+					width: calc(#{$c12MaxWidth} / 2);
+					max-width: calc(100vw / 2);
+				}
 			}
 		}
 
@@ -1113,54 +1116,42 @@ input[type=radio]{
 
 .single-artwork{
 	.content-wrap{
+		section{
+			h1{
+				color: #000000;
+			}
+			.artist{
+				color: $color_pink;
+				font-weight: 700;
+
+				span{
+					font-size: 0.6em;
+					font-weight: 400;
+					color: #000000;
+				}
+			}
+
+			.date{
+				font-size: 1.8rem;
+			}
+		}
+
 		.col-wrapper{
 			display: flex;
 
 			.left-col{
-				width: 35%;
+				max-width: 50%;
 			}
 			.right-col{
-				width: 65%;
-				display: flex;
-
-				#gmap{
-					min-height: 300px;
-					width: 100%;
-				}
+				width: 50%;
+				padding-left: 30px;
 			}
 		}
 	}
-}
 
-.content{
-	width: 100%;
-	max-width: $c12MaxWidth;
-	padding-left: $c12Gutter;
-	padding-right: $c12Gutter;
-	margin: 0 auto;
-}
-
-/* Sidebar */
-#sidebar{
-	padding-left: 25px;
-}
-
-/* Share */
-.sharing{
-	padding: 18px 0;
-	font-size: 0;
-
-	a{
-		display: inline-block;
-		font-size: 1.6rem;
-		padding-right: 16px;
-		color: #000000;
-
-		@include hover-transition;
-
-		&:hover{
-			color: $color_pink;
-		}
+	#gmap{
+		height: 300px;
+		width: 100%;
 	}
 }
 
@@ -1342,6 +1333,55 @@ input[type=radio]{
 			select[name="selected-artist"]{
 				margin-right: 15px;
 			}
+		}
+	}
+}
+
+
+.content{
+	width: 100%;
+	max-width: $c12MaxWidth;
+	padding-left: $c12Gutter;
+	padding-right: $c12Gutter;
+	margin: 0 auto;
+}
+
+/* Sidebar */
+#sidebar{
+	padding-left: 25px;
+}
+
+/* Share */
+.sharing,
+.content-wrap section .content .sharing{
+	padding: 10px 0;
+	font-size: 0;
+
+	p{
+		font-size: 1.4rem;
+		margin: 0;
+		font-weight: 700;
+		color: $color_pink;
+	}
+
+	a{
+		display: inline-block;
+		font-size: 1.6rem;
+		color: #000000;
+		margin: 0 8px;
+
+		@include hover-transition;
+
+		&:hover{
+			color: $color_pink;
+		}
+
+		&:first-of-type{
+			margin-left: 0;
+		}
+
+		&:last-of-type{
+			margin-right: 0;
 		}
 	}
 }

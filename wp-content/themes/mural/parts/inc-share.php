@@ -1,5 +1,6 @@
 <? global $post; ?>
 <div class="sharing">
+	<p><?php _e('Share:', 'site-theme'); ?></p>
 	<a href="https://www.facebook.com/sharer/sharer.php?u=<?= get_permalink(); ?>" target="_blank">
 		<i class="fab fa-facebook-f" aria-hidden="true"></i>
 	</a>

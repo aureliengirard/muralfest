@@ -881,20 +881,20 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       .content-wrap .deux_colonnes .left-col > section,
       .content-wrap .deux_colonnes .right-col > section {
         height: 100%; }
-      .content-wrap .deux_colonnes .left-col .content-width,
-      .content-wrap .deux_colonnes .right-col .content-width {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: end;
-            -ms-flex-pack: end;
-                justify-content: end; }
-        .content-wrap .deux_colonnes .left-col .content-width .col-content,
-        .content-wrap .deux_colonnes .right-col .content-width .col-content {
-          width: calc(1200px / 2);
-          max-width: calc(100vw / 2); }
-    .content-wrap .deux_colonnes .left-col > section {
-      overflow: hidden; }
+      .content-wrap .deux_colonnes .left-col .content-width .col-content,
+      .content-wrap .deux_colonnes .right-col .content-width .col-content {
+        width: calc(1200px / 2);
+        max-width: calc(100vw / 2); }
+    .content-wrap .deux_colonnes .left-col .content-width {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: end;
+          -ms-flex-pack: end;
+              justify-content: end; }
+      .content-wrap .deux_colonnes .left-col .content-width .col-content {
+        width: calc(1200px / 2);
+        max-width: calc(100vw / 2); }
     .content-wrap .deux_colonnes .application {
       margin-bottom: -30px; }
       .content-wrap .deux_colonnes .application .content .app-info {
@@ -1178,47 +1178,33 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   .page-blog .content-wrap .col-wrapper .right-col {
     width: 25%; }
 
+.single-artwork .content-wrap section h1 {
+  color: #000000; }
+
+.single-artwork .content-wrap section .artist {
+  color: #ed3d8f;
+  font-weight: 700; }
+  .single-artwork .content-wrap section .artist span {
+    font-size: 0.6em;
+    font-weight: 400;
+    color: #000000; }
+
+.single-artwork .content-wrap section .date {
+  font-size: 1.8rem; }
+
 .single-artwork .content-wrap .col-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex; }
   .single-artwork .content-wrap .col-wrapper .left-col {
-    width: 35%; }
+    max-width: 50%; }
   .single-artwork .content-wrap .col-wrapper .right-col {
-    width: 65%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex; }
-    .single-artwork .content-wrap .col-wrapper .right-col #gmap {
-      min-height: 300px;
-      width: 100%; }
+    width: 50%;
+    padding-left: 30px; }
 
-.content {
-  width: 100%;
-  max-width: 1200px;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin: 0 auto; }
-
-/* Sidebar */
-#sidebar {
-  padding-left: 25px; }
-
-/* Share */
-.sharing {
-  padding: 18px 0;
-  font-size: 0; }
-  .sharing a {
-    display: inline-block;
-    font-size: 1.6rem;
-    padding-right: 16px;
-    color: #000000;
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s; }
-    .sharing a:hover {
-      text-decoration: none; }
-    .sharing a:hover {
-      color: #ed3d8f; }
+.single-artwork #gmap {
+  height: 300px;
+  width: 100%; }
 
 /* programmations */
 .content-wrap section .programs {
@@ -1350,6 +1336,49 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     .content-wrap .filters .program-filters select[name="selected-artist"] {
       margin-right: 15px; }
 
+.content {
+  width: 100%;
+  max-width: 1200px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto; }
+
+/* Sidebar */
+#sidebar {
+  padding-left: 25px; }
+
+/* Share */
+.sharing,
+.content-wrap section .content .sharing {
+  padding: 10px 0;
+  font-size: 0; }
+  .sharing p,
+  .content-wrap section .content .sharing p {
+    font-size: 1.4rem;
+    margin: 0;
+    font-weight: 700;
+    color: #ed3d8f; }
+  .sharing a,
+  .content-wrap section .content .sharing a {
+    display: inline-block;
+    font-size: 1.6rem;
+    color: #000000;
+    margin: 0 8px;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s; }
+    .sharing a:hover,
+    .content-wrap section .content .sharing a:hover {
+      text-decoration: none; }
+    .sharing a:hover,
+    .content-wrap section .content .sharing a:hover {
+      color: #ed3d8f; }
+    .sharing a:first-of-type,
+    .content-wrap section .content .sharing a:first-of-type {
+      margin-left: 0; }
+    .sharing a:last-of-type,
+    .content-wrap section .content .sharing a:last-of-type {
+      margin-right: 0; }
+
 /*****************************************************
 	Footer
 /*****************************************************/
@@ -1379,21 +1408,57 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
 #gmap-arts {
   height: 500px; }
   #gmap-arts .artwork-data {
-    max-width: calc(100vw - 53px); }
-    #gmap-arts .artwork-data figure {
-      float: left;
+    max-width: calc(100vw - 53px);
+    font-size: 1.6rem; }
+    #gmap-arts .artwork-data.this-year .artist {
+      color: #04d3ff; }
+    #gmap-arts .artwork-data.this-year .readmore {
+      color: #04d3ff; }
+      #gmap-arts .artwork-data.this-year .readmore:hover {
+        color: #ed3d8f; }
+    #gmap-arts .artwork-data.this-year .sharing p {
+      color: #04d3ff; }
+    #gmap-arts .artwork-data.this-year .sharing a:hover {
+      color: #04d3ff; }
+    #gmap-arts .artwork-data.this-year h4 a:hover {
+      color: #04d3ff; }
+    #gmap-arts .artwork-data .col-wrapper {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; }
+    #gmap-arts .artwork-data .left-col {
       padding-right: 5px; }
-    #gmap-arts .artwork-data .artwork-infos {
-      float: left;
+    #gmap-arts .artwork-data .right-col {
       padding-left: 5px; }
+    #gmap-arts .artwork-data figure a {
+      opacity: 1;
+      -webkit-transition: all 0.5s;
+      transition: all 0.5s; }
+      #gmap-arts .artwork-data figure a:hover {
+        text-decoration: none; }
+      #gmap-arts .artwork-data figure a:hover {
+        opacity: 0.6; }
+    #gmap-arts .artwork-data .artwork-infos {
+      padding-top: 10px; }
+    #gmap-arts .artwork-data .artist {
+      font-weight: 700;
+      color: #ed3d8f;
+      margin-bottom: 0; }
+      #gmap-arts .artwork-data .artist span {
+        font-size: 0.8em;
+        font-weight: 400;
+        color: #000000; }
     #gmap-arts .artwork-data .artwork-desc {
       clear: both; }
     @media only screen and (max-width: 767px) {
-      #gmap-arts .artwork-data figure {
-        float: none;
+      #gmap-arts .artwork-data .col-wrapper {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column; }
+      #gmap-arts .artwork-data .left-col {
         padding-right: 0px; }
-      #gmap-arts .artwork-data .artwork-infos {
-        float: none;
+      #gmap-arts .artwork-data .right-col {
         padding-left: 0px; } }
 
 .partners .tier {

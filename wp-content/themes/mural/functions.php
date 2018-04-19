@@ -134,6 +134,7 @@ function add_map_data($mapData){
 
 	if(is_singular('artwork')){
 		$mapInfos = get_field('lieu_de_loeuvre');
+		$mapData['year'] = get_field('annee');
 	}
 
     $mapData['gmap'] = $mapInfos;
@@ -150,7 +151,7 @@ add_filter('php_data_to_mapjs', 'add_map_data', 10, 1 );
  */
 function add_script_data($phpData){
     $phpData['siteURL'] = esc_url( home_url( '/' ) );
-    $phpData['childURI'] = CHILDURI;
+	$phpData['childURI'] = CHILDURI;
     
     return $phpData;
 }
