@@ -881,14 +881,20 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       .content-wrap .deux_colonnes .left-col > section,
       .content-wrap .deux_colonnes .right-col > section {
         height: 100%; }
-      .content-wrap .deux_colonnes .left-col .content-width .col-content,
-      .content-wrap .deux_colonnes .right-col .content-width .col-content {
-        width: calc(1200px / 2);
-        max-width: calc(100vw / 2); }
+      .content-wrap .deux_colonnes .left-col .content-width,
+      .content-wrap .deux_colonnes .right-col .content-width {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: end;
+            -ms-flex-pack: end;
+                justify-content: end; }
+        .content-wrap .deux_colonnes .left-col .content-width .col-content,
+        .content-wrap .deux_colonnes .right-col .content-width .col-content {
+          width: calc(1200px / 2);
+          max-width: calc(100vw / 2); }
     .content-wrap .deux_colonnes .left-col > section {
       overflow: hidden; }
-    .content-wrap .deux_colonnes .left-col .col-content {
-      float: right; }
     .content-wrap .deux_colonnes .application {
       margin-bottom: -30px; }
       .content-wrap .deux_colonnes .application .content .app-info {

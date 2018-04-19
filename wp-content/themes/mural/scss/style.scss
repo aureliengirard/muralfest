@@ -725,6 +725,9 @@ input[type=radio]{
 			}
 
 			.content-width{
+				display: flex;
+				justify-content: end;
+
 				.col-content{
 					width: calc(#{$c12MaxWidth} / 2);
 					max-width: calc(100vw / 2);
@@ -735,9 +738,6 @@ input[type=radio]{
 		.left-col{
 			> section{
 				overflow: hidden;
-			}
-			.col-content{
-				float: right;
 			}
 		}
 
