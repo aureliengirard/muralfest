@@ -12,10 +12,16 @@ get_header(); ?>
 		<?php get_template_part('parts/inc', 'banner'); ?>
 
 		<div class="content-wrap">
-			<div class="content">
-				<? the_content(); ?>
+			<?php if(get_the_content()): ?>
+                <section class="basic-content">
+                    <div class="content">
+                        <?php the_content(); ?>
+                    </div>
+                </section>
+            <?php endif; ?>
 
-				<div class="partners">
+			<section class="partners">
+				<div class="content">
 					<?php $tiers = get_terms( array(
 						'taxonomy' => 'tier',
 						'orderby' => 'term_order',
@@ -39,7 +45,7 @@ get_header(); ?>
 						$query = new WP_Query( $args );
 				
 						if ( $query->have_posts() ) : ?>
-							<div class="tier">
+							<section class="tier">
 								<?php while ( $query->have_posts() ) :
 									$query->the_post();
 									
@@ -60,14 +66,13 @@ get_header(); ?>
 									</figure>
 
 								<?php endwhile; ?>
-							</div>
+							</section>
 						<?php endif; ?>
 				
 						<?php wp_reset_postdata();
 					} ?>
-
 				</div>
-			</div>
+			</section>
 		</div>
 	</article>
 <?php endwhile; ?>
