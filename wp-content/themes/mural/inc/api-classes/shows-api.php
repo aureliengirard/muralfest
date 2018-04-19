@@ -72,7 +72,7 @@ class Shows_API extends Program_Routes {
                     'value' => date('H:i', strtotime(get_field('heure_de_debut', $fr_id)))
                 ),
                 'dateEnd' => array(
-                    'value' => date('Y-m-d', strtotime(get_field('event_date', $fr_id)))
+                    'value' => date('Y-m-d', strtotime(get_field('date_de_fin', $fr_id)))
                 ),
                 'timeEnd' => array(
                     'value' => date('H:i', strtotime(get_field('heure_de_fin', $fr_id)))

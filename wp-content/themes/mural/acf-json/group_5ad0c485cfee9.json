@@ -27,7 +27,7 @@
             "key": "field_5ad0c6615fc90",
             "label": "Style",
             "name": "style",
-            "type": "select",
+            "type": "checkbox",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -38,17 +38,15 @@
             },
             "choices": {
                 "murale": "Murale",
-                "musique": "Musique"
+                "musique": "Musique",
+                "test": "test"
             },
-            "default_value": [
-                "murale"
-            ],
-            "allow_null": 0,
-            "multiple": 0,
-            "ui": 0,
-            "ajax": 0,
-            "return_format": "label",
-            "placeholder": ""
+            "allow_custom": 1,
+            "save_custom": 1,
+            "default_value": [],
+            "layout": "vertical",
+            "toggle": 0,
+            "return_format": "label"
         },
         {
             "key": "field_5ad0c5a8a5a6a",
@@ -151,5 +149,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1523632876
+    "modified": 1524155852
 }

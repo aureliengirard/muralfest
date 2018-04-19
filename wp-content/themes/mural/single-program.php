@@ -13,28 +13,43 @@
                         <?= wp_get_attachment_image(get_field('image_de_levenement'), 'medium'); ?>
                     </figure>
                     <h1><?php the_title(); ?></h1>
-                    <h3 class="artist">
-                        <?php
-                        $artists_name = '';
-                        foreach(get_field('artiste') as $artist){
-                            $artists_name .= get_the_title($artist).', ';
-                        }
-                        $artists_name = trim($artists_name, ', ');
-                        $pos = strrpos($artists_name, ',');
 
-                        if($pos !== false){
-                            $artists_name = substr_replace($artists_name, ' '.__('and', 'site-theme'), $pos, strlen(','));
-                        }
+                    <?php if(get_field('artiste')): ?>
+                        <h3 class="artist">
+                            <?php
+                            $artists_name = '';
+                            foreach(get_field('artiste') as $artist){
+                                $artists_name .= get_the_title($artist).', ';
+                            }
+                            $artists_name = trim($artists_name, ', ');
+                            $pos = strrpos($artists_name, ',');
 
-                        echo $artists_name;
-                        ?>
-                    </h3>
+                            if($pos !== false){
+                                $artists_name = substr_replace($artists_name, ' '.__('and', 'site-theme'), $pos, strlen(','));
+                            }
+
+                            echo $artists_name;
+                            ?>
+                        </h3>
+                    <?php endif; ?>
+
                     <?php get_template_part('parts/inc', 'share'); ?>
                     <p class="date">
-                        <?= date_i18n('j F Y', strtotime(get_field('event_date'))); ?> - <?php the_field('heure_de_debut'); ?>
-                        <?php if(get_field('heure_de_fin')){
-                            echo ' '.__('to', 'site-theme').' '.get_field('heure_de_fin');
-                        } ?>
+                    <?php
+                    if(get_field('date_de_fin')){
+                        echo date_i18n('j F', strtotime(get_field('event_date'))).' '._x('to', 'dates événement', 'site-theme').' '.date_i18n('j F Y', strtotime(get_field('date_de_fin')));
+        
+                    }else{
+                        echo date_i18n('j F Y', strtotime(get_field('event_date')));
+                    }
+                    echo ' | ';
+                    if(get_field('heure_de_debut')){
+                        echo  date_i18n('H:i', strtotime(get_field('heure_de_debut')));
+        
+                        if(get_field('heure_de_fin')){
+                            echo ' '.__('to', 'site-theme').' '. date_i18n('H:i', strtotime(get_field('heure_de_fin')));
+                        }
+                    } ?>
                     </p>
                     
                     <p class="venue"><?= get_the_title(get_field('lieu')); ?></p>

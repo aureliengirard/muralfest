@@ -44,20 +44,37 @@
             "first_day": 1
         },
         {
-            "key": "field_5ad0d44bc3d96",
-            "label": "Heure de début",
-            "name": "heure_de_debut",
-            "type": "time_picker",
+            "key": "field_5ad8beb9be768",
+            "label": "Date de fin",
+            "name": "date_de_fin",
+            "type": "date_picker",
             "instructions": "",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "display_format": "g:i a",
-            "return_format": "g:i a"
+            "display_format": "d\/m\/Y",
+            "return_format": "Ymd",
+            "first_day": 1
+        },
+        {
+            "key": "field_5ad0d44bc3d96",
+            "label": "Heure de début",
+            "name": "heure_de_debut",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "H:i:s",
+            "return_format": "H:i:s"
         },
         {
             "key": "field_5ad0d210501af",
@@ -72,8 +89,8 @@
                 "class": "",
                 "id": ""
             },
-            "display_format": "g:i a",
-            "return_format": "g:i a"
+            "display_format": "H:i:s",
+            "return_format": "H:i:s"
         },
         {
             "key": "field_5acbc12921b88",
@@ -81,7 +98,7 @@
             "name": "artiste",
             "type": "post_object",
             "instructions": "L'artiste en premier sera considéré comme artiste principale.",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -111,8 +128,7 @@
                 "id": ""
             },
             "choices": {
-                "59": "Toronto",
-                "9": "Montréal"
+                "9": "Festival"
             },
             "default_value": [],
             "allow_null": 0,
@@ -162,5 +178,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1523649044
+    "modified": 1524155270
 }
