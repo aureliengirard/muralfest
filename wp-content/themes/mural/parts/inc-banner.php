@@ -20,7 +20,7 @@
                 </div>
             <?php endif; ?>
         </figure>
-    <?php else: ?>
+    <?php elseif(get_field( 'banniere' )): ?>
         <figure class="single-banner">
             <?php echo wp_get_attachment_image( get_field( 'banniere' ), 'max-banner' ); ?>
             <?php if(get_field('contenu_banniere')): ?>
