@@ -46,7 +46,7 @@
             "preview_size": "medium",
             "library": "all",
             "min_width": 1920,
-            "min_height": 600,
+            "min_height": "",
             "min_size": "",
             "max_width": "",
             "max_height": "",
@@ -116,11 +116,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "",
+                    "return_format": "array",
                     "preview_size": "medium",
-                    "library": "",
+                    "library": "all",
                     "min_width": 960,
-                    "min_height": 600,
+                    "min_height": "",
                     "min_size": "",
                     "max_width": "",
                     "max_height": "",
@@ -188,7 +188,7 @@
                     "preview_size": "medium",
                     "library": "all",
                     "min_width": 960,
-                    "min_height": 600,
+                    "min_height": "",
                     "min_size": "",
                     "max_width": "",
                     "max_height": "",
@@ -220,16 +220,9 @@
     "location": [
         [
             {
-                "param": "post_template",
+                "param": "post_type",
                 "operator": "==",
-                "value": "template-home.php"
-            }
-        ],
-        [
-            {
-                "param": "post_template",
-                "operator": "==",
-                "value": "template-festival.php"
+                "value": "page"
             }
         ]
     ],
@@ -241,5 +234,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1524148648
+    "modified": 1524157261
 }

@@ -1098,52 +1098,6 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   .content-wrap .evenements_a_venir .content h2 {
     text-align: center;
     color: #000000; }
-  .content-wrap .evenements_a_venir .content .programs .program figure {
-    overflow: hidden; }
-    .content-wrap .evenements_a_venir .content .programs .program figure a {
-      display: block;
-      position: relative; }
-      .content-wrap .evenements_a_venir .content .programs .program figure a .regular-img {
-        -webkit-filter: url("images/svg/effect-imageblur.svg#image-blur");
-                filter: url("images/svg/effect-imageblur.svg#image-blur"); }
-        .content-wrap .evenements_a_venir .content .programs .program figure a .regular-img img {
-          opacity: 1;
-          -webkit-transition: all 0.5s;
-          transition: all 0.5s; }
-          .content-wrap .evenements_a_venir .content .programs .program figure a .regular-img img:hover {
-            text-decoration: none; }
-      .content-wrap .evenements_a_venir .content .programs .program figure a .hover-effect-img {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        opacity: 0;
-        z-index: 1;
-        -webkit-transition: all 0.5s;
-        transition: all 0.5s; }
-        .content-wrap .evenements_a_venir .content .programs .program figure a .hover-effect-img:hover {
-          text-decoration: none; }
-        .content-wrap .evenements_a_venir .content .programs .program figure a .hover-effect-img img {
-          -webkit-mask: url(images/svg/paint-splash2.svg) no-repeat 0 0;
-                  mask: url(images/svg/paint-splash2.svg) no-repeat 0 0;
-          -webkit-mask-size: cover;
-                  mask-size: cover; }
-      .content-wrap .evenements_a_venir .content .programs .program figure a:hover .regular-img img {
-        opacity: 0.3; }
-      .content-wrap .evenements_a_venir .content .programs .program figure a:hover .hover-effect-img {
-        opacity: 1; }
-  .content-wrap .evenements_a_venir .content .programs .program .description {
-    text-align: center;
-    padding: 20px 15px; }
-    .content-wrap .evenements_a_venir .content .programs .program .description .event-infos {
-      margin-bottom: 0; }
-    .content-wrap .evenements_a_venir .content .programs .program .description h4 a {
-      color: inherit; }
-      .content-wrap .evenements_a_venir .content .programs .program .description h4 a:hover {
-        color: #ed3d8f; }
-    .content-wrap .evenements_a_venir .content .programs .program .description p {
-      font-size: 1.8rem; }
   .content-wrap .evenements_a_venir .button-wrap {
     text-align: center; }
   .content-wrap .image_pleine_largeur {
@@ -1277,6 +1231,52 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       margin-right: 0px; }
   .programs .program {
     background-color: #ffffff; }
+    .programs .program figure {
+      overflow: hidden; }
+      .programs .program figure a {
+        display: block;
+        position: relative; }
+        .programs .program figure a .regular-img {
+          -webkit-filter: url("images/svg/effect-imageblur.svg#image-blur");
+                  filter: url("images/svg/effect-imageblur.svg#image-blur"); }
+          .programs .program figure a .regular-img img {
+            opacity: 1;
+            -webkit-transition: all 0.5s;
+            transition: all 0.5s; }
+            .programs .program figure a .regular-img img:hover {
+              text-decoration: none; }
+        .programs .program figure a .hover-effect-img {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          opacity: 0;
+          z-index: 1;
+          -webkit-transition: all 0.5s;
+          transition: all 0.5s; }
+          .programs .program figure a .hover-effect-img:hover {
+            text-decoration: none; }
+          .programs .program figure a .hover-effect-img img {
+            -webkit-mask: url(images/svg/paint-splash2.svg) no-repeat 0 0;
+                    mask: url(images/svg/paint-splash2.svg) no-repeat 0 0;
+            -webkit-mask-size: cover;
+                    mask-size: cover; }
+        .programs .program figure a:hover .regular-img img {
+          opacity: 0.3; }
+        .programs .program figure a:hover .hover-effect-img {
+          opacity: 1; }
+    .programs .program .description {
+      text-align: center;
+      padding: 20px 15px; }
+      .programs .program .description .event-infos {
+        margin-bottom: 0; }
+      .programs .program .description h4 a {
+        color: inherit; }
+        .programs .program .description h4 a:hover {
+          color: #ed3d8f; }
+      .programs .program .description p {
+        font-size: 1.8rem; }
     .programs .program .event-infos {
       color: #ed3d8f;
       font-size: 1.8rem;
@@ -1289,24 +1289,40 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
         margin: 0 5px;
         font-weight: 600; }
 
-.program-filters {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center; }
-  .program-filters #orderby-wrap {
-    position: relative; }
-    .program-filters #orderby-wrap input, .program-filters #orderby-wrap textarea {
-      width: auto; }
-    .program-filters #orderby-wrap .hasDatepicker {
-      position: absolute;
-      top: 100% !important; }
-    .program-filters #orderby-wrap .date-range-selected > .ui-state-active,
-    .program-filters #orderby-wrap .date-range-selected > .ui-state-default {
-      background: none;
-      background-color: lightsteelblue; }
+.content-wrap .filters {
+  padding: 30px 0;
+  overflow: visible;
+  z-index: 50; }
+  .content-wrap .filters .program-filters {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+    .content-wrap .filters .program-filters #orderby-wrap {
+      position: relative;
+      margin-right: 15px; }
+      .content-wrap .filters .program-filters #orderby-wrap:after {
+        content: "\f073";
+        font-family: "Font Awesome 5 Light";
+        color: #ffffff;
+        font-size: 2.6rem;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
+        pointer-events: none; }
+      .content-wrap .filters .program-filters #orderby-wrap input, .content-wrap .filters .program-filters #orderby-wrap textarea {
+        width: auto; }
+      .content-wrap .filters .program-filters #orderby-wrap .hasDatepicker {
+        position: absolute;
+        top: 100% !important;
+        z-index: 50; }
+      .content-wrap .filters .program-filters #orderby-wrap .date-range-selected > .ui-state-active,
+      .content-wrap .filters .program-filters #orderby-wrap .date-range-selected > .ui-state-default {
+        background: none;
+        background-color: lightsteelblue; }
+    .content-wrap .filters .program-filters select[name="selected-artist"] {
+      margin-right: 15px; }
 
 /*****************************************************
 	Footer

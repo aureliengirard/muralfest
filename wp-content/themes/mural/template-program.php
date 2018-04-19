@@ -8,13 +8,22 @@ get_header(); ?>
 	
 
 <?php while ( have_posts() ) : the_post(); ?>
-	<article id="post-<?php the_ID(); ?>" class="site-content">
+    <article id="post-<?php the_ID(); ?>" class="site-content">
+        <?php get_template_part('parts/inc', 'banner'); ?>
+
 		<div class="content-wrap">
-			<div class="content">
-				<? the_content(); ?>
+            <?php if(get_the_content()): ?>
+                <section class="basic-content">
+                    <div class="content">
+                        <?php the_content(); ?>
+                    </div>
+                </section>
+            <?php endif; ?>
 
-                <?php get_template_part('parts/inc', 'order'); ?>
+            <?php get_template_part('parts/inc', 'order'); ?>
 
+            <section class="list-programs">
+                <div class="content">
                 <?php
                     $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
                     $args = array(
@@ -90,7 +99,7 @@ get_header(); ?>
                     $wp_query = $query;
             
                     if ( $query->have_posts() ) : ?>
-                        <div class="programs">
+                        <section class="programs">
                             <?php while ( $query->have_posts() ) :
                                 $query->the_post();
                                 ?>
@@ -98,7 +107,7 @@ get_header(); ?>
                                 <?php get_template_part('parts/program', 'article'); ?>
 
                             <?php endwhile; ?>
-                        </div>
+                        </section>
                         <?php get_template_part('parts/program', 'pager'); ?>
 
                     <?php else: ?>
@@ -109,7 +118,8 @@ get_header(); ?>
                     $wp_query = null;
                     $wp_query = $tmp_query;
                     wp_reset_postdata(); ?>
-			</div>
+                </div>
+			</section>
 		</div>
 	</article>
 <?php endwhile; ?>
