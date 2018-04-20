@@ -58,6 +58,20 @@ function theme_enqueue_styles() {
 		true
 	);
 
+	wp_enqueue_script("select2",
+		"//cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js",
+		array('jquery'),
+		wp_get_theme()->get('Version'),
+		true
+	);
+
+	wp_enqueue_script("datepicker-fr",
+		CHILDURI."/js/datepicker-fr-CA.js",
+		array('jqueryui-js'),
+		wp_get_theme()->get('Version'),
+		true
+	);
+
 	wp_enqueue_script("daterange",
 		CHILDURI."/js/daterange-calendar.js",
 		array('jqueryui-js'),
@@ -87,6 +101,12 @@ function theme_enqueue_styles() {
 	);
 	
 	/* enqueue style */
+	wp_enqueue_style( 'select2-style',
+		'//cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css',
+		null,
+		wp_get_theme()->get('Version')
+	);
+
 	wp_enqueue_style( 'jqueryui-style',
 		'//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css',
 		null,
@@ -175,3 +195,15 @@ function add_section_image_text_flush($classes){
     return $classes;
 }
 add_filter('cdm_add_section_classes', 'add_section_image_text_flush');
+
+
+/**
+ * 
+ */
+function send_date_to_calendar(){
+	wp_localize_script( 'daterange', 'translation', array(
+		'reset' => __('Reset', 'site-theme'),
+		'done' => __('Done', 'site-theme')
+	));
+}
+add_action( 'wp_enqueue_scripts', 'send_date_to_calendar', 30 );

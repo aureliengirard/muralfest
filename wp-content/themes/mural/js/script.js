@@ -6,6 +6,8 @@ $(function(){
 		$("body").removeClass("preload");
 	});
 	
+	$('.program-filters select').select2();
+
 	
 	// Menumobile - http://mmenu.frebsite.nl/
 	$(window).load(function() {
