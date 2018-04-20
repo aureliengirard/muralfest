@@ -1,3 +1,46 @@
+/// Style single
+.single-artwork{
+	.content-wrap{
+		section{
+			h1{
+				color: #000000;
+			}
+			.artist{
+				color: $color_pink;
+				font-weight: 700;
+
+				span{
+					font-size: 0.6em;
+					font-weight: 400;
+					color: #000000;
+				}
+			}
+
+			.date{
+				font-size: 1.8rem;
+			}
+		}
+
+		.col-wrapper{
+			display: flex;
+
+			.left-col{
+				max-width: 50%;
+			}
+			.right-col{
+				width: 50%;
+				padding-left: 30px;
+			}
+		}
+	}
+
+	#gmap{
+		height: 300px;
+		width: 100%;
+	}
+}
+
+/// Style sur la map
 #gmap-arts{
     height: 500px;
 

@@ -5,7 +5,7 @@
 ?>
 
 <aside id="sidebar">
-	<ul class="blog-categories">
+	<ul class="list-categories">
 		<?php wp_list_categories(); ?>
 	</ul>
 </aside>
