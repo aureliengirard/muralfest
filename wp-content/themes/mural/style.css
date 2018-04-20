@@ -783,6 +783,9 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       .content-wrap section.bgcolor-white .articles_du_blog .articles .article,
       .content-wrap section.bgcolor-white .evenements_a_venir .programs .program {
         background-color: transparent; }
+      .content-wrap section.bgcolor-white .texte-plein .texte-bloc h3 {
+        color: #ed3d8f;
+        margin-bottom: 0px; }
       .content-wrap section.bgcolor-white.has-background-image .texte-plein .texte-bloc p {
         color: #000000;
         text-shadow: 1px 1px 1px #ffffff; }
