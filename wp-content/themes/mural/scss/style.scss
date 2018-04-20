@@ -854,13 +854,19 @@ input[type=radio]{
 					display: none;
 				}
 			}
-			figure:last-child{
-				transform: rotate(-30deg);
-				right:-5vw;
-				position: relative;
-				top:1vw;
+			figure{
+				&:first-child{					
+					margin-top:1vw;
+				}
+				&:last-child{
+					transform: rotate(-30deg);
+					right:-1vw;
+					position: relative;
+					top:1vw;
+				}
 			}
 			.content{
+				margin-left:3vw;
 				.app-info{
 					width: min-content;
 				}
