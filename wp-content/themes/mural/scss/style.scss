@@ -237,7 +237,13 @@ h4,
 		}
 	}
 }
-
+.partners{
+    margin-top:30px;
+    h2{
+        font-size: 4rem;
+        text-align: center;
+    }
+}
 .site-content{
 	background-color: #fff;
 }
@@ -612,11 +618,21 @@ input[type=radio]{
 			.evenements_a_venir .programs .program{
 				background-color: transparent;
 			}
+			
 			@include cdm-grid(1, ".articles_du_blog .articles .article", 30px, 30px, (			
 				768: (
 					col: 1
 				)
 			));
+
+            .texte-plein{
+                .texte-bloc{
+                    h3{
+                        color:$color_pink;
+                        margin-bottom:0px;
+                    }
+                }
+            }
 			&.has-background-image{
 				.texte-plein{
 					.texte-bloc{

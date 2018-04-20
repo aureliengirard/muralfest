@@ -483,6 +483,12 @@ h4,
     .button:hover::after {
       opacity: 1; }
 
+.partners {
+  margin-top: 30px; }
+  .partners h2 {
+    font-size: 4rem;
+    text-align: center; }
+
 .site-content {
   background-color: #fff; }
 
@@ -840,6 +846,9 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
             margin-right: 30px; }
           .content-wrap section.bgcolor-white .articles_du_blog .articles .article:nth-child(1n) {
             margin-right: 0px; } }
+      .content-wrap section.bgcolor-white .texte-plein .texte-bloc h3 {
+        color: #ed3d8f;
+        margin-bottom: 0px; }
       .content-wrap section.bgcolor-white.has-background-image .texte-plein .texte-bloc p {
         color: #000000;
         text-shadow: 1px 1px 1px #ffffff; }
