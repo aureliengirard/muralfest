@@ -20,10 +20,6 @@ class Program_Routes extends WP_REST_Controller {
      */
     public function get_dynamic_content($post_id, $custom_fields = array()){
         $allowable_tags = '<br><i><b><em><strong>';
-        $valid_row = array(
-            'titre_section',
-            'texte_pleine_largeur'
-        );
 
         $stripped_dynamic_content = '';
 
@@ -33,16 +29,21 @@ class Program_Routes extends WP_REST_Controller {
             }
 
         }else{
-            if ( have_rows( 'contenu', $post_id ) ) {
-                while ( have_rows('contenu', $post_id ) ) { the_row();
-                    switch (get_row_layout()) {
-                        case 'titre_section':
-                            $stripped_dynamic_content .= '<strong>'.get_sub_field('titre').'</strong><br>';
-                            break;
-                        
-                        case 'texte_pleine_largeur':
-                            $stripped_dynamic_content .= strip_tags(get_sub_field('texte_pleine_largeur'), $allowable_tags).'<br>';
-                            break;
+            if ( have_rows( 'contenu_avec_fond', $post_id ) ) {
+                while ( have_rows('contenu_avec_fond', $post_id ) ) { the_row();
+
+                    if ( have_rows( 'contenu', $post_id ) ) {
+                        while ( have_rows('contenu', $post_id ) ) { the_row();
+                            switch (get_row_layout()) {
+                                case 'titre_section':
+                                    $stripped_dynamic_content .= '<strong>'.get_sub_field('titre').'</strong><br>';
+                                    break;
+                                
+                                case 'texte_pleine_largeur':
+                                    $stripped_dynamic_content .= strip_tags(get_sub_field('texte_pleine_largeur'), $allowable_tags).'<br>';
+                                    break;
+                            }
+                        }
                     }
                 }
             }

@@ -28,10 +28,10 @@ class Venues_API extends Program_Routes {
      */
     public function get_venues( $request ){
         $data = array('venues' => array());
-
         $venues = get_posts(array(
             'post_type' => 'venue',
-            'numberposts' => -1
+            'numberposts' => -1,
+            'suppress_filters' => false
         ));
 
         foreach($venues as $venue){

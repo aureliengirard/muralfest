@@ -35,6 +35,7 @@ class Shows_API extends Program_Routes {
         $shows = get_posts(array(
             'post_type' => 'program',
             'numberposts' => -1,
+            'suppress_filters' => false,
             'order' => 'ASC',
             'order_by' => 'meta_value',
             'meta_key' => 'event_date',

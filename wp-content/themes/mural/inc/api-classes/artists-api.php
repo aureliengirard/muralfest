@@ -31,13 +31,14 @@ class Artists_API extends Program_Routes {
 
         $artists = get_posts(array(
             'post_type' => 'artist',
-            'numberposts' => -1
+            'numberposts' => -1,
+            'suppress_filters' => false
         ));
 
         foreach($artists as $artist){
             $data['artists'][] = $this->prepare_artists_for_response( $artist, $request );
         }
-
+        
         return new WP_REST_Response( $data, 200 );
     }
 
@@ -55,6 +56,18 @@ class Artists_API extends Program_Routes {
 
         $content_en = $this->get_dynamic_content($en_id, array('biographie'));
         $content_fr = $this->get_dynamic_content($fr_id, array('biographie'));
+
+        $style_en = (get_field('style', $en_id) ? get_field('style', $en_id) : "");
+        $style_fr = (get_field('style', $fr_id) ? get_field('style', $fr_id) : "");
+
+        if(is_array($style_en)){
+            $style_en = implode(", ", $style_en);
+        }
+
+        if(is_array($style_fr)){
+            $style_fr = implode(", ", $style_fr);
+        }
+        
 
         $artist_data = array(
             'key' => 'artist',
@@ -102,14 +115,14 @@ class Artists_API extends Program_Routes {
                     'value' => array(
                         array(
                             'key' => 'value',
-                            'value' => (get_field('style', $en_id) ? get_field('style', $en_id) : ''),
+                            'value' => $style_en,
                             'attr' => array(
                                 'lang' => 'eng'
                             )
                         ),
                         array(
                             'key' => 'value',
-                            'value' => (get_field('style', $fr_id) ? get_field('style', $fr_id) : ''),
+                            'value' => $style_fr,
                             'attr' => array(
                                 'lang' => 'fre'
                             )
