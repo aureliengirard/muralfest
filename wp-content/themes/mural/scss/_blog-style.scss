@@ -11,9 +11,11 @@
 			@include cdm-grid(3, ".article", 30px, 30px, ());
 
 			.article{
+				figure{
 				&:hover{
-					.description h3 a{
-						color: $color_pink;
+					+ .description h3 a{
+							color: $color_pink;
+						}
 					}
 				}
 				.description{
@@ -81,12 +83,7 @@
 		.articles{
 			width: 100%;
 
-			.article{
-				&:hover{
-					.description h3 a{
-						color: $color_pink;
-					}
-				}
+			.article{				
 				display: flex;
 				background-color: #f5f5f5;
 				@media only screen and (max-width: 767px) {					
@@ -100,6 +97,12 @@
 						max-width:100%;	
 						display:block;			
 					}
+					&:hover{
+						+ .description h3 a{
+							color: $color_pink;
+						}
+					}
+
 				}
 
 				.description{
