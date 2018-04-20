@@ -51,9 +51,7 @@ get_header(); ?>
 									
 									$website = get_field('site_web');
 									$name = get_the_title();
-                               
 									?>
-					                <h2><?= $tiers->name ?></h2>
 									<figure class="partner">
 										<?php if($website): ?>
 											<a href="<?= $website ?>" title="<?php printf("View %s's website", $name); ?>" target="_blank">
