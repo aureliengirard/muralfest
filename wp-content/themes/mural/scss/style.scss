@@ -255,7 +255,45 @@ h4,
 #mmenu{
 	display: none;
 	background-color: #ffffff;
+	.mm-panels{
+		.mm-panel{
+			.mm-navbar{
+				display:none;
+			}
+			.mm-listview{
+				li{
+					text-transform: uppercase;
+					color:#000;
+					&.current-menu-ancestor,
+					&.current-menu-item{
+						> a{
+							font-weight: bold;
+						}	
+					}			
+				} 
+			}
+		}
+	}
 
+	.mm-navbars-top{
+		 .mm-navbar{
+			height:80px;
+			img{
+				max-height:50px;
+			}
+		}
+	}
+	.mm-navbars-bottom{
+		background-color:#000;
+		.sociaux{
+			li{
+				padding:9px 0px;
+				a{
+					color:#fff;
+				}
+			}
+		}
+	}
 	@media only screen and (max-width: 767px) {
 		display: block;
 	}
@@ -263,7 +301,9 @@ h4,
 
 #open-mmenu{
 	display: none;
-	
+	color:#000;
+	font-size:4.2rem;
+	padding:15px;
 	@media only screen and (max-width: 767px) {
 		display: block;
 	}
@@ -295,6 +335,9 @@ h4,
 
 			.main-navigation{
 				display: flex;
+				@media only screen and (max-width: 767px) {
+					display: none; 
+				}
 			}
 		}
 

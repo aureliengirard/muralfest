@@ -496,12 +496,32 @@ h4,
 #mmenu {
   display: none;
   background-color: #ffffff; }
+  #mmenu .mm-panels .mm-panel .mm-navbar {
+    display: none; }
+  #mmenu .mm-panels .mm-panel .mm-listview li {
+    text-transform: uppercase;
+    color: #000; }
+    #mmenu .mm-panels .mm-panel .mm-listview li.current-menu-ancestor > a, #mmenu .mm-panels .mm-panel .mm-listview li.current-menu-item > a {
+      font-weight: bold; }
+  #mmenu .mm-navbars-top .mm-navbar {
+    height: 80px; }
+    #mmenu .mm-navbars-top .mm-navbar img {
+      max-height: 50px; }
+  #mmenu .mm-navbars-bottom {
+    background-color: #000; }
+    #mmenu .mm-navbars-bottom .sociaux li {
+      padding: 9px 0px; }
+      #mmenu .mm-navbars-bottom .sociaux li a {
+        color: #fff; }
   @media only screen and (max-width: 767px) {
     #mmenu {
       display: block; } }
 
 #open-mmenu {
-  display: none; }
+  display: none;
+  color: #000;
+  font-size: 4.2rem;
+  padding: 15px; }
   @media only screen and (max-width: 767px) {
     #open-mmenu {
       display: block; } }
@@ -537,6 +557,9 @@ h4,
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex; }
+        @media only screen and (max-width: 767px) {
+          #masthead .main-menu .content .main-navigation {
+            display: none; } }
     #masthead .main-menu .nav-menu {
       height: 100%;
       padding-top: 20px; }
