@@ -544,15 +544,17 @@ h4,
 			}
 		}
 
-		&.single-banner{
+		&.single-banner{		
 			@media only screen and (max-width: 767px) {
-				height:50vh;
-				overflow: hidden;
-				img{
-					max-width: none;
-					height: 100vw;
-					left:calc(100vw / -2);
-					position: relative;
+				&.with-overlay{
+					height:50vh;
+					overflow: hidden;
+					img{
+						max-width: none;
+						height: 100vw;
+						left:calc(100vw / -2);
+						position: relative;
+					}
 				}
 			}
 			.banner-overlay{
