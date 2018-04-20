@@ -15,7 +15,11 @@
 
 	section{
 		.programs{
-			@include cdm-grid(3, ".program", 30px, 30px, ());
+			@include cdm-grid(3, ".program", 30px, 30px, (
+				768: (
+					col: 1
+				)
+			));
 
 			.program{
 				background-color: #ffffff;

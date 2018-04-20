@@ -750,6 +750,15 @@ h4,
       right: 90px;
       left: auto;
       text-align: right; }
+    @media only screen and (max-width: 767px) {
+      .banner figure.single-banner {
+        height: 50vh;
+        overflow: hidden; }
+        .banner figure.single-banner img {
+          max-width: none;
+          height: 100vw;
+          left: calc(100vw / -2);
+          position: relative; } }
     .banner figure.single-banner .banner-overlay {
       top: 50%;
       left: 50%;
@@ -811,6 +820,11 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       -ms-hyphens: auto;
           hyphens: auto;
   word-wrap: break-word; }
+  @media only screen and (max-width: 767px) {
+    .content-wrap h1, .content-wrap h2, .content-wrap h3, .content-wrap h4, .content-wrap h5, .content-wrap h6 {
+      -webkit-hyphens: none;
+          -ms-hyphens: none;
+              hyphens: none; } }
   .content-wrap section {
     position: relative;
     overflow: hidden;
@@ -1328,6 +1342,15 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     /* On retire le margin right pour que la dernière colonne arrive égale au contenu. */ }
     .content-wrap section .programs .program:nth-child(3n) {
       margin-right: 0px; }
+  @media only screen and (max-width: 768px) {
+    .content-wrap section .programs .program {
+      width: calc(100% / 1 - ((30px * 0) / 1));
+      margin-right: 30px;
+      margin-bottom: 30px; }
+      .content-wrap section .programs .program:nth-child(3n) {
+        margin-right: 30px; }
+      .content-wrap section .programs .program:nth-child(1n) {
+        margin-right: 0px; } }
   .content-wrap section .programs .program {
     background-color: #ffffff; }
     .content-wrap section .programs .program figure {

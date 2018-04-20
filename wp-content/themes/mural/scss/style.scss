@@ -511,7 +511,7 @@ h4,
 .banner{
 	display: flex;
 	@media only screen and (max-width: 767px) {
-		@include cdm-grid(1, "figure", 0, 0, ());
+		@include cdm-grid(1, "figure", 0, 0, ());		
 	}	
 	figure{
 		position: relative;
@@ -545,6 +545,16 @@ h4,
 		}
 
 		&.single-banner{
+			@media only screen and (max-width: 767px) {
+				height:50vh;
+				overflow: hidden;
+				img{
+					max-width: none;
+					height: 100vw;
+					left:calc(100vw / -2);
+					position: relative;
+				}
+			}
 			.banner-overlay{
 				top: 50%;
 				left: 50%;
@@ -593,7 +603,11 @@ input[type=radio]{
 	min-height: 1px;
 	hyphens: auto;
 	word-wrap: break-word;
-
+	@media only screen and (max-width: 767px) {
+		h1,h2,h3,h4,h5,h6{
+			hyphens: none;
+		}		
+	}
 	section{
 		position: relative;
 		overflow: hidden;
