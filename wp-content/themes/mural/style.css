@@ -1550,6 +1550,35 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     display: -ms-flexbox;
     display: flex; }
 
+.single-post .content-wrap section h1 {
+  color: #000000;
+  margin-bottom: 0; }
+
+.single-post .content-wrap section .date {
+  color: #ed3d8f; }
+
+.single-post .content-wrap section .blog-categories a {
+  color: #ed3d8f;
+  font-size: 1.6rem;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s; }
+  .single-post .content-wrap section .blog-categories a:hover {
+    text-decoration: none; }
+  .single-post .content-wrap section .blog-categories a:hover {
+    color: #04d3ff; }
+
+.single-post .content-wrap .col-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+  .single-post .content-wrap .col-wrapper .left-col {
+    max-width: 50%; }
+  .single-post .content-wrap .col-wrapper .right-col {
+    padding-left: 30px; }
+    .single-post .content-wrap .col-wrapper .right-col .content {
+      padding-left: 0;
+      padding-right: 0; }
+
 .single-artwork .content-wrap section h1 {
   color: #000000; }
 

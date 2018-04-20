@@ -119,3 +119,46 @@
 		}
 	}
 }
+
+.single-post{
+	.content-wrap{
+		section{
+			h1{
+				color: #000000;
+				margin-bottom: 0;
+			}
+
+			.date{
+				color: $color-pink;
+			}
+
+			.blog-categories{
+				a{
+					color: $color_pink;
+					font-size: 1.6rem;
+					@include hover-transition;
+
+					&:hover{
+						color: $color_blue;
+					}
+				}
+			}
+		}
+
+		.col-wrapper{
+			display: flex;
+
+			.left-col{
+				max-width: 50%;
+			}
+			.right-col{
+				padding-left: 30px;
+
+				.content{
+					padding-left: 0;
+					padding-right: 0;
+				}
+			}
+		}
+	}
+}
