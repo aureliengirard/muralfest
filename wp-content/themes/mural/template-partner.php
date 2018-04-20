@@ -30,7 +30,7 @@ get_header(); ?>
 					
 					foreach($tiers as $tier){
 						$logo_width = get_field('largeur', 'tier_'.$tier->term_id);
-
+                       echo "<h2>".$tier->name."</h2>";
 						$args = array(
 							'post_type' => array( 'partner' ),
 							'posts_per_page' => '-1',
@@ -51,8 +51,9 @@ get_header(); ?>
 									
 									$website = get_field('site_web');
 									$name = get_the_title();
+                               
 									?>
-					
+					                <h2><?= $tiers->name ?></h2>
 									<figure class="partner">
 										<?php if($website): ?>
 											<a href="<?= $website ?>" title="<?php printf("View %s's website", $name); ?>" target="_blank">
