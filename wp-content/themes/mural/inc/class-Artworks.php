@@ -116,7 +116,7 @@ class Artworks {
                 $artworks[] = array(
                     'title' => get_the_title(),
                     'thumbnail' => wp_get_attachment_image( get_field('image_de_loeuvre'), 'artwork-thumb' ),
-					'description' => truncate(get_field('resume'), 150),
+					'description' => truncate(get_field('resume'), 140),
 					'link' => get_the_permalink(),
                     'artist' => array(
 						'name' => get_the_title(get_field('artiste')),

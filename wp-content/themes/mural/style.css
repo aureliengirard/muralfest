@@ -995,9 +995,22 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
             max-width: 100%; } }
     .content-wrap .deux_colonnes .application {
       margin-bottom: -30px; }
-      @media only screen and (max-width: 767px) {
+      @media only screen and (max-width: 1200px) {
         .content-wrap .deux_colonnes .application figure:last-child {
           display: none; } }
+      @media only screen and (min-width: 768px) {
+        .content-wrap .deux_colonnes .application figure:first-child {
+          margin-top: 1vw; }
+        .content-wrap .deux_colonnes .application figure:last-child {
+          -webkit-transform: rotate(-30deg);
+                  transform: rotate(-30deg);
+          right: -1vw;
+          position: relative;
+          top: 1vw;
+          width: 20vw; } }
+      @media only screen and (min-width: 1201px) {
+        .content-wrap .deux_colonnes .application .content {
+          margin-left: 3vw; } }
       .content-wrap .deux_colonnes .application .content .app-info {
         width: -webkit-min-content;
         width: -moz-min-content;

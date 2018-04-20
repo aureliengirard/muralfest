@@ -22,6 +22,13 @@
                             <h3 class="artist">
                                 <span><?php _e('By:', 'site-theme'); ?></span> <?= get_the_title(get_field('artiste')); ?></h3>
                             <p class="date"><?php _e('Year of completion:', 'site-theme'); ?> <?php the_field('annee'); ?></p>
+                            <?php if(get_field('ajoute_description')){
+                                the_field('description_de_loeuvre'); 
+                            }else{
+                                $artisteID = get_field('artiste');
+                                the_field('biographie',$artisteID);
+                            } 
+                            ?>
                             <?php get_template_part('parts/inc', 'share'); ?>
                         </div>
                     </section>
