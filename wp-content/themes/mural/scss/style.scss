@@ -1083,6 +1083,12 @@ input[type=radio]{
 	.image_pleine_largeur{
 		padding-top: 0;
 		padding-bottom: 0;
+		a:hover{
+			img{
+				@include hover-transition;
+				opacity: 0.6;
+			}
+		}
 	}
 
 	.partenaires{
