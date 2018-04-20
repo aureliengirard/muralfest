@@ -32,6 +32,7 @@ class Events_API extends Program_Routes {
         $event_terms = get_terms( array(
             'taxonomy' => 'event-category',
             'hide_empty' => false,
+            'suppress_filters' => false
         ) );
 
         foreach($event_terms as $term){
@@ -41,9 +42,20 @@ class Events_API extends Program_Routes {
         $events = get_posts(array(
             'post_type' => 'program',
             'numberposts' => -1,
+            'suppress_filters' => false,
             'order' => 'ASC',
-            'order_by' => 'meta_value',
-            'meta_key' => 'date_et_heure',
+            'orderby' => array(
+                'order_event' => 'ASC',
+                'order_start_time' => 'ASC'
+            ),
+            'meta_query' => array(
+                'order_event' => array(
+                    'key' => 'event_date'
+                ),
+                'order_start_time' => array(
+                    'key' => 'heure_de_debut'
+                )
+            )
         ));
 
         foreach($events as $event){
