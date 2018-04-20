@@ -212,7 +212,9 @@ h4,
 	cursor: pointer;
 	@include hover-transition;
 	z-index: 1;
-
+    &.smaller{
+        font-size: 2rem;
+    }
 	&::after{
 		content: "";
 		mask: url(images/svg/paint-splash.svg) no-repeat 0 0;

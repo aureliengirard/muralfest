@@ -459,6 +459,8 @@ h4,
   z-index: 1; }
   .button:hover {
     text-decoration: none; }
+  .button.smaller {
+    font-size: 2rem; }
   .button::after {
     content: "";
     -webkit-mask: url(images/svg/paint-splash.svg) no-repeat 0 0;
