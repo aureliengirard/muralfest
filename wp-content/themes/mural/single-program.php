@@ -15,6 +15,7 @@
                             <figure>
                                 <?= wp_get_attachment_image(get_field('image_de_levenement'), 'original'); ?>
                             </figure>
+                            <?php get_template_part('parts/inc', 'share'); ?>
                         </div>
                         <div class="right-col">
                             <h1><?php the_title(); ?></h1>
@@ -60,8 +61,6 @@
                                     ?>
                                 </h3>
                             <?php endif; ?>
-
-                            <?php get_template_part('parts/inc', 'share'); ?>
                             
                             <?php if(get_field('lien_billets')): ?>
                                 <a href="<?php the_field('lien_billets'); ?>" target="_blank" rel="nofollow"><?php _e('Buy your ticket', 'site-theme'); ?></a>
@@ -74,12 +73,12 @@
                             <?php if(get_field('lien_playlist')): ?>
                                 <a href="<?php the_field('lien_playlist'); ?>" target="_blank" rel="nofollow"><?php _e('Listen to the playlist', 'site-theme'); ?></a>
                             <?php endif; ?>
+
+                            <?php get_template_part('parts/inc', 'background_content'); ?>
                         </div>
                     </section>
                 </div>
             </section>
-
-            <?php get_template_part('parts/inc', 'background_content'); ?>
         </div>
 
 	</article><!-- #post -->

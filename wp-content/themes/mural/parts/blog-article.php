@@ -1,7 +1,7 @@
 <div class="article">
     <figure>
         <a href="<?php the_permalink(); ?>">
-            <?= wp_get_attachment_image(get_field('image_a_la_une'), 'cta-preview'); ?>
+            <?= wp_get_attachment_image(get_field('image_a_la_une'), 'blog-preview'); ?>
         </a>
     </figure>
     <div class="description">

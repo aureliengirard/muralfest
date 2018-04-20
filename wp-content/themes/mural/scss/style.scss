@@ -110,7 +110,7 @@ h1,
 	text-transform: uppercase;
 	font-weight: 700;
 	letter-spacing: 0.05em;
-	color: $color_yellow;
+	color: #000000;
 	margin: 0 0 25px;
 	line-height: 1;
 
@@ -522,6 +522,9 @@ h4,
 			top: 25%;
 			left: 90px;
 
+			h1{
+				color: $color_yellow;
+			}
 			h1, h2{
 				text-shadow: 0px 3px 30px rgba(0, 0, 0, 1);
 				margin-bottom: 0;
@@ -662,7 +665,7 @@ input[type=radio]{
 			}
 	
 		}
-		&.bg-color-gray{
+		&.bgcolor-gray{
 			background-color: #f5f5f5;
 		}
 		&.bgcolor-pink{
@@ -1218,14 +1221,33 @@ input[type=radio]{
 
 /// Style sidebar
 #sidebar{
-	padding-left: 25px;
+	padding-left: 15px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	width: 100%;
+	position: relative;
+	background-color: $color_pink;
 
 	.list-categories{
+		padding-left: 0;
+
 		ul{
 			padding-left: 20px;
+		}
 
-			li{
-				font-size: 1.8rem;
+		li{
+			font-size: 1.8rem;
+
+			&:before{
+				color: $color_blue;
+			}
+
+			a{
+				color: #ffffff;
+
+				&:hover{
+					color: $color_blue;
+				}
 			}
 		}
 	}
