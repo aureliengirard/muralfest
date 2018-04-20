@@ -9,7 +9,9 @@
         .partner{
             padding: 0 15px;
             margin-bottom: 20px;
-
+            @media only screen and (max-width: 767px) {
+				margin-bottom:40px;				
+			}
             a{
                 opacity: 1;
                 @include hover-transition;
