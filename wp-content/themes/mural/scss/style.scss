@@ -212,7 +212,9 @@ h4,
 	cursor: pointer;
 	@include hover-transition;
 	z-index: 1;
-
+    &.smaller{
+        font-size: 2rem;
+    }
 	&::after{
 		content: "";
 		mask: url(images/svg/paint-splash.svg) no-repeat 0 0;
@@ -473,7 +475,7 @@ h4,
 				left: 50%;
 				transform: translateX(-50%);
 				padding: 20px 0;
-                 padding-right: 6px;
+                 padding-right: 17px;
 				margin-top: $offsetPadding; /* offset de l'espace blanc */
 				background-color: #ffffff;
 				box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.35);
@@ -1226,17 +1228,13 @@ input[type=radio]{
 				.hasDatepicker{
 					position: absolute;
 					top: 100% !important; // important pour écraser une valeur en js
+					left: 0px !important;
+					right: 0px !important;
 					z-index: 50;
-				}
-
-				.date-range-selected > .ui-state-active,
-				.date-range-selected > .ui-state-default {
-					background: none;
-					background-color: lightsteelblue;
 				}
 			}
 
-			select[name="selected-artist"]{
+			.select2{
 				margin-right: 15px;
 			}
 		}
@@ -1341,6 +1339,8 @@ input[type=radio]{
 	}
 }
 
+@import "calendar-style";
+@import "select2-style";
 @import "program-style";
 @import "blog-style";
 @import "artwork-style";

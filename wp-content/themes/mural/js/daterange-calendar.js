@@ -12,6 +12,8 @@ if($('#orderby-wrap').length){
     $(function() {
     var cur = -1, prv = -1;
 
+    $( "#datepicker" ).datepicker( "option", $.datepicker.regional["fr-CA"] );
+    
     $('#orderby-wrap div')
             .datepicker({
                 numberOfMonths: 1,
@@ -39,17 +41,17 @@ if($('#orderby-wrap').length){
                     //prv = cur = -1; // reset selection
                 },
                 onAfterUpdate: function ( inst ) {
-                    $('<button type="button" class="ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all" data-handler="hide" data-event="click">Done</button>')
-                        .appendTo($('#orderby-wrap div .ui-datepicker-buttonpane'))
-                        .on('click', function () { $('#orderby-wrap div').hide(); });
-
-                    $('<button type="button" class="ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all" data-handler="hide" data-event="click">Reset</button>')
+                    $('<button type="button" class="ui-datepicker-reset ui-state-default ui-priority-primary" data-handler="hide" data-event="click">'+translation.reset+'</button>')
                         .appendTo($('#orderby-wrap div .ui-datepicker-buttonpane'))
                         .on('click', function () {
                             cur = -1, prv = -1;
                             $('#orderby-wrap div').datepicker('setDate', null);
                             $('#orderby-wrap input').val('');
                         });
+
+                    $('<button type="button" class="ui-datepicker-close ui-state-default ui-priority-primary" data-handler="hide" data-event="click">'+translation.done+'</button>')
+                        .appendTo($('#orderby-wrap div .ui-datepicker-buttonpane'))
+                        .on('click', function () { $('#orderby-wrap div').hide(); });
                 }
             })
             .position({

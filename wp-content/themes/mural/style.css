@@ -438,7 +438,7 @@ h4,
   .readmore:hover {
     color: #04d3ff; }
 
-.button {
+.button, .ui-datepicker .ui-datepicker-buttonpane button {
   font-size: 2.7rem;
   text-transform: uppercase;
   font-weight: 700;
@@ -457,9 +457,11 @@ h4,
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   z-index: 1; }
-  .button:hover {
+  .button:hover, .ui-datepicker .ui-datepicker-buttonpane button:hover {
     text-decoration: none; }
-  .button::after {
+  .button.smaller, .ui-datepicker .ui-datepicker-buttonpane button.smaller {
+    font-size: 2rem; }
+  .button::after, .ui-datepicker .ui-datepicker-buttonpane button::after {
     content: "";
     -webkit-mask: url(images/svg/paint-splash.svg) no-repeat 0 0;
             mask: url(images/svg/paint-splash.svg) no-repeat 0 0;
@@ -475,12 +477,12 @@ h4,
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
     z-index: -1; }
-    .button::after:hover {
+    .button::after:hover, .ui-datepicker .ui-datepicker-buttonpane button::after:hover {
       text-decoration: none; }
-  .button:hover {
+  .button:hover, .ui-datepicker .ui-datepicker-buttonpane button:hover {
     background-color: #04d3ff;
     color: #fff204; }
-    .button:hover::after {
+    .button:hover::after, .ui-datepicker .ui-datepicker-buttonpane button:hover::after {
       opacity: 1; }
 
 .partners {
@@ -687,7 +689,7 @@ h4,
         -webkit-transform: translateX(-50%);
                 transform: translateX(-50%);
         padding: 20px 0;
-        padding-right: 6px;
+        padding-right: 17px;
         margin-top: 20px;
         /* offset de l'espace blanc */
         background-color: #ffffff;
@@ -748,7 +750,7 @@ h4,
         margin-bottom: 0; }
       .banner figure .banner-overlay h3 {
         margin-bottom: 0; }
-      .banner figure .banner-overlay .button {
+      .banner figure .banner-overlay .button, .banner figure .banner-overlay .ui-datepicker .ui-datepicker-buttonpane button, .ui-datepicker .ui-datepicker-buttonpane .banner figure .banner-overlay button {
         margin-top: 20px; }
     .banner figure.left-banner .banner-overlay {
       right: 90px;
@@ -907,12 +909,12 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
         color: #04d3ff; }
         .content-wrap section.bgcolor-blue .readmore:hover {
           color: #ed3d8f; }
-      .content-wrap section.bgcolor-blue .button {
+      .content-wrap section.bgcolor-blue .button, .content-wrap section.bgcolor-blue .ui-datepicker .ui-datepicker-buttonpane button, .ui-datepicker .ui-datepicker-buttonpane .content-wrap section.bgcolor-blue button {
         color: #04d3ff; }
-        .content-wrap section.bgcolor-blue .button:hover {
+        .content-wrap section.bgcolor-blue .button:hover, .content-wrap section.bgcolor-blue .ui-datepicker .ui-datepicker-buttonpane button:hover, .ui-datepicker .ui-datepicker-buttonpane .content-wrap section.bgcolor-blue button:hover {
           color: #fff;
           background-color: #ed3d8f; }
-          .content-wrap section.bgcolor-blue .button:hover::after {
+          .content-wrap section.bgcolor-blue .button:hover::after, .content-wrap section.bgcolor-blue .ui-datepicker .ui-datepicker-buttonpane button:hover::after, .ui-datepicker .ui-datepicker-buttonpane .content-wrap section.bgcolor-blue button:hover::after {
             background-color: #04d3ff; }
     .content-wrap section .background-image {
       position: absolute;
@@ -1113,7 +1115,7 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     display: flex; }
   .content-wrap .formulaire_infolettre .newsletter input, .content-wrap .formulaire_infolettre .newsletter textarea {
     width: auto; }
-  .content-wrap .formulaire_infolettre .newsletter .button {
+  .content-wrap .formulaire_infolettre .newsletter .button, .content-wrap .formulaire_infolettre .newsletter .ui-datepicker .ui-datepicker-buttonpane button, .ui-datepicker .ui-datepicker-buttonpane .content-wrap .formulaire_infolettre .newsletter button {
     min-width: 0;
     letter-spacing: 0;
     color: #ffffff;
@@ -1121,17 +1123,17 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     display: -ms-flexbox;
     display: flex;
     background-color: #000000; }
-    .content-wrap .formulaire_infolettre .newsletter .button i {
+    .content-wrap .formulaire_infolettre .newsletter .button i, .content-wrap .formulaire_infolettre .newsletter .ui-datepicker .ui-datepicker-buttonpane button i, .ui-datepicker .ui-datepicker-buttonpane .content-wrap .formulaire_infolettre .newsletter button i {
       left: 0;
       position: relative;
       -webkit-transition: all 0.5s;
       transition: all 0.5s; }
-      .content-wrap .formulaire_infolettre .newsletter .button i:hover {
+      .content-wrap .formulaire_infolettre .newsletter .button i:hover, .content-wrap .formulaire_infolettre .newsletter .ui-datepicker .ui-datepicker-buttonpane button i:hover, .ui-datepicker .ui-datepicker-buttonpane .content-wrap .formulaire_infolettre .newsletter button i:hover {
         text-decoration: none; }
-    .content-wrap .formulaire_infolettre .newsletter .button:hover i:first-child {
+    .content-wrap .formulaire_infolettre .newsletter .button:hover i:first-child, .content-wrap .formulaire_infolettre .newsletter .ui-datepicker .ui-datepicker-buttonpane button:hover i:first-child, .ui-datepicker .ui-datepicker-buttonpane .content-wrap .formulaire_infolettre .newsletter button:hover i:first-child {
       left: 10px;
       color: #04d3ff; }
-    .content-wrap .formulaire_infolettre .newsletter .button:hover i:last-child {
+    .content-wrap .formulaire_infolettre .newsletter .button:hover i:last-child, .content-wrap .formulaire_infolettre .newsletter .ui-datepicker .ui-datepicker-buttonpane button:hover i:last-child, .ui-datepicker .ui-datepicker-buttonpane .content-wrap .formulaire_infolettre .newsletter button:hover i:last-child {
       left: 5px;
       color: #fff204; }
   .content-wrap .formulaire_infolettre .newsletter .error-log {
@@ -1301,12 +1303,10 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       .content-wrap .filters .program-filters #orderby-wrap .hasDatepicker {
         position: absolute;
         top: 100% !important;
+        left: 0px !important;
+        right: 0px !important;
         z-index: 50; }
-      .content-wrap .filters .program-filters #orderby-wrap .date-range-selected > .ui-state-active,
-      .content-wrap .filters .program-filters #orderby-wrap .date-range-selected > .ui-state-default {
-        background: none;
-        background-color: lightsteelblue; }
-    .content-wrap .filters .program-filters select[name="selected-artist"] {
+    .content-wrap .filters .program-filters .select2 {
       margin-right: 15px; }
 
 #sidebar {
@@ -1382,6 +1382,154 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     margin-bottom: 45px; }
   #colophon .nav-menu li {
     color: #ffffff; }
+
+.ui-datepicker {
+  width: 100%;
+  border-radius: 0; }
+  .ui-datepicker .ui-helper-clearfix::before,
+  .ui-datepicker .ui-helper-clearfix::after {
+    display: none; }
+  .ui-datepicker .ui-datepicker-header {
+    border-radius: 0;
+    background: #fff204;
+    padding: 5px 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between; }
+    .ui-datepicker .ui-datepicker-header .ui-datepicker-title {
+      -webkit-box-ordinal-group: 3;
+          -ms-flex-order: 2;
+              order: 2; }
+      .ui-datepicker .ui-datepicker-header .ui-datepicker-title select {
+        width: auto; }
+    .ui-datepicker .ui-datepicker-header .ui-corner-all {
+      position: static;
+      width: auto;
+      height: auto;
+      background: none;
+      border: none;
+      cursor: pointer; }
+      .ui-datepicker .ui-datepicker-header .ui-corner-all.ui-state-hover .ui-icon::before {
+        color: #ed3d8f; }
+      .ui-datepicker .ui-datepicker-header .ui-corner-all .ui-icon {
+        background: none;
+        width: auto;
+        height: auto;
+        font-size: 0;
+        position: static;
+        margin: 0; }
+        .ui-datepicker .ui-datepicker-header .ui-corner-all .ui-icon::before {
+          font-family: "Font Awesome 5 Solid";
+          color: #000000;
+          display: block;
+          font-size: 1.6rem;
+          z-index: 1;
+          text-indent: 0;
+          -webkit-transition: all 0.5s;
+          transition: all 0.5s; }
+          .ui-datepicker .ui-datepicker-header .ui-corner-all .ui-icon::before:hover {
+            text-decoration: none; }
+      .ui-datepicker .ui-datepicker-header .ui-corner-all.ui-datepicker-prev {
+        -webkit-box-ordinal-group: 2;
+            -ms-flex-order: 1;
+                order: 1; }
+        .ui-datepicker .ui-datepicker-header .ui-corner-all.ui-datepicker-prev .ui-icon::before {
+          content: "\f351"; }
+      .ui-datepicker .ui-datepicker-header .ui-corner-all.ui-datepicker-next {
+        -webkit-box-ordinal-group: 4;
+            -ms-flex-order: 3;
+                order: 3; }
+        .ui-datepicker .ui-datepicker-header .ui-corner-all.ui-datepicker-next .ui-icon::before {
+          content: "\f352"; }
+  .ui-datepicker .ui-datepicker-calendar .ui-state-default {
+    background: none; }
+  .ui-datepicker .ui-datepicker-calendar .date-range-selected > .ui-state-active,
+  .ui-datepicker .ui-datepicker-calendar .date-range-selected > .ui-state-default {
+    background: none;
+    background-color: #04d3ff; }
+  .ui-datepicker .ui-datepicker-calendar .ui-state-highlight,
+  .ui-datepicker .ui-datepicker-calendar .ui-widget-content .ui-state-highlight,
+  .ui-datepicker .ui-datepicker-calendar .ui-widget-header .ui-state-highlight {
+    border-color: #fff204;
+    background-color: rgba(255, 242, 4, 0.5); }
+  .ui-datepicker .ui-datepicker-calendar .ui-state-hover {
+    border-color: #ed3d8f; }
+  .ui-datepicker .ui-datepicker-buttonpane {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+    .ui-datepicker .ui-datepicker-buttonpane button {
+      min-width: 0;
+      font-size: 1.2rem;
+      background-image: none;
+      border-radius: 0; }
+      .ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-close {
+        margin-left: auto; }
+
+.select2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+  .select2 .selection {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%; }
+    .select2 .selection .select2-selection {
+      height: auto;
+      width: 100%;
+      border-width: 2px;
+      border-color: #000000;
+      background-color: #000000;
+      border-radius: 0;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center; }
+      .select2 .selection .select2-selection .select2-selection__rendered {
+        color: #ffffff;
+        font-size: 2.6rem;
+        font-weight: 700; }
+      .select2 .selection .select2-selection .select2-selection__arrow {
+        right: 20px;
+        height: auto;
+        width: auto;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+                transform: translateY(-50%); }
+        .select2 .selection .select2-selection .select2-selection__arrow b {
+          width: 12px;
+          height: 12px;
+          border-color: #ffffff;
+          border-width: 0px 3px 3px 0;
+          -webkit-transform: rotate(45deg);
+                  transform: rotate(45deg);
+          display: block;
+          position: static;
+          top: auto;
+          left: auto;
+          margin-top: 0;
+          margin-left: 0;
+          -webkit-transition: all 0.3s;
+          transition: all 0.3s; }
+          .select2 .selection .select2-selection .select2-selection__arrow b:hover {
+            text-decoration: none; }
+  .select2.select2-container--default.select2-container--open .selection .select2-selection .select2-selection__arrow b {
+    border-width: 0px 3px 3px 0;
+    border-color: #ffffff;
+    -webkit-transform: rotate(225deg);
+            transform: rotate(225deg); }
+
+.select2-container .select2-results__option--highlighted[aria-selected] {
+  background-color: #ed3d8f; }
 
 .content-wrap .evenements_a_venir .content h2 {
   text-align: center;
