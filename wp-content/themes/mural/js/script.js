@@ -5,8 +5,12 @@ $(function(){
 	$('#ink-transition .bg-layer').one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e) {
 		$("body").removeClass("preload");
 	});
-	
-	$('.program-filters select').select2();
+	console.log("place = " + $('.program-filters select[name="selected-artist"]').attr("placeholder"))
+		$('.program-filters select').select2({
+			allowClear: true,
+			placeholder: $('.program-filters select[name="selected-artist"]').attr("placeholder")
+		}
+	);
 
 	
 	// Menumobile - http://mmenu.frebsite.nl/

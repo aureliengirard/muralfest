@@ -28,8 +28,9 @@ if(isset($_GET['selected-artist'])){
 
                 if ( $query->have_posts() ) : ?>
                     
-                <select name="selected-artist">
-                    <option value=""><?php _e('Filter by artist', 'site-theme'); ?></option>
+                <select name="selected-artist" placeholder="<?php _e('Filter by artist', 'site-theme'); ?>">
+                   
+                     <option value=""></option>
 
                     <?php while ( $query->have_posts() ) :
                         $query->the_post();

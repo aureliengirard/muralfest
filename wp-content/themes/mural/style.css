@@ -1293,7 +1293,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
           margin-bottom: 10px; } }
     .content-wrap .filters .program-filters #orderby-wrap {
       position: relative;
-      margin-right: 15px; }
+      margin-right: 15px;
+      background-color: #000; }
       .content-wrap .filters .program-filters #orderby-wrap:after {
         content: "\f073";
         font-family: "Font Awesome 5 Light";
@@ -1315,6 +1316,12 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
         z-index: 50; }
     .content-wrap .filters .program-filters .select2 {
       margin-right: 15px; }
+      .content-wrap .filters .program-filters .select2 .select2-selection {
+        padding: 10px; }
+      .content-wrap .filters .program-filters .select2 .select2-selection__clear {
+        float: left;
+        margin-right: 5px;
+        color: red; }
 
 #sidebar {
   padding-left: 15px;
