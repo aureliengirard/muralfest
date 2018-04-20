@@ -318,7 +318,7 @@
                         "artist": "Artiste",
                         "partner": "Partenaire",
                         "program": "Événement",
-                        "venue": "Venue"
+                        "venue": "Lieu"
                     },
                     "default_value": [],
                     "allow_null": 0,
@@ -370,6 +370,30 @@
                     "ui_off_text": ""
                 }
             ]
+        },
+        {
+            "key": "field_5ada0bb45e483",
+            "label": "Image de fond sidebar",
+            "name": "image_de_fond_sidebar",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
         },
         {
             "key": "field_5ad75f014c377",
@@ -504,5 +528,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1524064165
+    "modified": 1524239308
 }

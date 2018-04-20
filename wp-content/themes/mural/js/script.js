@@ -80,6 +80,10 @@ $(function(){
 	$('.content-wrap .background-parallax .img-parallax').each(function (index, element) {
 		parallax($(this), $(this).parents('.background-parallax'));
 	});
+
+	if($('#sidebar .img-parallax').length){
+		parallax($('#sidebar .img-parallax'), $('#sidebar'));
+	}
 	
 
 	/*************/
