@@ -833,33 +833,35 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       color: #ffffff;
       text-shadow: 1px 1px 1px #000000; }
     .content-wrap section.bgcolor-white {
-      background-color: #ffffff;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap; }
+      background-color: #ffffff; }
       .content-wrap section.bgcolor-white .appels_a_laction .cta-wrapper .cta,
       .content-wrap section.bgcolor-white .articles_du_blog .articles .article,
       .content-wrap section.bgcolor-white .evenements_a_venir .programs .program {
         background-color: transparent; }
-      .content-wrap section.bgcolor-white .articles_du_blog .articles .article {
-        width: calc(100% / 1 - ((30px * 0) / 1));
-        /* On divise la largeur totale disponible également entre toutes les colonnes, puis on soustrait à chaque colonnes le gap désiré */
-        margin-right: 30px;
-        margin-bottom: 30px;
-        /* On retire le margin right pour que la dernière colonne arrive égale au contenu. */ }
-        .content-wrap section.bgcolor-white .articles_du_blog .articles .article:nth-child(1n) {
-          margin-right: 0px; }
-      @media only screen and (max-width: 768px) {
-        .content-wrap section.bgcolor-white .articles_du_blog .articles .article {
-          width: calc(100% / 1 - ((30px * 0) / 1));
-          margin-right: 30px;
-          margin-bottom: 30px; }
-          .content-wrap section.bgcolor-white .articles_du_blog .articles .article:nth-child(1n) {
-            margin-right: 30px; }
-          .content-wrap section.bgcolor-white .articles_du_blog .articles .article:nth-child(1n) {
-            margin-right: 0px; } }
+      @media only screen and (max-width: 767px) {
+        .content-wrap section.bgcolor-white {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -ms-flex-wrap: wrap;
+              flex-wrap: wrap; }
+          .content-wrap section.bgcolor-white .articles_du_blog .articles .article {
+            width: calc(100% / 1 - ((30px * 0) / 1));
+            /* On divise la largeur totale disponible également entre toutes les colonnes, puis on soustrait à chaque colonnes le gap désiré */
+            margin-right: 30px;
+            margin-bottom: 30px;
+            /* On retire le margin right pour que la dernière colonne arrive égale au contenu. */ }
+            .content-wrap section.bgcolor-white .articles_du_blog .articles .article:nth-child(1n) {
+              margin-right: 0px; } }
+  @media only screen and (max-width: 767px) and (max-width: 768px) {
+    .content-wrap section.bgcolor-white .articles_du_blog .articles .article {
+      width: calc(100% / 1 - ((30px * 0) / 1));
+      margin-right: 30px;
+      margin-bottom: 30px; }
+      .content-wrap section.bgcolor-white .articles_du_blog .articles .article:nth-child(1n) {
+        margin-right: 30px; }
+      .content-wrap section.bgcolor-white .articles_du_blog .articles .article:nth-child(1n) {
+        margin-right: 0px; } }
       .content-wrap section.bgcolor-white .texte-plein .texte-bloc h3 {
         color: #ed3d8f;
         margin-bottom: 0px; }

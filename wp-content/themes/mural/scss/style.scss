@@ -632,12 +632,13 @@ input[type=radio]{
 			.evenements_a_venir .programs .program{
 				background-color: transparent;
 			}
-			
-			@include cdm-grid(1, ".articles_du_blog .articles .article", 30px, 30px, (			
-				768: (
-					col: 1
-				)
-			));
+			@media only screen and (max-width: 767px) {
+				@include cdm-grid(1, ".articles_du_blog .articles .article", 30px, 30px, (			
+					768: (
+						col: 1
+					)
+				));
+			}
 
             .texte-plein{
                 .texte-bloc{
