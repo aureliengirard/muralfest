@@ -45,7 +45,9 @@ get_header(); ?>
                             <?php get_template_part('parts/blog', 'pager'); ?>
 
                         <?php else: ?>
-                            <p><?php _e('No post found.', 'site-theme'); ?></p>
+                            <div class="content">
+                                <p><?php _e('No post found.', 'site-theme'); ?></p>
+                            </div>
                         <?php endif; ?>
                 
                         <?php 
