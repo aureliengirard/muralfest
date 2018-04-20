@@ -1004,7 +1004,7 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
         .content-wrap .deux_colonnes .application figure:last-child {
           -webkit-transform: rotate(-30deg);
                   transform: rotate(-30deg);
-          right: -1vw;
+          right: -1.5vw;
           position: relative;
           top: 1vw;
           width: 20vw; } }
