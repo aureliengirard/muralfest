@@ -608,11 +608,11 @@ input[type=radio]{
 	min-height: 1px;
 	hyphens: auto;
 	word-wrap: break-word;
-	@media only screen and (max-width: 767px) {
-		h1,h2,h3,h4,h5,h6{
-			hyphens: none;
-		}		
-	}
+	
+	h1,h2,h3,h4,h5,h6{
+		hyphens: none;
+	}		
+
 	section{
 		position: relative;
 		overflow: hidden;
@@ -897,7 +897,11 @@ input[type=radio]{
 			 
 			.cta{
 				background-color: #ffffff;
-
+				&:hover{
+					.description h3 a{
+						color: $color_pink;
+					}
+				}
 				figure{
 					overflow: hidden;
 
@@ -953,7 +957,8 @@ input[type=radio]{
 						font-weight: 700;
 						color: #000000;
 						text-transform: uppercase;
-
+						font-size:2.6rem;
+						text-align:center;
 						a{
 							color: inherit;
 
