@@ -14,7 +14,7 @@ if($('#orderby-wrap').length){
 
     $('#orderby-wrap div')
             .datepicker({
-                numberOfMonths: 2,
+                numberOfMonths: 1,
                 changeMonth: true,
                 changeYear: false,
                 showButtonPanel: true,
