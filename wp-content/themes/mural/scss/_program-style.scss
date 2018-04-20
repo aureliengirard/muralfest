@@ -131,11 +131,15 @@
 			display: flex;
 
 			.left-col{
-				width: 50%;
+				max-width: 50%;
 			}
 			.right-col{
-				width: 50%;
 				padding-left: 30px;
+
+				.content{
+					padding-left: 0;
+					padding-right: 0;
+				}
 			}
 		}
 	}
