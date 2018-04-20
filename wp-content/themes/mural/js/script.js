@@ -12,11 +12,30 @@ $(function(){
 		$('#mmenu').mmenu({
 			"slidingSubmenus": false,
 			"extensions": [
-				"theme-dark"
+				"pagedim-black",
+				"fx-menu-fade",
+				"multiline",
+				"theme-white",
+				"border-full"
 			],
 			"offCanvas": {
-				"zposition": 'front'
-			}
+				"position": "right"
+			},
+			"navbars": [				
+				{
+					"position": "top",
+					"content": [
+						$('.main-menu .home-link').clone(),
+						"close"
+					]
+				},
+				{
+					"position": "bottom",
+					"content": [
+						$('footer .sociaux').clone().wrap("<ul></ul>"),
+					]
+				}
+			]
 		});
 	});
 	
@@ -24,11 +43,6 @@ $(function(){
 	$('#mmenu .mm-subopen + a').click(function(e){
 		e.preventDefault();
 		$(this).prev().trigger('click');
-	});
-	$('#mmenu .search-field').attr('placeholder', '').focusout(function(){
-		if($(this).val() !== ''){
-			$(this).closest('form').submit();
-		}
 	});
 	
 	

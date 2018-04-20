@@ -472,7 +472,7 @@ class dqml2tree {
 	}
 
 	function _reduceTree( &$_tree ) {
-		while ( list( $branch, $sub_tree ) = each( $_tree ) ) {
+		while ( list( $branch, $sub_tree ) = @each( $_tree ) ) {
 			if ( $branch != '_SQL' && $branch != '_a' && $branch != '_z' ) {
 				$this->_reduceTree( $_tree[ $branch ] );
 				if ( array_key_exists( '_a', $_tree ) && $_tree['_a'] == $sub_tree['_a'] && $_tree['_z'] == $sub_tree['_z'] && count( $_tree ) < 5 ) {

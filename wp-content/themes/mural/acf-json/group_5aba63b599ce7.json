@@ -8,7 +8,7 @@
             "name": "image_de_loeuvre",
             "type": "image",
             "instructions": "",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -62,8 +62,7 @@
                 "id": ""
             },
             "choices": {
-                "59": "Toronto",
-                "9": "Montréal"
+                "9": "Festival"
             },
             "default_value": [
                 "montreal"
@@ -88,7 +87,15 @@
                 "class": "",
                 "id": ""
             },
-            "choices": [],
+            "choices": {
+                "2018": 2018,
+                "2017": 2017,
+                "2016": 2016,
+                "2015": 2015,
+                "2014": 2014,
+                "2013": 2013,
+                "2012": 2012
+            },
             "default_value": [],
             "allow_null": 0,
             "multiple": 0,
@@ -115,5 +122,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1523039736
+    "modified": 1524238937
 }
