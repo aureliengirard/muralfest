@@ -459,6 +459,8 @@ h4,
   z-index: 1; }
   .button:hover, .ui-datepicker .ui-datepicker-buttonpane button:hover {
     text-decoration: none; }
+  .button.smaller, .ui-datepicker .ui-datepicker-buttonpane button.smaller {
+    font-size: 2rem; }
   .button::after, .ui-datepicker .ui-datepicker-buttonpane button::after {
     content: "";
     -webkit-mask: url(images/svg/paint-splash.svg) no-repeat 0 0;
@@ -687,6 +689,7 @@ h4,
         -webkit-transform: translateX(-50%);
                 transform: translateX(-50%);
         padding: 20px 0;
+        padding-right: 17px;
         margin-top: 20px;
         /* offset de l'espace blanc */
         background-color: #ffffff;
@@ -703,7 +706,8 @@ h4,
           position: absolute;
           top: -20px; }
         .navigation .nav-menu li .sub-menu li {
-          margin-bottom: 10px; }
+          margin-bottom: 10px;
+          width: 100%; }
           .navigation .nav-menu li .sub-menu li:last-child {
             margin-bottom: 0; }
           .navigation .nav-menu li .sub-menu li a {
@@ -822,15 +826,16 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       -ms-hyphens: auto;
           hyphens: auto;
   word-wrap: break-word; }
-  @media only screen and (max-width: 767px) {
-    .content-wrap h1, .content-wrap h2, .content-wrap h3, .content-wrap h4, .content-wrap h5, .content-wrap h6 {
-      -webkit-hyphens: none;
-          -ms-hyphens: none;
-              hyphens: none; } }
+  .content-wrap h1, .content-wrap h2, .content-wrap h3, .content-wrap h4, .content-wrap h5, .content-wrap h6 {
+    -webkit-hyphens: none;
+        -ms-hyphens: none;
+            hyphens: none; }
   .content-wrap section {
     position: relative;
     overflow: hidden;
     z-index: 1; }
+    .content-wrap section .texte-plein .texte-bloc p a.button {
+      margin-bottom: -28px; }
     .content-wrap section.has-background-image .texte-plein .texte-bloc p {
       color: #ffffff;
       text-shadow: 1px 1px 1px #000000; }
@@ -1042,6 +1047,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       background-color: #ffffff; }
       .content-wrap .appels_a_laction .cta-wrapper .cta figure {
         overflow: hidden; }
+        .content-wrap .appels_a_laction .cta-wrapper .cta figure:hover + .description h3 a {
+          color: #ed3d8f; }
         .content-wrap .appels_a_laction .cta-wrapper .cta figure a {
           display: block;
           position: relative; }
@@ -1080,7 +1087,9 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
         .content-wrap .appels_a_laction .cta-wrapper .cta .description h3 {
           font-weight: 700;
           color: #000000;
-          text-transform: uppercase; }
+          text-transform: uppercase;
+          font-size: 2.6rem;
+          text-align: center; }
           .content-wrap .appels_a_laction .cta-wrapper .cta .description h3 a {
             color: inherit; }
             .content-wrap .appels_a_laction .cta-wrapper .cta .description h3 a:hover {
@@ -1169,6 +1178,12 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   .content-wrap .image_pleine_largeur {
     padding-top: 0;
     padding-bottom: 0; }
+    .content-wrap .image_pleine_largeur a:hover img {
+      -webkit-transition: all 0.5s;
+      transition: all 0.5s;
+      opacity: 0.6; }
+      .content-wrap .image_pleine_largeur a:hover img:hover {
+        text-decoration: none; }
   .content-wrap .partenaires h2 {
     text-align: center;
     color: #000000; }
@@ -1340,7 +1355,7 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       margin-right: 0; }
 
 #colophon {
-  padding: 35px 0 130px;
+  padding: 35px 0 80px;
   background-color: #000000;
   position: relative;
   z-index: 10; }
@@ -1544,6 +1559,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     background-color: #ffffff; }
     .content-wrap section .programs .program figure {
       overflow: hidden; }
+      .content-wrap section .programs .program figure:hover + .description h4 a {
+        color: #ed3d8f; }
       .content-wrap section .programs .program figure a {
         display: block;
         position: relative; }
@@ -1640,6 +1657,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     /* On retire le margin right pour que la dernière colonne arrive égale au contenu. */ }
     .content-wrap .articles_du_blog .articles .article:nth-child(3n) {
       margin-right: 0px; }
+  .content-wrap .articles_du_blog .articles .article figure:hover + .description h3 a {
+    color: #ed3d8f; }
   .content-wrap .articles_du_blog .articles .article .description {
     text-align: center; }
 
@@ -1657,7 +1676,9 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   .content-wrap .articles .article .description h3 {
     font-weight: 700;
     color: #000000;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    font-size: 2.6rem;
+    text-align: center; }
     .content-wrap .articles .article .description h3 a {
       color: inherit; }
       .content-wrap .articles .article .description h3 a:hover {
@@ -1682,11 +1703,21 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     display: -ms-flexbox;
     display: flex;
     background-color: #f5f5f5; }
+    @media only screen and (max-width: 767px) {
+      .page-blog .content-wrap .articles .article {
+        display: block; } }
     .page-blog .content-wrap .articles .article figure {
       -webkit-box-flex: 1;
           -ms-flex: 1 0 auto;
               flex: 1 0 auto;
       max-width: 50%; }
+      @media only screen and (max-width: 767px) {
+        .page-blog .content-wrap .articles .article figure {
+          width: 100%;
+          max-width: 100%;
+          display: block; } }
+      .page-blog .content-wrap .articles .article figure:hover + .description h3 a {
+        color: #ed3d8f; }
     .page-blog .content-wrap .articles .article .description {
       width: 100%;
       padding: 30px 20px; }
@@ -1713,6 +1744,9 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     -webkit-box-pack: end;
         -ms-flex-pack: end;
             justify-content: end; }
+    @media only screen and (max-width: 767px) {
+      .page-blog .content-wrap .col-wrapper .left-col {
+        width: 100%; } }
   .page-blog .content-wrap .col-wrapper .right-col {
     width: 40%;
     -webkit-box-flex: 1;
@@ -1721,6 +1755,9 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex; }
+    @media only screen and (max-width: 767px) {
+      .page-blog .content-wrap .col-wrapper .right-col {
+        display: none; } }
 
 .single-post .content-wrap section h1 {
   color: #000000;

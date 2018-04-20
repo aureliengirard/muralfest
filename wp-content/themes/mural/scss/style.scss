@@ -212,7 +212,9 @@ h4,
 	cursor: pointer;
 	@include hover-transition;
 	z-index: 1;
-
+    &.smaller{
+        font-size: 2rem;
+    }
 	&::after{
 		content: "";
 		mask: url(images/svg/paint-splash.svg) no-repeat 0 0;
@@ -473,6 +475,7 @@ h4,
 				left: 50%;
 				transform: translateX(-50%);
 				padding: 20px 0;
+                 padding-right: 17px;
 				margin-top: $offsetPadding; /* offset de l'espace blanc */
 				background-color: #ffffff;
 				box-shadow: 0px 4px 5px -1px rgba(0, 0, 0, 0.35);
@@ -488,14 +491,13 @@ h4,
 
 				li{
 					margin-bottom: 10px;
-
+                    width: 100%;
 					&:last-child{
 						margin-bottom: 0;
 					}
 
 					a{
 						font-size: 0.9em;
-
 						&:hover{
 							color: $color_pink;
 						}
@@ -608,16 +610,24 @@ input[type=radio]{
 	min-height: 1px;
 	hyphens: auto;
 	word-wrap: break-word;
-	@media only screen and (max-width: 767px) {
-		h1,h2,h3,h4,h5,h6{
-			hyphens: none;
-		}		
-	}
+	
+	h1,h2,h3,h4,h5,h6{
+		hyphens: none;
+	}		
+
 	section{
 		position: relative;
 		overflow: hidden;
-		z-index: 1;
-
+		z-index: 1;        
+        .texte-plein{
+            .texte-bloc{
+                p{
+                    a.button{
+                        margin-bottom:-28px;
+                    }
+                }
+            }
+        }
 		&.has-background-image{
 			.texte-plein{
 				.texte-bloc{
@@ -889,10 +899,14 @@ input[type=radio]{
 			 
 			.cta{
 				background-color: #ffffff;
-
+				
 				figure{
 					overflow: hidden;
-
+					&:hover{
+						+ .description h3 a{
+							color: $color_pink;
+						}
+					}
 					a{
 						display: block;
 						position: relative;
@@ -945,7 +959,8 @@ input[type=radio]{
 						font-weight: 700;
 						color: #000000;
 						text-transform: uppercase;
-
+						font-size:2.6rem;
+						text-align:center;
 						a{
 							color: inherit;
 
@@ -1070,6 +1085,12 @@ input[type=radio]{
 	.image_pleine_largeur{
 		padding-top: 0;
 		padding-bottom: 0;
+		a:hover{
+			img{
+				@include hover-transition;
+				opacity: 0.6;
+			}
+		}
 	}
 
 	.partenaires{
@@ -1286,7 +1307,7 @@ input[type=radio]{
 
 /// style footer
 #colophon{
-	padding: 35px 0 130px;
+	padding: 35px 0 80px;
 	background-color: #000000;
 	position: relative;
 	z-index: 10;

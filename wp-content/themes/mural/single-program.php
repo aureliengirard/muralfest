@@ -7,7 +7,7 @@
             <section class="basic-content">
                 <div class="content">
                     <section class="back-btn">
-                        <a class="readmore" href="<?= wp_get_referer() ?>">< <?php _e('Back', 'custom_theme') ?></a>
+                        <a class="readmore" href="<?= wp_get_referer() ?>"><?php _e('Back', 'custom_theme') ?></a>
                     </section>
 
                     <section class="col-wrapper">
@@ -63,7 +63,7 @@
                             <?php endif; ?>
                             
                             <?php if(get_field('lien_billets')): ?>
-                                <a href="<?php the_field('lien_billets'); ?>" target="_blank" rel="nofollow"><?php _e('Buy your ticket', 'site-theme'); ?></a>
+                                <a class="button smaller" href="<?php the_field('lien_billets'); ?>" target="_blank" rel="nofollow"><?php _e('Buy your ticket', 'site-theme'); ?></a>
                             <?php endif; ?>
 
                             <?php if(get_field('lien_evenement_facebook')): ?>

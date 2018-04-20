@@ -22,11 +22,18 @@
 			));
 
 			.program{
+
+				
 				background-color: #ffffff;
 
 				figure{
 					overflow: hidden;
-
+					&:hover{
+						+ .description h4 a{
+							color: $color_pink;
+						}
+					}
+				
 					a{
 						display: block;
 						position: relative;

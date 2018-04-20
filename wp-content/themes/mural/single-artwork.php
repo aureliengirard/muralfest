@@ -8,7 +8,7 @@
                 <div id="gmap"></div>
                 <div class="content">
                     <section class="back-btn">
-                        <a class="readmore" href="<?= wp_get_referer() ?>">< <?php _e('Back', 'custom_theme') ?></a>
+                        <a class="readmore" href="<?= wp_get_referer() ?>"><?php _e('Back', 'custom_theme') ?></a>
                     </section>
 
                     <section class="col-wrapper">
