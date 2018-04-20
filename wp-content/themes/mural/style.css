@@ -996,6 +996,12 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       @media only screen and (max-width: 767px) {
         .content-wrap .deux_colonnes .application figure:last-child {
           display: none; } }
+      .content-wrap .deux_colonnes .application figure:last-child {
+        -webkit-transform: rotate(-30deg);
+                transform: rotate(-30deg);
+        right: -5vw;
+        position: relative;
+        top: 1vw; }
       .content-wrap .deux_colonnes .application .content .app-info {
         width: -webkit-min-content;
         width: -moz-min-content;

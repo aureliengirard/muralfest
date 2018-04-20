@@ -844,13 +844,19 @@ input[type=radio]{
 				}
 			}
 		}
-
+		
 		.application{
 			margin-bottom: -30px; // met la section flush avec le bas du parent
 			@media only screen and (max-width: 767px) {
 				figure:last-child{
 					display: none;
 				}
+			}
+			figure:last-child{
+				transform: rotate(-30deg);
+				right:-5vw;
+				position: relative;
+				top:1vw;
 			}
 			.content{
 				.app-info{
