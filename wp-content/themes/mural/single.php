@@ -26,9 +26,9 @@ get_header(); ?>
                         <div class="right-col">
                             <h1><?php the_title(); ?></h1>
                             <p class="date"><?= get_the_date('j F Y'); ?></p>
-                            <div class="blog-categories">
+                            <!--<div class="blog-categories">
                                 <?= get_the_category_list( ', ', '', get_the_ID() ); ?>
-                            </div>
+                            </div>-->
 
                             <?php get_template_part('parts/inc', 'background_content'); ?>
                         </div>
