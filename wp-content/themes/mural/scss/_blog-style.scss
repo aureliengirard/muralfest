@@ -108,6 +108,10 @@
 				.description{
 					width: 100%;
 					padding: 30px 20px;
+
+					h3{
+						text-align: left;
+					}
 				}
 
 				&:nth-child(2n){
@@ -127,7 +131,7 @@
 			display: flex;
 
 			.left-col{
-				width: 60%;
+				width: 100%;
 				@media only screen and (max-width: 767px) {
 					width:100%;				
 				}
@@ -184,6 +188,18 @@
 				.content{
 					padding-left: 0;
 					padding-right: 0;
+				}
+			}
+
+			@include media-screen(){
+				flex-direction: column;
+
+				.left-col{
+					max-width: none;
+				}
+
+				.right-col{
+					padding-left: 0;
 				}
 			}
 		}

@@ -113,6 +113,7 @@
 				.venue{
 					font-weight: 700;
 					text-transform: uppercase;
+					display: block;
 				}
 			}
 		}
@@ -150,6 +151,18 @@
 				.content{
 					padding-left: 0;
 					padding-right: 0;
+				}
+			}
+
+			@include media-screen(){
+				flex-direction: column;
+
+				.left-col{
+					max-width: none;
+				}
+
+				.right-col{
+					padding-left: 0;
 				}
 			}
 		}

@@ -407,6 +407,7 @@ h4,
 
 	.nav-menu{
 		display: flex;
+		align-items: flex-end;
 	
 		li{
 			padding: 0px;
@@ -424,18 +425,19 @@ h4,
 					display: block;
 					border-bottom: 2px solid #919191;
 					border-right: 2px solid #919191;
-					width: 13px;
-					height: 13px;
+					width: 8px;
+					height: 8px;
 					margin: 0 auto;
-					position: relative;
-					top: 0px;
-					transform: rotate(45deg);
+					position: absolute;
+					left: 50%;
+					bottom: -100%;
+					transform: translate(-50%, -50%)rotate(45deg);
 					@include hover-transition();
 				}
 
 				&:hover::after{
 					border-color: $color_pink;
-					top: 3px;
+					margin-bottom: -3px;
 				}
 			}
 	
@@ -583,6 +585,7 @@ input{
 	padding: 12px 15px;
 	background-color: #000000;
 	width: 100%;
+	max-width: 100%;
 	min-width: 0;
 	@include hover-transition;
 
@@ -618,7 +621,8 @@ input[type=radio]{
 	section{
 		position: relative;
 		overflow: hidden;
-		z-index: 1;        
+		z-index: 1;
+
         .texte-plein{
             .texte-bloc{
                 p{
@@ -759,6 +763,10 @@ input[type=radio]{
 
 		section{
 			padding: 30px 0;
+
+			@include media-screen(){
+				padding: 15px 0;
+			}
 		}
 
 		.content{
@@ -1326,6 +1334,16 @@ input[type=radio]{
 
 		&:last-of-type{
 			margin-right: 0;
+		}
+	}
+}
+
+
+/// Page 404
+#post-404{
+	.content-wrap{
+		.page-404{
+			padding: 30px 0;
 		}
 	}
 }

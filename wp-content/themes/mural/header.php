@@ -63,4 +63,4 @@
 		</header><!-- #masthead -->
 
 		<main id="main" class="site-main site-content" role="main">
-			<div id="ink-transition"><div class="bg-layer"></div></div>
+			<!--<div id="ink-transition"><div class="bg-layer"></div></div>-->

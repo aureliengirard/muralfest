@@ -81,7 +81,7 @@ class Artworks {
 	public function sendDataJS(){
 		// Localize the script with new data
 		wp_localize_script( 'artworks-map', 'artworks', $this->get_artworks() );
-		wp_localize_script( 'artworks-map', 'translation', array(
+		wp_localize_script( 'artworks-map', 'translation_map', array(
 			'readmore' => __('Learn more +', 'site-theme'),
 			'by' => __('By:', 'site-theme')
 		));

@@ -2,9 +2,13 @@ $(function(){
 	
 	/////// 
 	// Prevent transitions before DOM load
-	$('#ink-transition .bg-layer').one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e) {
+	$(window).load(function() {
 		$("body").removeClass("preload");
 	});
+	/*$('#ink-transition .bg-layer').one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e) {
+		$("body").removeClass("preload");
+	});*/
+
 	console.log("place = " + $('.program-filters select[name="selected-artist"]').attr("placeholder"))
 		$('.program-filters select').select2({
 			allowClear: true,

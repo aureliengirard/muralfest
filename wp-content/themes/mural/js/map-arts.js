@@ -240,12 +240,12 @@ $(function(){
 				infoContent +=			'<div class="right-col">';
 				infoContent +=  			'<div class="artwork-infos">';
 				infoContent +=  				'<h4><a href="'+artwork.link+'">'+artwork.title+'</a></h4>';
-				infoContent +=  				'<p class="artist"><span>'+translation.by+'</span> '+artwork.artist.name+'</p>';
+				infoContent +=  				'<p class="artist"><span>'+translation_map.by+'</span> '+artwork.artist.name+'</p>';
 				infoContent +=  				'<p class="date">'+artwork.date+'</p>';
 				infoContent +=  			'</div>';
 				infoContent += 				'<div class="artwork-desc">';
 				infoContent += 					artwork.description
-				infoContent += 					'<p><a href="'+artwork.link+'" class="readmore">'+translation.readmore+'</a></p>';
+				infoContent += 					'<p><a href="'+artwork.link+'" class="readmore">'+translation_map.readmore+'</a></p>';
 				infoContent += 				'</div>';
 				infoContent += 			'</div>';
 				infoContent += 		'</div>';

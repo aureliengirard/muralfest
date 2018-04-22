@@ -20,19 +20,11 @@
             }else{
                 echo date_i18n('j F Y', strtotime(get_field('event_date')));
             }
-            if(get_field('heure_de_debut')){
-                echo  ' | '.date_i18n('H:i', strtotime(get_field('heure_de_debut')));
-
-                if(get_field('heure_de_fin')){
-                    echo ' '.__('to', 'site-theme').' '. date_i18n('H:i', strtotime(get_field('heure_de_fin')));
-                }
-            }
-            echo ' | ';
             ?>
             </span>
             <span class="venue"><?= get_the_title(get_field('lieu')); ?></span>
         </p>
-        <?= truncate(get_field('resume'), 50, "", true); ?>
+        <?= truncate(get_field('resume'), 60, "&hellip;", true); ?>
         <a class="readmore" href="<?php the_permalink(); ?>"><?php _e('Learn more +', 'site-theme'); ?></a>
     </div>
 </div>

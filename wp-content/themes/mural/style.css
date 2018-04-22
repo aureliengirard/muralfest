@@ -624,7 +624,10 @@ h4,
   .navigation .nav-menu {
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex; }
+    display: flex;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end; }
     .navigation .nav-menu li {
       padding: 0px;
       font-size: 1.4rem;
@@ -646,20 +649,21 @@ h4,
         display: block;
         border-bottom: 2px solid #919191;
         border-right: 2px solid #919191;
-        width: 13px;
-        height: 13px;
+        width: 8px;
+        height: 8px;
         margin: 0 auto;
-        position: relative;
-        top: 0px;
-        -webkit-transform: rotate(45deg);
-                transform: rotate(45deg);
+        position: absolute;
+        left: 50%;
+        bottom: -100%;
+        -webkit-transform: translate(-50%, -50%) rotate(45deg);
+                transform: translate(-50%, -50%) rotate(45deg);
         -webkit-transition: all 0.5s;
         transition: all 0.5s; }
         .navigation .nav-menu li.menu-item-has-children::after:hover {
           text-decoration: none; }
       .navigation .nav-menu li.menu-item-has-children:hover::after {
         border-color: #ed3d8f;
-        top: 3px; }
+        margin-bottom: -3px; }
       .navigation .nav-menu li:hover .sub-menu {
         opacity: 1;
         width: auto;
@@ -801,6 +805,7 @@ input, textarea {
   padding: 12px 15px;
   background-color: #000000;
   width: 100%;
+  max-width: 100%;
   min-width: 0;
   -webkit-transition: all 0.5s;
   transition: all 0.5s; }
@@ -923,6 +928,9 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       z-index: -1; }
     .content-wrap section section {
       padding: 30px 0; }
+      @media only screen and (max-width: 768px) {
+        .content-wrap section section {
+          padding: 15px 0; } }
     .content-wrap section .content p, .content-wrap section .content li {
       font-size: 2.4rem;
       line-height: 1.5;
@@ -1374,6 +1382,9 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     .content-wrap section .content .sharing a:last-of-type {
       margin-right: 0; }
 
+#post-404 .content-wrap .page-404 {
+  padding: 30px 0; }
+
 #colophon {
   padding: 35px 0 80px;
   background-color: #000000;
@@ -1632,7 +1643,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   font-weight: 600; }
   .content-wrap section .content .event-infos .venue {
     font-weight: 700;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    display: block; }
 
 .single-program .content-wrap section h1 {
   color: #000000;
@@ -1657,6 +1669,16 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     .single-program .content-wrap .col-wrapper .right-col .content {
       padding-left: 0;
       padding-right: 0; }
+  @media only screen and (max-width: 768px) {
+    .single-program .content-wrap .col-wrapper {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column; }
+      .single-program .content-wrap .col-wrapper .left-col {
+        max-width: none; }
+      .single-program .content-wrap .col-wrapper .right-col {
+        padding-left: 0; } }
 
 .content-wrap .articles_du_blog h2 {
   text-align: center;
@@ -1741,6 +1763,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     .page-blog .content-wrap .articles .article .description {
       width: 100%;
       padding: 30px 20px; }
+      .page-blog .content-wrap .articles .article .description h3 {
+        text-align: left; }
     .page-blog .content-wrap .articles .article:nth-child(2n) {
       background-color: #fff; }
       .page-blog .content-wrap .articles .article:nth-child(2n) figure {
@@ -1757,7 +1781,7 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   display: -ms-flexbox;
   display: flex; }
   .page-blog .content-wrap .col-wrapper .left-col {
-    width: 60%;
+    width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1807,6 +1831,16 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     .single-post .content-wrap .col-wrapper .right-col .content {
       padding-left: 0;
       padding-right: 0; }
+  @media only screen and (max-width: 768px) {
+    .single-post .content-wrap .col-wrapper {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column; }
+      .single-post .content-wrap .col-wrapper .left-col {
+        max-width: none; }
+      .single-post .content-wrap .col-wrapper .right-col {
+        padding-left: 0; } }
 
 .single-artwork .content-wrap section h1 {
   color: #000000; }
@@ -1831,6 +1865,17 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   .single-artwork .content-wrap .col-wrapper .right-col {
     width: 50%;
     padding-left: 30px; }
+  @media only screen and (max-width: 768px) {
+    .single-artwork .content-wrap .col-wrapper {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column; }
+      .single-artwork .content-wrap .col-wrapper .left-col {
+        max-width: none; }
+      .single-artwork .content-wrap .col-wrapper .right-col {
+        padding-left: 0;
+        width: auto; } }
 
 .single-artwork #gmap {
   height: 300px;

@@ -26,9 +26,9 @@ get_header(); ?>
 								
 							</div>
 
-							<div class="right-col">
+							<!--<div class="right-col">
 								<?php get_sidebar(); ?>
-							</div>
+							</div>-->
 						</div>
 					</div>
 				</section>

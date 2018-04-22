@@ -27,7 +27,6 @@ get_header(); ?>
 		endif; ?>
 	
 	</div>
-	<? get_sidebar(); ?>
 </div>
 
 <?php get_footer(); ?>
