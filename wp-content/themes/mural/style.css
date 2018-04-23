@@ -1661,7 +1661,7 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
 
 .content-wrap .evenements_a_venir .content h2 {
   text-align: center;
-  color: #000000; }
+  color: #fff; }
 
 .content-wrap .evenements_a_venir .button-wrap {
   text-align: center; }
