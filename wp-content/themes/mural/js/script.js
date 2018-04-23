@@ -9,7 +9,7 @@ $(function(){
 		$("body").removeClass("preload");
 	});*/
 	$search_artiste = -1
-	if ($('.program-filters select[name="artiste"] option').size() => 5){
+	if ($('.program-filters select[name="artiste"] option').size() >= 5){
 		$search_artiste = $('.program-filters select[name="artiste"] option').size();
 	}
 	$('.program-filters select[name="artiste"]').select2({
@@ -19,7 +19,7 @@ $(function(){
 	})
 
 	$search_category = -1
-	if ($('.program-filters select[name="category"] option').size() => 5) {
+	if ($('.program-filters select[name="category"] option').size() >= 5) {
 		$search_category= $('.program-filters select[name="category"] option').size();
 	}
 	$('.program-filters select[name="category"]').select2({
@@ -160,5 +160,7 @@ $(function(){
 
 $.urlParam = function (name) {
 	var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-	return results[1] || 0;
+	if (results){
+		return results[1] || 0;
+	}
 }
