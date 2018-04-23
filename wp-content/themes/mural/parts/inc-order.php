@@ -1,7 +1,7 @@
 <?php
 $date_value = '';
 if(isset($_GET['date'])){
-    $date_value = $_GET['daterange'];
+    $date_value = $_GET['date'];
 }
 
 $artist_value = '';
@@ -21,7 +21,7 @@ if (isset($_GET['category'])) {
     <div class="content">
         <form class="program-filters" action="<?php the_permalink(); ?>">
             <div id="orderby-wrap">
-                <input type="text" name="daterange" value="<?= $date_value ?>" placeholder="<?php _e('Filter by date', 'site-theme'); ?>" />
+                <input type="text" name="date" value="<?= $date_value ?>" placeholder="<?php _e('Filter by date', 'site-theme'); ?>" />
                 <div></div>
             </div>
 
