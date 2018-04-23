@@ -105,6 +105,7 @@
 
     .ui-datepicker-buttonpane{
         display: flex;
+        justify-content: space-between;
 
         button{
             @extend .button;
@@ -112,18 +113,12 @@
             font-size: 1.2rem;
             background-image: none;
             border-radius: 0;
-            padding:10px 14px;
+            padding:10px 9px;
 
             &.ui-datepicker-close{
-                margin-left: auto;
+                margin-left: 0px;
             }
         }
-        @media only screen and (max-width: 767px) {
-            justify-content: space-between;  
-             button.ui-datepicker-close{
-                margin-left:0px;
-            }
-        }  
         @media only screen and (max-width: 380px) {
             button{
                 padding:10px 3px; 

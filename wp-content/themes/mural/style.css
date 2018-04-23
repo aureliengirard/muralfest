@@ -936,7 +936,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       .content-wrap section.bgcolor-white .appels_a_laction .cta-wrapper .cta,
       .content-wrap section.bgcolor-white .articles_du_blog .articles .article,
       .content-wrap section.bgcolor-white .evenements_a_venir .programs .program {
-        background-color: transparent; }
+        background-color: transparent;
+        text-align: center; }
       @media only screen and (max-width: 767px) {
         .content-wrap section.bgcolor-white {
           display: -webkit-box;
@@ -1609,22 +1610,18 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   .ui-datepicker .ui-datepicker-buttonpane {
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex; }
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between; }
     .ui-datepicker .ui-datepicker-buttonpane button {
       min-width: 0;
       font-size: 1.2rem;
       background-image: none;
       border-radius: 0;
-      padding: 10px 14px; }
+      padding: 10px 9px; }
       .ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-close {
-        margin-left: auto; }
-    @media only screen and (max-width: 767px) {
-      .ui-datepicker .ui-datepicker-buttonpane {
-        -webkit-box-pack: justify;
-            -ms-flex-pack: justify;
-                justify-content: space-between; }
-        .ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-close {
-          margin-left: 0px; } }
+        margin-left: 0px; }
     @media only screen and (max-width: 380px) {
       .ui-datepicker .ui-datepicker-buttonpane button {
         padding: 10px 3px; } }
