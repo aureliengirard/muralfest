@@ -1285,6 +1285,22 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       padding-left: 30px;
       padding-right: 0; }
 
+.content-wrap section .content .pagination .page-numbers {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px; }
+  .content-wrap section .content .pagination .page-numbers li {
+    display: inline; }
+    .content-wrap section .content .pagination .page-numbers li a, .content-wrap section .content .pagination .page-numbers li span {
+      padding: 10px;
+      font-weight: 600; }
+    .content-wrap section .content .pagination .page-numbers li a:hover {
+      text-decoration: underline; }
+    .content-wrap section .content .pagination .page-numbers li:before {
+      content: none; }
+    .content-wrap section .content .pagination .page-numbers li .current {
+      color: #04d3ff; }
+
 .content-wrap .filters {
   padding: 30px 0;
   overflow: visible;
@@ -1787,7 +1803,11 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     display: flex;
     -webkit-box-pack: end;
         -ms-flex-pack: end;
-            justify-content: end; }
+            justify-content: end;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
     @media only screen and (max-width: 767px) {
       .page-blog .content-wrap .col-wrapper .left-col {
         width: 100%; } }
