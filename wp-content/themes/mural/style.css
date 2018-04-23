@@ -1297,6 +1297,10 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       opacity: 0.6; }
       .content-wrap .image_pleine_largeur a:hover img:hover {
         text-decoration: none; }
+    @media only screen and (max-width: 650px) {
+      .content-wrap .image_pleine_largeur a img {
+        min-height: 150px;
+        max-width: none; } }
   .content-wrap .partenaires h2 {
     text-align: center;
     color: #000000; }
