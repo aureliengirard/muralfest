@@ -67,11 +67,11 @@
                             <?php endif; ?>
 
                             <?php if(get_field('lien_evenement_facebook')): ?>
-                                <a class="button smaller" href="<?php the_field('lien_evenement_facebook'); ?>" target="_blank" rel="nofollow"><?php _e('View Facebook event', 'site-theme'); ?></a>
+                                <a class="button smaller facebook" href="<?php the_field('lien_evenement_facebook'); ?>" target="_blank" rel="nofollow"><?php _e('View Facebook event', 'site-theme'); ?></a>
                             <?php endif; ?>
 
                             <?php if(get_field('lien_playlist')): ?>
-                                <a class="button smaller" href="<?php the_field('lien_playlist'); ?>" target="_blank" rel="nofollow"><?php _e('Listen to the playlist', 'site-theme'); ?></a>
+                                <a class="button smaller playlist" href="<?php the_field('lien_playlist'); ?>" target="_blank" rel="nofollow"><?php _e('Listen to the playlist', 'site-theme'); ?></a>
                             <?php endif; ?>
 
                             <?php get_template_part('parts/inc', 'background_content'); ?>

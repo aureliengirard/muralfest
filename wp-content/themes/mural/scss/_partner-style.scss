@@ -20,6 +20,11 @@
                     opacity: 0.6;
                 }
             }
+            &.featured{
+                width:100%;
+                text-align: center;
+                order:-1;
+            }
         }
     }
 }

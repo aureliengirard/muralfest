@@ -460,7 +460,18 @@ h4,
   .button:hover, .ui-datepicker .ui-datepicker-buttonpane button:hover {
     text-decoration: none; }
   .button.smaller, .ui-datepicker .ui-datepicker-buttonpane button.smaller {
-    font-size: 1.8rem; }
+    font-size: 1.8rem;
+    padding: 10px 14px;
+    letter-spacing: normal; }
+  .button.facebook, .ui-datepicker .ui-datepicker-buttonpane button.facebook {
+    background-color: #ed3d8f;
+    color: #fff204; }
+  .button.playlist, .ui-datepicker .ui-datepicker-buttonpane button.playlist {
+    background-color: #04d3ff;
+    color: #fff204; }
+    .button.playlist:hover, .ui-datepicker .ui-datepicker-buttonpane button.playlist:hover {
+      background-color: #fff204;
+      color: #ed3d8f; }
   .button::after, .ui-datepicker .ui-datepicker-buttonpane button::after {
     content: "";
     -webkit-mask: url(images/svg/paint-splash.svg) no-repeat 0 0;
@@ -2014,6 +2025,12 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
         text-decoration: none; }
       .partners .tier .partner a:hover {
         opacity: 0.6; }
+    .partners .tier .partner.featured {
+      width: 100%;
+      text-align: center;
+      -webkit-box-ordinal-group: 0;
+          -ms-flex-order: -1;
+              order: -1; }
 
 body.preload #ink-transition {
   opacity: 1;
