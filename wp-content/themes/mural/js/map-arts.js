@@ -212,7 +212,7 @@ $(function(){
 			var infoWindows = [];
 			map.markers = [];
 
-			artworks.forEach(artwork => {
+			$.each(artworks, function(id, artwork){
 				lat = artwork.coords.lat;
 				lng = artwork.coords.lng;
 		
@@ -258,6 +258,7 @@ $(function(){
 				infoWindows.push(infowindow);
 				
 				var markerMap = new google.maps.Marker({
+					markerid: id,
 					position: markerPos,
 					map: map,
 					title: artwork.title,
@@ -283,6 +284,23 @@ $(function(){
 
 					infowindow.open(map, markerMap);
 				});
+			});
+
+			function openInfoWindow(targetID){
+				$.each(map.markers, function(index, val) {
+					if(val.markerid == targetID){
+						new google.maps.event.trigger( val, 'click' );
+						var offsetMap = $('#gmap-arts').offset();
+
+						$("html, body").animate({ scrollTop: offsetMap.top - 10 }, "slow");
+						
+						return false;
+					}
+				});
+			}
+
+			$('.artwork-list .artwork span').click(function(){
+				openInfoWindow($(this).data('markerid'));
 			});
 
 			map.fitBounds(bounds);

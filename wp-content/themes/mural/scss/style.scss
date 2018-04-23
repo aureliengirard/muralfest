@@ -905,13 +905,15 @@ input[type=radio]{
 
 				li{
 					margin-bottom: 0;
+					margin-left: 28px;
 					
 					&:before{
 						content: "»";
 						font-size: 1.3333em;
 						color: $color_pink;
 						font-weight: 800;
-						margin-right: 5px;
+						display: inline-block;
+						text-indent: -28px;
 					}
 				}
 			}

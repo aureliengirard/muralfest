@@ -1031,13 +1031,15 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     .content-wrap section .content ul {
       list-style-type: none; }
       .content-wrap section .content ul li {
-        margin-bottom: 0; }
+        margin-bottom: 0;
+        margin-left: 28px; }
         .content-wrap section .content ul li:before {
           content: "»";
           font-size: 1.3333em;
           color: #ed3d8f;
           font-weight: 800;
-          margin-right: 5px; }
+          display: inline-block;
+          text-indent: -28px; }
   .content-wrap .deux_colonnes {
     padding-top: 0;
     padding-bottom: 0; }
@@ -2097,6 +2099,40 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
         padding-right: 0px; }
       #gmap-arts .artwork-data .right-col {
         padding-left: 0px; } }
+
+.content-wrap .artwork-list .content .artwork-col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+  .content-wrap .artwork-list .content .artwork-col .artwork {
+    width: calc(100% / 4 - ((20px * 3) / 4));
+    /* On divise la largeur totale disponible également entre toutes les colonnes, puis on soustrait à chaque colonnes le gap désiré */
+    margin-right: 20px;
+    margin-bottom: 15px;
+    /* On retire le margin right pour que la dernière colonne arrive égale au contenu. */ }
+    .content-wrap .artwork-list .content .artwork-col .artwork:nth-child(4n) {
+      margin-right: 0px; }
+  .content-wrap .artwork-list .content .artwork-col .artwork span {
+    cursor: pointer;
+    font-size: 1.8rem;
+    position: relative;
+    margin-left: 28px;
+    display: inline-block;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s; }
+    .content-wrap .artwork-list .content .artwork-col .artwork span:hover {
+      text-decoration: none; }
+    .content-wrap .artwork-list .content .artwork-col .artwork span:before {
+      content: "»";
+      font-size: 1.3333em;
+      color: #ed3d8f;
+      font-weight: 800;
+      display: inline-block;
+      text-indent: -28px; }
+    .content-wrap .artwork-list .content .artwork-col .artwork span:hover {
+      color: #ed3d8f; }
 
 .partners .tier {
   display: -webkit-box;
