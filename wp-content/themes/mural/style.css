@@ -1081,7 +1081,7 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       display: flex;
       -webkit-box-pack: end;
           -ms-flex-pack: end;
-              justify-content: end; }
+              justify-content: flex-end; }
       .content-wrap .deux_colonnes .left-col .content-width .col-content {
         width: calc(1200px / 2);
         max-width: calc(100vw / 2); }

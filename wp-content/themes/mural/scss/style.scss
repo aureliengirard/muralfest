@@ -961,7 +961,7 @@ input[type=radio]{
 		.left-col{
 			.content-width{
 				display: flex;
-				justify-content: end;
+				justify-content: flex-end;
 
 				.col-content{
 					width: calc(#{$c12MaxWidth} / 2);
