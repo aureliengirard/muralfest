@@ -808,6 +808,31 @@ h4,
           font-size: 6rem;
           font-weight: bold;
           color: #fff; }
+        @media only screen and (max-width: 1620px) {
+          .banner figure.left-banner .banner-overlay h4 {
+            font-size: 5rem; }
+          .banner figure.left-banner .banner-overlay a {
+            font-size: 2rem; } }
+        @media only screen and (max-width: 1050px) {
+          .banner figure.left-banner .banner-overlay {
+            padding-right: 15px;
+            padding-left: 15px;
+            top: 5%;
+            right: 40px; }
+            .banner figure.left-banner .banner-overlay .button, .banner figure.left-banner .banner-overlay .ui-datepicker .ui-datepicker-buttonpane button, .ui-datepicker .ui-datepicker-buttonpane .banner figure.left-banner .banner-overlay button {
+              margin: 0; } }
+        @media only screen and (max-width: 767px) {
+          .banner figure.left-banner .banner-overlay {
+            right: 0;
+            left: 0;
+            text-align: center; }
+            .banner figure.left-banner .banner-overlay h4 {
+              font-size: 5rem; }
+            .banner figure.left-banner .banner-overlay a {
+              font-size: 3rem; } }
+        @media only screen and (max-width: 450px) {
+          .banner figure.left-banner .banner-overlay a {
+            font-size: 2rem; } }
     .banner figure.right-banner {
       display: block; }
       .banner figure.right-banner img {
@@ -1634,7 +1659,7 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
 
 .content-wrap .evenements_a_venir .content h2 {
   text-align: center;
-  color: #000000; }
+  color: #fff; }
 
 .content-wrap .evenements_a_venir .button-wrap {
   text-align: center; }
@@ -1916,7 +1941,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
 
 .single-post .content-wrap section h1 {
   color: #000000;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  margin-top: 20px; }
 
 .single-post .content-wrap section .date {
   color: #ed3d8f; }
@@ -1930,6 +1956,12 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     text-decoration: none; }
   .single-post .content-wrap section .blog-categories a:hover {
     color: #04d3ff; }
+
+.single-post .content-wrap .sharing {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px; }
 
 .single-post .content-wrap .col-wrapper {
   display: -webkit-box;
