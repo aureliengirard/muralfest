@@ -966,6 +966,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
         text-shadow: 1px 1px 1px #ffffff; }
     .content-wrap section.bgcolor-gray {
       background-color: #f5f5f5; }
+    .content-wrap section.bgcolor-mauve {
+      background-color: #211041; }
     .content-wrap section.bgcolor-pink {
       background-color: #ed3d8f; }
       .content-wrap section.bgcolor-pink ::-moz-selection {
