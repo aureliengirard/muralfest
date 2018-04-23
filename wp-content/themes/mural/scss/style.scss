@@ -569,15 +569,18 @@ h4,
                 a{
                     color:$color_yellow;
                     text-transform: uppercase;
-                    font-size: 5.4rem;
+                    font-size: 4rem;
                     font-weight: bold; 
                     @include hover-transition;
                     &:hover{
                         color:$color_blue;
                     }
+                    &.button{
+                        color:$color_pink;
+                    }
                 }
                 h4{
-                    font-weight: 9.2rem;
+                    font-size: 6rem;
                     font-weight: bold;
                     color:#fff;
                 }

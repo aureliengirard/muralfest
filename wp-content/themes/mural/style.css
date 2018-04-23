@@ -778,7 +778,7 @@ h4,
         .banner figure.left-banner .banner-overlay a {
           color: #fff204;
           text-transform: uppercase;
-          font-size: 5.4rem;
+          font-size: 4rem;
           font-weight: bold;
           -webkit-transition: all 0.5s;
           transition: all 0.5s; }
@@ -786,8 +786,10 @@ h4,
             text-decoration: none; }
           .banner figure.left-banner .banner-overlay a:hover {
             color: #04d3ff; }
+          .banner figure.left-banner .banner-overlay a.button {
+            color: #ed3d8f; }
         .banner figure.left-banner .banner-overlay h4 {
-          font-weight: 9.2rem;
+          font-size: 6rem;
           font-weight: bold;
           color: #fff; }
     .banner figure.right-banner {
