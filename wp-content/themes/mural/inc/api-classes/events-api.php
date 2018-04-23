@@ -77,8 +77,13 @@ class Events_API extends Program_Routes {
         $en_id = apply_filters( 'wpml_object_id', $term->term_id, $term->taxonomy, true, 'en' );
         $fr_id = apply_filters( 'wpml_object_id', $term->term_id, $term->taxonomy, true, 'fr' );
 
+        global $sitepress;
+        remove_filter('get_term', array($sitepress,'get_term_adjust_id'), 1, 1);
+
         $en_term = get_term($en_id, $term->taxonomy);
         $fr_term = get_term($fr_id, $term->taxonomy);
+
+        add_filter('get_term', array($sitepress,'get_term_adjust_id'), 1, 1);
 
         $term_data = array(
             'key' => 'tag',
