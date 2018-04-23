@@ -28,6 +28,9 @@ class Venues_API extends Program_Routes {
      */
     public function get_venues( $request ){
         $data = array('venues' => array());
+
+        $data['venues'][] = $this->prepare_terms_for_response( array(), $request );
+
         $venues = get_posts(array(
             'post_type' => 'venue',
             'numberposts' => -1,
@@ -50,6 +53,46 @@ class Venues_API extends Program_Routes {
         }
 
         return new WP_REST_Response( $data, 200 );
+    }
+
+
+    /**
+     * Prépare la taxonomie pour la réponse de l'API.
+     * Il n'y as pas de taxonomie pour les lieux, on ajoute seulement "Murale"
+     * pour les oeuvres.
+     * 
+     * @param mixed $term taxonomie en object wordpress.
+     * @param WP_REST_Request $request Objet de la requête.
+     * @return mixed
+     */
+    public function prepare_terms_for_response( $term, $request ) {
+        $term_data = array(
+            'key' => 'tag',
+            'value' => array(
+                'id' => 'venue-tag-mural-id',
+                'title' => array(
+                    'value' => array(
+                        array(
+                            'key' => 'value',
+                            'value' => 'Mural',
+                            'attr' => array(
+                                'lang' => 'eng'
+                            )
+                        ),
+                        array(
+                            'key' => 'value',
+                            'value' => 'Murale',
+                            'attr' => array(
+                                'lang' => 'fre'
+                            )
+                        )
+                    )
+                ),
+                'color' => '#E44D42'
+            )
+        );
+
+        return $term_data;
     }
 
 
@@ -186,7 +229,7 @@ class Venues_API extends Program_Routes {
                     )
                 ),
                 'tags' => array(
-                    'tagId' => 119685
+                    'tagId' => 'venue-tag-mural-id'
                 ),
                 'gpsLatitude' => array(
                     'value' => (get_field('lieu_de_loeuvre', $fr_id) ? get_field('lieu_de_loeuvre', $fr_id)['lat'] : '')
