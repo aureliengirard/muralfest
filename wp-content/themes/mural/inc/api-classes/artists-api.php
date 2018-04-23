@@ -57,8 +57,11 @@ class Artists_API extends Program_Routes {
         $content_en = $this->get_dynamic_content($en_id, array('biographie'));
         $content_fr = $this->get_dynamic_content($fr_id, array('biographie'));
 
-        $style_en = (get_field('style', $en_id) ? get_field('style', $en_id) : "");
-        $style_fr = (get_field('style', $fr_id) ? get_field('style', $fr_id) : "");
+        $style_en = wp_get_post_terms($en_id, 'style', array('fields' => 'names'));
+        $style_fr = wp_get_post_terms($fr_id, 'style', array('fields' => 'names'));
+        
+        $style_en = ($style_en ? $style_en : "");
+        $style_fr = ($style_fr ? $style_fr : "");
 
         if(is_array($style_en)){
             $style_en = implode(", ", $style_en);
@@ -67,7 +70,13 @@ class Artists_API extends Program_Routes {
         if(is_array($style_fr)){
             $style_fr = implode(", ", $style_fr);
         }
-        
+
+        $acf_country = new acf_country_helpers();
+        $country_list_en = $acf_country->get_countries('en_CA');
+        $country_list_fr = $acf_country->get_countries('fr_CA');
+
+        $country_en = $country_list_en[get_field('pays_dorigine', $fr_id)];
+        $country_fr = $country_list_fr[get_field('pays_dorigine', $fr_id)];
 
         $artist_data = array(
             'key' => 'artist',
@@ -97,14 +106,14 @@ class Artists_API extends Program_Routes {
                     'value' => array(
                         array(
                             'key' => 'value',
-                            'value' => (get_field('pays_dorigine', $en_id) ? get_field('pays_dorigine', $en_id) : ''),
+                            'value' => ($country_en ? $country_en : ''),
                             'attr' => array(
                                 'lang' => 'eng'
                             )
                         ),
                         array(
                             'key' => 'value',
-                            'value' => (get_field('pays_dorigine', $fr_id) ? get_field('pays_dorigine', $fr_id) : ''),
+                            'value' => ($country_fr ? $country_fr : ''),
                             'attr' => array(
                                 'lang' => 'fre'
                             )
