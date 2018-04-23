@@ -774,7 +774,22 @@ h4,
       .banner figure.left-banner .banner-overlay {
         right: 90px;
         left: auto;
-        text-align: right; }
+        text-align: left; }
+        .banner figure.left-banner .banner-overlay a {
+          color: #fff204;
+          text-transform: uppercase;
+          font-size: 5.4rem;
+          font-weight: bold;
+          -webkit-transition: all 0.5s;
+          transition: all 0.5s; }
+          .banner figure.left-banner .banner-overlay a:hover {
+            text-decoration: none; }
+          .banner figure.left-banner .banner-overlay a:hover {
+            color: #04d3ff; }
+        .banner figure.left-banner .banner-overlay h4 {
+          font-weight: 9.2rem;
+          font-weight: bold;
+          color: #fff; }
     .banner figure.right-banner {
       display: block; }
       .banner figure.right-banner img {
@@ -1727,7 +1742,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   display: -ms-flexbox;
   display: flex; }
   .single-program .content-wrap .col-wrapper .left-col {
-    max-width: 50%; }
+    max-width: 35%;
+    width: 100%; }
   .single-program .content-wrap .col-wrapper .right-col {
     padding-left: 30px; }
     .single-program .content-wrap .col-wrapper .right-col .content {
