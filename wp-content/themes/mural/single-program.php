@@ -7,7 +7,7 @@
             <section class="basic-content">
                 <div class="content">
                     <section class="back-btn">
-                        <a class="readmore" href="<?= wp_get_referer() ?>"><?php _e('Back', 'custom_theme') ?></a>
+                        <a class="readmore" href="<?= wp_get_referer() ?>">< <?php _e('Back', 'custom_theme') ?></a>
                     </section>
 
                     <section class="col-wrapper">
@@ -48,7 +48,9 @@
                                     <?php
                                     $artists_name = '';
                                     foreach(get_field('artiste') as $artist){
-                                        $artists_name .= get_the_title($artist).', ';
+                                        $artists_name .= '<a href="'.get_the_permalink($artist).'">';
+                                        $artists_name .= get_the_title($artist);
+                                        $artists_name .= '</a>, ';
                                     }
                                     $artists_name = trim($artists_name, ', ');
                                     $pos = strrpos($artists_name, ',');
