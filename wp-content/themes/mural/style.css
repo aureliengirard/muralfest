@@ -779,21 +779,28 @@ h4,
       display: block; }
       .banner figure.right-banner img {
         width: 100%; }
-    @media only screen and (max-width: 767px) {
-      .banner figure.single-banner.with-overlay {
-        height: 50vh;
-        overflow: hidden; }
-        .banner figure.single-banner.with-overlay img {
-          max-width: none;
-          height: 100vw;
-          left: calc(100vw / -2);
-          position: relative; } }
-    .banner figure.single-banner .banner-overlay {
-      top: 50%;
-      left: 50%;
-      -webkit-transform: translateY(-50%) translateX(-50%);
-              transform: translateY(-50%) translateX(-50%);
-      text-align: center; }
+    .banner figure.single-banner {
+      background-size: cover;
+      background-position: center;
+      width: 100%;
+      height: 100vh; }
+      @media only screen and (max-width: 767px) {
+        .banner figure.single-banner.with-overlay {
+          height: 75vh; }
+          .banner figure.single-banner.with-overlay h1 {
+            font-size: 4rem; }
+          .banner figure.single-banner.with-overlay img {
+            display: block;
+            /*max-width: none;
+						height: 100vw;
+						left:calc(100vw / -50vw);
+						position: relative;*/ } }
+      .banner figure.single-banner .banner-overlay {
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translateY(-50%) translateX(-50%);
+                transform: translateY(-50%) translateX(-50%);
+        text-align: center; }
 
 /* Style des formulaires */
 ::-webkit-input-placeholder {
