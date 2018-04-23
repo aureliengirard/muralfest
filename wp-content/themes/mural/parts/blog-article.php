@@ -11,7 +11,7 @@
                 <?= get_the_category_list( ', ', '', get_the_ID() ); ?>
             </div>-->
         <?php endif;  ?>
-        <?= truncate(get_field('resume'), 50, "", true); ?>
+        <?= truncate(get_field('resume'), 145, "&hellip;", true); ?>
         <a class="readmore" href="<?php the_permalink(); ?>"><?php _e('Learn more +', 'site-theme'); ?></a>
     </div>
 </div>
