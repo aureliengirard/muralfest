@@ -194,6 +194,15 @@ class Festival {
             )
         ));
 
+        CPT()->cptOrth = 'm';
+        CPT()->add_taxonomy('style', array(
+            'custom_posts' => array('artist'),
+            'tax_variations' => array(
+                'singular' => _x('Style', 'taxonomy singular name', 'site-theme'),
+                'plural' => _x('Styles', 'taxonomy general name', 'site-theme')
+            )
+        ));
+
         $this->restricted_post_type = $festival_CPT;
     }
 	

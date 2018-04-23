@@ -767,40 +767,40 @@ h4,
         margin-bottom: 0; }
       .banner figure .banner-overlay .button, .banner figure .banner-overlay .ui-datepicker .ui-datepicker-buttonpane button, .ui-datepicker .ui-datepicker-buttonpane .banner figure .banner-overlay button {
         margin-top: 20px; }
-    .banner figure.left-banner .banner-overlay {
-      right: 90px;
-      left: auto;
-      text-align: left; }
-      .banner figure.left-banner .banner-overlay a {
-        color: #fff204;
-        text-transform: uppercase;
-        font-size: 5.4rem;
-        font-weight: bold;
-        -webkit-transition: all 0.5s;
-        transition: all 0.5s; }
-        .banner figure.left-banner .banner-overlay a:hover {
-          text-decoration: none; }
-        .banner figure.left-banner .banner-overlay a:hover {
-          color: #04d3ff; }
-      .banner figure.left-banner .banner-overlay h4 {
-        font-weight: 9.2rem;
-        font-weight: bold;
-        color: #fff; }
-    @media only screen and (max-width: 767px) {
-      .banner figure.single-banner.with-overlay {
-        height: 50vh;
-        overflow: hidden; }
-        .banner figure.single-banner.with-overlay img {
-          max-width: none;
-          height: 100vw;
-          left: calc(100vw / -2);
-          position: relative; } }
-    .banner figure.single-banner .banner-overlay {
-      top: 50%;
-      left: 50%;
-      -webkit-transform: translateY(-50%) translateX(-50%);
-              transform: translateY(-50%) translateX(-50%);
-      text-align: center; }
+    .banner figure.left-banner {
+      display: block; }
+      .banner figure.left-banner img {
+        width: 100%; }
+      .banner figure.left-banner .banner-overlay {
+        right: 90px;
+        left: auto;
+        text-align: right; }
+    .banner figure.right-banner {
+      display: block; }
+      .banner figure.right-banner img {
+        width: 100%; }
+    .banner figure.single-banner {
+      background-size: cover;
+      background-position: center;
+      width: 100%;
+      height: 100vh; }
+      @media only screen and (max-width: 767px) {
+        .banner figure.single-banner.with-overlay {
+          height: 75vh; }
+          .banner figure.single-banner.with-overlay h1 {
+            font-size: 4rem; }
+          .banner figure.single-banner.with-overlay img {
+            display: block;
+            /*max-width: none;
+						height: 100vw;
+						left:calc(100vw / -50vw);
+						position: relative;*/ } }
+      .banner figure.single-banner .banner-overlay {
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translateY(-50%) translateX(-50%);
+                transform: translateY(-50%) translateX(-50%);
+        text-align: center; }
 
 /* Style des formulaires */
 ::-webkit-input-placeholder {
@@ -1727,8 +1727,7 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   display: -ms-flexbox;
   display: flex; }
   .single-program .content-wrap .col-wrapper .left-col {
-    max-width: 35%;
-    width: 100%; }
+    max-width: 50%; }
   .single-program .content-wrap .col-wrapper .right-col {
     padding-left: 30px; }
     .single-program .content-wrap .col-wrapper .right-col .content {
