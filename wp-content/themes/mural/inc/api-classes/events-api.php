@@ -184,9 +184,9 @@ class Events_API extends Program_Routes {
                     )
                 ),
                 'photo' => array(
-                    'value' => wp_get_attachment_url(get_field('image_de_levenement', $event->ID)),
+                    'value' => wp_get_attachment_url(get_field('image_de_levenement', $fr_id)),
                     'attr' => array(
-                        'updateDate' => get_the_modified_date('Y-m-d H:i', get_field('image_de_levenement', $event->ID))
+                        'updateDate' => get_the_modified_date('Y-m-d H:i', get_field('image_de_levenement', $fr_id))
                     )
                 ),
                 'link1' => array(
@@ -251,7 +251,8 @@ class Events_API extends Program_Routes {
         if(!empty($terms)){
             foreach ($terms as $term) {
                 $event_data['value']['tags'] = array(
-                    'tagId' => $term->term_id
+                    'key' => 'tagId',
+                    'value' => $term->term_id
                 );
             }
         }
