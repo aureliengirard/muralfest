@@ -9,12 +9,20 @@ $(function(){
 		$("body").removeClass("preload");
 	});*/
 
-	console.log("place = " + $('.program-filters select[name="selected-artist"]').attr("placeholder"))
-		$('.program-filters select').select2({
+	$('.program-filters select[name="artiste"]').select2({
+		allowClear: true,
+		placeholder: $('.program-filters select[name="artiste"]').attr("placeholder")
+	})
+	$('.program-filters select[name="category"]').select2({
 			allowClear: true,
-			placeholder: $('.program-filters select[name="selected-artist"]').attr("placeholder")
-		}
-	);
+			minimumResultsForSearch: -1,
+			placeholder: $('.program-filters select[name="category"]').attr("placeholder")
+	})
+	if ($.urlParam('category') != 0 || $.urlParam('artiste') != 0 ||  $.urlParam('date') != 0){
+		$('html, body').animate({
+			scrollTop: $(".filters").offset().top 
+		}, 0);
+	}
 
 	
 	// Menumobile - http://mmenu.frebsite.nl/
@@ -140,3 +148,8 @@ $(function(){
 		}); 
 	});
 });
+
+$.urlParam = function (name) {
+	var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+	return results[1] || 0;
+}

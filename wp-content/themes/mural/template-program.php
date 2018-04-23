@@ -45,16 +45,33 @@ get_header(); ?>
                         )
                     );
 
-                    if(isset($_GET['selected-artist']) && $_GET['selected-artist'] != ''){
+                    if(isset($_GET['artiste']) && $_GET['artiste'] != ''){
+                        $artist_arg= [
+                            'post_type' => 'artist',
+                            'posts_per_page' => 1,
+                            'post_name__in' => array(sanitize_text_field($_GET['artiste'])),
+                            'fields' => 'ids'
+                        ];
+                        $q = get_posts($artist_arg);                        
                         $args['meta_query'][] = array(
                             'key' => 'artiste',
-                            'value' => serialize(strval($_GET['selected-artist'])),
+                            'value' => serialize(strval($q[0])),
                             'compare' => 'LIKE'
                         );
                     }
 
-                    if(isset($_GET['daterange']) && $_GET['daterange'] != ''){
-                        $posted_date = $_GET['daterange'];
+
+                if (isset($_GET['category']) && $_GET['category'] != '') {
+                    $args['tax_query'][] = array(
+                        'taxonomy' => 'event-category',
+                        'field' => 'slug',
+                        'terms' => sanitize_text_field($_GET['category']),
+                    );                    
+                }
+
+
+                    if(isset($_GET['date']) && $_GET['date'] != ''){
+                        $posted_date = $_GET['date'];
 
                         if(strrpos($posted_date, ' - ')){
                             $daterange = explode(' - ', $posted_date);
