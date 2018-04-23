@@ -1902,6 +1902,28 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     font-size: 1.8rem;
     line-height: 1.3; }
 
+.home .content-wrap .articles_du_blog .content .articles .article {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+  .home .content-wrap .articles_du_blog .content .articles .article .description {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+    .home .content-wrap .articles_du_blog .content .articles .article .description .readmore {
+      margin-top: auto; }
+
 .page-blog .content-wrap .articles {
   width: 100%; }
   .page-blog .content-wrap .articles .article {

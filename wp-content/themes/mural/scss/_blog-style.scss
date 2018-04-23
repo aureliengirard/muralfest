@@ -27,7 +27,6 @@
 
 	.articles{
 		.article{
-			//display: flex;
 
 			figure{
 				a{
@@ -43,7 +42,6 @@
 			.description{
 				//max-width: 50%;
 				padding: 15px 20px;
-
 				h3{
 					font-weight: 700;
 					color: #000000;
@@ -77,7 +75,28 @@
 		}
 	}
 }
-
+.home{
+    .content-wrap{
+        .articles_du_blog{
+            .content{
+                .articles{
+                    .article{
+                        display:flex;
+                        flex-direction: column;
+                        .description{
+                            display:flex;
+                            flex-grow: 1;
+                            flex-direction: column;
+                            .readmore{
+                                margin-top:auto;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 .page-blog{
 	.content-wrap{
 		.articles{
