@@ -27,7 +27,7 @@ $(function(){
 			minimumResultsForSearch: $search_category,
 			placeholder: $('.program-filters select[name="category"]').attr("placeholder")
 	})
-	if ($.urlParam('category') != 0 || $.urlParam('artiste') != 0 ||  $.urlParam('date') != 0){
+	if ($.urlParam('category') || $.urlParam('artiste') ||  $.urlParam('date') ){
 		$('html, body').animate({
 			scrollTop: $(".filters").offset().top 
 		}, 0);
@@ -160,7 +160,9 @@ $(function(){
 
 $.urlParam = function (name) {
 	var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-	if (results){
-		return results[1] || 0;
+	if (results){	
+		return results[1] || null;
+	}else{		
+		return null;
 	}
 }
