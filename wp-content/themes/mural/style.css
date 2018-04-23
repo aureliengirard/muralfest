@@ -460,7 +460,7 @@ h4,
   .button:hover, .ui-datepicker .ui-datepicker-buttonpane button:hover {
     text-decoration: none; }
   .button.smaller, .ui-datepicker .ui-datepicker-buttonpane button.smaller {
-    font-size: 2rem; }
+    font-size: 1.8rem; }
   .button::after, .ui-datepicker .ui-datepicker-buttonpane button::after {
     content: "";
     -webkit-mask: url(images/svg/paint-splash.svg) no-repeat 0 0;
@@ -1022,7 +1022,9 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       .content-wrap .deux_colonnes .application .content .app-info {
         width: -webkit-min-content;
         width: -moz-min-content;
-        width: min-content; }
+        width: min-content;
+        -ms-flex-item-align: center;
+            align-self: center; }
   .content-wrap .video .iframe-style {
     margin: 0 auto; }
     .content-wrap .video .iframe-style .fluid-iframe {
@@ -1121,6 +1123,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     text-align: center; }
   .content-wrap .titre-section h2 {
     margin-bottom: 0; }
+  .content-wrap .bgcolor-white .formulaire_infolettre h3 {
+    color: black; }
   .content-wrap .formulaire_infolettre h3 {
     text-transform: uppercase;
     font-weight: 700; }
@@ -1159,10 +1163,7 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     .content-wrap .application .content {
       display: -webkit-box;
       display: -ms-flexbox;
-      display: flex;
-      -webkit-box-pack: justify;
-          -ms-flex-pack: justify;
-              justify-content: space-between; }
+      display: flex; }
       .content-wrap .application .content .app-info {
         display: -webkit-box;
         display: -ms-flexbox;
