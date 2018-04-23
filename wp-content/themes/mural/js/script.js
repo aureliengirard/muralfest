@@ -27,6 +27,17 @@ $(function(){
 			minimumResultsForSearch: $search_category,
 			placeholder: $('.program-filters select[name="category"]').attr("placeholder")
 	})
+
+	$search_style = -1
+	if ($('.program-filters select[name="style"] option').size() >= 5) {
+		$search_style = $('.program-filters select[name="style"] option').size();
+	}
+	$('.program-filters select[name="style"]').select2({
+		allowClear: true,
+		minimumResultsForSearch: $search_style,
+		placeholder: $('.program-filters select[name="style"]').attr("placeholder")
+	})
+
 	if ($.urlParam('category') || $.urlParam('artiste') ||  $.urlParam('date') ){
 		$('html, body').animate({
 			scrollTop: $(".filters").offset().top 
