@@ -14,25 +14,22 @@ get_header(); ?>
                     <section class="back-btn">
                         <a class="readmore" href="<?= wp_get_referer() ?>">< <?php _e('Back', 'custom_theme') ?></a>
                     </section>
-
-                    <section class="col-wrapper">
-                        <div class="left-col">
+                        <div class="content-blog">
                             <figure>
                                 <?= wp_get_attachment_image(get_field('image_a_la_une'), 'original'); ?>
                             </figure>
-                            <?php get_template_part('parts/inc', 'share'); ?>
-                        </div>
-
-                        <div class="right-col">
+                           
                             <h1><?php the_title(); ?></h1>
                             <p class="date"><?= get_the_date('j F Y'); ?></p>
+                         
                             <!--<div class="blog-categories">
                                 <?= get_the_category_list( ', ', '', get_the_ID() ); ?>
                             </div>-->
 
                             <?php get_template_part('parts/inc', 'background_content'); ?>
-                        </div>
-                    </section>
+                        
+                            <?php get_template_part('parts/inc', 'share'); ?>
+                     </div>
                 </div>
             </section>
 

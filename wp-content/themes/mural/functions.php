@@ -41,7 +41,7 @@ function register_CPT(){
  */
 function cdm_add_images_sizes(){
     add_image_size( 'cta-preview', 400, 285, array('center', 'center') );
-    add_image_size( 'blog-preview', 600, 400, array('center', 'center') );
+	add_image_size( 'blog-preview', 600, 400, array('center', 'center') );
 }
 add_action( 'init', 'cdm_add_images_sizes' );
 

@@ -1918,7 +1918,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
 
 .single-post .content-wrap section h1 {
   color: #000000;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  margin-top: 20px; }
 
 .single-post .content-wrap section .date {
   color: #ed3d8f; }
