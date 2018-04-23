@@ -29,7 +29,7 @@ $c12Gutter: 15px;
 .preload *{
 	transition: none !important;
 }
-
+ 
 /*****************************************************
 	General / Reset / Structure
 /*****************************************************/
@@ -561,9 +561,12 @@ h4,
 /// Style de la bannière
 .banner{
 	display: flex;
+	justify-content: center;
+
 	@media only screen and (max-width: 767px) {
 		@include cdm-grid(1, "figure", 0, 0, ());		
-	}	
+	}
+
 	figure{
 		position: relative;
 		display: flex;
@@ -637,7 +640,7 @@ h4,
                 @media only screen and (max-width: 767px) {
                     right:0;
                     left:0;
-                    text-align: center;
+                    text-align: left;
                     h4{
                         font-size: 5rem;
                     }
@@ -1002,7 +1005,15 @@ input[type=radio]{
 				}
 				.app-info{
 					width: min-content;
-                    align-self: center;
+					align-self: center;
+					display: block;
+
+					display: -ms-grid; /* IE hack */
+					-ms-grid-columns: min-content;
+
+					.app-links{
+						-ms-grid-row: 2;
+					}
 				}
 			}
 		}
@@ -1160,6 +1171,7 @@ input[type=radio]{
 				letter-spacing: 0;
 				color: #ffffff;
 				display: flex;
+				align-items: center;
 				background-color: #000000;
 
 				i{
@@ -1233,7 +1245,7 @@ input[type=radio]{
 				hyphens: none;
 			}
 		}
-	}
+	} 
 
 	.image_pleine_largeur{
 		padding-top: 0;
@@ -1244,6 +1256,14 @@ input[type=radio]{
 				opacity: 0.6;
 			}
 		}
+        @media only screen and (max-width: 650px) {
+            a{
+                img{
+                    min-height: 150px;
+                    max-width: none;
+                }
+            }
+        }
 	}
 
 	.partenaires{
@@ -1330,7 +1350,7 @@ input[type=radio]{
 				padding-left: 30px;
 				padding-right: 0;
 			}
-		}
+		} 
 	}
 }
 /// Style paginations

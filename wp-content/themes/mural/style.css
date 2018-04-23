@@ -749,7 +749,10 @@ h4,
 .banner {
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex; }
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
   @media only screen and (max-width: 767px) {
     .banner {
       display: -webkit-box;
@@ -825,7 +828,7 @@ h4,
           .banner figure.left-banner .banner-overlay {
             right: 0;
             left: 0;
-            text-align: center; }
+            text-align: left; }
             .banner figure.left-banner .banner-overlay h4 {
               font-size: 5rem; }
             .banner figure.left-banner .banner-overlay a {
@@ -1112,8 +1115,13 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
         width: -webkit-min-content;
         width: -moz-min-content;
         width: min-content;
-        -ms-flex-item-align: center;
-            align-self: center; }
+        align-self: center;
+        display: block;
+        display: -ms-grid;
+        /* IE hack */
+        -ms-grid-columns: min-content; }
+        .content-wrap .deux_colonnes .application .content .app-info .app-links {
+          -ms-grid-row: 2; }
   .content-wrap .video .iframe-style {
     margin: 0 auto; }
     .content-wrap .video .iframe-style .fluid-iframe {
@@ -1230,6 +1238,9 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     background-color: #000000; }
     .content-wrap .formulaire_infolettre .newsletter .button i, .content-wrap .formulaire_infolettre .newsletter .ui-datepicker .ui-datepicker-buttonpane button i, .ui-datepicker .ui-datepicker-buttonpane .content-wrap .formulaire_infolettre .newsletter button i {
       left: 0;
@@ -1297,6 +1308,10 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       opacity: 0.6; }
       .content-wrap .image_pleine_largeur a:hover img:hover {
         text-decoration: none; }
+    @media only screen and (max-width: 650px) {
+      .content-wrap .image_pleine_largeur a img {
+        min-height: 150px;
+        max-width: none; } }
   .content-wrap .partenaires h2 {
     text-align: center;
     color: #000000; }
@@ -1602,22 +1617,18 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   .ui-datepicker .ui-datepicker-buttonpane {
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex; }
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between; }
     .ui-datepicker .ui-datepicker-buttonpane button {
       min-width: 0;
       font-size: 1.2rem;
       background-image: none;
       border-radius: 0;
-      padding: 10px 14px; }
+      padding: 10px 9px; }
       .ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-close {
-        margin-left: auto; }
-    @media only screen and (max-width: 767px) {
-      .ui-datepicker .ui-datepicker-buttonpane {
-        -webkit-box-pack: justify;
-            -ms-flex-pack: justify;
-                justify-content: space-between; }
-        .ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-close {
-          margin-left: 0px; } }
+        margin-left: 0px; }
     @media only screen and (max-width: 380px) {
       .ui-datepicker .ui-datepicker-buttonpane button {
         padding: 10px 3px; } }
@@ -1894,6 +1905,28 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     font-size: 1.8rem;
     line-height: 1.3; }
 
+.home .content-wrap .articles_du_blog .content .articles .article {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+  .home .content-wrap .articles_du_blog .content .articles .article .description {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+    .home .content-wrap .articles_du_blog .content .articles .article .description .readmore {
+      margin-top: auto; }
+
 .page-blog .content-wrap .articles {
   width: 100%; }
   .page-blog .content-wrap .articles .article {
@@ -2121,6 +2154,12 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
         padding-right: 0px; }
       #gmap-arts .artwork-data .right-col {
         padding-left: 0px; } }
+
+.content-wrap .artwork-list h2 {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 4.5rem;
+  color: #000; }
 
 .content-wrap .artwork-list .content .artwork-col {
   display: -webkit-box;
