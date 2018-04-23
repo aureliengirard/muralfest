@@ -598,7 +598,25 @@ h4,
 			.banner-overlay{
 				right: 90px;
 				left: auto;
-				text-align: right;
+				text-align: left;
+                a{
+                    color:$color_yellow;
+                    text-transform: uppercase;
+                    font-size: 4rem;
+                    font-weight: bold; 
+                    @include hover-transition;
+                    &:hover{
+                        color:$color_blue;
+                    }
+                    &.button{
+                        color:$color_pink;
+                    }
+                }
+                h4{
+                    font-size: 6rem;
+                    font-weight: bold;
+                    color:#fff;
+                }
 			}
 		}
 		&.right-banner{
@@ -607,16 +625,23 @@ h4,
 				width:100%;
 			}
 		}
-		&.single-banner{		
+		&.single-banner{	
+				background-size:cover;
+					background-position: center;
+					width:100%;
+					height:100vh;	
 			@media only screen and (max-width: 767px) {
 				&.with-overlay{
-					height:50vh;
-					overflow: hidden;
+					height:75vh;	
+					h1{
+						font-size:4rem;
+					}
 					img{
-						max-width: none;
+						display:block;
+						/*max-width: none;
 						height: 100vw;
-						left:calc(100vw / -2);
-						position: relative;
+						left:calc(100vw / -50vw);
+						position: relative;*/
 					}
 				}
 			}

@@ -13,7 +13,7 @@
                     <section class="col-wrapper">
                         <div class="left-col">
                             <figure>
-                                <?= wp_get_attachment_image(get_field('image_de_levenement'), 'original'); ?>
+                                <?= wp_get_attachment_image(get_field('image_de_levenement'), 'cta-preview'); ?>
                             </figure>
                             <?php get_template_part('parts/inc', 'share'); ?>
                         </div>
