@@ -640,7 +640,7 @@ h4,
                 @media only screen and (max-width: 767px) {
                     right:0;
                     left:0;
-                    text-align: center;
+                    text-align: left;
                     h4{
                         font-size: 5rem;
                     }
@@ -1245,7 +1245,7 @@ input[type=radio]{
 				hyphens: none;
 			}
 		}
-	}
+	} 
 
 	.image_pleine_largeur{
 		padding-top: 0;
@@ -1256,6 +1256,14 @@ input[type=radio]{
 				opacity: 0.6;
 			}
 		}
+        @media only screen and (max-width: 650px) {
+            a{
+                img{
+                    min-height: 150px;
+                    max-width: none;
+                }
+            }
+        }
 	}
 
 	.partenaires{
