@@ -1307,19 +1307,19 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       .content-wrap .partenaires .partner-wrapper {
         padding-top: 0px; } }
     .content-wrap .partenaires .partner-wrapper figure {
-      width: calc(100% / 4 - ((60px * 3) / 4));
+      width: calc(100% / 3 - ((60px * 2) / 3));
       /* On divise la largeur totale disponible également entre toutes les colonnes, puis on soustrait à chaque colonnes le gap désiré */
       margin-right: 60px;
       margin-bottom: 0px;
       /* On retire le margin right pour que la dernière colonne arrive égale au contenu. */ }
-      .content-wrap .partenaires .partner-wrapper figure:nth-child(4n) {
+      .content-wrap .partenaires .partner-wrapper figure:nth-child(3n) {
         margin-right: 0px; }
     @media only screen and (max-width: 768px) {
       .content-wrap .partenaires .partner-wrapper figure {
         width: calc(100% / 1 - ((60px * 0) / 1));
         margin-right: 60px;
         margin-bottom: 0px; }
-        .content-wrap .partenaires .partner-wrapper figure:nth-child(4n) {
+        .content-wrap .partenaires .partner-wrapper figure:nth-child(3n) {
           margin-right: 60px; }
         .content-wrap .partenaires .partner-wrapper figure:nth-child(1n) {
           margin-right: 0px; }
