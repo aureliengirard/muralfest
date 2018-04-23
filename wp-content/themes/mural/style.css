@@ -2130,6 +2130,11 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       #gmap-arts .artwork-data .right-col {
         padding-left: 0px; } }
 
+.content-wrap .artwork-list h2 {
+  text-align: center;
+  margin-top: 20px;
+  color: #0000; }
+
 .content-wrap .artwork-list .content .artwork-col {
   display: -webkit-box;
   display: -ms-flexbox;

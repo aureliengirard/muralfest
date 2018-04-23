@@ -175,6 +175,11 @@
 
 .content-wrap{
     .artwork-list{
+        h2{
+            text-align: center;
+            margin-top:20px;
+            color:#0000;
+        }
         .content{
             .artwork-col{
                 @include cdm-grid(4, ".artwork", 20px, 15px, ());
