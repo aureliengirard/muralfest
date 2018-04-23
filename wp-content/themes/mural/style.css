@@ -756,10 +756,18 @@ h4,
         margin-bottom: 0; }
       .banner figure .banner-overlay .button, .banner figure .banner-overlay .ui-datepicker .ui-datepicker-buttonpane button, .ui-datepicker .ui-datepicker-buttonpane .banner figure .banner-overlay button {
         margin-top: 20px; }
-    .banner figure.left-banner .banner-overlay {
-      right: 90px;
-      left: auto;
-      text-align: right; }
+    .banner figure.left-banner {
+      display: block; }
+      .banner figure.left-banner img {
+        width: 100%; }
+      .banner figure.left-banner .banner-overlay {
+        right: 90px;
+        left: auto;
+        text-align: right; }
+    .banner figure.right-banner {
+      display: block; }
+      .banner figure.right-banner img {
+        width: 100%; }
     @media only screen and (max-width: 767px) {
       .banner figure.single-banner.with-overlay {
         height: 50vh;
