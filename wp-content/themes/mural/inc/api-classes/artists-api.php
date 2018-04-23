@@ -138,6 +138,12 @@ class Artists_API extends Program_Routes {
                         )
                     )
                 ),
+                'photo' => array(
+                    'value' => wp_get_attachment_url(get_field('image_de_lartiste', $fr_id)),
+                    'attr' => array(
+                        'updateDate' => get_the_modified_date('Y-m-d H:i', get_field('image_de_lartiste', $fr_id))
+                    )
+                ),
                 'description' => array(
                     'value' => array(
                         array(

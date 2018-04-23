@@ -212,23 +212,56 @@ h4,
 	cursor: pointer;
 	@include hover-transition;
 	z-index: 1;
+
     &.smaller{
         font-size: 1.8rem;
         padding:10px 14px;
         letter-spacing: normal;
-    }
+	}
+	
     &.facebook{
-        background-color:$color_pink;
-        color:$color_yellow;
-    }
+        background-color: $color_pink;
+        color: $color_yellow;
+	}
+	
     &.playlist{
-        background-color:$color_blue;
-        color:$color_yellow;
+        background-color: $color_blue;
+		color: $color_yellow;
+		
         &:hover{
-            background-color:$color_yellow;
-            color:$color_pink;
+            background-color: $color_yellow;
+            color: $color_pink;
         }
-    }
+	}
+
+	&.instagram{
+        background-color: $color_blue;
+		color: $color_yellow;
+		
+        &:hover{
+            background-color: $color_yellow;
+			color: $color_pink;
+			
+			&::after{
+				background-color: $color_blue;
+			}
+        }
+	}
+
+	&.twitter{
+        background-color: $color_yellow;
+		color: $color_blue;
+		
+        &:hover{
+            background-color: $color_pink;
+			color: $color_yellow;
+			
+			&::after{
+				background-color: $color_blue;
+			}
+        }
+	}
+	
 	&::after{
 		content: "";
 		mask: url(images/svg/paint-splash.svg) no-repeat 0 0;
@@ -565,7 +598,7 @@ h4,
 			.banner-overlay{
 				right: 90px;
 				left: auto;
-				text-align: left;
+				text-align: left; 
                 a{
                     color:$color_yellow;
                     text-transform: uppercase;
@@ -1495,5 +1528,6 @@ input[type=radio]{
 @import "blog-style";
 @import "artwork-style";
 @import "partner-style";
+@import "artist-style";
 @import "ink-transition";
 @import "gooey-transition";

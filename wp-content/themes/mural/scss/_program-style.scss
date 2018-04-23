@@ -140,6 +140,21 @@
 					font-weight: 400;
 					color: #000000;
 				}
+
+				a{
+					color: inherit;
+					@include hover-transition;
+
+					&:hover{
+						color: $color_blue;
+					}
+				}
+			}
+
+			.event-infos{
+				.venue{
+					display: inline;
+				}
 			}
 		}
 
