@@ -1402,6 +1402,12 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
         .content-wrap .filters .program-filters > * {
           width: 100%;
           margin-bottom: 10px; } }
+    .content-wrap .filters .program-filters select, .content-wrap .filters .program-filters #orderby-wrap {
+      -webkit-box-flex: 1;
+          -ms-flex-positive: 1;
+              flex-grow: 1;
+      -ms-flex-preferred-size: 0;
+          flex-basis: 0; }
     .content-wrap .filters .program-filters #orderby-wrap {
       position: relative;
       margin-right: 15px;
@@ -1433,6 +1439,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
         float: left;
         margin-right: 5px;
         color: red; }
+      .content-wrap .filters .program-filters .select2 .select2-selection__placeholder {
+        color: #fff; }
 
 #sidebar {
   padding-left: 15px;

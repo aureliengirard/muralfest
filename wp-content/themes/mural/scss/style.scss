@@ -1370,10 +1370,15 @@ input[type=radio]{
 					margin-bottom:10px;
 				}				
 			}
+			select,	#orderby-wrap{
+				flex-grow:1;
+				 flex-basis: 0;
+			}
 			#orderby-wrap{
 				position: relative;
 				margin-right: 15px;
 				background-color:#000;
+				
 				&:after{
 					content: "\f073";
 					font-family: "Font Awesome 5 Light";
@@ -1408,6 +1413,9 @@ input[type=radio]{
 					float:left;
 					margin-right:5px;
 					color:red;
+				}
+				.select2-selection__placeholder{
+					color:#fff;
 				}
 			}
 		}

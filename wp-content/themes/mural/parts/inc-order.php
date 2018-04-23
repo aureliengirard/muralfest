@@ -1,13 +1,21 @@
 <?php
 $date_value = '';
-if(isset($_GET['daterange'])){
+if(isset($_GET['date'])){
     $date_value = $_GET['daterange'];
 }
 
-$artist_value = 0;
-if(isset($_GET['selected-artist'])){
-    $artist_value = (Int) $_GET['selected-artist'];
+$artist_value = '';
+if(isset($_GET['artiste'])){
+    $artist_value = sanitize_text_field($_GET['artiste']);
+    
 }
+
+$caterogy_value = '';
+if (isset($_GET['category'])) {
+    $caterogy_value = sanitize_text_field ($_GET['category']);
+}
+
+
 ?>
 <section class="filters">
     <div class="content">
@@ -28,7 +36,7 @@ if(isset($_GET['selected-artist'])){
 
                 if ( $query->have_posts() ) : ?>
                     
-                <select name="selected-artist" placeholder="<?php _e('Filter by artist', 'site-theme'); ?>">
+                <select name="artiste" placeholder="<?php _e('Artists', 'site-theme'); ?>">
                    
                      <option value=""></option>
 
@@ -36,16 +44,40 @@ if(isset($_GET['selected-artist'])){
                         $query->the_post();
                         
                         $selected = false;
-                        if($artist_value == get_the_ID()){
+                        $artist_slug = $post->post_name;
+                        if($artist_value == $artist_slug){
                             $selected = true;
                         }
+                        
                         ?>
-                        <option value="<?php the_ID(); ?>"<?= ($selected ? 'selected="selected"' : '') ?>><?php the_title(); ?></option>
+                        <option value="<?= $artist_slug; ?>"<?= ($selected ? 'selected="selected"' : '') ?>><?php the_title(); ?></option>
 
                     <?php endwhile; ?>
                 </select>
             <?php endif; ?>
 
+             <?php
+                $taxonomy = 'event-category';
+                $terms = get_terms($taxonomy); // Get all terms of a taxonomy
+
+                if ($terms) : ?>
+                    
+                <select name="category" placeholder="<?php _e('Categories', 'site-theme'); ?>">
+                   
+                     <option value=""></option>
+
+                    <?php foreach ($terms as $term):
+                    
+                        $selected = false;
+                        if($caterogy_value == $term->slug){
+                            $selected = true;
+                        }
+                        ?>
+                        <option value="<?= $term->slug; ?>"<?= ($selected ? 'selected="selected"' : '') ?>><?= $term->name; ?></option>
+
+                    <?php endforeach; ?>
+                </select>
+            <?php endif; ?>
             <?php wp_reset_postdata(); ?>
 
             <button type="submit" class="button"><?php _e('Filter', 'site-theme'); ?></button>
