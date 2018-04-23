@@ -207,27 +207,3 @@ function send_date_to_calendar(){
 	));
 }
 add_action( 'wp_enqueue_scripts', 'send_date_to_calendar', 30 );
-
-
-function artist_style_to_taxonomy(){
-	$args = array(
-		'post_type' => array( 'artist' ),
-		'posts_per_page' => '-1',
-		'post_status' => 'any'
-	);
-	$query = new WP_Query( $args );
-
-	if ( $query->have_posts() ){
-		while ( $query->have_posts() ) {
-			$query->the_post();
-
-			wp_set_object_terms( get_the_ID(), get_field('style'), 'style' );
-		}
-	}
-
-	wp_reset_postdata();
-}
-
-if(isset($_GET['export-style']) && $_GET['export-style'] == true){
-	add_action( 'init', 'artist_style_to_taxonomy' );
-}
