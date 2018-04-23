@@ -1158,6 +1158,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   .content-wrap .formulaire_infolettre .newsletter .error-log {
     font-size: 1.4rem;
     letter-spacing: 0; }
+  .content-wrap .bgcolor-pink .application .content h3 {
+    color: #fff; }
   .content-wrap .application {
     padding: 0; }
     .content-wrap .application .content {
