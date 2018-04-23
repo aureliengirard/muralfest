@@ -28,7 +28,7 @@ get_header(); ?>
                     $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
                     $args = array(
                         'post_type' => array( 'program' ),
-                        'posts_per_page' => get_option( 'posts_per_page' ),
+                        'posts_per_page' => 9,
                         'nopaging' => false,
                         'paged' => $paged,
                         'orderby' => array(
@@ -70,7 +70,7 @@ get_header(); ?>
                                     'compare' => '<='
                                 ),
                                 array(
-                                    'key' => 'event_date',
+                                    'key' => 'date_de_fin',
                                     'type' => 'DATE',
                                     'value' => $start_date->format('Ymd'),
                                     'compare' => '>='
@@ -81,10 +81,18 @@ get_header(); ?>
                             $date = DateTime::createFromFormat('d/m/Y', $posted_date);
 
                             $args['meta_query'][] = array(
-                                'key' => 'event_date',
-                                'type' => 'DATE',
-                                'value' => $date->format('Ymd'),
-                                'compare' => '='
+                                array(
+                                    'key' => 'event_date',
+                                    'type' => 'DATE',
+                                    'value' => $date->format('Ymd'),
+                                    'compare' => '<='
+                                ),
+                                array(
+                                    'key' => 'date_de_fin',
+                                    'type' => 'DATE',
+                                    'value' => $date->format('Ymd'),
+                                    'compare' => '>='
+                                )
                             );
                         }
                     }

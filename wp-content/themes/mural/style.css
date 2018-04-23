@@ -1356,8 +1356,6 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     .content-wrap section .content .pagination .page-numbers li a, .content-wrap section .content .pagination .page-numbers li span {
       padding: 10px;
       font-weight: 600; }
-    .content-wrap section .content .pagination .page-numbers li a:hover {
-      text-decoration: underline; }
     .content-wrap section .content .pagination .page-numbers li:before {
       content: none; }
     .content-wrap section .content .pagination .page-numbers li .current {

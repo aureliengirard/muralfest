@@ -14,7 +14,7 @@
         <p class="event-infos">
             <span class="date">
             <?php
-            if(get_field('date_de_fin')){
+            if(get_field('date_de_fin') != get_field('event_date')){
                 echo date_i18n('j F', strtotime(get_field('event_date'))).' '._x('to', 'dates événement', 'site-theme').' '.date_i18n('j F Y', strtotime(get_field('date_de_fin')));
 
             }else{
