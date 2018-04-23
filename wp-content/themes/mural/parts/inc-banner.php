@@ -1,9 +1,6 @@
 <div class="banner">
     <?php if(get_field('nombre_dimage')): // true or false, true = deux col ?>
-        <?php
-      
-        add_filter('wp_constrain_dimensions', '__return_empty_array');
-
+        <?php   
         $left_banner = get_field('banniere_gauche');
         $right_banner = get_field('banniere_droite');
         ?>
@@ -23,10 +20,7 @@
                 </div>
             <?php endif; ?>
         </figure>
-    <?php 
-        remove_filter('wp_constrain_dimensions', '__return_empty_array');
-        elseif(get_field( 'banniere' )): 
-    ?>
+    <?php   elseif(get_field( 'banniere' )): ?>
     <figure class="single-banner  <?php if (get_field('contenu_banniere')) : ?> with-overlay <? endif; ?>">
             <?php echo wp_get_attachment_image( get_field( 'banniere' ), 'max-banner' ); ?>
             <?php if(get_field('contenu_banniere')): ?>
