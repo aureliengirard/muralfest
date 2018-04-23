@@ -933,7 +933,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       .content-wrap section.bgcolor-white .appels_a_laction .cta-wrapper .cta,
       .content-wrap section.bgcolor-white .articles_du_blog .articles .article,
       .content-wrap section.bgcolor-white .evenements_a_venir .programs .program {
-        background-color: transparent; }
+        background-color: transparent;
+        text-align: center; }
       @media only screen and (max-width: 767px) {
         .content-wrap section.bgcolor-white {
           display: -webkit-box;
