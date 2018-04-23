@@ -60,6 +60,11 @@ class Shows_API extends Program_Routes {
         $en_id = apply_filters( 'wpml_object_id', $show->ID, $show->post_type, true, 'en' );
         $fr_id = apply_filters( 'wpml_object_id', $show->ID, $show->post_type, true, 'fr' );
 
+        $date_start = date('Y-m-d', strtotime(get_field('event_date', $fr_id)));
+        $date_end = date('Y-m-d', strtotime(get_field('date_de_fin', $fr_id)));
+        $time_start = date('H:i', strtotime(get_field('heure_de_debut', $fr_id)));
+        $time_end = date('H:i', strtotime(get_field('heure_de_fin', $fr_id)));
+
         $show_data = array(
             'key' => 'show',
             'value' => array(
@@ -67,16 +72,16 @@ class Shows_API extends Program_Routes {
                     'value' => $show->ID
                 ),
                 'dateStart' => array(
-                    'value' => date('Y-m-d', strtotime(get_field('event_date', $fr_id)))
+                    'value' => ($date_start ? $date_start : '')
                 ),
                 'timeStart' => array(
-                    'value' => date('H:i', strtotime(get_field('heure_de_debut', $fr_id)))
+                    'value' => ($time_start ? $time_start : '')
                 ),
                 'dateEnd' => array(
-                    'value' => date('Y-m-d', strtotime(get_field('date_de_fin', $fr_id)))
+                    'value' => ($date_end ? $date_end : $date_start)
                 ),
                 'timeEnd' => array(
-                    'value' => date('H:i', strtotime(get_field('heure_de_fin', $fr_id)))
+                    'value' => ($time_end ? $time_end : '')
                 ),
                 'eventId' => array(
                     'value' => $show->ID
