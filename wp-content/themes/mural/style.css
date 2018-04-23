@@ -1111,8 +1111,13 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
         width: -webkit-min-content;
         width: -moz-min-content;
         width: min-content;
-        -ms-flex-item-align: center;
-            align-self: center; }
+        align-self: center;
+        display: block;
+        display: -ms-grid;
+        /* IE hack */
+        -ms-grid-columns: min-content; }
+        .content-wrap .deux_colonnes .application .content .app-info .app-links {
+          -ms-grid-row: 2; }
   .content-wrap .video .iframe-style {
     margin: 0 auto; }
     .content-wrap .video .iframe-style .fluid-iframe {

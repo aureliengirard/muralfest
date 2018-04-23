@@ -1001,7 +1001,15 @@ input[type=radio]{
 				}
 				.app-info{
 					width: min-content;
-                    align-self: center;
+					align-self: center;
+					display: block;
+
+					display: -ms-grid; /* IE hack */
+					-ms-grid-columns: min-content;
+
+					.app-links{
+						-ms-grid-row: 2;
+					}
 				}
 			}
 		}
