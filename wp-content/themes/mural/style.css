@@ -792,6 +792,31 @@ h4,
           font-size: 6rem;
           font-weight: bold;
           color: #fff; }
+        @media only screen and (max-width: 1620px) {
+          .banner figure.left-banner .banner-overlay h4 {
+            font-size: 5rem; }
+          .banner figure.left-banner .banner-overlay a {
+            font-size: 2rem; } }
+        @media only screen and (max-width: 1050px) {
+          .banner figure.left-banner .banner-overlay {
+            padding-right: 15px;
+            padding-left: 15px;
+            top: 5%;
+            right: 40px; }
+            .banner figure.left-banner .banner-overlay .button, .banner figure.left-banner .banner-overlay .ui-datepicker .ui-datepicker-buttonpane button, .ui-datepicker .ui-datepicker-buttonpane .banner figure.left-banner .banner-overlay button {
+              margin: 0; } }
+        @media only screen and (max-width: 767px) {
+          .banner figure.left-banner .banner-overlay {
+            right: 0;
+            left: 0;
+            text-align: center; }
+            .banner figure.left-banner .banner-overlay h4 {
+              font-size: 5rem; }
+            .banner figure.left-banner .banner-overlay a {
+              font-size: 3rem; } }
+        @media only screen and (max-width: 450px) {
+          .banner figure.left-banner .banner-overlay a {
+            font-size: 2rem; } }
     .banner figure.right-banner {
       display: block; }
       .banner figure.right-banner img {

@@ -584,6 +584,39 @@ h4,
                     font-weight: bold;
                     color:#fff;
                 }
+                @media only screen and (max-width: 1620px) {
+                    h4{
+                        font-size: 5rem;
+                    }
+                    a{
+                        font-size: 2rem;
+                    }
+                }
+                @media only screen and (max-width: 1050px) {
+                    padding-right:15px;
+                    padding-left:15px;
+                    top:5%;
+                    right:40px;
+                    .button{
+                        margin:0;
+                    }
+                }
+                @media only screen and (max-width: 767px) {
+                    right:0;
+                    left:0;
+                    text-align: center;
+                    h4{
+                        font-size: 5rem;
+                    }
+                    a{
+                        font-size: 3rem;
+                    }
+                }
+                @media only screen and (max-width: 450px) {
+                    a{
+                        font-size: 2rem;
+                    }
+                }
 			}
 		}
 		&.right-banner{
