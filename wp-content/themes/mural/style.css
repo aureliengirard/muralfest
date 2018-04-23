@@ -460,7 +460,18 @@ h4,
   .button:hover, .ui-datepicker .ui-datepicker-buttonpane button:hover {
     text-decoration: none; }
   .button.smaller, .ui-datepicker .ui-datepicker-buttonpane button.smaller {
-    font-size: 1.8rem; }
+    font-size: 1.8rem;
+    padding: 10px 14px;
+    letter-spacing: normal; }
+  .button.facebook, .ui-datepicker .ui-datepicker-buttonpane button.facebook {
+    background-color: #ed3d8f;
+    color: #fff204; }
+  .button.playlist, .ui-datepicker .ui-datepicker-buttonpane button.playlist {
+    background-color: #04d3ff;
+    color: #fff204; }
+    .button.playlist:hover, .ui-datepicker .ui-datepicker-buttonpane button.playlist:hover {
+      background-color: #fff204;
+      color: #ed3d8f; }
   .button::after, .ui-datepicker .ui-datepicker-buttonpane button::after {
     content: "";
     -webkit-mask: url(images/svg/paint-splash.svg) no-repeat 0 0;
@@ -756,10 +767,18 @@ h4,
         margin-bottom: 0; }
       .banner figure .banner-overlay .button, .banner figure .banner-overlay .ui-datepicker .ui-datepicker-buttonpane button, .ui-datepicker .ui-datepicker-buttonpane .banner figure .banner-overlay button {
         margin-top: 20px; }
-    .banner figure.left-banner .banner-overlay {
-      right: 90px;
-      left: auto;
-      text-align: right; }
+    .banner figure.left-banner {
+      display: block; }
+      .banner figure.left-banner img {
+        width: 100%; }
+      .banner figure.left-banner .banner-overlay {
+        right: 90px;
+        left: auto;
+        text-align: right; }
+    .banner figure.right-banner {
+      display: block; }
+      .banner figure.right-banner img {
+        width: 100%; }
     @media only screen and (max-width: 767px) {
       .banner figure.single-banner.with-overlay {
         height: 50vh;
@@ -1158,6 +1177,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   .content-wrap .formulaire_infolettre .newsletter .error-log {
     font-size: 1.4rem;
     letter-spacing: 0; }
+  .content-wrap .bgcolor-pink .application .content h3 {
+    color: #fff; }
   .content-wrap .application {
     padding: 0; }
     .content-wrap .application .content {
@@ -2004,6 +2025,12 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
         text-decoration: none; }
       .partners .tier .partner a:hover {
         opacity: 0.6; }
+    .partners .tier .partner.featured {
+      width: 100%;
+      text-align: center;
+      -webkit-box-ordinal-group: 0;
+          -ms-flex-order: -1;
+              order: -1; }
 
 body.preload #ink-transition {
   opacity: 1;

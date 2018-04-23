@@ -40,8 +40,7 @@
                 "id": ""
             },
             "choices": {
-                "59": "Toronto",
-                "9": "Montréal"
+                "9": "Festival"
             },
             "default_value": [],
             "allow_null": 0,
@@ -66,6 +65,25 @@
             },
             "default_value": "",
             "placeholder": ""
+        },
+        {
+            "key": "field_5ade0d4251d2c",
+            "label": "Mettre ce partenaire en vedette",
+            "name": "featured_partner",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
         }
     ],
     "location": [
@@ -85,5 +103,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1522240873
+    "modified": 1524502498
 }
