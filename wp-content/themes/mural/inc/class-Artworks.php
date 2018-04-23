@@ -101,7 +101,16 @@ class Artworks {
 
         $args = array(
             'post_type' => array( 'artwork' ),
-            'posts_per_page' => '-1'
+			'posts_per_page' => '-1',
+			'orderby' => array(
+				'year' => 'DESC',
+				'title' => 'ASC'
+			),
+			'meta_query' => array(
+				'year' => array(
+					'key' => 'annee'
+				)
+			)
         );
         $query = new WP_Query( $args );
 
@@ -113,7 +122,7 @@ class Artworks {
 				get_template_part('parts/inc', 'share');
 				$share = ob_get_clean();
 
-                $artworks[] = array(
+                $artworks[get_the_ID()] = array(
                     'title' => get_the_title(),
                     'thumbnail' => wp_get_attachment_image( get_field('image_de_loeuvre'), 'artwork-thumb' ),
 					'description' => truncate(get_field('resume'), 140),

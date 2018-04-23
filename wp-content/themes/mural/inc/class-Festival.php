@@ -57,6 +57,13 @@ class Festival {
 
 
     /**
+     * Classe des artworks si existante.
+     * @var Artworks
+     */
+    public $artworks = NULL;
+
+
+    /**
 	 * Initialise l'instance de la Classe.
 	 *
 	 * Fait en sorte que seulement une instance de la Classe est disponible.
@@ -265,7 +272,7 @@ class Festival {
             }
 
             if($this->current_festival && get_page_template_slug($page_id) == 'template-maps.php'){
-                $artworks = new Artworks();
+                $this->artworks = new Artworks();
             }
         }   
     }

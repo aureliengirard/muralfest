@@ -21,6 +21,16 @@ get_header(); ?>
             </section>
             
             <div id="gmap-arts"></div>
+
+            <section class="artwork-list">
+                <div class="content">
+                    <section class="artwork-col">
+                        <?php foreach(Festival()->artworks->get_artworks() as $id => $artwork){
+                            echo '<div class="artwork"><span data-markerid="'.$id.'">'.$artwork['title'].'</span></div>';
+                        }; ?>
+                    </section>
+                </div>
+            </section>
 		</div>
 	</article>
 <?php endwhile; ?>
