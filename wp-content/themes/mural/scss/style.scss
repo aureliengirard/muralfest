@@ -214,6 +214,20 @@ h4,
 	z-index: 1;
     &.smaller{
         font-size: 1.8rem;
+        padding:10px 14px;
+        letter-spacing: normal;
+    }
+    &.facebook{
+        background-color:$color_pink;
+        color:$color_yellow;
+    }
+    &.playlist{
+        background-color:$color_blue;
+        color:$color_yellow;
+        &:hover{
+            background-color:$color_yellow;
+            color:$color_pink;
+        }
     }
 	&::after{
 		content: "";

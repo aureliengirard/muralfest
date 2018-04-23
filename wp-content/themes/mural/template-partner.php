@@ -52,7 +52,7 @@ get_header(); ?>
 									$website = get_field('site_web');
 									$name = get_the_title();
 									?>
-									<figure class="partner">
+									<figure class="partner <?php if(get_field('featured_partner')): ?> featured<?php endif; ?>">
 										<?php if($website): ?>
 											<a href="<?= $website ?>" title="<?php printf("View %s's website", $name); ?>" target="_blank">
 										<?php endif; ?>
