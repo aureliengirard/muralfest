@@ -20,7 +20,7 @@ $color_blue: #04d3ff;
 
 /// general responsive value
 $c12MaxWidth: 1200px;
-/// Largeur du padding de chaque côté des sections
+/// Largeur du padding de chaque côté des sections 
 $c12Gutter: 15px;
 
 /*****************************************************
@@ -795,6 +795,9 @@ input[type=radio]{
 		}
 		&.bgcolor-gray{
 			background-color: #f5f5f5;
+		}	
+        &.bgcolor-mauve{
+			background-color: #211041;
 		}
 		&.bgcolor-pink{
 			background-color: $color_pink;
@@ -885,7 +888,7 @@ input[type=radio]{
 
 		.content{
 			p, li{
-				font-size: 2.4rem;
+				font-size: 2.1rem;
 				line-height: 1.5;
 				letter-spacing: 0.075em;
 				margin-bottom: 18px;
@@ -1252,7 +1255,7 @@ input[type=radio]{
 			@media only screen and (max-width: 767px) {
 				padding-top:0px;
 			}
-			@include cdm-grid(4, "figure", 60px, 0px, (
+			@include cdm-grid(3, "figure", 60px, 0px, (
 				768: (
 					col: 1,
 					extras: (
@@ -1373,10 +1376,15 @@ input[type=radio]{
 					margin-bottom:10px;
 				}				
 			}
+			select,	#orderby-wrap{
+				flex-grow:1;
+				 flex-basis: 0;
+			}
 			#orderby-wrap{
 				position: relative;
 				margin-right: 15px;
 				background-color:#000;
+				
 				&:after{
 					content: "\f073";
 					font-family: "Font Awesome 5 Light";
@@ -1386,7 +1394,7 @@ input[type=radio]{
 					right: 20px;
 					top: 50%;
 					transform: translateY(-50%);
-					pointer-events: none;
+					pointer-events: none; 
 				}
 
 				input{
@@ -1411,6 +1419,9 @@ input[type=radio]{
 					float:left;
 					margin-right:5px;
 					color:red;
+				}
+				.select2-selection__placeholder{
+					color:#fff;
 				}
 			}
 		}
