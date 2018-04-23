@@ -213,7 +213,7 @@ h4,
 	@include hover-transition;
 	z-index: 1;
     &.smaller{
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 	&::after{
 		content: "";
@@ -882,6 +882,7 @@ input[type=radio]{
 				}
 				.app-info{
 					width: min-content;
+                    align-self: center;
 				}
 			}
 		}
@@ -1012,7 +1013,13 @@ input[type=radio]{
 			margin-bottom: 0;
 		}
 	}
-
+    .bgcolor-white{
+        .formulaire_infolettre{
+            h3{
+                color:black;
+            }
+        }
+    }
 	.formulaire_infolettre{
 		h3{
 			text-transform: uppercase;
@@ -1068,7 +1075,6 @@ input[type=radio]{
 
 		.content{
 			display: flex;
-			justify-content: space-between;
 
 			.app-info{
 				display: flex;
