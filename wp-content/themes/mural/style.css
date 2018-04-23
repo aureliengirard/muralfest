@@ -1603,6 +1603,13 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       .content-wrap section .programs .program:nth-child(1n) {
         margin-right: 0px; } }
   .content-wrap section .programs .program {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     background-color: #ffffff; }
     .content-wrap section .programs .program figure {
       overflow: hidden; }
@@ -1643,7 +1650,17 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
           opacity: 1; }
     .content-wrap section .programs .program .description {
       text-align: center;
-      padding: 20px 15px; }
+      padding: 20px 15px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-flex: 1;
+          -ms-flex-positive: 1;
+              flex-grow: 1; }
       .content-wrap section .programs .program .description .event-infos {
         margin-bottom: 0; }
       .content-wrap section .programs .program .description h4 a {
@@ -1652,6 +1669,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
           color: #ed3d8f; }
       .content-wrap section .programs .program .description p {
         font-size: 1.8rem; }
+      .content-wrap section .programs .program .description .readmore {
+        margin-top: auto; }
 
 .content-wrap section .content .event-infos {
   color: #ed3d8f;

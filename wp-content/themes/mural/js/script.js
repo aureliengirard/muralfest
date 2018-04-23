@@ -84,7 +84,7 @@ $(function(){
 			messageLog.html( traduction.mail_mess_1 ).show();
 			
 			// Prepare query string and send AJAX request
-			$.post( phpData.THEMEURI+'/inc/add_address.php', { ajax:true, email: $(this).find('input[name="email"]').val(), lang: phpData.lang}, function(res){
+			$.post( phpData.childURI+'/inc/add_address.php', { ajax:true, email: $(this).find('input[name="email"]').val(), lang: phpData.lang}, function(res){
 				console.log(res);
 				
 				if(res.ok==1){				

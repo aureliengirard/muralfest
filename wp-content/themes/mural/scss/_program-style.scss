@@ -20,10 +20,9 @@
 					col: 1
 				)
 			));
-
 			.program{
-
-				
+                display: flex;
+                flex-direction: column;     
 				background-color: #ffffff;
 
 				figure{
@@ -82,7 +81,9 @@
 				.description{
 					text-align: center;
 					padding: 20px 15px;
-
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1;
 					.event-infos{
 						margin-bottom: 0;
 					}
@@ -98,8 +99,11 @@
 					}
 
 					p{
-						font-size: 1.8rem;
+				        font-size: 1.8rem;
 					}
+                    .readmore{
+                        margin-top: auto;
+                    }
 				}
 			}
 		}
