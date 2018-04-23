@@ -1238,6 +1238,9 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     background-color: #000000; }
     .content-wrap .formulaire_infolettre .newsletter .button i, .content-wrap .formulaire_infolettre .newsletter .ui-datepicker .ui-datepicker-buttonpane button i, .ui-datepicker .ui-datepicker-buttonpane .content-wrap .formulaire_infolettre .newsletter button i {
       left: 0;

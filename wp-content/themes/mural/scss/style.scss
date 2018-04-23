@@ -566,7 +566,7 @@ h4,
 	@media only screen and (max-width: 767px) {
 		@include cdm-grid(1, "figure", 0, 0, ());		
 	}
-	
+
 	figure{
 		position: relative;
 		display: flex;
@@ -1171,6 +1171,7 @@ input[type=radio]{
 				letter-spacing: 0;
 				color: #ffffff;
 				display: flex;
+				align-items: center;
 				background-color: #000000;
 
 				i{
