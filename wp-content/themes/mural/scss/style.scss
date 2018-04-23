@@ -561,9 +561,12 @@ h4,
 /// Style de la bannière
 .banner{
 	display: flex;
+	justify-content: center;
+
 	@media only screen and (max-width: 767px) {
 		@include cdm-grid(1, "figure", 0, 0, ());		
-	}	
+	}
+	
 	figure{
 		position: relative;
 		display: flex;
@@ -1002,7 +1005,15 @@ input[type=radio]{
 				}
 				.app-info{
 					width: min-content;
-                    align-self: center;
+					align-self: center;
+					display: block;
+
+					display: -ms-grid; /* IE hack */
+					-ms-grid-columns: min-content;
+
+					.app-links{
+						-ms-grid-row: 2;
+					}
 				}
 			}
 		}
@@ -1233,7 +1244,7 @@ input[type=radio]{
 				hyphens: none;
 			}
 		}
-	}
+	} 
 
 	.image_pleine_largeur{
 		padding-top: 0;
