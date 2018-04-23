@@ -164,7 +164,9 @@
 			.date{
 				color: $color-pink;
 			}
+			.content-blog{
 
+			}
 			.blog-categories{
 				a{
 					color: $color_pink;
@@ -177,7 +179,12 @@
 				}
 			}
 		}
-
+		.sharing{
+			display:inline-block;
+			text-align:center;
+			width:100%;
+			margin-bottom:20px;
+		}
 		.col-wrapper{
 			display: flex;
 

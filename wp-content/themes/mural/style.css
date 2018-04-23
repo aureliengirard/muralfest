@@ -1959,6 +1959,12 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   .single-post .content-wrap section .blog-categories a:hover {
     color: #04d3ff; }
 
+.single-post .content-wrap .sharing {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px; }
+
 .single-post .content-wrap .col-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
