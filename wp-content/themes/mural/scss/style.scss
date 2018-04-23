@@ -795,6 +795,9 @@ input[type=radio]{
 		}
 		&.bgcolor-gray{
 			background-color: #f5f5f5;
+		}	
+        &.bgcolor-mauve{
+			background-color: #211041;
 		}
 		&.bgcolor-pink{
 			background-color: $color_pink;
@@ -1250,7 +1253,7 @@ input[type=radio]{
 			@media only screen and (max-width: 767px) {
 				padding-top:0px;
 			}
-			@include cdm-grid(4, "figure", 60px, 0px, (
+			@include cdm-grid(3, "figure", 60px, 0px, (
 				768: (
 					col: 1,
 					extras: (
@@ -1331,25 +1334,26 @@ input[type=radio]{
 .content-wrap section .content{
     .pagination{
         .page-numbers{
-                text-align: center;
-                margin-bottom:20px;
-                margin-top:20px;
-                li{
-                    display:inline;
-                    a,span{
-                        padding: 10px;
-                        font-weight: 600;
-                    }
-                    a:hover{
-                        text-decoration: underline;
-                    }
-                    &:before{
-                        content:none;
-                    }
-                    .current{
-                        color:$color_blue;
-                    }
-                }
+			text-align: center;
+			margin-bottom:20px;
+			margin-top:20px;
+
+			li{
+				display:inline;
+
+				a, span{
+					padding: 10px;
+					font-weight: 600;
+				}
+
+				&:before{
+					content:none;
+				}
+
+				.current{
+					color:$color_blue;
+				}
+			}
         }
     }
 }
@@ -1388,7 +1392,7 @@ input[type=radio]{
 					right: 20px;
 					top: 50%;
 					transform: translateY(-50%);
-					pointer-events: none;
+					pointer-events: none; 
 				}
 
 				input{
