@@ -1489,7 +1489,7 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between; }
-  .content-wrap .single-navigation .breadcrumb {
+  .content-wrap .single-navigation .back-btn + .breadcrumb {
     margin-left: 15px; }
 
 .breadcrumb a {
@@ -2341,9 +2341,9 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
               flex-direction: column; }
       .single-artist .content-wrap .col-wrapper .left-col {
         max-width: none; }
-      .single-artist .content-wrap .col-wrapper .right-col {
-        padding-left: 0;
-        width: auto; } }
+        .single-artist .content-wrap .col-wrapper .left-col + .right-col {
+          padding-left: 0;
+          width: auto; } }
 
 body.preload #ink-transition {
   opacity: 1;

@@ -42,12 +42,14 @@
 
                 .left-col{
                     max-width: none;
+
+                    + .right-col{
+                        padding-left: 0;
+                        width: auto;
+                    }
                 }
 
-                .right-col{
-                    padding-left: 0;
-                    width: auto;
-                }
+                
             }
 		}
 	}

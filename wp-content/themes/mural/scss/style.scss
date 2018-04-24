@@ -1486,7 +1486,7 @@ input[type=radio]{
 	display: flex;
 	justify-content: space-between;
 
-	.breadcrumb{
+	.back-btn + .breadcrumb{
 		margin-left: 15px;
 	}
 }

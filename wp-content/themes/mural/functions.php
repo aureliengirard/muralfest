@@ -310,7 +310,11 @@ function display_back_button(){
 		}
 	}
 
-	if($url){
+	$other_lang = (ICL_LANGUAGE_CODE == 'fr' ? 'en' : 'fr');
+
+	$other_lang_url = apply_filters( 'wpml_permalink', get_the_permalink(), $other_lang );
+
+	if($url && $url != $other_lang_url){
 		echo '<a class="readmore back-btn" href="'. $url .'">< '. __('Back', 'custom_theme') .'</a>';
 	}
 }
