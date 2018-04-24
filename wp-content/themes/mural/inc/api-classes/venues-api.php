@@ -36,7 +36,10 @@ class Venues_API extends Program_Routes {
         ) );
 
         foreach($tag_terms as $term){
-            $data['venues'][] = $this->prepare_terms_for_response( $term, $request );
+            $res = $this->prepare_terms_for_response( $term, $request );
+            
+            if($res)
+                $data['venues'][] = $this->prepare_terms_for_response( $term, $request );
         }
 
         $venues = get_posts(array(
@@ -75,6 +78,9 @@ class Venues_API extends Program_Routes {
      * @return mixed
      */
     public function prepare_terms_for_response( $term, $request ) {
+        if(strpos($term->slug, 'gc-venuetag') !== false)
+            return NULL;
+
         $en_id = apply_filters( 'wpml_object_id', $term->term_id, $term->taxonomy, true, 'en' );
         $fr_id = apply_filters( 'wpml_object_id', $term->term_id, $term->taxonomy, true, 'fr' );
 

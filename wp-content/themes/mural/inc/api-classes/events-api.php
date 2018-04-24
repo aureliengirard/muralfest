@@ -252,7 +252,7 @@ class Events_API extends Program_Routes {
         );
         
 
-        $terms = wp_get_post_terms( $event->ID, 'event-category' );
+        $terms = wp_get_post_terms( $fr_id, 'event-category' );
         if(!empty($terms)){
             foreach ($terms as $term) {
                 $event_data['value']['tags'][] = array(
