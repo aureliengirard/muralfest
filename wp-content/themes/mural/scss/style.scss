@@ -219,10 +219,6 @@ h4,
         letter-spacing: normal;
 	}
 	
-    &.facebook{
-        background-color: $color_pink;
-        color: $color_yellow;
-	}
 	
     &.playlist{
         background-color: $color_blue;
@@ -235,17 +231,8 @@ h4,
 	}
 
 	&.instagram{
-        background-color: $color_blue;
-		color: $color_yellow;
-		
-        &:hover{
-            background-color: $color_yellow;
-			color: $color_pink;
-			
-			&::after{
-				background-color: $color_blue;
-			}
-        }
+        background-color: $color_pink;
+        color: $color_yellow;
 	}
 
 	&.twitter{
