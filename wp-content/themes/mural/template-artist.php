@@ -34,8 +34,6 @@ get_header(); ?>
                         'posts_per_page' => 18,
                         'nopaging' => false,
                         'paged' => $paged,
-                        'orderby' =>'post_title',
-                        'order' =>'ASC'
                     );
 
                     
