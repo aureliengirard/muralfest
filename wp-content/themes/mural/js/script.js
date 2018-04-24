@@ -38,7 +38,7 @@ $(function(){
 		placeholder: $('.program-filters select[name="style"]').attr("placeholder")
 	})
 
-	if ($.urlParam('category') || $.urlParam('artiste') ||  $.urlParam('date') ){
+	if ($.urlParam('category') || $.urlParam('artiste') || $.urlParam('style') ||  $.urlParam('date') ){
 		$('html, body').animate({
 			scrollTop: $(".filters").offset().top 
 		}, 0);
