@@ -1,6 +1,6 @@
 <div class="program">
     <?
-
+    global $place_holder_artist;
     $artwork_args = array(
         'post_type' => array('artwork'),
         'posts_per_page' => -1,
@@ -21,14 +21,20 @@
                 $wp_query = null;
                 // Re-populate the global with our custom query
                 $wp_query = $artwork_query;
+               
                 while ($artwork_query->have_posts()) :
                     $artwork_query->the_post();           
-                    $art =  wp_get_attachment_image(get_field('image_de_loeuvre'), 'cta-preview');
-                    
+                    if(get_field('image_de_loeuvre')){
+                         $art =  wp_get_attachment_image(get_field('image_de_loeuvre'), 'cta-preview');
+                    }                            
                 endwhile;
                 $wp_query = null;
                 $wp_query = $tmp_query;
                 wp_reset_postdata();
+            endif;
+             if (!isset($art) || $art===false) {
+                $art = wp_get_attachment_image($place_holder_artist["ID"], 'cta-preview');        
+            }
             ?>
             
 <figure>
@@ -36,13 +42,10 @@
             <span class="regular-img">
                 <?= $art; ?>
             </span>
-
             <span class="hover-effect-img"><?= $art; ?></span>
         </a>
     </figure>
-    <?
-       endif; 
-     ?>
+  
     <div class="description">
         <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
         <p class="event-infos">
