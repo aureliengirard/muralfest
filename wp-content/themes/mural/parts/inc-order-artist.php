@@ -9,7 +9,7 @@ if (isset($_GET['style'])) {
 ?>
 <section class="filters">
     <div class="content">
-        <form class="program-filters" action="<?php the_permalink(); ?>">
+        <form class="program-filters artist-filters" action="<?php the_permalink(); ?>">
 
                  <?php
                 

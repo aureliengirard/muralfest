@@ -1414,6 +1414,11 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex; }
+    .content-wrap .filters .program-filters.artist-filters {
+      max-width: 50%; }
+      @media only screen and (max-width: 767px) {
+        .content-wrap .filters .program-filters.artist-filters {
+          max-width: 100%; } }
     @media only screen and (max-width: 767px) {
       .content-wrap .filters .program-filters {
         display: block; }

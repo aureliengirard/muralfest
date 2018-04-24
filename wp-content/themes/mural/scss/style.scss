@@ -1390,6 +1390,12 @@ input[type=radio]{
 
 		.program-filters{
 			display: flex;
+			&.artist-filters{
+				max-width:50%;
+				@media only screen and (max-width: 767px) {
+					max-width: 100%;
+				}
+			}
 			@media only screen and (max-width: 767px) {
 				display:block;
 				> *{
