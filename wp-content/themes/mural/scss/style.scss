@@ -490,7 +490,7 @@ h4,
 			}
 	
 			a{
-				padding: 0 10px;
+				padding: 0 5px;
 				color: inherit;
 				text-transform: uppercase;
 				@include hover-transition;
@@ -625,6 +625,11 @@ h4,
                         margin:0;
                     }
                 }
+                @media only screen and (max-width: 815px) {
+                    h4{
+                        font-size: 4rem;
+                    }
+                }
                 @media only screen and (max-width: 767px) {
                     right:0;
                     left:0;
@@ -689,6 +694,7 @@ input{
 	font-weight: 700;
 	padding: 12px 15px;
 	background-color: #000000;
+    border-radius: 0px;
 	width: 100%;
 	max-width: 100%;
 	min-width: 0;
@@ -926,7 +932,7 @@ input[type=radio]{
 			display: flex;
 			padding-left: 0;
 			padding-right: 0;
-			@media only screen and (max-width: 767px) {
+			@media only screen and (max-width: 768px) {
 				display:block;			
 			}
 		}
@@ -935,7 +941,7 @@ input[type=radio]{
 		.right-col{
 			flex: 1 1 auto;
 			width: 50%;
-			@media only screen and (max-width: 767px) {
+			@media only screen and (max-width: 768px) {
 				width: 100%;				
 			}
 			> section{
@@ -961,7 +967,7 @@ input[type=radio]{
 				.col-content{
 					width: calc(#{$c12MaxWidth} / 2);
 					max-width: calc(100vw / 2);
-					@media only screen and (max-width: 767px) {
+					@media only screen and (max-width: 768px) {
 						width: 100%;
 						max-width: 100%;
 					}

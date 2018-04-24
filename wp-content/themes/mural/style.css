@@ -692,7 +692,7 @@ h4,
       .navigation .nav-menu li.current-page-ancestor > a {
         font-weight: 700; }
       .navigation .nav-menu li a {
-        padding: 0 10px;
+        padding: 0 5px;
         color: inherit;
         text-transform: uppercase;
         -webkit-transition: all 0.5s;
@@ -817,6 +817,9 @@ h4,
             right: 40px; }
             .banner figure.left-banner .banner-overlay .button, .banner figure.left-banner .banner-overlay .ui-datepicker .ui-datepicker-buttonpane button, .ui-datepicker .ui-datepicker-buttonpane .banner figure.left-banner .banner-overlay button {
               margin: 0; } }
+        @media only screen and (max-width: 815px) {
+          .banner figure.left-banner .banner-overlay h4 {
+            font-size: 4rem; } }
         @media only screen and (max-width: 767px) {
           .banner figure.left-banner .banner-overlay {
             right: 0;
@@ -884,6 +887,7 @@ input, textarea {
   font-weight: 700;
   padding: 12px 15px;
   background-color: #000000;
+  border-radius: 0px;
   width: 100%;
   max-width: 100%;
   min-width: 0;
@@ -1051,7 +1055,7 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       display: flex;
       padding-left: 0;
       padding-right: 0; }
-      @media only screen and (max-width: 767px) {
+      @media only screen and (max-width: 768px) {
         .content-wrap .deux_colonnes .col-wrapper {
           display: block; } }
     .content-wrap .deux_colonnes .left-col,
@@ -1060,7 +1064,7 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
           -ms-flex: 1 1 auto;
               flex: 1 1 auto;
       width: 50%; }
-      @media only screen and (max-width: 767px) {
+      @media only screen and (max-width: 768px) {
         .content-wrap .deux_colonnes .left-col,
         .content-wrap .deux_colonnes .right-col {
           width: 100%; } }
@@ -1085,7 +1089,7 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       .content-wrap .deux_colonnes .left-col .content-width .col-content {
         width: calc(1200px / 2);
         max-width: calc(100vw / 2); }
-        @media only screen and (max-width: 767px) {
+        @media only screen and (max-width: 768px) {
           .content-wrap .deux_colonnes .left-col .content-width .col-content {
             width: 100%;
             max-width: 100%; } }
