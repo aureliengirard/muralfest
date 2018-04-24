@@ -207,3 +207,47 @@ function send_date_to_calendar(){
 	));
 }
 add_action( 'wp_enqueue_scripts', 'send_date_to_calendar', 30 );
+
+
+/**
+ * ajoute les pages parentes des singles
+ * 
+ */
+function custom_post_type_breadcrumb($separator){
+    $post_id = get_the_ID();
+	$page_parent = NULL;
+	
+	$parent_id = get_posttype_parent_id();
+	
+	if($parent_id)
+		$page_parent = get_post(get_posttype_parent_id());
+    
+    if($page_parent){
+        if($page_parent->post_parent)
+            echo '<a href="'.get_permalink($page_parent->post_parent).'">'.get_the_title($page_parent->post_parent).'</a> '.$separator.' ';
+        
+        echo '<a href="'.get_permalink($page_parent->ID).'">'.get_the_title($page_parent->ID).'</a> '.$separator.' ';
+    }
+}
+add_action( 'breadcrumb_single_parents', 'custom_post_type_breadcrumb', 10, 1);
+
+
+/**
+ * Retourne le ID de la page associé au CPT.
+ */
+function get_posttype_parent_id($post_type = NULL){
+    $page_id = false;
+    
+    if(!$post_type)
+        $post_type = get_post_type();
+    
+    
+    if ( have_rows( 'liaison_cpt_pages', 'options' ) ){
+        while ( have_rows( 'liaison_cpt_pages', 'options' ) ){ the_row();
+            if(get_sub_field( 'article_personnalise' ) == $post_type)
+                $page_id = get_sub_field( 'page' );
+        }
+    }
+    
+    return $page_id;
+}

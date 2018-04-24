@@ -1478,6 +1478,25 @@ input[type=radio]{
 	}
 }
 
+/// Style breadcrumb et bouton de retour
+.content-wrap .single-navigation{
+
+	.breadcrumb{
+		margin-top: 15px;
+	}
+}
+
+.breadcrumb{
+	a{
+		color: $color_pink;
+		@include hover-transition;
+
+		&:hover{
+			color: $color_blue;
+		}
+	}
+}
+
 
 /// Style sidebar
 #sidebar{
