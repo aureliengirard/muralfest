@@ -48,11 +48,7 @@
     </figure>
   
     <div class="description">
-        <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
-        <p class="event-infos">
-            
-            <span class="venue"><?= get_the_title(get_field('lieu')); ?></span>
-        </p>
+        <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>       
         <?= truncate(get_field('biographie'), 60, "&hellip;", true); ?>
         <a class="readmore" href="<?php the_permalink(); ?>"><?php _e('Learn more +', 'site-theme'); ?></a>
     </div>
