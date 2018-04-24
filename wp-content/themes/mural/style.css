@@ -2297,9 +2297,9 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
 
 .single-artist .content-wrap section .styles {
   color: #ed3d8f;
-  font-weight: 700; }
+  font-weight: 700;
+  font-size: 1.8rem; }
   .single-artist .content-wrap section .styles span {
-    font-size: 0.6em;
     font-weight: 400;
     color: #000000; }
 
