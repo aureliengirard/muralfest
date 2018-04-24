@@ -103,12 +103,25 @@
 			width: 100%;
 
 			.article{				
-				display: flex;
 				background-color: #f5f5f5;
-				@media only screen and (max-width: 767px) {					
+
+				&:nth-child(2n){
+					.content{
+						margin-left: auto;
+					}
+				}
+
+				.content{
+					display: flex;
+					margin: 0;
+					padding: 0;
+
+					@media only screen and (max-width: 767px) {					
 						display:block;		
                         text-align: center;
+					}
 				}
+
 				figure{
 					flex: 1 0 auto;
 					max-width: 50%;
