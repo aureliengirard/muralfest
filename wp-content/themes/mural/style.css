@@ -1553,6 +1553,9 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     margin-bottom: 45px; }
   #colophon .nav-menu li {
     color: #ffffff; }
+  @media only screen and (max-width: 767px) {
+    #colophon {
+      padding: 35px 0 0px; } }
 
 .ui-datepicker {
   width: 100%;
