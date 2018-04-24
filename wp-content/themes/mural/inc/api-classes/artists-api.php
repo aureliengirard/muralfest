@@ -56,7 +56,7 @@ class Artists_API extends Program_Routes {
 
         $content_en = $this->get_dynamic_content($en_id, array('biographie'));
         $content_fr = $this->get_dynamic_content($fr_id, array('biographie'));
-
+        
         $style_en = wp_get_post_terms($en_id, 'style', array('fields' => 'names'));
         $style_fr = wp_get_post_terms($fr_id, 'style', array('fields' => 'names'));
         

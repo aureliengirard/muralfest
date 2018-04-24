@@ -55,13 +55,13 @@ function multiformat_rest_pre_serve_request( $served, $result, $request, $server
             
         case 'xml':
             //header( 'Content-Type: text/html; charset=' . get_option( 'blog_charset' )  );
-            header( 'Content-Type: application/xml; charset=' . get_option( 'blog_charset' )  );
+            header( 'Content-Type: application/xml; charset=utf-8' );
 
             $xml_data = $result->get_data();
             reset($xml_data);
             $first_key = (!is_numeric(key($xml_data)) ? key($xml_data) : $xml_data[0]['key']);
             
-            $xml_user_info = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><'.$first_key.'></'.$first_key.'>');
+            $xml_user_info = new SimpleXMLExtended('<?xml version="1.0" encoding="utf-8"?><'.$first_key.'></'.$first_key.'>');
             eventArray_to_xml($xml_data[$first_key], $xml_user_info);
             echo $xml_user_info->asXML();
 
@@ -96,11 +96,53 @@ function eventArray_to_xml($array, &$xml_user_info){
             }
 
         }else{
-            $elem = $xml_user_info->addChild($key, htmlspecialchars($value));
+            if(is_string($value)){
+                $elem = $xml_user_info->addChildWithCDATA($key, $value);
+
+            }else{
+                $elem = $xml_user_info->addChild($key, $value);
+            }
+            
 
             foreach ($attr as $attr_name => $attr_val) {
                 $elem->addAttribute($attr_name, $attr_val);
             }
         }
+    }
+}
+
+
+/**
+ * SimpleXMLExtended Class
+ *
+ * Extends the default PHP SimpleXMLElement class by 
+ * allowing the addition of cdata
+ *
+ * @since 1.0
+ *
+ * @param string $cdata_text
+ */
+class SimpleXMLExtended extends SimpleXMLElement
+{
+    public function addCData($cdata_text)
+    {
+        $node = dom_import_simplexml($this);
+        $no   = $node->ownerDocument;
+        $node->appendChild($no->createCDATASection($cdata_text));
+    }
+    /**
+     * Adds a child with $value inside CDATA
+     * @param unknown $name
+     * @param unknown $value
+     */
+    public function addChildWithCDATA($name, $value = NULL)
+    {
+        $new_child = $this->addChild($name);
+        if ($new_child !== NULL) {
+            $node = dom_import_simplexml($new_child);
+            $no   = $node->ownerDocument;
+            $node->appendChild($no->createCDATASection($value));
+        }
+        return $new_child;
     }
 }

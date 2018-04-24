@@ -25,7 +25,7 @@ class Program_Routes extends WP_REST_Controller {
 
         if(!empty($custom_fields)){
             foreach ($custom_fields as $field) {
-                $stripped_dynamic_content .= strip_tags(get_field($field, $post_id), $allowable_tags).'<br>';
+                $stripped_dynamic_content .= strip_tags(html_entity_decode(get_field($field, $post_id)), $allowable_tags).'<br>';
             }
 
         }else{
@@ -36,11 +36,11 @@ class Program_Routes extends WP_REST_Controller {
                         while ( have_rows('contenu', $post_id ) ) { the_row();
                             switch (get_row_layout()) {
                                 case 'titre_section':
-                                    $stripped_dynamic_content .= '<strong>'.get_sub_field('titre').'</strong><br>';
+                                    $stripped_dynamic_content .= '<strong>'.html_entity_decode(get_sub_field('titre')).'</strong><br>';
                                     break;
                                 
                                 case 'texte_pleine_largeur':
-                                    $stripped_dynamic_content .= strip_tags(get_sub_field('texte_pleine_largeur'), $allowable_tags).'<br>';
+                                    $stripped_dynamic_content .= strip_tags(html_entity_decode(get_sub_field('texte_pleine_largeur')), $allowable_tags).'<br>';
                                     break;
                             }
                         }
