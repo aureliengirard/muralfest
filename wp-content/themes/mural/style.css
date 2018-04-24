@@ -2205,6 +2205,21 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       text-indent: -28px; }
     .content-wrap .artwork-list .content .artwork-col .artwork span:hover {
       color: #ed3d8f; }
+  @media only screen and (max-width: 767px) {
+    .content-wrap .artwork-list .content .artwork-col {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap; }
+      .content-wrap .artwork-list .content .artwork-col .artwork {
+        width: calc(100% / 2 - ((20px * 1) / 2));
+        /* On divise la largeur totale disponible également entre toutes les colonnes, puis on soustrait à chaque colonnes le gap désiré */
+        margin-right: 20px;
+        margin-bottom: 15px;
+        /* On retire le margin right pour que la dernière colonne arrive égale au contenu. */ }
+        .content-wrap .artwork-list .content .artwork-col .artwork:nth-child(2n) {
+          margin-right: 0px; } }
 
 .partners .tier {
   display: -webkit-box;
