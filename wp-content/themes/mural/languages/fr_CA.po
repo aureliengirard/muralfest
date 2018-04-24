@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Site Theme v1.0.0\n"
 "Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
-"POT-Creation-Date: 2018-03-23 14:35-0400\n"
+"POT-Creation-Date: 2018-04-19 12:18-0400\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: Codems <support@codems.ca>\n"
@@ -23,6 +23,8 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Generator: Poedit 2.0.6\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: node_modules\n"
+"X-Poedit-SearchPathExcluded-1: docs\n"
 
 #: 404.php:14
 msgid "Oups! This is not the page you are looking for."
@@ -45,7 +47,7 @@ msgstr "Archives mensuelles: %s"
 #: archive.php:15
 msgctxt "monthly archives date format"
 msgid "F Y"
-msgstr ""
+msgstr "F Y"
 
 #: archive.php:17
 #, php-format
@@ -55,7 +57,7 @@ msgstr "Archives annuelles: %s"
 #: archive.php:17
 msgctxt "yearly archives date format"
 msgid "Y"
-msgstr ""
+msgstr "Y"
 
 #: archive.php:19
 msgid "Archives"
@@ -75,18 +77,6 @@ msgstr "Voir tous les articles de  %s <span class=\"meta-nav\">&rarr;</span>"
 #, php-format
 msgid "All posts by %s"
 msgstr "Tous les articles de %s"
-
-#: category.php:30
-msgid "Filter by categories"
-msgstr "Filtrer par catégories"
-
-#: category.php:31
-msgid "All"
-msgstr "Tous"
-
-#: category.php:66
-msgid "Read more"
-msgstr "Lire plus"
 
 #: comments.php:25
 #, php-format
@@ -164,29 +154,140 @@ msgstr "Un commentaire jusqu'à présent"
 msgid "View all %s comments"
 msgstr "Voir les %s commentaires"
 
-#: footer.php:17
-msgid "All rights reserved."
-msgstr "Tous les droits sont réservés."
-
-#: functions.php:32
+#: inc/class-Festival.php:110
 msgctxt "post type singular name"
-msgid "Activité"
-msgstr ""
+msgid "Artwork"
+msgstr "Œuvre"
 
-#: functions.php:33
+#: inc/class-Festival.php:111
 msgctxt "post type general name"
-msgid "Activités"
-msgstr ""
+msgid "Artworks"
+msgstr "Œuvres"
 
-#: functions.php:46
+#: inc/class-Festival.php:123
+msgctxt "post type singular name"
+msgid "Artist"
+msgstr "Artiste"
+
+#: inc/class-Festival.php:124
+msgctxt "post type general name"
+msgid "Artists"
+msgstr "Artistes"
+
+#: inc/class-Festival.php:135
+msgctxt "post type singular name"
+msgid "Partner"
+msgstr "Partenaire"
+
+#: inc/class-Festival.php:136
+msgctxt "post type general name"
+msgid "Partners"
+msgstr "Partenaires"
+
+#: inc/class-Festival.php:150
+msgctxt "post type singular name"
+msgid "Event"
+msgstr "Événement"
+
+#: inc/class-Festival.php:151
+msgctxt "post type general name"
+msgid "Events"
+msgstr "Événements"
+
+#: inc/class-Festival.php:154 inc/class-Festival.php:155
+#: inc/class-Festival.php:156
+msgctxt "masculin nouvel"
+msgid "New"
+msgstr "Nouvel"
+
+#: inc/class-Festival.php:154 inc/class-Festival.php:155
+#: inc/class-Festival.php:156
+msgctxt "post type singular name"
+msgid "event"
+msgstr "événement"
+
+#: inc/class-Festival.php:168
+msgctxt "post type singular name"
+msgid "Venue"
+msgstr "Lieu"
+
+#: inc/class-Festival.php:169
+msgctxt "post type general name"
+msgid "Venues"
+msgstr "Lieux"
+
+#: inc/class-Festival.php:183
 msgctxt "taxonomy singular name"
-msgid "Type"
-msgstr ""
+msgid "Tier"
+msgstr "Niveau"
 
-#: functions.php:47
+#: inc/class-Festival.php:184
 msgctxt "taxonomy general name"
-msgid "Types"
-msgstr ""
+msgid "Tiers"
+msgstr "Niveaux"
+
+#: inc/class-Festival.php:192
+msgctxt "taxonomy singular name"
+msgid "Events category"
+msgstr "Catégorie d'événement"
+
+#: inc/class-Festival.php:193
+msgctxt "taxonomy general name"
+msgid "Events categories"
+msgstr "Catégories d'événements"
+
+#: inc/class-Festival.php:408
+msgid "Festival"
+msgstr "Festival"
+
+#: parts/blog-article.php:10 parts/program-article.php:33
+msgid "Learn more +"
+msgstr "En savoir +"
+
+#: parts/inc-order.php:16
+msgid "Filter by date"
+msgstr "Filtrer par date"
+
+#: parts/inc-order.php:32
+msgid "Filter by artist"
+msgstr "Filtrer par artiste"
+
+#: parts/inc-order.php:50
+msgid "Filter"
+msgstr "Filtrer"
+
+#: parts/part-appels_a_laction.php:24
+msgid "Read more"
+msgstr "Lire plus"
+
+#: parts/part-articles_du_blog.php:2
+msgid "Latest posts"
+msgstr "Derniers articles"
+
+#: parts/part-evenements_a_venir.php:2
+msgid "Events"
+msgstr "Événements"
+
+#: parts/part-evenements_a_venir.php:24
+msgid "View all events"
+msgstr "Voir tous les événements"
+
+#: parts/part-formulaire_infolettre.php:10
+msgid "Email"
+msgstr "Courriel"
+
+#: parts/part-partenaires.php:50
+msgid "View all partners"
+msgstr "Voir tous les partenaires"
+
+#: parts/program-article.php:19
+msgctxt "dates événement"
+msgid "to"
+msgstr "au"
+
+#: parts/program-article.php:27 single-program.php:36
+msgid "to"
+msgstr "à"
 
 #: search.php:11
 #, php-format
@@ -198,7 +299,41 @@ msgstr "Résultats de recherche pour: %s"
 msgid "No result for %s."
 msgstr "Aucun résultat pour %s."
 
+#: single-artwork.php:19
+msgid "Year of completion:"
+msgstr "Année de réalisation:"
+
+#: single-program.php:26
+msgid "and"
+msgstr "et"
+
+#: single-program.php:43
+msgid "Buy your ticket"
+msgstr "Acheter votre billet"
+
+#: single-program.php:47
+msgid "View Facebook event"
+msgstr "Voir l'événement Facebook"
+
+#: single-program.php:51
+msgid "Listen to the playlist"
+msgstr "Écouter la liste de lecture"
+
 #: tag.php:12
 #, php-format
 msgid "Tag Archives: %s"
 msgstr "Archives du mot-clé: %s"
+
+#: template-blog.php:49
+msgid "No post found."
+msgstr "Aucun article trouvé."
+
+#: template-program.php:105
+msgid "No program found."
+msgstr "Aucun événement trouvé."
+
+#~ msgid "All"
+#~ msgstr "Tous"
+
+#~ msgid "All rights reserved."
+#~ msgstr "Tous droits réservés."

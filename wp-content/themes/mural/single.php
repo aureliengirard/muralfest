@@ -6,33 +6,35 @@
 get_header(); ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
-	<article id="post-<?php the_ID(); ?>" class="site-content c12">
-		
-		<?= HLP()->displayBackBtn(); ?>
-		
-		<div class="c12">
-			<div class="content-wrap c8">
-				<figure class="c5">
-					<? $image = get_field( 'image' );
-					
-					if($image){
-						echo wp_get_attachment_image( $image['ID'], 'original' );
-					}else{
-						the_post_thumbnail();
-					}
-					?>
-				</figure>
-				<div class="c7">
-					<h1><? the_title(); ?></h1>
-					
-					<? get_template_part('parts/inc', 'share'); ?>
-					<? the_content(); ?>
-				</div>
-				
-			</div>
-			
-			<? get_sidebar(); ?>
-		</div>
+	<article id="post-<?php the_ID(); ?>">
+
+		<div class="content-wrap">
+            <section class="basic-content">
+                <div class="content">
+                    <section class="back-btn">
+                        <a class="readmore" href="<?= wp_get_referer() ?>">< <?php _e('Back', 'custom_theme') ?></a>
+                    </section>
+                        <div class="content-blog">
+                            <figure>
+                                <?= wp_get_attachment_image(get_field('image_a_la_une'), 'original'); ?>
+                            </figure>
+                           
+                            <h1><?php the_title(); ?></h1>
+                            <p class="date"><?= get_the_date('j F Y'); ?></p>
+                         
+                            <!--<div class="blog-categories">
+                                <?= get_the_category_list( ', ', '', get_the_ID() ); ?>
+                            </div>-->
+
+                            <?php get_template_part('parts/inc', 'background_content'); ?>
+                        
+                            <?php get_template_part('parts/inc', 'share'); ?>
+                     </div>
+                </div>
+            </section>
+
+            
+        </div>
 
 	</article><!-- #post -->
 	

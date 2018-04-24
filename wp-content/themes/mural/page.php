@@ -8,12 +8,10 @@ get_header(); ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
 	<article id="post-<?php the_ID(); ?>" class="site-content">
-		<header>
-			<h1><? the_title(); ?></h1>
-		</header>
-		
+		<?php get_template_part('parts/inc', 'banner'); ?>
+
 		<div class="content-wrap">
-			<?php get_template_part('parts/inc', 'content'); ?>
+			<?php get_template_part('parts/inc', 'background_content'); ?>
 		</div>
 
 	</article><!-- #post -->
