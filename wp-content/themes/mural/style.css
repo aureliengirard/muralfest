@@ -1461,7 +1461,7 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
                 transform: translateY(-50%);
         pointer-events: none; }
       .content-wrap .filters .program-filters #orderby-wrap input, .content-wrap .filters .program-filters #orderby-wrap textarea {
-        width: auto; }
+        width: 90%; }
       .content-wrap .filters .program-filters #orderby-wrap .hasDatepicker {
         position: absolute;
         top: 100% !important;
