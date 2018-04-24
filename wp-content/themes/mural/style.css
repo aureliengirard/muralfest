@@ -2030,6 +2030,10 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       .page-blog .content-wrap .col-wrapper .right-col {
         display: none; } }
 
+@media only screen and (max-width: 767px) {
+  .page-blog .content-wrap .content {
+    background-color: #f5f5f5; } }
+
 .single-post .content-wrap section h1 {
   color: #000000;
   margin-bottom: 10px;
