@@ -967,7 +967,7 @@ input[type=radio]{
 				.col-content{
 					width: calc(#{$c12MaxWidth} / 2);
 					max-width: calc(100vw / 2);
-					@media only screen and (max-width: 767px) {
+					@media only screen and (max-width: 768px) {
 						width: 100%;
 						max-width: 100%;
 					}

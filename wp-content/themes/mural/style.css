@@ -1089,7 +1089,7 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       .content-wrap .deux_colonnes .left-col .content-width .col-content {
         width: calc(1200px / 2);
         max-width: calc(100vw / 2); }
-        @media only screen and (max-width: 767px) {
+        @media only screen and (max-width: 768px) {
           .content-wrap .deux_colonnes .left-col .content-width .col-content {
             width: 100%;
             max-width: 100%; } }
