@@ -2009,11 +2009,16 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
 
 .single-post .content-wrap section h1 {
   color: #000000;
-  margin-bottom: 0;
-  margin-top: 20px; }
+  margin-bottom: 10px;
+  margin-top: 20px;
+  text-align: center; }
 
 .single-post .content-wrap section .date {
-  color: #ed3d8f; }
+  color: #ed3d8f;
+  text-align: center; }
+
+.single-post .content-wrap section .content-blog figure {
+  text-align: center; }
 
 .single-post .content-wrap section .blog-categories a {
   color: #ed3d8f;
