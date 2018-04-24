@@ -23,7 +23,7 @@ get_header(); ?>
             <div id="gmap-arts"></div>
 
             <section class="artwork-list">
-               <h2><?php _e('Works list','mural'); ?></h2>
+               <h2><?php _e('Works list', 'site-theme'); ?></h2>
                 <div class="content">
                     <section class="artwork-col">
                         <?php foreach(Festival()->artworks->get_artworks() as $id => $artwork){
