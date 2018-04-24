@@ -1417,6 +1417,12 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     .content-wrap section .content .pagination .page-numbers li .current {
       color: #04d3ff; }
 
+@media only screen and (max-width: 767px) {
+  .content-wrap section .content .pagination .page-numbers {
+    padding-left: 0px; }
+    .content-wrap section .content .pagination .page-numbers li {
+      margin-left: 0px; } }
+
 .content-wrap .filters {
   padding: 30px 0;
   overflow: visible;
