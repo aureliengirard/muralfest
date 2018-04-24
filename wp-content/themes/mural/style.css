@@ -1475,6 +1475,18 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       .content-wrap .filters .program-filters .select2 .select2-selection__placeholder {
         color: #fff; }
 
+.content-wrap .single-navigation .breadcrumb {
+  margin-top: 15px; }
+
+.breadcrumb a {
+  color: #ed3d8f;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s; }
+  .breadcrumb a:hover {
+    text-decoration: none; }
+  .breadcrumb a:hover {
+    color: #04d3ff; }
+
 #sidebar {
   padding-left: 15px;
   padding-top: 30px;

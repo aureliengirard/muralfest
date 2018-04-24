@@ -6,8 +6,10 @@
 		<div class="content-wrap">
             <section class="basic-content">
                 <div class="content">
-                    <section class="back-btn">
-                        <a class="readmore" href="<?= wp_get_referer() ?>">< <?php _e('Back', 'custom_theme') ?></a>
+                    <section class="single-navigation">
+                        <a class="readmore back-btn" href="<?= wp_get_referer() ?>">< <?php _e('Back', 'custom_theme') ?></a>
+
+                        <?php displayBreadcrumb(); ?>
                     </section>
 
                     <section class="col-wrapper">

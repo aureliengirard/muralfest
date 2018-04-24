@@ -1382,7 +1382,7 @@ input[type=radio]{
 			}
         }
         @media only screen and (max-width: 767px) {
-            .page-numbers{
+            .page-numbers{ 
                 padding-left:0px;
                 li{ 
                  margin-left:0px;    
@@ -1462,6 +1462,25 @@ input[type=radio]{
 					color:#fff;
 				}
 			}
+		}
+	}
+}
+
+/// Style breadcrumb et bouton de retour
+.content-wrap .single-navigation{
+
+	.breadcrumb{
+		margin-top: 15px;
+	}
+}
+
+.breadcrumb{
+	a{
+		color: $color_pink;
+		@include hover-transition;
+
+		&:hover{
+			color: $color_blue;
 		}
 	}
 }
