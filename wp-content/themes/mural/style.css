@@ -819,10 +819,8 @@ h4,
               margin: 0; } }
         @media only screen and (max-width: 815px) {
           .banner figure.left-banner .banner-overlay h4 {
-            font-size: 4rem; }
-          .banner figure.left-banner .banner-overlay a {
-            font-size: 2.5rem; } }
-        @media only screen and (max-width: 768px) {
+            font-size: 4rem; } }
+        @media only screen and (max-width: 767px) {
           .banner figure.left-banner .banner-overlay {
             right: 0;
             left: 0;
