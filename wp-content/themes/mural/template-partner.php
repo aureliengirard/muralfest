@@ -29,8 +29,7 @@ get_header(); ?>
 					) );
 					
 					foreach($tiers as $tier){
-						$logo_width = get_field('largeur', 'tier_'.$tier->term_id);
-                       echo "<h2>".$tier->name."</h2>";
+						$logo_width = get_field('largeur', 'tier_'.$tier->term_id);                      
 						$args = array(
 							'post_type' => array( 'partner' ),
 							'posts_per_page' => '-1',
