@@ -778,7 +778,8 @@ h4,
       top: 25%;
       left: 90px; }
       .banner figure .banner-overlay h1 {
-        color: #fff204; }
+        color: #fff204;
+        font-size: 7rem; }
       .banner figure .banner-overlay h1, .banner figure .banner-overlay h2 {
         text-shadow: 0px 3px 30px black;
         margin-bottom: 0; }
