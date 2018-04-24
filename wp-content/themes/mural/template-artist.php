@@ -25,6 +25,9 @@ get_header(); ?>
             <section class="list-programs">
                 <div class="content">
                 <?php
+                    global $place_holder_artist;
+                    $place_holder_artist = get_field ("artwork_placeholder");
+
                     $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
                     $args = array(
                         'post_type' => array( 'artist' ),

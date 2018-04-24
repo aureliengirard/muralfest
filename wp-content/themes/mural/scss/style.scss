@@ -775,6 +775,9 @@ input[type=radio]{
 						col: 1
 					)
 				));
+                .titre-section,.texte-plein{
+                    margin:0 auto;                    
+                }
 			}
 
             .texte-plein{
@@ -1039,6 +1042,18 @@ input[type=radio]{
 				}
 			}
 		}
+        @media only screen and (max-width: 767px) {
+            margin:0 auto;
+            .iframe-style{
+                .fluid-iframe{
+                    padding-bottom: 0px;
+                    height: auto;
+                    iframe{
+                        position: static;
+                    }
+                }
+            }
+        }
 	}
 
 	.appels_a_laction{
@@ -1363,7 +1378,7 @@ input[type=radio]{
 
 			li{
 				display:inline;
-
+ 
 				a, span{
 					padding: 10px;
 					font-weight: 600;
@@ -1378,6 +1393,14 @@ input[type=radio]{
 				}
 			}
         }
+        @media only screen and (max-width: 767px) {
+            .page-numbers{
+                padding-left:0px;
+                li{
+                 margin-left:0px;    
+                }
+            }
+        }
     }
 }
 /// Style filtres
@@ -1390,6 +1413,12 @@ input[type=radio]{
 
 		.program-filters{
 			display: flex;
+			&.artist-filters{
+				max-width:50%;
+				@media only screen and (max-width: 767px) {
+					max-width: 100%;
+				}
+			}
 			@media only screen and (max-width: 767px) {
 				display:block;
 				> *{
@@ -1555,6 +1584,9 @@ input[type=radio]{
 			color: #ffffff;
 		}
 	}
+    @media only screen and (max-width: 767px) {
+        padding:35px 0 0px;
+    }
 }
 
 @import "calendar-style";
