@@ -1,0 +1,190 @@
+.content-wrap{
+
+	.evenements_a_venir{
+		.content{
+			h2{
+				text-align: center;
+				color: #fff;
+			}
+		}
+
+		.button-wrap{
+			text-align: center;
+		}
+	}
+
+	section{
+		.programs{
+			@include cdm-grid(3, ".program", 30px, 30px, (
+				768: (
+					col: 1
+				)
+			));
+			.program{
+                display: flex;
+                flex-direction: column;     
+				background-color: #ffffff;
+
+				figure{
+					overflow: hidden;
+					&:hover{
+						+ .description h4 a{
+							color: $color_pink;
+						}
+					}
+				
+					a{
+						display: block;
+						position: relative;
+
+						.regular-img{
+							filter: url('images/svg/effect-imageblur.svg#image-blur');
+
+							img{
+								opacity: 1;
+								@include hover-transition;
+							}
+						}
+
+						.hover-effect-img{
+							position: absolute;
+							top: 0;
+							right: 0;
+							bottom: 0;
+							left: 0;
+							opacity: 0;
+							z-index: 1;
+							@include hover-transition;
+
+							img{
+								mask: url(images/svg/paint-splash2.svg) no-repeat 0 0;
+								mask-size: cover;
+							}
+						}
+
+						&:hover{
+							.regular-img{
+								img{
+									opacity: 0.3;
+								}
+							}
+
+							.hover-effect-img{
+								opacity: 1;
+							}
+						}
+
+						
+					}
+				}
+
+				.description{
+					text-align: center;
+					padding: 20px 15px;
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1;
+					.event-infos{
+						margin-bottom: 0;
+					}
+
+					h4{
+						a{
+							color: inherit;
+
+							&:hover{
+								color: $color_pink;
+							}
+						}
+					}
+
+					p{
+				        font-size: 1.8rem;
+					}
+                    .readmore{
+                        margin-top: auto;
+                    } 
+				}
+			}
+		}
+
+		.content{
+			.event-infos{
+				color: $color_pink;
+				font-size: 1.8rem;
+				font-weight: 600;
+
+				.venue{
+					font-weight: 700;
+					text-transform: uppercase;
+					display: block;
+				}
+			}
+		}
+	}
+}
+
+.single-program{
+	.content-wrap{
+		section{
+			h1{
+				color: #000000;
+				margin-bottom: 0;
+			}
+			.artist{
+				color: $color_pink;
+				font-weight: 700;
+
+				span{
+					font-size: 0.6em;
+					font-weight: 400;
+					color: #000000;
+				}
+
+				a{
+					color: inherit;
+					@include hover-transition;
+
+					&:hover{
+						color: $color_blue;
+					}
+				}
+			}
+
+			.event-infos{
+				.venue{
+					display: inline;
+				}
+			}
+		}
+
+		.col-wrapper{
+			display: flex;
+
+			.left-col{
+				max-width: 35%;
+                width:100%;
+			}
+			.right-col{
+				padding-left: 30px;
+
+				.content{
+					padding-left: 0;
+					padding-right: 0;
+				}
+			}
+
+			@include media-screen(){
+				flex-direction: column;
+
+				.left-col{
+					max-width: none;
+				}
+
+				.right-col{
+					padding-left: 0;
+				}
+			}
+		}
+	}
+}

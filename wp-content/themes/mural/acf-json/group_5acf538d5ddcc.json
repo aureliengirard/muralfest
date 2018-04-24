@@ -1,0 +1,41 @@
+{
+    "key": "group_5acf538d5ddcc",
+    "title": "Derniers articles du blogue",
+    "fields": [
+        {
+            "key": "field_5acf53a9c82c5",
+            "label": "Afficher les derniers articles du blog",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Affiche les trois derniers articles du blog.",
+            "new_lines": "",
+            "esc_html": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1523536849
+}
