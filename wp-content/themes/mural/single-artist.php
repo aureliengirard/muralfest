@@ -8,7 +8,7 @@
                 <div id="gmap"></div>
                 <div class="content">
                     <section class="single-navigation">
-                        <a class="readmore back-btn" href="<?= wp_get_referer() ?>">< <?php _e('Back', 'custom_theme') ?></a>
+                        <?php display_back_button(); ?>
 
                         <?php displayBreadcrumb(); ?>
                     </section>
