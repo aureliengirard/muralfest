@@ -169,9 +169,7 @@ textarea {
   font-size: inherit;
   line-height: inherit; }
 
-button,
-input,
-textarea {
+button, input, textarea {
   overflow: visible; }
 
 button,
@@ -268,9 +266,7 @@ template {
 /*****************************************************/
 .preload * {
   -webkit-transition: none !important;
-  -moz-transition: none !important;
-  -ms-transition: none !important;
-  -o-transition: none !important; }
+  transition: none !important; }
 
 /*****************************************************
 	General / Reset / Structure
@@ -304,10 +300,10 @@ main {
 a {
   outline: none !important; }
 
-.tel {
+.tel, a[href^="tel"] {
   color: inherit !important;
   cursor: text; }
-  .tel:hover {
+  .tel:hover, a[href^="tel"]:hover {
     text-decoration: none; }
 
 .clearfix:after {
@@ -362,6 +358,9 @@ p {
 
 #masthead ul {
   list-style: none; }
+
+.home-link {
+  display: block; }
 
 #topbar {
   background-color: blue;
@@ -523,9 +522,9 @@ textarea {
   resize: vertical;
   min-height: 150px; }
 
-input[type=checkbox], textarea[type=checkbox],
-input[type=radio],
-textarea[type=radio] {
+
+input[type="checkbox"],
+textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   border: 1px solid #b1b1b1; }
 
 /*****************************************************
@@ -535,13 +534,16 @@ main header {
   background-color: #eee; }
 
 .site-content {
-  background-color: #fff;
-  padding: 30px; }
+  background-color: #fff; }
 
 .content-wrap {
-  min-height: 1px;
-  border-right: 1px solid #c3c2c1;
-  padding-right: 25px; }
+  min-height: 1px; }
+
+.content {
+  max-width: 1200px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto; }
 
 /* Sidebar */
 #sidebar {
