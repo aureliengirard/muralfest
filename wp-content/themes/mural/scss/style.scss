@@ -625,7 +625,7 @@ h4,
                         margin:0;
                     }
                 }
-                @media only screen and (max-width: 767px) {
+                @media only screen and (max-width: 768px) {
                     right:0;
                     left:0;
                     text-align: left;
@@ -689,6 +689,7 @@ input{
 	font-weight: 700;
 	padding: 12px 15px;
 	background-color: #000000;
+    border-radius: 0px;
 	width: 100%;
 	max-width: 100%;
 	min-width: 0;

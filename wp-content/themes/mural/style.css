@@ -817,7 +817,7 @@ h4,
             right: 40px; }
             .banner figure.left-banner .banner-overlay .button, .banner figure.left-banner .banner-overlay .ui-datepicker .ui-datepicker-buttonpane button, .ui-datepicker .ui-datepicker-buttonpane .banner figure.left-banner .banner-overlay button {
               margin: 0; } }
-        @media only screen and (max-width: 767px) {
+        @media only screen and (max-width: 768px) {
           .banner figure.left-banner .banner-overlay {
             right: 0;
             left: 0;
@@ -884,6 +884,7 @@ input, textarea {
   font-weight: 700;
   padding: 12px 15px;
   background-color: #000000;
+  border-radius: 0px;
   width: 100%;
   max-width: 100%;
   min-width: 0;
