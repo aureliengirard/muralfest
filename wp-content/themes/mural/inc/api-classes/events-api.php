@@ -134,6 +134,7 @@ class Events_API extends Program_Routes {
                 'id' => array(
                     'value' => $event->ID
                 ),
+                'discoverable' => 0,
                 'title' => array(
                     'value' => array(
                         array(
@@ -189,7 +190,7 @@ class Events_API extends Program_Routes {
                     )
                 ),
                 'photo' => array(
-                    'value' => wp_get_attachment_url(get_field('image_de_levenement', $fr_id)),
+                    'value' => wp_get_attachment_image_url(get_field('image_de_levenement', $fr_id), 'api-event'),
                     'attr' => array(
                         'updateDate' => get_the_modified_date('Y-m-d H:i', get_field('image_de_levenement', $fr_id))
                     )

@@ -42,6 +42,7 @@ function register_CPT(){
 function cdm_add_images_sizes(){
     add_image_size( 'cta-preview', 400, 285, array('center', 'center') );
 	add_image_size( 'blog-preview', 600, 400, array('center', 'center') );
+	add_image_size( 'api-event', 1750, 1000, array('center', 'center') );
 }
 add_action( 'init', 'cdm_add_images_sizes' );
 
@@ -254,7 +255,10 @@ function get_posttype_parent_id($post_type = NULL){
 
 
 /**
+ * Retourne les images de tous les oeuvres d'un artiste.
  * 
+ * @param Int $artist_id
+ * @return Array
  */
 function get_artist_artworks_images($artist_id){
 	$artwork_args = array(

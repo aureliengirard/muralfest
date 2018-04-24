@@ -97,6 +97,7 @@ class Artists_API extends Program_Routes {
                 'id' => array(
                     'value' => $artist->ID
                 ),
+                'discoverable' => 0,
                 'title' => array(
                     'value' => array(
                         array(
