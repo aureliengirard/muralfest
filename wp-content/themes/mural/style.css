@@ -1461,7 +1461,7 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
                 transform: translateY(-50%);
         pointer-events: none; }
       .content-wrap .filters .program-filters #orderby-wrap input, .content-wrap .filters .program-filters #orderby-wrap textarea {
-        width: auto; }
+        width: 90%; }
       .content-wrap .filters .program-filters #orderby-wrap .hasDatepicker {
         position: absolute;
         top: 100% !important;
@@ -1976,7 +1976,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       -webkit-box-flex: 1;
           -ms-flex: 1 0 auto;
               flex: 1 0 auto;
-      max-width: 50%; }
+      max-width: 50%;
+      width: 50%; }
       @media only screen and (max-width: 767px) {
         .page-blog .content-wrap .articles .article figure {
           width: 100%;
