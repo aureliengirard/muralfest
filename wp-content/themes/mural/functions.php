@@ -293,3 +293,24 @@ function get_artist_artworks_images($artist_id){
 	
 	return $artworks_images;
 }
+
+
+/**
+ * Affiche un bouton retour
+ */
+function display_back_button(){
+	$url = wp_get_referer();
+
+	if(!$url){
+		if(is_single()){
+			$url = get_the_permalink(get_posttype_parent_id());
+			
+		}else if($parent_id = wp_get_post_parent_id(get_the_ID())){
+			$url = get_the_permalink($parent_id);
+		}
+	}
+
+	if($url){
+		echo '<a class="readmore back-btn" href="'. $url .'">< '. __('Back', 'custom_theme') .'</a>';
+	}
+}
