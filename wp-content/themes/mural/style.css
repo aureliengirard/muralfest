@@ -373,7 +373,7 @@ h2,
   font-weight: 700;
   letter-spacing: 0.05em;
   color: #ed3d8f;
-  margin: 0 0 25px;
+  margin: 20px 0 25px;
   line-height: 1; }
   h2 a,
   .like-h2 a {
@@ -393,7 +393,7 @@ h3,
   font-weight: 400;
   letter-spacing: 0.1em;
   color: #ffffff;
-  margin: 0 0 15px;
+  margin: 10px 0 15px;
   line-height: 1; }
   h3 a,
   .like-h3 a {
@@ -463,9 +463,6 @@ h4,
     font-size: 1.8rem;
     padding: 10px 14px;
     letter-spacing: normal; }
-  .button.facebook, .ui-datepicker .ui-datepicker-buttonpane button.facebook {
-    background-color: #ed3d8f;
-    color: #fff204; }
   .button.playlist, .ui-datepicker .ui-datepicker-buttonpane button.playlist {
     background-color: #04d3ff;
     color: #fff204; }
@@ -473,13 +470,8 @@ h4,
       background-color: #fff204;
       color: #ed3d8f; }
   .button.instagram, .ui-datepicker .ui-datepicker-buttonpane button.instagram {
-    background-color: #04d3ff;
+    background-color: #ed3d8f;
     color: #fff204; }
-    .button.instagram:hover, .ui-datepicker .ui-datepicker-buttonpane button.instagram:hover {
-      background-color: #fff204;
-      color: #ed3d8f; }
-      .button.instagram:hover::after, .ui-datepicker .ui-datepicker-buttonpane button.instagram:hover::after {
-        background-color: #04d3ff; }
   .button.twitter, .ui-datepicker .ui-datepicker-buttonpane button.twitter {
     background-color: #fff204;
     color: #04d3ff; }
@@ -778,7 +770,8 @@ h4,
       top: 25%;
       left: 90px; }
       .banner figure .banner-overlay h1 {
-        color: #fff204; }
+        color: #fff204;
+        font-size: 7rem; }
       .banner figure .banner-overlay h1, .banner figure .banner-overlay h2 {
         text-shadow: 0px 3px 30px black;
         margin-bottom: 0; }

@@ -56,7 +56,7 @@
                             <?php endif; ?>
 
                             <?php if(get_field('facebook')): ?>
-                                <a class="button smaller facebook" href="<?php the_field('facebook'); ?>" target="_blank" rel="nofollow"><?php _e('Facebook', 'site-theme'); ?></a>
+                                <a class="button smaller" href="<?php the_field('facebook'); ?>" target="_blank" rel="nofollow"><?php _e('Facebook', 'site-theme'); ?></a>
                             <?php endif; ?>
 
                             <?php if(get_field('twitter')): ?>
