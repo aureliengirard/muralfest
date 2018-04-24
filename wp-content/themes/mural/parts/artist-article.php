@@ -1,11 +1,12 @@
 <div class="program">
     <?
     global $place_holder_artist;
+    $artist_id = icl_object_id(get_the_ID(), 'artist', false, "fr");      
     $artwork_args = array(
         'post_type' => array('artwork'),
         'posts_per_page' => -1,
         'meta_key' => 'artiste',
-        'meta_value' => get_the_ID(),
+        'meta_value' => $artist_id,
         'orderby' => 'annee',
         'order' => 'DESC'
     );
