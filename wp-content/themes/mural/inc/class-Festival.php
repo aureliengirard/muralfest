@@ -210,6 +210,15 @@ class Festival {
             )
         ));
 
+        CPT()->cptOrth = 'm';
+        CPT()->add_taxonomy('tag-venue', array(
+            'custom_posts' => array('venue'),
+            'tax_variations' => array(
+                'singular' => _x('Tag', 'taxonomy singular name', 'site-theme'),
+                'plural' => _x('Tags', 'taxonomy general name', 'site-theme')
+            )
+        ));
+
         $this->restricted_post_type = $festival_CPT;
     }
 	

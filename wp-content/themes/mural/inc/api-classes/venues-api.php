@@ -29,7 +29,15 @@ class Venues_API extends Program_Routes {
     public function get_venues( $request ){
         $data = array('venues' => array());
 
-        $data['venues'][] = $this->prepare_terms_for_response( array(), $request );
+        $tag_terms = get_terms( array(
+            'taxonomy' => 'tag-venue',
+            'hide_empty' => false,
+            'suppress_filters' => false
+        ) );
+
+        foreach($tag_terms as $term){
+            $data['venues'][] = $this->prepare_terms_for_response( $term, $request );
+        }
 
         $venues = get_posts(array(
             'post_type' => 'venue',
@@ -52,43 +60,54 @@ class Venues_API extends Program_Routes {
             $data['venues'][] = $this->prepare_artworks_for_response( $artwork, $request );
         }
 
+        //var_dump($data);exit;
+
         return new WP_REST_Response( $data, 200 );
     }
 
 
     /**
      * Prépare la taxonomie pour la réponse de l'API.
-     * Il n'y as pas de taxonomie pour les lieux, on ajoute seulement "Murale"
-     * pour les oeuvres.
+     * On ajoute par défaut "Murale" pour les lieux des oeuvres.
      * 
      * @param mixed $term taxonomie en object wordpress.
      * @param WP_REST_Request $request Objet de la requête.
      * @return mixed
      */
     public function prepare_terms_for_response( $term, $request ) {
+        $en_id = apply_filters( 'wpml_object_id', $term->term_id, $term->taxonomy, true, 'en' );
+        $fr_id = apply_filters( 'wpml_object_id', $term->term_id, $term->taxonomy, true, 'fr' );
+
+        global $sitepress;
+        remove_filter('get_term', array($sitepress,'get_term_adjust_id'), 1, 1);
+
+        $en_term = get_term($en_id, $term->taxonomy);
+        $fr_term = get_term($fr_id, $term->taxonomy);
+
+        add_filter('get_term', array($sitepress,'get_term_adjust_id'), 1, 1);
+
         $term_data = array(
             'key' => 'tag',
             'value' => array(
-                'id' => 'venue-tag-mural-id',
+                'id' => $term->slug,
                 'title' => array(
                     'value' => array(
                         array(
                             'key' => 'value',
-                            'value' => 'Mural',
+                            'value' => ($en_term->name ? $en_term->name : ''),
                             'attr' => array(
                                 'lang' => 'eng'
                             )
                         ),
                         array(
                             'key' => 'value',
-                            'value' => 'Murale',
+                            'value' => ($fr_term->name ? $fr_term->name : ''),
                             'attr' => array(
                                 'lang' => 'fre'
                             )
                         )
                     )
-                ),
-                'color' => '#E44D42'
+                )
             )
         );
 
@@ -160,6 +179,16 @@ class Venues_API extends Program_Routes {
                 )
             )
         );
+
+        $terms = wp_get_post_terms( $fr_id, 'tag-venue' );
+        if(!empty($terms)){
+            foreach ($terms as $term) {
+                $venue_data['value']['tags'][] = array(
+                    'key' => 'tagId',
+                    'value' => $term->slug
+                );
+            }
+        }
         
         return $venue_data;
     }
