@@ -78,6 +78,19 @@ class Artists_API extends Program_Routes {
         $country_en = $country_list_en[get_field('pays_dorigine', $fr_id)];
         $country_fr = $country_list_fr[get_field('pays_dorigine', $fr_id)];
 
+        $image_id = false;
+        
+        if(get_field('image_de_lartiste', $fr_id)){
+            $image_id = get_field('image_de_lartiste', $fr_id);
+
+        }else{
+            $artist_artworks_img = get_artist_artworks_images($fr_id);
+
+            if(!empty($artist_artworks_img)){
+                $image_id = $artist_artworks_img[0]['image_id']; // 0 pour la dernière oeuvre
+            }
+        }
+
         $artist_data = array(
             'key' => 'artist',
             'value' => array(
@@ -139,9 +152,9 @@ class Artists_API extends Program_Routes {
                     )
                 ),
                 'photo' => array(
-                    'value' => wp_get_attachment_url(get_field('image_de_lartiste', $fr_id)),
+                    'value' => wp_get_attachment_url($image_id),
                     'attr' => array(
-                        'updateDate' => get_the_modified_date('Y-m-d H:i', get_field('image_de_lartiste', $fr_id))
+                        'updateDate' => get_the_modified_date('Y-m-d H:i', $image_id)
                     )
                 ),
                 'description' => array(

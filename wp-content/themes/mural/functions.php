@@ -251,3 +251,41 @@ function get_posttype_parent_id($post_type = NULL){
     
     return $page_id;
 }
+
+
+/**
+ * 
+ */
+function get_artist_artworks_images($artist_id){
+	$artwork_args = array(
+        'post_type' => array('artwork'),
+        'posts_per_page' => -1,
+        'meta_key' => 'artiste',
+        'meta_value' => $artist_id,
+        'orderby' => 'annee',
+        'order' => 'ASC'
+    );
+
+	$artwork_query =  new WP_Query($artwork_args);
+
+	$artworks_images = array();
+
+	if($artwork_query->have_posts()){
+		while ($artwork_query->have_posts()){
+			$artwork_query->the_post();
+
+			if(get_field('image_de_loeuvre')){
+				$artworks_images[] = array(
+					'id' => get_the_ID(),
+					'year' => get_field('annee'),
+					'image_id' => get_field('image_de_loeuvre')
+				);
+			}
+
+		}
+	}
+
+	wp_reset_postdata();
+	
+	return $artworks_images;
+}
