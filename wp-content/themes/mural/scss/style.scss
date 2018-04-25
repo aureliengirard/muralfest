@@ -291,7 +291,14 @@ h4,
 	padding-right: $c12Gutter;
 	margin: 0 auto;
 }
-
+body.mobile{
+    #mmenu,#open-mmenu{        
+		display: block;
+    }
+    #masthead .main-menu .content .main-navigation{
+        display:none;
+    }
+}
 
 /// Menu mobile
 #mmenu{
@@ -336,9 +343,6 @@ h4,
 			}
 		}
 	}
-	@media only screen and (max-width: 767px) {
-		display: block;
-	}
 }
 
 #open-mmenu{
@@ -346,9 +350,6 @@ h4,
 	color:#000;
 	font-size:4.2rem;
 	padding:15px;
-	@media only screen and (max-width: 767px) {
-		display: block;
-	}
 } 
 
 /// Menu principal
@@ -431,9 +432,6 @@ h4,
 /// Style des menus
 .navigation{
 	width: auto;
-	@media only screen and (max-width: 767px) {
-		display: none;
-	}
 	ul{
 		padding: 0;
 		margin: 0;

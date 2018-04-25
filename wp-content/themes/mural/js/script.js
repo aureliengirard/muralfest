@@ -95,8 +95,14 @@ $(function(){
 			center: true,
 		});
 	});
-	
-	
+	/// ajout la classe mobile sur le mobile pour menu mobile sur Ipad
+    $(window).on('load resize',function() {
+        if(isMobile()){
+             $('body').addClass('mobile');
+        }else{
+             $('body').removeClass('mobile');
+        }
+    });
 	
 	/* inscription a l'infolettre */
 	$('.infolettre, .newsletter').submit(function(e){

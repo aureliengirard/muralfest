@@ -520,6 +520,12 @@ h4,
   padding-right: 15px;
   margin: 0 auto; }
 
+body.mobile #mmenu, body.mobile #open-mmenu {
+  display: block; }
+
+body.mobile #masthead .main-menu .content .main-navigation {
+  display: none; }
+
 #mmenu {
   display: none;
   background-color: #ffffff; }
@@ -540,18 +546,12 @@ h4,
       padding: 9px 0px; }
       #mmenu .mm-navbars-bottom .sociaux li a {
         color: #fff; }
-  @media only screen and (max-width: 767px) {
-    #mmenu {
-      display: block; } }
 
 #open-mmenu {
   display: none;
   color: #000;
   font-size: 4.2rem;
   padding: 15px; }
-  @media only screen and (max-width: 767px) {
-    #open-mmenu {
-      display: block; } }
 
 #masthead {
   position: relative;
@@ -634,9 +634,6 @@ h4,
 
 .navigation {
   width: auto; }
-  @media only screen and (max-width: 767px) {
-    .navigation {
-      display: none; } }
   .navigation ul {
     padding: 0;
     margin: 0; }
