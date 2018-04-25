@@ -526,6 +526,9 @@ body.mobile #mmenu, body.mobile #open-mmenu {
 body.mobile #masthead .main-menu .content .main-navigation {
   display: none; }
 
+body.mobile #colophon .navigation {
+  display: none; }
+
 body.mobile .content-wrap .deux_colonnes .col-wrapper {
   display: block; }
 
