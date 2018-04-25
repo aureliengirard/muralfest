@@ -498,6 +498,9 @@ h4,
     z-index: -1; }
     .button::after:hover, .ui-datepicker .ui-datepicker-buttonpane button::after:hover {
       text-decoration: none; }
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      .button::after, .ui-datepicker .ui-datepicker-buttonpane button::after {
+        background-color: #04d3ff; } }
   .button:hover, .ui-datepicker .ui-datepicker-buttonpane button:hover {
     background-color: #04d3ff;
     color: #fff204; }
@@ -1214,6 +1217,10 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
           .content-wrap .appels_a_laction .cta-wrapper .cta figure a .regular-img {
             -webkit-filter: url("images/svg/effect-imageblur.svg#image-blur");
                     filter: url("images/svg/effect-imageblur.svg#image-blur"); }
+            @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+              .content-wrap .appels_a_laction .cta-wrapper .cta figure a .regular-img {
+                -webkit-filter: none;
+                        filter: none; } }
             .content-wrap .appels_a_laction .cta-wrapper .cta figure a .regular-img img {
               opacity: 1;
               -webkit-transition: all 0.5s;
@@ -1241,6 +1248,9 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
             opacity: 0.3; }
           .content-wrap .appels_a_laction .cta-wrapper .cta figure a:hover .hover-effect-img {
             opacity: 1; }
+            @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+              .content-wrap .appels_a_laction .cta-wrapper .cta figure a:hover .hover-effect-img {
+                opacity: 0; } }
       .content-wrap .appels_a_laction .cta-wrapper .cta .description {
         padding: 15px 20px; }
         .content-wrap .appels_a_laction .cta-wrapper .cta .description h3 {
