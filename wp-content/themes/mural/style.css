@@ -524,14 +524,14 @@ h4,
   margin: 0 auto; }
 
 @media only screen and (max-width: 1024px) {
-  #mmenu, #open-mmenu {
+  #masthead #mmenu, #masthead #open-mmenu {
     display: block; }
   #masthead .main-menu .content .main-navigation {
     display: none; }
   #colophon .navigation {
     display: none; } }
 
-body.desktop #mmenu, body.desktop #open-mmenu {
+body.desktop #masthead #mmenu, body.desktop #masthead #open-mmenu {
   display: none; }
 
 body.desktop #masthead .main-menu .content .main-navigation {

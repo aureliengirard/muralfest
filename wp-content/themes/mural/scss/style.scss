@@ -297,7 +297,7 @@ h4,
 }
 /// Menu mobile IPAD 
 @media only screen and (max-width: 1024px) {
-     #mmenu,#open-mmenu{        
+     #masthead #mmenu,#masthead #open-mmenu{        
 		display: block;
     }
     #masthead .main-menu .content .main-navigation{
@@ -308,7 +308,7 @@ h4,
     }   
 }
 body.desktop{
-    #mmenu,#open-mmenu{        
+    #masthead #mmenu, #masthead #open-mmenu{        
 		display: none;
     }
     #masthead .main-menu .content .main-navigation{
