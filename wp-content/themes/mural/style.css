@@ -523,14 +523,22 @@ h4,
   padding-right: 15px;
   margin: 0 auto; }
 
-body.mobile #mmenu, body.mobile #open-mmenu {
+@media only screen and (max-width: 1024px) {
+  #mmenu, #open-mmenu {
+    display: block; }
+  #masthead .main-menu .content .main-navigation {
+    display: none; }
+  #colophon .navigation {
+    display: none; } }
+
+body.desktop #mmenu, body.desktop #open-mmenu {
+  display: none; }
+
+body.desktop #masthead .main-menu .content .main-navigation {
   display: block; }
 
-body.mobile #masthead .main-menu .content .main-navigation {
-  display: none; }
-
-body.mobile #colophon .navigation {
-  display: none; }
+body.desktop #colophon .navigation {
+  display: block; }
 
 body.mobile .content-wrap .deux_colonnes .col-wrapper {
   display: block; }

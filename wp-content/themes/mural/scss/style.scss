@@ -296,8 +296,8 @@ h4,
 	margin: 0 auto;
 }
 /// Menu mobile IPAD 
-body.mobile{
-    #mmenu,#open-mmenu{        
+@media only screen and (max-width: 1024px) {
+     #mmenu,#open-mmenu{        
 		display: block;
     }
     #masthead .main-menu .content .main-navigation{
@@ -305,7 +305,20 @@ body.mobile{
     }
     #colophon .navigation{
          display:none;
+    }   
+}
+body.desktop{
+    #mmenu,#open-mmenu{        
+		display: none;
     }
+    #masthead .main-menu .content .main-navigation{
+        display:block;
+    }
+    #colophon .navigation{
+         display:block;
+    }   
+}
+body.mobile{
     /// Ajustements section deux colonnes App pour Ipad.
     .content-wrap{
         .deux_colonnes{		
