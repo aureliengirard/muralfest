@@ -1,4 +1,4 @@
-<div class="article">
+<div class="article toAnimate animS_fadeIn">
     <div class="content">
         <figure>
             <a href="<?php the_permalink(); ?>">

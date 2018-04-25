@@ -6,7 +6,7 @@
     <?php if ( have_rows( 'appel_a_laction' ) ) : ?>
         <div class="cta-wrapper">
             <?php while ( have_rows( 'appel_a_laction' ) ) : the_row(); ?>
-                <div class="cta">
+                <div class="cta toAnimate animS_fadeInUp">
                     <figure>
                         <a href="<?php the_sub_field('lien_page'); ?>">
                             <span class="regular-img">

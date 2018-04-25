@@ -112,6 +112,11 @@ function theme_enqueue_styles() {
 		null,
 		wp_get_theme()->get('Version')
 	);
+	wp_enqueue_style( 'animate',
+		CHILDURI . '/scss/animate.css',
+		null,
+        wp_get_theme()->get('Version')
+	);
 
 	wp_dequeue_style('font-awesome-4');
 }

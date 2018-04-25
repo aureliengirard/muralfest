@@ -1,4 +1,4 @@
-<div class="program">
+<div class="program toAnimate animS_fadeIn">
     <figure>
         <a href="<?php the_permalink(); ?>">
             <span class="regular-img">
