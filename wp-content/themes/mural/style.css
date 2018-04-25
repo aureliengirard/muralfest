@@ -551,6 +551,9 @@ body.mobile .content-wrap .deux_colonnes .application figure:last-child {
 body.mobile .content-wrap .appels_a_laction .cta-wrapper .cta .description h3 {
   font-size: 2.4rem; }
 
+#masthead #mmenu {
+  display: none; }
+
 #mmenu {
   display: none;
   background-color: #ffffff; }
