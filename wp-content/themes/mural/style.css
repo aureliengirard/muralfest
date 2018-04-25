@@ -1431,24 +1431,24 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       padding-left: 30px;
       padding-right: 0; }
 
-.content-wrap section .content .pagination .page-numbers {
+.content-wrap section .pagination .page-numbers {
   text-align: center;
   margin-bottom: 20px;
   margin-top: 20px; }
-  .content-wrap section .content .pagination .page-numbers li {
+  .content-wrap section .pagination .page-numbers li {
     display: inline; }
-    .content-wrap section .content .pagination .page-numbers li a, .content-wrap section .content .pagination .page-numbers li span {
+    .content-wrap section .pagination .page-numbers li a, .content-wrap section .pagination .page-numbers li span {
       padding: 10px;
       font-weight: 600; }
-    .content-wrap section .content .pagination .page-numbers li:before {
+    .content-wrap section .pagination .page-numbers li:before {
       content: none; }
-    .content-wrap section .content .pagination .page-numbers li .current {
+    .content-wrap section .pagination .page-numbers li .current {
       color: #04d3ff; }
 
 @media only screen and (max-width: 768px) {
-  .content-wrap section .content .pagination .page-numbers {
+  .content-wrap section .pagination .page-numbers {
     padding-left: 0px; }
-    .content-wrap section .content .pagination .page-numbers li {
+    .content-wrap section .pagination .page-numbers li {
       margin-left: 0px; } }
 
 .content-wrap .filters {
