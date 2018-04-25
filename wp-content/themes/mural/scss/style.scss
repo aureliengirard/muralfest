@@ -1433,16 +1433,19 @@ input[type=radio]{
 
 			li{
 				display:inline;
- 
+                 margin-left:28px;
 				a, span{
 					padding: 10px;
 					font-weight: 600;
+                    font-size: 2.1rem;
 				}
 
 				&:before{
 					content:none;
 				}
-
+                a{
+                    color:$color_pink;
+                }
 				.current{
 					color:$color_blue;
 				}

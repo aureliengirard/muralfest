@@ -1436,12 +1436,16 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   margin-bottom: 20px;
   margin-top: 20px; }
   .content-wrap section .pagination .page-numbers li {
-    display: inline; }
+    display: inline;
+    margin-left: 28px; }
     .content-wrap section .pagination .page-numbers li a, .content-wrap section .pagination .page-numbers li span {
       padding: 10px;
-      font-weight: 600; }
+      font-weight: 600;
+      font-size: 2.1rem; }
     .content-wrap section .pagination .page-numbers li:before {
       content: none; }
+    .content-wrap section .pagination .page-numbers li a {
+      color: #ed3d8f; }
     .content-wrap section .pagination .page-numbers li .current {
       color: #04d3ff; }
 
