@@ -520,6 +520,12 @@ h4,
   padding-right: 15px;
   margin: 0 auto; }
 
+body.mobile #mmenu, body.mobile #open-mmenu {
+  display: block; }
+
+body.mobile #masthead .main-menu .content .main-navigation {
+  display: none; }
+
 #mmenu {
   display: none;
   background-color: #ffffff; }
@@ -540,18 +546,12 @@ h4,
       padding: 9px 0px; }
       #mmenu .mm-navbars-bottom .sociaux li a {
         color: #fff; }
-  @media only screen and (max-width: 767px) {
-    #mmenu {
-      display: block; } }
 
 #open-mmenu {
   display: none;
   color: #000;
   font-size: 4.2rem;
   padding: 15px; }
-  @media only screen and (max-width: 767px) {
-    #open-mmenu {
-      display: block; } }
 
 #masthead {
   position: relative;
@@ -634,9 +634,6 @@ h4,
 
 .navigation {
   width: auto; }
-  @media only screen and (max-width: 767px) {
-    .navigation {
-      display: none; } }
   .navigation ul {
     padding: 0;
     margin: 0; }
@@ -1417,7 +1414,7 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     .content-wrap section .content .pagination .page-numbers li .current {
       color: #04d3ff; }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
   .content-wrap section .content .pagination .page-numbers {
     padding-left: 0px; }
     .content-wrap section .content .pagination .page-numbers li {
@@ -1812,6 +1809,9 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
           opacity: 0.3; }
         .content-wrap section .programs .program figure a:hover .hover-effect-img {
           opacity: 1; }
+      @media only screen and (max-width: 768px) {
+        .content-wrap section .programs .program figure {
+          text-align: center; } }
     .content-wrap section .programs .program .description {
       text-align: center;
       padding: 20px 15px;
