@@ -80,13 +80,6 @@ function theme_enqueue_styles() {
 		true
 	);
 
-	wp_enqueue_script("ink",
-		CHILDURI."/js/ink.js",
-		array('theme-utils'),
-		wp_get_theme()->get('Version'),
-		true
-	);
-
 	wp_enqueue_script("map",
 		CHILDURI."/js/map.js",
 		array('theme-utils'),
