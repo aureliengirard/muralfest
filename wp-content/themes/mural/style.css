@@ -2333,18 +2333,19 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin-bottom: 50px; }
+  margin-bottom: 40px; }
+  .partners .tier:first-of-type:after {
+    content: none; }
   .partners .tier .partner {
     padding: 0 15px;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 20%; }
     @media only screen and (max-width: 767px) {
       .partners .tier .partner {
         margin-bottom: 40px; } }
@@ -2362,6 +2363,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       -webkit-box-ordinal-group: 0;
           -ms-flex-order: -1;
               order: -1; }
+    .partners .tier .partner:not(:first-child):nth-child(5n+1):last-child {
+      margin-right: auto; }
 
 .single-artist .content-wrap section h1 {
   color: #000000; }
