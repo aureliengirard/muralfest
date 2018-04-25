@@ -62,8 +62,8 @@ class Shows_API extends Program_Routes {
 
         $date_start = date('Y-m-d', strtotime(get_field('event_date', $fr_id)));
         $date_end = date('Y-m-d', strtotime(get_field('date_de_fin', $fr_id)));
-        $time_start = date('H:i', strtotime(get_field('heure_de_debut', $fr_id)));
-        $time_end = date('H:i', strtotime(get_field('heure_de_fin', $fr_id)));
+        $time_start = (get_field('heure_de_debut', $fr_id) ? date('H:i', strtotime(get_field('heure_de_debut', $fr_id))) : '');
+        $time_end = (get_field('heure_de_fin', $fr_id) ? date('H:i', strtotime(get_field('heure_de_fin', $fr_id))) : '');
 
         $show_data = array(
             'key' => 'show',
