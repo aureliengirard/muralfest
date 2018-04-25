@@ -97,7 +97,7 @@ function eventArray_to_xml($array, &$xml_user_info){
 
         }else{
             if(is_string($value)){
-                $elem = $xml_user_info->addChildWithCDATA($key, $value);
+                $elem = $xml_user_info->addChildWithCDATA($key, html_entity_decode($value));
 
             }else{
                 $elem = $xml_user_info->addChild($key, $value);

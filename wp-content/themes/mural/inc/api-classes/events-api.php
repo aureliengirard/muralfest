@@ -134,7 +134,7 @@ class Events_API extends Program_Routes {
                 'id' => array(
                     'value' => $event->ID
                 ),
-                'discoverable' => 0,
+                'discoverable' => (get_field('discover', $fr_id) ? get_field('discover', $fr_id) : 0),
                 'title' => array(
                     'value' => array(
                         array(
