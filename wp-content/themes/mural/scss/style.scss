@@ -291,12 +291,63 @@ h4,
 	padding-right: $c12Gutter;
 	margin: 0 auto;
 }
+/// Menu mobile IPAD 
 body.mobile{
     #mmenu,#open-mmenu{        
 		display: block;
     }
     #masthead .main-menu .content .main-navigation{
         display:none;
+    }
+    /// Ajustements section deux colonnes App pour Ipad.
+    .content-wrap{
+        .deux_colonnes{		
+            .col-wrapper{
+                display:block;			
+            }		
+            .left-col,
+            .right-col{
+                width: 100%;
+                .content-width{
+                    .col-content{					
+                        max-width:100vw;				
+                    }
+                }
+            }		
+            .left-col{
+                .content-width{
+                    .col-content{
+                        width: 100%;
+                        max-width: 100%;
+                    }
+                }
+            }		
+            .application{		
+                figure{
+                    &:first-child{					
+                        margin-top:1vw;
+                    }
+                    &:last-child{
+                        transform: rotate(-30deg);
+                        right:-1.5vw;
+                        position: relative;
+                        top:1vw;
+                        width:20vw;
+                    }
+                }
+            }
+        }
+        .appels_a_laction{
+            .cta-wrapper{
+                .cta{
+                    .description{
+                        h3{
+                            font-size: 2.4rem;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
