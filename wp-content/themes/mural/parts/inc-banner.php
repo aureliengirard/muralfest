@@ -28,7 +28,7 @@
             endif;
             ?>
             <?php if(get_field('contenu_banniere')): ?>
-                <div class="banner-overlay">
+                <div class="banner-overlay  animated fadeInLeft">
                     <?php the_field('contenu_banniere'); ?>
                 </div>
             <?php endif; ?>
