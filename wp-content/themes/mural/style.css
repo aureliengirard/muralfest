@@ -1417,7 +1417,7 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     .content-wrap section .content .pagination .page-numbers li .current {
       color: #04d3ff; }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
   .content-wrap section .content .pagination .page-numbers {
     padding-left: 0px; }
     .content-wrap section .content .pagination .page-numbers li {
@@ -1812,6 +1812,9 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
           opacity: 0.3; }
         .content-wrap section .programs .program figure a:hover .hover-effect-img {
           opacity: 1; }
+      @media only screen and (max-width: 768px) {
+        .content-wrap section .programs .program figure {
+          text-align: center; } }
     .content-wrap section .programs .program .description {
       text-align: center;
       padding: 20px 15px;

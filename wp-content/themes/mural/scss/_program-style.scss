@@ -76,6 +76,9 @@
 
 						
 					}
+                    @include media-screen(768px){
+                        text-align: center;
+                    }
 				}
 
 				.description{
