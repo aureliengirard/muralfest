@@ -21,7 +21,7 @@
             <?php endif; ?>
         </figure>
     <?php   elseif(get_field( 'banniere' )): ?>
-    <figure class="single-banner  <?php if (get_field('contenu_banniere')) : ?> with-overlay <? endif; ?>" <?php if (get_field('contenu_banniere')) : ?> style="background-image:url('<?= wp_get_attachment_image_url(get_field('banniere'), 'max-banner') ;?>')"; <? endif; ?>>
+    <figure class="single-banner  <?php if (get_field('contenu_banniere')) : ?> with-overlay <? endif; ?>" <?php if (get_field('contenu_banniere')) : ?> style="background-image:url('<?= wp_get_attachment_image_url(get_field('banniere'), 'max-banner') ;?>')" <? endif; ?>>
             <?php
             if (!get_field('contenu_banniere')) :
                 echo wp_get_attachment_image( get_field( 'banniere' ), 'max-banner' ); 
