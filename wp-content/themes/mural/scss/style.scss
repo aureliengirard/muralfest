@@ -295,17 +295,8 @@ h4,
 	padding-right: $c12Gutter;
 	margin: 0 auto;
 }
-/// Menu mobile IPAD 
+
 body.mobile{
-    #mmenu,#open-mmenu{        
-		display: block;
-    }
-    #masthead .main-menu .content .main-navigation{
-        display:none;
-    }
-    #colophon .navigation{
-         display:none;
-    }
     /// Ajustements section deux colonnes App pour Ipad.
     .content-wrap{
         .deux_colonnes{		
@@ -358,6 +349,9 @@ body.mobile{
     }
 }
 
+#masthead #mmenu{
+    display:none;
+}
 /// Menu mobile
 #mmenu{
 	display: none;
@@ -448,7 +442,29 @@ body.mobile{
 		}
 	}
 }
-
+/// Menu mobile IPAD 
+@media only screen and (max-width: 1024px) {
+     #mmenu,#masthead #open-mmenu{        
+		display: block;
+    }
+    #masthead .main-menu .content .main-navigation{
+        display:none;
+    }
+    #colophon .navigation{
+         display:none;
+    }   
+}
+body.desktop{
+    #mmenu, #masthead #open-mmenu{        
+		display: none;
+    }
+    #masthead .main-menu .content .main-navigation{
+        display:block;
+    }
+    #colophon .navigation{
+         display:block;
+    }   
+}
 /// Style logo
 .home-link{
 	display: block;

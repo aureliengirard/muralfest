@@ -523,15 +523,6 @@ h4,
   padding-right: 15px;
   margin: 0 auto; }
 
-body.mobile #mmenu, body.mobile #open-mmenu {
-  display: block; }
-
-body.mobile #masthead .main-menu .content .main-navigation {
-  display: none; }
-
-body.mobile #colophon .navigation {
-  display: none; }
-
 body.mobile .content-wrap .deux_colonnes .col-wrapper {
   display: block; }
 
@@ -559,6 +550,9 @@ body.mobile .content-wrap .deux_colonnes .application figure:last-child {
 
 body.mobile .content-wrap .appels_a_laction .cta-wrapper .cta .description h3 {
   font-size: 2.4rem; }
+
+#masthead #mmenu {
+  display: none; }
 
 #mmenu {
   display: none;
@@ -624,6 +618,23 @@ body.mobile .content-wrap .appels_a_laction .cta-wrapper .cta .description h3 {
     #masthead .main-menu .nav-menu {
       height: 100%;
       padding-top: 20px; }
+
+@media only screen and (max-width: 1024px) {
+  #mmenu, #masthead #open-mmenu {
+    display: block; }
+  #masthead .main-menu .content .main-navigation {
+    display: none; }
+  #colophon .navigation {
+    display: none; } }
+
+body.desktop #mmenu, body.desktop #masthead #open-mmenu {
+  display: none; }
+
+body.desktop #masthead .main-menu .content .main-navigation {
+  display: block; }
+
+body.desktop #colophon .navigation {
+  display: block; }
 
 .home-link {
   display: block;
