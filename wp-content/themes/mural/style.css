@@ -617,14 +617,14 @@ body.mobile .content-wrap .appels_a_laction .cta-wrapper .cta .description h3 {
       padding-top: 20px; }
 
 @media only screen and (max-width: 1024px) {
-  #masthead #mmenu, #masthead #open-mmenu {
+  #mmenu, #masthead #open-mmenu {
     display: block; }
   #masthead .main-menu .content .main-navigation {
     display: none; }
   #colophon .navigation {
     display: none; } }
 
-body.desktop #masthead #mmenu, body.desktop #masthead #open-mmenu {
+body.desktop #mmenu, body.desktop #masthead #open-mmenu {
   display: none; }
 
 body.desktop #masthead .main-menu .content .main-navigation {

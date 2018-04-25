@@ -441,7 +441,7 @@ body.mobile{
 }
 /// Menu mobile IPAD 
 @media only screen and (max-width: 1024px) {
-     #masthead #mmenu,#masthead #open-mmenu{        
+     #mmenu,#masthead #open-mmenu{        
 		display: block;
     }
     #masthead .main-menu .content .main-navigation{
@@ -452,7 +452,7 @@ body.mobile{
     }   
 }
 body.desktop{
-    #masthead #mmenu, #masthead #open-mmenu{        
+    #mmenu, #masthead #open-mmenu{        
 		display: none;
     }
     #masthead .main-menu .content .main-navigation{
