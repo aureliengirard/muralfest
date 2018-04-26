@@ -786,7 +786,11 @@ body.desktop #colophon .navigation {
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
-          justify-content: center; }
+          justify-content: center;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s; }
+  .banner:hover {
+    text-decoration: none; }
   @media only screen and (max-width: 767px) {
     .banner {
       display: -webkit-box;
