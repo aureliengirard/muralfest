@@ -1472,8 +1472,12 @@ input[type=radio]{
 				}
 			}
 
-			&.view{
-				width: calc(100% / 2);
+			@include media-screen(768px){
+				width: calc(100% / 5);
+			}
+
+			@include media-screen(475px){
+				width: calc(100% / 3);
 			}
 		}
 	}
