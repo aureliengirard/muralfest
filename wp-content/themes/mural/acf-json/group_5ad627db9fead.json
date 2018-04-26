@@ -39,6 +39,25 @@
                     "endpoint": 0
                 },
                 {
+                    "key": "field_5ae1fefbd3af2",
+                    "label": "Nom de la section",
+                    "name": "nom_de_la_section",
+                    "type": "text",
+                    "instructions": "Permet d'identifier cette section. Ne s'affiche pas sur le site.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
                     "key": "field_5ad7437350a5c",
                     "label": "Style de fond",
                     "name": "style_de_fond",
@@ -155,5 +174,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1524153275
+    "modified": 1524760444
 }

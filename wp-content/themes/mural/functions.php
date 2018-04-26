@@ -323,3 +323,26 @@ function display_back_button(){
 		echo '<a class="readmore back-btn" href="'. $url .'">< '. __('Back', 'custom_theme') .'</a>';
 	}
 }
+
+
+
+/**
+ * Permet de changer le nom de la section.
+ * 
+ * @param String $label
+ * @param Array $field
+ * @hooked acf/get_field_label
+ * @return String
+ */
+function name_row_section( $label, $field ){
+	if($field['key'] == 'field_5ad74efd915d7'){
+		$parent = get_field($field['parent']);
+		$row_number = str_replace('acf['.$field['parent'].']', '', $field['prefix']);
+		$row_number = str_replace(array('[', ']'), '', $row_number);
+		
+		$label = $parent[$row_number]['nom_de_la_section'];
+	}
+	
+	return $label;
+}
+add_filter('acf/get_field_label', 'name_row_section', 10, 2 );
