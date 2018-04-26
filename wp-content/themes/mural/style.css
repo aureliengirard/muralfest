@@ -786,7 +786,11 @@ body.desktop #colophon .navigation {
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
-          justify-content: center; }
+          justify-content: center;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s; }
+  .banner:hover {
+    text-decoration: none; }
   @media only screen and (max-width: 767px) {
     .banner {
       display: -webkit-box;
@@ -2496,7 +2500,10 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       display: -ms-flexbox;
       display: flex; }
     #gmap-arts .artwork-data .left-col {
+      width: 35%;
       padding-right: 5px; }
+      #gmap-arts .artwork-data .left-col img {
+        max-width: 100%; }
     #gmap-arts .artwork-data .right-col {
       padding-left: 5px; }
     #gmap-arts .artwork-data figure a {

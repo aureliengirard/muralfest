@@ -149,7 +149,16 @@ $(function(){
 	if($('#sidebar .img-parallax').length){
 		parallax($('#sidebar .img-parallax'), $('#sidebar'));
 	}
-	
+    // banner parallax
+    $(window).on('scroll load', function(){
+		if(!isMobile()){
+			var y= $(window).scrollTop();
+			$('.banner .single-banner').css('margin-bottom', -y);
+		}else{
+			$('.banner .single-banner').css('margin-bottom', 0);
+		}
+	});
+    
 
 	/*************/
 	/* ANIMATION */

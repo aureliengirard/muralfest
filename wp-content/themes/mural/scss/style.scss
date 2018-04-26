@@ -621,7 +621,7 @@ body.desktop{
 .banner{
 	display: flex;
 	justify-content: center;
-
+    @include hover-transition;
 	@media only screen and (max-width: 767px) {
 		@include cdm-grid(1, "figure", 0, 0, ());		
 	}

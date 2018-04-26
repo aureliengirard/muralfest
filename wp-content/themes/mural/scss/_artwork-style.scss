@@ -69,7 +69,7 @@
     .artwork-data{
         max-width: calc(100vw - 53px);
         font-size: 1.6rem;
-
+        
         &.this-year{
             .artist{
                 color: $color_blue;
@@ -109,7 +109,11 @@
         }
 
         .left-col{
-            padding-right: 5px;
+            width:35%;
+            padding-right: 5px;    
+            img{
+                max-width: 100%;
+            }
         }
 
         .right-col{
