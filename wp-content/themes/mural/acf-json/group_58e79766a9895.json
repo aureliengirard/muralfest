@@ -387,6 +387,37 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "5ae0eae64af45": {
+                    "key": "5ae0eae64af45",
+                    "name": "galerie",
+                    "label": "Galerie",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5ae0eae94af46",
+                            "label": "Galerie",
+                            "name": "galerie",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_5ae0e98e1549f"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "Ajouter un élément",
@@ -449,5 +480,5 @@
     ],
     "active": 0,
     "description": "",
-    "modified": 1524080509
+    "modified": 1524689655
 }

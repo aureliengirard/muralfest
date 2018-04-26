@@ -80,9 +80,9 @@ function theme_enqueue_styles() {
 		true
 	);
 
-	wp_enqueue_script("ink",
-		CHILDURI."/js/ink.js",
-		array('theme-utils'),
+	wp_enqueue_script("colorbox",
+		CHILDURI."/js/jquery.colorbox-min.js",
+		array('jquery'),
 		wp_get_theme()->get('Version'),
 		true
 	);

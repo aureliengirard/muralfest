@@ -1448,6 +1448,36 @@ input[type=radio]{
 			}
 		} 
 	}
+
+	.gallery{
+		display: flex;
+		flex-wrap: wrap;
+		
+		figure{
+			width: calc(100% / 8);
+			transform: scale(1);
+			//position: absolute;
+			transition: transform 0.4s ease 0s, z-index 0s ease 0.4s;
+			cursor: pointer;
+			z-index: 0;
+
+			&:hover{
+				transform: scale(1.2);
+				transition: transform 0.4s ease 0.1s, z-index 0s ease 0s;
+				z-index: 2;
+
+				+ figure{
+					transition: transform 0.4s ease 0s, z-index 0s ease 0s;
+					z-index: 1;
+				}
+			}
+
+			&.view{
+				width: calc(100% / 2);
+			}
+		}
+	}
+
 }
 /// Style paginations
 .content-wrap section{
@@ -1694,6 +1724,7 @@ input[type=radio]{
     }
 }
 
+@import "colorbox-style";
 @import "calendar-style";
 @import "select2-style";
 @import "program-style";

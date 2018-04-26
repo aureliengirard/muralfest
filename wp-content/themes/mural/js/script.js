@@ -180,6 +180,21 @@ $(function(){
 			});
 		}); 
 	});
+
+	$(window).load(function() {
+		var i = 0;
+
+		$('.gallery').each(function(){
+			$(this).find('figure a').colorbox({
+				rel: 'gallery-'+i,
+				maxWidth: "95%",
+				maxHeight: "95%",
+				current: ""
+			});
+
+			i++;
+		});
+	});
 });
 
 $.urlParam = function (name) {
