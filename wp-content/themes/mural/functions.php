@@ -340,7 +340,9 @@ function name_row_section( $label, $field ){
 		$row_number = str_replace('acf['.$field['parent'].']', '', $field['prefix']);
 		$row_number = str_replace(array('[', ']'), '', $row_number);
 		
-		$label = $parent[$row_number]['nom_de_la_section'];
+		if($parent[$row_number]['nom_de_la_section']){
+			$label = $parent[$row_number]['nom_de_la_section'];
+		}
 	}
 	
 	return $label;
