@@ -2236,7 +2236,10 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       display: -ms-flexbox;
       display: flex; }
     #gmap-arts .artwork-data .left-col {
+      width: 35%;
       padding-right: 5px; }
+      #gmap-arts .artwork-data .left-col img {
+        max-width: 100%; }
     #gmap-arts .artwork-data .right-col {
       padding-left: 5px; }
     #gmap-arts .artwork-data figure a {
