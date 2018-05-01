@@ -32,6 +32,10 @@ get_header(); ?>
                         <?php get_template_part('parts/inc', 'background_content'); ?>
                     
                         <?php get_template_part('parts/inc', 'share'); ?>
+
+                        <section class="articles_du_blog">
+                            <?php get_template_part('parts/part', 'articles_du_blog'); ?>
+                        </section>
                     </div>
                 </div>
             </section>

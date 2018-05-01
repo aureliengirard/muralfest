@@ -2263,6 +2263,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     /* On retire le margin right pour que la dernière colonne arrive égale au contenu. */ }
     .content-wrap .articles_du_blog .articles .article:nth-child(3n) {
       margin-right: 0px; }
+  .content-wrap .articles_du_blog .articles .article .content {
+    padding: 0; }
   .content-wrap .articles_du_blog .articles .article figure:hover + .description h3 a {
     color: #ed3d8f; }
   .content-wrap .articles_du_blog .articles .article .description {

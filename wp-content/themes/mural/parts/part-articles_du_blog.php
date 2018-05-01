@@ -5,6 +5,10 @@
         'post_type' => array( 'post' ),
         'posts_per_page' => 3
     );
+    
+    if(is_singular('post')){
+        $args['post__not_in'] = array(get_the_ID());
+    }
 
     $query = new WP_Query( $args );
 
