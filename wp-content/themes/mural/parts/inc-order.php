@@ -5,8 +5,8 @@ if(isset($_GET['date'])){
 }
 
 $artist_value = '';
-if(isset($_GET['artiste'])){
-    $artist_value = sanitize_text_field($_GET['artiste']);
+if(isset($_GET['filtre-artiste'])){
+    $artist_value = sanitize_text_field($_GET['filtre-artiste']);
     
 }
 
@@ -37,7 +37,7 @@ if (isset($_GET['category'])) {
 
                 if ( $query->have_posts() ) : ?>
                     
-                <select name="artiste" placeholder="<?php _e('Artists', 'site-theme'); ?>">
+                <select name="filtre-artiste" placeholder="<?php _e('Artists', 'site-theme'); ?>">
                    
                      <option value=""></option>
 

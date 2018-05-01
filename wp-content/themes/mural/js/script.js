@@ -9,13 +9,13 @@ $(function(){
 		$("body").removeClass("preload");
 	});*/
 	$search_artiste = -1
-	if ($('.program-filters select[name="artiste"] option').size() >= 5){
-		$search_artiste = $('.program-filters select[name="artiste"] option').size();
+	if ($('.program-filters select[name="filtre-artiste"] option').size() >= 5){
+		$search_artiste = $('.program-filters select[name="filtre-artiste"] option').size();
 	}
-	$('.program-filters select[name="artiste"]').select2({
+	$('.program-filters select[name="filtre-artiste"]').select2({
 		allowClear: true,
 		minimumResultsForSearch: $search_artiste, 
-		placeholder: $('.program-filters select[name="artiste"]').attr("placeholder")
+		placeholder: $('.program-filters select[name="filtre-artiste"]').attr("placeholder")
 	})
 
 	$search_category = -1
@@ -38,7 +38,7 @@ $(function(){
 		placeholder: $('.program-filters select[name="style"]').attr("placeholder")
 	})
 
-	if ($.urlParam('category') || $.urlParam('artiste') || $.urlParam('style') ||  $.urlParam('date') ){
+	if ($.urlParam('category') || $.urlParam('filtre-artiste') || $.urlParam('style') ||  $.urlParam('date') ){
 		$('html, body').animate({
 			scrollTop: $(".filters").offset().top 
 		}, 0);
@@ -149,15 +149,17 @@ $(function(){
 	if($('#sidebar .img-parallax').length){
 		parallax($('#sidebar .img-parallax'), $('#sidebar'));
 	}
-    // banner parallax
-    $(window).on('scroll load', function(){
-		if(!isMobile()){
-			var y= $(window).scrollTop();
-			$('.banner .single-banner').css('margin-bottom', -y);
-		}else{
-			$('.banner .single-banner').css('margin-bottom', 0);
-		}
-	});
+	// banner parallax
+	if($('.banner .single-banner').length){
+		$(window).on('scroll load', function(){
+			if(!isMobile()){
+				var y= $(window).scrollTop();
+				$('.content-wrap').css('top', -y);
+			}else{
+				$('.content-wrap').css('margin-bottom', 0);
+			}
+		});
+	}
     
 
 	/*************/
