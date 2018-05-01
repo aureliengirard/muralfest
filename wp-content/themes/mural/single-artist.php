@@ -38,7 +38,7 @@
                             ?>
 
                             <?php if($text_styles): ?>
-                                <h3 class="styles"><span><?php _e('Styles:', 'site-theme'); ?></span> <?= $text_styles ?></h3>
+                                <h3 class="styles"><?= $text_styles ?></h3>
                             <?php endif; ?>
 
                             <?php
