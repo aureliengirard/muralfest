@@ -204,9 +204,60 @@ add_filter('cdm_add_section_classes', 'add_section_image_text_flush');
 
 
 /**
+ * Envoie les informations requise pour le calendrier
  * 
  */
 function send_date_to_calendar(){
+	$minmax = array(
+		'min' => '',
+		'max' => ''
+	);
+	$args = array(
+		'post_type' => array( 'program' ),
+		'posts_per_page' => -1,
+		'orderby' => array(
+			'order_event' => 'ASC',
+		),
+		'meta_query' => array(
+			'order_event' => array(
+				'key' => 'event_date'
+			)
+		)
+	);
+
+	$query = new WP_Query( $args );
+
+	if ( $query->have_posts() ){
+		while ( $query->have_posts() ){
+			$query->the_post();
+
+			$event_start = strtotime(get_field('event_date'));
+			$event_end = strtotime(get_field('date_de_fin'));
+
+			if($event_start < $minmax['min'] || !$minmax['min']){
+				$minmax['min'] = $event_start;
+			}
+
+			if($event_end > $minmax['max'] || !$minmax['max']){
+				$minmax['max'] = $event_end;
+			}
+		}
+
+		$minmax['min'] = array(
+			'year' => date('Y', $minmax['min']),
+			'month' => date('m', $minmax['min']),
+			'day' => date('d', $minmax['min'])
+		);
+
+		$minmax['max'] = array(
+			'year' => date('Y', $minmax['max']),
+			'month' => date('m', $minmax['max']),
+			'day' => date('d', $minmax['max'])
+		);
+	}
+
+	wp_localize_script( 'daterange', 'datelimit', $minmax);
+
 	wp_localize_script( 'daterange', 'translation', array(
 		'reset' => __('Reset', 'site-theme'),
 		'done' => __('Done', 'site-theme')

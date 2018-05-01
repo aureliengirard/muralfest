@@ -20,7 +20,10 @@ if($('#orderby-wrap').length){
                 changeMonth: false,
                 changeYear: false,
                 showButtonPanel: true,
-                dateFormat: 'dd/mm/yy',
+                hideIfNoPrevNext: true,
+                dateFormat: "dd/mm/yy",
+                minDate: new Date(datelimit.min.year, datelimit.min.month-1, datelimit.min.day),
+                maxDate: new Date(datelimit.max.year, datelimit.max.month-1, datelimit.max.day),
                 beforeShowDay: function ( date ) {
                     return [true, ( (date.getTime() >= Math.min(prv, cur) && date.getTime() <= Math.max(prv, cur)) ? 'date-range-selected' : '')];
                 },

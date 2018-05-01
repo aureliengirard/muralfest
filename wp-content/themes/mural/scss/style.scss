@@ -805,6 +805,9 @@ input[type=radio]{
 	min-height: 1px;
 	hyphens: auto;
 	word-wrap: break-word;
+	background-color: #ffffff;
+	position: relative;
+	z-index: 1;
 	
 	h1,h2,h3,h4,h5,h6{
 		hyphens: none;
@@ -1531,42 +1534,22 @@ input[type=radio]{
 
 		.program-filters{
 			display: flex;
-			&.artist-filters{
-				max-width:50%;
-				@media only screen and (max-width: 767px) {
-					max-width: 100%;
-				}
-			}
-			@media only screen and (max-width: 767px) {
-				display:block;
-				> *{
-					width:100%;
-					margin-bottom:10px;
-				}				
-			}
-			select,	#orderby-wrap{
-				flex-grow:1;
-				 flex-basis: 0;
-			}
+
 			#orderby-wrap{
 				position: relative;
 				margin-right: 15px;
 				background-color:#000;
+				min-width: 250px;
+				display: flex;
+				align-items: center;
 				
 				&:after{
 					content: "\f073";
 					font-family: "Font Awesome 5 Light";
 					color: #ffffff;
 					font-size: 2.6rem;
-					position: absolute;
-					right: 20px;
-					top: 50%;
-					transform: translateY(-50%);
+					padding: 0 15px;
 					pointer-events: none; 
-				}
-
-				input{
-					width: 90%;
 				}
  
 				.hasDatepicker{
@@ -1580,6 +1563,9 @@ input[type=radio]{
 
 			.select2{
 				margin-right: 15px;
+				flex: 1 1 auto;
+				width: auto !important;
+
 				.select2-selection{
 					padding:10px;
 				}
@@ -1591,6 +1577,32 @@ input[type=radio]{
 				.select2-selection__placeholder{
 					color:#fff;
 				}
+			}
+
+			& > .button{
+				font-size: 1.8rem;
+				padding: 10px 12px;
+				min-width: 0;
+				flex: 1 0 auto;
+			}
+
+			&.artist-filters{
+				max-width:50%;
+				@media only screen and (max-width: 767px) {
+					max-width: 100%;
+				}
+			}
+
+			@media only screen and (max-width: 767px) {
+				display:block;
+				
+				#orderby-wrap,
+				.select2,
+				& > .button{
+					width:100%;
+					margin-bottom:10px;
+					margin-right: 0;
+				}				
 			}
 		}
 	}
