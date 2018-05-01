@@ -10,6 +10,21 @@
 @import "../../codemstheme/sass/utils";
 //@import "../../codemstheme/sass/responsive"; // Sentez-vous à l'aise de ne pas l'inclure
 
+@mixin responsives-font-size($minfont, $maxfont, $minwidth, $maxwidth){
+	font-size: ($minfont / 10)+rem;
+
+	@media (min-width: #{$minwidth}px) and (max-width: #{$maxwidth}px) {
+		& { 
+			font-size: calc(#{$minfont}px + (#{$maxfont} - #{$minfont}) * ( (100vw - #{$minwidth}px) / ( #{$maxwidth} - #{$minwidth})));
+		}
+	}
+	@media (min-width: #{$maxwidth}px) {
+		& { 
+			font-size: ($maxfont / 10)+rem;
+		}
+	}
+}
+
 /***************************************************
 	SCSS VARIABLES
 /***************************************************/
