@@ -972,9 +972,6 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
 
 .content-wrap {
   min-height: 1px;
-  -webkit-hyphens: auto;
-      -ms-hyphens: auto;
-          hyphens: auto;
   word-wrap: break-word;
   background-color: #ffffff;
   position: relative;
