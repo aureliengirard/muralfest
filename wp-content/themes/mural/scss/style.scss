@@ -299,6 +299,15 @@ h4,
         text-align: center;
     }
 }
+
+#main{
+	padding-top: 109px;
+
+	@media only screen and (max-width: 767px) {
+		padding-top: 78px;
+	}
+}
+
 .site-content{
 	background-color: #fff;
 }
@@ -637,11 +646,9 @@ body.mobile{
 .banner{
 	display: flex;
 	justify-content: center;
-	padding-top: 109px;
 	@include hover-transition;
 	
 	@media only screen and (max-width: 767px) {
-		padding-top: 78px;
 		flex-direction: column;
 	}
 
