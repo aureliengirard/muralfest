@@ -149,17 +149,6 @@ $(function(){
 	if($('#sidebar .img-parallax').length){
 		parallax($('#sidebar .img-parallax'), $('#sidebar'));
 	}
-	// banner parallax
-	if($('.banner .single-banner').length){
-		$(window).on('scroll load', function(){
-			if(!isMobile()){
-				var y= $(window).scrollTop();
-				$('.content-wrap').css('top', -y);
-			}else{
-				$('.content-wrap').css('margin-bottom', 0);
-			}
-		});
-	}
     
 
 	/*************/

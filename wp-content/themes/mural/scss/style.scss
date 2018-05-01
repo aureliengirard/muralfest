@@ -401,12 +401,14 @@ body.mobile{
 	display: none;
 	color:#000;
 	font-size:4.2rem;
-	padding:15px;
 } 
 
 /// Menu principal
 #masthead{
-	position: relative;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
 	box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.35);
 	z-index: 10;
 
@@ -454,17 +456,7 @@ body.mobile{
          display:none;
     }   
 }
-body.desktop{
-    #mmenu, #masthead #open-mmenu{        
-		display: none;
-    }
-    #masthead .main-menu .content .main-navigation{
-        display:block;
-    }
-    #colophon .navigation{
-         display:block;
-    }   
-}
+
 /// Style logo
 .home-link{
 	display: block;
@@ -473,6 +465,12 @@ body.desktop{
 
 	&:hover{
 		opacity: 0.6;
+	}
+
+	@media only screen and (max-width: 768px) {
+		img{
+			width: 70px;
+		}
 	}
 }
 
@@ -619,11 +617,13 @@ body.desktop{
 
 /// Style de la bannière
 .banner{
+	height: 100vh;
 	display: flex;
 	justify-content: center;
-    @include hover-transition;
+	@include hover-transition;
+	
 	@media only screen and (max-width: 767px) {
-		@include cdm-grid(1, "figure", 0, 0, ());		
+		height: 75vh;
 	}
 
 	figure{
@@ -730,7 +730,9 @@ body.desktop{
 			background-size:cover;
 			background-position: center;
 			width:100%;
-			height:100vh;	
+			height:100vh;
+			position: fixed;
+			z-index: 0;
 
 			@media only screen and (max-width: 767px) {
 				&.with-overlay{
@@ -749,12 +751,12 @@ body.desktop{
 			}
 
 			.banner-overlay{
-				top: 100px;
+				top: 200px;
 				left: 100px;
 
 				@media only screen and (max-width: 767px) {
-					top: 50px;
-					left: 50px;
+					top: 100px;
+					left: 15px;
 				}
 
 				h1{

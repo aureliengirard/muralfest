@@ -578,11 +578,13 @@ body.mobile .content-wrap .appels_a_laction .cta-wrapper .cta .description h3 {
 #open-mmenu {
   display: none;
   color: #000;
-  font-size: 4.2rem;
-  padding: 15px; }
+  font-size: 4.2rem; }
 
 #masthead {
-  position: relative;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
   -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.35);
           box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.35);
   z-index: 10; }
@@ -627,15 +629,6 @@ body.mobile .content-wrap .appels_a_laction .cta-wrapper .cta .description h3 {
   #colophon .navigation {
     display: none; } }
 
-body.desktop #mmenu, body.desktop #masthead #open-mmenu {
-  display: none; }
-
-body.desktop #masthead .main-menu .content .main-navigation {
-  display: block; }
-
-body.desktop #colophon .navigation {
-  display: block; }
-
 .home-link {
   display: block;
   opacity: 1;
@@ -645,6 +638,9 @@ body.desktop #colophon .navigation {
     text-decoration: none; }
   .home-link:hover {
     opacity: 0.6; }
+  @media only screen and (max-width: 768px) {
+    .home-link img {
+      width: 70px; } }
 
 .sociaux {
   display: inline-block;
@@ -781,6 +777,7 @@ body.desktop #colophon .navigation {
               color: #ed3d8f; }
 
 .banner {
+  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -793,19 +790,7 @@ body.desktop #colophon .navigation {
     text-decoration: none; }
   @media only screen and (max-width: 767px) {
     .banner {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap; }
-      .banner figure {
-        width: calc(100% / 1 - ((0px * 0) / 1));
-        /* On divise la largeur totale disponible également entre toutes les colonnes, puis on soustrait à chaque colonnes le gap désiré */
-        margin-right: 0px;
-        margin-bottom: 0px;
-        /* On retire le margin right pour que la dernière colonne arrive égale au contenu. */ }
-        .banner figure:nth-child(1n) {
-          margin-right: 0px; } }
+      height: 75vh; } }
   .banner figure {
     position: relative;
     display: -webkit-box;
@@ -886,7 +871,9 @@ body.desktop #colophon .navigation {
       background-size: cover;
       background-position: center;
       width: 100%;
-      height: 100vh; }
+      height: 100vh;
+      position: fixed;
+      z-index: 0; }
       @media only screen and (max-width: 767px) {
         .banner figure.single-banner.with-overlay {
           height: 75vh; }
@@ -899,12 +886,12 @@ body.desktop #colophon .navigation {
 						left:calc(100vw / -50vw);
 						position: relative;*/ } }
       .banner figure.single-banner .banner-overlay {
-        top: 100px;
+        top: 200px;
         left: 100px; }
         @media only screen and (max-width: 767px) {
           .banner figure.single-banner .banner-overlay {
-            top: 50px;
-            left: 50px; } }
+            top: 100px;
+            left: 15px; } }
         .banner figure.single-banner .banner-overlay h1 {
           color: #ffffff; }
 
@@ -2117,7 +2104,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       .content-wrap section .programs .program figure:hover + .description h4 a {
         color: #ed3d8f; }
       .content-wrap section .programs .program figure a {
-        display: block;
+        display: inline-block;
+        overflow: hidden;
         position: relative; }
         .content-wrap section .programs .program figure a .regular-img {
           -webkit-filter: url("images/svg/effect-imageblur.svg#image-blur");
@@ -2162,6 +2150,9 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       -webkit-box-direction: normal;
           -ms-flex-direction: column;
               flex-direction: column;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
       -webkit-box-flex: 1;
           -ms-flex-positive: 1;
               flex-grow: 1; }
