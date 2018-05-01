@@ -34,7 +34,8 @@
 					}
 				
 					a{
-						display: block;
+						display: inline-block;
+						overflow: hidden;
 						position: relative;
 
 						.regular-img{
@@ -85,8 +86,10 @@
 					text-align: center;
 					padding: 20px 15px;
                     display: flex;
-                    flex-direction: column;
-                    flex-grow: 1;
+					flex-direction: column;
+					align-items: center;
+					flex-grow: 1;
+					
 					.event-infos{
 						margin-bottom: 0;
 					}
