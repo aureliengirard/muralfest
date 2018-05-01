@@ -436,6 +436,8 @@ body.mobile{
 					display: none; 
 				}
 			}
+
+
 		}
 
 		.nav-menu{
@@ -448,6 +450,7 @@ body.mobile{
 @media only screen and (max-width: 1024px) {
      #mmenu,#masthead #open-mmenu{        
 		display: block;
+		align-self: center;
     }
     #masthead .main-menu .content .main-navigation{
         display:none;
@@ -467,7 +470,7 @@ body.mobile{
 		opacity: 0.6;
 	}
 
-	@media only screen and (max-width: 768px) {
+	@media only screen and (max-width: 767px) {
 		img{
 			width: 70px;
 		}
@@ -617,13 +620,23 @@ body.mobile{
 
 /// Style de la bannière
 .banner{
-	height: 100vh;
 	display: flex;
 	justify-content: center;
+	padding-top: 109px;
 	@include hover-transition;
 	
 	@media only screen and (max-width: 767px) {
-		height: 75vh;
+		padding-top: 78px;
+		flex-direction: column;
+	}
+
+	.single-banner-wrap{
+		height: 100vh;
+		width:100%;
+
+		@media only screen and (max-width: 767px) {
+			height: 75vh;
+		}
 	}
 
 	figure{
@@ -633,6 +646,7 @@ body.mobile{
 		.banner-overlay{
 			position: absolute;
 			top: 25%;
+			transform: translateY(-25%);
 			left: 90px;
 
 			h1{
@@ -662,62 +676,52 @@ body.mobile{
 				right: 90px;
 				left: auto;
 				text-align: left; 
+
+				p{
+					@include responsives-font-size(20, 40, 450, 767);
+					@include responsives-font-size(20, 40, 767, 1620);
+				}
+
                 a{
                     color:$color_yellow;
                     text-transform: uppercase;
-                    font-size: 4rem;
                     font-weight: bold; 
-                    @include hover-transition;
+					@include hover-transition;
+					
                     &:hover{
                         color:$color_blue;
                     }
                     &.button{ 
                         color:$color_pink;
                     }
-                }
+				}
+
+				.button{
+					font-size: inherit;
+				}
+				
                 h4{
-                    font-size: 6rem;
+					@include responsives-font-size(40, 60, 450, 767);
+					@include responsives-font-size(40, 60, 767, 1620);
                     font-weight: bold;
                     color:#fff;
-                }
-                @media only screen and (max-width: 1620px) {
-                    h4{
-                        font-size: 5rem;
-                    }
-                    a{
-                        font-size: 2rem;
-                    }
-                }
+				}
+
+				@media only screen and (max-width: 1500px) {
+					right: 45px;
+				}
+
+				@media only screen and (max-width: 1200px) {
+					right: auto;
+					padding: 0 15px;
+				}
+				
                 @media only screen and (max-width: 1050px) {
-                    padding-right:15px;
-                    padding-left:15px;
-                    top:5%;
-                    right:40px;
+					
                     .button{
                         margin:0;
                     }
-                }
-                @media only screen and (max-width: 815px) {
-                    h4{
-                        font-size: 4rem;
-                    }
-                }
-                @media only screen and (max-width: 767px) {
-                    right:0;
-                    left:0;
-                    text-align: left;
-                    h4{
-                        font-size: 5rem;
-                    }
-                    a{
-                        font-size: 3rem;
-                    }
-                }
-                @media only screen and (max-width: 450px) {
-                    a{
-                        font-size: 2rem;
-                    }
-                }
+				}
 			}
 		}
 		&.right-banner{
@@ -751,11 +755,11 @@ body.mobile{
 			}
 
 			.banner-overlay{
-				top: 200px;
+				top: 100px;
 				left: 100px;
 
 				@media only screen and (max-width: 767px) {
-					top: 100px;
+					top: 50px;
 					left: 15px;
 				}
 

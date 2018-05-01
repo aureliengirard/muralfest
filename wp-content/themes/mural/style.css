@@ -623,7 +623,9 @@ body.mobile .content-wrap .appels_a_laction .cta-wrapper .cta .description h3 {
 
 @media only screen and (max-width: 1024px) {
   #mmenu, #masthead #open-mmenu {
-    display: block; }
+    display: block;
+    -ms-flex-item-align: center;
+        align-self: center; }
   #masthead .main-menu .content .main-navigation {
     display: none; }
   #colophon .navigation {
@@ -638,7 +640,7 @@ body.mobile .content-wrap .appels_a_laction .cta-wrapper .cta .description h3 {
     text-decoration: none; }
   .home-link:hover {
     opacity: 0.6; }
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 767px) {
     .home-link img {
       width: 70px; } }
 
@@ -777,20 +779,30 @@ body.mobile .content-wrap .appels_a_laction .cta-wrapper .cta .description h3 {
               color: #ed3d8f; }
 
 .banner {
-  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  padding-top: 109px;
   -webkit-transition: all 0.5s;
   transition: all 0.5s; }
   .banner:hover {
     text-decoration: none; }
   @media only screen and (max-width: 767px) {
     .banner {
-      height: 75vh; } }
+      padding-top: 78px;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column; } }
+  .banner .single-banner-wrap {
+    height: 100vh;
+    width: 100%; }
+    @media only screen and (max-width: 767px) {
+      .banner .single-banner-wrap {
+        height: 75vh; } }
   .banner figure {
     position: relative;
     display: -webkit-box;
@@ -799,6 +811,8 @@ body.mobile .content-wrap .appels_a_laction .cta-wrapper .cta .description h3 {
     .banner figure .banner-overlay {
       position: absolute;
       top: 25%;
+      -webkit-transform: translateY(-25%);
+              transform: translateY(-25%);
       left: 90px; }
       .banner figure .banner-overlay h1 {
         color: #fff204;
@@ -818,10 +832,24 @@ body.mobile .content-wrap .appels_a_laction .cta-wrapper .cta .description h3 {
         right: 90px;
         left: auto;
         text-align: left; }
+        .banner figure.left-banner .banner-overlay p {
+          font-size: 2rem;
+          font-size: 2rem; }
+          @media (min-width: 450px) and (max-width: 767px) {
+            .banner figure.left-banner .banner-overlay p {
+              font-size: calc(20px + (40 - 20) * ( (100vw - 450px) / ( 767 - 450))); } }
+          @media (min-width: 767px) {
+            .banner figure.left-banner .banner-overlay p {
+              font-size: 4rem; } }
+          @media (min-width: 767px) and (max-width: 1620px) {
+            .banner figure.left-banner .banner-overlay p {
+              font-size: calc(20px + (40 - 20) * ( (100vw - 767px) / ( 1620 - 767))); } }
+          @media (min-width: 1620px) {
+            .banner figure.left-banner .banner-overlay p {
+              font-size: 4rem; } }
         .banner figure.left-banner .banner-overlay a {
           color: #fff204;
           text-transform: uppercase;
-          font-size: 4rem;
           font-weight: bold;
           -webkit-transition: all 0.5s;
           transition: all 0.5s; }
@@ -831,38 +859,35 @@ body.mobile .content-wrap .appels_a_laction .cta-wrapper .cta .description h3 {
             color: #04d3ff; }
           .banner figure.left-banner .banner-overlay a.button {
             color: #ed3d8f; }
+        .banner figure.left-banner .banner-overlay .button, .banner figure.left-banner .banner-overlay .ui-datepicker .ui-datepicker-buttonpane button, .ui-datepicker .ui-datepicker-buttonpane .banner figure.left-banner .banner-overlay button {
+          font-size: inherit; }
         .banner figure.left-banner .banner-overlay h4 {
-          font-size: 6rem;
+          font-size: 4rem;
+          font-size: 4rem;
           font-weight: bold;
           color: #fff; }
-        @media only screen and (max-width: 1620px) {
-          .banner figure.left-banner .banner-overlay h4 {
-            font-size: 5rem; }
-          .banner figure.left-banner .banner-overlay a {
-            font-size: 2rem; } }
-        @media only screen and (max-width: 1050px) {
-          .banner figure.left-banner .banner-overlay {
-            padding-right: 15px;
-            padding-left: 15px;
-            top: 5%;
-            right: 40px; }
-            .banner figure.left-banner .banner-overlay .button, .banner figure.left-banner .banner-overlay .ui-datepicker .ui-datepicker-buttonpane button, .ui-datepicker .ui-datepicker-buttonpane .banner figure.left-banner .banner-overlay button {
-              margin: 0; } }
-        @media only screen and (max-width: 815px) {
-          .banner figure.left-banner .banner-overlay h4 {
-            font-size: 4rem; } }
-        @media only screen and (max-width: 767px) {
-          .banner figure.left-banner .banner-overlay {
-            right: 0;
-            left: 0;
-            text-align: left; }
+          @media (min-width: 450px) and (max-width: 767px) {
             .banner figure.left-banner .banner-overlay h4 {
-              font-size: 5rem; }
-            .banner figure.left-banner .banner-overlay a {
-              font-size: 3rem; } }
-        @media only screen and (max-width: 450px) {
-          .banner figure.left-banner .banner-overlay a {
-            font-size: 2rem; } }
+              font-size: calc(40px + (60 - 40) * ( (100vw - 450px) / ( 767 - 450))); } }
+          @media (min-width: 767px) {
+            .banner figure.left-banner .banner-overlay h4 {
+              font-size: 6rem; } }
+          @media (min-width: 767px) and (max-width: 1620px) {
+            .banner figure.left-banner .banner-overlay h4 {
+              font-size: calc(40px + (60 - 40) * ( (100vw - 767px) / ( 1620 - 767))); } }
+          @media (min-width: 1620px) {
+            .banner figure.left-banner .banner-overlay h4 {
+              font-size: 6rem; } }
+        @media only screen and (max-width: 1500px) {
+          .banner figure.left-banner .banner-overlay {
+            right: 45px; } }
+        @media only screen and (max-width: 1200px) {
+          .banner figure.left-banner .banner-overlay {
+            right: auto;
+            padding: 0 15px; } }
+        @media only screen and (max-width: 1050px) {
+          .banner figure.left-banner .banner-overlay .button, .banner figure.left-banner .banner-overlay .ui-datepicker .ui-datepicker-buttonpane button, .ui-datepicker .ui-datepicker-buttonpane .banner figure.left-banner .banner-overlay button {
+            margin: 0; } }
     .banner figure.right-banner {
       display: block; }
       .banner figure.right-banner img {
@@ -886,11 +911,11 @@ body.mobile .content-wrap .appels_a_laction .cta-wrapper .cta .description h3 {
 						left:calc(100vw / -50vw);
 						position: relative;*/ } }
       .banner figure.single-banner .banner-overlay {
-        top: 200px;
+        top: 100px;
         left: 100px; }
         @media only screen and (max-width: 767px) {
           .banner figure.single-banner .banner-overlay {
-            top: 100px;
+            top: 50px;
             left: 15px; } }
         .banner figure.single-banner .banner-overlay h1 {
           color: #ffffff; }
