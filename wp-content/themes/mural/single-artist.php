@@ -50,19 +50,19 @@
                             <p class="country"><span><?php _e('Native country:', 'site-theme'); ?></span> <?php echo $country; ?></p>
 
                             <?php if(get_field('siteweb')): ?>
-                                <a class="button smaller" href="<?php the_field('siteweb'); ?>" target="_blank" rel="nofollow"><?php _e('Website', 'site-theme'); ?></a>
+                                <a class="button smaller artist-socials" href="<?php the_field('siteweb'); ?>" target="_blank" rel="nofollow"><?php _e('Website', 'site-theme'); ?></a>
                             <?php endif; ?>
                             
                             <?php if(get_field('instagram')): ?>
-                                <a class="button smaller instagram" href="<?php the_field('instagram'); ?>" target="_blank" rel="nofollow"><?php _e('Instagram', 'site-theme'); ?></a>
+                                <a class="button smaller instagram artist-socials" href="<?php the_field('instagram'); ?>" target="_blank" rel="nofollow"><?php _e('Instagram', 'site-theme'); ?></a>
                             <?php endif; ?>
 
                             <?php if(get_field('facebook')): ?>
-                                <a class="button smaller" href="<?php the_field('facebook'); ?>" target="_blank" rel="nofollow"><?php _e('Facebook', 'site-theme'); ?></a>
+                                <a class="button smaller artist-socials" href="<?php the_field('facebook'); ?>" target="_blank" rel="nofollow"><?php _e('Facebook', 'site-theme'); ?></a>
                             <?php endif; ?>
 
                             <?php if(get_field('twitter')): ?>
-                                <a class="button smaller twitter" href="<?php the_field('twitter'); ?>" target="_blank" rel="nofollow"><?php _e('Twitter', 'site-theme'); ?></a>
+                                <a class="button smaller twitter artist-socials" href="<?php the_field('twitter'); ?>" target="_blank" rel="nofollow"><?php _e('Twitter', 'site-theme'); ?></a>
                             <?php endif; ?>
                         </div>
                     </section>

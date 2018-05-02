@@ -2280,6 +2280,9 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   .content-wrap .articles_du_blog .articles .article .description {
     text-align: center; }
 
+.content-wrap .articles_du_blog .button-wrap {
+  text-align: center; }
+
 .content-wrap .articles .article figure a {
   opacity: 1;
   -webkit-transition: all 0.5s;
@@ -2699,6 +2702,10 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   font-weight: 700; }
   .single-artist .content-wrap section .country span {
     font-weight: 400; }
+
+.single-artist .content-wrap section .artist-socials {
+  margin-right: 5px;
+  margin-bottom: 5px; }
 
 .single-artist .content-wrap .col-wrapper {
   display: -webkit-box;
