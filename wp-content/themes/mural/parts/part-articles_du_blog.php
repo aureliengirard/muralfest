@@ -5,7 +5,7 @@
         'post_type' => array( 'post' ),
         'posts_per_page' => 3
     );
-    
+
     if(is_singular('post')){
         $args['post__not_in'] = array(get_the_ID());
     }
@@ -20,6 +20,10 @@
                 <?php get_template_part('parts/blog', 'article'); ?>
 
             <?php endwhile; ?>
+        </div>
+
+        <div class="button-wrap">
+            <a href="<?= get_the_permalink(get_posttype_parent_id('post')); ?>" class="button"><?php _e('View more', 'site-theme'); ?></a>
         </div>
     <?php endif; ?>
 
