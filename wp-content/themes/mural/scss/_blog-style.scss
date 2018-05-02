@@ -8,7 +8,11 @@
 
 		.articles{
 			background-color: #ffffff;
-			@include cdm-grid(3, ".article", 30px, 30px, ());
+			@include cdm-grid(3, ".article", 30px, 30px, (			
+				768: (
+					col: 1
+				)
+			));
 
 			.article{
 				.content{

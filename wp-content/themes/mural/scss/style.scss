@@ -879,11 +879,7 @@ input[type=radio]{
 				text-align:center;
 			}
 			@media only screen and (max-width: 767px) {
-				@include cdm-grid(1, ".articles_du_blog .articles .article", 30px, 30px, (			
-					768: (
-						col: 1
-					)
-				));
+				
                 .titre-section,.texte-plein{
                     margin:0 auto;                    
                 }
