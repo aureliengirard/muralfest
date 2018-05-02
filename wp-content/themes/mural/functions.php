@@ -158,12 +158,12 @@ function theme_fonts_url() {
  */
 function add_map_data($mapData){
 	$mapInfos = get_field('adresse', 'options');
-
+	
 	if(is_singular('artwork')){
 		$mapInfos = get_field('lieu_de_loeuvre');
 		$mapData['year'] = get_field('annee');
 	}
-
+	
     $mapData['gmap'] = $mapInfos;
     $mapData['childURI'] = CHILDURI;
     
@@ -242,6 +242,8 @@ function send_date_to_calendar(){
 				$minmax['max'] = $event_end;
 			}
 		}
+
+		wp_reset_postdata();
 
 		$minmax['min'] = array(
 			'year' => date('Y', $minmax['min']),
