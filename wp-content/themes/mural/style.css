@@ -2069,6 +2069,9 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
 .content-wrap .evenements_a_venir .button-wrap {
   text-align: center; }
 
+.content-wrap .list-programs {
+  min-height: 315px; }
+
 .content-wrap section .programs {
   display: -webkit-box;
   display: -ms-flexbox;
