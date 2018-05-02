@@ -82,6 +82,10 @@ body{
 	align-items: stretch;
 }
 
+iframe{
+	max-width: 100%;
+}
+
 figure{
 	margin: 0;
 }
@@ -1190,7 +1194,7 @@ input[type=radio]{
 
 						.regular-img{
 							filter: url('images/svg/effect-imageblur.svg#image-blur');
-							
+
 							img{
 								opacity: 1;
 								@include hover-transition;

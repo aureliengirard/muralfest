@@ -316,6 +316,9 @@ body {
       -ms-flex-align: stretch;
           align-items: stretch; }
 
+iframe {
+  max-width: 100%; }
+
 figure {
   margin: 0; }
 
