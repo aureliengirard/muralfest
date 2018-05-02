@@ -21,7 +21,7 @@ if (isset($_GET['category'])) {
     <div class="content">
         <form class="program-filters" action="<?php the_permalink(); ?>">
             <div id="orderby-wrap">
-                <input type="text" name="date" value="<?= $date_value ?>" placeholder="<?php _e('Filter by date', 'site-theme'); ?>" />
+                <input type="text" name="date" value="<?= $date_value ?>" placeholder="<?php _e('Filter by date', 'site-theme'); ?>" autocomplete="off" readonly="true" />
                 <div></div>
             </div>
 
