@@ -1190,9 +1190,7 @@ input[type=radio]{
 
 						.regular-img{
 							filter: url('images/svg/effect-imageblur.svg#image-blur');
-                            @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-                                filter: none;
-                            }
+							
 							img{
 								opacity: 1;
 								@include hover-transition;
@@ -1206,6 +1204,7 @@ input[type=radio]{
 							bottom: 0;
 							left: 0;
 							opacity: 0;
+							background-color: rgba(#ffffff, 0.3);
 							z-index: 1;
 							@include hover-transition;
 
@@ -1225,9 +1224,7 @@ input[type=radio]{
 
 							.hover-effect-img{
 								opacity: 1;
-                                @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-                                   opacity: 0;
-                                }
+								filter: hue-rotate(90deg) brightness(100%);
 							}
 						}
 

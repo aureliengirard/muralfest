@@ -54,6 +54,7 @@
 							bottom: 0;
 							left: 0;
 							opacity: 0;
+							background-color: rgba(#ffffff, 0.3);
 							z-index: 1;
 							@include hover-transition;
 
@@ -72,6 +73,7 @@
 
 							.hover-effect-img{
 								opacity: 1;
+								filter: hue-rotate(90deg) brightness(100%);
 							}
 						}
 
@@ -95,6 +97,8 @@
 					}
 
 					h4{
+						max-width: 100%; /* IE fix */
+
 						a{
 							color: inherit;
 
@@ -105,10 +109,12 @@
 					}
 
 					p{
-				        font-size: 1.8rem;
+						font-size: 1.8rem;
+						max-width: 100%; /* IE fix */
 					}
                     .readmore{
-                        margin-top: auto;
+						margin-top: auto;
+						max-width: 100%; /* IE fix */
                     } 
 				}
 			}
