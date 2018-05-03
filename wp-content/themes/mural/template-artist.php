@@ -22,7 +22,7 @@ get_header(); ?>
 
             <?php get_template_part('parts/inc', 'order-artist'); ?>
 
-            <section class="list-programs">
+            <section class="list-artists">
                 <div class="content">
                 <?php
                     global $place_holder_artist;
@@ -67,16 +67,36 @@ get_header(); ?>
                     $wp_query = null;
                     // Re-populate the global with our custom query
                     $wp_query = $query;
+
+                    $current_year = NULL;
             
                     if ( $query->have_posts() ) : ?>
-                        <section class="programs">
+                        <section class="artists">
                             <?php while ( $query->have_posts() ) :
                                 $query->the_post();
+
+                                $artist_year = get_field('annee');
+
+                                if($current_year === NULL){
+                                    $current_year = $artist_year;
+
+                                    echo '<h2 class="artists-year">'.$current_year.'</h2>';
+                                    echo '<div class="artists-wrap">';
+                                }
+
+                                if($current_year != $artist_year){
+                                    $current_year = $artist_year;
+
+                                    echo '</div>';
+                                    echo '<h2 class="artists-year">'.$current_year.'</h2>';
+                                    echo '<div class="artists-wrap">';
+                                }
                                 ?>
                 
                                 <?php get_template_part('parts/artist', 'article'); ?>
 
                             <?php endwhile; ?>
+                            <?php echo '</div>'; // Ferme le dernier div de artist-year ?>
                         </section>
                         <?php get_template_part('parts/program', 'pager'); ?>
 

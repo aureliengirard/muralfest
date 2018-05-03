@@ -1,3 +1,120 @@
+/// Style liste
+.content-wrap{
+
+	section{
+		.artists{
+            .artists-year{
+                @include media-screen(768px){
+                    text-align: center;
+                }
+            }
+
+            .artists-wrap{
+                @include cdm-grid(3, ".artist", 30px, 30px, (
+                    768: (
+                        col: 1
+                    )
+                ));
+            }
+            
+			.artist{
+                display: flex;
+                flex-direction: column;     
+				background-color: #ffffff;
+
+				figure{
+					overflow: hidden;
+					&:hover{
+						+ .description h4 a{
+							color: $color_pink;
+						}
+					}
+				
+					a{
+						display: inline-block;
+						overflow: hidden;
+						position: relative;
+
+						.regular-img{
+							filter: url('images/svg/effect-imageblur.svg#image-blur');
+
+							img{
+								opacity: 1;
+								@include hover-transition;
+							}
+						}
+
+						.hover-effect-img{
+							position: absolute;
+							top: 0;
+							right: 0;
+							bottom: 0;
+							left: 0;
+							opacity: 0;
+							background-color: rgba(#ffffff, 0.3);
+							z-index: 1;
+							@include hover-transition;
+
+							img{
+								mask: url(images/svg/paint-splash2.svg) no-repeat 0 0;
+								mask-size: cover;
+							}
+						}
+
+						&:hover{
+							.regular-img{
+								img{
+									opacity: 0.3;
+								}
+							}
+
+							.hover-effect-img{
+								opacity: 1;
+								filter: hue-rotate(90deg) brightness(100%);
+							}
+						}
+
+						
+					}
+                    @include media-screen(768px){
+                        text-align: center;
+                    }
+				}
+
+				.description{
+					text-align: center;
+					padding: 20px 15px;
+                    display: flex;
+					flex-direction: column;
+					align-items: center;
+					flex-grow: 1;
+
+					h4{
+						max-width: 100%; /* IE fix */
+
+						a{
+							color: inherit;
+
+							&:hover{
+								color: $color_pink;
+							}
+						}
+					}
+
+					p{
+						font-size: 1.8rem;
+						max-width: 100%; /* IE fix */
+					}
+                    .readmore{
+						margin-top: auto;
+						max-width: 100%; /* IE fix */
+                    } 
+				}
+			}
+		}
+	}
+}
+
 /// Style single
 .single-artist{
 	.content-wrap{
