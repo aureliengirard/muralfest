@@ -34,6 +34,15 @@ get_header(); ?>
                         'posts_per_page' => 18,
                         'nopaging' => false,
                         'paged' => $paged,
+                        'orderby' => array(
+                            'years' => 'DESC',
+                            'title' => 'ASC'
+                        ),
+                        'meta_query' => array(
+                            'years' => array(
+                                'key' => 'annee'
+                            )
+                        )
                     );
 
                     
@@ -44,6 +53,10 @@ get_header(); ?>
                             'field' => 'slug',
                             'terms' => sanitize_text_field($_GET['style']),
                         );                    
+                    }
+
+                    if (isset($_GET['years']) && $_GET['years'] != '') {
+                        $args['meta_query']['years']['value'] = sanitize_text_field($_GET['years']);                    
                     }
 
                     $query = new WP_Query( $args );

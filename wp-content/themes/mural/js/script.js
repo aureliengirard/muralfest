@@ -38,6 +38,16 @@ $(function(){
 		placeholder: $('.program-filters select[name="style"]').attr("placeholder")
 	})
 
+	$search_year = -1
+	if ($('.program-filters select[name="years"] option').size() >= 5) {
+		$search_year = $('.program-filters select[name="years"] option').size();
+	}
+	$('.program-filters select[name="years"]').select2({
+		allowClear: true,
+		minimumResultsForSearch: $search_year,
+		placeholder: $('.program-filters select[name="years"]').attr("placeholder")
+	})
+
 	if ($.urlParam('category') || $.urlParam('filtre-artiste') || $.urlParam('style') ||  $.urlParam('date') ){
 		$('html, body').animate({
 			scrollTop: $(".filters").offset().top 

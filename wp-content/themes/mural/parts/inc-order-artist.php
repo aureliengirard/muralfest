@@ -5,6 +5,11 @@ if (isset($_GET['style'])) {
     $style_value = sanitize_text_field ($_GET['style']);
 }
 
+$year_value = '';
+if (isset($_GET['years'])) {
+    $year_value = sanitize_text_field ($_GET['years']);
+}
+
 
 ?>
 <section class="filters">
@@ -30,6 +35,26 @@ if (isset($_GET['style'])) {
                         }
                         ?>
                         <option value="<?= $term->slug; ?>"<?= ($selected ? 'selected="selected"' : '') ?>><?= $term->name; ?></option>
+
+                    <?php endforeach; ?>
+                </select>
+
+                <?php
+                    $years = get_field_object('field_5aeb0f481de34');
+                    $years = $years['choices'];
+                ?>
+                <select name="years" id="filter-years" placeholder="<?php _e('Years', 'site-theme'); ?>">
+                   
+                   <option value=""></option>
+
+                    <?php foreach ($years as $year):
+                    
+                        $selected = false;
+                        if($year_value == $year){
+                            $selected = true;
+                        }
+                        ?>
+                        <option value="<?= $year; ?>"<?= ($selected ? 'selected="selected"' : '') ?>><?= $year; ?></option>
 
                     <?php endforeach; ?>
                 </select>

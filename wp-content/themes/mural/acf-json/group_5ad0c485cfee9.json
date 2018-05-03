@@ -24,6 +24,61 @@
             "placeholder": "Select a country"
         },
         {
+            "key": "field_5aeb0f481de34",
+            "label": "Dernière année de participation",
+            "name": "annee",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "2018": 2018,
+                "2017": 2017,
+                "2016": 2016,
+                "2015": 2015,
+                "2014": 2014,
+                "2013": 2013,
+                "2012": 2012
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5ad0c6615fc90",
+            "label": "Style",
+            "name": "style",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "murale": "Murale",
+                "musique": "Musique",
+                "test": "test"
+            },
+            "allow_custom": 1,
+            "save_custom": 1,
+            "default_value": [],
+            "layout": "vertical",
+            "toggle": 0,
+            "return_format": "label"
+        },
+        {
             "key": "field_5ad0c5a8a5a6a",
             "label": "Biographie",
             "name": "biographie",
@@ -124,5 +179,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1524505496
+    "modified": 1525356220
 }

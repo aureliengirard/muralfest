@@ -401,3 +401,58 @@ function name_row_section( $label, $field ){
 	return $label;
 }
 add_filter('acf/get_field_label', 'name_row_section', 10, 2 );
+
+
+function set_artists_year(){
+	$args = array(
+		'post_type' => array( 'artist' ),
+		'posts_per_page' => -1,
+	);
+
+	$query = new WP_Query( $args );
+
+	if ( $query->have_posts() ){
+		while ( $query->have_posts() ){
+			$query->the_post();
+
+			$artist_id = get_the_ID();
+
+			$artwork_args = array(
+				'post_type' => array( 'artwork' ),
+				'posts_per_page' => -1,
+				'meta_key' => 'artiste',
+				'meta_value' => $artist_id
+			);
+		
+			$artwork_query = new WP_Query( $artwork_args );
+		
+			if ( $artwork_query->have_posts() ){
+				while ( $artwork_query->have_posts() ){
+					$artwork_query->the_post();
+
+					$year = (Int) get_field('annee');
+		
+					$current_artist_year = (Int) get_field('annee', $artist_id);
+		
+					if(!isset($current_artist_year) || $current_artist_year < $year){
+						update_field('annee', $year, $artist_id);
+					}
+					
+					
+				}
+		
+				wp_reset_postdata();
+
+			}else{
+				update_field('annee', '2018', $artist_id);
+			}
+			
+		}
+
+		wp_reset_postdata();
+	}
+}
+
+if(isset($_GET['set-artists-year']) && $_GET['set-artists-year'] == true){
+	add_action( 'init', 'set_artists_year' );
+}
