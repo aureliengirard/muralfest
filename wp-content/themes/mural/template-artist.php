@@ -81,7 +81,7 @@ get_header(); ?>
                         <?php get_template_part('parts/program', 'pager'); ?>
 
                     <?php else: ?>
-                        <p><?php _e('No program found.', 'site-theme'); ?></p>
+                        <p><?php _e('No artist found.', 'site-theme'); ?></p>
                     <?php endif; ?>
             
                     <?php
