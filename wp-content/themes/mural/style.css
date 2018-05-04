@@ -806,11 +806,11 @@ body.mobile .content-wrap .appels_a_laction .cta-wrapper .cta .description h3 {
           -ms-flex-direction: column;
               flex-direction: column; } }
   .banner .single-banner-wrap {
-    height: 100vh;
+    height: 50vh;
     width: 100%; }
     @media only screen and (max-width: 767px) {
       .banner .single-banner-wrap {
-        height: 75vh; } }
+        height: 35vh; } }
   .banner figure {
     position: relative;
     display: -webkit-box;
@@ -904,12 +904,12 @@ body.mobile .content-wrap .appels_a_laction .cta-wrapper .cta .description h3 {
       background-size: cover;
       background-position: center;
       width: 100%;
-      height: 100vh;
+      height: 50vh;
       position: fixed;
       z-index: 0; }
       @media only screen and (max-width: 767px) {
         .banner figure.single-banner.with-overlay {
-          height: 75vh; }
+          height: 35vh; }
           .banner figure.single-banner.with-overlay h1 {
             font-size: 4rem; }
           .banner figure.single-banner.with-overlay img {
@@ -1761,40 +1761,40 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   outline: 0; }
 
 #cboxTopLeft {
-  width: 21px;
-  height: 21px;
-  background: url(images/controls.png) no-repeat -101px 0; }
+  width: 10px;
+  height: 10px;
+  background-color: #ffffff; }
 
 #cboxTopRight {
-  width: 21px;
-  height: 21px;
-  background: url(images/controls.png) no-repeat -130px 0; }
+  width: 10px;
+  height: 10px;
+  background-color: #ffffff; }
 
 #cboxBottomLeft {
-  width: 21px;
-  height: 21px;
-  background: url(images/controls.png) no-repeat -101px -29px; }
+  width: 10px;
+  height: 10px;
+  background-color: #ffffff; }
 
 #cboxBottomRight {
-  width: 21px;
-  height: 21px;
-  background: url(images/controls.png) no-repeat -130px -29px; }
+  width: 10px;
+  height: 10px;
+  background-color: #ffffff; }
 
 #cboxMiddleLeft {
-  width: 21px;
-  background: url(images/controls.png) left top repeat-y; }
+  width: 10px;
+  background-color: #ffffff; }
 
 #cboxMiddleRight {
-  width: 21px;
-  background: url(images/controls.png) right top repeat-y; }
+  width: 10px;
+  background-color: #ffffff; }
 
 #cboxTopCenter {
-  height: 21px;
-  background: url(images/border.png) 0 0 repeat-x; }
+  height: 10px;
+  background-color: #ffffff; }
 
 #cboxBottomCenter {
-  height: 21px;
-  background: url(images/border.png) 0 -29px repeat-x; }
+  height: 10px;
+  background-color: #ffffff; }
 
 #cboxContent {
   background: #fff;
@@ -1990,7 +1990,9 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     display: flex;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
-            justify-content: space-between; }
+            justify-content: space-between;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap; }
     .ui-datepicker .ui-datepicker-buttonpane button {
       min-width: 0;
       font-size: 1.2rem;
@@ -2070,7 +2072,7 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   text-align: center; }
 
 .content-wrap .list-programs {
-  min-height: 315px; }
+  min-height: 350px; }
 
 .content-wrap section .programs {
   display: -webkit-box;
@@ -2589,6 +2591,10 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   margin-top: 25px;
   font-size: 4.5rem;
   color: #000; }
+
+.content-wrap .artwork-list .year-artworks h3 {
+  color: #ed3d8f;
+  margin-bottom: 0; }
 
 .content-wrap .artwork-list .content .artwork-col {
   display: -webkit-box;

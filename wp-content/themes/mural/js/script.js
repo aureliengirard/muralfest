@@ -28,16 +28,6 @@ $(function(){
 			placeholder: $('.program-filters select[name="category"]').attr("placeholder")
 	})
 
-	$search_style = -1
-	if ($('.program-filters select[name="style"] option').size() >= 5) {
-		$search_style = $('.program-filters select[name="style"] option').size();
-	}
-	$('.program-filters select[name="style"]').select2({
-		allowClear: true,
-		minimumResultsForSearch: $search_style,
-		placeholder: $('.program-filters select[name="style"]').attr("placeholder")
-	})
-
 	$search_year = -1
 	if ($('.program-filters select[name="years"] option').size() >= 5) {
 		$search_year = $('.program-filters select[name="years"] option').size();
@@ -48,7 +38,7 @@ $(function(){
 		placeholder: $('.program-filters select[name="years"]').attr("placeholder")
 	})
 
-	if ($.urlParam('category') || $.urlParam('filtre-artiste') || $.urlParam('style') ||  $.urlParam('date') ){
+	if ($.urlParam('category') || $.urlParam('filtre-artiste') || $.urlParam('years') ||  $.urlParam('date') ){
 		$('html, body').animate({
 			scrollTop: $(".filters").offset().top 
 		}, 0);

@@ -188,6 +188,14 @@
             font-size:4.5rem;
             color:#000;
         }
+
+        .year-artworks{
+            h3{
+                color: $color_pink;
+                margin-bottom: 0;
+            }
+        }
+
         .content{
             .artwork-col{
                 @include cdm-grid(4, ".artwork", 20px, 15px, ());

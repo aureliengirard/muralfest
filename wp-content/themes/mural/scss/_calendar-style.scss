@@ -107,6 +107,7 @@
     .ui-datepicker-buttonpane{
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
 
         button{
             @extend .button;

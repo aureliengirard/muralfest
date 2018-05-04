@@ -45,16 +45,6 @@ get_header(); ?>
                         )
                     );
 
-                    
-
-                    if (isset($_GET['style']) && $_GET['style'] != '') {
-                        $args['tax_query'][] = array(
-                            'taxonomy' => 'style',
-                            'field' => 'slug',
-                            'terms' => sanitize_text_field($_GET['style']),
-                        );                    
-                    }
-
                     if (isset($_GET['years']) && $_GET['years'] != '') {
                         $args['meta_query']['years']['value'] = sanitize_text_field($_GET['years']);                    
                     }
