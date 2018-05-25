@@ -1,3 +1,20 @@
+<?php 
+    global $place_holder_artist;
+    $artist_id = icl_object_id(get_the_ID(), 'artist', false, "fr");
+
+    $image_id = $place_holder_artist["ID"];
+
+    if(get_field('image_de_lartiste', $artist_id)){
+        $image_id = get_field('image_de_lartiste', $artist_id);
+    }else{     
+        $artist_artworks_img = get_artist_artworks_images($artist_id);
+        if(!empty($artist_artworks_img)){
+            $artist_artwork = true;
+            $image_id = $artist_artworks_img[0]['image_id']; // 0 pour la dernière oeuvre
+        }
+    }
+?>
+
 <?php get_header(); ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
@@ -18,6 +35,13 @@
                             <div class="left-col">
                                 <figure>
                                     <?= wp_get_attachment_image(get_field('image_de_lartiste'), 'original'); ?>
+                                </figure>
+                                <?php get_template_part('parts/inc', 'share'); ?>
+                            </div>
+                        <?php elseif($artist_artwork): ?> 
+                            <div class="left-col">
+                                <figure>
+                                    <?= wp_get_attachment_image($image_id, 'original'); ?>
                                 </figure>
                                 <?php get_template_part('parts/inc', 'share'); ?>
                             </div>

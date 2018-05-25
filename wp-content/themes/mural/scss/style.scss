@@ -44,7 +44,9 @@ $c12Gutter: 15px;
 .preload *{
 	transition: none !important;
 }
- 
+.preload .animated,.preload .toAnimate{
+	opacity: 0 !important;
+} 
 /*****************************************************
 	General / Reset / Structure
 /*****************************************************/
@@ -66,7 +68,9 @@ html{
 	background: $color_pink; /* Gecko Browsers */
 	color: #ffffff;
 }
-
+.toAnimate{
+	opacity: 0;
+}
 body{
 	background-color: #ffffff;
 	font-family: 'Open Sans', sans-serif;
