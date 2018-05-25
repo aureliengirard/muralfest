@@ -1331,6 +1331,12 @@ input[type=radio]{
 				letter-spacing: 0;
 			}
 		}
+			
+        @media only screen and (max-width: 768px) {
+			.parallax-img-wrapper img{
+				height: 100%;
+			}	
+        }
 	}
     .bgcolor-pink .application .content h3{
         color:#fff;
