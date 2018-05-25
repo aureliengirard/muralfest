@@ -1622,6 +1622,9 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
         #sidebar .list-categories li a:hover {
           color: #04d3ff; }
 
+.artwork-data .sharing a:last-of-type {
+  margin-left: 0px; }
+
 .sharing,
 .content-wrap section .content .sharing {
   padding: 10px 0;
