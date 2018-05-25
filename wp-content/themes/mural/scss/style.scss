@@ -44,8 +44,11 @@ $c12Gutter: 15px;
 .preload *{
 	transition: none !important;
 }
-.preload .animated,.preload .toAnimate{
+.preload .toAnimate,.preload .animated{
 	opacity: 0 !important;
+	h1{
+		opacity: 0;
+	}
 } 
 /*****************************************************
 	General / Reset / Structure

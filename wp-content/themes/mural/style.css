@@ -269,8 +269,10 @@ template {
   -webkit-transition: none !important;
   transition: none !important; }
 
-.preload .animated, .preload .toAnimate {
+.preload .toAnimate, .preload .animated {
   opacity: 0 !important; }
+  .preload .toAnimate h1, .preload .animated h1 {
+    opacity: 0; }
 
 /*****************************************************
 	General / Reset / Structure
