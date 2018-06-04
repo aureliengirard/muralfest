@@ -2253,6 +2253,10 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       .single-program .content-wrap .col-wrapper .right-col {
         padding-left: 0; } }
 
+.single-program .content-wrap .program-description section .content {
+  padding-left: 0;
+  padding-right: 0; }
+
 .content-wrap .articles_du_blog h2 {
   text-align: center;
   color: #000000; }
