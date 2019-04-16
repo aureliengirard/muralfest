@@ -20,18 +20,20 @@
                 </div>
             <?php endif; ?>
         </figure>
-    <?php   elseif(get_field( 'banniere' )): ?>
-    <figure class="single-banner  <?php if (get_field('contenu_banniere')) : ?> with-overlay <? endif; ?>" <?php if (get_field('contenu_banniere')) : ?> style="background-image:url('<?= wp_get_attachment_image_url(get_field('banniere'), 'max-banner') ;?>')"; <? endif; ?>>
-            <?php
-            if (!get_field('contenu_banniere')) :
-                echo wp_get_attachment_image( get_field( 'banniere' ), 'max-banner' ); 
-            endif;
-            ?>
-            <?php if(get_field('contenu_banniere')): ?>
-                <div class="banner-overlay  animated fadeInLeft">
-                    <?php the_field('contenu_banniere'); ?>
-                </div>
-            <?php endif; ?>
-        </figure>
+    <?php elseif(get_field( 'banniere' )): ?>
+        <div class="single-banner-wrap">
+            <figure class="single-banner  <?php if (get_field('contenu_banniere')) : ?> with-overlay <? endif; ?>" <?php if (get_field('contenu_banniere')) : ?> style="background-image:url('<?= wp_get_attachment_image_url(get_field('banniere'), 'max-banner') ;?>')" <? endif; ?>>
+                <?php
+                if (!get_field('contenu_banniere')) :
+                    echo wp_get_attachment_image( get_field( 'banniere' ), 'max-banner' ); 
+                endif;
+                ?>
+                <?php if(get_field('contenu_banniere')): ?>
+                    <div class="banner-overlay  animated fadeInLeft">
+                        <?php the_field('contenu_banniere'); ?>
+                    </div>
+                <?php endif; ?>
+            </figure>
+        </div>
     <?php endif; ?>
 </div>

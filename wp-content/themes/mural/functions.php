@@ -43,6 +43,7 @@ function cdm_add_images_sizes(){
     add_image_size( 'cta-preview', 400, 285, array('center', 'center') );
 	add_image_size( 'blog-preview', 600, 400, array('center', 'center') );
 	add_image_size( 'api-event', 1750, 1000, array('center', 'center') );
+	add_image_size( 'single-program', 1170 );
 }
 add_action( 'init', 'cdm_add_images_sizes' );
 
@@ -76,6 +77,13 @@ function theme_enqueue_styles() {
 	wp_enqueue_script("daterange",
 		CHILDURI."/js/daterange-calendar.js",
 		array('jqueryui-js'),
+		wp_get_theme()->get('Version'),
+		true
+	);
+
+	wp_enqueue_script("colorbox",
+		CHILDURI."/js/jquery.colorbox-min.js",
+		array('jquery'),
 		wp_get_theme()->get('Version'),
 		true
 	);
@@ -151,12 +159,12 @@ function theme_fonts_url() {
  */
 function add_map_data($mapData){
 	$mapInfos = get_field('adresse', 'options');
-
+	
 	if(is_singular('artwork')){
 		$mapInfos = get_field('lieu_de_loeuvre');
 		$mapData['year'] = get_field('annee');
 	}
-
+	
     $mapData['gmap'] = $mapInfos;
     $mapData['childURI'] = CHILDURI;
     
@@ -197,9 +205,62 @@ add_filter('cdm_add_section_classes', 'add_section_image_text_flush');
 
 
 /**
+ * Envoie les informations requise pour le calendrier
  * 
  */
 function send_date_to_calendar(){
+	$minmax = array(
+		'min' => '',
+		'max' => ''
+	);
+	$args = array(
+		'post_type' => array( 'program' ),
+		'posts_per_page' => -1,
+		'orderby' => array(
+			'order_event' => 'ASC',
+		),
+		'meta_query' => array(
+			'order_event' => array(
+				'key' => 'event_date'
+			)
+		)
+	);
+
+	$query = new WP_Query( $args );
+
+	if ( $query->have_posts() ){
+		while ( $query->have_posts() ){
+			$query->the_post();
+
+			$event_start = strtotime(get_field('event_date'));
+			$event_end = strtotime(get_field('date_de_fin'));
+
+			if($event_start < $minmax['min'] || !$minmax['min']){
+				$minmax['min'] = $event_start;
+			}
+
+			if($event_end > $minmax['max'] || !$minmax['max']){
+				$minmax['max'] = $event_end;
+			}
+		}
+
+		wp_reset_postdata();
+
+		$minmax['min'] = array(
+			'year' => date('Y', $minmax['min']),
+			'month' => date('m', $minmax['min']),
+			'day' => date('d', $minmax['min'])
+		);
+
+		$minmax['max'] = array(
+			'year' => date('Y', $minmax['max']),
+			'month' => date('m', $minmax['max']),
+			'day' => date('d', $minmax['max'])
+		);
+	}
+
+	wp_localize_script( 'daterange', 'datelimit', $minmax);
+
 	wp_localize_script( 'daterange', 'translation', array(
 		'reset' => __('Reset', 'site-theme'),
 		'done' => __('Done', 'site-theme')
@@ -316,3 +377,28 @@ function display_back_button(){
 		echo '<a class="readmore back-btn" href="'. $url .'">< '. __('Back', 'custom_theme') .'</a>';
 	}
 }
+
+
+
+/**
+ * Permet de changer le nom de la section.
+ * 
+ * @param String $label
+ * @param Array $field
+ * @hooked acf/get_field_label
+ * @return String
+ */
+function name_row_section( $label, $field ){
+	if($field['key'] == 'field_5ad74efd915d7'){
+		$parent = get_field($field['parent']);
+		$row_number = str_replace('acf['.$field['parent'].']', '', $field['prefix']);
+		$row_number = str_replace(array('[', ']'), '', $row_number);
+		
+		if(array_key_exists($row_number, $parent) && $parent[$row_number]['nom_de_la_section']){
+			$label = $parent[$row_number]['nom_de_la_section'];
+		}
+	}
+	
+	return $label;
+}
+add_filter('acf/get_field_label', 'name_row_section', 10, 2 );

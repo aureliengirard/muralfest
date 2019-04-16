@@ -9,13 +9,13 @@ $(function(){
 		$("body").removeClass("preload");
 	});*/
 	$search_artiste = -1
-	if ($('.program-filters select[name="artiste"] option').size() >= 5){
-		$search_artiste = $('.program-filters select[name="artiste"] option').size();
+	if ($('.program-filters select[name="filtre-artiste"] option').size() >= 5){
+		$search_artiste = $('.program-filters select[name="filtre-artiste"] option').size();
 	}
-	$('.program-filters select[name="artiste"]').select2({
+	$('.program-filters select[name="filtre-artiste"]').select2({
 		allowClear: true,
 		minimumResultsForSearch: $search_artiste, 
-		placeholder: $('.program-filters select[name="artiste"]').attr("placeholder")
+		placeholder: $('.program-filters select[name="filtre-artiste"]').attr("placeholder")
 	})
 
 	$search_category = -1
@@ -28,17 +28,17 @@ $(function(){
 			placeholder: $('.program-filters select[name="category"]').attr("placeholder")
 	})
 
-	$search_style = -1
-	if ($('.program-filters select[name="style"] option').size() >= 5) {
-		$search_style = $('.program-filters select[name="style"] option').size();
+	$search_year = -1
+	if ($('.program-filters select[name="years"] option').size() >= 5) {
+		$search_year = $('.program-filters select[name="years"] option').size();
 	}
-	$('.program-filters select[name="style"]').select2({
+	$('.program-filters select[name="years"]').select2({
 		allowClear: true,
-		minimumResultsForSearch: $search_style,
-		placeholder: $('.program-filters select[name="style"]').attr("placeholder")
+		minimumResultsForSearch: $search_year,
+		placeholder: $('.program-filters select[name="years"]').attr("placeholder")
 	})
 
-	if ($.urlParam('category') || $.urlParam('artiste') || $.urlParam('style') ||  $.urlParam('date') ){
+	if ($.urlParam('category') || $.urlParam('filtre-artiste') || $.urlParam('years') ||  $.urlParam('date') ){
 		$('html, body').animate({
 			scrollTop: $(".filters").offset().top 
 		}, 0);
@@ -149,7 +149,7 @@ $(function(){
 	if($('#sidebar .img-parallax').length){
 		parallax($('#sidebar .img-parallax'), $('#sidebar'));
 	}
-	
+    
 
 	/*************/
 	/* ANIMATION */
@@ -179,6 +179,21 @@ $(function(){
 				}
 			});
 		}); 
+	});
+
+	$(window).load(function() {
+		var i = 0;
+
+		$('.gallery').each(function(){
+			$(this).find('figure a').colorbox({
+				rel: 'gallery-'+i,
+				maxWidth: "95%",
+				maxHeight: "95%",
+				current: ""
+			});
+
+			i++;
+		});
 	});
 });
 

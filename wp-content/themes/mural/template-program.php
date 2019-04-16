@@ -45,11 +45,11 @@ get_header(); ?>
                         )
                     );
 
-                    if(isset($_GET['artiste']) && $_GET['artiste'] != ''){
+                    if(isset($_GET['filtre-artiste']) && $_GET['filtre-artiste'] != ''){
                         $artist_arg= [
                             'post_type' => 'artist',
                             'posts_per_page' => 1,
-                            'post_name__in' => array(sanitize_text_field($_GET['artiste'])),
+                            'post_name__in' => array(sanitize_text_field($_GET['filtre-artiste'])),
                             'fields' => 'ids'
                         ];
                         $q = get_posts($artist_arg);                        

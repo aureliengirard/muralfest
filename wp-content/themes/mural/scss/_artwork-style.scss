@@ -50,6 +50,7 @@
 
                 .right-col{
                     padding-left: 0;
+                    padding-top: 15px;
                     width: auto;
                 }
             }
@@ -69,7 +70,7 @@
     .artwork-data{
         max-width: calc(100vw - 53px);
         font-size: 1.6rem;
-
+        
         &.this-year{
             .artist{
                 color: $color_blue;
@@ -109,7 +110,11 @@
         }
 
         .left-col{
-            padding-right: 5px;
+            width:35%;
+            padding-right: 5px;    
+            img{
+                max-width: 100%;
+            }
         }
 
         .right-col{
@@ -164,10 +169,12 @@
     
             .left-col{
                 padding-right: 0px;
+                width: auto;
             }
     
             .right-col{
                 padding-left: 0px;
+                width: auto;
             }
         }
     }
@@ -181,6 +188,14 @@
             font-size:4.5rem;
             color:#000;
         }
+
+        .year-artworks{
+            h3{
+                color: $color_pink;
+                margin-bottom: 0;
+            }
+        }
+
         .content{
             .artwork-col{
                 @include cdm-grid(4, ".artwork", 20px, 15px, ());

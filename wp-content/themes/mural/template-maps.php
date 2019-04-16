@@ -25,11 +25,30 @@ get_header(); ?>
             <section class="artwork-list">
                <h2><?php _e('Works list', 'site-theme'); ?></h2>
                 <div class="content">
-                    <section class="artwork-col">
-                        <?php foreach(Festival()->artworks->get_artworks() as $id => $artwork){
-                            echo '<div class="artwork"><span data-markerid="'.$id.'">'.$artwork['title'].'</span></div>';
-                        }; ?>
-                    </section>
+                    <?php
+                    $artworks = Festival()->artworks->get_artworks();
+                    $artworks_by_years = array();
+
+                    foreach ($artworks as $id => $artwork) {
+                        if(!isset($artworks_by_years[$artwork['date']])){
+                            $artworks_by_years[$artwork['date']] = array();
+                        }
+
+                        $artworks_by_years[$artwork['date']][$id] = $artwork;
+                    } ?>
+                        
+                    <?php foreach($artworks_by_years as $year => $year_artworks): ?>
+                        <div class="year-artworks">
+                            <h3><?= $year ?></h3>
+                            <section class="artwork-col">
+                                <?php foreach($year_artworks as $id => $artwork): ?>
+                                    <div class="artwork">
+                                        <span data-markerid="<?= $id ?>"><?= $artwork['title'] ?></span>
+                                    </div>
+                                <?php endforeach; ?>
+                            </section>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </section>
 		</div>

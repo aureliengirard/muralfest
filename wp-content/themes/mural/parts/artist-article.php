@@ -1,4 +1,4 @@
-<div class="program toAnimate animS_fadeIn">
+<div class="artist toAnimate animS_fadeIn">
     <?
     global $place_holder_artist;
     $artist_id = icl_object_id(get_the_ID(), 'artist', false, "fr");
