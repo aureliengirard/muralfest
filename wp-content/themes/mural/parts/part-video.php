@@ -16,6 +16,8 @@
                 'origin' => esc_url( home_url( '/' ) ),
                 'showinfo' => 0,
                 'wmode' => 'opaque',
+                'autoplay' => '1',
+                'mute'=>'1'
             );
             $new_src = add_query_arg($params, $src);
             

@@ -119,6 +119,7 @@
 .single-artist{
 	.content-wrap{
 		section{
+			overflow: visible;
 			h1{
 				color: #000000;
 			}
@@ -144,11 +145,146 @@
             .artist-socials{
                 margin-right: 5px;
                 margin-bottom: 5px;
-            }
-		}
+			}
 
+			.post-nav-wrapper{
+				position:sticky;
+				display:flex;
+				justify-content: space-between;
+				bottom: 50%;
+				pointer-events: none;
+
+				@include media-screen(1400px){
+					position: initial;
+					max-width: 1200px;
+					padding: 0 15px;
+					margin:0 auto;
+				}
+			}
+
+			.arrow-container{
+				z-index: 9;
+				pointer-events: all;
+
+				@include media-screen(1400px){
+					max-width: 50%;
+				}
+
+				&:hover{
+					
+					span{
+						width: 100vw;
+						opacity: 1;
+
+						@include media-screen(1400px){
+							width:auto;
+							
+						}
+
+					}
+		
+				}
+
+				&.next-link{
+					
+					span{
+						right: 0;
+						@include hover-transition;
+
+						
+						@include media-screen(1400px){
+							padding-right: 5px;
+						}
+						
+					}
+	
+				}
+
+				&.prev-link{
+
+					span{
+						left: 0;
+						@include hover-transition;
+					}
+				}
+
+				a{
+					@include hover-transition;
+					display: flex;
+					align-items: center;
+					padding: 1rem;
+					background-color:$color_pink;
+					position: relative;
+
+					@include media-screen(1400px){
+						background-color:transparent;
+						padding: 0rem;
+						height: auto;
+						width: auto;
+	
+						&:hover{
+							background-color:transparent;
+						}
+					}
+				}
+				
+				//text dans le liens
+				span{
+					position: absolute;
+					top:0;
+					bottom:0;
+					color:#fff;
+					background-color:$color_pink;
+					display: flex;
+					max-width: 180px;
+					align-items: center;
+					justify-content: center;
+					padding: 10px;
+					min-height: 100%;
+					width:0;
+					opacity: 0;
+					overflow: hidden;
+					text-align: center;
+
+					@include media-screen(1400px){
+						display:block;
+						color:$color_pink;
+						font-style: italic;
+						font-size: 2.5rem;
+						padding:1rem 0;
+						background-color:transparent;
+						width:auto;
+						opacity: 1;
+						position: initial;
+						overflow: visible;
+						max-width: none;
+						text-align: initial;
+
+						&:hover{
+							opacity:0.5;
+						}
+					}
+				}
+
+			
+
+				i{
+					font-size:5rem;
+					color:#fff;
+					
+					@include media-screen(1400px){
+						display:none;
+					}
+				}
+			}
+		}
+		.bio{
+			z-index:0;
+		}
 		.col-wrapper{
 			display: flex;
+			position:relative;
+			z-index:0;
 
 			.left-col{
                 max-width: 50%;

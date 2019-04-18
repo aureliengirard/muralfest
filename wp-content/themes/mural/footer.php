@@ -22,6 +22,7 @@
 				<nav class="navigation footer-navigation" role="navigation">
 					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu', 'depth' => 1, 'walker' => new MenuWalker() ) ); ?>
 				</nav>
+				<p class="footer-lndmrk"><?php _e('produced by LNDMRK','site-theme')?></p>
 			</div>
 		</footer><!-- #colophon -->
 		

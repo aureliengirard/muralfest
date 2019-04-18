@@ -1758,7 +1758,7 @@ input[type=radio]{
 
 /// style footer
 #colophon{
-	padding: 35px 0 80px;
+	padding: 35px 0 10px;
 	background-color: #000000;
 	position: relative;
 	z-index: 10;
@@ -1775,6 +1775,15 @@ input[type=radio]{
 
 	.sociaux{
 		margin-bottom: 45px;
+	}
+	.footer-navigation{
+		margin-bottom:45px;
+	}
+
+	.footer-lndmrk{
+		color:white;
+		margin-bottom: 20px;
+		font-size: 1.5rem;
 	}
 
 	.nav-menu{

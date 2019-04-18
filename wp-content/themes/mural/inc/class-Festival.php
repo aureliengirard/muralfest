@@ -409,7 +409,7 @@ class Festival {
         $field['choices'] = array();
     
 		$current_year = (Int) date('Y');
-		$starting_year = 2012;
+		$starting_year = 2013;
 		
 		for ($i=$current_year; $i >= $starting_year; $i--) { 
 			$field['choices'][$i] = $i;

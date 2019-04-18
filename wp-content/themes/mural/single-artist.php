@@ -19,10 +19,8 @@
 
 <?php while ( have_posts() ) : the_post(); ?>
 	<article id="post-<?php the_ID(); ?>">
-		
 		<div class="content-wrap">
             <section class="basic-content">
-                <div id="gmap"></div>
                 <div class="content">
                     <section class="single-navigation">
                         <?php display_back_button(); ?>
@@ -31,6 +29,7 @@
                     </section>
 
                     <section class="col-wrapper">
+                    
                         <?php if(wp_get_attachment_image(get_field('image_de_lartiste'), 'original')): ?>
                             <div class="left-col">
                                 <figure>
@@ -89,12 +88,20 @@
                                 <a class="button smaller twitter artist-socials" href="<?php the_field('twitter'); ?>" target="_blank" rel="nofollow"><?php _e('Twitter', 'site-theme'); ?></a>
                             <?php endif; ?>
                         </div>
+                        
                     </section>
 
                     <section class="bio">
                         <?php the_field('biographie'); ?>
                     </section>
                 </div>
+                <div class="post-nav-wrapper">
+                    <div class="arrow-container prev-link"><?php previous_post_link('%link','<i class="far fa-angle-left"></i> <span>%title</span> ') ?></div>
+                    <div class="arrow-container next-link"><?php next_post_link('%link','<span>%title</span> <i class="far fa-angle-right"></i>') ?></div>
+                </div>
+               
+                
+               
             </section>
         </div>
 
