@@ -1465,18 +1465,18 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap; }
     .content-wrap .gallery figure {
-      width: calc(100% / 8);
-      -webkit-transform: scale(1);
-              transform: scale(1);
+      width: 25%;
       -webkit-transition: z-index 0s ease 0.4s, -webkit-transform 0.4s ease 0s;
       transition: z-index 0s ease 0.4s, -webkit-transform 0.4s ease 0s;
       transition: transform 0.4s ease 0s, z-index 0s ease 0.4s;
       transition: transform 0.4s ease 0s, z-index 0s ease 0.4s, -webkit-transform 0.4s ease 0s;
       cursor: pointer;
-      z-index: 0; }
+      z-index: 0;
+      padding: 1em;
+      overflow: hidden;
+      max-height: 100%;
+      max-width: 100%; }
       .content-wrap .gallery figure:hover {
-        -webkit-transform: scale(1.2);
-                transform: scale(1.2);
         -webkit-transition: z-index 0s ease 0s, -webkit-transform 0.4s ease 0.1s;
         transition: z-index 0s ease 0s, -webkit-transform 0.4s ease 0.1s;
         transition: transform 0.4s ease 0.1s, z-index 0s ease 0s;
@@ -1488,12 +1488,19 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
           transition: transform 0.4s ease 0s, z-index 0s ease 0s;
           transition: transform 0.4s ease 0s, z-index 0s ease 0s, -webkit-transform 0.4s ease 0s;
           z-index: 1; }
+      .content-wrap .gallery figure img {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+        -webkit-transition: all 0.5s;
+        transition: all 0.5s; }
+        .content-wrap .gallery figure img:hover {
+          text-decoration: none; }
+        .content-wrap .gallery figure img:hover {
+          -webkit-transform: scale(1.5);
+                  transform: scale(1.5); }
       @media only screen and (max-width: 768px) {
         .content-wrap .gallery figure {
-          width: calc(100% / 5); } }
-      @media only screen and (max-width: 475px) {
-        .content-wrap .gallery figure {
-          width: calc(100% / 3); } }
+          width: calc(100% / 2); } }
 
 .content-wrap section .pagination .page-numbers {
   text-align: center;
@@ -1596,6 +1603,33 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   .content-wrap .single-navigation .back-btn + .breadcrumb {
     margin-left: 15px; }
 
+blockquote {
+  margin-bottom: 0;
+  position: relative;
+  margin: 6em 4em;
+  text-align: center; }
+  @media only screen and (max-width: 768px) {
+    blockquote {
+      margin: 6em 2em; } }
+  blockquote::before, blockquote::after {
+    font-family: "Font Awesome 5 solid";
+    color: #ed3d8f;
+    position: absolute;
+    font-size: 2.5rem; }
+  blockquote::before {
+    content: '\f10d';
+    top: 0;
+    left: 0; }
+  blockquote::after {
+    content: '\f10e';
+    bottom: 0;
+    right: 0; }
+  blockquote p {
+    font-style: italic;
+    padding: 0 2.5em;
+    color: #5f5f5f;
+    font-size: 2rem; }
+
 .breadcrumb a {
   color: #ed3d8f;
   -webkit-transition: all 0.5s;
@@ -1625,6 +1659,11 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
         #sidebar .list-categories li a:hover {
           color: #04d3ff; }
 
+.artwork-data .sharing .sharing-item-container {
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left; }
+
 .artwork-data .sharing a:last-of-type {
   margin-left: 0px; }
 
@@ -1632,12 +1671,33 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
 .content-wrap section .content .sharing {
   padding: 10px 0;
   font-size: 0; }
+  .sharing .sharing-item-container,
+  .content-wrap section .content .sharing .sharing-item-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: wrap;
+        -ms-flex: wrap;
+            flex: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+  .sharing .icon-twitter-wrapper,
+  .content-wrap section .content .sharing .icon-twitter-wrapper {
+    padding-left: 1rem; }
   .sharing p,
   .content-wrap section .content .sharing p {
     font-size: 1.4rem;
     margin: 0;
     font-weight: 700;
-    color: #ed3d8f; }
+    color: #ed3d8f;
+    margin-bottom: 1em;
+    width: 100%; }
+  .sharing i,
+  .content-wrap section .content .sharing i {
+    font-size: 2.5rem;
+    margin-left: 30px;
+    margin-top: -2px; }
   .sharing a,
   .content-wrap section .content .sharing a {
     display: inline-block;
@@ -1658,6 +1718,9 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     .sharing a:last-of-type,
     .content-wrap section .content .sharing a:last-of-type {
       margin-right: 0; }
+
+.carte_dynamique {
+  margin: 2em 0; }
 
 #post-404 .content-wrap .page-404 {
   padding: 30px 0; }
@@ -2450,6 +2513,15 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   color: #ed3d8f;
   text-align: center; }
 
+.single-post .content-wrap section .post-categories {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 0; }
+  .single-post .content-wrap section .post-categories span:after {
+    content: '- '; }
+  .single-post .content-wrap section .post-categories span:last-child:after {
+    content: ''; }
+
 .single-post .content-wrap section .content-blog figure {
   text-align: center; }
 
@@ -2468,6 +2540,10 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
   text-align: center;
   width: 100%;
   margin-bottom: 20px; }
+  .single-post .content-wrap .sharing p {
+    margin-bottom: 1em; }
+  .single-post .content-wrap .sharing i {
+    font-size: 2.5rem; }
 
 .single-post .content-wrap .col-wrapper {
   display: -webkit-box;
@@ -2865,6 +2941,10 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
         max-width: 1200px;
         padding: 0 15px;
         margin: 0 auto; } }
+  .single-artist .content-wrap section .sharing .sharing-item-container {
+    -webkit-box-pack: left;
+        -ms-flex-pack: left;
+            justify-content: left; }
   .single-artist .content-wrap section .arrow-container {
     z-index: 9;
     pointer-events: all; }

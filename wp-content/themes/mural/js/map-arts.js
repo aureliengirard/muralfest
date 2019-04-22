@@ -217,17 +217,17 @@ $(function(){
 				lng = artwork.coords.lng;
 		
 				var markerPos = new google.maps.LatLng(lat, lng);
-
+				
 				var color = '#ed3d8f';
 				var currentYear = false;
-
+				
 				var currentDate = new Date();
-
+				
 				if(artwork.date == currentDate.getFullYear()){
 					color = '#04d3ff';
 					currentYear = true;
 				}
-
+				
 				var infoContent = '';
 				infoContent += '<div class="artwork-data'+(currentYear ? ' this-year' : '')+'">';
 				infoContent +=		'<div class="col-wrapper">';
@@ -235,7 +235,6 @@ $(function(){
 				infoContent +=  			'<figure>';
 				infoContent += 					'<a href="'+artwork.link+'">'+artwork.thumbnail+'</a>';
 				infoContent += 				'</figure>';
-				infoContent +=  			artwork.share;
 				infoContent += 			'</div>';
 				infoContent +=			'<div class="right-col">';
 				infoContent +=  			'<div class="artwork-infos">';
@@ -246,15 +245,19 @@ $(function(){
 				infoContent += 				'<div class="artwork-desc">';
 				infoContent += 					artwork.description
 				infoContent += 					'<p><a href="'+artwork.link+'" class="readmore">'+translation_map.readmore+'</a></p>';
+				infoContent +=  			artwork.share;
 				infoContent += 				'</div>';
 				infoContent += 			'</div>';
 				infoContent += 		'</div>';
 				infoContent += '</div>';
-
+				
 				var infowindow = new google.maps.InfoWindow({
 					content: infoContent
 				});
-
+				
+				google.maps.event.addListener(infowindow, 'domready', function () {
+					twttr.widgets.load();
+				})
 				infoWindows.push(infowindow);
 				
 				var markerMap = new google.maps.Marker({
@@ -283,6 +286,7 @@ $(function(){
 					}
 
 					infowindow.open(map, markerMap);
+					
 				});
 			});
 

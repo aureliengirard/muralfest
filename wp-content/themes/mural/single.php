@@ -2,6 +2,7 @@
 /**
  * The template for displaying all singles
 */
+$categories =  get_the_category();
 
 get_header(); ?>
 
@@ -24,6 +25,11 @@ get_header(); ?>
                         
                         <h1><?php the_title(); ?></h1>
                         <p class="date"><?= get_the_date('j F Y'); ?></p>
+                        <p class="post-categories"><?php _e('catégories','site-theme') ?> : <?php 
+                        foreach($categories as $categorie){
+                            $name=$categorie->name.' ';
+                            echo '<span>'.$name.'</span>';  
+                        } ?></p>
                         
                         <!--<div class="blog-categories">
                             <?= get_the_category_list( ', ', '', get_the_ID() ); ?>
@@ -32,6 +38,7 @@ get_header(); ?>
                         <?php get_template_part('parts/inc', 'background_content'); ?>
                     
                         <?php get_template_part('parts/inc', 'share'); ?>
+                        
 
                         <section class="articles_du_blog">
                             <?php get_template_part('parts/part', 'articles_du_blog'); ?>

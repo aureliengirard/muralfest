@@ -418,6 +418,37 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_5cbdd9d2d04cc": {
+                    "key": "layout_5cbdd9d2d04cc",
+                    "name": "carte_dynamique",
+                    "label": "carte dynamique",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5cbdd9dfd04cd",
+                            "label": "carte dynamique",
+                            "name": "carte_dynamique",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_5cbdcd51166b5"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "Ajouter un élément",
@@ -480,5 +511,5 @@
     ],
     "active": 0,
     "description": "",
-    "modified": 1524689655
+    "modified": 1555946016
 }

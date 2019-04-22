@@ -280,9 +280,8 @@ class Festival {
                 }
             }
 
-            if($this->current_festival && get_page_template_slug($page_id) == 'template-maps.php'){
-                $this->artworks = new Artworks();
-            }
+            $this->artworks = new Artworks();
+
         }   
     }
 

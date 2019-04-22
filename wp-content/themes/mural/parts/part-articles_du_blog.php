@@ -1,5 +1,5 @@
 <div class="content">
-    <h2><?php _e('Latest posts', 'site-theme'); ?></h2>
+    <h2><?php _e('You may also like', 'site-theme'); ?></h2>
     <?php
     $args = array(
         'post_type' => array( 'post' ),
@@ -7,6 +7,18 @@
     );
 
     if(is_singular('post')){
+        $category_obj = get_the_category();
+        $categories = array();
+        foreach($category_obj as $categorie){
+            $categories[] = $categorie->cat_ID;
+            
+        }
+        $args = array(
+            'post_type' => array( 'post' ),
+            'posts_per_page' => 3,
+            'category__in' => $categories,
+            'orderby'	=> 'rand',
+        );
         $args['post__not_in'] = array(get_the_ID());
     }
 

@@ -1494,36 +1494,48 @@ input[type=radio]{
 		display: flex;
 		flex-wrap: wrap;
 		
+		
+		
 		figure{
-			width: calc(100% / 8);
-			transform: scale(1);
+			width: 25%;
 			//position: absolute;
 			transition: transform 0.4s ease 0s, z-index 0s ease 0.4s;
 			cursor: pointer;
 			z-index: 0;
+			padding:1em;
+			overflow: hidden;
+			max-height: 100%;
+			max-width: 100%;
 
 			&:hover{
-				transform: scale(1.2);
 				transition: transform 0.4s ease 0.1s, z-index 0s ease 0s;
 				z-index: 2;
-
+				
 				+ figure{
 					transition: transform 0.4s ease 0s, z-index 0s ease 0s;
 					z-index: 1;
 				}
 			}
 
-			@include media-screen(768px){
-				width: calc(100% / 5);
+			img{
+				transform: scale(1);
+				@include hover-transition;
+
+				&:hover{
+					transform : scale(1.5);
+				}
 			}
 
-			@include media-screen(475px){
-				width: calc(100% / 3);
+			@include media-screen(768px){
+				width: calc(100% / 2);
 			}
+
+			
 		}
 	}
 
 }
+
 /// Style paginations
 .content-wrap section{
     .pagination{
@@ -1656,6 +1668,42 @@ input[type=radio]{
 	}
 }
 
+blockquote{
+	margin-bottom:0;
+	position: relative;
+    margin: 6em 4em;
+	text-align: center;
+
+	@include media-screen(768px){
+		margin:6em 2em;
+	}
+	
+	&::before,&::after{
+		font-family: "Font Awesome 5 solid";
+		color:$color_pink;
+		position: absolute;
+		font-size: 2.5rem;
+	}
+
+	&::before{
+		content:'\f10d';
+		top: 0;
+		left: 0;
+		
+	}
+	&::after{
+		content: '\f10e';
+		bottom: 0;
+		right: 0;
+	}
+	p{
+		font-style:italic;
+		padding: 0 2.5em;
+		color:#5f5f5f;
+		font-size: 2rem;
+	}
+}
+
 .breadcrumb{
 	a{
 		color: $color_pink;
@@ -1705,11 +1753,15 @@ input[type=radio]{
 /// Style partage
 .artwork-data{
 	.sharing{
+		.sharing-item-container{
+			justify-content: left;
+		}
 		a{
 			&:last-of-type{
 				margin-left:0px;
 			}
 		}
+		
 	}
 }
 .sharing,
@@ -1717,11 +1769,29 @@ input[type=radio]{
 	padding: 10px 0;
 	font-size: 0;
 
+	.sharing-item-container{
+		display:flex;
+		flex:wrap;
+		justify-content:center;
+	}
+
+	.icon-twitter-wrapper{
+		padding-left:1rem;
+	}
+
 	p{
 		font-size: 1.4rem;
 		margin: 0;
 		font-weight: 700;
 		color: $color_pink;
+		margin-bottom:1em;
+		width: 100%;
+	}
+
+	i{
+		font-size:2.5rem;
+		margin-left:30px;    
+		margin-top: -2px;//alignement avec les liens de fb et twitter
 	}
 
 	a{
@@ -1729,6 +1799,8 @@ input[type=radio]{
 		font-size: 1.6rem;
 		color: #000000;
 		margin: 0 8px;
+		
+
 
 		@include hover-transition;
 
@@ -1745,7 +1817,9 @@ input[type=radio]{
 		}
 	}
 }
-
+.carte_dynamique{
+	margin: 2em 0 ;
+}
 
 /// Page 404
 #post-404{

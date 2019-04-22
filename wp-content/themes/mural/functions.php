@@ -94,6 +94,7 @@ function theme_enqueue_styles() {
 		wp_get_theme()->get('Version'),
 		true
 	);
+	wp_enqueue_script("artworks-map", CHILDURI."/js/map-arts.js", array('jquery'), '1.0.0', true);
 	
 	wp_enqueue_script("script",
 		CHILDURI."/js/script.js",
@@ -130,7 +131,27 @@ function theme_enqueue_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles', 11 );
 
-
+function add_twitter_widget(){
+	?>
+	<script>window.twttr = (function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0],
+		  t = window.twttr || {};
+		if (d.getElementById(id)) return t;
+		js = d.createElement(s);
+		js.id = id;
+		js.src = "https://platform.twitter.com/widgets.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	  
+		t._e = [];
+		t.ready = function(f) {
+		  t._e.push(f);
+		};
+	  
+		return t;
+	  }(document, "script", "twitter-wjs"));</script>
+	  <?php
+}
+add_action('wp_footer','add_twitter_widget',100);
 
 /**
  * Return the Google font stylesheet URL, if available.

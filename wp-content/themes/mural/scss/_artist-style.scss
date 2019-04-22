@@ -162,6 +162,10 @@
 				}
 			}
 
+			.sharing .sharing-item-container{
+				justify-content: left;
+			}
+
 			.arrow-container{
 				z-index: 9;
 				pointer-events: all;
@@ -310,5 +314,6 @@
                 
             }
 		}
+		
 	}
 }
