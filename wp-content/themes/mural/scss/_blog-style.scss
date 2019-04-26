@@ -226,12 +226,13 @@
 				text-align: center;
 				font-style: italic;
 				margin-bottom:0;
-				span{
+				margin-top:15px;
+				a{
 					&:after{
 						content:'- ';
 					}
 				}
-				span:last-child{
+				a:last-child{
 					&:after{
 						content:'';
 					}

@@ -25,10 +25,11 @@ get_header(); ?>
                         
                         <h1><?php the_title(); ?></h1>
                         <p class="date"><?= get_the_date('j F Y'); ?></p>
-                        <p class="post-categories"><?php _e('catégories','site-theme') ?> : <?php 
+                        <p class="post-categories"><?php _e('categories','site-theme') ?> : <?php 
                         foreach($categories as $categorie){
                             $name=$categorie->name.' ';
-                            echo '<span>'.$name.'</span>';  
+                            $link = get_category_link($categorie);
+                            echo '<a href='.$link.'>'.$name.'</a>';
                         } ?></p>
                         
                         <!--<div class="blog-categories">

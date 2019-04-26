@@ -534,6 +534,10 @@ body.mobile{
 		color: #ffffff;
 		@include hover-transition;
 
+		i{
+			font-size: 3.5rem;
+		}
+
 		&:hover{
 			color: $color_pink;
 		}
@@ -1507,6 +1511,11 @@ input[type=radio]{
 			max-height: 100%;
 			max-width: 100%;
 
+			a{
+				display: block;
+				height: 150px;
+			}
+
 			&:hover{
 				transition: transform 0.4s ease 0.1s, z-index 0s ease 0s;
 				z-index: 2;
@@ -1520,6 +1529,10 @@ input[type=radio]{
 			img{
 				transform: scale(1);
 				@include hover-transition;
+				height: 100%;
+				width: auto;
+				display: block;
+				margin:0 auto;
 
 				&:hover{
 					transform : scale(1.5);
@@ -1789,7 +1802,7 @@ blockquote{
 	}
 
 	i{
-		font-size:2.5rem;
+		font-size:3rem;
 		margin-left:30px;    
 		margin-top: -2px;//alignement avec les liens de fb et twitter
 	}
