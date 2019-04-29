@@ -449,6 +449,37 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_5cc752578c304": {
+                    "key": "layout_5cc752578c304",
+                    "name": "texte_bouton",
+                    "label": "texte bouton",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5cc7527c8c305",
+                            "label": "texte bouton",
+                            "name": "texte_bouton",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_5cc74f3861465"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "Ajouter un élément",
@@ -511,5 +542,5 @@
     ],
     "active": 0,
     "description": "",
-    "modified": 1555946016
+    "modified": 1556566981
 }

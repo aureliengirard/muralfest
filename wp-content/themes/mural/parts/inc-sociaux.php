@@ -1,5 +1,8 @@
 <?php if(get_field('facebook', 'option')): ?>
-	<li><a href="<? the_field('facebook', 'option'); ?>" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+	<li><a href="<? the_field('facebook', 'option'); ?>" target="_blank"><i class="fab fa-facebook"></i></a></li>
+<?php endif; ?>
+<?php if(get_field('instagram', 'option')): ?>
+	<li><a href="<? the_field('instagram', 'option'); ?>" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
 <?php endif; ?>
 
 <?php if(get_field('twitter', 'option')): ?>
@@ -14,9 +17,7 @@
 	<li><a href="<? the_field('linkedin', 'option'); ?>" target="_blank"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
 <?php endif; ?>
 
-<?php if(get_field('instagram', 'option')): ?>
-	<li><a href="<? the_field('instagram', 'option'); ?>" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-<?php endif; ?>
+
 
 <?php if(get_field('youtube', 'option')): ?>
 	<li><a href="<? the_field('youtube', 'option'); ?>" target="_blank"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>

@@ -4,14 +4,23 @@
         $left_banner = get_field('banniere_gauche');
         $right_banner = get_field('banniere_droite');
         ?>
-        <figure class="left-banner">
-            <?php echo wp_get_attachment_image( $left_banner['banniere'], 'max-banner' ); ?>
-            <?php if($left_banner['contenu_banniere']): ?>
+        <?php if($left_banner['banniere']): ?>
+            <figure class="left-banner">
+                <?php echo wp_get_attachment_image( $left_banner['banniere'], 'max-banner' ); ?>
+                <?php if($left_banner['contenu_banniere']): ?>
+                    <div class="banner-overlay">
+                        <?= $left_banner['contenu_banniere']; ?>
+                    </div>
+                <?php endif; ?>
+            </figure>
+        <?php else : ?>
+            <div class="gradient-wrapper left-banner">
                 <div class="banner-overlay">
                     <?= $left_banner['contenu_banniere']; ?>
                 </div>
-            <?php endif; ?>
-        </figure>
+            </div>
+        <?php endif ?>
+        
         <figure class="right-banner">
             <?php echo wp_get_attachment_image( $right_banner['banniere'], 'max-banner' ); ?>
             <?php if($right_banner['contenu_banniere']): ?>

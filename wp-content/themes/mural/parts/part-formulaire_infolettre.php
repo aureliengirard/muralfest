@@ -5,14 +5,7 @@
 
     <?php the_sub_field('texte') ?>
 
-    <form class="newsletter">
-        <div class="input-wrap">
-            <input type="text" name="email" placeholder="<?php _e('Email', 'site-theme'); ?>" />
-            <button type="submit" class="button">
-                <i class="fas fa-angle-right"></i>
-                <i class="fas fa-angle-right"></i>
-            </button>
-        </div>
-        <p class="error-log"></p>
-    </form>
+    <button class="button"><?php _e('Courriel','site-theme')?></button>
+
+    
 </div>

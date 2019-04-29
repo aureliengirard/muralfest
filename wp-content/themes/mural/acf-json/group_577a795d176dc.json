@@ -211,6 +211,78 @@
             "mime_types": ""
         },
         {
+            "key": "field_5cc6ec53220c8",
+            "label": "logo lndmrk",
+            "name": "logo_lndmrk",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5cc6f4b6525a6",
+            "label": "Boulevard",
+            "name": "boulevard",
+            "type": "image",
+            "instructions": "image du text boulevard saint laurent",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5cc70141f1e15",
+            "label": "fleur",
+            "name": "fleur",
+            "type": "image",
+            "instructions": "s'affiche dans le footer",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
             "key": "field_58e918eb102a1",
             "label": "Courriel",
             "name": "courriel",
@@ -314,11 +386,12 @@
                         "id": ""
                     },
                     "choices": {
-                        "artwork": "Œuvre",
-                        "artist": "Artiste",
-                        "partner": "Partenaire",
-                        "program": "Événement",
-                        "venue": "Lieu"
+                        "post": "Post",
+                        "artwork": "Artwork",
+                        "artist": "Artist",
+                        "partner": "Partner",
+                        "program": "Event",
+                        "venue": "Venue"
                     },
                     "default_value": [],
                     "allow_null": 0,
@@ -528,5 +601,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1524239308
+    "modified": 1556546090
 }

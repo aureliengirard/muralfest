@@ -109,8 +109,27 @@ $(function(){
         }else{
             $('body').removeClass('mobile');
         }
-    });
+	});
 	
+	//afficher l'infolette 
+	$('.popup-exit').on('click',function(){
+		$('.newsletter').removeClass('popup-visible');
+	});
+
+	//femer l'infolette
+	$('.formulaire_infolettre .button').on('click',function(){
+		$('.newsletter').addClass('popup-visible');
+	});
+	//
+	$('.newsletter').on('click',function(e){
+		e.stopPropagation();
+		if(this==e.target){
+			$('.newsletter').removeClass('popup-visible');
+		}
+	});
+
+
+
 	/* inscription a l'infolettre */
 	$('.infolettre, .newsletter').submit(function(e){
 		e.preventDefault();

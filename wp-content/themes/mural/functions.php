@@ -163,6 +163,7 @@ function theme_fonts_url() {
 	$font_families = array();
 	
 	$font_families[] = 'Open Sans:300,400,600,700,800';
+	$font_families[] = 'Cardo:400,400i,700';
 	
 	$query_args = array(
 		'family' => urlencode( implode( '|', $font_families ) ),

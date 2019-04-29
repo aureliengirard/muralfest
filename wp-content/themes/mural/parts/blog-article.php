@@ -13,7 +13,7 @@
                 </div>-->
             <?php endif;  ?>
             <?= truncate(get_field('resume'), 145, "&hellip;", false); ?>
-            <a class="readmore" href="<?php the_permalink(); ?>"><?php _e('Learn more +', 'site-theme'); ?></a>
+            <a class="readmore" href="<?php the_permalink(); ?>"><?php _e('read more', 'site-theme'); ?><span> ></span></a>
         </div>
     </div>
 </div>

@@ -1,5 +1,9 @@
 <div class="content">
+    <?php if(is_singular('post')): ?>
     <h2><?php _e('You may also like', 'site-theme'); ?></h2>
+    <?php else : ?>
+    <h2><?php _e('Latest posts', 'site-theme'); ?></h2>
+    <?php endif; ?>
     <?php
     $args = array(
         'post_type' => array( 'post' ),
@@ -35,7 +39,7 @@
         </div>
 
         <div class="button-wrap">
-            <a href="<?= get_the_permalink(get_posttype_parent_id('post')); ?>" class="button"><?php _e('View more', 'site-theme'); ?></a>
+            <a href="<?= get_the_permalink(get_posttype_parent_id('post')); ?>" class="button"><?php _e('View +', 'site-theme'); ?></a>
         </div>
     <?php endif; ?>
 

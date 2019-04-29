@@ -108,8 +108,8 @@
                     "label": "Bannière",
                     "name": "banniere",
                     "type": "image",
-                    "instructions": "",
-                    "required": 1,
+                    "instructions": "ne rien mettre ici pour avoir un dégradé orange",
+                    "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
@@ -187,7 +187,7 @@
                     "return_format": "id",
                     "preview_size": "medium",
                     "library": "all",
-                    "min_width": 960,
+                    "min_width": 950,
                     "min_height": "",
                     "min_size": "",
                     "max_width": "",
@@ -234,5 +234,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1524168948
+    "modified": 1556203643
 }

@@ -12,8 +12,6 @@
                             <span class="regular-img">
                                 <?= wp_get_attachment_image(get_sub_field('image'), 'cta-preview'); ?>
                             </span>
-
-                            <span class="hover-effect-img"><?= wp_get_attachment_image(get_sub_field('image'), 'cta-preview'); ?></span>
                         </a>
                     </figure>
                     <div class="description">
