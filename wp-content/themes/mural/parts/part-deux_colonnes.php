@@ -7,7 +7,7 @@
  */
 ?>
 
-<div class="col-wrapper">
+<div class="col-wrapper<?= (get_sub_field('largeur_complete') ? ' full-width' : '') ?>">
     <?php if ( have_rows( 'colonne_de_gauche' ) ) : ?>
         <div class="left-col">
             <?php while ( have_rows('colonne_de_gauche' ) ) { the_row();

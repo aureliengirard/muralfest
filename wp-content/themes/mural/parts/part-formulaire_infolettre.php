@@ -5,7 +5,7 @@
 
     <?php the_sub_field('texte') ?>
 
-    <button class="button"><?php _e('Courriel','site-theme')?></button>
+    <button class="button"><?php _e('Email','site-theme')?></button>
 
     
 </div>

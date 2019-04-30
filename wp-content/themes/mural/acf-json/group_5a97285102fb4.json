@@ -157,6 +157,25 @@
                     "prefix_name": 0
                 }
             ]
+        },
+        {
+            "key": "field_5cc84046bcf1a",
+            "label": "largeur complète",
+            "name": "largeur_complete",
+            "type": "true_false",
+            "instructions": "si vous cocher la case, le deux colonnes prendra tout la largeur de la page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         }
     ],
     "location": [
@@ -176,5 +195,5 @@
     "hide_on_screen": "",
     "active": 0,
     "description": "",
-    "modified": 1524065342
+    "modified": 1556627770
 }
