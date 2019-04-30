@@ -20,7 +20,7 @@
 					</a>
 					<div class="info-sup-wrapper">
 						<div class="lndmrk-wrapper">
-							<p class="footer-lndmrk"><?php _e('create by','site-theme')?></p>
+							<p class="footer-lndmrk"><?php _e('created by','site-theme')?></p>
 							<?php echo wp_get_attachment_image( get_field( 'logo_lndmrk', 'options' ), 'original' ); ?>
 						</div>
 						<figure class="boulevard-wrapper">
