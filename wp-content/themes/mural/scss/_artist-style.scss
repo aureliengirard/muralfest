@@ -10,17 +10,29 @@
             }
 
             .artists-wrap{
-                @include cdm-grid(3, ".artist", 30px, 30px, (
-                    768: (
-                        col: 1
-                    )
-                ));
+			   display:flex;
+			   flex-wrap:wrap;
+			   
+			   
+				
+				.artist{
+					width: 33.33333%;
+					padding: 0 15px;
+					margin-bottom:25px;
+					@media only screen and (max-width:768px){
+						width:65%;
+						margin:0 auto;
+						margin-bottom:20px;
+					}
+				}
             }
             
 			.artist{
                 display: flex;
                 flex-direction: column;     
 				background-color: #ffffff;
+
+				
 
 				figure{
 					overflow: hidden;
@@ -36,43 +48,26 @@
 						position: relative;
 
 						.regular-img{
-							filter: url('images/svg/effect-imageblur.svg#image-blur');
-
-							img{
-								opacity: 1;
+							&:before{
+								content:'';
+								position: absolute;
+								top:0;
+								right: 0;
+								left:0;
+								bottom:0;
+								background:$color-gradient-orange;
+								opacity: 0;
 								@include hover-transition;
 							}
-						}
 
-						.hover-effect-img{
-							position: absolute;
-							top: 0;
-							right: 0;
-							bottom: 0;
-							left: 0;
-							opacity: 0;
-							background-color: rgba(#ffffff, 0.3);
-							z-index: 1;
-							@include hover-transition;
-
-							img{
-								mask: url(images/svg/paint-splash2.svg) no-repeat 0 0;
-								mask-size: cover;
+							&:hover::before{
+								opacity: 0.8;
 							}
 						}
 
-						&:hover{
-							.regular-img{
-								img{
-									opacity: 0.3;
-								}
-							}
+						
 
-							.hover-effect-img{
-								opacity: 1;
-								filter: hue-rotate(90deg) brightness(100%);
-							}
-						}
+						
 
 						
 					}
@@ -82,11 +77,10 @@
 				}
 
 				.description{
-					text-align: center;
-					padding: 20px 15px;
+					text-align: left;
+					padding: 20px 0px;
                     display: flex;
 					flex-direction: column;
-					align-items: center;
 					flex-grow: 1;
 
 					h4{

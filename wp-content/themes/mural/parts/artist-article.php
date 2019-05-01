@@ -21,7 +21,6 @@
             <span class="regular-img">
                 <?= wp_get_attachment_image($image_id, 'cta-preview'); ?>
             </span>
-            <span class="hover-effect-img"><?= wp_get_attachment_image($image_id, 'cta-preview'); ?></span>
         </a>
     </figure>
   
