@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-03-26 14:06:52+0000\n"
+"PO-Revision-Date: 2018-04-30 02:03:31+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,6 +25,10 @@ msgstr "1"
 msgctxt "default GMT offset or timezone string"
 msgid "0"
 msgstr "America/Montreal"
+
+#: wp-admin/includes/plugin-install.php:595
+msgid "Requires PHP Version:"
+msgstr "Requiert la version PHP :"
 
 #: wp-admin/customize.php:80
 msgid "This changeset cannot be further modified."
@@ -498,7 +502,7 @@ msgstr "Installation de l'extension"
 msgid "Custom installation script."
 msgstr "Script personnalisé d'installation."
 
-#: wp-admin/includes/plugin-install.php:594
+#: wp-admin/includes/plugin-install.php:602
 msgid "Active Installations:"
 msgstr "Installations actives :"
 
@@ -754,13 +758,13 @@ msgid "Sorry, you are not allowed to attach files to this post."
 msgstr "Désolé, vous n’êtes pas autorisé à attacher des fichiers à ce contenu."
 
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:604
-#: wp-admin/includes/plugin-install.php:598
+#: wp-admin/includes/plugin-install.php:606
 msgctxt "Active plugin installations"
 msgid "Less Than 10"
 msgstr "Inférieur à 10"
 
 #: wp-admin/freedoms.php:47 wp-admin/includes/plugin-install.php:239
-#: wp-admin/includes/plugin-install.php:604 wp-admin/plugin-install.php:82
+#: wp-admin/includes/plugin-install.php:612 wp-admin/plugin-install.php:82
 #: wp-admin/plugins.php:418
 msgid "https://wordpress.org/plugins/"
 msgstr "https://fr.wordpress.org/plugins/"
@@ -1426,7 +1430,7 @@ msgstr "Votre fichier %s a un préfixe de base de donnée vide, ce qui n’est p
 msgid "Theme zip file"
 msgstr "Fichier zip du thème"
 
-#: wp-admin/includes/plugin-install.php:618
+#: wp-admin/includes/plugin-install.php:626
 msgid "Reviews"
 msgstr "Avis"
 
@@ -1440,13 +1444,13 @@ msgstr "Attacher à un contenu existant"
 
 #. translators: 1: number of stars (used to determine singular/plural), 2:
 #. number of reviews
-#: wp-admin/includes/plugin-install.php:625
+#: wp-admin/includes/plugin-install.php:633
 msgid "Reviews with %1$d star: %2$s. Opens in a new window."
 msgid_plural "Reviews with %1$d stars: %2$s. Opens in a new window."
 msgstr[0] "Avis avec %1$d étoile&nbsp;:&nbsp;%2$s. S&rsquo;ouvre dans une nouvelle fenêtre."
 msgstr[1] "Avis avec %1$d étoiles&nbsp;:&nbsp;%2$s. S&rsquo;ouvre dans une nouvelle fenêtre."
 
-#: wp-admin/includes/plugin-install.php:619
+#: wp-admin/includes/plugin-install.php:627
 msgid "Read all reviews on WordPress.org or write your own!"
 msgstr "Lisez tous les avis sur WordPress.org ou écrivez le vôtre&nbsp;!"
 
@@ -2749,7 +2753,7 @@ msgid "Plugins updated successfully."
 msgstr "Les extensions ont bien été mises à jour."
 
 #: wp-admin/includes/class-wp-plugin-install-list-table.php:602
-#: wp-admin/includes/plugin-install.php:596
+#: wp-admin/includes/plugin-install.php:604
 msgctxt "Active plugin installations"
 msgid "1+ Million"
 msgstr "Plus d’1 million"
@@ -3223,7 +3227,7 @@ msgstr "<strong>Incompatible</strong> avec votre version de WordPress"
 msgid "<strong>Compatible</strong> with your version of WordPress"
 msgstr "<strong>Compatible</strong> avec votre version de WordPress"
 
-#: wp-admin/includes/plugin-install.php:632
+#: wp-admin/includes/plugin-install.php:640
 msgid "%d star"
 msgid_plural "%d stars"
 msgstr[0] "%d étoile"
@@ -3260,7 +3264,7 @@ msgstr "Ajouter l’utilisateur sans envoyer de message lui demandant de confirm
 msgid "The grid view for the Media Library requires JavaScript. <a href=\"%s\">Switch to the list view</a>."
 msgstr "La vue en grille de la Bibliothèque de Médias nécessite JavaScript. <a href=\"%s\">Passer à la vue en liste</a>."
 
-#: wp-admin/includes/plugin-install.php:642
+#: wp-admin/includes/plugin-install.php:650
 msgid "Contributors"
 msgstr "Contributeurs"
 
@@ -3269,8 +3273,8 @@ msgctxt "Plugin installer section title"
 msgid "Reviews"
 msgstr "Avis"
 
-#: wp-admin/includes/plugin-install.php:608
-#: wp-admin/includes/plugin-install.php:662
+#: wp-admin/includes/plugin-install.php:616
+#: wp-admin/includes/plugin-install.php:670
 msgid "Donate to this plugin &#187;"
 msgstr "Faites à un don à cette extension &#187;"
 
@@ -5455,7 +5459,7 @@ msgstr "Liste des modifications"
 msgid "You should update your web.config now."
 msgstr "Vous devriez mettre à jour votre fichier web.config maintenant."
 
-#: wp-admin/includes/plugin-install.php:606
+#: wp-admin/includes/plugin-install.php:614
 msgid "Plugin Homepage &#187;"
 msgstr "Site Web de l&rsquo;extension &#187;"
 
@@ -9296,24 +9300,25 @@ msgstr "Cette extension a produit un résultat inattendu."
 msgid "One of the plugins is invalid."
 msgstr "L&rsquo;une des extensions n&rsquo;est pas valide."
 
-#: wp-admin/includes/plugin-install.php:673
+#: wp-admin/includes/plugin-install.php:681
 msgid "<strong>Warning:</strong> This plugin has <strong>not been marked as compatible</strong> with your version of WordPress."
 msgstr "<strong>Attention&nbsp;:</strong> cette extension <strong>n&rsquo;a pas été marquée comme étant compatible</strong> avec votre version de WordPress"
 
-#: wp-admin/includes/plugin-install.php:604
+#: wp-admin/includes/plugin-install.php:612
 msgid "WordPress.org Plugin Page &#187;"
 msgstr "Page WordPress.org de l&rsquo;extension &#187;"
 
-#: wp-admin/includes/plugin-install.php:612
+#: wp-admin/includes/plugin-install.php:620
 msgid "Average Rating"
 msgstr "Moyenne des notes"
 
-#: wp-admin/includes/plugin-install.php:671
+#: wp-admin/includes/plugin-install.php:679
 msgid "<strong>Warning:</strong> This plugin has <strong>not been tested</strong> with your current version of WordPress."
 msgstr "<strong>Attention&nbsp;:</strong> cette extension <strong>n&rsquo;a pas été testée</strong> avec votre version de WordPress."
 
-#. translators: %s: WordPress version
+#. translators: %s: version number
 #: wp-admin/includes/plugin-install.php:588
+#: wp-admin/includes/plugin-install.php:598
 msgid "%s or higher"
 msgstr "%s ou plus"
 
@@ -9321,7 +9326,7 @@ msgstr "%s ou plus"
 msgid "Compatible up to:"
 msgstr "Compatible jusqu&rsquo;à la version&nbsp;: "
 
-#: wp-admin/includes/plugin-install.php:710
+#: wp-admin/includes/plugin-install.php:718
 msgid "Latest Version Installed"
 msgstr "Dernière version installée"
 
@@ -9335,15 +9340,15 @@ msgid "Requires WordPress Version:"
 msgstr "Nécessite WordPress en version&nbsp;:"
 
 #. translators: %s: Plugin version
-#: wp-admin/includes/plugin-install.php:707
+#: wp-admin/includes/plugin-install.php:715
 msgid "Newer Version (%s) Installed"
 msgstr "Une version plus récente (%s) est installée"
 
-#: wp-admin/includes/plugin-install.php:702
+#: wp-admin/includes/plugin-install.php:710
 msgid "Install Update Now"
 msgstr "Installer la mise à jour maintenant"
 
-#: wp-admin/includes/plugin-install.php:614
+#: wp-admin/includes/plugin-install.php:622
 msgid "(based on %s rating)"
 msgid_plural "(based on %s ratings)"
 msgstr[0] "(basée sur %s vote)"
