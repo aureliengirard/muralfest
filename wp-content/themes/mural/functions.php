@@ -126,7 +126,28 @@ function theme_enqueue_styles() {
 		null,
         wp_get_theme()->get('Version')
 	);
-
+	
+	// full Calendar ( program schedule )
+	wp_enqueue_script("fullcalendar-core",
+		CHILDURI."/inc/fullcalendar/js/core.main.min.js",
+		wp_get_theme()->get('Version'),
+		true
+	);
+	wp_enqueue_script("fullcalendar-daygrid",
+		CHILDURI."/inc/fullcalendar/js/daygrid.main.min.js",
+		wp_get_theme()->get('Version'),
+		true
+	);
+	wp_enqueue_style( 'fullcalendar-main',
+	CHILDURI."/inc/fullcalendar/css/main.min.css",
+		null,
+		wp_get_theme()->get('Version')
+	);
+	wp_enqueue_style( 'fullcalendar-daygrid',
+	CHILDURI."/inc/fullcalendar/css/daygrid.main.min.css",
+		null,
+		wp_get_theme()->get('Version')
+	);
 	wp_dequeue_style('font-awesome-4');
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles', 11 );

@@ -5,7 +5,6 @@
  */
 
 get_header(); ?>
-	
 
 <?php while ( have_posts() ) : the_post(); ?>
     <article id="post-<?php the_ID(); ?>" class="site-content">
@@ -23,7 +22,11 @@ get_header(); ?>
             <?php get_template_part('parts/inc', 'order'); ?>
 
             <section class="list-programs">
+
+                
+
                 <div class="content">
+                <div id='calendar'></div>
                 <?php
                     $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
                     $args = array(
@@ -129,12 +132,22 @@ get_header(); ?>
                                 $query->the_post();
                                 ?>
                 
-                                <?php get_template_part('parts/program', 'article'); ?>
+                                <?php //get_template_part('parts/program', 'article');
+                                $events[]=(object) [
+                                    'id'            => get_the_id(),
+                                    'title'         =>  html_entity_decode(get_the_title()),
+                                    'start'         =>  date('Y-m-d', strtotime(get_field('event_date'))),
+                                    
+                                    'url'           => get_the_permalink(),
+                                    'classNames'           => ['event-image','event-background-'.get_the_id()]
+                                ];
+                                $events_backgrounds.='.event-background-'.get_the_id().'{background:url('.wp_get_attachment_image_src(get_field('image_de_levenement'), 'cta-preview')[0].'); background-size:cover;height:38px;text-align:center;}';
+
+                                ?>
 
                             <?php endwhile; ?>
                         </section>
-                        <?php get_template_part('parts/program', 'pager'); ?>
-
+                        <?php get_template_part('parts/program', 'pager');  ?>
                     <?php else: ?>
                         <p><?php _e('No program found.', 'site-theme'); ?></p>
                     <?php endif; ?>
@@ -149,5 +162,59 @@ get_header(); ?>
 	</article>
 <?php endwhile; ?>
 
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    console.log( <?php echo json_encode($events); ?>);
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      plugins: [ 'dayGrid' ],
+      defaultDate: '<?php echo date('Y')."-".date('m').'-'.date('j'); ?>',
+      editable: false,
+      eventLimit: true, // allow "more" link when too many events
+      events: <?php echo json_encode($events); ?>
+      
+    });
+
+    calendar.render();
+  });
+
+</script>
+<style>
+
+
+  #calendar {
+    max-width: 100%;
+    margin: 0 auto;
+    font-size: 14px;
+  }
+  .fc-content .fc-title{
+    background:rgba(0,0,0,0.8);
+    color:#fff;
+    display:block;
+    text-transform:uppercase;
+    line-height:19px;
+  }
+  .fc-day-grid-event .fc-content{
+    white-space:unset;
+    width:100%;
+  }
+  .fc-day-grid-event{
+    display: flex;
+    align-items: center;
+    justify-content: top;
+    overflow:hidden;
+    border-radius: 0;
+    border-color: transparent;
+    flex-direction: column;
+    padding:0;
+  }
+  .fc-day-grid-event{ > span
+  /* these are the flex items */
+  flex: 1;
+}
+  
+  <?php echo $events_backgrounds; ?>
+</style>
 
 <?php get_footer(); ?>
