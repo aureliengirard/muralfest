@@ -125,7 +125,10 @@ get_header(); ?>
                     $wp_query = null;
                     // Re-populate the global with our custom query
                     $wp_query = $query;
-            
+                    
+                    $events_backgrounds = "";
+                    $events=[];
+
                     if ( $query->have_posts() ) : ?>
                         <section class="programs">
                             <?php while ( $query->have_posts() ) :
@@ -147,7 +150,7 @@ get_header(); ?>
 
                             <?php endwhile; ?>
                         </section>
-                        <?php get_template_part('parts/program', 'pager');  ?>
+                       
                     <?php else: ?>
                         <p><?php _e('No program found.', 'site-theme'); ?></p>
                     <?php endif; ?>
