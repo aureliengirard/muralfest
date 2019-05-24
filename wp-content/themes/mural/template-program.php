@@ -116,7 +116,7 @@ get_header(); ?>
                             );
                         }
                     }
-
+                        
                     $query = new WP_Query( $args );
                     global $wp_query;
                     // Put default query object in a temp variable
@@ -136,15 +136,24 @@ get_header(); ?>
                                 ?>
                 
                                 <?php //get_template_part('parts/program', 'article');
+
+                                $title = html_entity_decode(get_the_title());
+                                if(get_field('heure_de_debut')){
+                                    $title .=  ' | '.date_i18n('H:i', strtotime(get_field('heure_de_debut')));
+    
+                                    if(get_field('heure_de_fin')){
+                                        $title.= ' '.__('to', 'site-theme').' '. date_i18n('H:i', strtotime(get_field('heure_de_fin')));
+                                    }
+                                }
                                 $events[]=(object) [
                                     'id'            => get_the_id(),
-                                    'title'         =>  html_entity_decode(get_the_title()),
+                                    'title'         =>  ($title),
                                     'start'         =>  date('Y-m-d', strtotime(get_field('event_date'))),
                                     
                                     'url'           => get_the_permalink(),
                                     'classNames'           => ['event-image','event-background-'.get_the_id()]
                                 ];
-                                $events_backgrounds.='.event-background-'.get_the_id().'{background:url('.wp_get_attachment_image_src(get_field('image_de_levenement'), 'cta-preview')[0].'); background-size:cover;height:38px;text-align:center;}';
+                                $events_backgrounds.='.event-background-'.get_the_id().'{background:url('.wp_get_attachment_image_src(get_field('image_de_levenement'), 'cta-preview')[0].'); background-size:cover;height:114px;text-align:center;}';
 
                                 ?>
 
@@ -175,7 +184,8 @@ get_header(); ?>
       defaultDate: '<?php echo date('Y')."-".date('m').'-'.date('j'); ?>',
       editable: false,
       eventLimit: true, // allow "more" link when too many events
-      events: <?php echo json_encode($events); ?>
+      events: <?php echo json_encode($events); ?>,
+      eventLimitText: 'Events. \n Click to see more.',
       
     });
 
@@ -197,25 +207,46 @@ get_header(); ?>
     display:block;
     text-transform:uppercase;
     line-height:19px;
+    padding:5px;
   }
   .fc-day-grid-event .fc-content{
     white-space:unset;
     width:100%;
   }
-  .fc-day-grid-event{
+  .fc-day-grid-event,
+  .fc-more-cell{
     display: flex;
     align-items: center;
-    justify-content: top;
+    justify-content: center;
     overflow:hidden;
     border-radius: 0;
     border-color: transparent;
     flex-direction: column;
     padding:0;
   }
-  .fc-day-grid-event{ > span
+  
+  .fc-more{
+      display:inline-block;
+      text-align:center;
+      margin-top:40px!important;
+      text-transform:uppercase;
+      background-color: rgba(0,0,0,0.8);
+      color:#fff!important;
+      padding:10px;
+  }
+  .fc-day-grid-event:hover span,
+  .fc-more-cell a:hover{
+      text-decoration:none!important;
+      background-color: #e44f15;
+      color:#fff!important;
+  }
+  .fc-button-primary{
+      background-color:#000;
+  }
+  .fc-day-grid-event > span{
   /* these are the flex items */
   flex: 1;
-}
+    }
   
   <?php echo $events_backgrounds; ?>
 </style>
