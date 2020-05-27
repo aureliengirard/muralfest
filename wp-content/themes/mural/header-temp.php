@@ -37,6 +37,37 @@
 			background-color: #2c2034 !important;
 
 		}
+
+		.site-content,
+		.content-wrap,
+		.content-wrap .appels_a_laction .cta-wrapper .cta {
+			background-color: #2c2034 !important;
+		}
+
+		.content-wrap section .content p,
+		.content-wrap section .content li {
+			font-size: 12px !important;
+		}
+
+		.content-wrap .appels_a_laction .cta-wrapper .cta figure a {
+			display: inline;
+		}
+
+		.link-cta {
+			margin-top: 0px !important;
+			color: #fff;
+			font-size: 12px !important;
+		}
+
+		.link-cta:last-child {
+			text-align: right;
+		}
+
+		.link-cta a {
+			color: #feffae !important;
+			-webkit-text-fill-color: #feffae !important;
+
+		}
 	</style>
 </head>
 

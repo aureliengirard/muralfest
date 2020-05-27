@@ -37,7 +37,9 @@ get_header('temp'); ?>
 						<p>Plus de détails à venir. <a href="mailto:info@muralfestival.com"><span>Nous rejoindre</span></a></p>
 
 					</div>
+					<div class="cta link-cta empty">
 
+					</div>
 					<div class="cta link-cta">
 						<figure>
 							<p>More details to come. <a href="mailto:info@muralfestival.com">To reach us</a></p>
