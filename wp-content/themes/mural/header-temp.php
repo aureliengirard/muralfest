@@ -76,6 +76,20 @@
 			text-align: right;
 		}
 
+		@media only screen and (max-width: 768px) {
+			.link-cta {
+				font-size: 11px !important;
+			}
+		}
+
+		@media only screen and (max-width: 769px) {
+
+			.content-wrap section .content p,
+			.content-wrap section .content li {
+				font-size: 10px !important;
+			}
+		}
+
 		@media only screen and (max-width: 767px) {
 			.link-cta {
 				text-align: center !important;
