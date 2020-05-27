@@ -53,7 +53,20 @@
 			display: inline;
 		}
 
+		@media only screen and (max-width: 767px) {
+			.cta {
+				margin-left: 0px !important;
+				margin-right: 0px !important;
+
+			}
+
+			.content-wrap .appels_a_laction .cta-wrapper .cta {
+				width: 100%;
+			}
+		}
+
 		.link-cta {
+			font-family: 'Open Sans', Arial, sans-serif;
 			margin-top: 0px !important;
 			color: #fff;
 			font-size: 12px !important;
@@ -63,10 +76,19 @@
 			text-align: right;
 		}
 
+		@media only screen and (max-width: 767px) {
+			.link-cta {
+				text-align: center !important;
+			}
+
+			.link-cta.empty {
+				display: none;
+			}
+		}
+
 		.link-cta a {
 			color: #feffae !important;
 			-webkit-text-fill-color: #feffae !important;
-
 		}
 	</style>
 </head>
