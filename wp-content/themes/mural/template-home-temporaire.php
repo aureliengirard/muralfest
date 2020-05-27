@@ -16,17 +16,17 @@ get_header('temp'); ?>
 
 					<div class="cta">
 						<figure>
-							<?php echo wp_get_attachment_image(9452); ?>
+							<?php echo wp_get_attachment_image(9452, 'full'); ?>
 						</figure>
 					</div>
 					<div class="cta">
 						<figure>
-							<?php echo wp_get_attachment_image(9454); ?>
+							<?php echo wp_get_attachment_image(9454, 'full'); ?>
 						</figure>
 					</div>
 					<div class="cta">
 						<figure>
-							<?php echo wp_get_attachment_image(9456); ?>
+							<?php echo wp_get_attachment_image(9456, 'full'); ?>
 						</figure>
 					</div>
 
@@ -50,4 +50,4 @@ get_header('temp'); ?>
 <?php endwhile; ?>
 
 
-<?php get_footer(); ?>
+<?php get_footer('temp'); ?>
