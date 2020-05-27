@@ -84,6 +84,10 @@
 			.link-cta.empty {
 				display: none;
 			}
+
+			.cta figure {
+				text-align: center;
+			}
 		}
 
 		.link-cta a {
