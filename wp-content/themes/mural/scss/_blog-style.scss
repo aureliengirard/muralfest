@@ -43,13 +43,33 @@
 		.article{
 
 			figure{
+				position:relative;
+
+				
+
 				a{
+					display: block;
+
+					&:before{
+						content:'';
+						position: absolute;
+						top:0;
+						right: 0;
+						left:0;
+						bottom:0;
+						background:$color-gradient-orange;
+						opacity: 0;
+						@include hover-transition;
+					}
+	
+					&:hover::before{
+						opacity: 0.8;
+					}
+					
 					opacity: 1;
 					@include hover-transition;
 
-					&:hover{
-						opacity: 0.6;
-					}
+					
 				}
 			}
 
@@ -115,9 +135,11 @@
                             .readmore{
 								margin-top:auto;
 								text-align: left;
+								
                             }
 						}
 						figure{
+							
 							@include media-screen(768px){
 								width:80%;
 								margin: 0 auto;

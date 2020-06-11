@@ -537,7 +537,9 @@ h4,
   background: -webkit-gradient(linear, left top, right top, from(#d8351f), to(#f87a0a));
   background: linear-gradient(to right, #d8351f 0%, #f87a0a 100%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; }
+  -webkit-text-fill-color: transparent;
+  display: block;
+  text-align: left; }
   .readmore:hover {
     text-decoration: none; }
   .readmore:hover {
@@ -1038,8 +1040,8 @@ body.mobile .content-wrap .appels_a_laction .cta-wrapper .cta .description {
             text-decoration: none; }
           .banner figure.left-banner .banner-overlay a:hover, .banner .gradient-wrapper.left-banner .banner-overlay a:hover {
             color: #1097a6; }
-          .banner figure.left-banner .banner-overlay a:first-child, .banner .gradient-wrapper.left-banner .banner-overlay a:first-child {
-            width: 80%; }
+          .banner figure.left-banner .banner-overlay a.full-width, .banner .gradient-wrapper.left-banner .banner-overlay a.full-width {
+            display: block; }
           .banner figure.left-banner .banner-overlay a.button, .banner .gradient-wrapper.left-banner .banner-overlay a.button {
             color: #fdd72d;
             font-size: 2rem; }
@@ -2691,14 +2693,31 @@ blockquote {
 .content-wrap .articles_du_blog .button-wrap {
   text-align: center; }
 
-.content-wrap .articles .article figure a {
-  opacity: 1;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s; }
-  .content-wrap .articles .article figure a:hover {
-    text-decoration: none; }
-  .content-wrap .articles .article figure a:hover {
-    opacity: 0.6; }
+.content-wrap .articles .article figure {
+  position: relative; }
+  .content-wrap .articles .article figure a {
+    display: block;
+    opacity: 1;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s; }
+    .content-wrap .articles .article figure a:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background: -webkit-gradient(linear, left top, right top, from(#d8351f), to(#f87a0a));
+      background: linear-gradient(to right, #d8351f 0%, #f87a0a 100%);
+      opacity: 0;
+      -webkit-transition: all 0.5s;
+      transition: all 0.5s; }
+      .content-wrap .articles .article figure a:before:hover {
+        text-decoration: none; }
+    .content-wrap .articles .article figure a:hover::before {
+      opacity: 0.8; }
+    .content-wrap .articles .article figure a:hover {
+      text-decoration: none; }
 
 .content-wrap .articles .article .description {
   padding: 15px 0; }
@@ -3149,22 +3168,14 @@ blockquote {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap; }
   .content-wrap section .artists .artists-wrap .artist {
-    width: calc(100% / 3 - ((30px * 2) / 3));
-    /* On divise la largeur totale disponible également entre toutes les colonnes, puis on soustrait à chaque colonnes le gap désiré */
-    margin-right: 30px;
-    margin-bottom: 30px;
-    /* On retire le margin right pour que la dernière colonne arrive égale au contenu. */ }
-    .content-wrap section .artists .artists-wrap .artist:nth-child(3n) {
-      margin-right: 0px; }
-  @media only screen and (max-width: 768px) {
-    .content-wrap section .artists .artists-wrap .artist {
-      width: calc(100% / 1 - ((30px * 0) / 1));
-      margin-right: 30px;
-      margin-bottom: 30px; }
-      .content-wrap section .artists .artists-wrap .artist:nth-child(3n) {
-        margin-right: 30px; }
-      .content-wrap section .artists .artists-wrap .artist:nth-child(1n) {
-        margin-right: 0px; } }
+    width: 33.33333%;
+    padding: 0 15px;
+    margin-bottom: 25px; }
+    @media only screen and (max-width: 768px) {
+      .content-wrap section .artists .artists-wrap .artist {
+        width: 65%;
+        margin: 0 auto;
+        margin-bottom: 20px; } }
 
 .content-wrap section .artists .artist {
   display: -webkit-box;
@@ -3183,45 +3194,28 @@ blockquote {
       display: inline-block;
       overflow: hidden;
       position: relative; }
-      .content-wrap section .artists .artist figure a .regular-img {
-        -webkit-filter: url("images/svg/effect-imageblur.svg#image-blur");
-                filter: url("images/svg/effect-imageblur.svg#image-blur"); }
-        .content-wrap section .artists .artist figure a .regular-img img {
-          opacity: 1;
-          -webkit-transition: all 0.5s;
-          transition: all 0.5s; }
-          .content-wrap section .artists .artist figure a .regular-img img:hover {
-            text-decoration: none; }
-      .content-wrap section .artists .artist figure a .hover-effect-img {
+      .content-wrap section .artists .artist figure a .regular-img:before {
+        content: '';
         position: absolute;
         top: 0;
         right: 0;
-        bottom: 0;
         left: 0;
+        bottom: 0;
+        background: -webkit-gradient(linear, left top, right top, from(#d8351f), to(#f87a0a));
+        background: linear-gradient(to right, #d8351f 0%, #f87a0a 100%);
         opacity: 0;
-        background-color: rgba(255, 255, 255, 0.3);
-        z-index: 1;
         -webkit-transition: all 0.5s;
         transition: all 0.5s; }
-        .content-wrap section .artists .artist figure a .hover-effect-img:hover {
+        .content-wrap section .artists .artist figure a .regular-img:before:hover {
           text-decoration: none; }
-        .content-wrap section .artists .artist figure a .hover-effect-img img {
-          -webkit-mask: url(images/svg/paint-splash2.svg) no-repeat 0 0;
-                  mask: url(images/svg/paint-splash2.svg) no-repeat 0 0;
-          -webkit-mask-size: cover;
-                  mask-size: cover; }
-      .content-wrap section .artists .artist figure a:hover .regular-img img {
-        opacity: 0.3; }
-      .content-wrap section .artists .artist figure a:hover .hover-effect-img {
-        opacity: 1;
-        -webkit-filter: hue-rotate(90deg) brightness(100%);
-                filter: hue-rotate(90deg) brightness(100%); }
+      .content-wrap section .artists .artist figure a .regular-img:hover::before {
+        opacity: 0.8; }
     @media only screen and (max-width: 768px) {
       .content-wrap section .artists .artist figure {
         text-align: center; } }
   .content-wrap section .artists .artist .description {
-    text-align: center;
-    padding: 20px 15px;
+    text-align: left;
+    padding: 20px 0px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -3229,9 +3223,6 @@ blockquote {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
     -webkit-box-flex: 1;
         -ms-flex-positive: 1;
             flex-grow: 1; }

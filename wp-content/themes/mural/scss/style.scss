@@ -45,7 +45,7 @@ $color-orange:#e44f15;
 $c12MaxWidth: 1200px;
 /// Largeur du padding de chaque côté des sections 
 $c12Gutter: 15px;
-
+ 
 
 @font-face{
 	font-family:'Aero';
@@ -338,6 +338,8 @@ h4,
 	background: linear-gradient(to right, #d8351f 0%,#f87a0a 100%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
+	display:block;
+	text-align:left;
 
 	&:hover{
 		background: linear-gradient(to right, $color-blue 0%,$color-blue 100%);
@@ -947,10 +949,9 @@ body.mobile{
                         color:$color_blue;
 					}
 					
-					&:first-child{
-						width:80%;
-						
-					}
+				&.full-width{
+					display:block;
+				}
                     &.button{ 
 						color:$color_yellow;
 						font-size:2rem;
