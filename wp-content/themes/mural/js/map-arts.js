@@ -228,7 +228,7 @@ $(function(){
 				var currentDate = new Date();
 				
 				if(artwork.date == currentDate.getFullYear()){
-					color = '#b06642';
+					color = '#ff795a';
 					currentYear = true;
 				}
 				
