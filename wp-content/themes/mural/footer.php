@@ -11,9 +11,6 @@
 		
 		<footer id="colophon" class="site-footer" role="contentinfo">
 			<div class="footer-wrapper">
-				<figure class="footer-flower">
-					<?php echo wp_get_attachment_image( get_field( 'fleur', 'options' ), 'original' ); ?>
-				</figure>
 				<div class="content">
 					<a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 						<?php echo wp_get_attachment_image( get_field( 'logo_blanc', 'options' ), 'original' ); ?>

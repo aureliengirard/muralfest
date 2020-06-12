@@ -6,6 +6,7 @@ var postcss      = require('gulp-postcss');
 var sourcemaps   = require('gulp-sourcemaps');
 var autoprefixer = require('autoprefixer');
 var notify = require("gulp-notify");
+var pump = require('pump');
 
 var converter = require('sass-convert');
 var sassdoc = require('sassdoc');
@@ -20,23 +21,24 @@ var reportError = function (error) {
 }
 
 // Compile sass files in scss folder.
-gulp.task('sass', function () {
-	return gulp.src('./scss/*.scss')
-	.pipe(sourcemaps.init())
-	.pipe(sass.sync().on('error', reportError))
-	.pipe(postcss([ autoprefixer() ]))
-	.pipe(sourcemaps.write('.'))
-	.pipe(gulp.dest('.'));
+gulp.task('sass', function (err) {
+	pump([
+		gulp.src([
+			'./scss/*.scss'
+		]),
+		sourcemaps.init(),
+		sass.sync().on('error', reportError),
+		postcss([ autoprefixer() ]),
+		sourcemaps.write('.'),
+		gulp.dest('.'),
+	], err);
 });
 
 // watch for sass file change and compile on save.
-gulp.task('sass:watch', ['sass'], function () {
-	gulp.watch('./scss/*.scss', ['sass']);
-});
+gulp.task('sass:watch', gulp.series(['sass'], function () {
+	gulp.watch('./scss/*.scss', gulp.series(['sass']));
+}));
 
-
-// Generate all the documentations.
-gulp.task('generatedoc', ['sassdoc']);
 
 // generate SASS documentation
 gulp.task('sassdoc', function () {
@@ -50,11 +52,16 @@ gulp.task('sassdoc', function () {
 		},
 		theme: "doc-templates/sassdoc/index.js"
 	};
-  
-	return gulp.src(['./scss/*.+(sass|scss)', '../codemstheme/sass/*.+(sass|scss)'])
-	.pipe(converter({
-		from: 'sass',
-		to: 'scss',
-	}))
-	.pipe(sassdoc(options));
+	
+	pump([
+		gulp.src(['./scss/*.+(sass|scss)', '../codemstheme/sass/*.+(sass|scss)']),
+		converter({
+			from: 'sass',
+			to: 'scss',
+		}),
+		sassdoc(options)
+	]);
 });
+
+// Generate all the documentations.
+gulp.task('generatedoc', gulp.series(['sassdoc']));

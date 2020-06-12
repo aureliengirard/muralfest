@@ -22,7 +22,7 @@
 				figure{
 				&:hover{
 					+ .description h3 a{
-						background: linear-gradient(to right, #d8351f 0%,#f87a0a 100%);
+						background: $color-gradient-orange;
 						-webkit-background-clip: text;
 						-webkit-text-fill-color: transparent;
 						}
@@ -86,7 +86,7 @@
 						color: inherit;
 
 						&:hover{
-							background: linear-gradient(to right, #d8351f 0%,#f87a0a 100%);
+							background: $color-gradient-orange;
 							-webkit-background-clip: text;
 							-webkit-text-fill-color: transparent;
 						}
@@ -187,7 +187,7 @@
 					}
 					&:hover{
 						+ .description h3 a{
-							background: linear-gradient(to right, #d8351f 0%,#f87a0a 100%);
+							background: $color-gradient-orange;
 							-webkit-background-clip: text;
 							-webkit-text-fill-color: transparent;
 						}

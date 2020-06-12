@@ -34,7 +34,7 @@ $(function(){
 							"visibility": "off"
 						},
 						{
-							"color": "#dc3d1d"
+							"color": "#dea1d9"
 						}
 					]
 				},
@@ -55,7 +55,7 @@ $(function(){
 					"elementType": "geometry",
 					"stylers": [
 						{
-							"color": "#f87c0a"
+							"color": "#b06642"
 						},
 						{
 							"lightness": "48"
@@ -76,7 +76,7 @@ $(function(){
 					"elementType": "geometry.fill",
 					"stylers": [
 						{
-							"color": "#f68b4b"
+							"color": "#dea1d9"
 						}
 					]
 				},
@@ -181,7 +181,7 @@ $(function(){
 							"visibility": "on"
 						},
 						{
-							"color": "#e24719"
+							"color": "#1f4968"
 						},
 						{
 							"lightness": "16"

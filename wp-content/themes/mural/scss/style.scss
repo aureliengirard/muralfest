@@ -32,14 +32,15 @@
 	SCSS VARIABLES
 /***************************************************/
 /// @group Couleurs
-$color_pink: #e44f15;
-$color_yellow:#fdd72d;
+$color_pink: #dea1d9;
+$color_yellow:#ffffad;
 //$color_yellow: #fff204;
 //$color_blue: #04d3ff;
-$color_blue: #1097a6;
-$color-gradient-orange: linear-gradient(to right, #d8351f 0%,#f87a0a 100%);
+$color_brown: #b06642;
+$color_blue: #1f4968;
+$color-orange:#ff795a;
+$color-gradient-orange: linear-gradient(to right, $color_brown, $color-orange, $color_pink);
 //fix orange
-$color-orange:#e44f15;
 
 /// general responsive value
 $c12MaxWidth: 1200px;
@@ -47,21 +48,14 @@ $c12MaxWidth: 1200px;
 $c12Gutter: 15px;
  
 
-@font-face{
-	font-family:'Aero';
-	src: url('aero/Aero-Bold.eot') format('embedded-opentype');
-	src: url('aero/Aero-Bold.woff2') format('woff2');
-	src: url('aero/Aero-Bold.woff') format('woff');
-	src: url('aero/Aero-Bold.ttf') format('truetype');
-	font-style:normal;
-}
-@font-face{
-	font-family:'Aero';
-	src: url('aero/Aero-BoldItalic.eot') format('embedded-opentype');
-	src: url('aero/Aero-BoldItalic.woff2') format('woff2');
-	src: url('aero/Aero-BoldItalic.woff') format('woff');
-	src: url('aero/Aero-BoldItalic.ttf') format('truetype');
-	font-style:italic;
+
+@font-face {
+    font-family: 'ft_switchregular';
+    src: url('font/180523010850ftswitch-regular-webfont.woff2') format('woff2'),
+         url('font/180523010850ftswitch-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
 }
 /*****************************************************
 	Custom CSS
@@ -106,7 +100,7 @@ body{
 	color: #000000;
 }
 h1,h2,h3{
-	font-family:'Aero';
+	font-family:ft_switchregular;
 }
 .newsletter{
 	position:fixed;
@@ -179,7 +173,7 @@ h1,h2,h3{
 		background-color: transparent;
 		border: 2px solid black;
 		border-radius: 10px;
-		font-family: 'Aero';
+		font-family: ft_switchregular;
 
 		&:focus{
 			background-color:transparent;
@@ -335,7 +329,7 @@ h4,
 	white-space: nowrap;
 	color: $color_pink;
 	@include hover-transition;
-	background: linear-gradient(to right, #d8351f 0%,#f87a0a 100%);
+	background: $color-gradient-orange;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	display:block;
@@ -349,7 +343,7 @@ h4,
 }
 
 .button{
-	font-family: 'Aero';
+	font-family: ft_switchregular;
 	font-size: 2rem;
 	text-transform: uppercase;
 	font-weight: 700;
@@ -367,7 +361,6 @@ h4,
 	cursor: pointer;
 	@include hover-transition;
 	z-index: 1;
-	border-radius: 50px;
 	opacity: 1;
 
 	@include media-screen(1100px){
@@ -573,7 +566,7 @@ body.mobile{
 					}
 					
 					a{
-						font-family: 'Aero';
+						font-family: ft_switchregular;
 					}
 				} 
 			}
@@ -649,7 +642,7 @@ body.mobile{
 			padding-top: 20px;
 
 			a{
-				font-family: 'Aero';
+				font-family: ft_switchregular;
 			}
 		}
 	}
@@ -712,7 +705,7 @@ body.mobile{
 
 		&:hover{
 			i{
-				background: linear-gradient(to right, #d8351f 0%,#f87a0a 100%);
+				background: $color-gradient-orange;
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
 			}
@@ -785,7 +778,7 @@ body.mobile{
 				@include hover-transition;
 
 				&:hover{
-					background: linear-gradient(to right, #d8351f 0%,#f87a0a 100%);
+					background: $color-gradient-orange;
 					-webkit-background-clip: text;
 					-webkit-text-fill-color: transparent;
 				}
@@ -826,7 +819,7 @@ body.mobile{
 					a{
 						font-size: 0.9em;
 						&:hover{
-							background: linear-gradient(to right, #d8351f 0%,#f87a0a 100%);
+							background: $color-gradient-orange;
 							-webkit-background-clip: text;
 							-webkit-text-fill-color: transparent;
 						}
@@ -885,7 +878,7 @@ body.mobile{
 			top: 50%;
 			transform: translateY(-50%);
 			left: 90px;
-			font-family: 'Aero';
+			font-family: ft_switchregular;
 		
 
 			h1{
@@ -1061,7 +1054,7 @@ body.mobile{
 
 		.texte-gauche{
 			margin-bottom:0;
-			font-family:'Aero';
+			font-family:ft_switchregular;
 
 			@media only screen and (max-width:768px){
 				margin-bottom:15px;
@@ -1302,7 +1295,7 @@ input[type=radio]{
 				margin-bottom: 18px;
 				
 				a:not(.button){
-					background: linear-gradient(to right, #d8351f 0%,#f87a0a 100%);
+					background: $color-gradient-orange;
 					-webkit-background-clip: text;
 					-webkit-text-fill-color: transparent;
 					@include hover-transition;
@@ -1509,7 +1502,7 @@ input[type=radio]{
 					overflow: hidden;
 					&:hover{
 						+ .description h3 a{
-							background: linear-gradient(to right, #d8351f 0%,#f87a0a 100%);
+							background: $color-gradient-orange;
 							-webkit-background-clip: text;
 							-webkit-text-fill-color: transparent;
 						}
@@ -1583,7 +1576,7 @@ input[type=radio]{
 							
 
 							&:hover{
-								background: linear-gradient(to right, #d8351f 0%,#f87a0a 100%);
+								background: $color-gradient-orange;
 								-webkit-background-clip: text;
 								-webkit-text-fill-color: transparent;
 							}
@@ -2199,7 +2192,7 @@ blockquote{
 		background-color: #232323;
 		position: relative;
 		z-index: 10;
-		font-family:'Aero';
+		font-family:ft_switchregular;
 
 		@media only screen and (min-width:1400px){
 			padding: 120px 0;
