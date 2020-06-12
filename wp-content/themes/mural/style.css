@@ -310,12 +310,12 @@ html {
 
 body {
   background-color: #ffffff;
-  font-family: "" ft_switchregular "", sans-serif;
+  font-family: 'ft_switchregular', sans-serif;
   font-size: 1.8rem;
   color: #000000; }
 
 h1, h2, h3 {
-  font-family: "" ft_switchregular ""; }
+  font-family: 'ft_switchregular'; }
 
 .newsletter {
   position: fixed;
