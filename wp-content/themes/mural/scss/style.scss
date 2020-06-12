@@ -348,10 +348,9 @@ h4,
 	text-transform: uppercase;
 	font-weight: 700;
 	color: $color_yellow;
-	background-color:rgba(0,0,0,0.5);
+	background-color:rgba(0,0,0,0.25);
 	letter-spacing: 0.05em;
-	padding: 20px 40px;
-	min-width: 230px;
+	padding: 10px 5px;
 	display: inline-block;
 	position: relative;
 	text-align: center;
@@ -360,6 +359,7 @@ h4,
 	outline: none !important;
 	cursor: pointer;
 	border: 2px solid $color_yellow;
+	min-width: 150px;
 	@include hover-transition;
 	z-index: 1;
 	opacity: 1;
@@ -1245,7 +1245,7 @@ input[type=radio]{
 			}
 		}
 		&.bgcolor-yellow{
-			background-color: $color_yellow;
+			background-color: $color_orange;
 		}
 
 		&.bgcolor-blue{

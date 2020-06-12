@@ -544,10 +544,9 @@ h4,
   text-transform: uppercase;
   font-weight: 700;
   color: #ffffad;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.25);
   letter-spacing: 0.05em;
-  padding: 20px 40px;
-  min-width: 230px;
+  padding: 10px 5px;
   display: inline-block;
   position: relative;
   text-align: center;
@@ -556,6 +555,7 @@ h4,
   outline: none !important;
   cursor: pointer;
   border: 2px solid #ffffad;
+  min-width: 150px;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   z-index: 1;
@@ -1259,7 +1259,7 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
         .content-wrap section.bgcolor-orange .content .readmore:hover {
           color: #1f4968; }
     .content-wrap section.bgcolor-yellow {
-      background-color: #ffffad; }
+      background-color: #ff795a; }
     .content-wrap section.bgcolor-blue {
       background-color: #1f4968; }
       .content-wrap section.bgcolor-blue .readmore {
