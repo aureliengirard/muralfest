@@ -1,5 +1,20 @@
 <?php
 
+
+if($_SERVER['HTTP_HOST'] != "localhost"){
+    if(session_status() == PHP_SESSION_NONE){ // Pour éviter une erreur si une session existe déjà
+		session_start();
+	}
+	
+    if(isset($_GET['validation']) && $_GET['validation']==1){
+        $_SESSION['validation'] = true;
+    }
+
+    if(!isset($_SESSION['validation']) || $_SESSION['validation'] !== true){
+        exit();
+    }
+}
+
 /**
  * The Header template for our theme
  *
