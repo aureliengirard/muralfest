@@ -348,7 +348,7 @@ h4,
 	text-transform: uppercase;
 	font-weight: 700;
 	color: $color_yellow;
-	background-color:rgba(0,0,0,1);
+	background-color:rgba(0,0,0,0.5);
 	letter-spacing: 0.05em;
 	padding: 20px 40px;
 	min-width: 230px;
@@ -359,6 +359,7 @@ h4,
 	border: none;
 	outline: none !important;
 	cursor: pointer;
+	border: 2px solid $color_yellow;
 	@include hover-transition;
 	z-index: 1;
 	opacity: 1;

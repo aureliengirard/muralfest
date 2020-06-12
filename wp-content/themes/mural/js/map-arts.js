@@ -222,13 +222,13 @@ $(function(){
 		
 				var markerPos = new google.maps.LatLng(lat, lng);
 				
-				var color = '#1097a6';
+				var color = '#1f4968';
 				var currentYear = false;
 				
 				var currentDate = new Date();
 				
 				if(artwork.date == currentDate.getFullYear()){
-					color = '#04d3ff';
+					color = '#b06642';
 					currentYear = true;
 				}
 				
