@@ -352,19 +352,17 @@ h4,
 	font-family: 'ft_switchregular';
 	font-size: 2rem;
 	text-transform: uppercase;
-	font-weight: 700;
-	color: $color_yellow;
-	background-color:rgba(0,0,0,0.25);
+	color: $color_blue;
+	background-color: transparent;
 	letter-spacing: 0.05em;
-	padding: 10px 5px;
+	padding: 10px 10px;
 	display: inline-block;
 	position: relative;
 	text-align: center;
 	overflow: hidden;
-	border: none;
 	outline: none !important;
 	cursor: pointer;
-	border: 2px solid $color_yellow;
+	border: 2px solid $color_blue;
 	min-width: 150px;
 	@include hover-transition;
 	z-index: 1;
@@ -416,8 +414,8 @@ h4,
 	}
 
 	&.instagram{
-        background-color: $color_pink;
-        color: $color_yellow;
+        // background-color: $color_pink;
+        // color: $color_yellow;
 	}
 
 	&.twitter{
@@ -1271,6 +1269,7 @@ input[type=radio]{
 
 			.button{
 				color: $color-yellow;
+				border-color: $color-yellow;
 
 				&:hover{
 					color: #fff;

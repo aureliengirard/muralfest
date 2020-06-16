@@ -548,19 +548,17 @@ h4,
   font-family: 'ft_switchregular';
   font-size: 2rem;
   text-transform: uppercase;
-  font-weight: 700;
-  color: #ffffad;
-  background-color: rgba(0, 0, 0, 0.25);
+  color: #1f4968;
+  background-color: transparent;
   letter-spacing: 0.05em;
-  padding: 10px 5px;
+  padding: 10px 10px;
   display: inline-block;
   position: relative;
   text-align: center;
   overflow: hidden;
-  border: none;
   outline: none !important;
   cursor: pointer;
-  border: 2px solid #ffffad;
+  border: 2px solid #1f4968;
   min-width: 150px;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
@@ -620,9 +618,6 @@ h4,
     color: #ffffad; }
     .button.playlist:hover, .ui-datepicker .ui-datepicker-buttonpane button.playlist:hover {
       color: #dea1d9; }
-  .button.instagram, .ui-datepicker .ui-datepicker-buttonpane button.instagram {
-    background-color: #dea1d9;
-    color: #ffffad; }
   .button.twitter, .ui-datepicker .ui-datepicker-buttonpane button.twitter {
     background-color: #ffffad;
     color: #1f4968; }
@@ -1277,7 +1272,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
         .content-wrap section.bgcolor-blue .readmore:hover {
           color: #dea1d9; }
       .content-wrap section.bgcolor-blue .button, .content-wrap section.bgcolor-blue .ui-datepicker .ui-datepicker-buttonpane button, .ui-datepicker .ui-datepicker-buttonpane .content-wrap section.bgcolor-blue button {
-        color: #ffffad; }
+        color: #ffffad;
+        border-color: #ffffad; }
         .content-wrap section.bgcolor-blue .button:hover, .content-wrap section.bgcolor-blue .ui-datepicker .ui-datepicker-buttonpane button:hover, .ui-datepicker .ui-datepicker-buttonpane .content-wrap section.bgcolor-blue button:hover {
           color: #fff;
           background-color: #dea1d9; }
