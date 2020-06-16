@@ -1228,7 +1228,7 @@ input[type=radio]{
 				h2{
 					color: #ffffff;
 					-webkit-text-fill-color: transparent;
-					-webkit-text-stroke-width: 0.1px;
+					-webkit-text-stroke-width: 0.6px;
 					-webkit-text-stroke-color: #fff;
 				}
 			}
@@ -1677,7 +1677,7 @@ input[type=radio]{
 			margin-bottom:25px;
 			color: black;
   -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
-  -webkit-text-stroke-width: 0.1px;
+  -webkit-text-stroke-width: 0.6px;
   -webkit-text-stroke-color: $color_yellow;
 
 			@media only screen and (min-width:768px){

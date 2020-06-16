@@ -9,158 +9,98 @@ $(function(){
 			
 			var featureOpts = [
 				{
-					"featureType": "all",
-					"elementType": "labels.text.fill",
+					"featureType": "administrative",
+					"elementType": "all",
 					"stylers": [
 						{
-							"lightness": "-66"
+							"saturation": "-100"
 						}
 					]
 				},
 				{
-					"featureType": "all",
-					"elementType": "labels.text.stroke",
-					"stylers": [
-						{
-							"weight": 2
-						}
-					]
-				},
-				{
-					"featureType": "all",
-					"elementType": "labels.icon",
+					"featureType": "administrative.province",
+					"elementType": "all",
 					"stylers": [
 						{
 							"visibility": "off"
-						},
-						{
-							"color": "#dea1d9"
 						}
 					]
 				},
 				{
 					"featureType": "landscape",
-					"elementType": "geometry",
+					"elementType": "all",
 					"stylers": [
 						{
-							"lightness": 30
+							"saturation": -100
 						},
 						{
-							"saturation": 30
-						}
-					]
-				},
-				{
-					"featureType": "landscape.man_made",
-					"elementType": "geometry",
-					"stylers": [
-						{
-							"color": "#b06642"
+							"lightness": 65
 						},
 						{
-							"lightness": "48"
+							"visibility": "on"
 						}
 					]
 				},
 				{
 					"featureType": "poi",
-					"elementType": "geometry",
+					"elementType": "all",
 					"stylers": [
 						{
-							"saturation": 20
-						}
-					]
-				},
-				{
-					"featureType": "poi",
-					"elementType": "geometry.fill",
-					"stylers": [
-						{
-							"color": "#dea1d9"
-						}
-					]
-				},
-				{
-					"featureType": "poi.park",
-					"elementType": "geometry",
-					"stylers": [
-						{
-							"lightness": 20
+							"saturation": -100
 						},
 						{
-							"saturation": -20
+							"lightness": "50"
+						},
+						{
+							"visibility": "simplified"
 						}
 					]
 				},
 				{
 					"featureType": "road",
-					"elementType": "geometry",
+					"elementType": "all",
 					"stylers": [
 						{
-							"lightness": 10
-						},
-						{
-							"saturation": -30
-						}
-					]
-				},
-				{
-					"featureType": "road",
-					"elementType": "geometry.stroke",
-					"stylers": [
-						{
-							"saturation": 25
-						},
-						{
-							"lightness": 25
+							"saturation": "-100"
 						}
 					]
 				},
 				{
 					"featureType": "road.highway",
-					"elementType": "geometry",
+					"elementType": "all",
 					"stylers": [
 						{
-							"saturation": "-2"
-						},
-						{
-							"lightness": "18"
-						},
-						{
-							"weight": "0.33"
+							"visibility": "simplified"
 						}
 					]
 				},
 				{
 					"featureType": "road.arterial",
-					"elementType": "geometry.fill",
+					"elementType": "all",
 					"stylers": [
 						{
-							"color": "#ffffff"
-						},
-						{
-							"weight": "0.80"
+							"lightness": "30"
 						}
 					]
 				},
 				{
 					"featureType": "road.local",
-					"elementType": "geometry",
-					"stylers": [
-						{
-							"color": "#fffefe"
-						},
-						{
-							"weight": "0.76"
-						}
-					]
-				},
-				{
-					"featureType": "water",
 					"elementType": "all",
 					"stylers": [
 						{
-							"lightness": -20
+							"lightness": "40"
+						}
+					]
+				},
+				{
+					"featureType": "transit",
+					"elementType": "all",
+					"stylers": [
+						{
+							"saturation": -100
+						},
+						{
+							"visibility": "simplified"
 						}
 					]
 				},
@@ -169,22 +109,25 @@ $(function(){
 					"elementType": "geometry",
 					"stylers": [
 						{
-							"visibility": "on"
+							"hue": "#ffff00"
+						},
+						{
+							"lightness": -25
+						},
+						{
+							"saturation": -97
 						}
 					]
 				},
 				{
 					"featureType": "water",
-					"elementType": "geometry.fill",
+					"elementType": "labels",
 					"stylers": [
 						{
-							"visibility": "on"
+							"lightness": -25
 						},
 						{
-							"color": "#1f4968"
-						},
-						{
-							"lightness": "16"
+							"saturation": -100
 						}
 					]
 				}
@@ -228,7 +171,7 @@ $(function(){
 				var currentDate = new Date();
 				
 				if(artwork.date == currentDate.getFullYear()){
-					color = '#ff795a';
+					color = '#dea1d9';
 					currentYear = true;
 				}
 				

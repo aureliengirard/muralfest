@@ -1260,7 +1260,7 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       .content-wrap section.bgcolor-orange .titre-section h2 {
         color: #ffffff;
         -webkit-text-fill-color: transparent;
-        -webkit-text-stroke-width: 0.1px;
+        -webkit-text-stroke-width: 0.6px;
         -webkit-text-stroke-color: #fff; }
       .content-wrap section.bgcolor-orange .texte-plein .texte-bloc p {
         color: #ffffff; }
@@ -1576,7 +1576,7 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       color: black;
       -webkit-text-fill-color: transparent;
       /* Will override color (regardless of order) */
-      -webkit-text-stroke-width: 0.1px;
+      -webkit-text-stroke-width: 0.6px;
       -webkit-text-stroke-color: #ffffad; }
       @media only screen and (min-width: 768px) {
         .content-wrap .formulaire_infolettre h3 {
