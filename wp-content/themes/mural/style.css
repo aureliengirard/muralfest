@@ -467,11 +467,15 @@ h2,
 .like-h2 {
   font-size: 4.5rem;
   text-transform: uppercase;
-  font-weight: 700;
   letter-spacing: 0.05em;
   color: #dea1d9;
   margin: 60px 0 40px;
-  line-height: 1; }
+  line-height: 1;
+  color: black;
+  -webkit-text-fill-color: transparent;
+  /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 0.6px;
+  -webkit-text-stroke-color: #2c2034; }
   h2 a,
   .like-h2 a {
     color: inherit;
@@ -1254,7 +1258,10 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
         /* Gecko Browsers */
         color: #ffffff; }
       .content-wrap section.bgcolor-orange .titre-section h2 {
-        color: #ffffff; }
+        color: #ffffff;
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke-width: 0.1px;
+        -webkit-text-stroke-color: #fff; }
       .content-wrap section.bgcolor-orange .texte-plein .texte-bloc p {
         color: #ffffff; }
       .content-wrap section.bgcolor-orange.has-background-image .titre-section h2 {
@@ -1271,6 +1278,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
         color: #1f4968; }
         .content-wrap section.bgcolor-blue .readmore:hover {
           color: #dea1d9; }
+      .content-wrap section.bgcolor-blue p {
+        color: #ffffad; }
       .content-wrap section.bgcolor-blue .button, .content-wrap section.bgcolor-blue .ui-datepicker .ui-datepicker-buttonpane button, .ui-datepicker .ui-datepicker-buttonpane .content-wrap section.bgcolor-blue button {
         color: #ffffad;
         border-color: #ffffad; }
@@ -1543,7 +1552,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       .content-wrap .formulaire_infolettre .content p {
         font-size: 2.5rem;
         margin-bottom: 25px;
-        text-align: center; }
+        text-align: center;
+        color: #ffffad; }
         @media only screen and (min-width: 768px) {
           .content-wrap .formulaire_infolettre .content p {
             font-size: 2rem;
@@ -1562,7 +1572,12 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       font-weight: 700;
       color: #000;
       margin-top: 0;
-      margin-bottom: 25px; }
+      margin-bottom: 25px;
+      color: black;
+      -webkit-text-fill-color: transparent;
+      /* Will override color (regardless of order) */
+      -webkit-text-stroke-width: 0.1px;
+      -webkit-text-stroke-color: #ffffad; }
       @media only screen and (min-width: 768px) {
         .content-wrap .formulaire_infolettre h3 {
           font-size: 2rem; } }

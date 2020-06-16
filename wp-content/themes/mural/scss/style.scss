@@ -275,11 +275,14 @@ h2,
 .like-h2{
 	font-size: 4.5rem;
 	text-transform: uppercase;
-	font-weight: 700;
 	letter-spacing: 0.05em;
 	color: $color_pink;
 	margin: 60px 0 40px;
 	line-height: 1;
+	color: black;
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 0.6px;
+  -webkit-text-stroke-color: #2c2034;
 
 	a{
 		color: inherit;
@@ -1224,6 +1227,9 @@ input[type=radio]{
 			.titre-section{
 				h2{
 					color: #ffffff;
+					-webkit-text-fill-color: transparent;
+					-webkit-text-stroke-width: 0.1px;
+					-webkit-text-stroke-color: #fff;
 				}
 			}
 			.texte-plein{
@@ -1265,6 +1271,10 @@ input[type=radio]{
 				&:hover{
 					color: $color_pink;
 				}
+			}
+
+			p{
+				color: $color_yellow;
 			}
 
 			.button{
@@ -1638,6 +1648,7 @@ input[type=radio]{
 				font-size: 2.5rem;
 				margin-bottom:25px;
 				text-align: center;
+				color: $color_yellow;
 				
 
 				@media only screen and (min-width:768px){
@@ -1664,6 +1675,10 @@ input[type=radio]{
 			color:#000;
 			margin-top:0;
 			margin-bottom:25px;
+			color: black;
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 0.1px;
+  -webkit-text-stroke-color: $color_yellow;
 
 			@media only screen and (min-width:768px){
 				font-size: 2rem;
