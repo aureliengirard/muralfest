@@ -1260,6 +1260,12 @@ input[type=radio]{
 		}
 		&.bgcolor-yellow{
 			background-color: $color_orange;
+
+
+			.button{
+				border-color: $color_yellow;
+				color: $color_yellow;
+			}
 		}
 
 		&.bgcolor-blue{

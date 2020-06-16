@@ -1272,6 +1272,9 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
           color: #1f4968; }
     .content-wrap section.bgcolor-yellow {
       background-color: #ff795a; }
+      .content-wrap section.bgcolor-yellow .button, .content-wrap section.bgcolor-yellow .ui-datepicker .ui-datepicker-buttonpane button, .ui-datepicker .ui-datepicker-buttonpane .content-wrap section.bgcolor-yellow button {
+        border-color: #ffffad;
+        color: #ffffad; }
     .content-wrap section.bgcolor-blue {
       background-color: #1f4968; }
       .content-wrap section.bgcolor-blue .readmore {
