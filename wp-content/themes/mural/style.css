@@ -268,6 +268,12 @@ template {
   font-weight: normal;
   font-style: normal; }
 
+@font-face {
+  font-family: 'ft_switchregular_bold';
+  src: url("font/180523010825ftswitch-bold-webfont.woff2") format("woff2"), url("font/180523010825ftswitch-bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+
 /*****************************************************
 	Custom CSS
 /*****************************************************/
@@ -757,7 +763,11 @@ body.mobile .content-wrap .appels_a_laction .cta-wrapper .cta .description {
       height: 100%;
       padding-top: 20px; }
       #masthead .main-menu .nav-menu a {
-        font-family: 'ft_switchregular'; }
+        font-family: 'ft_switchregular_bold';
+        font-size: 16px; }
+        @media only screen and (max-width: 1200px) {
+          #masthead .main-menu .nav-menu a {
+            font-size: 14px; } }
 
 @media only screen and (max-width: 1024px) {
   #mmenu, #masthead #open-mmenu {

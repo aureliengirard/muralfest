@@ -55,7 +55,13 @@ $c12Gutter: 15px;
          url('font/180523010850ftswitch-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
+}
+@font-face {
+    font-family: 'ft_switchregular_bold';
+    src: url('font/180523010825ftswitch-bold-webfont.woff2') format('woff2'),
+         url('font/180523010825ftswitch-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 /*****************************************************
 	Custom CSS
@@ -643,7 +649,11 @@ body.mobile{
 			padding-top: 20px;
 
 			a{
-				font-family: 'ft_switchregular';
+				font-family: 'ft_switchregular_bold';
+				font-size: 16px;
+				@include media-screen(1200px){
+					font-size: 14px;
+				}
 			}
 		}
 	}
