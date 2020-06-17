@@ -531,8 +531,8 @@ h4,
   color: #dea1d9;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
-  background: -webkit-gradient(linear, left top, right top, from(#b06642), color-stop(#ff795a), to(#dea1d9));
-  background: linear-gradient(to right, #b06642, #ff795a, #dea1d9);
+  background: -webkit-gradient(linear, left top, right top, from(#1f4968), color-stop(#dea1d9), to(#ff795a));
+  background: linear-gradient(to right, #1f4968, #dea1d9, #ff795a);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: block;
@@ -597,8 +597,8 @@ h4,
     left: 0;
     right: 0;
     bottom: 0;
-    background: -webkit-gradient(linear, left top, right top, from(#b06642), color-stop(#ff795a), to(#dea1d9));
-    background: linear-gradient(to right, #b06642, #ff795a, #dea1d9);
+    background: -webkit-gradient(linear, left top, right top, from(#1f4968), color-stop(#dea1d9), to(#ff795a));
+    background: linear-gradient(to right, #1f4968, #dea1d9, #ff795a);
     z-index: -1;
     opacity: 0;
     -webkit-transition: all 0.5s;
@@ -819,8 +819,8 @@ body.mobile .content-wrap .appels_a_laction .cta-wrapper .cta .description {
     .sociaux a i {
       font-size: 3.5rem; }
     .sociaux a:hover i {
-      background: -webkit-gradient(linear, left top, right top, from(#b06642), color-stop(#ff795a), to(#dea1d9));
-      background: linear-gradient(to right, #b06642, #ff795a, #dea1d9);
+      background: -webkit-gradient(linear, left top, right top, from(#1f4968), color-stop(#dea1d9), to(#ff795a));
+      background: linear-gradient(to right, #1f4968, #dea1d9, #ff795a);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent; }
 
@@ -889,8 +889,8 @@ body.mobile .content-wrap .appels_a_laction .cta-wrapper .cta .description {
         .navigation .nav-menu li a:hover {
           text-decoration: none; }
         .navigation .nav-menu li a:hover {
-          background: -webkit-gradient(linear, left top, right top, from(#b06642), color-stop(#ff795a), to(#dea1d9));
-          background: linear-gradient(to right, #b06642, #ff795a, #dea1d9);
+          background: -webkit-gradient(linear, left top, right top, from(#1f4968), color-stop(#dea1d9), to(#ff795a));
+          background: linear-gradient(to right, #1f4968, #dea1d9, #ff795a);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent; }
       .navigation .nav-menu li .sub-menu {
@@ -928,8 +928,8 @@ body.mobile .content-wrap .appels_a_laction .cta-wrapper .cta .description {
           .navigation .nav-menu li .sub-menu li a {
             font-size: 0.9em; }
             .navigation .nav-menu li .sub-menu li a:hover {
-              background: -webkit-gradient(linear, left top, right top, from(#b06642), color-stop(#ff795a), to(#dea1d9));
-              background: linear-gradient(to right, #b06642, #ff795a, #dea1d9);
+              background: -webkit-gradient(linear, left top, right top, from(#1f4968), color-stop(#dea1d9), to(#ff795a));
+              background: linear-gradient(to right, #1f4968, #dea1d9, #ff795a);
               -webkit-background-clip: text;
               -webkit-text-fill-color: transparent; }
 
@@ -957,8 +957,8 @@ body.mobile .content-wrap .appels_a_laction .cta-wrapper .cta .description {
       .banner .single-banner-wrap {
         height: 35vh; } }
   .banner .gradient-wrapper {
-    background: -webkit-gradient(linear, left top, right top, from(#b06642), color-stop(#ff795a), to(#dea1d9));
-    background: linear-gradient(to right, #b06642, #ff795a, #dea1d9); }
+    background: -webkit-gradient(linear, left top, right top, from(#1f4968), color-stop(#dea1d9), to(#ff795a));
+    background: linear-gradient(to right, #1f4968, #dea1d9, #ff795a); }
     @media only screen and (max-width: 767px) {
       .banner .gradient-wrapper {
         height: 500px; } }
@@ -1227,8 +1227,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
     .content-wrap section.bgcolor-transparent {
       background-color: transparent; }
     .content-wrap section.bgcolor-orange {
-      background: -webkit-gradient(linear, left top, right top, from(#b06642), color-stop(#ff795a), to(#dea1d9));
-      background: linear-gradient(to right, #b06642, #ff795a, #dea1d9); }
+      background: -webkit-gradient(linear, left top, right top, from(#1f4968), color-stop(#dea1d9), to(#ff795a));
+      background: linear-gradient(to right, #1f4968, #dea1d9, #ff795a); }
       .content-wrap section.bgcolor-orange p {
         color: #fff; }
       .content-wrap section.bgcolor-orange .content .texte-bloc a {
@@ -1304,8 +1304,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       letter-spacing: 0.075em;
       margin-bottom: 18px; }
       .content-wrap section .content p a:not(.button), .content-wrap section .content li a:not(.button) {
-        background: -webkit-gradient(linear, left top, right top, from(#b06642), color-stop(#ff795a), to(#dea1d9));
-        background: linear-gradient(to right, #b06642, #ff795a, #dea1d9);
+        background: -webkit-gradient(linear, left top, right top, from(#1f4968), color-stop(#dea1d9), to(#ff795a));
+        background: linear-gradient(to right, #1f4968, #dea1d9, #ff795a);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         -webkit-transition: all 0.5s;
@@ -1464,8 +1464,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
       .content-wrap .appels_a_laction .cta-wrapper .cta figure {
         overflow: hidden; }
         .content-wrap .appels_a_laction .cta-wrapper .cta figure:hover + .description h3 a {
-          background: -webkit-gradient(linear, left top, right top, from(#b06642), color-stop(#ff795a), to(#dea1d9));
-          background: linear-gradient(to right, #b06642, #ff795a, #dea1d9);
+          background: -webkit-gradient(linear, left top, right top, from(#1f4968), color-stop(#dea1d9), to(#ff795a));
+          background: linear-gradient(to right, #1f4968, #dea1d9, #ff795a);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent; }
         .content-wrap .appels_a_laction .cta-wrapper .cta figure a {
@@ -1478,8 +1478,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
             right: 0;
             left: 0;
             bottom: 0;
-            background: -webkit-gradient(linear, left top, right top, from(#b06642), color-stop(#ff795a), to(#dea1d9));
-            background: linear-gradient(to right, #b06642, #ff795a, #dea1d9);
+            background: -webkit-gradient(linear, left top, right top, from(#1f4968), color-stop(#dea1d9), to(#ff795a));
+            background: linear-gradient(to right, #1f4968, #dea1d9, #ff795a);
             opacity: 0;
             -webkit-transition: all 0.5s;
             transition: all 0.5s; }
@@ -1513,8 +1513,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
             font-weight: 700;
             display: block; }
             .content-wrap .appels_a_laction .cta-wrapper .cta .description h3 a:hover {
-              background: -webkit-gradient(linear, left top, right top, from(#b06642), color-stop(#ff795a), to(#dea1d9));
-              background: linear-gradient(to right, #b06642, #ff795a, #dea1d9);
+              background: -webkit-gradient(linear, left top, right top, from(#1f4968), color-stop(#dea1d9), to(#ff795a));
+              background: linear-gradient(to right, #1f4968, #dea1d9, #ff795a);
               -webkit-background-clip: text;
               -webkit-text-fill-color: transparent; }
   .content-wrap .titre-section + section {
@@ -2693,8 +2693,8 @@ blockquote {
   .content-wrap .articles_du_blog .articles .article .content {
     padding: 0; }
   .content-wrap .articles_du_blog .articles .article figure:hover + .description h3 a {
-    background: -webkit-gradient(linear, left top, right top, from(#b06642), color-stop(#ff795a), to(#dea1d9));
-    background: linear-gradient(to right, #b06642, #ff795a, #dea1d9);
+    background: -webkit-gradient(linear, left top, right top, from(#1f4968), color-stop(#dea1d9), to(#ff795a));
+    background: linear-gradient(to right, #1f4968, #dea1d9, #ff795a);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; }
   .content-wrap .articles_du_blog .articles .article .description {
@@ -2717,8 +2717,8 @@ blockquote {
       right: 0;
       left: 0;
       bottom: 0;
-      background: -webkit-gradient(linear, left top, right top, from(#b06642), color-stop(#ff795a), to(#dea1d9));
-      background: linear-gradient(to right, #b06642, #ff795a, #dea1d9);
+      background: -webkit-gradient(linear, left top, right top, from(#1f4968), color-stop(#dea1d9), to(#ff795a));
+      background: linear-gradient(to right, #1f4968, #dea1d9, #ff795a);
       opacity: 0;
       -webkit-transition: all 0.5s;
       transition: all 0.5s; }
@@ -2741,8 +2741,8 @@ blockquote {
       color: inherit;
       display: block; }
       .content-wrap .articles .article .description h3 a:hover {
-        background: -webkit-gradient(linear, left top, right top, from(#b06642), color-stop(#ff795a), to(#dea1d9));
-        background: linear-gradient(to right, #b06642, #ff795a, #dea1d9);
+        background: -webkit-gradient(linear, left top, right top, from(#1f4968), color-stop(#dea1d9), to(#ff795a));
+        background: linear-gradient(to right, #1f4968, #dea1d9, #ff795a);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent; }
   .content-wrap .articles .article .description .blog-categories a {
@@ -2820,8 +2820,8 @@ blockquote {
           max-width: 100%;
           display: block; } }
       .page-blog .content-wrap .articles .article figure:hover + .description h3 a {
-        background: -webkit-gradient(linear, left top, right top, from(#b06642), color-stop(#ff795a), to(#dea1d9));
-        background: linear-gradient(to right, #b06642, #ff795a, #dea1d9);
+        background: -webkit-gradient(linear, left top, right top, from(#1f4968), color-stop(#dea1d9), to(#ff795a));
+        background: linear-gradient(to right, #1f4968, #dea1d9, #ff795a);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent; }
     .page-blog .content-wrap .articles .article .description {
@@ -3212,8 +3212,8 @@ blockquote {
         right: 0;
         left: 0;
         bottom: 0;
-        background: -webkit-gradient(linear, left top, right top, from(#b06642), color-stop(#ff795a), to(#dea1d9));
-        background: linear-gradient(to right, #b06642, #ff795a, #dea1d9);
+        background: -webkit-gradient(linear, left top, right top, from(#1f4968), color-stop(#dea1d9), to(#ff795a));
+        background: linear-gradient(to right, #1f4968, #dea1d9, #ff795a);
         opacity: 0;
         -webkit-transition: all 0.5s;
         transition: all 0.5s; }
