@@ -1513,7 +1513,8 @@ textarea[type="checkbox"], input[type="radio"], textarea[type="radio"] {
               font-size: 2.2rem; } }
           .content-wrap .appels_a_laction .cta-wrapper .cta .description h3 a {
             color: inherit;
-            font-weight: 700; }
+            font-weight: 700;
+            display: block; }
             .content-wrap .appels_a_laction .cta-wrapper .cta .description h3 a:hover {
               background: -webkit-gradient(linear, left top, right top, from(#b06642), color-stop(#ff795a), to(#dea1d9));
               background: linear-gradient(to right, #b06642, #ff795a, #dea1d9);
@@ -2742,7 +2743,8 @@ blockquote {
     font-size: 2.6rem;
     text-align: left; }
     .content-wrap .articles .article .description h3 a {
-      color: inherit; }
+      color: inherit;
+      display: block; }
       .content-wrap .articles .article .description h3 a:hover {
         background: -webkit-gradient(linear, left top, right top, from(#b06642), color-stop(#ff795a), to(#dea1d9));
         background: linear-gradient(to right, #b06642, #ff795a, #dea1d9);

@@ -84,6 +84,7 @@
 					text-align:left;
 					a{
 						color: inherit;
+						display: block;
 
 						&:hover{
 							background: $color-gradient-orange;
