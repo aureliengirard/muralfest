@@ -279,10 +279,10 @@ h2,
 	color: $color_pink;
 	margin: 60px 0 40px;
 	line-height: 1;
-	color: black;
-  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
-  -webkit-text-stroke-width: 0.6px;
-  -webkit-text-stroke-color: #2c2034;
+	color: $color_blue;
+	font-family: 'ft_switchregular_bold';
+
+
 
 	a{
 		color: inherit;
@@ -1498,8 +1498,8 @@ input[type=radio]{
 	.appels_a_laction{
 		h2{
 			text-align: center;
-			color: #000000;
-			font-family: 'ft_switchregular';
+			color: $color_blue;
+			font-family: 'ft_switchregular_bold';
 			margin: 120px 0 90px;
 			margin: 1em 0 1.2em;
 		} 
@@ -1679,13 +1679,9 @@ input[type=radio]{
 		h3{
 			text-transform: uppercase;
 			font-weight: 700;
-			color:#000;
+			color:$color_yellow;
 			margin-top:0;
 			margin-bottom:25px;
-			color: black;
-  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
-  -webkit-text-stroke-width: 0.6px;
-  -webkit-text-stroke-color: $color_yellow;
 
 			@media only screen and (min-width:768px){
 				font-size: 2rem;
