@@ -2525,44 +2525,36 @@ blockquote {
     .content-wrap section .programs .program figure {
       overflow: hidden; }
       .content-wrap section .programs .program figure:hover + .description h4 a {
-        color: #dea1d9; }
+        background: -webkit-gradient(linear, left top, right top, from(#1f4968), color-stop(#dea1d9), to(#ff795a));
+        background: linear-gradient(to right, #1f4968, #dea1d9, #ff795a);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent; }
       .content-wrap section .programs .program figure a {
         display: inline-block;
         overflow: hidden;
         position: relative; }
-        .content-wrap section .programs .program figure a .regular-img {
-          -webkit-filter: url("images/svg/effect-imageblur.svg#image-blur");
-                  filter: url("images/svg/effect-imageblur.svg#image-blur"); }
-          .content-wrap section .programs .program figure a .regular-img img {
-            opacity: 1;
-            -webkit-transition: all 0.5s;
-            transition: all 0.5s; }
-            .content-wrap section .programs .program figure a .regular-img img:hover {
-              text-decoration: none; }
-        .content-wrap section .programs .program figure a .hover-effect-img {
+        .content-wrap section .programs .program figure a .regular-img:before {
+          content: '';
           position: absolute;
           top: 0;
           right: 0;
-          bottom: 0;
           left: 0;
+          bottom: 0;
+          background: -webkit-gradient(linear, left top, right top, from(#1f4968), color-stop(#dea1d9), to(#ff795a));
+          background: linear-gradient(to right, #1f4968, #dea1d9, #ff795a);
           opacity: 0;
-          background-color: rgba(255, 255, 255, 0.3);
-          z-index: 1;
           -webkit-transition: all 0.5s;
           transition: all 0.5s; }
-          .content-wrap section .programs .program figure a .hover-effect-img:hover {
+          .content-wrap section .programs .program figure a .regular-img:before:hover {
             text-decoration: none; }
-          .content-wrap section .programs .program figure a .hover-effect-img img {
-            -webkit-mask: url(images/svg/paint-splash2.svg) no-repeat 0 0;
-                    mask: url(images/svg/paint-splash2.svg) no-repeat 0 0;
-            -webkit-mask-size: cover;
-                    mask-size: cover; }
-        .content-wrap section .programs .program figure a:hover .regular-img img {
-          opacity: 0.3; }
-        .content-wrap section .programs .program figure a:hover .hover-effect-img {
+        .content-wrap section .programs .program figure a .regular-img:hover::before {
+          opacity: 0.8; }
+        .content-wrap section .programs .program figure a .regular-img img {
           opacity: 1;
-          -webkit-filter: hue-rotate(90deg) brightness(100%);
-                  filter: hue-rotate(90deg) brightness(100%); }
+          -webkit-transition: all 0.5s;
+          transition: all 0.5s; }
+          .content-wrap section .programs .program figure a .regular-img img:hover {
+            text-decoration: none; }
       @media only screen and (max-width: 768px) {
         .content-wrap section .programs .program figure {
           text-align: center; } }
@@ -2588,9 +2580,13 @@ blockquote {
         max-width: 100%;
         /* IE fix */ }
         .content-wrap section .programs .program .description h4 a {
-          color: inherit; }
+          color: inherit;
+          display: block; }
           .content-wrap section .programs .program .description h4 a:hover {
-            color: #dea1d9; }
+            background: -webkit-gradient(linear, left top, right top, from(#1f4968), color-stop(#dea1d9), to(#ff795a));
+            background: linear-gradient(to right, #1f4968, #dea1d9, #ff795a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; }
       .content-wrap section .programs .program .description p {
         font-size: 1.8rem;
         max-width: 100%;

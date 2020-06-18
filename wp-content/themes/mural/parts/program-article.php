@@ -4,8 +4,6 @@
             <span class="regular-img">
                 <?= wp_get_attachment_image(get_field('image_de_levenement'), 'cta-preview'); ?>
             </span>
-
-            <span class="hover-effect-img"><?= wp_get_attachment_image(get_field('image_de_levenement'), 'cta-preview'); ?></span>
         </a>
     </figure>
 

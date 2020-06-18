@@ -33,7 +33,9 @@
 					overflow: hidden;
 					&:hover{
 						+ .description h4 a{
-							color: $color_pink;
+							background: $color-gradient-orange;
+								-webkit-background-clip: text;
+								-webkit-text-fill-color: transparent;
 						}
 					}
 				
@@ -43,44 +45,29 @@
 						position: relative;
 
 						.regular-img{
-							filter: url('images/svg/effect-imageblur.svg#image-blur');
+							&:before{
+								content:'';
+								position: absolute;
+								top:0;
+								right: 0;
+								left:0;
+								bottom:0;
+								background:$color-gradient-orange;
+								opacity: 0;
+								@include hover-transition;
+							}
+
+							&:hover::before{
+								opacity: 0.8;
+							}
 
 							img{
 								opacity: 1;
 								@include hover-transition;
+
+								
 							}
 						}
-
-						.hover-effect-img{
-							position: absolute;
-							top: 0;
-							right: 0;
-							bottom: 0;
-							left: 0;
-							opacity: 0;
-							background-color: rgba(#ffffff, 0.3);
-							z-index: 1;
-							@include hover-transition;
-
-							img{
-								mask: url(images/svg/paint-splash2.svg) no-repeat 0 0;
-								mask-size: cover;
-							}
-						}
-
-						&:hover{
-							.regular-img{
-								img{
-									opacity: 0.3;
-								}
-							}
-
-							.hover-effect-img{
-								opacity: 1;
-								filter: hue-rotate(90deg) brightness(100%);
-							}
-						}
-
 						
 					}
                     @include media-screen(768px){
@@ -103,11 +90,15 @@
 					h4{
 						max-width: 100%; /* IE fix */
 
+
 						a{
 							color: inherit;
+							display: block;
 
 							&:hover{
-								color: $color_pink;
+								background: $color-gradient-orange;
+								-webkit-background-clip: text;
+								-webkit-text-fill-color: transparent;
 							}
 						}
 					}

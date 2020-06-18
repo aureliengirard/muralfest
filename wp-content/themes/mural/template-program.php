@@ -113,7 +113,7 @@ get_header(); ?>
                             );
                         }
                     }
-                        
+
                     $query = new WP_Query( $args );
                     global $wp_query;
                     // Put default query object in a temp variable
