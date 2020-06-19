@@ -49,6 +49,21 @@
             },
             "default_value": "",
             "placeholder": ""
+        },
+        {
+            "key": "field_5eed1c0fd9be5",
+            "label": "Liens externe",
+            "name": "liens_externe",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
         }
     ],
     "location": [
@@ -68,5 +83,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1523564587
+    "modified": 1592597600
 }

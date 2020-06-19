@@ -73,6 +73,19 @@
                             <a class="button smaller" href="<?php the_field('lien_evenement_facebook'); ?>" target="_blank" rel="nofollow"><?php _e('View Facebook event', 'site-theme'); ?></a>
                         <?php endif; ?>
 
+                        <?php if(get_field('liens_externe')): ?>
+                            <?php 
+                            $link = get_field('liens_externe');
+                            if( $link ): 
+                                $link_url = $link['url'];
+                                $link_title = $link['title'];
+                                $link_target = $link['target'] ? $link['target'] : '_self';
+                                ?>
+                                <a class="button smaller" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+                            <?php endif; ?>
+                        <?php endif; ?>
+
+
                         <?php if(get_field('lien_playlist')): ?>
                             <a class="button smaller playlist" href="<?php the_field('lien_playlist'); ?>" target="_blank" rel="nofollow"><?php _e('Listen to the playlist', 'site-theme'); ?></a>
                         <?php endif; ?>
