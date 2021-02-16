@@ -1,9 +1,13 @@
 /// <reference path="lodash-3.10.d.ts" />
+/// <reference path="knockout.d.ts" />
 /// <reference path="common.d.ts" />
 var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
@@ -39,7 +43,7 @@ var AmeBaseActor = /** @class */ (function () {
         return null;
     };
     AmeBaseActor.getActorSpecificity = function (actorId) {
-        var actorType = actorId.substring(0, actorId.indexOf(':')), specificity = 0;
+        var actorType = actorId.substring(0, actorId.indexOf(':')), specificity;
         switch (actorType) {
             case 'role':
                 specificity = 1;
@@ -57,6 +61,12 @@ var AmeBaseActor = /** @class */ (function () {
     };
     AmeBaseActor.prototype.toString = function () {
         return this.displayName + ' [' + this.id + ']';
+    };
+    AmeBaseActor.prototype.getId = function () {
+        return this.id;
+    };
+    AmeBaseActor.prototype.getDisplayName = function () {
+        return this.displayName;
     };
     return AmeBaseActor;
 }());
@@ -123,9 +133,9 @@ var AmeSuperAdmin = /** @class */ (function (_super) {
 }(AmeBaseActor));
 var AmeActorManager = /** @class */ (function () {
     function AmeActorManager(roles, users, isMultisite, suspectedMetaCaps) {
+        var _this = this;
         if (isMultisite === void 0) { isMultisite = false; }
         if (suspectedMetaCaps === void 0) { suspectedMetaCaps = {}; }
-        var _this = this;
         this.roles = {};
         this.users = {};
         this.grantedCapabilities = {};
@@ -162,6 +172,7 @@ var AmeActorManager = /** @class */ (function () {
             this.tagMetaCaps[tagMetaCaps[i]] = true;
         }
     }
+    // noinspection JSUnusedGlobalSymbols
     AmeActorManager.prototype.actorCanAccess = function (actorId, grantAccess, defaultCapability) {
         if (defaultCapability === void 0) { defaultCapability = null; }
         if (grantAccess.hasOwnProperty(actorId)) {
@@ -348,6 +359,18 @@ var AmeActorManager = /** @class */ (function () {
         }
     };
     /**
+     * Reset all capabilities granted to an actor.
+     * @param actor
+     * @return boolean TRUE if anything was reset or FALSE if the actor didn't have any granted capabilities.
+     */
+    AmeActorManager.prototype.resetActorCaps = function (actor) {
+        if (AmeActorManager._.has(this.grantedCapabilities, actor)) {
+            delete this.grantedCapabilities[actor];
+            return true;
+        }
+        return false;
+    };
+    /**
      * Remove redundant granted capabilities.
      *
      * For example, if user "jane" has been granted the "edit_posts" capability both directly and via the Editor role,
@@ -480,8 +503,71 @@ var AmeActorManager = /** @class */ (function () {
     AmeActorManager.prototype.getSuggestedCapabilities = function () {
         return this.suggestedCapabilities;
     };
+    AmeActorManager.prototype.createUserFromProperties = function (properties) {
+        return AmeUser.createFromProperties(properties);
+    };
     AmeActorManager._ = wsAmeLodash;
     return AmeActorManager;
+}());
+var AmeObservableActorSettings = /** @class */ (function () {
+    function AmeObservableActorSettings(initialData) {
+        this.items = {};
+        this.numberOfObservables = ko.observable(0);
+        if (initialData) {
+            this.setAll(initialData);
+        }
+    }
+    AmeObservableActorSettings.prototype.get = function (actor, defaultValue) {
+        if (defaultValue === void 0) { defaultValue = null; }
+        if (this.items.hasOwnProperty(actor)) {
+            var value = this.items[actor]();
+            if (value === null) {
+                return defaultValue;
+            }
+            return value;
+        }
+        this.numberOfObservables(); //Establish a dependency.
+        return defaultValue;
+    };
+    AmeObservableActorSettings.prototype.set = function (actor, value) {
+        if (!this.items.hasOwnProperty(actor)) {
+            this.items[actor] = ko.observable(value);
+            this.numberOfObservables(this.numberOfObservables() + 1);
+        }
+        else {
+            this.items[actor](value);
+        }
+    };
+    AmeObservableActorSettings.prototype.getAll = function () {
+        var result = {};
+        for (var actorId in this.items) {
+            if (this.items.hasOwnProperty(actorId)) {
+                var value = this.items[actorId]();
+                if (value !== null) {
+                    result[actorId] = value;
+                }
+            }
+        }
+        return result;
+    };
+    AmeObservableActorSettings.prototype.setAll = function (values) {
+        for (var actorId in values) {
+            if (values.hasOwnProperty(actorId)) {
+                this.set(actorId, values[actorId]);
+            }
+        }
+    };
+    /**
+     * Reset all values to null.
+     */
+    AmeObservableActorSettings.prototype.resetAll = function () {
+        for (var actorId in this.items) {
+            if (this.items.hasOwnProperty(actorId)) {
+                this.items[actorId](null);
+            }
+        }
+    };
+    return AmeObservableActorSettings;
 }());
 if (typeof wsAmeActorData !== 'undefined') {
     AmeActors = new AmeActorManager(wsAmeActorData.roles, wsAmeActorData.users, wsAmeActorData.isMultisite, wsAmeActorData.suspectedMetaCaps);
@@ -489,4 +575,3 @@ if (typeof wsAmeActorData !== 'undefined') {
         AmeActors.generateCapabilitySuggestions(wsAmeActorData['capPower']);
     }
 }
-//# sourceMappingURL=actor-manager.js.map

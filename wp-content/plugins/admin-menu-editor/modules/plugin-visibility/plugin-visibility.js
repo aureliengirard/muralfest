@@ -41,17 +41,50 @@ var AmePluginVisibilityModule = /** @class */ (function () {
         if (this.isMultisite) {
             this.privilegedActors.push(AmeActors.getSuperAdmin());
         }
-        this.areAllPluginsChecked = ko.computed({
+        this.areNewPluginsVisible = ko.computed({
             read: function () {
-                return _.every(_this.plugins, function (plugin) {
-                    return _this.isPluginVisible(plugin);
+                if (_this.selectedActor() !== null) {
+                    var canSeePluginsByDefault = _this.getGrantAccessByDefault(_this.selectedActor());
+                    return canSeePluginsByDefault();
+                }
+                return _.every(_this.actorSelector.getVisibleActors(), function (actor) {
+                    //Only consider roles than can manage plugins.
+                    if (!_this.canManagePlugins(actor)) {
+                        return true;
+                    }
+                    var canSeePluginsByDefault = _this.getGrantAccessByDefault(actor.getId());
+                    return canSeePluginsByDefault();
                 });
             },
             write: function (isChecked) {
                 if (_this.selectedActor() !== null) {
                     var canSeePluginsByDefault = _this.getGrantAccessByDefault(_this.selectedActor());
                     canSeePluginsByDefault(isChecked);
+                    return;
                 }
+                //Update everyone except the current user and Super Admin.
+                _.forEach(_this.actorSelector.getVisibleActors(), function (actor) {
+                    var isAllowed = _this.getGrantAccessByDefault(actor.getId());
+                    if (!_this.canManagePlugins(actor)) {
+                        isAllowed(false);
+                    }
+                    else if (_.includes(_this.privilegedActors, actor)) {
+                        isAllowed(true);
+                    }
+                    else {
+                        isAllowed(isChecked);
+                    }
+                });
+            }
+        });
+        this.areAllPluginsChecked = ko.computed({
+            read: function () {
+                return _.every(_this.plugins, function (plugin) {
+                    return _this.isPluginVisible(plugin);
+                }) && _this.areNewPluginsVisible();
+            },
+            write: function (isChecked) {
+                _this.areNewPluginsVisible(isChecked);
                 _.forEach(_this.plugins, function (plugin) {
                     _this.setPluginVisibility(plugin, isChecked);
                 });
@@ -126,6 +159,7 @@ var AmePluginVisibilityModule = /** @class */ (function () {
         return this.grantAccessByDefault[actorId];
     };
     AmePluginVisibilityModule.prototype.getSettings = function () {
+        var _this = this;
         var _ = AmePluginVisibilityModule._;
         var result = {};
         result.grantAccessByDefault = _.mapValues(this.grantAccessByDefault, function (allow) {
@@ -137,10 +171,27 @@ var AmePluginVisibilityModule = /** @class */ (function () {
                 isVisibleByDefault: plugin.isVisibleByDefault(),
                 grantAccess: _.mapValues(plugin.grantAccess, function (allow) {
                     return allow();
-                }),
-                customName: plugin.customName(),
-                customDescription: plugin.customDescription()
+                })
             };
+            //Filter out grants that match the default settings.
+            result.plugins[plugin.fileName].grantAccess = _.pick(result.plugins[plugin.fileName].grantAccess, function (allowed, actorId) {
+                var defaultState = _this.getGrantAccessByDefault(actorId)() && plugin.isVisibleByDefault();
+                return (allowed !== defaultState);
+            });
+            //Don't store the "grantAccess" map if it's empty.
+            if (_.isEmpty(result.plugins[plugin.fileName].grantAccess)) {
+                delete result.plugins[plugin.fileName].grantAccess;
+            }
+            //All plugins are visible by default, so it's not necessary to store this flag if it's TRUE.
+            if (result.plugins[plugin.fileName].isVisibleByDefault) {
+                delete result.plugins[plugin.fileName].isVisibleByDefault;
+            }
+            for (var i = 0; i < AmePlugin.editablePropertyNames.length; i++) {
+                var key = AmePlugin.editablePropertyNames[i], upperKey = key.substring(0, 1).toUpperCase() + key.substring(1), value = plugin.customProperties[key]();
+                if (value !== '') {
+                    result.plugins[plugin.fileName]['custom' + upperKey] = value;
+                }
+            }
         });
         return result;
     };
@@ -150,7 +201,13 @@ var AmePluginVisibilityModule = /** @class */ (function () {
         //Remove settings associated with roles and users that no longer exist or are not visible.
         var _ = AmePluginVisibilityModule._, visibleActorIds = _.pluck(this.actorSelector.getVisibleActors(), 'id');
         _.forEach(settings.plugins, function (plugin) {
-            plugin.grantAccess = _.pick(plugin.grantAccess, visibleActorIds);
+            if (plugin.grantAccess) {
+                plugin.grantAccess = _.pick(plugin.grantAccess, visibleActorIds);
+            }
+        });
+        //Remove plugins that don't have any custom settings.
+        settings.plugins = _.pick(settings.plugins, function (value) {
+            return !_.isEmpty(value);
         });
         //Populate form field(s).
         this.settingsData(jQuery.toJSON(settings));
@@ -162,30 +219,33 @@ var AmePluginVisibilityModule = /** @class */ (function () {
 var AmePlugin = /** @class */ (function () {
     function AmePlugin(details, settings, module) {
         var _this = this;
+        this.defaultProperties = {};
+        this.customProperties = {};
+        this.editableProperties = {};
         var _ = AmePluginVisibilityModule._;
-        this.defaultName = ko.observable(details.name);
-        this.defaultDescription = ko.observable(details.description);
-        this.customName = ko.observable(_.get(settings, 'customName', ''));
-        this.customDescription = ko.observable(_.get(settings, 'customDescription', ''));
+        for (var i = 0; i < AmePlugin.editablePropertyNames.length; i++) {
+            var key = AmePlugin.editablePropertyNames[i], upperKey = key.substring(0, 1).toUpperCase() + key.substring(1);
+            this.defaultProperties[key] = ko.observable(_.get(details, key, ''));
+            this.customProperties[key] = ko.observable(_.get(settings, 'custom' + upperKey, ''));
+            this.editableProperties[key] = ko.observable(this.defaultProperties[key]());
+        }
         this.name = ko.computed(function () {
-            var value = _this.customName();
+            var value = _this.customProperties['name']();
             if (value === '') {
-                value = _this.defaultName();
+                value = _this.defaultProperties['name']();
             }
             return AmePlugin.stripAllTags(value);
         });
         this.description = ko.computed(function () {
-            var value = _this.customDescription();
+            var value = _this.customProperties['description']();
             if (value === '') {
-                value = _this.defaultDescription();
+                value = _this.defaultProperties['description']();
             }
             return AmePlugin.stripAllTags(value);
         });
         this.fileName = details.fileName;
         this.isActive = details.isActive;
         this.isBeingEdited = ko.observable(false);
-        this.editableName = ko.observable(this.defaultName());
-        this.editableDescription = ko.observable(this.defaultDescription());
         this.isVisibleByDefault = ko.observable(_.get(settings, 'isVisibleByDefault', true));
         var emptyGrant = {};
         this.grantAccess = _.mapValues(_.get(settings, 'grantAccess', emptyGrant), function (hasAccess) {
@@ -209,8 +269,10 @@ var AmePlugin = /** @class */ (function () {
     };
     //noinspection JSUnusedGlobalSymbols Used in KO template.
     AmePlugin.prototype.openInlineEditor = function () {
-        this.editableName(this.customName() === '' ? this.defaultName() : this.customName());
-        this.editableDescription(this.customDescription() === '' ? this.defaultDescription() : this.customDescription());
+        for (var i = 0; i < AmePlugin.editablePropertyNames.length; i++) {
+            var key = AmePlugin.editablePropertyNames[i], customValue = this.customProperties[key]();
+            this.editableProperties[key](customValue === '' ? this.defaultProperties[key]() : customValue);
+        }
         this.isBeingEdited(true);
     };
     //noinspection JSUnusedGlobalSymbols Used in KO template.
@@ -219,20 +281,21 @@ var AmePlugin = /** @class */ (function () {
     };
     //noinspection JSUnusedGlobalSymbols Used in KO template.
     AmePlugin.prototype.confirmEdit = function () {
-        this.customName(this.editableName());
-        this.customDescription(this.editableDescription());
-        if (this.customName() === this.defaultName()) {
-            this.customName('');
-        }
-        if (this.customDescription() === this.defaultDescription()) {
-            this.customDescription('');
+        for (var i = 0; i < AmePlugin.editablePropertyNames.length; i++) {
+            var key = AmePlugin.editablePropertyNames[i], customValue = this.editableProperties[key]();
+            if (customValue === this.defaultProperties[key]()) {
+                customValue = '';
+            }
+            this.customProperties[key](customValue);
         }
         this.isBeingEdited(false);
     };
     //noinspection JSUnusedGlobalSymbols Used in KO template.
     AmePlugin.prototype.resetNameAndDescription = function () {
-        this.customName('');
-        this.customDescription('');
+        for (var i = 0; i < AmePlugin.editablePropertyNames.length; i++) {
+            var key = AmePlugin.editablePropertyNames[i];
+            this.customProperties[key]('');
+        }
         this.isBeingEdited(false);
     };
     AmePlugin.stripAllTags = function (input) {
@@ -240,6 +303,7 @@ var AmePlugin = /** @class */ (function () {
         var tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi, commentsAndPhpTags = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;
         return input.replace(commentsAndPhpTags, '').replace(tags, '');
     };
+    AmePlugin.editablePropertyNames = ['name', 'description', 'author', 'siteUrl', 'version'];
     return AmePlugin;
 }());
 jQuery(function ($) {
@@ -250,4 +314,3 @@ jQuery(function ($) {
         AjawV1.getAction('ws_ame_dismiss_pv_usage_notice').request();
     });
 });
-//# sourceMappingURL=plugin-visibility.js.map

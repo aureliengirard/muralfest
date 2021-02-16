@@ -3,21 +3,21 @@ Contributors: hijiri
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TT5NP352P6MCU
 Tags: post order, posts order, order post, order posts, custom post type order, custom taxonomy order
 Requires at least: 3.5.0
-Tested up to: 4.9.2
-Stable tag: 3.1.1
+Tested up to: 5.5.1
+Stable tag: 3.1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Intuitively, order items( Posts, Pages, ,Custom Post Types, Custom Taxonomies, Sites ) using a drag and drop sortable JavaScript.
+Intuitively, order items( Posts, Pages, Custom Post Types, Custom Taxonomies, Sites ) using a drag and drop sortable JavaScript.
 
 == Description ==
 
-Intuitively, order items( Posts, Pages, ,Custom Post Types, Custom Taxonomies, Sites ) using a drag and drop sortable JavaScript.
+Select sortable items from 'Intuitive CPO' menu of Setting menu in WordPress.
+Intuitively, order items( Posts, Pages, Custom Post Types, Custom Taxonomies, Sites ) using a drag and drop sortable JavaScript.
+Use parameters( orderby = menu_order, order = ASC ) in your theme.
 
-Select sortable items from 'Intuitive CPT' menu of Setting menu in WordPress.
-
-In addition, You can re-override the parameters of 'orderby' and 'order', by using the 'WP_Query' or 'pre_get_posts' or 'query_posts()' or 'get_posts()'.<br>
-ATTENTION: Only if you use 'get_posts()' to re-overwrite to the default order( orderby=date, order=DESC ), You need to use own custom parameter 'orderby=default_date'.
+You can also override the auto-converted parameters( orderby and order ).
+ATTENTION: Only if you use 'get_posts()' to re-overwrite to the default order( orderby = date, order = DESC ), You need to use own custom parameter 'orderby = default_date'.
 
 This Plugin published on <a href="https://github.com/hijiriworld/intuitive-custom-post-order">GitHub.</a>
 
@@ -25,7 +25,7 @@ This Plugin published on <a href="https://github.com/hijiriworld/intuitive-custo
 
 1. Upload 'intuitive-custom-post-order' folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Select sortable items from 'Intuitive CPT' menu of Setting menu in WordPress.
+3. Select sortable items from 'Intuitive CPO' menu of Setting menu in WordPress.
 
 == Screenshots ==
 
@@ -101,6 +101,14 @@ Go to "screen options" and change "Number of items per page:".
 
 == Changelog ==
 
+= 3.1.2.1 =
+
+* Update the WordPress version this plugin was tested.
+
+= 3.1.2 =
+
+* Solved the problem of layout collapse during drag and drop sorting.
+  
 = 3.1.1 =
 
 * Remove deprecated function 'secreen_icon()'.

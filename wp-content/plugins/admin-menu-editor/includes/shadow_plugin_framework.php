@@ -22,7 +22,8 @@ class MenuEd_ShadowPluginFramework {
 	public $option_name = ''; //should be set or overridden by the plugin
 	protected $defaults = array(); //should be set or overridden by the plugin
 	protected $sitewide_options = false; //WPMU only : save the setting in a site-wide option
-	protected $serialize_with_json = false; //Use the JSON format for option storage 
+	protected $serialize_with_json = false; //Use the JSON format for option storage
+	protected $zlib_compression = false;
 	
 	public $plugin_file = ''; //Filename of the plugin.
 	public $plugin_basename = ''; //Basename of the plugin, as returned by plugin_basename().
@@ -58,8 +59,8 @@ class MenuEd_ShadowPluginFramework {
 		/************************************
 				Add the default hooks
 		************************************/
-		add_action('activate_'.$this->plugin_basename, array(&$this,'activate'));
-		add_action('deactivate_'.$this->plugin_basename, array(&$this,'deactivate'));
+		add_action('activate_'.$this->plugin_basename, array($this,'activate'));
+		add_action('deactivate_'.$this->plugin_basename, array($this,'deactivate'));
 		
 		$this->init();        //Call the plugin's init() function
 		$this->init_finish(); //Complete initialization by loading settings, etc
@@ -97,7 +98,7 @@ class MenuEd_ShadowPluginFramework {
 		
 		//Add a "Settings" action link
 		if ($this->settings_link)
-			add_filter('plugin_action_links', array(&$this, 'plugin_action_links'), 10, 2);
+			add_filter('plugin_action_links', array($this, 'plugin_action_links'), 10, 2);
 		
 		if ($this->magic_hooks)
 			$this->set_magic_hooks();
@@ -120,7 +121,18 @@ class MenuEd_ShadowPluginFramework {
 		} else {
 			$this->options = get_option($option_name);
 		}
-		
+
+		$prefix = 'gzcompress:';
+		if (
+			is_string($this->options)
+			&& (substr($this->options, 0, strlen($prefix)) === $prefix)
+			&& function_exists('gzuncompress')
+		) {
+			//TODO: Maybe this would be faster if we stored the flag separately?
+			/** @noinspection PhpComposerExtensionStubsInspection */
+			$this->options = unserialize(gzuncompress(base64_decode(substr($this->options, strlen($prefix)))));
+		}
+
 		if ( $this->serialize_with_json || is_string($this->options) ){
 			$this->options = $this->json_decode($this->options, true);
 		}
@@ -146,7 +158,12 @@ class MenuEd_ShadowPluginFramework {
 			if ( $this->serialize_with_json ){
 				$stored_options = $this->json_encode($stored_options);
 			}
-			
+
+			if ( $this->zlib_compression && function_exists('gzcompress') ) {
+				/** @noinspection PhpComposerExtensionStubsInspection */
+				$stored_options = 'gzcompress:' . base64_encode(gzcompress(serialize($stored_options)));
+			}
+
 			if ( $this->sitewide_options && is_multisite() ) {
 				return self::atomic_update_site_option($this->option_name, $stored_options);
 			} else {
@@ -240,7 +257,7 @@ class MenuEd_ShadowPluginFramework {
 				//Get the hook's tag from the method name 
 				$hook = substr($method->name, 5);
 				//Add the hook. Uses add_filter because add_action is simply a wrapper of the same.
-				add_filter($hook, array(&$this, $method->name), 
+				add_filter($hook, array($this, $method->name),
 					$this->get_magic_hook_priority(), $method->getNumberOfParameters());
 			}
 		}
@@ -282,8 +299,9 @@ class MenuEd_ShadowPluginFramework {
    * @return array
    */
 	function plugin_action_links($links, $file) {
-        if ($file == $this->plugin_basename)
-            $links[] = "<a href='" . $this->settings_link . "'>" . __('Settings') . "</a>";
+        if (($file == $this->plugin_basename) && is_array($links)) {
+	        $links[] = "<a href='" . $this->settings_link . "'>" . __('Settings') . "</a>";
+        }
         return $links;
     }
     
@@ -305,13 +323,31 @@ class MenuEd_ShadowPluginFramework {
    * @return bool
    */
 	function is_in_wpmu_plugin_dir( $filename = '' ){
-		if ( !defined('WPMU_PLUGIN_DIR') ) return false;
+		if ( !defined('WPMU_PLUGIN_DIR') ) {
+			return false;
+		}
 		
 		if ( empty($filename) ){
 			$filename = $this->plugin_file;
 		}
-		
-		return (strpos( realpath($filename), realpath(WPMU_PLUGIN_DIR) ) !== false);
+
+		$normalizedMuPluginDir = realpath(WPMU_PLUGIN_DIR);
+		$normalizedFileName = realpath($filename);
+
+		//If realpath() fails, just normalize the syntax instead.
+		if ( empty($normalizedFileName) || empty($normalizedMuPluginDir) ) {
+			$normalizedMuPluginDir = wp_normalize_path(WPMU_PLUGIN_DIR);
+			$normalizedFileName = wp_normalize_path($filename);
+		}
+		//Yet another fallback if the above also fails.
+		if ( !is_string($normalizedMuPluginDir) || empty($normalizedMuPluginDir) ) {
+			if ( is_string(WPMU_PLUGIN_DIR) ) {
+				$normalizedMuPluginDir = WPMU_PLUGIN_DIR;
+			} else {
+				return false;
+			}
+		}
+		return (strpos( $normalizedFileName, $normalizedMuPluginDir ) !== false);
 	}
 	
 	/**

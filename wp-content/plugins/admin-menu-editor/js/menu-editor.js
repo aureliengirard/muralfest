@@ -46,6 +46,9 @@
  * @property {string|null} wsEditorData.selectedMenu
  * @property {string|null} wsEditorData.selectedSubmenu
  *
+ * @property {string} wsEditorData.setTestConfigurationNonce
+ * @property {string} wsEditorData.testAccessNonce
+ *
  * @property {boolean} wsEditorData.isDemoMode
  * @property {boolean} wsEditorData.isMasterMode
  */
@@ -147,6 +150,8 @@ window.AmeEditorApi = AmeEditorApi;
 'use strict';
 
 var actorSelectorWidget = new AmeActorSelector(AmeActors, wsEditorData.wsMenuEditorPro);
+
+AmeEditorApi.actorSelectorWidget = actorSelectorWidget;
 
 var itemTemplates = {
 	templates: wsEditorData.itemTemplates,
@@ -253,7 +258,7 @@ function outputWpMenu(menu){
 	}
 
 	//Automatically select the first top-level menu
-	menuBox.find('.ws_menu:first').click();
+	menuBox.find('.ws_menu:first').trigger('click');
 }
 
 /**
@@ -301,6 +306,8 @@ function loadMenuConfiguration(adminMenu) {
 
 	//Display the new admin menu.
 	outputWpMenu(adminMenu.tree);
+
+	$(document).trigger('menuConfigurationLoaded.adminMenuEditor', adminMenu);
 }
 
 /*
@@ -661,10 +668,10 @@ var knownMenuFields = {
 			// field is usually set to a page slug or plugin filename for plugin/hook pages,
 			// we display the dynamically generated "url" field here (i.e. the actual URL) instead.
 			if (menuItem.template_id !== '') {
-				input.attr('readonly', 'readonly');
+				input.prop('readonly', true);
 				displayValue = itemTemplates.getDefaultValue(menuItem.template_id, 'url');
 			} else {
-				input.removeAttr('readonly');
+				input.prop('readonly', false);
 			}
 			return displayValue;
 		},
@@ -774,6 +781,15 @@ var knownMenuFields = {
 		}
 	}),
 
+	'appearance_heading' : $.extend({}, baseField, {
+		caption: 'Appearance',
+		advanced : true,
+		onlyForTopMenus: false,
+		type: 'heading',
+		standardCaption: false,
+		visible: false //Only visible in the Pro version.
+	}),
+
 	'icon_url' : $.extend({}, baseField, {
 		caption: 'Icon URL',
 		type : 'icon_selector',
@@ -834,10 +850,50 @@ var knownMenuFields = {
 		}
 	}),
 
-	'css_class' : $.extend({}, baseField, {
-		caption: 'CSS classes',
+	'colors' : $.extend({}, baseField, {
+		caption: 'Color scheme',
+		defaultValue: 'Default',
+		type: 'color_scheme_editor',
+		onlyForTopMenus: true,
+		visible: false,
 		advanced : true,
-		onlyForTopMenus: true
+
+		display: function(menuItem, displayValue, input, containerNode) {
+			var colors = getFieldValue(menuItem, 'colors', {}) || {};
+			var colorList = containerNode.find('.ws_color_scheme_display');
+
+			colorList.empty();
+			var count = 0, maxColorsToShow = 7;
+
+			$.each(colors, function(name, value) {
+				if ( !value || (count >= maxColorsToShow) ) {
+					return;
+				}
+
+				colorList.append(
+					$('<span></span>').addClass('ws_color_display_item').css('background-color', value)
+				);
+				count++;
+			});
+
+			if (count === 0) {
+				colorList.append('Default');
+			}
+
+			return 'Placeholder. You should never see this.';
+		},
+
+		write: function(menuItem) {
+			//Menu colors can't be directly edited.
+		}
+	}),
+
+	'html_heading' : $.extend({}, baseField, {
+		caption: 'HTML',
+		advanced : true,
+		onlyForTopMenus: true,
+		type: 'heading',
+		standardCaption: false
 	}),
 
 	'open_in' : $.extend({}, baseField, {
@@ -888,48 +944,24 @@ var knownMenuFields = {
 		}
 	}),
 
-	'colors' : $.extend({}, baseField, {
-		caption: 'Color scheme',
-		defaultValue: 'Default',
-		type: 'color_scheme_editor',
-		onlyForTopMenus: true,
-		visible: false,
+	'css_class' : $.extend({}, baseField, {
+		caption: 'CSS classes',
 		advanced : true,
-
-		display: function(menuItem, displayValue, input, containerNode) {
-			var colors = getFieldValue(menuItem, 'colors', {}) || {};
-			var colorList = containerNode.find('.ws_color_scheme_display');
-
-			colorList.empty();
-			var count = 0, maxColorsToShow = 7;
-
-			$.each(colors, function(name, value) {
-				if ( !value || (count >= maxColorsToShow) ) {
-					return;
-				}
-
-				colorList.append(
-					$('<span></span>').addClass('ws_color_display_item').css('background-color', value)
-				);
-				count++;
-			});
-
-			if (count === 0) {
-				colorList.append('Default');
-			}
-
-			return 'Placeholder. You should never see this.';
-		},
-
-		write: function(menuItem) {
-			//Menu colors can't be directly edited.
-		}
+		onlyForTopMenus: true
 	}),
 
-	'page_title' : $.extend({}, baseField, {
-		caption: "Window title",
-		standardCaption : true,
-		advanced : true
+	'hookname' : $.extend({}, baseField, {
+		caption: 'ID attribute',
+		advanced : true,
+		onlyForTopMenus: true
+	}),
+
+	'page_properties_heading' : $.extend({}, baseField, {
+		caption: 'Page',
+		advanced : true,
+		onlyForTopMenus: true,
+		type: 'heading',
+		standardCaption: false
 	}),
 
 	'page_heading' : $.extend({}, baseField, {
@@ -939,14 +971,14 @@ var knownMenuFields = {
 		visible: false
 	}),
 
-	'hookname' : $.extend({}, baseField, {
-		caption: 'Hook name',
-		advanced : true,
-		onlyForTopMenus: true
+	'page_title' : $.extend({}, baseField, {
+		caption: "Window title",
+		standardCaption : true,
+		advanced : true
 	}),
 
 	'is_always_open' : $.extend({}, baseField, {
-		caption: 'Keep this menu open',
+		caption: 'Keep this menu expanded',
 		advanced : true,
 		onlyForTopMenus: true,
 		type: 'checkbox',
@@ -1046,12 +1078,16 @@ function buildEditboxField(entry, field_name, field_settings){
 		case 'icon_selector':
 			//noinspection HtmlUnknownTag
 			inputBox = $(basicTextField)
-                .add('<button class="button ws_select_icon" title="Select icon"><div class="icon16 icon-settings"></div><img src="" style="display:none;"></button>');
+                .add('<button class="button ws_select_icon" title="Select icon"><div class="icon16 icon-settings"></div><img src="" style="display:none;" alt="Icon"></button>');
 			break;
 
 		case 'color_scheme_editor':
 			inputBox = $('<span class="ws_color_scheme_display">Placeholder</span>')
 				.add('<input type="button" class="button ws_open_color_editor" value="Edit...">');
+			break;
+
+		case 'heading':
+			inputBox = $('<span>' + field_settings.caption + '</span>');
 			break;
 
 		case 'text':
@@ -1067,6 +1103,9 @@ function buildEditboxField(entry, field_name, field_settings){
 	}
 	if (!field_settings.standardCaption) {
 		className += ' ws_no_field_caption';
+	}
+	if (field_settings.type === 'heading') {
+		className += ' ws_field_group_heading';
 	}
 
 	var caption = '';
@@ -1094,7 +1133,7 @@ function buildEditboxField(entry, field_name, field_settings){
 
 	editField
 		.append(
-			$('<img class="ws_reset_button" title="Reset to default value">')
+			$('<img class="ws_reset_button" title="Reset to default value" src="" alt="Reset">')
 				.attr('src', wsEditorData.imagesUrl + '/transparent16.png')
 		).data('field_name', field_name);
 
@@ -1346,6 +1385,9 @@ function updateItemEditor(containerNode) {
     });
 }
 
+AmeEditorApi.updateParentAccessUi = updateParentAccessUi;
+AmeEditorApi.updateItemEditor = updateItemEditor;
+
 function isEmptyObject(obj) {
     for (var prop in obj) {
         if (obj.hasOwnProperty(prop)) {
@@ -1516,7 +1558,7 @@ AmeEditorApi.selectMenuItemByUrl = function(boxSelector, url, expandProperties) 
 		if (expandProperties !== null) {
 			var expandLink = containerNode.find('.ws_edit_link').first();
 			if (expandLink.hasClass('ws_edit_link_expanded') !== expandProperties) {
-				expandLink.click();
+				expandLink.trigger('click');
 			}
 		}
 	}
@@ -1586,12 +1628,15 @@ function readMenuTreeState(){
 
 	AmeCapabilityManager.pruneGrantedUserCapabilities();
 
-	return {
+	var result = {
 		tree: tree,
 		color_presets: $.extend(true, {}, colorPresets),
 		granted_capabilities: AmeCapabilityManager.getGrantedCapabilities(),
 		component_visibility: $.extend(true, {}, generalComponentVisibility)
 	};
+
+	$(document).trigger('getMenuConfiguration.adminMenuEditor', result);
+	return result;
 }
 
 /**
@@ -1723,6 +1768,10 @@ function readAllFields(container){
 		//Hackety-hack. The "Page" input is for display purposes and contains more than just the ID. Skip it.
 		//Eventually we'll need a better way to handle this.
 		if (field_name === 'embedded_page_id') {
+			return true;
+		}
+		//Headings contain no useful data.
+		if (field.hasClass('ws_field_group_heading')) {
 			return true;
 		}
 
@@ -1997,6 +2046,8 @@ function ameOnDomReady() {
 		knownMenuFields.access_level.visible = true;
 		knownMenuFields.page_heading.visible = true;
 		knownMenuFields.colors.visible = true;
+		knownMenuFields.appearance_heading.visible = true;
+		knownMenuFields.appearance_heading.onlyForTopMenus = false;
 		knownMenuFields.extra_capability.visible = false; //Superseded by the "access_level" field.
 
 		//The Pro version supports submenu icons, but they can be disabled by the user.
@@ -2307,7 +2358,7 @@ function ameOnDomReady() {
 		permissionConfirmationDialog.dialog('open');
 	}
 
-	$('#ws_confirm_menu_hiding, #ws_cancel_menu_hiding').click(function() {
+	$('#ws_confirm_menu_hiding, #ws_cancel_menu_hiding').on('click', function() {
 		var confirmed = $(this).is('#ws_confirm_menu_hiding');
 		var dontShowAgain = permissionConfirmationDialog.find('.ws_dont_show_again input[type="checkbox"]').is(':checked');
 
@@ -2495,7 +2546,7 @@ function ameOnDomReady() {
 	//Also show it when the user presses the down arrow in the input field (doesn't work in Opera).
 	$('#ws_extra_capability').bind('keyup', function(event){
 		if ( event.which === 40 ){
-			$('#ws_trigger_capability_dropdown').click();
+			$('#ws_trigger_capability_dropdown').trigger('click');
 		}
 	});
 
@@ -2509,13 +2560,13 @@ function ameOnDomReady() {
 	var dropdownNodes = $('.ws_dropdown');
 
 	// Hide capability drop-down when it loses focus.
-	dropdownNodes.blur(function(){
+	dropdownNodes.on('blur', function(){
 		if (!isSuggestionClick) {
 			hideCapSelector();
 		}
 	});
 
-	dropdownNodes.keydown(function(event){
+	dropdownNodes.on('keydown', function(event){
 
 		//Hide it when the user presses Esc
 		if ( event.which === 27 ){
@@ -2540,7 +2591,7 @@ function ameOnDomReady() {
 	});
 
 	//Eat Tab keys to prevent focus theft. Required to make the "select item on Tab" thing work.
-	dropdownNodes.keyup(function(event){
+	dropdownNodes.on('keyup', function(event){
 		if ( event.which === 9 ){
 			event.preventDefault();
 		}
@@ -2548,7 +2599,7 @@ function ameOnDomReady() {
 
 
 	//Update the input & hide the list when an option is clicked
-	dropdownNodes.click(function(){
+	dropdownNodes.on('click', function(){
 		if (capSelectorDropdown.val()){
 			hideCapSelector();
 			if (currentDropdownOwner) {
@@ -2558,7 +2609,7 @@ function ameOnDomReady() {
 	});
 
 	//Highlight an option when the user mouses over it (doesn't work in IE)
-	dropdownNodes.mousemove(function(event){
+	dropdownNodes.on('mousemove', function(event){
 		if ( !event.target ){
 			return;
 		}
@@ -2820,7 +2871,9 @@ function ameOnDomReady() {
 		}
 
 		//Activate the tab that contains the icon.
-		var activeTabId = selectedIcon.closest('.ws_tool_tab').prop('id'),
+		var activeTabId = ((selectedIcon !== null)
+				? selectedIcon.closest('.ws_tool_tab').prop('id')
+				: 'ws_core_icons_tab'),
 			activeTabItem = iconSelectorTabs.find('a[href="#' + activeTabId + '"]').closest('li');
 		if (activeTabItem.length > 0) {
 			iconSelectorTabs.tabs('option', 'active', activeTabItem.index());
@@ -2836,9 +2889,9 @@ function ameOnDomReady() {
 
 	//Alternatively, use the WordPress media uploader to select a custom icon.
 	//This code is based on the header selection script in /wp-admin/js/custom-header.js.
-	$('#ws_choose_icon_from_media').click(function(event) {
+	var mediaFrame = null;
+	$('#ws_choose_icon_from_media').on('click', function(event) {
 		event.preventDefault();
-		var frame = null;
 
 		//This option is not usable on the demo site since the filesystem is usually read-only.
 		if (wsEditorData.isDemoMode) {
@@ -2847,13 +2900,13 @@ function ameOnDomReady() {
 		}
 
         //If the media frame already exists, reopen it.
-        if ( frame ) {
-            frame.open();
+        if ( mediaFrame !== null ) {
+            mediaFrame.open();
             return;
         }
 
         //Create a custom media frame.
-        frame = wp.media.frames.customAdminMenuIcon = wp.media({
+        mediaFrame = wp.media.frames.customAdminMenuIcon = wp.media({
             //Set the title of the modal.
             title: 'Choose a Custom Icon (20x20)',
 
@@ -2870,9 +2923,9 @@ function ameOnDomReady() {
         });
 
         //When an image is selected, set it as the menu icon.
-        frame.on( 'select', function() {
+        mediaFrame.on( 'select', function() {
             //Grab the selected attachment.
-            var attachment = frame.state().get('selection').first();
+            var attachment = mediaFrame.state().get('selection').first();
             //TODO: Warn the user if the image exceeds 20x20 pixels.
 
 	        //Set the menu icon to the attachment URL.
@@ -2894,11 +2947,11 @@ function ameOnDomReady() {
         });
 
 		//If the user closes the frame by via Esc or the "X" button, clear up state.
-		frame.on('escape', function(){
+		mediaFrame.on('escape', function(){
 			currentIconButton = null;
 		});
 
-        frame.open();
+        mediaFrame.open();
 		iconSelector.hide();
 	});
 
@@ -3164,7 +3217,7 @@ function ameOnDomReady() {
 
 	//Show only the primary color settings by default.
 	var showAdvancedColors = false;
-	$('#ws-ame-show-advanced-colors').click(function() {
+	$('#ws-ame-show-advanced-colors').on('click', function() {
 		showAdvancedColors = !showAdvancedColors;
 		$('#ws-ame-menu-color-settings').find('.ame-advanced-menu-color').toggle(showAdvancedColors);
 		$(this).text(showAdvancedColors ? 'Hide advanced options' : 'Show advanced options');
@@ -3228,7 +3281,7 @@ function ameOnDomReady() {
 	});
 
 	//The "Colors" button in the main sidebar.
-	$('#ws_edit_global_colors').click(function() {
+	$('#ws_edit_global_colors').on('click', function() {
 		colorDialogState.editingGlobalColors = true;
 		colorDialogState.menuItem = null;
 		colorDialogState.containerNode = null;
@@ -3274,7 +3327,7 @@ function ameOnDomReady() {
 				$('#ame-color-' + name).wpColorPicker('color', value);
 				customColorCount++;
 			} else {
-				$('#ame-color-' + name).closest('.wp-picker-container').find('.wp-picker-clear').click();
+				$('#ame-color-' + name).closest('.wp-picker-container').find('.wp-picker-clear').trigger('click');
 			}
 		}
 
@@ -3283,7 +3336,7 @@ function ameOnDomReady() {
 	}
 
 	//The "Save Changes" button in the color dialog.
-	$('#ws-ame-save-menu-colors').click(function() {
+	$('#ws-ame-save-menu-colors').on('click', function() {
 		menuColorDialog.dialog('close');
 		var colors = getColorSettingsFromDialog();
 
@@ -3310,7 +3363,7 @@ function ameOnDomReady() {
 	});
 
 	//The "Apply to All" button in the same dialog.
-	$('#ws-ame-apply-colors-to-all').click(function() {
+	$('#ws-ame-apply-colors-to-all').on('click', function() {
 		if (!confirm('Apply these color settings to ALL top level menus?')) {
 			return;
 		}
@@ -3386,7 +3439,7 @@ function ameOnDomReady() {
 		}
 	}
 
-	colorPresetDropdown.change(function() {
+	colorPresetDropdown.on('change', function() {
 		var dropdown = $(this),
 			presetName = dropdown.val();
 
@@ -3415,7 +3468,7 @@ function ameOnDomReady() {
 		}
 	});
 
-	colorPresetDeleteButton.click(function() {
+	colorPresetDeleteButton.on('click', function() {
 		var presetName = $('#ame-menu-color-presets').val();
 		if ( _.includes(['[save_preset]', '[global]', '', null], presetName) ) {
 			return false;
@@ -3436,7 +3489,7 @@ function ameOnDomReady() {
     }
 
 	//Show/Hide menu
-	$('#ws_hide_menu').click(function (event) {
+	$('#ws_hide_menu').on('click', function (event) {
 		event.preventDefault();
 
 		//Get the selected menu
@@ -3510,7 +3563,7 @@ function ameOnDomReady() {
 
 		} else {
 			//Just toggle the checkbox.
-			selection.find('input.ws_actor_access_checkbox').click();
+			selection.find('input.ws_actor_access_checkbox').trigger('click');
 		}
 	});
 
@@ -3585,16 +3638,16 @@ function ameOnDomReady() {
 	};
 
 	//Callbacks for each of the dialog buttons.
-	$('#ws_cancel_menu_deletion').click(function() {
+	$('#ws_cancel_menu_deletion').on('click', function() {
 		menuDeletionCallback(false);
 	});
-	$('#ws_hide_menu_from_everyone').click(function() {
+	$('#ws_hide_menu_from_everyone').on('click', function() {
 		menuDeletionCallback('all');
 	});
-	$('#ws_hide_menu_except_current_user').click(function() {
+	$('#ws_hide_menu_except_current_user').on('click', function() {
 		menuDeletionCallback('except_current_user');
 	});
-	$('#ws_hide_menu_except_administrator').click(function() {
+	$('#ws_hide_menu_except_administrator').on('click', function() {
 		menuDeletionCallback('except_administrator');
 	});
 
@@ -3682,7 +3735,7 @@ function ameOnDomReady() {
 	}
 
 	//Delete menu
-	$('#ws_delete_menu').click(function (event) {
+	$('#ws_delete_menu').on('click', function (event) {
 		event.preventDefault();
 
 		//Get the selected menu
@@ -3695,7 +3748,7 @@ function ameOnDomReady() {
 	});
 
 	//Copy menu
-	$('#ws_copy_menu').click(function (event) {
+	$('#ws_copy_menu').on('click', function (event) {
 		event.preventDefault();
 
 		//Get the selected menu
@@ -3709,7 +3762,7 @@ function ameOnDomReady() {
 	});
 
 	//Cut menu
-	$('#ws_cut_menu').click(function (event) {
+	$('#ws_cut_menu').on('click', function (event) {
 		event.preventDefault();
 
 		//Get the selected menu
@@ -3753,7 +3806,7 @@ function ameOnDomReady() {
 		}
 	}
 
-	$('#ws_paste_menu').click(function (event) {
+	$('#ws_paste_menu').on('click', function (event) {
 		event.preventDefault();
 
 		//Check if anything has been copied/cut
@@ -3770,7 +3823,7 @@ function ameOnDomReady() {
 	});
 
 	//New menu
-	$('#ws_new_menu').click(function (event) {
+	$('#ws_new_menu').on('click', function (event) {
 		event.preventDefault();
 
 		ws_paste_count++;
@@ -3796,11 +3849,11 @@ function ameOnDomReady() {
 		var result = outputTopMenu(menu, (selection.length > 0) ? selection : null);
 
 		//The menus's editbox is always open
-		result.menu.find('.ws_edit_link').click();
+		result.menu.find('.ws_edit_link').trigger('click');
 	});
 
 	//New separator
-	$('#ws_new_separator, #ws_new_submenu_separator').click(function (event) {
+	$('#ws_new_separator, #ws_new_submenu_separator').on('click', function (event) {
 		event.preventDefault();
 
 		ws_paste_count++;
@@ -3831,7 +3884,7 @@ function ameOnDomReady() {
 	});
 
 	//Toggle all menus for the currently selected actor
-	$('#ws_toggle_all_menus').click(function(event) {
+	$('#ws_toggle_all_menus').on('click', function(event) {
 		event.preventDefault();
 
 		if ( actorSelectorWidget.selectedActor === null ) {
@@ -3860,7 +3913,7 @@ function ameOnDomReady() {
 	var sourceActorList = $('#ame-copy-source-actor'), destinationActorList = $('#ame-copy-destination-actor');
 
 	//The "Copy permissions" toolbar button.
-	$('#ws_copy_role_permissions').click(function(event) {
+	$('#ws_copy_role_permissions').on('click', function(event) {
 		event.preventDefault();
 
 		var previousSource = sourceActorList.val();
@@ -3895,7 +3948,7 @@ function ameOnDomReady() {
 
 	//Actually copy the permissions when the user click the confirmation button.
 	var copyConfirmationButton = $('#ws-ame-confirm-copy-permissions');
-	copyConfirmationButton.click(function() {
+	copyConfirmationButton.on('click', function() {
 		var sourceActor = sourceActorList.val();
 		var destinationActor = destinationActorList.val();
 
@@ -3937,7 +3990,7 @@ function ameOnDomReady() {
 
 	//Only enable the copy button when the user selects a valid source and destination.
 	copyConfirmationButton.prop('disabled', true);
-	sourceActorList.add(destinationActorList).click(function() {
+	sourceActorList.add(destinationActorList).on('click', function() {
 		var sourceActor = sourceActorList.val();
 		var destinationActor = destinationActorList.val();
 
@@ -4021,9 +4074,11 @@ function ameOnDomReady() {
 	}
 
 	//Toggle the second row of toolbar buttons.
-	$('#ws_toggle_toolbar').click(function() {
+	$('#ws_toggle_toolbar').on('click', function() {
 		var visible = menuEditorNode.find('.ws_second_toolbar_row').toggle().is(':visible');
-		$.cookie('ame-show-second-toolbar', visible ? '1' : '0', {expires: 90});
+		if (typeof $['cookie'] !== 'undefined') {
+			$.cookie('ame-show-second-toolbar', visible ? '1' : '0', {expires: 90});
+		}
 	});
 
 
@@ -4035,7 +4090,7 @@ function ameOnDomReady() {
 	}
 
 	//Show/Hide item
-	$('#ws_hide_item').click(function (event) {
+	$('#ws_hide_item').on('click', function (event) {
 		event.preventDefault();
 
 		//Get the selected item
@@ -4049,7 +4104,7 @@ function ameOnDomReady() {
 	});
 
 	//Delete item
-	$('#ws_delete_item').click(function (event) {
+	$('#ws_delete_item').on('click', function (event) {
 		event.preventDefault();
 
 		var selection = getSelectedSubmenuItem();
@@ -4061,7 +4116,7 @@ function ameOnDomReady() {
 	});
 
 	//Copy item
-	$('#ws_copy_item').click(function (event) {
+	$('#ws_copy_item').on('click', function (event) {
 		event.preventDefault();
 
 		//Get the selected item
@@ -4075,7 +4130,7 @@ function ameOnDomReady() {
 	});
 
 	//Cut item
-	$('#ws_cut_item').click(function (event) {
+	$('#ws_cut_item').on('click', function (event) {
 		event.preventDefault();
 
 		//Get the selected item
@@ -4127,7 +4182,7 @@ function ameOnDomReady() {
 		updateParentAccessUi(targetSubmenu);
 	}
 
-	$('#ws_paste_item').click(function (event) {
+	$('#ws_paste_item').on('click', function (event) {
 		event.preventDefault();
 
 		//Check if anything has been copied/cut
@@ -4146,7 +4201,7 @@ function ameOnDomReady() {
 	});
 
 	//New item
-	$('#ws_new_item').click(function (event) {
+	$('#ws_new_item').on('click', function (event) {
 		event.preventDefault();
 
 		if ($('.ws_submenu:visible').length < 1) {
@@ -4182,7 +4237,7 @@ function ameOnDomReady() {
 		updateItemEditor(menu);
 
 		//The items's editbox is always open
-		menu.find('.ws_edit_link').click();
+		menu.find('.ws_edit_link').trigger('click');
 
 		updateParentAccessUi(menu);
 	});
@@ -4192,7 +4247,7 @@ function ameOnDomReady() {
 	//==============================================
 
 	//Save Changes - encode the current menu as JSON and save
-	$('#ws_save_menu').click(function () {
+	$('#ws_save_menu').on('click', function () {
 		try {
 			var tree = readMenuTreeState();
 		} catch (error) {
@@ -4263,26 +4318,35 @@ function ameOnDomReady() {
 			}
 		}
 
-		$('#ws_main_form').submit();
+		$('#ws_main_form').trigger('submit');
 	});
 
 	//Load default menu - load the default WordPress menu
-	$('#ws_load_menu').click(function () {
+	$('#ws_load_menu').on('click', function () {
 		if (confirm('Are you sure you want to load the default WordPress menu?')){
 			loadMenuConfiguration(defaultMenu);
 		}
 	});
 
 	//Reset menu - re-load the custom menu. Discards any changes made by user.
-	$('#ws_reset_menu').click(function () {
+	$('#ws_reset_menu').on('click', function () {
 		if (confirm('Undo all changes made in the current editing session?')){
 			loadMenuConfiguration(customMenu);
 		}
 	});
 
-	$('#ws_toggle_editor_layout').click(function () {
+	//Enable the "load default menu" and "undo changes" buttons only when "All" is selected.
+	//Otherwise some users incorrectly assume these buttons only affect the currently selected role or user.
+	actorSelectorWidget.onChange(function (newSelectedActor) {
+		$('#ws_load_menu, #ws_reset_menu').prop('disabled', newSelectedActor !== null);
+	});
+	$('#ws_load_menu, #ws_reset_menu').prop('disabled', actorSelectorWidget.selectedActor !== null);
+
+	$('#ws_toggle_editor_layout').on('click', function () {
 		var isCompactLayoutEnabled = menuEditorNode.toggleClass('ws_compact_layout').hasClass('ws_compact_layout');
-		$.cookie('ame-compact-layout', isCompactLayoutEnabled ? '1' : '0', {expires: 90});
+		if (typeof $['cookie'] !== 'undefined') {
+			$.cookie('ame-compact-layout', isCompactLayoutEnabled ? '1' : '0', {expires: 90});
+		}
 
 		var button = $(this);
 		if (button.is('input')) {
@@ -4302,7 +4366,7 @@ function ameOnDomReady() {
 		minHeight: 100
 	});
 
-	$('#ws_export_menu').click(function(){
+	$('#ws_export_menu').on('click', function(){
 		var button = $(this);
 		button.prop('disabled', true);
 		button.val('Exporting...');
@@ -4355,11 +4419,11 @@ function ameOnDomReady() {
 		);
 	});
 
-	$('#ws_cancel_export').click(function(){
+	$('#ws_cancel_export').on('click', function(){
 		$('#export_dialog').dialog('close');
 	});
 
-	$('#download_menu_button').click(function(){
+	$('#download_menu_button').on('click', function(){
 		$('#export_dialog').dialog('close');
 	});
 
@@ -4370,11 +4434,11 @@ function ameOnDomReady() {
 		modal: true
 	});
 
-	$('#ws_cancel_import').click(function(){
+	$('#ws_cancel_import').on('click', function(){
 		$('#import_dialog').dialog('close');
 	});
 
-	$('#ws_import_menu').click(function(){
+	$('#ws_import_menu').on('click', function(){
 		$('#import_progress_notice, #import_progress_notice2, #import_complete_notice, #ws_import_error').hide();
 		$('#ws_import_panel').show();
 		$('#import_menu_form').resetForm();
@@ -4386,7 +4450,7 @@ function ameOnDomReady() {
 		importDialog.dialog('open');
 	});
 
-	$('#import_file_selector').change(function(){
+	$('#import_file_selector').on('change', function(){
 		$('#ws_start_import').prop('disabled', ! $(this).val() );
 	});
 
@@ -4610,14 +4674,14 @@ function ameOnDomReady() {
 	};
 
 	if ($generalVisBox.length > 0) {
-		$showAdminMenu.click(function() {
+		$showAdminMenu.on('click', function() {
 			AmeEditorApi.setComponentVisibility(
 				'adminMenu',
 				actorSelectorWidget.selectedActor,
 				$(this).is(':checked')
 			);
 		});
-		$showWpToolbar.click(function () {
+		$showWpToolbar.on('click', function () {
 			AmeEditorApi.setComponentVisibility(
 				'toolbar',
 				actorSelectorWidget.selectedActor,
@@ -4625,13 +4689,15 @@ function ameOnDomReady() {
 			);
 		});
 
-		$generalVisBox.find('.handlediv').click(function() {
+		$generalVisBox.find('.handlediv').on('click', function() {
 			$generalVisBox.toggleClass('closed');
-			$.cookie(
-				'ame_vis_box_open',
-				($generalVisBox.hasClass('closed') ? '0' : '1'),
-				{ expires: 90 }
-			);
+			if (typeof $['cookie'] !== 'undefined') {
+				$.cookie(
+					'ame_vis_box_open',
+					($generalVisBox.hasClass('closed') ? '0' : '1'),
+					{ expires: 90 }
+				);
+			}
 		});
 
 		actorSelectorWidget.onChange(function() {
@@ -4739,7 +4805,7 @@ function ameOnDomReady() {
 	});
 
 	//Flag closed hints as hidden by sending the appropriate AJAX request to the backend.
-	$('.ws_hint_close').click(function() {
+	$('.ws_hint_close').on('click', function() {
 		var hint = $(this).parents('.ws_hint').first();
 		hint.hide();
 		wsEditorData.showHints[hint.attr('id')] = false;
@@ -4754,13 +4820,15 @@ function ameOnDomReady() {
 
 	//Expand/collapse the "How To" box.
 	var $howToBox = $("#ws_ame_how_to_box");
-	$howToBox.find(".handlediv").click(function() {
+	$howToBox.find(".handlediv").on('click', function() {
 		$howToBox.toggleClass('closed');
-		$.cookie(
-			'ame_how_to_box_open',
-			($howToBox.hasClass('closed') ? '0' : '1'),
-			{ expires: 180 }
-		);
+		if (typeof $['cookie'] !== 'undefined') {
+			$.cookie(
+				'ame_how_to_box_open',
+				($howToBox.hasClass('closed') ? '0' : '1'),
+				{ expires: 180 }
+			);
+		}
 	});
 
 
@@ -4786,6 +4854,180 @@ function ameOnDomReady() {
 			actorSelectorWidget.setSelectedActor(null);
 		}
 	}
+
+	/******************************************************************
+	                        "Test Access" feature
+	 ******************************************************************/
+	var testAccessDialog = $('#ws_ame_test_access_screen').dialog({
+			autoOpen: false,
+			modal: true,
+			closeText: ' ',
+			title: 'Test access',
+			width: 900
+			//draggable: false
+		}),
+		testMenuItemList = $('#ws_ame_test_menu_item'),
+		testActorList = $('#ws_ame_test_relevant_actor'),
+		testAccessButton = $('#ws_ame_start_access_test'),
+		testAccessFrame = $('#ws_ame_test_access_frame'),
+		testConfig = null,
+
+		testProgress = $('#ws_ame_test_progress'),
+		testProgressText = $('#ws_ame_test_progress_text');
+
+	$('#ws_test_access').on('click', function () {
+		testConfig = readMenuTreeState();
+
+		var selectedMenuContainer = getSelectedMenu(),
+			selectedItemContainer = getSelectedSubmenuItem(),
+			selectedMenu = null,
+			selectedItem = null,
+			selectedUrl = null;
+		if (selectedMenuContainer.length > 0) {
+			selectedMenu = selectedMenuContainer.data('menu_item');
+			selectedUrl = getFieldValue(selectedMenu, 'url');
+		}
+		if (selectedItemContainer.length > 0) {
+			selectedItem = selectedItemContainer.data('menu_item');
+			selectedUrl = getFieldValue(selectedItem, 'url');
+		}
+
+		function addMenuItems(collection, parentTitle, parentFile) {
+			_.each(collection, function (menuItem) {
+				if (menuItem.separator) {
+					return;
+				}
+
+				var title = formatMenuTitle(getFieldValue(menuItem, 'menu_title', '[Untitled menu]'));
+				if (parentTitle) {
+					title = parentTitle + ' -> ' + title;
+				}
+				var url = getFieldValue(menuItem, 'url', '[no-url]');
+
+				var option = $(
+					'<option>', {
+						val: url,
+						text: title
+					}
+				);
+				option.data('menu_item', menuItem);
+				option.data('parent_file', parentFile || '');
+				option.prop('selected', (url === selectedUrl));
+
+				testMenuItemList.append(option);
+
+				if (menuItem.items) {
+					addMenuItems(menuItem.items, title, getFieldValue(menuItem, 'file', ''));
+				}
+			});
+		}
+
+		//Populate the list of menu items.
+		testMenuItemList.empty();
+		addMenuItems(testConfig.tree);
+
+		//Populate the actor list.
+		testActorList.empty();
+		testActorList.append($('<option>', {text: 'Not selected', val: ''}));
+		_.each(actorSelectorWidget.getVisibleActors(), function (actor) {
+			//TODO: Skip anything that isn't a role
+			var option = $('<option>', {
+				val: actor.id,
+				text: actorSelectorWidget.getNiceName(actor)
+			});
+			testActorList.append(option);
+		});
+
+		//Pre-select the current actor.
+		if (actorSelectorWidget.selectedActor !== null) {
+			testActorList.val(actorSelectorWidget.selectedActor);
+		}
+
+		testAccessDialog.dialog('open');
+	});
+
+	testAccessButton.on('click', function () {
+		testAccessButton.prop('disabled', true);
+		testProgress.show();
+		testProgressText.text('Sending menu settings...');
+
+		var selectedOption = testMenuItemList.find('option:selected').first(),
+			selectedMenu = selectedOption.data('menu_item'),
+			menuUrl = selectedOption.val();
+
+		$.ajax(
+			wsEditorData.adminAjaxUrl,
+			{
+				data: {
+					'action': 'ws_ame_set_test_configuration',
+					'data': encodeMenuAsJSON(testConfig),
+					'_ajax_nonce': wsEditorData.setTestConfigurationNonce
+				},
+				method: 'post',
+				dataType: 'json',
+				success: function(response) {
+					if (!response) {
+						alert('Error: Could not parse the server response.');
+						testAccessButton.prop('disabled', false);
+						return;
+					}
+					if (response.error) {
+						alert(response.error);
+						testAccessButton.prop('disabled', false);
+						return;
+					}
+					if (!response.success) {
+						alert('Error: The request failed, but there is no error information available.');
+						testAccessButton.prop('disabled', false);
+						return;
+					}
+
+					//Caution: Won't work in IE. Needs compat checks.
+					var testPageUrl = new URL(menuUrl, window.location.href);
+					testPageUrl.searchParams.append('ame-test-menu-access-as', $('#ws_ame_test_access_username').val());
+					testPageUrl.searchParams.append('_wpnonce', wsEditorData.testAccessNonce);
+					testPageUrl.searchParams.append('ame-test-relevant-role', testActorList.val());
+
+					testPageUrl.searchParams.append('ame-test-target-item', getFieldValue(selectedMenu, 'file', ''));
+					testPageUrl.searchParams.append('ame-test-target-parent', selectedOption.data('parent_file'));
+
+					testProgressText.text('Loading the test page....');
+					$('#ws_ame_test_frame_placeholder').hide();
+
+					$(window).on('message', receiveTestAccessResults);
+					testAccessFrame
+						.show()
+						.on('load', onAccessTestLoaded)
+						.prop('src', testPageUrl.href);
+				},
+				error: function(jqXHR, textStatus) {
+					alert('HTTP Error: ' + textStatus);
+					testAccessButton.prop('disabled', false);
+				}
+			}
+		);
+	});
+
+	function onAccessTestLoaded() {
+		testAccessFrame.off('load', onAccessTestLoaded);
+		testProgress.hide();
+
+		testAccessButton.prop('disabled', false);
+	}
+
+	function receiveTestAccessResults(event) {
+		if (event.originalEvent.source !== testAccessFrame.get(0).contentWindow) {
+			if (console && console.warn) {
+				console.warn('AME: Received a message from an unexpected source. Message ignored.');
+			}
+			return;
+		}
+		var message = event.originalEvent.data || event.originalEvent.message;
+		console.log('message received', message);
+
+		$(window).off('message', receiveTestAccessResults);
+	}
+
 
 	//Finally, show the menu
 	loadMenuConfiguration(customMenu);
@@ -4844,7 +5086,7 @@ jQuery(function($){
 	hideSettingsCheckbox.prop('checked', wsEditorData.hideAdvancedSettings);
 
 	//Update editor state when settings change
-	$('#ws-hide-advanced-settings').click(function(){
+	$('#ws-hide-advanced-settings').on('click', function(){
 		wsEditorData.hideAdvancedSettings = hideSettingsCheckbox.prop('checked');
 
 		//Show/hide advanced settings dynamically as the user changes the setting.

@@ -117,6 +117,8 @@ $isProVersion = apply_filters('admin_menu_editor_is_pro', false);
 				</td>
 			</tr>
 
+			<?php do_action('admin-menu-editor-display_addons'); ?>
+
 			<tr>
 				<th scope="row">
 					Modules
@@ -261,6 +263,51 @@ $isProVersion = apply_filters('admin_menu_editor_is_pro', false);
 					</fieldset>
 				</td>
 			</tr>
+
+				<tr>
+					<th scope="row">
+						New menu visibility
+						<a class="ws_tooltip_trigger"
+						   title="This setting controls the default permissions of menu items that are
+						    not present in the last saved menu configuration.
+							&lt;br&gt;&lt;br&gt;
+							This includes new menus added by plugins and themes.
+							In Multisite, it also applies to menus that exist on some sites but not others.
+							It doesn't affect menu items that you add through the Admin Menu Editor interface.">
+							<div class="dashicons dashicons-info"></div>
+						</a>
+					</th>
+					<td>
+						<fieldset>
+							<p>
+								<label>
+									<input type="radio" name="unused_item_permissions" value="unchanged"
+										<?php checked('unchanged', $settings['unused_item_permissions']); ?>>
+									Leave unchanged (default)
+
+									<br><span class="description">
+										No special restrictions. Visibility will depend on the plugin
+										that added the menus.
+									</span>
+								</label>
+							</p>
+
+							<p>
+								<label>
+									<input type="radio" name="unused_item_permissions" value="match_plugin_access"
+										<?php checked('match_plugin_access', $settings['unused_item_permissions']); ?>>
+									Show only to users who can access this plugin
+
+									<br><span class="description">
+										Automatically hides all new and unrecognized menus from regular users.
+										To make new menus visible, you have to manually enable them in the menu editor.
+									</span>
+								</label>
+							</p>
+
+						</fieldset>
+					</td>
+				</tr>
 			<?php endif; ?>
 
 			<tr>
@@ -305,6 +352,48 @@ $isProVersion = apply_filters('admin_menu_editor_is_pro', false);
 
 				</fieldset>
 			</td>
+			</tr>
+
+			<tr>
+				<th scope="row">
+					WPML support
+				</th>
+				<td>
+					<p>
+						<label>
+							<input type="checkbox" name="wpml_support_enabled"
+								<?php checked($settings['wpml_support_enabled']); ?>>
+							Make edited menu titles translatable with WPML
+
+							<br><span class="description">
+								The titles will appear in the "Strings" section in WPML.
+								If you don't use WPML or a similar translation plugin,
+								you can safely disable this option.
+							</span>
+						</label>
+					</p>
+				</td>
+			</tr>
+
+			<tr>
+				<th scope="row">
+					bbPress override
+				</th>
+				<td>
+					<p>
+						<label>
+							<input type="checkbox" name="bbpress_override_enabled"
+								<?php checked($settings['bbpress_override_enabled']); ?>>
+							Prevent bbPress from resetting role capabilities
+
+							<br><span class="description">
+								By default, bbPress will automatically undo any changes that are made to dynamic
+								bbPress roles. Enable this option to override that behaviour and make it possible
+								to change bbPress role capabilities.
+							</span>
+						</label>
+					</p>
+				</td>
 			</tr>
 
 			<tr>
