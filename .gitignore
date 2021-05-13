@@ -1,52 +1,73 @@
-# Ignore everything in the root except the "wp-content" directory.
-/*
-!.gitignore
+#
+# Adapted from here: http://www.billerickson.net/git-push-wpengine/
+#
+
+# Ignore everything #
+**
+
+# Keep data folder EMPTY
+!data/
+data/**
+
+# Keep basic folders EMPTY
+!wp-admin/
+wp-admin/**
+!wp-includes/
+wp-includes/**
 !wp-content/
-!deploy.php
-
-# Ignore everything in the "wp-content" directory, except the "plugins" and "themes" directories.
-wp-content/*
-!wp-content/languages/
-!wp-content/plugins/
+wp-content/**
 !wp-content/themes/
-wp-content/themes/codemstheme
- 
-# Ignore everything in the "plugins" directory, except the plugins you specify
-# wp-content/plugins/*
-# !wp-content/plugins/my-single-file-plugin.php
-# !wp-content/plugins/my-directory-plugin/
- 
-# Ignore everything in the "themes" directory, except the themes you specify
-# wp-content/themes/*
-# !wp-content/themes/my-theme/
+wp-content/themes/**
+!wp-content/plugins/
+wp-content/plugins/**
 
-#------------------------
-#  Log files
-#------------------------
+# Add two rules for each Theme or Plugin you want to include:
+# 1. !folder-name/    <-- includes the Plugin and top level files
+# 2. !folder-name/**  <-- includes the Plugin and sub level files recursively, except for the "Ignore some other system generated files" rules below
+###############################
 
-*.log
-error_log
-access_log
-dwsync.xml
-.sass-cache
+# Start editing!
+!wp-content/themes/mural/
+!wp-content/themes/mural/**
 
-#------------------------
-#  OS Files
-#------------------------
 
+# Other dependencies
+!.eslintrc
+
+# Ignore dev files
+**/greenlite/ui-builder.php
+**/greenlite/templates/ui-builder.twig
+
+# Stop editing!
+
+############################################
+# Ignore some other system generated files #
+############################################
 .DS_Store
-.DS_Store?
 ._*
-.Spotlight-V100
 .Trashes
-ehthumbs.db
-*[Tt]humbs.db
-*.Trashes
+Thumbs.db
 
+# Keep document files #
+###################################
+!README.md
+!CHANGELOG.md
 
-#------------------------
-#  Developpement Files
-#------------------------
-node_modules
-wp-content/themes/**/docs/**
-wp-content/themes/**/doc-templates/**
+# Keep .gitignore #
+###################################
+!.gitignore
+!.gitkeep
+
+# Docker Sample Config
+!docker-compose.yml.sample
+
+# Circleci
+###################################
+!.circleci/
+!.circleci/**
+
+# Ignore node_modules
+node_modules/
+
+# Ignore Yarn Logs
+yarn-error.log

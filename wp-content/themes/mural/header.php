@@ -33,9 +33,8 @@
 
 </head>
 
-<? $body_class = array('preload'); ?>
 
-<body <?php body_class($body_class); ?>>
+<body <?php body_class(); ?>>
 	<div>
 		<!--pour mmenu-->
 		<div id="page" class="hfeed site">
@@ -44,7 +43,7 @@
 				<div class="main-menu">
 					<div class="content">
 
-						<a class="home-link" href="<?php echo esc_url(home_url('/')); ?>/v2019" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home">
+						<a class="home-link" href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home">
 							<?php echo wp_get_attachment_image(get_field('logo', 'options'), 'original'); ?>
 						</a>
 
@@ -57,7 +56,7 @@
 						<nav id="mmenu">
 							<ul>
 
-								<? wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => '', 'container' => '', 'items_wrap' => '%3$s', 'walker' => new MenuWalker()) ); ?>
+								<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => '', 'container' => '', 'items_wrap' => '%3$s', 'walker' => new MenuWalker()) ); ?>
 
 							</ul>
 						</nav>
