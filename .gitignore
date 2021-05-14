@@ -27,8 +27,10 @@ wp-content/plugins/**
 ###############################
 
 # Start editing!
-!wp-content/themes/mural/
-!wp-content/themes/mural/**
+!wp-content/themes/mural-old/
+!wp-content/themes/mural-old/**
+!wp-content/themes/mural-2021/
+!wp-content/themes/mural-2021/**
 
 
 # Other dependencies
