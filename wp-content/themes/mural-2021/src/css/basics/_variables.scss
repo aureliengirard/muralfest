@@ -1,0 +1,27 @@
+// main: ../main.scss
+
+/*
+*  ALL NON-SPECIFIC COLORS. If you need to add a specific color added to a section's element, do it inside "partials/_specificelement.scss"
+*/
+
+$primary-color: #000000 !default;
+$secondary-color: #ffffff !default;
+$gray: #EEEEEE !default;
+$white: #ffffff !default;
+$black: #000000 !default;
+$none: transparent !default;
+
+$link: $primary-color;
+$normal-color: $primary-color;
+$visited: $primary-color;
+$hover: $black;
+$active: $primary-color;
+
+$transition-base : all .25s ease-in-out;
+$link-decoration : none;
+$link-hover-decoration : none;
+
+// WHERE WE MANAGE SPACINGS, PADDINGS, CONTAINERS MAXIMUM AND SUCH.
+$spacing: 40px;
+$f-padding: 15px;
+

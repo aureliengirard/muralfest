@@ -1,0 +1,20 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<section id="hero" class="hero hero__section hero__section--404" style="background-image:url('{{ TimberImage(options.background_404).src }}');">
+		<div class="hero__overlay"></div>
+		<div class="container hero--large">
+			<div class="row">
+				<div class="col-md-9">
+					<h1>
+						<span>Error 404</span>
+						{{ options.headline_404 }}
+					</h1>
+					<div class="section__cta">
+						<a href="{{ options.cta_link_404 }}" class="btn btn--primary">{{ options.cta_label_404 }}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

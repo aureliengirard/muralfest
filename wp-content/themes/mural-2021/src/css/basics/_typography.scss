@@ -1,0 +1,164 @@
+
+%heading-h1 {
+    font-size: 3em;
+    font-weight: 400;
+    line-height: 1;
+    font-family: var(--baseSecondaryFont);
+    text-transform: uppercase;
+
+    @include media-breakpoint-up(lg){
+        font-size: 5vw;
+    }
+
+    span{
+        display: block;
+        font-size: 1.125em;
+        letter-spacing: -2px;
+    }
+}
+
+%heading-h2 {
+    font-size: 1.5em;
+    font-weight: 700;
+
+    @include media-breakpoint-up(md){
+        font-size: 1.875em;
+    }
+
+    @include media-breakpoint-up(xxxl){
+        font-size: 2em;
+    }
+}
+
+%heading-h3 {
+    font-size: 1.25em;
+    font-weight: 700;
+    margin-bottom: $spacing/3;
+
+    @include media-breakpoint-up(md){
+        font-size: 1.5em;
+    }
+}
+
+%heading-h4 {
+    font-size: 1em;
+    font-weight: 700;
+
+    @include media-breakpoint-up(md){
+        font-size: 1.125em;
+    }
+}
+
+%paragraph {
+    $font : 16;
+    $lh : 26;
+
+    font-size: 1em;
+    line-height: 1.5;
+    letter-spacing: 0.25px;
+    margin: 1em 0;
+    font-family: var(--basePrimaryFont);
+
+    .lg{
+        font-size: 1.125em;
+    }
+}
+
+// HEADINGS CSS
+.content-wrapper{
+
+    h1 {
+        @extend %heading-h1;
+    }
+
+    h2 {
+        @extend %heading-h2;
+    }
+
+    h3 {
+        @extend %heading-h3;
+
+        &.h3--alt{
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+    }
+
+    h4 {
+        @extend %heading-h4;
+    }
+
+    h2,h3,h4{
+        font-family: var(--basePrimaryFont);
+        text-transform: uppercase;
+    }
+
+    p{
+        @extend %paragraph;
+    }
+
+    blockquote{
+        font-size: 1.15em;
+
+        @include media-breakpoint-up(md){
+            font-size: 1.4em;
+        }
+
+        p{
+            &:first-child{
+                margin-top: 0;
+            }
+        }
+    }
+}
+
+.rte{
+
+    * + {
+
+        h2,h3{
+            margin-top: $spacing;
+        }
+    }
+
+    h2{
+        margin-bottom: $spacing * .75;
+    }
+
+    h3{
+        margin-bottom:  $spacing * .5;
+    }
+
+    h4{
+        margin-bottom:  $spacing * .25;
+    }
+
+    p{
+        &:nth-child(1){
+            margin-top: 0;
+        }
+
+        &:nth-last-child(1){
+            margin-bottom: 0;
+        }
+    }
+}
+
+header a {
+    text-decoration: none;
+    color: inherit;
+}
+
+section a {
+    font-size: inherit;
+    color: var(--couleurOr);
+
+    @include hover-focus{
+
+    }
+}
+
+.section__title{
+    margin-bottom: $spacing * .75;
+}
+

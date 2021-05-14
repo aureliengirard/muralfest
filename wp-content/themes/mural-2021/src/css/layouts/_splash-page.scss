@@ -1,0 +1,17 @@
+.splash{
+    .poster{
+        img{
+            width: 100%;
+        }
+    }
+
+    .content{
+        color: var(--couleurJaune);
+        display: inherit;
+        @include align-items(center);
+
+        &__wrapper{
+            width: 100%;
+        }
+    }
+}

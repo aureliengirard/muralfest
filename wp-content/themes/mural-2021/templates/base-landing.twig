@@ -1,0 +1,48 @@
+{% block html_head_container %}
+
+	{% include 'partial/html-header.twig' %}
+
+		{% block head %}
+
+		{% endblock %}
+		{% block json %}
+
+		{% endblock %}
+
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+		{% include 'partial/critical-css.twig' %}
+		<link rel="stylesheet" href="{{ theme.link }}/dist/css/main.min.css?v=1.20210512.1">
+
+		{% include 'partial/tracking.twig' with { 'location': 'header' } %}
+
+	</head>
+
+{% endblock %}
+
+	{% block extra_header_scripts %}
+	{% endblock %}
+
+	<body class="{{body_class}}" data-template="base.twig">
+		<a name="top"></a>
+		{% include 'partial/tracking.twig' with { 'location': 'body' } %}
+
+		{# Site Main Content #}
+	    <main id="main-content" class="content-wrapper">
+	      {% block content %}
+	        Sorry, no content
+	      {% endblock %}
+	    </main>
+
+		{% block styles %}
+		{% endblock %}
+
+		{{ function('wp_footer') }}
+		<script type="text/javascript" src="{{ theme.link }}/dist/js/vendor.min.js"></script>
+		<script type="text/javascript" src="{{ theme.link }}/dist/js/main.min.js" defer></script>
+		{% block scripts %}
+
+		{% endblock %}
+
+	</body>
+</html>

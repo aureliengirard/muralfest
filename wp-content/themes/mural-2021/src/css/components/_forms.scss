@@ -1,0 +1,296 @@
+// main: ../main.scss
+
+/*
+* STYLING FORMS AND INPUTS.
+* Since we are in partials scss, we can get specific and add fonts, colors, etc.
+*/
+
+$padding: 10px;
+
+%input{
+    $font : 16;
+    $lh : 26;
+
+    font-size: 1rem;
+    line-height: ($lh / $font);
+    letter-spacing: 0.5px;
+    font-family: var(--baseFont);
+    //color: $black;
+    padding: .675em 1em;
+    border-style: solid;
+    border-color: var(--couleurNoir);
+    border-width: 0 0 3px;
+    border-radius: 0;
+    position: relative;
+    @include placeholders (var(--couleurNoir), 600, 1em, var(--baseFont), none);
+    background-color: var(--couleurBlanc);
+    transition: all .25s ease;
+
+    &:focus,
+    &:active{
+        border-width: 0 0 3px;
+        border-color: var(--couleurOr);
+    }
+}
+
+form {
+    label {
+        //display: none;
+    }
+
+    .validation_error{
+        font-size: 1em;
+        font-family:: var(--baseFont);
+        font-weight: 600;
+        color: var(--couleurNoir);
+        padding: $padding;
+        background-color: #e64632e6;
+        text-align: center;
+        margin-bottom: $padding;
+    }
+
+    .validation_message{
+        //color: $red;
+        margin-top: $padding;
+        font-size: 1rem;
+    }
+
+    &.newsletter{
+        position: relative;
+        display: inline-flex;
+        width: 100%;
+        max-width: 525px;
+        margin-top: $spacing / 2;
+        flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+
+        .validation_error{
+            display: none;
+        }
+
+        .gform_fields,
+        .gfield{
+            margin: 0;
+        }
+
+        .gfield{
+
+            .validation_message{
+                text-align: center;
+                padding: .75em 1.75em;
+            }
+        }
+
+        .gform_body{
+            @include media-breakpoint-only(sm){
+                min-width: 100%;
+            }
+
+            flex: 2;
+        }
+
+        .gform_footer{
+            margin: $padding * 2 0 0 0;
+            min-width: 100%;
+
+            @include media-breakpoint-up(md){
+                min-width: auto;
+                margin: 0 0 0 $padding * 3;
+            }
+        }
+
+        [type="submit"]{
+            font-size: 1rem;
+            padding: .675em;
+            background-color: transparent;
+
+            @include hover-focus{
+                border-color: var(--couleurOr);
+            }
+        }
+    }
+}
+
+
+textarea {
+    @extend %input;
+    height: $padding * 15;
+}
+
+select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url(../assets/SemiArrowDown-tiny.svg) no-repeat transparent;
+    background-position: calc(100% - 1em) 50%;
+    border-bottom: 1px solid #a7a8a9;
+    outline: none;
+
+    .form_field &,
+    .gfield &{
+        @extend %input;
+        min-height: 3.1em;
+    }
+
+    &:focus {
+        .form_field &,
+        .gfield &{
+            border-radius: 6px 6px 0 0;
+        }
+    }
+}
+
+input {
+    &[type="phone"],
+    &[type="email"],
+    &[type="text"]{
+        @extend %input;
+    }
+
+    &[type="checkbox"],
+    &[type="radio"]{
+        //width: $gutter;
+        height: 1.2em;
+        margin: 0 $padding 0 0;
+    }
+
+    &[type="reset"],
+    &[type="submit"] {
+        @extend %btn;
+        cursor: pointer;
+    }
+
+    &[type="submit"] {
+        @extend %btn__noir;
+    }
+
+    &:focus{
+        outline: none;
+    }
+
+    &[disabled="true"]{
+        pointer-events: none;
+        //color: $gray-300;
+        border-color: #D3D3D4;
+    }
+
+}
+
+//Gravity Form Styling
+.gform{
+
+    &_body{}
+
+    &_fields{
+        @include flexbox;
+        @include flex-flow(wrap);
+        @include justify-content(space-between);
+        //margin: $gutter-sm*-1 0;
+    }
+
+    &_footer{
+        //margin-top: $pad;
+        @include flexbox;
+
+        [type="submit"]{
+            margin-left: auto;
+
+            @include media-breakpoint-up(lg){
+                margin-right: auto;
+            }
+        }
+    }
+
+    &_ajax_spinner{
+        height: $padding * 2;
+        width: $padding * 2;
+    }
+
+
+    &_fields{
+        padding-left: 0;
+    }
+}
+
+.form_field,
+.gfield{
+    //margin: $gutter-sm/2 0;
+    width: 100%;
+
+    @include media-breakpoint-up(md){
+        //margin: $gutter-sm 0;
+    }
+
+    &.hidden_label{
+
+         & > label{
+             display: none;
+         }
+    }
+
+    //@extend %first-last;
+
+    & > *{
+        display: block
+    }
+
+    label{
+        font-size: 1em;
+        color: var(--couleurNoir);
+        margin-bottom: $padding;
+
+        & + input{
+            margin-top: 0;
+        }
+
+        & + .gform_wrapper{
+            //margin-top: -($gutter-sm);
+        }
+    }
+
+    &__no-label{
+
+        & > label{
+            display: none;
+        }
+    }
+
+    select,
+    textarea,
+    input:not([type=checkbox]):not([type=radio]){
+        width: 100%;
+    }
+
+    &_radio,
+    &_checkbox{
+        & > li{
+            @include flexbox;
+            @include flex-flow(row);
+        }
+
+        label{
+            margin-bottom: 0;
+            // line-height: $gutter;
+        }
+    }
+
+    .gfield_required{
+        //color: $red;
+        //padding-left: $gutter-xs/2;
+        font-weight: 700;
+    }
+
+    .gsection_title{
+        @extend %heading-h4;
+        margin-bottom: 0;
+    }
+
+    .gfield_description{
+        font-style: italic;
+        margin-top: 8px;
+        font-size: 0.925em;
+    }
+}
+
+.gform_confirmation_wrapper {
+    text-align: center;
+}

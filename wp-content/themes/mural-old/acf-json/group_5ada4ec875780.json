@@ -1,0 +1,70 @@
+{
+    "key": "group_5ada4ec875780",
+    "title": "Description de l'oeuvre",
+    "fields": [
+        {
+            "key": "field_5ada4ecf1635b",
+            "label": "Ajouter une description pour cette oeuvre",
+            "name": "ajoute_description",
+            "type": "true_false",
+            "instructions": "Si aucune description est rajouté, celle de l'artiste sera mis.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5ada4eef1635c",
+            "label": "Description de l'oeuvre",
+            "name": "description_de_loeuvre",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5ada4ecf1635b",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "artwork"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1524256517
+}

@@ -1,0 +1,9 @@
+body.admin-bar #nav {
+  @include media-breakpoint-up(md){
+    top:32px !important;
+  }
+
+  @include media-breakpoint-down(md) {
+    top:46px !important;
+  }
+}

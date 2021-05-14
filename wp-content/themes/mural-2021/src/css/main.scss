@@ -1,0 +1,48 @@
+/*
+* IMPORTS AND INCLUDES
+* In each of the files below, on top, you can find // main: main.scss.
+* It means that each file will try to compile the file where you are now instead of compiling its own.
+* So, only one compiling will happen, this one, main.scss.
+*/
+
+// Here, you add parts not specific to any section or element of a page:
+
+// Utilities
+@import 'utilities/_breakpoints.scss';
+@import 'utilities/_mixins.scss';
+@import 'utilities/_adminbar.scss';
+@import 'utilities/_functions.scss';
+@import 'utilities/_helper.scss';
+
+// Vendors
+@import "../../node_modules/slick-carousel/slick/slick.css";
+@import "../../node_modules/magnific-popup/dist/magnific-popup.css";
+@import '../../node_modules/aos/dist/aos.css';
+
+// Basics
+@import 'basics/_fonts.scss';
+@import 'basics/_variables.scss';
+@import 'basics/_typography.scss';
+
+// Base
+@import 'base/_general.scss';
+@import 'base/_reset.scss';
+@import 'Base/_grid.scss';
+
+// Components
+@import 'components/_buttons.scss';
+@import 'components/_card.scss';
+@import 'components/_embed.scss';
+@import 'components/_forms.scss';
+@import 'components/_lists.scss';
+@import 'components/_table.scss';
+@import 'components/_slick.scss';
+@import 'components/_magnificPopup.scss';
+
+// Layout
+@import 'layouts/_footer.scss';
+@import 'layouts/_hero.scss';
+@import 'layouts/_nav.scss';
+@import 'layouts/_splash-page.scss';
+
+//@import 'layout/_contact.scss';

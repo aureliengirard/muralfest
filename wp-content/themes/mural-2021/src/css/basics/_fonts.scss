@@ -1,0 +1,40 @@
+
+/*
+* FONTS, FONT-SIZE, SPACINGS
+*/
+@font-face {
+    font-family: 'Helvetica Now Display';
+    src: url('../fonts/HelveticaNowDisplay-Medium.woff2') format('woff2'),
+         url('../fonts/HelveticaNowDisplay-Medium.woff') format('woff');
+     font-weight: 500;
+     font-style: normal;
+}
+
+/*
+*  Then we can just create the font name:
+*/
+
+
+/*
+* Here is how to add font-sizes according to a basic font size. Notice that it has no 'px' after its number to allow for calculations below:
+*/
+
+$fs-basic: 20;
+$fs-basic-lg: 18;
+$fs-basic-mobile: 16;
+
+/*
+* And here are the calculations we talked about:
+* For example, h1 is 70px
+*/
+
+$fs-h1 : (60 / $fs-basic)*1rem;
+$fs-h2: (52 / $fs-basic)*1rem;
+$fs-h3 : (36 / $fs-basic)*1rem;
+$fs-h3-bis : (30 / $fs-basic)*1rem;
+$fs-h4 : (22 / $fs-basic)*1rem;
+$fs-small : (17 / $fs-basic)*1rem;
+$fs-base : (20 / $fs-basic)*1rem;
+
+$font-weight-normal : 400;
+$line-height-base : 28 / $fs-basic;

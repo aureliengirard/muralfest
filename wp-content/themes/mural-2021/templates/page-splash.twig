@@ -1,0 +1,45 @@
+{% extends "base-landing.twig" %}
+
+{% set img_col_1 = Image(page.img_col_1).src %}
+{% set img_col_2 = Image(page.img_col_2).src %}
+{% set content_col_3 = page.meta('content_col_3') %}
+
+{% block content %}
+	<article class="post-type-{{page.post_type}}" id="post-{{page.ID}}">
+
+		<section class="splash">
+			<div class="container-fluid">
+				<div class="row">
+
+					<div class="col-lg-4 poster aos-init bg--bleu" data-aos="fade-right">
+
+						{% set image_url = img_col_1 %}
+						<img
+						srcset="{{ image_url | resize(360,0) | relative }} 150w,{{ image_url | resize(510,0) | relative }} 500w,{{ image_url | resize(660,0) | relative }} 600w,{{ image_url|resize(810,0) | relative }} 750w,{{ image_url|resize(960,0) | relative }} 900w"
+						sizes="auto"
+						alt="{{ img_col_1.title }}">
+
+					</div>
+
+					<div class="col-lg-4 poster aos-init" data-aos="fade-up">
+
+						{% set image_url = img_col_2 %}
+						<img
+						srcset="{{ image_url | resize(360,0) | relative }} 150w,{{ image_url | resize(510,0) | relative }} 500w,{{ image_url | resize(660,0) | relative }} 600w,{{ image_url|resize(810,0) | relative }} 750w,{{ image_url|resize(960,0) | relative }} 900w"
+						sizes="auto"
+						alt="{{ img_col_1.img_col_2 }}">
+
+					</div>
+
+					<div class="col-lg-4 content aos-init bg--rouge" data-aos="fade-left">
+						<div class="content__wrapper rte">
+							{{content_col_3}}
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+	</article>
+{% endblock %}

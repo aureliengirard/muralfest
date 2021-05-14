@@ -1,0 +1,9 @@
+$scut-rem-base: 16 !default;
+
+@function scut-strip-unit ($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+@function scut-rem ($pixels) {
+  @return scut-strip-unit($pixels) / $scut-rem-base * 1rem;
+}

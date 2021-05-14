@@ -1,0 +1,30 @@
+.grid{}
+
+.content-wrapper{
+    //max-width: 95%;
+    max-width: var(--WidthContentArea);
+
+}
+.container{
+    max-width: var(--WidthContainerArea);
+    padding-left: $spacing * 0.625;
+    padding-right: $spacing * 0.625;
+
+    @include media-breakpoint-between(lg,xxl){
+        padding-left: $spacing;
+        padding-right: $spacing;
+    }
+
+    [class^="col-"]{
+
+    }
+}
+
+.container-fluid{
+    max-width: 1920px;
+
+    [class^="col-"]{
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

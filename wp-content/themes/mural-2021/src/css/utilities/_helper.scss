@@ -1,0 +1,73 @@
+.text--center{
+    text-align: center;
+}
+
+.text--right{
+    text-align: right;
+}
+
+%row-y-centered{
+
+    .container{
+        height: inherit;
+        min-height: inherit;
+        max-height: inherit;
+
+        .row{
+            height: 100%;
+            @include align-items(center);
+
+            @include ie{
+                @include align-content(center);
+            }
+
+            @include safari{
+                @include align-content(center);
+            }
+        }
+    }
+}
+
+.content__centered{
+    @extend %row-y-centered;
+}
+
+.col_has-padding{
+    @extend %row-y-centered;
+}
+
+.divider{
+    display: block;
+    height: 3px;
+    background-color: var(--couleurNoir);
+    width: 75%;
+    margin: 1.5em 12.5%;
+}
+
+
+$theme_colors:
+"blanc" var(--couleurBlanc),
+"bleu" var(--couleurBleu),
+"noir" var(--couleurNoir),
+"jaune" var(--couleurJaune),
+"rouge" var(--couleurRouge);
+
+@each $bg-name, $color in $theme_colors {
+
+    .bg--#{$bg-name}{
+        background-color: $color;
+
+        @if $bg-name == "or" {
+            a{
+                color: var(--couleurBlanc);
+            }
+        }
+    }
+}
+
+@each $color-name, $color in $theme_colors {
+
+    .color--#{$color-name}{
+        color: $color;
+    }
+}

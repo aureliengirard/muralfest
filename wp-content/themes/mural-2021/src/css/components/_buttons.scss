@@ -1,0 +1,123 @@
+// main: ../main.scss
+
+/*
+* STYLING BUTTONS.
+* Since we are in partials scss, we can get specific and add fonts, colors, etc.
+*/
+
+%btn {
+    padding: $spacing/3 $spacing/2;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--couleurNoir);
+    border-width: 3px 0;
+    border-style: solid;
+    border-color: #110b0d;
+    border-color: var(--couleurNoir);
+    text-decoration: none;
+    position: relative;
+
+    &::before, &::after {
+        position: absolute;
+        content: "";
+        transition: height 0.15s cubic-bezier(0.18, 0.89, 0.32, 1);
+        height: calc(100% + 6px);
+        width: 3px;
+        background-color: #110b0d;
+        background-color: var(--couleurNoir);
+        height: calc(100% + 6px);
+    }
+
+    &.alt{
+        &::before, &::after{
+            height: 0;
+        }
+
+        &:hover,
+        &:focus{
+            &::before,
+            &::after{
+                height: calc(100% + 6px);
+            }
+        }
+    }
+
+    &::before {
+        left: 0;
+        top: -3px;
+    }
+
+    &::after {
+        right: 0;
+        bottom: -3px;
+    }
+
+    &:hover,
+    &:focus{
+        &::before,
+        &::after{
+            height: 0;
+        }
+    }
+}
+
+.btn{
+    @extend %btn;
+}
+
+.content-wrapper{
+    button{
+        @extend %btn;
+    }
+
+    .btn{
+        margin-top: $spacing/2;
+
+        + .btn{
+            margin-left: $spacing/2;
+        }
+    }
+}
+
+.btn__wrapper{
+
+    .btn{
+        display: inline-block;
+    }
+}
+
+nav {
+    .btn {
+
+    }
+}
+
+.gform_button{
+    //@extend .btn;
+}
+
+$btn-style:
+"blanc" var(--couleurBlanc),
+"or" var(--couleurOr),
+"vert" var(--couleurVert),
+"jaune" var(--couleurJaune),
+"bleu" var(--couleurBleu),
+"bleu-clair" var(--colorBleuClair),
+"noir" var(--couleurNoir);
+
+@each $btn-name, $color in $btn-style {
+
+    %btn__#{$btn-name} {
+        color: $color;
+        border-color: $color;
+
+        &::before,
+        &::after{
+            background-color: $color;
+        }
+    }
+
+    .btn--#{$btn-name}{
+        @extend %btn__#{$btn-name};
+    }
+}

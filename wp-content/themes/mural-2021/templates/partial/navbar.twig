@@ -1,0 +1,49 @@
+<nav id="nav" class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ site.url }}">
+            <!-- GET LOGO FROM OPTIONS PAGE -->
+            {% if fn('is_front_page') %}
+                <h1>
+            {% endif %}
+                <img src="{{TimberImage(options.logo_alt).src| resize(0,115) }}" alt="{{site.title}}">
+            {% if fn('is_front_page') %}
+                </h1>
+            {% endif %}
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+                {% include '/svg/icon-navbar.svg' %}
+            </span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" role="navigation" aria-label="Main">
+            <ul class="navbar-nav">
+                <!-- CREATE MEGA MENU IF MENU ITEM HAS CHILDREN -->
+                {% for item in nav_menu.get_items %}
+                {% if item.children %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link {{ item.class }} {% if item.current %}active {% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="">{{ item.title }}</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul>
+                            {% for inner_item in item.children %}
+                            <li class="dropdown-item">
+                                <a class="dropdown-link {{ inner_item.class }}{% if inner_item.current %} active{% endif %}" href="{{ inner_item.link }}" class="">{{ inner_item.title }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </li>
+                {% else %}
+                <!-- CREATE NORMAL MENU LINK IF ITEM DOESN'T HAVE CHILDREN -->
+                <li class="nav-item">
+                    <a class="nav-link {{ item.class }} {% if item.current %}active{% endif %}" href="{{ item.link }}">
+                        <span class="">{{ item.title }}</span>
+                    </a>
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</nav>

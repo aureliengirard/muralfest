@@ -1,0 +1,54 @@
+// main: ../main.scss
+
+/*
+* STYLING LISTS.
+* Here are examples for ordered and unordered lists.
+* Since we are in partials scss, we can get specific and add fonts, colors, etc.
+*/
+
+// Custom ordered list:
+// ol {
+//     padding: 0;
+//     li {
+//         position: relative;
+//         margin-left: 88px;
+//         margin-bottom: $padding * 0.8;
+//         &:before {
+//             content: counter(item);
+//             counter-increment: item;
+//             position: absolute;
+//             display: flex;
+//             justify-content: center;
+//             color: white;
+//             left: -88px;
+//
+//             Let's say we have a 61px square background:
+//             background: url(../images/ol-bg.jpg) no-repeat center center;
+//             width: 61px;
+//             height: 61px;
+//             line-height: 61px;
+//         }
+//     }
+// }
+
+// Custom unordered list:
+// ul {
+//     padding:0;
+//     li {
+//         list-style-type: none;
+//         position: relative;
+//         padding-left: $padding;
+//         padding-top: $padding * 0.45;
+//         padding-bottom: $padding * 0.45;
+//         &:before {
+//             content: "";
+//             Let's say we have a 22px square background:
+//             background: url(../images/check-li.png);
+//             width: 22px;
+//             height: 22px;
+//             position: absolute;
+//             left: 17px;
+//             top: calc(50% - 17px / 2);
+//         }
+//     }
+// }
