@@ -32,13 +32,24 @@ wp-content/plugins/**
 !wp-content/themes/mural-2021/
 !wp-content/themes/mural-2021/**
 
+# Timber
+!wp-content/plugins/timber-library/
+!wp-content/plugins/timber-library/**
+
+# ACF
+!wp-content/plugins/advanced-custom-fields-pro/
+!wp-content/plugins/advanced-custom-fields-pro/**
+
+# Gravity Forms
+!wp-content/plugins/gravityforms/
+!wp-content/plugins/gravityforms/**
+
+# WPML
+!wp-content/plugins/sitepress-multilingual-cms/
+!wp-content/plugins/sitepress-multilingual-cms/**
 
 # Other dependencies
 !.eslintrc
-
-# Ignore dev files
-**/greenlite/ui-builder.php
-**/greenlite/templates/ui-builder.twig
 
 # Stop editing!
 

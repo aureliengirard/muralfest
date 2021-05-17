@@ -1,1 +1,0 @@
-<?php `/usr/local/cpanel/3rdparty/lib/path-bin/git pull`;

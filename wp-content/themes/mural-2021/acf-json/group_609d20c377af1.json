@@ -75,10 +75,10 @@
             "mime_types": ""
         },
         {
-            "key": "field_609d2105ba36c",
-            "label": "Content colonne 3",
-            "name": "content_col_3",
-            "type": "wysiwyg",
+            "key": "field_609e685070841",
+            "label": "Date",
+            "name": "date_col_3",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -88,10 +88,55 @@
                 "id": ""
             },
             "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "delay": 0
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_609e686970842",
+            "label": "RSVP Link",
+            "name": "rsvp_link",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_609e68a070843",
+            "label": "Facebook Link",
+            "name": "fb_link",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_609e68bb70844",
+            "label": "Instagram Link",
+            "name": "insta_link",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
         }
     ],
     "location": [
@@ -111,5 +156,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1620932371
+    "modified": 1620994501
 }

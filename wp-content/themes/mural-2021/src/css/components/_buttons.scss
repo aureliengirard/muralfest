@@ -6,58 +6,24 @@
 */
 
 %btn {
-    padding: $spacing/3 $spacing/2;
+    border: 2px solid;
+    padding: $spacing $spacing*4.5;
+    border-radius: $spacing*3;
+    text-decoration: none;
     font-weight: 700;
     text-transform: uppercase;
-    color: var(--couleurNoir);
-    border-width: 3px 0;
-    border-style: solid;
-    border-color: #110b0d;
-    border-color: var(--couleurNoir);
-    text-decoration: none;
-    position: relative;
+    margin: 20px 0;
+    font-size: 1.375em;
+    font-family: var(--basePrimaryFont);
+    transition: all .15s ease-in-out;
 
-    &::before, &::after {
-        position: absolute;
-        content: "";
-        transition: height 0.15s cubic-bezier(0.18, 0.89, 0.32, 1);
-        height: calc(100% + 6px);
-        width: 3px;
-        background-color: #110b0d;
-        background-color: var(--couleurNoir);
-        height: calc(100% + 6px);
+    @include hover-focus-active{
+
     }
 
-    &.alt{
-        &::before, &::after{
-            height: 0;
-        }
-
-        &:hover,
-        &:focus{
-            &::before,
-            &::after{
-                height: calc(100% + 6px);
-            }
-        }
-    }
-
-    &::before {
-        left: 0;
-        top: -3px;
-    }
-
-    &::after {
-        right: 0;
-        bottom: -3px;
-    }
-
-    &:hover,
-    &:focus{
-        &::before,
-        &::after{
-            height: 0;
-        }
+    svg{
+        height: 1.25em;
+        width: auto;
     }
 }
 
@@ -96,24 +62,35 @@ nav {
     //@extend .btn;
 }
 
-$btn-style:
-"blanc" var(--couleurBlanc),
-"or" var(--couleurOr),
-"vert" var(--couleurVert),
-"jaune" var(--couleurJaune),
-"bleu" var(--couleurBleu),
-"bleu-clair" var(--colorBleuClair),
-"noir" var(--couleurNoir);
+$btn_styles:
+"blanc" var(--couleurBlanc) var(--couleurNoir),
+"bleu" var(--couleurBleu) var(--couleurJaune),
+"noir" var(--couleurNoir) var(--couleurBlanc),
+"jaune" var(--couleurJaune) var(--couleurRouge),
+"jaune-alt" var(--couleurJaune) var(--couleurBleu),
+"rouge" var(--couleurRouge) var(--couleurJaune);
 
-@each $btn-name, $color in $btn-style {
+@each $btn-name, $color, $color-alt in $btn_styles {
 
     %btn__#{$btn-name} {
         color: $color;
         border-color: $color;
 
-        &::before,
-        &::after{
+        svg{
+            fill:$color;
+
+            #fill{
+                fill:$color;
+            }
+        }
+
+        @include hover-focus-active{
+            color: $color-alt;
             background-color: $color;
+
+            #fill{
+                fill:$color-alt;
+            }
         }
     }
 

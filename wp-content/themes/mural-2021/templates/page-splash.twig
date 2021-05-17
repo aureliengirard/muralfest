@@ -1,7 +1,8 @@
 {% extends "base-landing.twig" %}
 
-{% set img_col_1 = Image(page.img_col_1).src %}
-{% set img_col_2 = Image(page.img_col_2).src %}
+{% set img_col_1 = Image(page.img_col_1) %}
+{% set img_col_2 = Image(page.img_col_2) %}
+{% set img_col_3 = Image(page.logo_col_3) %}
 {% set content_col_3 = page.meta('content_col_3') %}
 
 {% block content %}
@@ -11,29 +12,45 @@
 			<div class="container-fluid">
 				<div class="row">
 
-					<div class="col-lg-4 poster aos-init bg--bleu" data-aos="fade-right">
+					{% set image_url = img_col_1.src %}
+					<div class="col-lg-6 col-xl-4 poster aos-init bg--bleu" data-aos="fade-right" style="background-image:url({{image_url}});">
 
-						{% set image_url = img_col_1 %}
 						<img
 						srcset="{{ image_url | resize(360,0) | relative }} 150w,{{ image_url | resize(510,0) | relative }} 500w,{{ image_url | resize(660,0) | relative }} 600w,{{ image_url|resize(810,0) | relative }} 750w,{{ image_url|resize(960,0) | relative }} 900w"
 						sizes="auto"
-						alt="{{ img_col_1.title }}">
+						alt="{{ img_col_1.alt }}">
 
 					</div>
 
-					<div class="col-lg-4 poster aos-init" data-aos="fade-up">
+					{% set image_url = img_col_2.src %}
+					<div class="col-lg-6 col-xl-4 poster aos-init" data-aos="fade-up" style="background-image:url({{image_url}});">
 
-						{% set image_url = img_col_2 %}
-						<img
-						srcset="{{ image_url | resize(360,0) | relative }} 150w,{{ image_url | resize(510,0) | relative }} 500w,{{ image_url | resize(660,0) | relative }} 600w,{{ image_url|resize(810,0) | relative }} 750w,{{ image_url|resize(960,0) | relative }} 900w"
-						sizes="auto"
-						alt="{{ img_col_1.img_col_2 }}">
+							<img
+							srcset="{{ image_url | resize(360,0) | relative }} 150w,{{ image_url | resize(510,0) | relative }} 500w,{{ image_url | resize(660,0) | relative }} 600w,{{ image_url|resize(810,0) | relative }} 750w,{{ image_url|resize(960,0) | relative }} 900w"
+							sizes="auto"
+							alt="{{ site.title }}">
 
 					</div>
 
-					<div class="col-lg-4 content aos-init bg--rouge" data-aos="fade-left">
+					<div class="col-lg-12 col-xl-4 content aos-init bg--rouge" data-aos="fade-left">
 						<div class="content__wrapper rte">
-							{{content_col_3}}
+							<h1>
+								{% set image_url = img_col_3.src %}
+							<img class="lazyload logo"
+							srcset="{{ image_url | resize(315,0) | relative }} 315w,{{ image_url | resize(365,0) | relative }} 365w,{{ image_url | resize(415,0) | relative }} 415w,{{ image_url|resize(465,0) | relative }} 465w,{{ image_url|resize(515,0) | relative }} 515w"
+							sizes="auto"
+							alt="{{ img_col_1.alt }}">
+							<span>{{page.date_col_3}}</span>
+							</h1>
+							<a class="btn btn--jaune" href="{{ page.rsvp_link.url }}" target="{{ page.rsvp_link.target }}"> {% include 'svg/facebook.svg' %}<span>{{ page.rsvp_link.title }}</span></a>
+							<div class="splash__social">
+								{% if page.fb_link %}
+									<a class="link_fb" href="{{page.fb_link.url}}" title="{{page.fb_link.title}}" target="{{page.fb_link.target}}">{% include 'svg/icon_facebook.svg' %}</a>
+								{% endif %}
+								{% if page.insta_link %}
+									<a class="link_in" href="{{page.insta_link.url}}" title="{{page.insta_link.title}}" target="{{page.insta_link.target}}">{% include 'svg/icon_instagram.svg' %}</a>
+								{% endif %}
+							</div>
 						</div>
 					</div>
 
