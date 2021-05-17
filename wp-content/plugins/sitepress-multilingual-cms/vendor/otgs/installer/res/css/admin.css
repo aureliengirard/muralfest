@@ -1,23 +1,6 @@
 .otgsi_site_key_form{
     display:none;
-    /*display:inline;*/
 }
-.otgs-installer-register-inputs {
-    display: block;
-}
-@media (min-width: 1100px) {
-    .otgs-installer-register-inputs {
-        display: inline;
-        white-space: nowrap;
-    }
-}
-.otgsi_site_key_form .otgs-installer-register-inputs input {
-    vertical-align: middle;
-    margin: 3px 1px;
-    height: 28px;
-    line-height: 26px;
-}
-
 
 .installer-status-installing, .installer-status-installed, .installer-status-updating, .installer-status-updated, .installer-status-activating, .installer-status-activated, .installer-status-success{
     display: none;
@@ -229,6 +212,26 @@
     font-size: 24px;
     vertical-align:bottom;
 }
+.installer-table-wrap table.installer-plugins{
+    margin-bottom: 20px;
+}
+
+td.installer_plugin_name {
+    width: 300px;
+}
+
+td.installer_version {
+    width: 100px;
+}
+
+td.installer_release_date {
+    width: 300px;
+}
+
+td.installer_checkbox {
+    width: 30px;
+}
+
 .installer-table-wrap a.handle:active,
 .installer-table-wrap a.handle:focus{
     outline:0;
@@ -334,6 +337,24 @@
     .otgs-installer-keepuptodate small {
         -webkit-margin-start: 25px;
         -moz-margin-start: 25px;
-        margin-start: 25px;
+        margin-inline-start: 25px;
     }
+}
+
+.otgs-installer-component-setting .spinner.otgs-components-report-setting-spinner {
+    float: right;
+}
+.rtl .otgs-installer-component-setting .spinner.otgs-components-report-setting-spinner {
+    float: left;
+}
+.otgs-installer-component-privacy-policy {
+    margin-top: 30px;
+}
+
+.otgs-external-link:after {
+    font-family: dashicons!important;
+    content: "\A0\F504";
+    vertical-align: baseline;
+    line-height: 1;
+    display: inline-block;
 }

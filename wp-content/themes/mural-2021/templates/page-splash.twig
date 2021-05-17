@@ -40,9 +40,13 @@
 							srcset="{{ image_url | resize(315,0) | relative }} 315w,{{ image_url | resize(365,0) | relative }} 365w,{{ image_url | resize(415,0) | relative }} 415w,{{ image_url|resize(465,0) | relative }} 465w,{{ image_url|resize(515,0) | relative }} 515w"
 							sizes="auto"
 							alt="{{ img_col_1.alt }}">
-							<span>{{page.date_col_3}}</span>
+							{% if page.date_col_3 %}
+								<span>{{page.date_col_3}}</span>
+							{% endif %}
 							</h1>
+							{% if page.rsvp_link.url %}
 							<a class="btn btn--jaune" href="{{ page.rsvp_link.url }}" target="{{ page.rsvp_link.target }}"> {% include 'svg/facebook.svg' %}<span>{{ page.rsvp_link.title }}</span></a>
+							{% endif %}
 							<div class="splash__social">
 								{% if page.fb_link %}
 									<a class="link_fb" href="{{page.fb_link.url}}" title="{{page.fb_link.title}}" target="{{page.fb_link.target}}">{% include 'svg/icon_facebook.svg' %}</a>

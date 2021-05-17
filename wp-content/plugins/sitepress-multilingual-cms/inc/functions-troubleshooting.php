@@ -8,9 +8,9 @@ function icl_reset_wpml( $blog_id = false ) {
 	}
 
 	if ( empty( $blog_id ) ) {
-	    $filtered_id = filter_input( INPUT_POST, 'id', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_NULL_ON_FAILURE );
+		$filtered_id = filter_input( INPUT_POST, 'id', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_NULL_ON_FAILURE );
 		$filtered_id = $filtered_id ? $filtered_id : filter_input( INPUT_GET, 'id', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_NULL_ON_FAILURE );
-        $blog_id = $filtered_id !== false ? $filtered_id : $wpdb->blogid;
+		$blog_id     = $filtered_id !== false ? $filtered_id : $wpdb->blogid;
 	}
 
 	if ( $blog_id || ! function_exists( 'is_multisite' ) || ! is_multisite() ) {
@@ -47,10 +47,13 @@ function icl_reset_wpml( $blog_id = false ) {
 			$wpdb->prefix . 'icl_string_pages',
 			$wpdb->prefix . 'icl_string_urls',
 			$wpdb->prefix . 'icl_cms_nav_cache',
+			$wpdb->prefix . 'icl_string_batches',
+			$wpdb->prefix . 'icl_translation_downloads',
 		);
+		$icl_tables = apply_filters( 'wpml_reset_tables', $icl_tables, $blog_id );
 
 		foreach ( $icl_tables as $icl_table ) {
-			$wpdb->query( "DROP TABLE IF EXISTS " . $icl_table );
+			$wpdb->query( 'DROP TABLE IF EXISTS ' . $icl_table );
 		}
 
 		$wpml_options = array(
@@ -92,10 +95,71 @@ function icl_reset_wpml( $blog_id = false ) {
 			'icl_st_settings',
 			'wpml-tm-custom-xml',
 			'wpml-st-persist-errors',
+			'wpml_base_slug_translation',
 		);
+		$wpml_options = apply_filters( 'wpml_reset_options', $wpml_options, $blog_id );
 
 		foreach ( $wpml_options as $wpml_option ) {
 			delete_option( $wpml_option );
+		}
+
+		$wpml_user_options = array(
+			'language_pairs',
+		);
+		$wpml_user_options = apply_filters( 'wpml_reset_user_options', $wpml_user_options, $blog_id );
+		if ( $wpml_user_options ) {
+			foreach ( $wpml_user_options as $wpml_user_option ) {
+
+				$meta_key = $wpdb->get_blog_prefix( $blog_id ) . $wpml_user_option;
+				$users    = get_users(
+					array(
+						'blog_id'  => $blog_id,
+						'meta_key' => $meta_key,
+						'fields'   => array( 'ID' ),
+					)
+				);
+
+				/** @var WP_User $user */
+				foreach ( $users as $user ) {
+					delete_user_option( $user->ID, $wpml_user_option );
+				}
+			}
+		}
+
+		$capabilities = array(
+			'wpml_manage_translation_management',
+			'wpml_manage_languages',
+			'wpml_manage_theme_and_plugin_localization',
+			'wpml_manage_support',
+			'wpml_manage_woocommerce_multilingual',
+			'wpml_operate_woocommerce_multilingual',
+			'wpml_manage_media_translation',
+			'wpml_manage_navigation',
+			'wpml_manage_sticky_links',
+			'wpml_manage_string_translation',
+			'wpml_manage_translation_analytics',
+			'wpml_manage_wp_menus_sync',
+			'wpml_manage_taxonomy_translation',
+			'wpml_manage_troubleshooting',
+			'wpml_manage_translation_options',
+			'manage_translations',
+			'translate',
+		);
+
+		$capabilities = apply_filters( 'wpml_reset_user_capabilities', $capabilities, $blog_id );
+		if ( $capabilities ) {
+			$users = get_users(
+				array(
+					'blog_id' => $blog_id,
+				)
+			);
+
+			/** @var WP_User $user */
+			foreach ( $users as $user ) {
+				foreach ( $capabilities as $capability ) {
+					$user->remove_cap( $capability );
+				}
+			}
 		}
 
 		$sitepress_settings = null;
@@ -105,12 +169,12 @@ function icl_reset_wpml( $blog_id = false ) {
 		$wpml_cache_directory->remove();
 
 		do_action( 'wpml_reset_plugins_after' );
-		
+
 		$wpmu_sitewide_plugins = (array) maybe_unserialize( get_site_option( 'active_sitewide_plugins' ) );
 		if ( ! isset( $wpmu_sitewide_plugins[ WPML_PLUGIN_BASENAME ] ) ) {
 			remove_action( 'deactivate_' . WPML_PLUGIN_BASENAME, 'icl_sitepress_deactivate' );
 			deactivate_plugins( WPML_PLUGIN_BASENAME );
-			$ra                                                   = get_option( 'recently_activated' );
+			$ra                         = get_option( 'recently_activated' );
 			$ra[ WPML_PLUGIN_BASENAME ] = time();
 			update_option( 'recently_activated', $ra );
 		} else {
@@ -122,6 +186,7 @@ function icl_reset_wpml( $blog_id = false ) {
 			'wpml_dependencies:valid_plugins',
 			'wpml_dependencies:invalid_plugins',
 		);
+		$options_to_delete_after_deactivation = apply_filters( 'wpml_reset_options_after_deactivation', $options_to_delete_after_deactivation, $blog_id );
 
 		foreach ( $options_to_delete_after_deactivation as $option ) {
 			delete_option( $option );

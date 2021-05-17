@@ -61,8 +61,9 @@ class WPML_Config_Update {
 	public function run() {
 		if ( ! $this->is_config_update_disabled() ) {
 			$this->has_errors = false;
+			$request_args     = array( 'timeout' => 45 );
 
-			$index_response = $this->http->get( ICL_REMOTE_WPML_CONFIG_FILES_INDEX . 'wpml-config/config-index.json' );
+			$index_response = $this->http->get( ICL_REMOTE_WPML_CONFIG_FILES_INDEX . 'wpml-config/config-index.json', $request_args );
 
 			if ( ! $this->is_a_valid_remote_response( $index_response ) ) {
 				$this->log_response( $index_response, 'index', 'wpml-config/config-index.json' );
@@ -95,12 +96,12 @@ class WPML_Config_Update {
 					}
 
 					$current_theme_name = $this->sitepress->get_wp_api()
-					                                      ->get_theme_name();
+														  ->get_theme_name();
 
 					$current_theme_parent = '';
 					if ( method_exists( $this->sitepress->get_wp_api(), 'get_theme_parent_name' ) ) {
 						$current_theme_parent = $this->sitepress->get_wp_api()
-						                                        ->get_theme_parent_name();
+																->get_theme_parent_name();
 					}
 
 					$active_theme_names = array( $current_theme_name );
@@ -115,7 +116,7 @@ class WPML_Config_Update {
 							unset( $deleted_configs_for_themes[ $theme->name ] );
 
 							if ( ! isset( $config_files_for_themes[ $theme->name ] ) || md5( $config_files_for_themes[ $theme->name ] ) !== $theme->hash ) {
-								$theme_response = $this->http->get( ICL_REMOTE_WPML_CONFIG_FILES_INDEX . $theme->path );
+								$theme_response = $this->http->get( ICL_REMOTE_WPML_CONFIG_FILES_INDEX . $theme->path, $request_args );
 								if ( ! $this->is_a_valid_remote_response( $theme_response ) ) {
 									$this->log_response( $theme_response, 'index', $theme->name );
 								} else {
@@ -130,7 +131,7 @@ class WPML_Config_Update {
 					}
 
 					$active_plugins_names = $this->get_active_plugin_provider()
-					                             ->get_active_plugin_names();
+												 ->get_active_plugin_names();
 
 					foreach ( $plugins as $plugin ) {
 
@@ -139,7 +140,7 @@ class WPML_Config_Update {
 							unset( $deleted_configs_for_plugins[ $plugin->name ] );
 
 							if ( ! isset( $config_files_for_plugins[ $plugin->name ] ) || md5( $config_files_for_plugins[ $plugin->name ] ) !== $plugin->hash ) {
-								$plugin_response = $this->http->get( ICL_REMOTE_WPML_CONFIG_FILES_INDEX . $plugin->path );
+								$plugin_response = $this->http->get( ICL_REMOTE_WPML_CONFIG_FILES_INDEX . $plugin->path, $request_args );
 
 								if ( ! $this->is_a_valid_remote_response( $plugin_response ) ) {
 									$this->log_response( $plugin_response, 'index', $plugin->name );
@@ -177,10 +178,10 @@ class WPML_Config_Update {
 	}
 
 	private function is_valid_wpml_config_files_arr( $wpml_config_files_arr ) {
-		$is_valid = true;
+		$is_valid  = true;
 		$is_valid &= is_object( $wpml_config_files_arr );
 
-		$at_least_plugins_or_themes = false;
+		$at_least_plugins_or_themes  = false;
 		$at_least_plugins_or_themes |= isset( $wpml_config_files_arr->themes ) && is_array( $wpml_config_files_arr->themes ) && $wpml_config_files_arr->themes;
 		$at_least_plugins_or_themes |= isset( $wpml_config_files_arr->plugins ) && is_array( $wpml_config_files_arr->plugins ) && $wpml_config_files_arr->plugins;
 
@@ -198,11 +199,11 @@ class WPML_Config_Update {
 
 	private function is_http_error( $response ) {
 		return $response && is_array( $response )
-		       && ( ( array_key_exists( 'response', $response )
-		              && array_key_exists( 'code', $response['response'] )
-		              && 200 !== (int) $response['response']['code'] )
-		            || ! array_key_exists( 'body', $response )
-		            || '' === trim( $response['body'] ) );
+			   && ( ( array_key_exists( 'response', $response )
+					  && array_key_exists( 'code', $response['response'] )
+					  && 200 !== (int) $response['response']['code'] )
+					|| ! array_key_exists( 'body', $response )
+					|| '' === trim( $response['body'] ) );
 	}
 
 	/**
@@ -219,7 +220,7 @@ class WPML_Config_Update {
 		$message_type = 'message';
 
 		if ( ! defined( 'JSON_PRETTY_PRINT' ) ) {
-			//Fallback -> Introduced in PHP 5.4.0
+			// Fallback -> Introduced in PHP 5.4.0
 			define( 'JSON_PRETTY_PRINT', 128 );
 		}
 
@@ -279,7 +280,7 @@ class WPML_Config_Update {
 
 	private function is_config_update_disabled() {
 		if ( $this->sitepress->get_wp_api()
-		                     ->constant( 'ICL_REMOTE_WPML_CONFIG_DISABLED' ) ) {
+							 ->constant( 'ICL_REMOTE_WPML_CONFIG_DISABLED' ) ) {
 			delete_option( 'wpml_config_index' );
 			delete_option( 'wpml_config_index_updated' );
 			delete_option( 'wpml_config_files_arr' );

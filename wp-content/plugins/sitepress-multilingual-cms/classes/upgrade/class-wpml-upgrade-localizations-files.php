@@ -16,7 +16,6 @@ class WPML_Upgrade_Localization_Files implements IWPML_Upgrade_Command {
 	 * @param array $args
 	 */
 	public function __construct( array $args ) {
-		/** @var SitePress sitepress */
 		$this->sitepress = $args[0];
 
 		$this->download_localization = new WPML_Download_Localization( $this->sitepress->get_active_languages(), $this->sitepress->get_default_language() );
@@ -37,6 +36,10 @@ class WPML_Upgrade_Localization_Files implements IWPML_Upgrade_Command {
 
 	public function run_frontend() {
 		return false;
+	}
+
+	public function get_command_id() {
+		return 'wpml-upgrade-localization-files';
 	}
 
 	public function get_results() {

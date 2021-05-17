@@ -19,8 +19,8 @@ class WPML_Adjacent_Links_Hooks implements IWPML_Action {
 	/**
 	 * WPML_Adjacent_Links_Hooks constructor.
 	 *
-	 * @param SitePress $sitepress
-	 * @param wpdb $wpdb
+	 * @param SitePress                  $sitepress
+	 * @param wpdb                       $wpdb
 	 * @param WPML_Language_Where_Clause $language_where_clause
 	 */
 	public function __construct( SitePress $sitepress, wpdb $wpdb, WPML_Language_Where_Clause $language_where_clause ) {
@@ -54,7 +54,7 @@ class WPML_Adjacent_Links_Hooks implements IWPML_Action {
 
 		if ( $this->sitepress->is_translated_post_type( $post_type ) ) {
 			$join_clause .= $this->wpdb->prepare(
-				" JOIN {$this->wpdb->prefix}icl_translations t ON t.element_id = p.ID AND t.element_type = %s",
+				" JOIN {$this->wpdb->prefix}icl_translations wpml_translations ON wpml_translations.element_id = p.ID AND wpml_translations.element_type = %s",
 				'post_' . $post_type
 			);
 		}
@@ -70,7 +70,7 @@ class WPML_Adjacent_Links_Hooks implements IWPML_Action {
 	 * @return string
 	 */
 	function get_adjacent_post_where( $where_clause ) {
-		$post_type = $this->get_current_post_type();
+		$post_type    = $this->get_current_post_type();
 		$current_lang = $this->sitepress->get_current_language();
 
 		$cache_key    = md5( wp_json_encode( array( $post_type, $where_clause, $current_lang ) ) );

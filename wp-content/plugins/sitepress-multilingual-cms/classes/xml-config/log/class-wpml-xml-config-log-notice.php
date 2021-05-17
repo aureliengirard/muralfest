@@ -15,7 +15,9 @@ class WPML_XML_Config_Log_Notice {
 	}
 
 	public function add_hooks() {
-		add_action( 'wpml_loaded', array( $this, 'refresh_notices' ) );
+		if ( is_admin() ) {
+			add_action( 'wpml_loaded', array( $this, 'refresh_notices' ) );
+		}
 	}
 
 	public function refresh_notices() {
@@ -32,34 +34,43 @@ class WPML_XML_Config_Log_Notice {
 		$notice = $notices->create_notice( self::NOTICE_ERROR_ID, $text, self::NOTICE_ERROR_GROUP );
 		$notice->set_css_class_types( array( 'error' ) );
 
-		$log_url = add_query_arg( array( 'page' => WPML_Config_Update_Log::SUPPORT_PAGE_LOG_SECTION ), get_admin_url( null, 'admin.php#xml-config-log' ) );
+		$log_url = add_query_arg( array( 'page' => WPML_Config_Update_Log::get_support_page_log_section() ), get_admin_url( null, 'admin.php#xml-config-log' ) );
 
 		$show_logs = $notices->get_new_notice_action( __( 'Detailed error log', 'sitepress' ), $log_url );
 
 		$return_url = null;
 		if ( $this->is_admin_user_action() ) {
-			$return_url = home_url( $_SERVER['SCRIPT_NAME'] );
+			$admin_uri  = preg_replace( '#^/wp-admin/#', '', $_SERVER['SCRIPT_NAME'] );
+			$return_url = get_admin_url( null, $admin_uri );
 
 			$return_url_qs = $_GET;
 			unset( $return_url_qs[ self::NOTICE_ERROR_GROUP . '-action' ], $return_url_qs[ self::NOTICE_ERROR_GROUP . '-nonce' ] );
 			$return_url = add_query_arg( $return_url_qs, $return_url );
 		}
 
-		$retry_url = add_query_arg( array( self::NOTICE_ERROR_GROUP . '-action' => 'wpml_xml_update_refresh', self::NOTICE_ERROR_GROUP . '-nonce' => wp_create_nonce( 'wpml_xml_update_refresh' ) ), $return_url );
+		$retry_url = add_query_arg(
+			array(
+				self::NOTICE_ERROR_GROUP . '-action' => 'wpml_xml_update_refresh',
+				self::NOTICE_ERROR_GROUP . '-nonce'  => wp_create_nonce( 'wpml_xml_update_refresh' ),
+			),
+			$return_url
+		);
 		$retry     = $notices->get_new_notice_action( __( 'Retry', 'sitepress' ), $retry_url, false, false, true );
 
 		$notice->add_action( $show_logs );
 		$notice->add_action( $retry );
 		$notice->set_dismissible( true );
-		$notice->set_restrict_to_page_prefixes( array(
-			                                        'sitepress-multilingual-cms',
-			                                        'wpml-translation-management',
-			                                        'wpml-package-management',
-			                                        'wpml-string-translation',
-		                                        ) );
+		$notice->set_restrict_to_page_prefixes(
+			array(
+				'sitepress-multilingual-cms',
+				'wpml-translation-management',
+				'wpml-package-management',
+				'wpml-string-translation',
+			)
+		);
 
 		$notice->set_restrict_to_screen_ids( array( 'dashboard', 'plugins', 'themes' ) );
-		$notice->add_exclude_from_page( WPML_Config_Update_Log::SUPPORT_PAGE_LOG_SECTION );
+		$notice->add_exclude_from_page( WPML_Config_Update_Log::get_support_page_log_section() );
 		$notices->add_notice( $notice );
 	}
 
@@ -68,7 +79,7 @@ class WPML_XML_Config_Log_Notice {
 	 */
 	private function is_admin_user_action() {
 		return is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX )
-		       && ( 'heartbeat' !== filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) )
-		       && ( ! defined( 'DOING_CRON' ) || ! DOING_CRON );
+			   && ( 'heartbeat' !== filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING ) )
+			   && ( ! defined( 'DOING_CRON' ) || ! DOING_CRON );
 	}
 }

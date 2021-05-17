@@ -21,6 +21,10 @@ class WPML_Notice_Render {
 		$result = '';
 
 		if ( $this->must_display_notice( $notice ) ) {
+			if ( $notice->should_be_text_only() ) {
+				return $notice->get_text();
+			}
+
 			$actions_html = $this->get_actions_html( $notice );
 
 			$temp_types = $notice->get_css_class_types();
@@ -113,7 +117,6 @@ class WPML_Notice_Render {
 	private function get_actions_html( WPML_Notice $notice ) {
 		$actions_html = '';
 		if ( $notice->get_actions() ) {
-			/** @var WPML_Notice_Action $action */
 			$actions_html .= '<div class="otgs-notice-actions">';
 			foreach ( $notice->get_actions() as $action ) {
 				$actions_html .= $this->get_action_html( $action );
@@ -133,9 +136,9 @@ class WPML_Notice_Render {
 
 		$sanitized_notice = $text;
 		if ( 2 === count( $matches ) ) {
+			/** @var array<string> $matches_to_sanitize */
 			$matches_to_sanitize = $matches[1];
 
-			/** @var array $matches_to_sanitize */
 			foreach ( $matches_to_sanitize as &$match_to_sanitize ) {
 				$match_to_sanitize = '<pre>' . esc_html( $match_to_sanitize ) . '</pre>';
 			}
@@ -153,7 +156,7 @@ class WPML_Notice_Render {
 	 * @return string
 	 */
 	private function get_hide_html( $localized_text = null ) {
-		$hide_html = '';
+		$hide_html  = '';
 		$hide_html .= '<span class="otgs-notice-hide notice-hide"><span class="screen-reader-text">';
 		if ( $localized_text ) {
 			$hide_html .= esc_html( $localized_text );
@@ -171,7 +174,7 @@ class WPML_Notice_Render {
 	 * @return string
 	 */
 	private function get_dismiss_html( $localized_text = null ) {
-		$dismiss_html = '';
+		$dismiss_html  = '';
 		$dismiss_html .= '<span class="otgs-notice-dismiss notice-dismiss">';
 		$dismiss_html .= '<span class="screen-reader-text"><input class="otgs-notice-dismiss-check" type="checkbox" value="1" />';
 		if ( $localized_text ) {
@@ -239,10 +242,10 @@ class WPML_Notice_Render {
 	private function get_action_html( $action ) {
 		$action_html = '';
 		if ( $action->can_hide() ) {
-			$action_html .= $this->get_hide_html( $action->get_text() );
+			$action_html          .= $this->get_hide_html( $action->get_text() );
 			$this->hide_html_added = true;
 		} elseif ( $action->can_dismiss() ) {
-			$action_html .= $this->get_dismiss_html( $action->get_text() );
+			$action_html             .= $this->get_dismiss_html( $action->get_text() );
 			$this->dismiss_html_added = true;
 		} else {
 			if ( $action->get_url() ) {
@@ -288,7 +291,7 @@ class WPML_Notice_Render {
 		}
 		if ( $action->get_js_callback() ) {
 			$anchor_attributes['data-js-callback'] = esc_attr( $action->get_js_callback() )
-			                                         . '"';
+													 . '"';
 		}
 
 		foreach ( $anchor_attributes as $name => $value ) {
