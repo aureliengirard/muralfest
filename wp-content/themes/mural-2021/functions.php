@@ -91,3 +91,18 @@ add_filter( 'gform_cdata_close', 'wrap_gform_cdata_close', 99 );
 if(function_exists('acf_add_options_page')) {
     acf_add_options_page();
 }
+
+/**
+ * If the redirection URL is a WordPress page or post, specify here its WordPress ID
+ */
+ 
+	add_action( 'template_redirect', function() {
+		$id = get_field('splash_page', 'options');
+
+		if ( is_page( $id ) ) {
+			return;
+		}
+
+		wp_redirect( esc_url_raw( home_url( 'index.php?page_id='.$id ) ), 307 );
+		exit;
+	} );

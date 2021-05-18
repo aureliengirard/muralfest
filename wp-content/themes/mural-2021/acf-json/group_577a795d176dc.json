@@ -606,6 +606,44 @@
             "max_height": "",
             "max_size": "",
             "mime_types": ""
+        },
+        {
+            "key": "field_60a40b3480f42",
+            "label": "Splash Page",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_60a40b0a80f41",
+            "label": "Splash Page",
+            "name": "splash_page",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": "",
+            "allow_null": 1,
+            "multiple": 0,
+            "return_format": "id",
+            "ui": 1
         }
     ],
     "location": [
@@ -625,5 +663,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1620921212
+    "modified": 1621363854
 }
