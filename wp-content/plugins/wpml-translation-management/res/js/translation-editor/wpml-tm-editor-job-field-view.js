@@ -10,7 +10,8 @@ var WPML_TM = WPML_TM || {};
 		className: 'wpml-form-row',
 		events: {
 			'click .icl_tm_copy_link': 'copyField',
-			'click .js-toggle-diff': 'toggleDiff'
+			'click .js-toggle-diff': 'toggleDiff',
+			'change .js-field-translation-complete' : 'setInputStatus'
 		},
 		toggleDiff: function(e) {
 			e.preventDefault();
@@ -48,11 +49,17 @@ var WPML_TM = WPML_TM || {};
 				}
 			}
 		},
+		escapeHTML: function (string) {
+			return string.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+		},
 		render: function (field, labels) {
 			var self = this;
 			self.field = field;
 			if (typeof self.field.title === 'undefined' || '' === self.field.title) {
 				self.$el.removeClass('wpml-form-row').addClass('wpml-form-row-nolabel');
+			}
+			if (field.field_style !== WPML_TM.FIELD_STYLE_SINGLE_LINE) {
+				self.field.field_data = self.escapeHTML(self.field.field_data);
 			}
 			self.$el.html(WPML_TM[self.getTemplate()]({
 				field: self.field,
@@ -61,7 +68,7 @@ var WPML_TM = WPML_TM || {};
 			self.translationCompleteCheckbox = self.$el.find('.js-field-translation-complete');
 			_.defer(_.bind(self.updateUI, self));
 			if (WpmlTmEditorModel.hide_empty_fields && field.field_data === '') {
-				self.$el.hide();
+				self.$el.hide().addClass('hidden');
 				self.translationCompleteCheckbox.prop('checked', true);
 				self.translationCompleteCheckbox.prop('disabled', false);
 			}
@@ -70,6 +77,8 @@ var WPML_TM = WPML_TM || {};
 				self.translationCompleteCheckbox.parent().hide();
 			}
 			self.$el.find('.field-diff').find('.diff').hide();
+
+			self.setTranslatedColor( self.getStatusColors() );
 
 			jQuery(document).trigger('WPML_TM.editor.field_view_ready', self);
 		},
@@ -86,8 +95,41 @@ var WPML_TM = WPML_TM || {};
 
 		getFieldType: function () {
 			return this.field.field_type;
-		}
+		},
 
+		setInputStatus: function() {
+			var self = this;
+			self.setTranslatedColor( self.getStatusColors() );
+			_.delay( function () {
+				jQuery( '.js-toggle-translated' ).trigger( 'change' );
+			}, 1000 );
+		},
+
+		getStatusColors: function () {
+			var self = this;
+			if (self.translationCompleteCheckbox.is(':checked')) {
+				return {
+					background: '#e8f7e3',
+					borderColor: '#d0e9c6'
+				};
+			} else {
+				return {
+					background: '',
+					borderColor: ''
+				};
+			}
+		},
+
+		hideTranslated: function ( state ) {
+			var self = this;
+			if ( self.translationCompleteCheckbox.is( ':checked' ) && state ) {
+				self.$el.hide();
+			} else {
+				if ( !self.$el.hasClass( 'hidden' ) ) {
+					self.$el.show();
+				}
+			}
+		}
 
 	});
 

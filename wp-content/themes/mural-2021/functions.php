@@ -33,8 +33,7 @@ class StarterSite extends TimberSite {
 	}
 
 	function register_taxonomies() {
-		//this is where you can register custom taxonomies
-		//require('lib/custom_taxonomies.php');
+		require('lib/custom_taxonomies.php');
 	}
 
 	function add_to_context( $context ) {
@@ -59,10 +58,13 @@ class StarterSite extends TimberSite {
 		return $twig;
 	}
 
+	public function addImagesSizes(){
+		add_image_size( 'artwork-thumb', 150, 200 );
+	}
+
 }
 
 new StarterSite();
-
 
 // Force Gravity Forms to init scripts in the footer and ensure that the DOM is loaded before scripts are executed
 add_filter( 'gform_init_scripts_footer', '__return_true' );
@@ -96,13 +98,154 @@ if(function_exists('acf_add_options_page')) {
  * If the redirection URL is a WordPress page or post, specify here its WordPress ID
  */
 
-	add_action( 'template_redirect', function() {
-		$id = get_field('splash_page', 'options');
+add_action( 'template_redirect', function() {
+	$id = get_field('splash_page', 'options');
 
-		if ( is_page( $id ) ) {
-			return;
+	if ( is_page( $id ) ) {
+		return;
+	}
+
+	wp_redirect( esc_url_raw( home_url( '?page_id='.$id ) ), 307 );
+	exit;
+} );
+
+
+/**
+ * Envoi plus de variable PHP au script map.js
+ *
+ */
+function add_map_data($mapData){
+	$mapInfos = get_field('adresse', 'options');
+
+	if(is_singular('artwork')){
+		$mapInfos = get_field('lieu_de_loeuvre');
+		$mapData['year'] = get_field('annee');
+	}
+
+    $mapData['gmap'] = $mapInfos;
+    $mapData['childURI'] = CHILDURI;
+
+    return $mapData;
+}
+add_filter('php_data_to_mapjs', 'add_map_data', 10, 1 );
+
+
+/**
+ * Envoi plus de variable PHP au script map.js
+ *
+ */
+function add_script_data($phpData){
+    $phpData['siteURL'] = esc_url( home_url( '/' ) );
+	$phpData['childURI'] = CHILDURI;
+
+    return $phpData;
+}
+add_filter('php_data_to_scriptjs', 'add_script_data', 10, 1 );
+
+/**
+ * Envoie les informations requise pour le calendrier
+ *
+ */
+function send_date_to_calendar(){
+	$minmax = array(
+		'min' => '',
+		'max' => ''
+	);
+	$args = array(
+		'post_type' => array( 'program' ),
+		'posts_per_page' => -1,
+		'orderby' => array(
+			'order_event' => 'ASC',
+		),
+		'meta_query' => array(
+			'order_event' => array(
+				'key' => 'event_date'
+			)
+		)
+	);
+
+	$query = new WP_Query( $args );
+
+	if ( $query->have_posts() ){
+		while ( $query->have_posts() ){
+			$query->the_post();
+
+			$event_start = strtotime(get_field('event_date'));
+			$event_end = strtotime(get_field('date_de_fin'));
+
+			if($event_start < $minmax['min'] || !$minmax['min']){
+				$minmax['min'] = $event_start;
+			}
+
+			if($event_end > $minmax['max'] || !$minmax['max']){
+				$minmax['max'] = $event_end;
+			}
 		}
 
-		wp_redirect( esc_url_raw( home_url( '?page_id='.$id ) ), 307 );
-		exit;
-	} );
+		wp_reset_postdata();
+
+		$minmax['min'] = array(
+			'year' => date('Y', $minmax['min']),
+			'month' => date('m', $minmax['min']),
+			'day' => date('d', $minmax['min'])
+		);
+
+		$minmax['max'] = array(
+			'year' => date('Y', $minmax['max']),
+			'month' => date('m', $minmax['max']),
+			'day' => date('d', $minmax['max'])
+		);
+	}
+
+	wp_localize_script( 'daterange', 'datelimit', $minmax);
+
+	wp_localize_script( 'daterange', 'translation', array(
+		'reset' => __('Reset', 'site-theme'),
+		'done' => __('Done', 'site-theme')
+	));
+}
+add_action( 'wp_enqueue_scripts', 'send_date_to_calendar', 30 );
+
+
+/**
+ * ajoute les pages parentes des singles
+ *
+ */
+function custom_post_type_breadcrumb($separator){
+    $post_id = get_the_ID();
+	$page_parent = NULL;
+
+	$parent_id = get_posttype_parent_id();
+
+	if($parent_id)
+		$page_parent = get_post(get_posttype_parent_id());
+
+    if($page_parent){
+        if($page_parent->post_parent)
+            echo '<a href="'.get_permalink($page_parent->post_parent).'">'.get_the_title($page_parent->post_parent).'</a> '.$separator.' ';
+
+        echo '<a href="'.get_permalink($page_parent->ID).'">'.get_the_title($page_parent->ID).'</a> '.$separator.' ';
+    }
+}
+add_action( 'breadcrumb_single_parents', 'custom_post_type_breadcrumb', 10, 1);
+
+
+/**
+ * Retourne le ID de la page associé au CPT.
+ */
+function get_posttype_parent_id($post_type = NULL){
+    $page_id = false;
+
+    if(!$post_type)
+        $post_type = get_post_type();
+
+
+    if ( have_rows( 'liaison_cpt_pages', 'options' ) ){
+        while ( have_rows( 'liaison_cpt_pages', 'options' ) ){ the_row();
+            if(get_sub_field( 'article_personnalise' ) == $post_type)
+                $page_id = get_sub_field( 'page' );
+        }
+    }
+
+    return $page_id;
+}

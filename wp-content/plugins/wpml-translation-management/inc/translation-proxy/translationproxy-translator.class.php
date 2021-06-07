@@ -91,36 +91,18 @@ class TranslationProxy_Translator {
 			}
 		}
 
-		$translator_status['icl_lang_status'] = $language_pairs;
-		if ( isset( $res['client']['attr'] ) ) {
-			$translator_status['icl_balance']        = $res['client']['attr']['balance'];
-			$translator_status['icl_anonymous_user'] = $res['client']['attr']['anon'];
-		}
-		if ( isset( $res['html_status']['value'] ) ) {
-			$translator_status['icl_html_status'] = html_entity_decode( $res['html_status']['value'] );
-			$translator_status['icl_html_status'] = preg_replace_callback(
-				'#<a([^>]*)href="([^"]+)"([^>]*)>#i',
-				create_function( '$matches', 'global $sitepress; return TranslationProxy_Popup::get_link($matches[2]);' ),
-				$translator_status['icl_html_status']
-			);
-		}
-
-		if ( isset( $res['translators_management_info']['value'] ) ) {
-			$translator_status['translators_management_info'] = html_entity_decode( $res['translators_management_info']['value'] );
-			$translator_status['translators_management_info'] = preg_replace_callback(
-				'#<a([^>]*)href="([^"]+)"([^>]*)>#i',
-				create_function( '$matches', 'global $sitepress; return TranslationProxy_Popup::get_link($matches[2]);' ),
-				$translator_status['translators_management_info']
-			);
-		}
-
+		$translator_status['icl_lang_status']       = $language_pairs;
 		$translator_status['icl_support_ticket_id'] = null;
-		if ( isset( $res['attr']['support_ticket_id'] ) ) {
-			$translator_status['icl_support_ticket_id'] = (int) $res['attr']['support_ticket_id'];
-		}
+
 		wp_cache_set( $cache_key, $translator_status, $cache_group );
 
 		return $translator_status;
+	}
+
+	private static function get_popup_link( $matches ) {
+		global $sitepress;
+
+		return TranslationProxy_Popup::get_link( $matches[2] );
 	}
 
 	/**
@@ -188,67 +170,6 @@ class TranslationProxy_Translator {
 		return $icl_query->get_website_details( $force );
 	}
 
-	/**
-	 * Returns array of remote translators. Works only with ICL as a Translation Service
-	 *
-	 * @return array
-	 */
-	public static function translation_service_translators_list() {
-
-		$translators = array();
-
-		if ( ! TranslationProxy::translator_selection_available() ) {
-			return $translators;
-		}
-
-		$project = TranslationProxy::get_current_project();
-
-		if ( ! $project ) {
-			return $translators;
-		}
-
-		$lang_status = TranslationProxy_Translator::get_language_pairs();
-
-		if ( ! $lang_status ) {
-			return $translators;
-		}
-
-		$action_link_args = array(
-			'title'     => __( 'Contact translator', 'wpml-translation-management' ),
-			'unload_cb' => 'icl_thickbox_refresh',
-			'ar'        => 1
-		);
-
-		foreach ( $lang_status as $language_pair ) {
-
-			$language_from = $language_pair['from'];
-
-			$language_pair_translators = $language_pair['translators'];
-
-			if ( $language_pair_translators ) {
-				foreach ( $language_pair_translators as $translator ) {
-					$translator_item = array();
-					if ( isset( $translators[ $translator['id'] ] ) ) {
-						$translator_item                              = $translators[ $translator['id'] ];
-						$translator_item['langs'][ $language_from ][] = $language_pair['to'];
-					} else {
-						$translator_item['name']                      = $translator['nickname'];
-						$translator_item['langs'][ $language_from ][] = $language_pair['to'];
-						$translator_item['type']                      = $project->service->name;
-						$url                                          = $project->translator_contact_iframe_url( $translator['id'] );
-						$action_link                                  = '';
-						if ( $url ) {
-							$action_link = TranslationProxy_Popup::get_link( $url, $action_link_args ) . __( 'Contact translator', 'wpml-translation-management' ) . '</a>';
-						}
-						$translator_item['action'] = $action_link;
-					}
-					$translators[ $translator['id'] ] = $translator_item;
-				}
-			}
-		}
-
-		return $translators;
-	}
 
 	/**
 	 * @param $translator_id
@@ -278,16 +199,15 @@ class TranslationProxy_Translator {
 	 *
 	 * @param $project
 	 * @param $language_pairs
-	 *
 	 */
 	public static function update_language_pairs( $project, $language_pairs ) {
 		/** @var WPML_Pro_Translation $ICL_Pro_Translation */
 		global $sitepress, $ICL_Pro_Translation;
 
 		$params = array(
-				'site_id'        => $project->ts_id,
-				'accesskey'      => $project->ts_access_key,
-				'create_account' => 0
+			'site_id'        => $project->ts_id,
+			'accesskey'      => $project->ts_access_key,
+			'create_account' => 0,
 		);
 
 		$lang_server = array();

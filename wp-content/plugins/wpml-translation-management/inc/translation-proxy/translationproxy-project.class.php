@@ -48,7 +48,7 @@ class TranslationProxy_Project {
 	 * @param string                   $delivery
 	 * @param WPML_TP_Client           $tp_client
 	 */
-	public function __construct( $service, $delivery = 'xmlrpc', WPML_TP_Client $tp_client ) {
+	public function __construct( $service, $delivery, WPML_TP_Client $tp_client ) {
 		$this->service   = $service;
 		$this->tp_client = $tp_client;
 
@@ -56,7 +56,7 @@ class TranslationProxy_Project {
 		$project_index            = self::generate_service_index( $service );
 
 		if ( $project_index && $icl_translation_projects && isset( $icl_translation_projects [ $project_index ] ) ) {
-			$project = $icl_translation_projects[ $project_index ];
+			$project             = $icl_translation_projects[ $project_index ];
 			$this->id            = $project['id'];
 			$this->access_key    = $project['access_key'];
 			$this->ts_id         = $project['ts_id'];
@@ -95,48 +95,6 @@ class TranslationProxy_Project {
 	}
 
 	/**
-	 * Create and configure project (Translation Service)
-	 *
-	 * @param string $url
-	 * @param string $name
-	 * @param string $description
-	 * @param string $delivery
-	 *
-	 * @return bool
-	 * @throws WPMLTranslationProxyApiException
-	 * @throws Exception
-	 */
-	public function create(
-		$url,
-		$name,
-		$description,
-		$delivery = 'xmlrpc'
-	) {
-		global $sitepress;
-
-		$networking          = wpml_tm_load_tp_networking();
-		$project_creation    = new WPML_TP_Project_Creation( $this, $sitepress, $networking, array(
-			'name'               => $name,
-			'description'        => $description,
-			'url'                => $url,
-			'delivery_method'    => $delivery,
-			'sitekey'            => WP_Installer_API::get_site_key( 'wpml' ),
-			'client_external_id' => WP_Installer_API::get_ts_client_id(),
-		) );
-		$response_project    = $project_creation->run();
-		$this->id            = $response_project->id;
-		$this->access_key    = $response_project->accesskey;
-		$this->ts_id         = $response_project->ts_id;
-		$this->ts_access_key = $response_project->ts_accesskey;
-
-		if ( isset( $response_project->polling_method ) && $response_project->polling_method !== $delivery ) {
-			$this->service->delivery_method = $response_project->polling_method;
-		}
-
-		return true;
-	}
-
-	/**
 	 * Convert WPML language code to service language
 	 *
 	 * @param $language string
@@ -147,18 +105,19 @@ class TranslationProxy_Project {
 		return TranslationProxy_Service::get_language( $this->service, $language );
 	}
 
-	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	/*
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 	 * Get information about the project (Translation Service)
 	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-	public function custom_text( $location, $locale = "en" ) {
+	public function custom_text( $location, $locale = 'en' ) {
 		$response = '';
 		if ( ! $this->ts_id || ! $this->ts_access_key ) {
 			return '';
 		}
 
-		//Sending Translation Service (ts_) id and access_key, as we are talking directly to the Translation Service
-		//Todo: use project->id and project->access_key once this call is moved to TP
+		// Sending Translation Service (ts_) id and access_key, as we are talking directly to the Translation Service
+		// Todo: use project->id and project->access_key once this call is moved to TP
 		$params = array(
 			'project_id' => $this->ts_id,
 			'accesskey'  => $this->ts_access_key,
@@ -168,11 +127,20 @@ class TranslationProxy_Project {
 
 		if ( $this->service->custom_text_url ) {
 			try {
-				$response = TranslationProxy_Api::service_request( $this->service->custom_text_url,
-					$params, 'GET', true, true, true );
+				$response = TranslationProxy_Api::service_request(
+					$this->service->custom_text_url,
+					$params,
+					'GET',
+					true,
+					true,
+					true
+				);
 			} catch ( Exception $e ) {
-				throw new RuntimeException( 'error getting custom text from Translation Service: ' . serialize( $params ) . ' url: ' . $this->service->custom_text_url,
-					0, $e );
+				throw new RuntimeException(
+					'error getting custom text from Translation Service: ' . serialize( $params ) . ' url: ' . $this->service->custom_text_url,
+					0,
+					$e
+				);
 			}
 		}
 
@@ -184,11 +152,16 @@ class TranslationProxy_Project {
 		return TranslationProxy::get_current_service_name();
 	}
 
-	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	function current_service() {
+		return TranslationProxy::get_current_service();
+	}
+
+	/*
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 	 * IFrames to display project info (Translation Service)
 	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 	public function select_translator_iframe_url( $source_language, $target_language ) {
-		//Sending Translation Service (ts_) id and access_key, as we are talking directly to the Translation Service
+		// Sending Translation Service (ts_) id and access_key, as we are talking directly to the Translation Service
 		$params['project_id']      = $this->ts_id;
 		$params['accesskey']       = $this->ts_access_key;
 		$params['source_language'] = $this->service_language( $source_language );
@@ -199,7 +172,7 @@ class TranslationProxy_Project {
 	}
 
 	public function translator_contact_iframe_url( $translator_id ) {
-		//Sending Translation Service (ts_) id and access_key, as we are talking directly to the Translation Service
+		// Sending Translation Service (ts_) id and access_key, as we are talking directly to the Translation Service
 		$params['project_id']    = $this->ts_id;
 		$params['accesskey']     = $this->ts_access_key;
 		$params['translator_id'] = $translator_id;
@@ -212,15 +185,16 @@ class TranslationProxy_Project {
 	}
 
 	private function _create_iframe_url( $url, $params ) {
-			if ( $params ) {
-				$url = TranslationProxy_Api::add_parameters_to_url( $url, $params );
-				$url .= '?' . http_build_query( $params );
-			}
+		if ( $params ) {
+			$url  = TranslationProxy_Api::add_parameters_to_url( $url, $params );
+			$url .= '?' . http_build_query( $params );
+		}
 
 			return $url;
 	}
 
-	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	/*
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 	 * Jobs handling (Translation Proxy)
 	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -237,19 +211,6 @@ class TranslationProxy_Project {
 		$source_language = false,
 		$target_languages = false
 	) {
-		$cache_key = md5( wp_json_encode( array(
-			$source_language,
-			$target_languages
-		) ) );
-		$cache_group = 'get_batch_job';
-		$cache_found = false;
-
-		$batch_data = wp_cache_get( $cache_key, $cache_group, false, $cache_found );
-
-		if ( $cache_found ) {
-			return $batch_data;
-		}
-
 		$batch_data = TranslationProxy_Basket::get_batch_data();
 
 		if ( ! $batch_data ) {
@@ -270,8 +231,6 @@ class TranslationProxy_Project {
 				TranslationProxy_Basket::set_batch_data( $batch_data );
 			}
 		}
-
-		wp_cache_set( $cache_key, $batch_data, $cache_group );
 
 		return $batch_data;
 	}
@@ -295,7 +254,7 @@ class TranslationProxy_Project {
 	/**
 	 * @throws WPML_TP_Batch_Exception
 	 *
-	 * @param bool $source_language
+	 * @param bool             $source_language
 	 * @param      $target_languages
 	 *
 	 * @internal param bool $name
@@ -325,8 +284,13 @@ class TranslationProxy_Project {
 		}
 
 		if ( ! $batch_data['name'] ) {
-			$batch_data['name'] = sprintf( __( '%s: WPML Translation Jobs',
-				'wpml-translation-management' ), get_option( 'blogname' ) );
+			$batch_data['name'] = sprintf(
+				__(
+					'%s: WPML Translation Jobs',
+					'wpml-translation-management'
+				),
+				get_option( 'blogname' )
+			);
 		}
 
 		TranslationProxy_Basket::set_basket_name( $batch_data['name'] );
@@ -365,7 +329,8 @@ class TranslationProxy_Project {
 		$target_language,
 		$word_count,
 		$translator_id = 0,
-		$note = ''
+		$note = '',
+		$uuid = null
 	) {
 
 		$batch_id = $this->get_batch_job_id();
@@ -379,6 +344,7 @@ class TranslationProxy_Project {
 			'word_count'      => $word_count,
 			'title'           => $title,
 			'cms_id'          => $cms_id,
+			'udid'            => $uuid,
 			'url'             => $url,
 			'translator_id'   => $translator_id,
 			'note'            => $note,
@@ -408,7 +374,7 @@ class TranslationProxy_Project {
 		}
 
 		$params = array(
-			"api_version" => TranslationProxy_Api::API_VERSION,
+			'api_version' => TranslationProxy_Api::API_VERSION,
 			'project_id'  => $this->id,
 			'accesskey'   => $this->access_key,
 			'batch_id'    => $tp_batch_id,
@@ -420,8 +386,10 @@ class TranslationProxy_Project {
 			global $wpdb;
 
 			$batch_id_sql      = "SELECT id FROM {$wpdb->prefix}icl_translation_batches WHERE batch_name=%s";
-			$batch_id_prepared = $wpdb->prepare( $batch_id_sql,
-				array( $basket_name ) );
+			$batch_id_prepared = $wpdb->prepare(
+				$batch_id_sql,
+				array( $basket_name )
+			);
 			$batch_id          = $wpdb->get_var( $batch_id_prepared );
 
 			$batch_data = array(
@@ -434,11 +402,16 @@ class TranslationProxy_Project {
 			}
 
 			if ( ! $batch_id ) {
-				$wpdb->insert( $wpdb->prefix . 'icl_translation_batches',
-					$batch_data );
+				$wpdb->insert(
+					$wpdb->prefix . 'icl_translation_batches',
+					$batch_data
+				);
 			} else {
-				$wpdb->update( $wpdb->prefix . 'icl_translation_batches',
-					$batch_data, array( 'id' => $batch_id ) );
+				$wpdb->update(
+					$wpdb->prefix . 'icl_translation_batches',
+					$batch_data,
+					array( 'id' => $batch_id )
+				);
 			}
 		}
 
@@ -480,20 +453,10 @@ class TranslationProxy_Project {
 			'job_id'     => $job_id,
 		);
 
-		return TranslationProxy_Api::proxy_download( '/jobs/{job_id}/xliff.json',
-			$params );
-	}
-
-	public function check_status( $batch_id ) {
-		$tp_networking = wpml_tm_load_tp_networking();
-		$params        = array(
-			'batch_id'   => $batch_id,
-			'project_id' => $this->id,
-			'accesskey'  => $this->access_key,
+		return TranslationProxy_Api::proxy_download(
+			'/jobs/{job_id}/xliff.json',
+			$params
 		);
-
-		$tp_networking->send_request( OTG_TRANSLATION_PROXY_URL . "/batches/{batch_id}/check.json",
-			$params, 'GET', true );
 	}
 
 	public function update_job( $job_id, $url = null, $state = 'delivered' ) {
@@ -509,8 +472,11 @@ class TranslationProxy_Project {
 			$params['job']['url'] = $url;
 		}
 
-		TranslationProxy_Api::proxy_request( '/jobs/{job_id}.json', $params,
-			'PUT' );
+		TranslationProxy_Api::proxy_request(
+			'/jobs/{job_id}.json',
+			$params,
+			'PUT'
+		);
 	}
 
 	/**
@@ -530,10 +496,12 @@ class TranslationProxy_Project {
 		if ( $batch ) {
 			$params['batch_id'] = $batch ? $batch->get_id() : false;
 
-			return TranslationProxy_Api::proxy_request( '/batches/{batch_id}/jobs.json',
-				$params );
+			return TranslationProxy_Api::proxy_request(
+				'/batches/{batch_id}/jobs.json',
+				$params
+			);
 		} else {
-			//FIXME: remove this once TP will accept the TP Project ID: https://icanlocalize.basecamphq.com/projects/11113143-translation-proxy/todo_items/182251206/comments
+			// FIXME: remove this once TP will accept the TP Project ID: https://icanlocalize.basecamphq.com/projects/11113143-translation-proxy/todo_items/182251206/comments
 			$params['project_id'] = $this->id;
 		}
 
