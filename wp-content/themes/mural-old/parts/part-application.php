@@ -13,7 +13,7 @@
                     <img src="<?= CHILDURI ?>/images/app-store.png" alt="App Store" />
                 <?php }else{ ?>
                     <img src="<?= CHILDURI ?>/images/app-store-fr.png" alt="App Store" />
-                <?php } ?>    
+                <?php } ?>
             </a>
             <a href="<?php the_field('google_play', 'options'); ?>" target="_blank" rel="noopener">
               <?php if ( ICL_LANGUAGE_CODE == "en" ){ ?>

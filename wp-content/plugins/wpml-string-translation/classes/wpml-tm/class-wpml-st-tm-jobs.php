@@ -8,18 +8,33 @@ class WPML_ST_TM_Jobs extends WPML_WPDB_User {
 	 */
 	public function __construct( &$wpdb ) {
 		parent::__construct( $wpdb );
-		add_filter( 'wpml_tm_jobs_union_table_sql', array(
-			$this,
-			'jobs_union_table_sql_filter'
-		), 10, 2 );
-		add_filter( 'wpml_post_translation_original_table', array(
-			$this,
-			'filter_tm_post_job_table'
-		), 10, 1 );
-		add_filter( 'wpml_st_job_state_pending', array(
-			$this,
-			'tm_external_job_in_progress_filter'
-		), 10, 2 );
+		add_filter(
+			'wpml_tm_jobs_union_table_sql',
+			array(
+				$this,
+				'jobs_union_table_sql_filter',
+			),
+			10,
+			2
+		);
+		add_filter(
+			'wpml_post_translation_original_table',
+			array(
+				$this,
+				'filter_tm_post_job_table',
+			),
+			10,
+			1
+		);
+		add_filter(
+			'wpml_st_job_state_pending',
+			array(
+				$this,
+				'tm_external_job_in_progress_filter',
+			),
+			10,
+			2
+		);
 	}
 
 	/**
@@ -35,11 +50,13 @@ class WPML_ST_TM_Jobs extends WPML_WPDB_User {
 		}
 
 		return isset( $job_arr['batch']['id'] )
-		       && empty( $job_arr['cms_id'] )
-		       && ! empty( $job_arr['id'] )
-		       && ! empty( $job_arr['job_state'] )
-		       && $job_arr['job_state'] === 'delivered'
-		       && $this->wpdb->get_var( $this->wpdb->prepare( "
+			   && empty( $job_arr['cms_id'] )
+			   && ! empty( $job_arr['id'] )
+			   && ! empty( $job_arr['job_state'] )
+			   && $job_arr['job_state'] === 'delivered'
+			&& $this->wpdb->get_var(
+				$this->wpdb->prepare(
+					"
 			SELECT COUNT(*)
 			FROM {$this->wpdb->prefix}icl_core_status ct
 			JOIN {$this->wpdb->prefix}icl_string_status st
@@ -47,7 +64,11 @@ class WPML_ST_TM_Jobs extends WPML_WPDB_User {
 			JOIN {$this->wpdb->prefix}icl_string_translations t
 				ON st.string_translation_id = t.id
 				WHERE ct.rid = %d AND t.status < %d
-		", $job_arr['id'], ICL_TM_COMPLETE ) ) ? true : $in_progress_status;
+		",
+					$job_arr['id'],
+					ICL_TM_COMPLETE
+				)
+			) ? true : $in_progress_status;
 	}
 
 	public function jobs_union_table_sql_filter( $sql_statements, $args ) {
@@ -69,6 +90,7 @@ class WPML_ST_TM_Jobs extends WPML_WPDB_User {
 		$sql_statements[] = "SELECT  st.translator_id,
 					st.id AS job_id,
 					'string' AS element_type_prefix,
+					NULL AS post_type,
 					st.batch_id
 			FROM {$this->wpdb->prefix}icl_string_translations st
 				JOIN {$this->wpdb->prefix}icl_strings s
@@ -90,6 +112,11 @@ class WPML_ST_TM_Jobs extends WPML_WPDB_User {
 	 * @return string
 	 */
 	private function build_string_where( $args ) {
+		if ( isset( $args['overdue'] ) && $args['overdue'] ) {
+			// We do not save "deadline" for string jobs so we just want to exclude them in such case
+			return 'WHERE 1 = 0';
+		}
+
 		$string_where  = isset( $args['string_where'] ) ? $args['string_where'] : '';
 		$translator_id = isset( $args['translator_id'] ) ? $args['translator_id'] : '';
 		$from          = isset( $args['from'] ) ? $args['from'] : '';

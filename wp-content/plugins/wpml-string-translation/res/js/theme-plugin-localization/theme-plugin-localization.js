@@ -18,14 +18,22 @@ jQuery(function($) {
 				event.data.instance.toggleItems( event.data.instance.scanningSection, $(this) );
 			});
 
-			this.scanningSection.section.on( 'click', '.header input:checkbox, .footer input:checkbox', {instance: this}, function (event){
-				event.data.instance.toggleCheckboxes( event.data.instance.scanningSection.section );
+			this.scanningSection.section.on( 'click', 'thead input:checkbox, tfoot input:checkbox', {instance: this}, function (event){
+				event.data.instance.toggleCheckboxes( event.data.instance.scanningSection.section, $(this) );
 			});
 
 			this.scanningSection.section.on( 'change', 'input:checkbox', {instance: this}, function(event) {
 				var checked = event.data.instance.scanningSection.section.find( '.item input:checkbox:checked' );
 				var disableScanButton = ! Boolean( checked.length );
 				$(event.data.instance.scanningSection.scanButton).prop('disabled', disableScanButton );
+			});
+
+			this.scanningSection.section.on( 'click', '.item input:checkbox', {instance: this}, function(event) {
+				var check_all_items = event.data.instance.scanningSection.section.find( 'thead input:checkbox, tfoot input:checkbox' );
+				var all_items = event.data.instance.scanningSection.section.find( '.item input:checkbox' );
+				var all_items_checked = event.data.instance.scanningSection.section.find( '.item input:checkbox:checked' );
+
+				check_all_items.prop( 'checked', all_items.length === all_items_checked.length );
 			});
 		},
 
@@ -47,15 +55,8 @@ jQuery(function($) {
 			}
 		},
 
-		toggleCheckboxes: function() {
-			var all_checkboxes = $( this.scanningSection.section ).find( '.item input:checkbox' );
-
-			if ( 'checked' === all_checkboxes.attr( 'checked' ) ) {
-				all_checkboxes.removeAttr( 'checked' );
-			} else {
-				all_checkboxes.attr( 'checked', 'checked' );
-			}
-
+		toggleCheckboxes: function (e, trigger) {
+			$(this.scanningSection.section).find('input:checkbox').prop('checked', trigger.prop('checked') );
 		}
 	};
 
@@ -126,7 +127,7 @@ jQuery(function($) {
 		},
 
 		scan: function( sectionData ) {
-			var selectedItems = sectionData.section.find('table').find('input:checkbox:checked');
+			var selectedItems = sectionData.section.find('table').find('input:checkbox:checked[data-component-name]');
 			var itemsCount = 0;
 			var that = this;
 			var type = sectionData.type;
@@ -156,7 +157,7 @@ jQuery(function($) {
 					}
 
 					type = sectionData.type;
-					if ( -1 !== $( element ).data( 'attribute' ).search( 'mu-::-' ) ) {
+					if ( -1 !== $( element ).data( 'component-name' ).search( 'mu-::-' ) ) {
 						type = 'mu-plugin';
 					}
 
@@ -296,14 +297,8 @@ jQuery(function($) {
 			return text;
 		},
 
-		renderStringsCounter: function() {
-			var text = '';
-
-			text = text + this.scanSuccessfulMessage.replace('%s', this.counter.totalStrings) + '<br />';
-			text = text.split('!')[1];
-			text = text.split('.')[0];
-
-			return text;
+		renderStringsCounter: function () {
+			return 'WPML' + this.scanSuccessfulMessage.replace('%s', this.counter.totalStrings).split('WPML')[1];
 		},
 
 		restoreUI: function() {
@@ -326,7 +321,7 @@ jQuery(function($) {
 		this.groups = groups;
 		this.scanningSections = scanningSections;
 	};
-	
+
 	WPML_ST.AutoScan.prototype = {
 		init: function() {
 			if ( this.shouldRunAutoScan() ) {
@@ -341,30 +336,30 @@ jQuery(function($) {
 
 		selectItems: function( scanButton, group ) {
 			group.forEach(function(item){
-				$( 'input[value="' + item + '"]' ).attr( 'checked', 'checked' );
+				$( 'input[value="' + item + '"]' ).prop( 'checked', true );
 			});
 		},
 
-		scan: function( scanButton ) {
-			$( scanButton ).click();
-		},
+        scan: function (scanButton) {
+            $(scanButton).click();
+        },
 
-		shouldRunAutoScan: function() {
-			return '' !== this.groups[0] && ( -1 !== location.href.search('action=scan_from_notice') || -1 !== location.href.search('action=scan_active_items'))
-		}
-	};
+        shouldRunAutoScan: function () {
+            return '' !== this.groups[0] && (-1 !== location.href.search('action=scan_from_notice') || -1 !== location.href.search('action=scan_active_items'))
+        }
+    };
 
-	$(document).ready(function () {
-		var scanningSections = new WPML_ST.ScanningSections();
-		var	auto_scan_type = wpml_active_plugins_themes;
-		var sections_count = 0;
-		var counter = new WPML_ST.ScanningCounter();
+    $(function () {
+        var scanningSections = new WPML_ST.ScanningSections();
+        var auto_scan_type = wpml_active_plugins_themes;
+        var sections_count = 0;
+        var counter = new WPML_ST.ScanningCounter();
 
-		if ( -1 !== location.href.search('action=scan_from_notice') ) {
-			auto_scan_type = wpml_groups_to_scan;
-		}
+        if (-1 !== location.href.search('action=scan_from_notice')) {
+            auto_scan_type = wpml_groups_to_scan;
+        }
 
-		for (var section in scanningSections) {
+        for (var section in scanningSections) {
 			if (scanningSections.hasOwnProperty(section)) {
 				var	isFirstSection = 0 === sections_count;
 				var scanSection = new WPML_ST.StringsScanning(isFirstSection, counter);

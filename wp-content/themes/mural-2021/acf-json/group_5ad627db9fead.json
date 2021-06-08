@@ -138,6 +138,13 @@
                 "operator": "==",
                 "value": "page-splash.php"
             }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-home.php"
+            }
         ]
     ],
     "menu_order": -1,
@@ -149,7 +156,7 @@
         "the_content",
         "featured_image"
     ],
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1620910084
+    "modified": 1623099003
 }
