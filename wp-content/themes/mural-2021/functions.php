@@ -98,6 +98,7 @@ if(function_exists('acf_add_options_page')) {
  * If the redirection URL is a WordPress page or post, specify here its WordPress ID
  */
 
+/*
 add_action( 'template_redirect', function() {
 	$id = get_field('splash_page', 'options');
 
@@ -108,7 +109,7 @@ add_action( 'template_redirect', function() {
 	wp_redirect( esc_url_raw( home_url( '?page_id='.$id ) ), 307 );
 	exit;
 } );
-
+*/
 
 /**
  * Envoi plus de variable PHP au script map.js

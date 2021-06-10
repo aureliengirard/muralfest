@@ -50,7 +50,7 @@ $c12Gutter: 15px;
 
 
 @font-face {
-    font-family: 'ft_switchregular';
+
     src: url('font/180523010850ftswitch-regular-webfont.woff2') format('woff2'),
          url('font/180523010850ftswitch-regular-webfont.woff') format('woff');
     font-weight: normal;
@@ -97,16 +97,15 @@ html{
 	color: #ffffff;
 }
 .toAnimate{
-	opacity: 0;
+	//opacity: 0;
 }
 body{
 	background-color: #ffffff;
-	font-family: 'ft_switchregular', sans-serif;
 	font-size: 1.8rem;
 	color: #000000;
 }
 h1,h2,h3{
-	font-family:'ft_switchregular';
+
 }
 .newsletter{
 	position:fixed;
@@ -179,7 +178,7 @@ h1,h2,h3{
 		background-color: transparent;
 		border: 2px solid black;
 		border-radius: 10px;
-		font-family: 'ft_switchregular';
+
 
 		&:focus{
 			background-color:transparent;
@@ -352,7 +351,7 @@ h4,
 }
 
 .button{
-	font-family: 'ft_switchregular';
+
 	font-size: 2rem;
 	text-transform: uppercase;
 	color: $color_blue;
@@ -574,7 +573,7 @@ body.mobile{
 					}
 
 					a{
-						font-family: 'ft_switchregular';
+
 					}
 				}
 			}
@@ -890,7 +889,7 @@ body.mobile{
 			top: 50%;
 			transform: translateY(-50%);
 			left: 90px;
-			font-family: 'ft_switchregular';
+
 
 
 			h1{
@@ -906,7 +905,7 @@ body.mobile{
 				margin-bottom: 0;
 			}
 			.pays{
-				font-family: 'ft_switchregular';
+
 				font-weight: 300;
 				color:#e7e7e7;
 				padding-left:5px;
@@ -976,7 +975,7 @@ body.mobile{
 				}
 
 				.more{
-					font-family:'ft_switchregular';
+
 					font-weight: 300;
 					text-transform: initial;
 					display: block;
@@ -1066,7 +1065,7 @@ body.mobile{
 
 		.texte-gauche{
 			margin-bottom:0;
-			font-family:'ft_switchregular';
+
 
 			@media only screen and (max-width:768px){
 				margin-bottom:15px;
@@ -2220,7 +2219,7 @@ blockquote{
 		background-color: #232323;
 		position: relative;
 		z-index: 10;
-		font-family:'ft_switchregular';
+
 
 		@media only screen and (min-width:1400px){
 			padding: 120px 0;

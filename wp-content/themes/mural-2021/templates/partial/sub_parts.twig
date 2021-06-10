@@ -1,0 +1,20 @@
+{%- for sub_item in contenu_colonne -%}
+Layout name:{{sub_item.acf_fc_layout}}
+    {%- if sub_item.acf_fc_layout == 'application' -%}
+        <section class="">
+        {% include "partial/part-application.twig" with {inner_item: sub_item} -%}
+        </section>
+    {%- elseif sub_item.acf_fc_layout == 'titre_section' -%}
+        <section class="titre-section">
+            {%- include "partial/part-titre_section.twig" with {inner_item: sub_item} -%}
+        </section>
+    {%- elseif sub_item.acf_fc_layout == 'image_pleine_largeur' -%}
+        <section class="">
+            {%- include "partial/part-image_pleine_largeur.twig" with {inner_item: sub_item} -%}
+        </section>
+    {%- elseif sub_item.acf_fc_layout == 'texte_pleine_largeur' -%}
+        <section class="texte-plein">
+            {%- include "partial/part-texte_pleine_largeur.twig" with {inner_item: sub_item} -%}
+        </section>
+    {%- endif -%}
+{%- endfor -%}

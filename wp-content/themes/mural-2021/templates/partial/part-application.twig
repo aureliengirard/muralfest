@@ -1,10 +1,12 @@
+{%- set image_gauche = TimberImage(options.image_gauche) -%}
+{%- set image_droite = TimberImage(options.image_droite) -%}
+
 <div class="content">
-    {% set image_gauche = TimberImage(options.image_gauche) %}
-    {% if image_gauche %}
+    {% if image_gauche -%}
     <figure>
-        <img src="{{ image_gauche.src }}" />
+        <img src="{{ image_gauche.src }}" alt="{{ image_gauche.alt }}" />
     </figure>
-    {% endif %}
+    {%- endif %}
 
     <div class="app-info">
         <h3>{{ options.texte_pour_liens }}</h3>
@@ -14,21 +16,21 @@
                     <img src="{{ theme.link }}/images/app-store.png" alt="App Store" />
                 {%- else -%}
                     <img src="{{ theme.link }}/images/app-store-fr.png" alt="App Store" />
-                {% endif %}
+                {%- endif -%}
             </a>
             <a href="{{ options.google_play }}" target="_blank" rel="noopener">
-                {% if ICL_LANGUAGE_CODE == 'en' %}
+                {%- if ICL_LANGUAGE_CODE == 'en' -%}
                     <img src="{{ theme.link }}/images/google-play.png" alt="Google Play" />
-                {% else %}
+                {%- else -%}
                     <img src="{{ theme.link }}/images/google-play-fr.png" alt="Google Play" />
-                {% endif %}
+                {%- endif -%}
             </a>
         </div>
     </div>
 
-    {% if options.image_droite %}
-        <figure>
-            <?= wp_get_attachment_image(get_field('image_droite', 'options'), 'original'); ?>
-        </figure>
+    {% if image_droite -%}
+    <figure>
+        <img src="{{ image_droite.src }}" alt="{{ image_droite.alt }}" />
+    </figure>
     {% endif %}
 </div>

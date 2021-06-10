@@ -1,4 +1,4 @@
-.content-wrap{
+.content-wrapper{
 
     .articles_du_blog{
 		h2{
@@ -11,7 +11,7 @@
 
 		.articles{
 			background-color: #ffffff;
-			@include cdm-grid(3, ".article", 30px, 30px, (			
+			@include cdm-grid(3, ".article", 30px, 30px, (
 				768: (
 					col: 1
 				)
@@ -48,7 +48,7 @@
 			figure{
 				position:relative;
 
-				
+
 
 				a{
 					display: block;
@@ -64,15 +64,15 @@
 						opacity: 0;
 						@include hover-transition;
 					}
-	
+
 					&:hover::before{
 						opacity: 0.8;
 					}
-					
+
 					opacity: 1;
 					@include hover-transition;
 
-					
+
 				}
 			}
 
@@ -111,14 +111,14 @@
 					font-size: 1.8rem;
 					line-height: 1.3;
 					text-align: left;
-				
+
 				}
 			}
 		}
 	}
 }
 .home{
-    .content-wrap{
+    .content-wrapper{
         .articles_du_blog{
 			margin-bottom:30px;
             .content{
@@ -130,7 +130,7 @@
                             display:flex;
                             flex-grow: 1;
 							flex-direction: column;
-							
+
 
 							@include media-screen(768px){
 								width:80%;
@@ -139,11 +139,11 @@
                             .readmore{
 								margin-top:auto;
 								text-align: left;
-								
+
                             }
 						}
 						figure{
-							
+
 							@include media-screen(768px){
 								width:80%;
 								margin: 0 auto;
@@ -156,11 +156,11 @@
     }
 }
 .page-blog{
-	.content-wrap{
+	.content-wrapper{
 		.articles{
 			width: 100%;
 
-			.article{				
+			.article{
 				background-color: #f5f5f5;
 
 				&:nth-child(2n){
@@ -174,8 +174,8 @@
 					margin: 0;
 					padding: 0;
 
-					@media only screen and (max-width: 767px) {					
-						display:block;		
+					@media only screen and (max-width: 767px) {
+						display:block;
                         text-align: center;
 					}
 				}
@@ -185,9 +185,9 @@
 					max-width: 50%;
                     width:50%;
 					@media only screen and (max-width: 767px) {
-						width:100%;	
-						max-width:100%;	
-						display:block;			
+						width:100%;
+						max-width:100%;
+						display:block;
 					}
 					&:hover{
 						+ .description h3 a{
@@ -232,7 +232,7 @@
 			.left-col{
 				width: 100%;
 				@media only screen and (max-width: 767px) {
-					width:100%;				
+					width:100%;
 				}
 				display: flex;
 				justify-content: end;
@@ -241,7 +241,7 @@
 
 			.right-col{
 				@media only screen and (max-width: 767px) {
-					display:none;		
+					display:none;
 				}
 				width: 40%;
 				flex: 1 1 auto;
@@ -250,21 +250,21 @@
 		}
 	}
     @media only screen and (max-width: 767px) {
-        .content-wrap .content{
-            background-color:#f5f5f5;  
+        .content-wrapper .content{
+            background-color:#f5f5f5;
         }
     }
 }
 
 .single-post{
-	.content-wrap{
+	.content-wrapper{
 		section{
 			h1{
 				color: #000000;
 				margin-bottom: 10px;
 				margin-top:20px;
                 text-align: center;
-			}	
+			}
 
 			.date{
 				color: $color-pink;

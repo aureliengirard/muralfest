@@ -6,33 +6,7 @@
 
 {% block content %}
 
-{% for item in content_items %}
-    {%- set class -%}
-    bgcolor-{{item.couleur}} %}
-    {%- endset -%}
-        {{item.nom_de_la_section}}
-
-        {% for inner_item in item.contenu %}
-        <section class="{{inner_item.acf_fc_layout}} {{class}}">
-            {% if inner_item.acf_fc_layout == 'application' %}
-                {% include "partial/part-application.twig" %}
-            {% endif %}
-            {{inner_item.acf_fc_layout}} {{loop.index}}
-        </section>
-        {% endfor %}
-{% endfor %}
-
-
-
-    {#
-	{% if media_item.acf_fc_layout == 'image_set' %}
-		<img src="{{ Image(media_item.image).src }}" />
-		<p class="caption">{{ Image(media_item.image).caption }}</p>
-		<aside class="notes">{{ media_item.notes }}</aside>
-	{% elseif media_item.acf_fc_layout == 'video_set' %}
-		<iframe width="560" height="315" src="http://www.youtube.com/embed/{{ media_item.youtube_id }}" frameborder="0" allowfullscreen></iframe>
-		<p class="caption">{{ media_item.caption }}</p>
-	{% endif %}
-    #}
+    {% include "partial/section-banner.twig" %}
+    {% include "partial/parts.twig" %}
 
 {% endblock %}

@@ -1,0 +1,19 @@
+<div class="content">
+    {% if blog_posts %}
+        <h2>{{__('Latest posts', 'site-theme')}}</h2>
+    {% else %}
+        <h2>{{__('You may also like', 'site-theme')}}</h2>
+    {% endif %}
+
+        <div class="articles">
+            {% for blog_post in blog_posts %}
+                {% include 'partial/tease_blog-article.twig' %}
+            {% endfor %}
+
+        </div>
+
+        <div class="button-wrap">
+            <a href="{{options.home_blog}}" class="button">{{ __('View', 'site-theme') }}</a>
+        </div>
+
+</div>

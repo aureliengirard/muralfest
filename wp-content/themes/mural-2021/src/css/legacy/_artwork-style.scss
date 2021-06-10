@@ -1,6 +1,6 @@
 /// Style single
 .single-artwork{
-	.content-wrap{
+	.content-wrapper{
 		section{
 			h1{
 				color: #000000;
@@ -14,7 +14,7 @@
 					font-weight: 400;
 					color: #000000;
                 }
-                
+
                 a{
                     color: inherit;
                     @include hover-transition;
@@ -70,7 +70,7 @@
     .artwork-data{
         max-width: calc(100vw - 53px);
         font-size: 1.6rem;
-        
+
         &.this-year{
             .artist{
                 color: $color_blue;
@@ -111,7 +111,7 @@
 
         .left-col{
             width:35%;
-            padding-right: 5px;    
+            padding-right: 5px;
             img{
                 max-width: 100%;
             }
@@ -166,12 +166,12 @@
             .col-wrapper{
                 flex-direction: column;
             }
-    
+
             .left-col{
                 padding-right: 0px;
                 width: auto;
             }
-    
+
             .right-col{
                 padding-left: 0px;
                 width: auto;
@@ -180,7 +180,7 @@
     }
 }
 
-.content-wrap{
+.content-wrapper{
     .artwork-list{
         h2{
             text-align: center;

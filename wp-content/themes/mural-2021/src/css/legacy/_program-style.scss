@@ -1,4 +1,4 @@
-.content-wrap{
+.content-wrapper{
 
 	.evenements_a_venir{
 		.content{
@@ -26,7 +26,7 @@
 			));
 			.program{
                 display: flex;
-                flex-direction: column;     
+                flex-direction: column;
 				background-color: #ffffff;
 
 				figure{
@@ -38,7 +38,7 @@
 								-webkit-text-fill-color: transparent;
 						}
 					}
-				
+
 					a{
 						display: inline-block;
 						overflow: hidden;
@@ -65,10 +65,10 @@
 								opacity: 1;
 								@include hover-transition;
 
-								
+
 							}
 						}
-						
+
 					}
                     @include media-screen(768px){
                         text-align: center;
@@ -82,7 +82,7 @@
 					flex-direction: column;
 					align-items: center;
 					flex-grow: 1;
-					
+
 					.event-infos{
 						margin-bottom: 0;
 					}
@@ -110,7 +110,7 @@
                     .readmore{
 						margin-top: auto;
 						max-width: 100%; /* IE fix */
-                    } 
+                    }
 				}
 			}
 		}
@@ -132,7 +132,7 @@
 }
 
 .single-program{
-	.content-wrap{
+	.content-wrapper{
 		section{
 			h1{
 				color: #000000;

@@ -1,0 +1,20 @@
+{%- set video = inner_item.video -%}
+{% set controls = "controls=1" %}
+{% set enablejsapi = "enablejsapi=1" %}
+{% set rel = "rel=0" %}
+{% set origin -%}origin={{site.url}}{%- endset %}
+{% set showinfo = "showinfo=0" %}
+{% set wmode = "wmode=opaque" %}
+{% set autoplay = "autoplay=1" %}
+{% set mute = "mute=1" %}
+{%- set newUrl -%}?feature=oembed&{{controls}}&{{enablejsapi}}&{{rel}}&{{origin}}&{{showinfo}}&{{wmode}}&{{autoplay}}&{{mute}}{%- endset -%}
+
+<div class="content">
+    {%- if video -%}
+    <div class="iframe-style">
+        <div class="fluid-iframe">
+            {{ video |replace({'?feature=oembed': newUrl}) }}
+        </div>
+    </div>
+    {%- endif -%}
+</div>

@@ -1,0 +1,26 @@
+{% for item in content_items -%}
+    {%- set class -%}bgcolor-{{item.couleur}}{%- endset -%}
+
+    {%- for inner_item in item.contenu -%}
+    <section class="{{inner_item.acf_fc_layout}} {{class}}">
+        {%- if inner_item.acf_fc_layout == 'application' -%}
+            {% include "partial/part-application.twig" -%}
+        {%- elseif inner_item.acf_fc_layout == 'texte_bouton' -%}
+            {%- include "partial/part-texte_bouton.twig" -%}
+        {%- elseif inner_item.acf_fc_layout == 'video' -%}
+            {%- include "partial/part-video.twig" -%}
+        {%- elseif inner_item.acf_fc_layout == 'appels_a_laction' -%}
+            {%- include "partial/part-appels_a_laction.twig" -%}
+        {%- elseif inner_item.acf_fc_layout == 'titre_section' -%}
+            {%- include "partial/part-titre_section.twig" -%}
+        {%- elseif inner_item.acf_fc_layout == 'deux_colonnes' -%}
+            {%- include "partial/part-deux_colonnes.twig" -%}
+        {%- elseif inner_item.acf_fc_layout == 'formulaire_infolettre' -%}
+            {%- include "partial/part-formulaire_infolettre.twig" -%}
+        {%- elseif inner_item.acf_fc_layout == 'articles_du_blog' -%}
+            {%- include "partial/part-articles_du_blog.twig" -%}
+        {%- endif -%}
+    </section>
+    Nom:{{item.nom_de_la_section}} - Layout name: {{inner_item.acf_fc_layout}} Loop:{{loop.index}}
+    {%- endfor -%}
+{%- endfor %}

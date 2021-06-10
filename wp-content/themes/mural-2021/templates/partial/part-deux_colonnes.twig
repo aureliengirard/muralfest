@@ -1,0 +1,70 @@
+
+{% set colonne_de_gauche = inner_item.colonne_de_gauche %}
+{% set colonne_de_droite = inner_item.colonne_de_droite %}
+<div class="col-wrapper{{ inner_item.largeur_complete }}">
+    {% if colonne_de_gauche %}
+        <div class="left-col">
+            {%- set classes -%}bgcolor-{{colonne_de_gauche.couleur}}{%- endset -%}
+            {% if colonne_de_gauche.ajouter_une_image and colonne_de_gauche.ajouter_du_parallax %}
+                {%- set parallax -%}background-parallax{%- endset -%}
+            {% endif %}
+            {% if colonne_de_gauche.content_width %}
+                {%- set content_width -%} content-width{%- endset -%}
+            {% endif %}
+            <section class="{{classes}}{{parallax}}{{content_width}}">
+                {% set contenu_colonne = colonne_de_gauche.contenu_colonne %}
+                {% if contenu_colonne %}
+                <div class="col-content">
+                    {% include "partial/sub_parts.twig" %}
+                </div>
+                {% endif %}
+                {#
+                if(get_sub_field('ajouter_une_image')){
+                $img_attr = array();
+
+                if(get_sub_field('ajouter_du_parallax')){
+                $img_attr['class'] = 'img-parallax';
+                }else{
+                $img_attr['class'] = 'background-image';
+                }
+
+                echo wp_get_attachment_image(get_sub_field('image_de_fond'), 'full', false, $img_attr);
+                }
+                #}
+            </section>
+        </div>
+    {% endif %}
+
+    {% if colonne_de_droite %}
+        <div class="right-col">
+            {%- set classes -%}bgcolor-{{colonne_de_droite.couleur}}{%- endset -%}
+            {% if colonne_de_droite.ajouter_une_image and colonne_de_droite.ajouter_du_parallax %}
+                {%- set parallax -%}background-parallax{%- endset -%}
+            {% endif %}
+            {% if colonne_de_droite.content_width %}
+                {%- set content_width -%} content-width{%- endset -%}
+            {% endif %}
+            <section class="{{classes}}{{parallax}}{{content_width}}">
+                {% set contenu_colonne = colonne_de_droite.contenu_colonne %}
+                {% if contenu_colonne %}
+                <div class="col-content">
+                    {% include "partial/sub_parts.twig" %}
+                </div>
+                {% endif %}
+                {#
+                if(get_sub_field('ajouter_une_image')){
+                $img_attr = array();
+
+                if(get_sub_field('ajouter_du_parallax')){
+                $img_attr['class'] = 'img-parallax';
+                }else{
+                $img_attr['class'] = 'background-image';
+                }
+
+                echo wp_get_attachment_image(get_sub_field('image_de_fond'), 'full', false, $img_attr);
+                }
+                #}
+            </section>
+        </div>
+    {% endif %}
+</div>
