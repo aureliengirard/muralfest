@@ -1,0 +1,50 @@
+<div class="content">
+    {% if inner_item.titre %}
+        <h2>{{inner_item.titre}}</h2>
+    {% endif %}
+
+    {% if inner_item.partenaires %}
+        <div class="partner-wrapper">
+
+            {% for item in inner_item.partenaires %}
+                {%- if item.acf_fc_layout == 'partenaire' -%}
+                    {% set partenaire = Post(item.partenaire) %}
+
+                    <figure class="partner">
+
+                        {% if partenaire.site_web %}
+                            <a href="{{partenaire.site_web}}" title="{{__("View's website", "site-theme")}}{{partenaire.title}}" target="_blank">
+                        {% endif %}
+                            {%- set img = TimberImage(partenaire.logo) -%}
+                            {%- set img_url = img.src -%}
+                            {%- set reponsize_sizes = "768,720,640,512,414,375,360" -%}
+                            {%- include 'components/reponsive_img.twig' with  { img: img, img_url: img_url, reponsize_sizes: reponsize_sizes} -%}
+
+                        {% if partenaire.site_web %}
+                            </a>
+                        {% endif %}
+                    </figure>
+                {%- elseif item.acf_fc_layout == 'image' -%}
+                    <figure class="partner-image {{item.alignement_de_limage}}">
+                        {% if item.site_web %}
+                            <a href="{{item.site_web}}" target="_blank">
+                        {% endif %}
+                            {%- set img = TimberImage(item.image) -%}
+                            {%- set img_url = img.src -%}
+                            {%- set reponsize_sizes = "768,720,640,512,414,375,360" -%}
+                            {%- include 'components/reponsive_img.twig' with  { img: img, img_url: img_url, reponsize_sizes: reponsize_sizes} -%}
+
+                        {% if item.site_web %}
+                            </a>
+                        {% endif %}
+                    </figure>
+                {%- endif -%}
+
+            {% endfor %}
+        </div>
+
+        <div class="button-wrap">
+            <a href="<?= get_the_permalink(Festival()->get_festival_sub_page('partner')); ?>" class="button"><?php _e('View all partners', 'site-theme'); ?></a>
+        </div>
+    {% endif %}
+</div>

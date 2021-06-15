@@ -932,6 +932,7 @@ body.mobile{
 					@include responsives-font-size(20, 25, 450, 767);
 					@include responsives-font-size(16, 30, 767, 1620);
 					margin-bottom:0;
+					margin-top:0;
 				}
 
 				br{

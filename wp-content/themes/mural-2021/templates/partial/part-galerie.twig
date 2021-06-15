@@ -1,0 +1,18 @@
+<div class="content">
+    {% set images = inner_item.images %}
+    {% if images %}
+        <div class="gallery">
+            {% for image in images %}
+                <figure>
+                    {%- set img = TimberImage(image.image) -%}
+                    {%- set img_url = img.src -%}
+                    {%- set reponsize_sizes = "1920,1440,1366,1280,960,800,768,720,640,512,414,375,360" -%}
+                    <a href="{{img_url}}">
+                        {%- include 'components/reponsive_img.twig' with  { img: img, img_url: img_url, reponsize_sizes: reponsize_sizes} -%}
+                    </a>
+                </figure>
+
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>

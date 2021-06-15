@@ -65,6 +65,10 @@
     .lg{
         font-size: 1.125em;
     }
+
+    &:nth-child(1){
+        margin-top: 0;
+    }
 }
 
 // HEADINGS CSS

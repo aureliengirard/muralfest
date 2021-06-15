@@ -2,7 +2,8 @@
     {%- set class -%}bgcolor-{{item.couleur}}{%- endset -%}
 
     {%- for inner_item in item.contenu -%}
-    <section class="{{inner_item.acf_fc_layout}} {{class}}">
+    <section class="{{class}}">
+    <section class="{{inner_item.acf_fc_layout}}">
         {%- if inner_item.acf_fc_layout == 'application' -%}
             {% include "partial/part-application.twig" -%}
         {%- elseif inner_item.acf_fc_layout == 'texte_bouton' -%}
@@ -19,7 +20,14 @@
             {%- include "partial/part-formulaire_infolettre.twig" -%}
         {%- elseif inner_item.acf_fc_layout == 'articles_du_blog' -%}
             {%- include "partial/part-articles_du_blog.twig" -%}
+        {%- elseif inner_item.acf_fc_layout == 'texte_pleine_largeur' -%}
+            {%- include "partial/part-texte_pleine_largeur.twig" -%}
+        {%- elseif inner_item.acf_fc_layout == 'galerie' -%}
+            {%- include "partial/part-galerie.twig" -%}
+        {%- elseif inner_item.acf_fc_layout == 'partenaires' -%}
+            {%- include "partial/part-partenaires.twig" -%}
         {%- endif -%}
+    </section>
     </section>
     Nom:{{item.nom_de_la_section}} - Layout name: {{inner_item.acf_fc_layout}} Loop:{{loop.index}}
     {%- endfor -%}
