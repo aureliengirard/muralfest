@@ -26,6 +26,8 @@
             {%- include "partial/part-galerie.twig" -%}
         {%- elseif inner_item.acf_fc_layout == 'partenaires' -%}
             {%- include "partial/part-partenaires.twig" -%}
+        {%- elseif inner_item.acf_fc_layout == 'evenements_a_venir' -%}
+            {%- include "partial/part-evenements_a_venir.twig" -%}
         {%- endif -%}
     </section>
     </section>

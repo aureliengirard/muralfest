@@ -1,0 +1,34 @@
+/* Style for WooCommerce Bundles in the back-end */
+
+
+/*****************************************************
+	FrontEnd
+/*****************************************************/
+.bundles_notices {
+	padding:15px;
+	background-color:#f7a67b;
+	margin:15px 0;
+	
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+.bundles_notices p { margin-bottom:8px; }
+.bundles_notices p:last-child { margin-bottom:0; }
+
+.bundles_notices ul { padding-left:30px; font-weight:600; }
+
+.bundles_notices a { color:#fff; }
+
+
+.before_bundle_reduction { font-size:75%; opacity:0.6; }
+
+
+/*****************************************************
+	BackEnd
+/*****************************************************/
+#bundle_options_actions { padding:10px; text-align:right; }
+
+.bundle_choice { position: relative; }
+.remove_bundle_row { position:absolute; top:5px; right:10px; }
+

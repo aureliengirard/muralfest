@@ -1,0 +1,350 @@
+# WordPress Blank Pot
+# Copyright (C) 2014 ...
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Theme Blank v1.0.0\n"
+"Report-Msgid-Bugs-To: Translator Name <translations@example.com>\n"
+"POT-Creation-Date: 2018-03-27 10:43-0400\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: Codems <support@codems.ca>\n"
+"Language: fr_CA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Textdomain-Support: yesX-Generator: Poedit 1.6.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;esc_html_e;esc_html_x:1,2c;esc_html__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;"
+"_x:1,2c;_n:1,2;_n_noop:1,2;__ngettext:1,2;__ngettext_noop:1,2;_c,"
+"_nc:4c,1,2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: acf-pro\n"
+"X-Poedit-SearchPathExcluded-1: node_modules\n"
+"X-Poedit-SearchPathExcluded-2: doc-templates\n"
+
+#: functions.php:31
+msgid "Navigation Menu"
+msgstr "Menu principale"
+
+#: inc/basic-core.php:82
+#, php-format
+msgid "Page %s"
+msgstr "Page %s"
+
+#: inc/basic-core.php:98
+msgid "Main Widget Area"
+msgstr "Zone principale du widget"
+
+#: inc/basic-core.php:100
+msgid "Appears in the footer section of the site."
+msgstr "Apparaît dans le pied de page du site."
+
+#: inc/basic-core.php:108
+msgid "Secondary Widget Area"
+msgstr "Zone secondaire  du widget"
+
+#: inc/basic-core.php:110
+msgid "Appears on posts and pages in the sidebar."
+msgstr "Apparaît sur les publications et les pages dans la barre latérale."
+
+#: inc/basic-core.php:133
+msgid "Posts navigation"
+msgstr "Navigation des publications"
+
+#: inc/basic-core.php:137
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr "<span class=\"meta-nav\">&larr;</span> Publications antérieures"
+
+#: inc/basic-core.php:141
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Publications récentes <span class=\"meta-nav\">&rarr;</span>"
+
+#: inc/basic-core.php:166
+msgid "Post navigation"
+msgstr "Navigation des publications"
+
+#: inc/basic-core.php:168
+msgctxt "Previous post link"
+msgid "<span class=\"meta-nav\">&larr;</span> %title"
+msgstr "<span class=\"meta-nav\">&larr;</span> %title"
+
+#: inc/basic-core.php:169
+msgctxt "Next post link"
+msgid "%title <span class=\"meta-nav\">&rarr;</span>"
+msgstr "%title <span class=\"meta-nav\">&rarr;</span>"
+
+#: inc/basic-core.php:184
+msgid "Sticky"
+msgstr "Permanent"
+
+#: inc/basic-core.php:190 inc/basic-core.php:196
+msgid ", "
+msgstr ""
+
+#: inc/basic-core.php:205
+#, php-format
+msgid "View all posts by %s"
+msgstr "Voir tous les articles par %s"
+
+#: inc/core.php:580
+msgid "Directions to this place"
+msgstr "Itinéraire vers ce lieu"
+
+#: inc/core.php:581
+msgid "Address"
+msgstr "Adresse"
+
+#: inc/core.php:582
+msgid "Please enter a valid email address."
+msgstr "Veuillez écrire une adresse courriel valide."
+
+#: inc/core.php:583
+msgid "Processing your request. Please wait."
+msgstr "Traitement de votre demande en cours. Veuillez patienter."
+
+#: inc/core.php:584
+msgid "Your email address has been added. Thank you!"
+msgstr "Votre adresse courriel a été ajoutée. Merci!"
+
+#: inc/cpt.php:81
+msgctxt "masculin"
+msgid "New"
+msgstr "Nouveau"
+
+#: inc/cpt.php:82
+msgctxt "feminin"
+msgid "New"
+msgstr "Nouvelle"
+
+#: inc/cpt.php:85
+msgctxt "masculin"
+msgid "All"
+msgstr "Tous"
+
+#: inc/cpt.php:86
+msgctxt "feminin"
+msgid "All"
+msgstr "Toutes"
+
+#: inc/cpt.php:89
+msgctxt "masculin"
+msgid "One"
+msgstr "Un"
+
+#: inc/cpt.php:90
+msgctxt "feminin"
+msgid "One"
+msgstr "Une"
+
+#: inc/cpt.php:93
+msgctxt "masculin"
+msgid "No"
+msgstr "Aucun"
+
+#: inc/cpt.php:94
+msgctxt "feminin"
+msgid "No"
+msgstr "Aucune"
+
+#: inc/cpt.php:155 inc/cpt.php:230
+msgid "Edit"
+msgstr "Modifier"
+
+#: inc/cpt.php:157 inc/cpt.php:227
+msgid "the"
+msgstr "les"
+
+#: inc/cpt.php:158
+msgid "View"
+msgstr "Voir"
+
+#: inc/cpt.php:159 inc/cpt.php:226
+msgid "Search"
+msgstr "Rechercher"
+
+#: inc/cpt.php:161
+msgid "in trash"
+msgstr "dans la corbeille"
+
+#: inc/cpt.php:228
+msgid "parent"
+msgstr "parent"
+
+#: inc/cpt.php:229
+msgid "parent:"
+msgstr "parent:"
+
+#: inc/cpt.php:231
+msgid "Udate"
+msgstr "Mettre à jour"
+
+#: inc/cpt.php:232
+msgid "Add"
+msgstr "Ajouter"
+
+#: inc/cpt.php:233
+msgid "New name for"
+msgstr "Nouveau nom de"
+
+#: inc/helpers.php:142
+msgid "results founds"
+msgstr "résultats trouvés"
+
+#: inc/helpers.php:155
+msgid "Back"
+msgstr "Retour"
+
+#: inc/helpers.php:173
+msgid "Home"
+msgstr "Accueil"
+
+#: inc/lib/send_mail/templates/footer.php:13
+msgid "All rights reserved."
+msgstr "Tous droits réservés."
+
+#: inc/lib/user_avatar/inc/popup-cropAvatar.php:3
+#: inc/lib/user_avatar/inc/popup-cropAvatar.php:5
+msgid "Resize"
+msgstr "Redimensionner"
+
+#: inc/lib/user_avatar/user_avatar.php:148
+msgid "Image is too small."
+msgstr "L'image est trop petite."
+
+#: inc/lib/user_avatar/user_avatar.php:268
+msgid "Save image"
+msgstr "Sauvegarder l'image"
+
+#: inc/lib/woo_bundles/WC_Product_Choices_Bundles.php:81
+msgid "Add to cart"
+msgstr "Ajouter au panier"
+
+#: inc/lib/woo_bundles/WC_Product_Choices_Bundles.php:81
+msgid "Read more"
+msgstr "Lire plus"
+
+#: inc/lib/woo_bundles/class-cb-frontend.php:285
+msgid "You have a bundle product in your cart."
+msgstr "Vous avez un produit bundle dans votre panier."
+
+#: inc/lib/woo_bundles/class-cb-frontend.php:296
+msgid "Here's the products that you need to add to your cart :"
+msgstr "Voici les produits que vous devez ajouter à votre panier:"
+
+#: inc/lib/woo_bundles/class-cb-frontend.php:303
+#, php-format
+msgid "%s more from the group \"%s\" for the bundle \"%s\" (%s $)"
+msgstr "%s de plus du groupe \"%s\" pour le bundle \"%s\" (%s $)"
+
+#: inc/lib/woo_bundles/class-cb-frontend.php:316
+msgid "Your bundles are full! Continue to shop or checkout!"
+msgstr "Vos bundles sont pleins! Continuez à magasiner ou passer à la caisse!"
+
+#: inc/lib/woo_bundles/class-cb-frontend.php:338
+msgid "This product fits in your bundle! <strong>Add it now!</strong>"
+msgstr ""
+"Ce produit s'inscrit dans votre bundle! <strong>Ajoutez-le maintenant!</"
+"strong>"
+
+#: inc/lib/woo_bundles/class-cb-frontend.php:340
+msgid "This product doesn't fits in your bundle."
+msgstr "Ce produit ne rentre pas dans votre bundle."
+
+#: inc/lib/woo_bundles/class-cb-frontend.php:412
+msgid "Bundle"
+msgstr ""
+
+#: inc/lib/woo_bundles/woo_choicesBundles.php:128
+msgid "Bundle / Kit"
+msgstr ""
+
+#: inc/lib/woo_bundles/woo_choicesBundles.php:139
+msgid "Options Bundle"
+msgstr ""
+
+#: inc/lib/woo_bundles/woo_choicesBundles.php:213
+msgid "Category"
+msgstr "Catégorie"
+
+#: inc/lib/woo_bundles/woo_choicesBundles.php:231
+msgid "Number included"
+msgstr "Nombre inclut"
+
+#: inc/lib/woo_bundles/woo_choicesBundles.php:236
+msgid "Max amount reduced by product"
+msgstr "Réduction maximal par produit"
+
+#: inc/lib/woo_bundles/woo_choicesBundles.php:244
+msgid "Add a product group"
+msgstr "Ajouter un groupe de produit"
+
+#: inc/lib/woo_wholesales/class-WS-products.php:93
+msgid "Wholesale"
+msgstr ""
+
+#: inc/lib/woo_wholesales/class-WS-products.php:113
+msgid "Wholesale User Discount"
+msgstr "Wholesale Rabais Utilisateur"
+
+#: inc/lib/woo_wholesales/class-WS-user.php:136
+msgid "Wholesale Customer Rebate"
+msgstr "Wholesale Rabais Client"
+
+#: inc/lib/woo_wholesales/class-WS-user.php:140
+msgid "Rebate"
+msgstr "Rabais"
+
+#: inc/lib/woo_wholesales/class-WS-user.php:143
+msgid "Use default rate"
+msgstr "Utiliser le taux par défaut"
+
+#: inc/lib/woo_wholesales/class-WS-user.php:151
+#, php-format
+msgid "This value will override the default %s%% rebate for this customer."
+msgstr "Cette valeur remplacera la remise %s%% par défaut pour ce client."
+
+#: parts/part-faq.php:7
+msgid "Q:"
+msgstr "Q:"
+
+#: parts/part-faq.php:11
+msgid "A:"
+msgstr "R:"
+
+#~ msgid "Accueil"
+#~ msgstr "Home"
+
+#~ msgid "Retour"
+#~ msgstr "Back"
+
+#~ msgid "Modifier"
+#~ msgstr "Edit"
+
+#~ msgid "les"
+#~ msgstr "the"
+
+#~ msgid "Voir les"
+#~ msgstr "View all"
+
+#~ msgid "Rechercher"
+#~ msgstr "Search"
+
+#~ msgid "dans la corbeil"
+#~ msgstr "in trash"
+
+#~ msgid "Mettre à jour"
+#~ msgstr "Update"
+
+#~ msgid "Ajouter"
+#~ msgstr "Add"
+
+#~ msgid "Nouveau nom de"
+#~ msgstr "New name for"
+
+#~ msgid "Itinéraire vers ce lieu"
+#~ msgstr "Itinéraire vers ce lieu"

@@ -294,30 +294,26 @@
 			position:relative;
 			z-index:0;
 
-			.left-col{
-                max-width: 50%;
-
-                + .right-col{
-                    width: 50%;
-                    padding-left: 30px;
-                }
+			@include media-screen(){
+				flex-direction: column;
 			}
 
-            @include media-screen(){
-                flex-direction: column;
+			.left-col,
+			.right-col{
+				max-width: 50%;
+				flex: 50%;
+				@include media-screen(){
+					width: 100%;
+					flex: 100%;
+				}
+			}
 
-                .left-col{
-                    max-width: none;
-
-                    + .right-col{
-                        padding-left: 0;
-                        width: auto;
-                    }
-                }
-
-
-            }
+			.right-col{
+				padding-left: 30px;
+				@include media-screen(){
+					padding-left: 0px;
+				}
+			}
 		}
-
 	}
 }

@@ -1,6 +1,6 @@
 {%- for sub_item in contenu_colonne -%}
 Layout name:{{sub_item.acf_fc_layout}}
-    <section class="{{sub_item.acf_fc_layout}} {{class}}">
+    <section class="{{sub_item.acf_fc_layout}}">
     {%- if sub_item.acf_fc_layout == 'application' -%}
         {% include "partial/part-application.twig" with {inner_item: sub_item} -%}
     {%- elseif sub_item.acf_fc_layout == 'titre_section' -%}

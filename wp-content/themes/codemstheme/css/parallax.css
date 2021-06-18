@@ -1,0 +1,30 @@
+/* CSS pour les images parallax */
+.section-parallax{
+	position: relative;
+	z-index: 1;
+}
+.parallax-img-wrapper{
+	position: absolute;
+	top:0;
+	right: 0;
+	bottom: 0;
+	left:0;
+	overflow: hidden;
+	z-index: -1;
+}
+.img-parallax{
+	position: relative;
+	top:0;
+	max-width: none;
+	min-width: calc(100% + 1px); /* +1px sinon une ligne de 1px s'affiche occasionellement a gauche de l'image */
+	left:50%;
+	-ms-transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+
+.img-parallax.inactif{
+	top:0;
+}

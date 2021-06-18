@@ -1,0 +1,15 @@
+.header{
+	background-color: #8CC63E;
+}
+
+.main__heading--secondary{
+	color: #8CC63E;
+}
+
+.main__heading--secondary::before{
+	background-color: #8CC63E;
+}
+
+.item__name{
+	color: #8CC63E;
+}

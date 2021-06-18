@@ -3,9 +3,42 @@
  * Template Name: Artistes
  *
  */
+ global $place_holder_artist;
+ $place_holder_artist = get_field ("artwork_placeholder");
 
+ $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+ $args = array(
+ 	'post_type' => array( 'artist' ),
+ 	'posts_per_page' => 18,
+ 	'nopaging' => false,
+ 	'paged' => $paged,
+ 	'orderby' => array(
+ 		'years' => 'DESC',
+ 		'title' => 'ASC'
+ 	),
+ 	'meta_query' => array(
+ 		'years' => array(
+ 			'key' => 'annee'
+ 		)
+ 	)
+ );
+
+ if (isset($_GET['years']) && $_GET['years'] != '') {
+ 	$args['meta_query']['years']['value'] = sanitize_text_field($_GET['years']);
+ }
+
+ $query = new WP_Query( $args );
+ global $wp_query;
+ // Put default query object in a temp variable
+ $tmp_query = $wp_query;
+ // Now wipe it out completely
+ $wp_query = null;
+ // Re-populate the global with our custom query
+ $wp_query = $query;
+
+ $current_year = NULL;
 get_header(); ?>
-	
+
 
 <?php while ( have_posts() ) : the_post(); ?>
     <article id="post-<?php the_ID(); ?>" class="site-content">
@@ -46,7 +79,7 @@ get_header(); ?>
                     );
 
                     if (isset($_GET['years']) && $_GET['years'] != '') {
-                        $args['meta_query']['years']['value'] = sanitize_text_field($_GET['years']);                    
+                        $args['meta_query']['years']['value'] = sanitize_text_field($_GET['years']);
                     }
 
                     $query = new WP_Query( $args );
@@ -59,7 +92,7 @@ get_header(); ?>
                     $wp_query = $query;
 
                     $current_year = NULL;
-            
+
                     if ( $query->have_posts() ) : ?>
                         <section class="artists">
                             <?php while ( $query->have_posts() ) :
@@ -82,7 +115,7 @@ get_header(); ?>
                                     echo '<div class="artists-wrap">';
                                 }
                                 ?>
-                
+
                                 <?php get_template_part('parts/artist', 'article'); ?>
 
                             <?php endwhile; ?>
@@ -93,7 +126,7 @@ get_header(); ?>
                     <?php else: ?>
                         <p><?php _e('No artist found.', 'site-theme'); ?></p>
                     <?php endif; ?>
-            
+
                     <?php
                     $wp_query = null;
                     $wp_query = $tmp_query;

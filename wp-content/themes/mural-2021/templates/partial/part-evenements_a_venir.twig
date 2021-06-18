@@ -1,0 +1,19 @@
+{% set events = Post(inner_item.evenements) %}
+
+<div class="content">
+    <h2>{{ __('Events', 'site-theme') }}</h2>
+
+    {% if events %}
+        <div class="programs">
+            {% for event_post in events %}
+                {% include 'components/tease_program-article.twig' %}
+            {% endfor %}
+
+        </div>
+    {% endif %}
+
+    <div class="button-wrap">
+        <a href="{{ options.home_program }}" class="button">{{ __('View all events', 'site-theme') }}</a>
+    </div>
+
+</div>

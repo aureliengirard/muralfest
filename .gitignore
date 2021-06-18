@@ -31,6 +31,8 @@ wp-content/plugins/**
 !wp-content/themes/mural-old/**
 !wp-content/themes/mural-2021/
 !wp-content/themes/mural-2021/**
+!wp-content/themes/codemstheme/
+!wp-content/themes/codemstheme/**
 
 # Timber
 !wp-content/plugins/timber-library/

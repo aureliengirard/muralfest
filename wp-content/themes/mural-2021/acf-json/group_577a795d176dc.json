@@ -666,6 +666,48 @@
             "multiple": 0
         },
         {
+            "key": "field_60ca0d8aebe89",
+            "label": "Accueil partenaires",
+            "name": "home_partners",
+            "type": "page_link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "allow_archives": 1,
+            "multiple": 0
+        },
+        {
+            "key": "field_60ca0dccb99ac",
+            "label": "Accueil programmation",
+            "name": "home_program",
+            "type": "page_link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "allow_archives": 1,
+            "multiple": 0
+        },
+        {
             "key": "field_60a40b3480f42",
             "label": "Splash Page",
             "name": "",
@@ -742,5 +784,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1623347225
+    "modified": 1623854787
 }

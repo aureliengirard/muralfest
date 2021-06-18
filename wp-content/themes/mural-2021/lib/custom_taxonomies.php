@@ -123,4 +123,3 @@ $args = array(
     ),
 );
 register_taxonomy( 'tag-venue', array( 'venue', ), $args );
-

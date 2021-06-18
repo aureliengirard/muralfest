@@ -1,0 +1,16 @@
+/** CSS User Avatar **/
+
+.popup{
+	display:none; opacity:0;
+	position:fixed; background-color:rgba(0, 0, 0, 0.7); z-index:99999;
+	top:0; left:0; bottom:0; right:0; border-top:1px solid #d4d4d4; border-bottom:1px solid #d4d4d4;
+}
+
+#cropper-popup > div{ background-color:#FFF; position:relative; top:-600px; max-width:380px; width:100%; margin:0 auto; }
+#cropper-popup h4{ text-align:center; margin:0; padding-top: 20px; }
+#cropper-popup > div{ width:100%; max-width:800px; }
+
+.cropper-wrap { padding:20px; }
+
+#user-image-cropper { width: 100%; }
+#user-image-cropper > img { max-width: 100%; }

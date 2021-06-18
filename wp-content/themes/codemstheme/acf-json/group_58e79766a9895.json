@@ -1,0 +1,170 @@
+{
+    "key": "group_58e79766a9895",
+    "title": "Contenu général",
+    "fields": [
+        {
+            "key": "field_58e79766d4c45",
+            "label": "Contenu",
+            "name": "contenu",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "58e7e0a2e0fbb": {
+                    "key": "58e7e0a2e0fbb",
+                    "name": "titre_section",
+                    "label": "Titre de section",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_58e7e0ace0fbc",
+                            "label": "Titre de section",
+                            "name": "titre_section",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_58e7df94c8ba8"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "58e557e54c952": {
+                    "key": "58e557e54c952",
+                    "name": "texte_pleine_largeur",
+                    "label": "Texte pleine largeur",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_58e797670bc84",
+                            "label": "Texte pleine largeur",
+                            "name": "texte_pleine_largeur",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_58e5574697adc"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "58e55820e42fc": {
+                    "key": "58e55820e42fc",
+                    "name": "image_et_texte",
+                    "label": "Image et texte",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_58e797670c459",
+                            "label": "Image et texte",
+                            "name": "image_et_texte",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_58e3e97381dcc"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "5a97297cd51d4": {
+                    "key": "5a97297cd51d4",
+                    "name": "deux_colonnes",
+                    "label": "Deux colonnes",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5a97298cd51d5",
+                            "label": "Deux colonnes",
+                            "name": "deux_colonnes",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_5a97285102fb4"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "button_label": "Ajouter un élément",
+            "min": "",
+            "max": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_template",
+                "operator": "==",
+                "value": "default"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "featured_image"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1519856393
+}

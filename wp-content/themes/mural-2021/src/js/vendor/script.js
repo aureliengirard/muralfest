@@ -175,6 +175,7 @@ $(function(){
 	/*************/
 	// add class .toAnimate to html element with a animate.css effect class
 	// when on screen, the animation will execute
+
 	$(document).ready(function(){
 		$(window).on('scroll load', function(event) {
 			$('.toAnimate').each(function(index, el) {

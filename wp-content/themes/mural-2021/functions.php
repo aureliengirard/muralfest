@@ -25,6 +25,8 @@ class StarterSite extends TimberSite {
 		add_filter( 'get_twig', array( $this, 'add_to_twig' ) );
 		add_action( 'init', array( $this, 'register_post_types' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
+		add_action( 'init', array( $this, 'register_api' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'loadScripts' ) );
 		parent::__construct();
 	}
 
@@ -35,12 +37,34 @@ class StarterSite extends TimberSite {
 	function register_taxonomies() {
 		require('lib/custom_taxonomies.php');
 	}
+	function register_api() {
+		require('inc/mural-api.php');
+	}
 
 	function add_to_context( $context ) {
 		$context['options'] = get_fields('options');
 
 		$context['nav_menu'] = new TimberMenu('Navigation FR');
         $context['footer_menu'] = new TimberMenu('footer_menu');
+
+		// post
+		$args = array(
+		    'post_type'  => 'post',
+		    'posts_per_page' => 3,
+		    'post_status' => 'publish'
+		);
+		$context['blog_posts'] = new Timber\PostQuery($args);
+
+		$args = array(
+			'post_type'=> 'program',
+			'post__in' => get_sub_field('evenements'),
+			'posts_per_page' => -1,
+			'orderby' => 'post__in'
+		);
+
+		$context['event_posts'] = new Timber\PostQuery($args);
+
+		$context['blog_posts_link'] = get_post_type_archive_link('post');
 
 		$context['site'] = $this;
 		return $context;
@@ -52,9 +76,12 @@ class StarterSite extends TimberSite {
 	}
 
 	function add_to_twig( $twig ) {
+		require_once('lib/custom_functions.php');
 		/* this is where you can add your own functions to twig */
 		$twig->addExtension( new Twig_Extension_StringLoader() );
-		// $twig->addFilter('myfoo', new Twig_SimpleFilter('myfoo', array($this, 'myfoo')));
+		$twig->addFunction( new Timber\Twig_Function( 'get_breadcrumb', 'get_breadcrumb' ) );
+		$twig->addFunction( new Timber\Twig_Function( 'get_back_button', 'get_back_button' ) );
+
 		return $twig;
 	}
 
@@ -62,9 +89,88 @@ class StarterSite extends TimberSite {
 		add_image_size( 'artwork-thumb', 150, 200 );
 	}
 
+	function loadScripts() {
+		wp_enqueue_script("jquery-js",
+			"//code.jquery.com/jquery-3.6.0.min.js",
+			array('jquery'),
+			wp_get_theme()->get('Version'),
+			true
+		);
+
+		$gmapKey = 'AIzaSyDdu7rV-v4gA4aeUX6bEbKkoVD9Jy8B-E4';
+		if($gmapKey != ''){
+			wp_enqueue_script("google-map", "//maps.googleapis.com/maps/api/js?key=". $gmapKey ."&v=3.exp&libraries=places", array('jquery'), '3.0.0');
+		}
+
+		wp_enqueue_script("jqueryui-js",
+			"//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js",
+			array('jquery'),
+			wp_get_theme()->get('Version'),
+			true
+		);
+
+		wp_enqueue_script("select2",
+			"//cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js",
+			array('jquery'),
+			wp_get_theme()->get('Version'),
+			true
+		);
+
+		wp_enqueue_script("datepicker-fr",
+			get_template_directory_uri() ."/src/js/vendor/datepicker-fr-CA.js",
+			array('jqueryui-js'),
+			wp_get_theme()->get('Version'),
+			true
+		);
+
+		wp_enqueue_script("daterange",
+			get_template_directory_uri() ."/src/js/vendor/daterange-calendar.js",
+			array('jqueryui-js'),
+			wp_get_theme()->get('Version'),
+			true
+		);
+
+		wp_enqueue_script("colorbox",
+			get_template_directory_uri() ."/src/js/vendor/jquery.colorbox-min.js",
+			array('jquery'),
+			wp_get_theme()->get('Version'),
+			true
+		);
+
+		wp_enqueue_script("map",
+			get_template_directory_uri() ."/src/js/vendor/map.js",
+			array('theme-utils'),
+			wp_get_theme()->get('Version'),
+			true
+		);
+		wp_enqueue_script("artworks-map", get_template_directory_uri() ."/src/js/vendor/map-arts.js", array('jquery'), '1.0.0', true);
+
+		wp_enqueue_script("script",
+			get_template_directory_uri() ."/js/script.js",
+			array('theme-utils'),
+			wp_get_theme()->get('Version'),
+			true
+		);
+
+		/* enqueue style */
+		wp_enqueue_style( 'select2-style',
+			'//cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css',
+			null,
+			wp_get_theme()->get('Version')
+		);
+
+		wp_enqueue_style( 'jqueryui-style',
+			'//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css',
+			null,
+			wp_get_theme()->get('Version')
+		);
+	}
+
 }
 
 new StarterSite();
+
+
 
 // Force Gravity Forms to init scripts in the footer and ensure that the DOM is loaded before scripts are executed
 add_filter( 'gform_init_scripts_footer', '__return_true' );

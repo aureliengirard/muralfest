@@ -1,0 +1,53 @@
+@import "utils";
+
+/*****************************************************
+	Custom Responsive CSS  (12 colonnes)
+/*****************************************************
+/*****************************************************
+/*****************************************************/
+
+/* Grandeur max du site */
+.c12 {
+	clear:both;
+	margin:0 auto;
+	max-width: $c12MaxWidth;
+	
+	&.gutter { padding-left:$c12Gutter; padding-right:$c12Gutter; }
+}
+
+.clearfix:after,
+.c12:after {
+	content: " "; /* Older browser do not support empty content */
+	visibility: hidden;
+	display: block;
+	height: 0;
+	clear: both;
+}
+
+.c11,
+.c10,
+.c9,
+.c8,
+.c7,
+.c6,
+.c5,
+.c4,
+.c3,
+.c2,
+.c1 {
+	float:left;
+	min-height:1px;
+}
+
+.c12 { width:100%; }
+.c11 { width:91.6666%; }
+.c10 { width:83.3333%; }
+.c9  { width:75%; }
+.c8  { width:66.6666%; }
+.c7  { width:58.3333%; }
+.c6  { width:50%; }
+.c5  { width:41.6666%; }
+.c4  { width:33.3333%; }
+.c3  { width:25%; }
+.c2  { width:16.6666%; }
+.c1  { width:8.3333%; }

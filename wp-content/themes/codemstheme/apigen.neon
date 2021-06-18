@@ -1,0 +1,6 @@
+source: "."
+destination: "docs/php"
+accessLevels: [public, private, protected]
+templateTheme: "bootstrap"
+title: "Codems PHP documentations"
+exclude: ["vendor", "node_modules", "acf-json", "acf-pro", "docs", "sass", "css", "scss", "doc-templates", "fonts", "languages"]

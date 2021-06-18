@@ -1,0 +1,186 @@
+{
+    "key": "group_5a97285102fb4",
+    "title": "Deux colonnes",
+    "fields": [
+        {
+            "key": "field_5a97287c89073",
+            "label": "Colonne de gauche",
+            "name": "colonne_de_gauche",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "5a9728815ceb2": {
+                    "key": "5a9728815ceb2",
+                    "name": "titre_section",
+                    "label": "Titre de section",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5a97288a89074",
+                            "label": "Titre de section",
+                            "name": "titre_section",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_58e7df94c8ba8"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "5a97289e89076": {
+                    "key": "5a97289e89076",
+                    "name": "texte_pleine_largeur",
+                    "label": "Texte pleine largeur",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5a9728a389077",
+                            "label": "Texte pleine largeur",
+                            "name": "texte_pleine_largeur",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_58e5574697adc"
+                            ],
+                            "display": "seamless",
+                            "layout": "",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "button_label": "Ajouter un élément",
+            "min": "",
+            "max": ""
+        },
+        {
+            "key": "field_5a9728d289079",
+            "label": "Colonne de droite",
+            "name": "colonne_de_droite",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "5a9728815ceb2": {
+                    "key": "5a9728815ceb2",
+                    "name": "titre_section",
+                    "label": "Titre de section",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5a9728d28907a",
+                            "label": "Titre de section",
+                            "name": "titre_section",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_58e7df94c8ba8"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "5a97289e89076": {
+                    "key": "5a97289e89076",
+                    "name": "texte_pleine_largeur",
+                    "label": "Texte pleine largeur",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_5a9728d28907b",
+                            "label": "Texte pleine largeur",
+                            "name": "texte_pleine_largeur",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_58e5574697adc"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "button_label": "Ajouter un élément",
+            "min": "",
+            "max": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1519856425
+}

@@ -48,21 +48,6 @@ $c12MaxWidth: 1200px;
 $c12Gutter: 15px;
 
 
-
-@font-face {
-
-    src: url('font/180523010850ftswitch-regular-webfont.woff2') format('woff2'),
-         url('font/180523010850ftswitch-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'ft_switchregular_bold';
-    src: url('font/180523010825ftswitch-bold-webfont.woff2') format('woff2'),
-         url('font/180523010825ftswitch-bold-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
 /*****************************************************
 	Custom CSS
 /*****************************************************/
@@ -279,9 +264,6 @@ h2,
 	margin: 60px 0 40px;
 	line-height: 1;
 	color: $color_blue;
-	font-family: 'ft_switchregular_bold';
-
-
 
 	a{
 		color: inherit;
@@ -484,7 +466,7 @@ h4,
 
 body.mobile{
     /// Ajustements section deux colonnes App pour Ipad.
-    .content-wrap{
+    .content-wrapper{
         .deux_colonnes{
 
 			.texte-plein{
@@ -649,7 +631,6 @@ body.mobile{
 			padding-top: 20px;
 
 			a{
-				font-family: 'ft_switchregular_bold';
 				font-size: 16px;
 				@include media-screen(1200px){
 					font-size: 14px;
@@ -1499,7 +1480,6 @@ input[type=radio]{
 		h2{
 			text-align: center;
 			color: $color_blue;
-			font-family: 'ft_switchregular_bold';
 			margin: 120px 0 90px;
 			margin: 1em 0 1.2em;
 		}
@@ -1912,7 +1892,7 @@ input[type=radio]{
 }
 
 /// Style paginations
-.content-wrap section{
+.content-wrapper section{
     .pagination{
         .page-numbers{
 			text-align: center;
@@ -1950,7 +1930,7 @@ input[type=radio]{
     }
 }
 /// Style filtres
-.content-wrap{
+.content-wrapper{
 	.filters{
 		padding: 30px 0;
 		overflow: visible;
@@ -2034,7 +2014,7 @@ input[type=radio]{
 }
 
 /// Style breadcrumb et bouton de retour
-.content-wrap .single-navigation{
+.content-wrapper .single-navigation{
 	display: flex;
 	justify-content: space-between;
 
@@ -2140,7 +2120,7 @@ blockquote{
 	}
 }
 .sharing,
-.content-wrap section .content .sharing{
+.content-wrapper section .content .sharing{
 	padding: 10px 0;
 	font-size: 0;
 
@@ -2198,7 +2178,7 @@ blockquote{
 
 /// Page 404
 #post-404{
-	.content-wrap{
+	.content-wrapper{
 		.page-404{
 			padding: 30px 0;
 		}

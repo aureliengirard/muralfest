@@ -1,0 +1,12 @@
+/*
+ Theme Name:   Thème Codems principal
+ Description:  Thème avec les fontionnalités générales pour un site Wordpress.
+ Author:       Codems
+ Author URI:   https://codems.ca/
+ Version:      2.0.0
+ Text Domain:  codemstheme
+ Details URI:  https://wp-themeupdater-codemstheme.codems.ca/details.html
+*/
+
+/* basic-style.css était du poison! Si un site en dépends, je rajouter avec un enqueue_style dans le child */
+/* @import url("css/basic-style.css"); */

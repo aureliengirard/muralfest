@@ -23,4 +23,4 @@ $tiers = array(
 );
 $context['tiers'] = Timber::get_terms($tiers);
 
-Timber::render('templates/partner.twig', $context);
+Timber::render('templates/page-partner.twig', $context);

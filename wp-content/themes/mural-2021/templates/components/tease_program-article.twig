@@ -1,0 +1,45 @@
+
+{% set title = event_post.title %}
+{% set link = event_post.link %}
+{% set date_de_fin = event_post.date_de_fin %}
+{% set event_date = event_post.event_date %}
+{% set lieu = Post(event_post.lieu) %}
+
+{% set preview = event_post.resume %}
+{% set thumbnail = Image(event_post.image_de_levenement).src %}
+
+{% set id = blog_post.id %}
+
+<div class="program toAnimate animS_fadeIn">
+    <figure>
+        <a href="{{link}}">
+            <span class="regular-img">
+
+                {% if thumbnail %}
+                    <img class="lazyload"
+                        data-srcset="{{ thumbnail|resize(600, 427) }} 600w,{{ thumbnail|resize(400, 285) }} 400w,{{ thumbnail|resize(300, 214) }} 300w,{{ thumbnail|resize(150, 107) }} 150w,{{ thumbnail|resize(250, 166) }} 250w,{{ thumbnail|resize(175, 125) }} 175w"
+                        data-sizes="auto"
+                        width="400"
+                        height="285"
+                        alt="{{ title }}">
+                {% endif %}
+            </span>
+        </a>
+    </figure>
+
+    <div class="description">
+        <h4><a href="{{link}}">{{title}}</a></h4>
+        <p class="event-infos">
+            <span class="date">
+            {%- if date_de_fin != event_date -%}
+                {{- event_date | date('j F') }} {{__('to', 'dates événement', 'site-theme')}} {{ date_de_fin | date('j F Y') }}
+            {%- else -%}
+                {{- event_date | date('j F, Y') }}
+            {%- endif -%}
+            </span>
+            <span class="venue">{{lieu.title}}</span>
+        </p>
+        <p>{{preview|truncate(60)}}</p>
+        <a class="readmore" href="{{link}}">{{__('Learn more +', 'site-theme')}}</a>
+    </div>
+</div>

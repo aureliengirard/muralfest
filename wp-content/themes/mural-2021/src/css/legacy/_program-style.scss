@@ -4,7 +4,6 @@
 		.content{
 			h2{
 				text-align: center;
-				color: #fff;
 			}
 		}
 
@@ -39,37 +38,6 @@
 						}
 					}
 
-					a{
-						display: inline-block;
-						overflow: hidden;
-						position: relative;
-
-						.regular-img{
-							&:before{
-								content:'';
-								position: absolute;
-								top:0;
-								right: 0;
-								left:0;
-								bottom:0;
-								background:$color-gradient-orange;
-								opacity: 0;
-								@include hover-transition;
-							}
-
-							&:hover::before{
-								opacity: 0.8;
-							}
-
-							img{
-								opacity: 1;
-								@include hover-transition;
-
-
-							}
-						}
-
-					}
                     @include media-screen(768px){
                         text-align: center;
                     }
@@ -90,16 +58,9 @@
 					h4{
 						max-width: 100%; /* IE fix */
 
-
 						a{
 							color: inherit;
 							display: block;
-
-							&:hover{
-								background: $color-gradient-orange;
-								-webkit-background-clip: text;
-								-webkit-text-fill-color: transparent;
-							}
 						}
 					}
 
