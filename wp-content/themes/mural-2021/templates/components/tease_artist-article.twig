@@ -1,0 +1,33 @@
+
+{% set title = artist_post.title %}
+{% set link = artist_post.link %}
+{% set id = artist_post.id %}
+{% set biographie = artist_post.meta('biographie') %}
+
+{% set thumbnail = Image(artist_post.image_de_lartiste).src %}
+
+<div class="article artist_post artist">
+
+    <figure>
+        <a href="{{link}}">
+
+            {% if thumbnail %}
+            <span class="regular-img">
+                <img class="lazyload"
+                    data-srcset="{{ thumbnail|resize(600, 400) }} 600w,{{ thumbnail|resize(300, 200) }} 300w,{{ thumbnail|resize(150, 100) }} 150w,{{ thumbnail|resize(250, 166) }} 250w,{{ thumbnail|resize(175, 116) }} 175w"
+                    data-sizes="auto"
+                    width="600"
+                    height="400"
+                    alt="{{ title }}">
+            </span>
+            {% endif %}
+        </a>
+    </figure>
+
+    <div class="description">
+        <h4><a href="{{ link }}">{{ title }}</a></h4>
+        {{ biographie|truncate(60) }}
+        <?= truncate(get_field('biographie'), 60, "&hellip;", true); ?>
+        <a class="readmore" href="{{ link }}">{{__('Learn more +', 'site-theme')}}</a>
+    </div>
+</div>

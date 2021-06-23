@@ -1,9 +1,66 @@
 {% extends "base.twig" %}
 
-{% set content_items = page.meta('contenu_avec_fond') %}
-
 {% block content %}
 
+{% include "partial/section-banner.twig" %}
 
+{% if page.content %}
+    <section class="basic-content">
+        <div class="content">
+            {{ page.content }}
+        </div>
+    </section>
+{% endif %}
+
+{% include 'partial/filters-artists.twig' %}
+
+<section class="list-artists">
+    <div class="content">
+
+        {% if artist_posts -%}
+
+            <section class="artists">
+
+                {%- for artist_post in artist_posts %}
+
+                    {% set artist_year = artist_post.annee %}
+
+                    {% if current_year == NULL %}
+                        {% set current_year = artist_year %}
+
+                        <h2 class="artists-year">{{current_year}}</h2>
+                        <div class="artists-wrap">
+                    {% endif %}
+
+                    {% if current_year != artist_year %}
+                        {% set current_year = artist_year %}
+                        </div>
+                        <h2 class="artists-year">{{current_year}}</h2>
+                        <div class="artists-wrap">
+                    {% endif %}
+
+                    {% include 'components/tease_artist-article.twig'  %}
+
+                    {% if loop.last %}</div>{% endif %}
+                {% endfor -%}
+
+            </section>
+
+            {% include 'components/pagination.twig' with { pagination: blog_posts.pagination({show_all: false, mid_size: 2, end_size: 3}) } %}
+
+        {%- else -%}
+
+            <section class="no-content">
+                <div class="content">
+                    <p>{{__('No post found.', 'site-theme')}}</p>
+                </div>
+            </section>
+
+        {%- endif %}
+
+        {% do fn('wp_reset_postdata') %}
+
+    </div>
+</section>
 
 {% endblock %}

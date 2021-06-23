@@ -1,0 +1,30 @@
+<section class="filters">
+    <div class="content">
+        <form class="program-filters" action="{{ page.link }}">
+            <div id="orderby-wrap">
+                <input type="text" name="date" value="{{ date_value }}" placeholder="{{ __('Filter by date', 'site-theme') }}" autocomplete="off" readonly="true" />
+                <div></div>
+            </div>
+
+                <select name="category" placeholder="{{ __('Categories', 'site-theme') }}">
+
+                     <option value=""></option>
+
+                     {% for term in terms %}
+                        {% set selected = false %}
+                        {% if caterogy_value == term %}
+                            {% set selected = true %}
+                        {% endif %}
+
+                        <option value="{{term.title | replace({' ': '-'}) }}" {%- if selected == true %} selected="selected"{% endif %}>{{ term.title }}</option>
+
+                     {% endfor %}
+
+                </select>
+
+            {% do fn('wp_reset_postdata') %}
+
+            <button type="submit" class="button">{{ __('Filter', 'site-theme') }}</button>
+        </form>
+    </div>
+</section>
