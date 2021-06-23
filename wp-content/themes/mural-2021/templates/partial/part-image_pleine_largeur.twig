@@ -1,6 +1,6 @@
 
 {%- set lien = inner_item.lien -%}
-<?php $lien = get_sub_field('lien'); ?>
+
 <figure>
     {% if lien -%}
         <a href="{{ lien.url }}" target="{{ lien.target }}">
@@ -9,6 +9,7 @@
     {%- set img = TimberImage(inner_item.image) -%}
     {%- set img_url = img.src -%}
     {%- set reponsize_sizes = "1920,1440,1366,1280,960,800,768,720,640,512,414,375,360" -%}
+    
     {%- include 'components/reponsive_img.twig' with  { img: img, img_url: img_url, reponsize_sizes: reponsize_sizes} -%}
 
     {% if lien -%}

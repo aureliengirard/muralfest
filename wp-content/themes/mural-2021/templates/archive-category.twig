@@ -1,0 +1,36 @@
+{% extends "base.twig" %}
+
+{% set blog_posts = posts  %}
+
+{% block content %}
+
+<section class="content">
+    {% if blog_posts -%}
+
+        <section class="articles_du_blog">
+
+            <div class="articles">
+
+
+                {%- for blog_post in blog_posts %}
+                    {% include 'components/tease_blog-article.twig' %}
+                {% endfor -%}
+
+            </div>
+
+            {% include 'components/pagination.twig' with { pagination: blog_posts.pagination({show_all: false, mid_size: 2, end_size: 3}) } %}
+
+        </section>
+
+    {%- else -%}
+
+        <section class="no-content">
+            <div class="content">
+                <p>{{__('No post found.', 'site-theme')}}</p>
+            </div>
+        </section>
+
+    {%- endif %}
+</section>
+
+{% endblock %}

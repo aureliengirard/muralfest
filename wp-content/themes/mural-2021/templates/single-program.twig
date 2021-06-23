@@ -1,4 +1,5 @@
 {% extends "base.twig" %}
+
 {% set content_items = post.meta('contenu_avec_fond') %}
 {% set liens_externe = post.liens_externe %}
 {% set artists = Post(post.artiste) %}
@@ -10,9 +11,9 @@
 
 {% block content %}
 
-    <section class="basic-content">
+    <section class="basic-content single-post">
         <div class="content">
-            
+
             {% include '/components/single-navigation.twig' %}
 
             <figure>

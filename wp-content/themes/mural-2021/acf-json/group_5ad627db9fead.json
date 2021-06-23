@@ -15,7 +15,7 @@
                 "class": "",
                 "id": ""
             },
-            "collapsed": "",
+            "collapsed": "field_5ae1fefbd3af2",
             "min": 0,
             "max": 0,
             "layout": "row",
@@ -145,6 +145,27 @@
                 "operator": "==",
                 "value": "template-home.php"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "program"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "artwork"
+            }
         ]
     ],
     "menu_order": -1,
@@ -158,5 +179,5 @@
     ],
     "active": true,
     "description": "",
-    "modified": 1623099003
+    "modified": 1624378207
 }

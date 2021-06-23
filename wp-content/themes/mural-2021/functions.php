@@ -44,7 +44,8 @@ class StarterSite extends TimberSite {
 	function add_to_context( $context ) {
 		$context['options'] = get_fields('options');
 
-		$context['nav_menu'] = new TimberMenu('Navigation FR');
+		$context['nav_menu'] = new TimberMenu('Menu Principal EN');
+		$context['secondary_nav_menu'] = new TimberMenu('Navigation FR');
         $context['footer_menu'] = new TimberMenu('footer_menu');
 
 		// post
@@ -312,29 +313,6 @@ function send_date_to_calendar(){
 	));
 }
 add_action( 'wp_enqueue_scripts', 'send_date_to_calendar', 30 );
-
-
-/**
- * ajoute les pages parentes des singles
- *
- */
-function custom_post_type_breadcrumb($separator){
-    $post_id = get_the_ID();
-	$page_parent = NULL;
-
-	$parent_id = get_posttype_parent_id();
-
-	if($parent_id)
-		$page_parent = get_post(get_posttype_parent_id());
-
-    if($page_parent){
-        if($page_parent->post_parent)
-            echo '<a href="'.get_permalink($page_parent->post_parent).'">'.get_the_title($page_parent->post_parent).'</a> '.$separator.' ';
-
-        echo '<a href="'.get_permalink($page_parent->ID).'">'.get_the_title($page_parent->ID).'</a> '.$separator.' ';
-    }
-}
-add_action( 'breadcrumb_single_parents', 'custom_post_type_breadcrumb', 10, 1);
 
 
 /**

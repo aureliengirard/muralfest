@@ -2,7 +2,8 @@
 
 function get_breadcrumb($parent_taxonomy_label=false, $parent_taxonomy_link=false, $child_taxonomy_label=false, $child_taxonomy_link=false) {
 
-    $link_artwork = get_field('home_blog', 'options');
+    $link_blog = get_field('home_blog', 'options');
+    $link_artwork = get_field('home_artork', 'options');
     $link_artist = get_field('home_artist', 'options');
     $link_partner = get_field('home_partners', 'options');
     $link_program = get_field('home_program', 'options');
@@ -38,7 +39,7 @@ function get_breadcrumb($parent_taxonomy_label=false, $parent_taxonomy_link=fals
 
         } elseif ( get_post_type() == 'post' ){
 
-            echo "<a href='" . get_permalink( get_option( 'page_for_posts' ) ) . " '>" . $blog_home . "</a>" ;
+            echo "<a href='" . $link_blog . " '>" . __('Blog', 'site-theme') . "</a>" ;
 
             echo $divider;
         }

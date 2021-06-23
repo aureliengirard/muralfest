@@ -28,6 +28,8 @@
             {%- include "partial/part-partenaires.twig" -%}
         {%- elseif inner_item.acf_fc_layout == 'evenements_a_venir' -%}
             {%- include "partial/part-evenements_a_venir.twig" -%}
+        {%- elseif inner_item.acf_fc_layout == 'image_pleine_largeur' -%}
+            {%- include "partial/part-image_pleine_largeur.twig" -%}
         {%- endif -%}
     </section>
     </section>

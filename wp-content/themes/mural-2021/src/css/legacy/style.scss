@@ -89,9 +89,7 @@ body{
 	font-size: 1.8rem;
 	color: #000000;
 }
-h1,h2,h3{
 
-}
 .newsletter{
 	position:fixed;
 	top:0;
@@ -280,7 +278,6 @@ h3,
 	font-size: 3.6rem;
 	font-weight: 400;
 	letter-spacing: 0.1em;
-	color: #ffffff;
 	margin: 10px 0 15px;
 	line-height: 1;
 
@@ -648,7 +645,7 @@ body.mobile{
     #masthead .main-menu .content .main-navigation{
         display:none;
     }
-    #colophon .navigation{
+    #footer .navigation{
          display:none;
     }
 }
@@ -2186,7 +2183,7 @@ blockquote{
 }
 
 /// style footer
-#colophon{
+#footer{
 	@media only screen and (min-width:768px){
 		padding-top:100px;
 		z-index: 11;

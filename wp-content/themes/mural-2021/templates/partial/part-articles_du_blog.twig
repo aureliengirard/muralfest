@@ -1,14 +1,25 @@
 <div class="content">
-    {% if blog_posts %}
+    {% if inner_item.acf_fc_layout == 'articles_du_blog' %}
         <h2>{{__('Latest posts', 'site-theme')}}</h2>
     {% else %}
         <h2>{{__('You may also like', 'site-theme')}}</h2>
     {% endif %}
 
     <div class="articles">
-        {% for blog_post in blog_posts %}
-            {% include 'components/tease_blog-article.twig' %}
-        {% endfor %}
+
+        {%- if inner_item.acf_fc_layout == 'articles_du_blog' -%}
+
+            {%- for blog_post in blog_posts %}
+                {% include 'components/tease_blog-article.twig' %}
+            {% endfor -%}
+
+        {%- else -%}
+
+            {%- for blog_post in blog_articles %}
+                {% include 'components/tease_blog-article.twig' %}
+            {% endfor -%}
+
+        {%- endif -%}
 
     </div>
 
