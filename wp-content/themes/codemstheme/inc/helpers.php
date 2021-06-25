@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Class HLP
  * Description: Librairie de fonction pratique pour l'utilisation dans les templates/fonctionnalités.
@@ -22,24 +22,24 @@ if ( ! class_exists( 'HLP' ) ) :
 
 /**
  * Librairie de fonction pratique pour l'utilisation dans les templates/fonctionnalités.
- * 
+ *
  * La Class HLP est deprecated et sera supprimer dans une version future.
  * Veuillez utiliser les fonctions globale équivalentes.
- * 
+ *
  * @deprecated 2.1.0
  * @category Core
  * @author Codems
  * @version 1.0.0
- */	
+ */
 final class HLP {
-	
+
 	/**
 	 * Instance static de la Classe.
 	 * @var Instance
 	 */
 	protected static $_instance = null;
-	
-	
+
+
 	/**
 	 * Initialise l'instance de la Classe.
 	 *
@@ -54,10 +54,10 @@ final class HLP {
 		}
 		return self::$_instance;
     }
-    
+
     /**
      * Redirige tous les appels à la Classe vers les nouvelles fonction globale.
-     * 
+     *
      */
     public function __call($method, $arguments) {
         if(function_exists($method)) {
@@ -65,18 +65,18 @@ final class HLP {
             return call_user_func_array($method, $arguments);
         }
     }
-	
-	
-	
+
+
+
 }// HLP Class
-	
+
 endif;
 
 /**
  * Retourne l'instance de la Classe.
- * 
+ *
  * @deprecated
- * @see HLP 
+ * @see HLP
  */
 function HLP() {
 	return HLP::instance();
@@ -91,7 +91,7 @@ $GLOBALS['HLP'] = HLP();
 if(!function_exists('run_once')){
 	/**
 	 * S'assure que l'action est exécuté qu'une seule fois.
-	 * 
+	 *
 	 * @param String $key Nom unique de l'action.
 	 * @return bool
 	 */
@@ -106,7 +106,7 @@ if(!function_exists('run_once')){
 		}
 	}
 }
-	
+
 
 if(!function_exists('language_selector')){
 	/**
@@ -148,7 +148,7 @@ if(!function_exists('totQueryCount')){
 if(!function_exists('displayBackBtn')){
 	/**
 	 * Affiche un bouton de retour vers la dernière page visité.
-	 * 
+	 *
 	 */
 	function displayBackBtn(){
 		echo '<div class="c12 back-btn">';
@@ -161,23 +161,23 @@ if(!function_exists('displayBackBtn')){
 if(!function_exists('displayBreadcrumb')){
 	/**
 	 * Affiche un fil d'ariane.
-	 * 
+	 *
 	 * @param String $separator
-	 * 
+	 *
 	 */
 	function displayBreadcrumb($separator = '/'){
-		global $post; 
-		
+		global $post;
+
 		if (!is_front_page()) {
 			echo '<div class="breadcrumb">';
 			echo '<a title="'.__('Home', 'custom_theme').'" rel="nofollow" href="'.esc_url( home_url( '/' ) ).'">'.__('Home', 'custom_theme').'</a> '.$separator.' ';
-			
+
 			if (is_page()) {
 				$ancestors = get_post_ancestors($post);
-			
+
 				if ($ancestors) {
 					$ancestors = array_reverse($ancestors);
-					
+
 					foreach ($ancestors as $crumb) {
 						echo '<a href="'.get_permalink($crumb).'">'.get_the_title($crumb).'</a> '.$separator.' ';
 					}// foreach
@@ -189,14 +189,14 @@ if(!function_exists('displayBreadcrumb')){
 			if (is_single()) {
 				do_action('breadcrumb_single_parents', $separator); // hook in child to add parent to single post
 			}//if
-			
+
 			if (is_category()) {
 				$category = get_the_category();
 				echo '<span>'.$category[0]->cat_name.'</span>';
 			}//if
-			
 
-			if(is_archive() && get_post_type() == 'product'){		
+
+			if(is_archive() && get_post_type() == 'product'){
 				echo '<span>'.get_the_title(get_option('woocommerce_shop_page_id')).'</span>';
 			}
 
@@ -213,21 +213,21 @@ if(!function_exists('displayBreadcrumb')){
 if(!function_exists('getAllPostsID')){
 	/**
 	 * Retourne tous les IDs possible d'un custom post type.
-	 * 
+	 *
 	 * @param String $cpt Nom du custom post type.
 	 * @return Array
 	 */
 	function getAllPostsID( $cpt ){
 		if( !post_type_exists($cpt) ){ return array(); }
-		
+
 		$ids = array();
-		
+
 		$args = array(
 			'post_type'			=> $cpt,
 			'nopaging'			=> true,
 		);
 		$the_query = new WP_Query( $args );
-		
+
 		if ( $the_query->have_posts() ) {
 			while ( $the_query->have_posts() ) {
 				$the_query->the_post();
@@ -243,7 +243,7 @@ if(!function_exists('getAllPostsID')){
 if(!function_exists('truncate')){
 	/**
 	 * Prend une partie du texte à partir du début et coupe au nombre de caractères donnés.
-	 * 
+	 *
 	 * @param String $string La chaine à couper.
 	 * @param Int $length Le nombre de caractère à garder.
 	 * @param String $append Texte à ajouter à la fin.
@@ -254,24 +254,24 @@ if(!function_exists('truncate')){
 		$string = trim($string);
 		if ( '' != $string ) {
 			$string = strip_shortcodes( $string );
-			
+
 			$string = apply_filters('the_content', $string);
-			
+
 			if($stripHTML){
 				$string = wp_strip_all_tags($string, true);
 			}
-			
+
 			$string = str_replace(']]>', ']]>>', $string);
 			$text_length = mb_strlen(strip_tags($string), 'UTF-8'); // Get text length (characters)
-			
+
 			// Shorten the text
 			$string = mb_substr($string, 0, $length, 'UTF-8');
-			
+
 			// If the text is more than $length characters, append $excerpt_more
 			if ($text_length > $length) {
 				$string .= $append;
 			}
-		
+
 		}
 		return apply_filters('the_excerpt', $string);
 	}
@@ -281,9 +281,9 @@ if(!function_exists('truncate')){
 if(!function_exists('truncate')){
 	/**
 	 * Traduit une date en français ou vice versa.
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 * @param String $string La chaine à traduire la date.
 	 * @param String $to : La langue vers laquel on veut traduire.
 	 * @return String

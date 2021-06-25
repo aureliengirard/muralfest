@@ -18,29 +18,39 @@
 
             {% set years = [] %}
 
-            {% for artwork_post in post_artworks %}
-                {% set date = artwork_post.annee %}
-               {% if date not in years -%}
-               {% set years = years|merge([date]) %}
-               {% endif %}
-           {% endfor %}
+            {% for item in artwork_posts %}
+                {% set date = item.annee %}
+                {% if date not in years -%}
+                    {% set years = years|merge([date]) %}
+                {% endif %}
+            {% endfor %}
 
-           {% for year in years %}
+            {% for year in years|sort|reverse %}
+                <div class="year-artworks">
+                    <h3>{{year}}</h3>
+                    <section class="artwork-col">
+                    {% for artwork_post in artwork_posts %}
+                        {% set date = artwork_post.annee %}
+                        {% if date == year %}
+                            <div class="artwork">
+                                <span data-markerid="{{artwork_post.id}}">{{artwork_post.title}}</span>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    </section>
+                </div>
+            {% endfor %}
+
+{#
+            {% for year in artworks_by_years %}
             <div class="year-artworks">
                 <h3>{{year}}</h3>
                 <section class="artwork-col">
-                {% for artwork_post in post_artworks %}
-                    {% set date = artwork_post.annee %}
-                    {% if date == year %}
-                        <div class="artwork">
-                            <span data-markerid="{{artwork_post.id}}">{{artwork_post.title}}</span>
-                        </div>
-                    {% endif %}
-                {% endfor %}
+
                 </section>
             </div>
             {% endfor %}
-
+#}
         </div>
     </section>
 

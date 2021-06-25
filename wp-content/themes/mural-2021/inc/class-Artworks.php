@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Class Artworks
  * Description: Gère l'envoie des informations vers la map JS.
@@ -25,7 +25,7 @@ if ( ! class_exists( 'Artworks' ) ) :
  * @category Addons
  * @author Codems
  * @version 1.0.0
- */	
+ */
 
 class Artworks {
 
@@ -43,7 +43,7 @@ class Artworks {
 		$this->init_hooks();
 		$this->all_artworks = $this->query_artworks();
 	}
-	
+
 	/**
 	 * Enregistre les hooks requis.
 	 */
@@ -51,8 +51,8 @@ class Artworks {
 		add_action( 'wp_enqueue_scripts', array( $this, 'registerScripts' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'sendDataJS' ), 30 );
 	}
-	
-	
+
+
 	/**
 	 * Inclu les fichiers principaux.
 	 */
@@ -60,23 +60,21 @@ class Artworks {
 
 	}
 
-	
 	/**
 	 * Enregistre les styles et les scripts pour le frontend.
 	 */
 	public function registerScripts(){
-		//wp_enqueue_style("cssparallax", THEMEURI."/css/parallax.css" , false, $this->themeVersion);
-		
+
 		// SCRIPTS
-		wp_enqueue_script("artworks-map", CHILDURI."/js/map-arts.js", array('jquery'), '1.0.0', true);
-		
+		//wp_enqueue_script("artworks-map", get_template_directory_uri . "/src/js/vendor/map-arts.js", array('jquery'), '1.0.0', true);
+
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Envoie des variables vers certains scripts.
-	 * 
+	 *
 	 */
 	public function sendDataJS(){
 		// Localize the script with new data
@@ -85,13 +83,64 @@ class Artworks {
 			'readmore' => __('Learn more +', 'site-theme'),
 			'by' => __('By:', 'site-theme')
 		));
-		
+
+		$traduction = array(
+			'itineraire' => __('Directions to this place', 'custom_theme'),
+			'adresse' => __('Address', 'custom_theme'),
+			'emailError' => __('Please enter a valid email address.', 'custom_theme'),
+			'mail_mess_1' => __( 'Processing your request. Please wait.', 'custom_theme'),
+			'mail_mess_success' => __( 'Your email address has been added. Thank you!', 'custom_theme'),
+		);
+
+		$traduction = apply_filters( 'php_traduction_to_js', $traduction );
+
+		wp_localize_script( 'script', 'traduction', $traduction );
+		wp_localize_script( 'map-script', 'traduction', $traduction );
+
+		// general data
+		$cdmConf = array(
+			'mobile_width' => 768
+		);
+
+		$cdmConf = apply_filters( 'php_cdmConf_js', $cdmConf );
+
+		wp_localize_script( 'theme-utils', 'cdmConf', $cdmConf );
+
+		// script.js
+		$phpData = array(
+			'current_url_without_params' =>	get_permalink(),
+			'THEMEURI' => get_template_directory_uri(),
+			'homeURL' => esc_url( home_url( '/' ) ),
+			'siteName' => esc_attr( get_bloginfo( 'name', 'display' ) ),
+			'lang' => 'fr'
+		);
+
+		if( defined('ICL_LANGUAGE_CODE') ){
+			$phpData['lang'] = ICL_LANGUAGE_CODE;
+		}
+
+		$phpData = apply_filters( 'php_data_to_scriptjs', $phpData );
+
+		wp_localize_script( 'script', 'phpData', $phpData );
+
+		// map.js
+		$mapData = array(
+			'current_url_without_params' =>	get_permalink(),
+			'themeURI' => get_template_directory_uri(),
+			'homeURL' => esc_url( home_url( '/' ) ),
+			'siteName' => esc_attr( get_bloginfo( 'name', 'display' ) ),
+			'gmap' => get_field('adresse', 'options')
+		);
+
+		$mapData = apply_filters( 'php_data_to_mapjs', $mapData );
+
+		wp_localize_script( 'map-script', 'mapData', $mapData );
     }
-    
+
 
     /**
      * Retourne toutes les œuvres pour un festival
-     * 
+     *
      * @param String $festival
      * @return Array|Bool
      */
@@ -142,7 +191,7 @@ class Artworks {
 
         return $artworks;
 	}
-	
+
 
 	/**
 	 * Retourne tous les Œuvres
@@ -150,8 +199,7 @@ class Artworks {
 	 public function get_artworks(){
 		 return $this->all_artworks;
 	 }
-	
-	
+
 }// Artworks Class
 
 endif;

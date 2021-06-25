@@ -38,7 +38,7 @@ class StarterSite extends TimberSite {
 		require('lib/custom_taxonomies.php');
 	}
 	function register_api() {
-		require('inc/mural-api.php');
+		//require('inc/mural-api.php');
 	}
 
 	function add_to_context( $context ) {
@@ -138,12 +138,13 @@ class StarterSite extends TimberSite {
 			true
 		);
 
-		wp_enqueue_script("map",
+		wp_enqueue_script("map-script",
 			get_template_directory_uri() ."/src/js/vendor/map.js",
-			array('theme-utils'),
+			array('jquery'),
 			wp_get_theme()->get('Version'),
 			true
 		);
+
 		wp_enqueue_script("artworks-map", get_template_directory_uri() ."/src/js/vendor/map-arts.js", array('jquery'), '1.0.0', true);
 
 		wp_enqueue_script("script",
@@ -171,7 +172,10 @@ class StarterSite extends TimberSite {
 
 new StarterSite();
 
-
+//include_once('inc/core.php');
+include_once('inc/helpers.php');
+include_once('inc/mural-api.php');
+include_once('inc/class-Festival.php');
 
 // Force Gravity Forms to init scripts in the footer and ensure that the DOM is loaded before scripts are executed
 add_filter( 'gform_init_scripts_footer', '__return_true' );
@@ -231,7 +235,7 @@ function add_map_data($mapData){
 	}
 
     $mapData['gmap'] = $mapInfos;
-    $mapData['childURI'] = CHILDURI;
+    $mapData['childURI'] = get_stylesheet_directory_uri();
 
     return $mapData;
 }
@@ -244,7 +248,7 @@ add_filter('php_data_to_mapjs', 'add_map_data', 10, 1 );
  */
 function add_script_data($phpData){
     $phpData['siteURL'] = esc_url( home_url( '/' ) );
-	$phpData['childURI'] = CHILDURI;
+	$phpData['childURI'] = get_stylesheet_directory_uri();
 
     return $phpData;
 }

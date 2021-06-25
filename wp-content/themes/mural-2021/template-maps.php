@@ -20,5 +20,19 @@
      $artworks_by_years[$artwork['date']][$id] = $artwork;
  }
 
+ $context['artworks_by_years'] = $artworks_by_years;
+
+ // Partners
+ $args = array(
+     'post_type'  => 'artwork',
+     'posts_per_page'  => '-1',
+     'post_status' => 'publish',
+     'orderby' => array(
+         'title' => 'ASC',
+	     'date' => 'DESC'
+  	)
+ );
+ $context['artwork_posts'] = Timber::get_posts($args);
+
 
 Timber::render('templates/page-map.twig', $context);
