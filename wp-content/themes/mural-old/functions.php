@@ -4,7 +4,7 @@ include_once('inc/class-Festival.php');
 include_once('inc/tinymce_formats.php');
 
 function add_google_map_key(){
-    TCore()->gmapKey = 'AIzaSyCF3WxcpgQ24K5pFkWR8en9WMyEpkY4JwQ';
+    TCore()->gmapKey = 'AIzaSyDdu7rV-v4gA4aeUX6bEbKkoVD9Jy8B-E4';
 }
 add_action( 'TCore_init', 'add_google_map_key'); // on TCore init
 
@@ -29,14 +29,14 @@ add_action( 'TCore_ready', 'on_TCore_ready');
 
 
 function register_CPT(){
-    
+
 }
 //add_action( 'CPT-ready', 'register_CPT');
 
 
 /**
  * Register image sizes
- * 
+ *
  * @hooked init
  */
 function cdm_add_images_sizes(){
@@ -95,14 +95,14 @@ function theme_enqueue_styles() {
 		true
 	);
 	wp_enqueue_script("artworks-map", CHILDURI."/js/map-arts.js", array('jquery'), '1.0.0', true);
-	
+
 	wp_enqueue_script("script",
 		CHILDURI."/js/script.js",
 		array('theme-utils'),
 		wp_get_theme()->get('Version'),
 		true
 	);
-	
+
 	/* enqueue style */
 	wp_enqueue_style( 'select2-style',
 		'//cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css',
@@ -141,12 +141,12 @@ function add_twitter_widget(){
 		js.id = id;
 		js.src = "https://platform.twitter.com/widgets.js";
 		fjs.parentNode.insertBefore(js, fjs);
-	  
+
 		t._e = [];
 		t.ready = function(f) {
 		  t._e.push(f);
 		};
-	  
+
 		return t;
 	  }(document, "script", "twitter-wjs"));</script>
 	  <?php
@@ -159,37 +159,37 @@ add_action('wp_footer','add_twitter_widget',100);
 */
 function theme_fonts_url() {
 	$fonts_url = '';
-	
+
 	$font_families = array();
-	
+
 	$font_families[] = 'Open Sans:300,400,600,700,800';
 	$font_families[] = 'Cardo:400,400i,700';
-	
+
 	$query_args = array(
 		'family' => urlencode( implode( '|', $font_families ) ),
 		'subset' => urlencode( 'latin,latin-ext' ),
 	);
 	$fonts_url = add_query_arg( $query_args, "//fonts.googleapis.com/css" );
-	
+
 	return $fonts_url;
 }// function
 
 
 /**
  * Envoi plus de variable PHP au script map.js
- * 
+ *
  */
 function add_map_data($mapData){
 	$mapInfos = get_field('adresse', 'options');
-	
+
 	if(is_singular('artwork')){
 		$mapInfos = get_field('lieu_de_loeuvre');
 		$mapData['year'] = get_field('annee');
 	}
-	
+
     $mapData['gmap'] = $mapInfos;
     $mapData['childURI'] = CHILDURI;
-    
+
     return $mapData;
 }
 add_filter('php_data_to_mapjs', 'add_map_data', 10, 1 );
@@ -197,12 +197,12 @@ add_filter('php_data_to_mapjs', 'add_map_data', 10, 1 );
 
 /**
  * Envoi plus de variable PHP au script map.js
- * 
+ *
  */
 function add_script_data($phpData){
     $phpData['siteURL'] = esc_url( home_url( '/' ) );
 	$phpData['childURI'] = CHILDURI;
-    
+
     return $phpData;
 }
 add_filter('php_data_to_scriptjs', 'add_script_data', 10, 1 );
@@ -210,10 +210,10 @@ add_filter('php_data_to_scriptjs', 'add_script_data', 10, 1 );
 
 /**
  * Ajoute une Classe pour les images flush.
- * 
+ *
  * @param String $classes
  * @hooked cdm_add_section_classes
- * 
+ *
  * @return String
  */
 function add_section_image_text_flush($classes){
@@ -228,7 +228,7 @@ add_filter('cdm_add_section_classes', 'add_section_image_text_flush');
 
 /**
  * Envoie les informations requise pour le calendrier
- * 
+ *
  */
 function send_date_to_calendar(){
 	$minmax = array(
@@ -293,21 +293,21 @@ add_action( 'wp_enqueue_scripts', 'send_date_to_calendar', 30 );
 
 /**
  * ajoute les pages parentes des singles
- * 
+ *
  */
 function custom_post_type_breadcrumb($separator){
     $post_id = get_the_ID();
 	$page_parent = NULL;
-	
+
 	$parent_id = get_posttype_parent_id();
-	
+
 	if($parent_id)
 		$page_parent = get_post(get_posttype_parent_id());
-    
+
     if($page_parent){
         if($page_parent->post_parent)
             echo '<a href="'.get_permalink($page_parent->post_parent).'">'.get_the_title($page_parent->post_parent).'</a> '.$separator.' ';
-        
+
         echo '<a href="'.get_permalink($page_parent->ID).'">'.get_the_title($page_parent->ID).'</a> '.$separator.' ';
     }
 }
@@ -319,25 +319,25 @@ add_action( 'breadcrumb_single_parents', 'custom_post_type_breadcrumb', 10, 1);
  */
 function get_posttype_parent_id($post_type = NULL){
     $page_id = false;
-    
+
     if(!$post_type)
         $post_type = get_post_type();
-    
-    
+
+
     if ( have_rows( 'liaison_cpt_pages', 'options' ) ){
         while ( have_rows( 'liaison_cpt_pages', 'options' ) ){ the_row();
             if(get_sub_field( 'article_personnalise' ) == $post_type)
                 $page_id = get_sub_field( 'page' );
         }
     }
-    
+
     return $page_id;
 }
 
 
 /**
  * Retourne les images de tous les oeuvres d'un artiste.
- * 
+ *
  * @param Int $artist_id
  * @return Array
  */
@@ -371,7 +371,7 @@ function get_artist_artworks_images($artist_id){
 	}
 
 	wp_reset_postdata();
-	
+
 	return $artworks_images;
 }
 
@@ -385,7 +385,7 @@ function display_back_button(){
 	if(!$url){
 		if(is_single()){
 			$url = get_the_permalink(get_posttype_parent_id());
-			
+
 		}else if($parent_id = wp_get_post_parent_id(get_the_ID())){
 			$url = get_the_permalink($parent_id);
 		}
@@ -404,7 +404,7 @@ function display_back_button(){
 
 /**
  * Permet de changer le nom de la section.
- * 
+ *
  * @param String $label
  * @param Array $field
  * @hooked acf/get_field_label
@@ -415,12 +415,12 @@ function name_row_section( $label, $field ){
 		$parent = get_field($field['parent']);
 		$row_number = str_replace('acf['.$field['parent'].']', '', $field['prefix']);
 		$row_number = str_replace(array('[', ']'), '', $row_number);
-		
+
 		if(array_key_exists($row_number, $parent) && $parent[$row_number]['nom_de_la_section']){
 			$label = $parent[$row_number]['nom_de_la_section'];
 		}
 	}
-	
+
 	return $label;
 }
 add_filter('acf/get_field_label', 'name_row_section', 10, 2 );
