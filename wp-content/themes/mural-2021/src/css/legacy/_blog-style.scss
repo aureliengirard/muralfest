@@ -1,43 +1,5 @@
 .content-wrapper{
 
-    .articles_du_blog{
-		h2{
-			text-align: center;
-			color: #000000;
-			margin-bottom: 55px;
-			color: $color_blue;
-		}
-
-		.articles{
-			background-color: #ffffff;
-			@include cdm-grid(3, ".article", 30px, 30px, (
-				768: (
-					col: 1
-				)
-			));
-
-			.article{
-				.content{
-					padding: 0;
-				}
-
-				figure{
-				&:hover{
-					+ .description h3 a{
-						background: $color-gradient-orange;
-						-webkit-background-clip: text;
-						-webkit-text-fill-color: transparent;
-						}
-					}
-				}
-			}
-		}
-
-		.button-wrap{
-			text-align: center;
-		}
-	}
-
 	.articles{
 		.article{
 
@@ -56,7 +18,6 @@
 						right: 0;
 						left:0;
 						bottom:0;
-						background:$color-gradient-orange;
 						opacity: 0;
 						@include hover-transition;
 					}
@@ -86,7 +47,6 @@
 						display: block;
 
 						&:hover{
-							background: $color-gradient-orange;
 							-webkit-background-clip: text;
 							-webkit-text-fill-color: transparent;
 						}
@@ -94,13 +54,8 @@
 				}
 				.blog-categories{
 					a{
-						color: $color_pink;
 						font-size: 1.6rem;
 						@include hover-transition;
-
-						&:hover{
-							color: $color_blue;
-						}
 					}
 				}
 				p{
@@ -113,44 +68,8 @@
 		}
 	}
 }
-.home{
-    .content-wrapper{
-        .articles_du_blog{
-			margin-bottom:30px;
-            .content{
-                .articles{
-                    .article{
-                        display:flex;
-                        flex-direction: column;
-                        .description{
-                            display:flex;
-                            flex-grow: 1;
-							flex-direction: column;
 
 
-							@include media-screen(768px){
-								width:80%;
-								margin:0 auto;
-							}
-                            .readmore{
-								margin-top:auto;
-								text-align: left;
-
-                            }
-						}
-						figure{
-
-							@include media-screen(768px){
-								width:80%;
-								margin: 0 auto;
-							}
-						}
-                    }
-                }
-            }
-        }
-    }
-}
 .page-blog{
 	.content-wrapper{
 		.articles{
@@ -184,13 +103,6 @@
 						width:100%;
 						max-width:100%;
 						display:block;
-					}
-					&:hover{
-						+ .description h3 a{
-							background: $color-gradient-orange;
-							-webkit-background-clip: text;
-							-webkit-text-fill-color: transparent;
-						}
 					}
 
 				}
@@ -263,7 +175,6 @@
 			}
 
 			.date{
-				color: $color-pink;
                 text-align: center;
 			}
 			.post-categories{
@@ -293,13 +204,8 @@
 			}
 			.blog-categories{
 				a{
-					color: $color_pink;
 					font-size: 1.6rem;
-					@include hover-transition;
 
-					&:hover{
-						color: $color_blue;
-					}
 				}
 			}
 		}

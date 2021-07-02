@@ -1,18 +1,19 @@
 
 {%- set lien = inner_item.lien -%}
-
-<figure>
-    {% if lien -%}
+<div class="row">
+    <figure>
+        {% if lien -%}
         <a href="{{ lien.url }}" target="{{ lien.target }}">
-    {%- endif %}
+            {%- endif %}
 
-    {%- set img = TimberImage(inner_item.image) -%}
-    {%- set img_url = img.src -%}
-    {%- set reponsize_sizes = "1920,1440,1366,1280,960,800,768,720,640,512,414,375,360" -%}
-    
-    {%- include 'components/reponsive_img.twig' with  { img: img, img_url: img_url, reponsize_sizes: reponsize_sizes} -%}
+            {%- set img = TimberImage(inner_item.image) -%}
+            {%- set img_url = img.src -%}
+            {%- set reponsize_sizes = "1920,1440,1366,1280,960,800,768,720,640,512,414,375,360" -%}
 
-    {% if lien -%}
+            {%- include 'components/reponsive_img.twig' with  { img: img, img_url: img_url, reponsize_sizes: reponsize_sizes} -%}
+
+            {% if lien -%}
         </a>
-    {%- endif %}
-</figure>
+        {%- endif %}
+    </figure>
+</div>

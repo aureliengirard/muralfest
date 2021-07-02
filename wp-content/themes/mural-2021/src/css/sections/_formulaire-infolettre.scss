@@ -1,0 +1,46 @@
+.formulaire_infolettre{
+    padding:50px 0;
+
+    @media only screen and (min-width: 1025px){
+        padding:30px 0;
+    }
+
+    .content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @media only screen and (min-width:1025px){
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        p{
+            font-size: 2.5rem;
+            margin-bottom:25px;
+            text-align: center;
+
+            @media only screen and (min-width:768px){
+                font-size: 2rem;
+                width:70%;
+                margin:0 auto;
+                margin-bottom:25px;
+            }
+            @media only screen and (min-width:1025px){
+                margin-bottom:0;
+                padding-right:30px;
+                text-align:left;
+            }
+        }
+
+        .button{
+            font-size: 2rem;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        .parallax-img-wrapper img{
+            height: 100%;
+        }
+    }
+}

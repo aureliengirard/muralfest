@@ -1,0 +1,43 @@
+.artwork-list{
+
+    .year-artworks{
+        flex: 100%;
+        min-width: 100%;
+    }
+
+    .content{
+        .artwork-col{
+            @include cdm-grid(5, ".artwork", 20px, 15px, ());
+
+            .artwork{
+                span{
+                    cursor: pointer;
+                    position: relative;
+                    margin-left: 30px;
+                    display: inline-block;
+                    @include hover-transition;
+
+                    &:before{
+                        content: '»';
+                        color: var(--couleurRouge);
+                        font-size: 1.3333em;
+                        font-weight: 800;
+                        display: inline-block;
+                        text-indent: -30px;
+                        transition: all .15s ease-in-out;
+                    }
+
+                    &:hover{
+
+                        &:before{
+                            text-indent: -20px;
+                        }
+                    }
+                }
+            }
+             @media only screen and (max-width: 767px) {
+                   @include cdm-grid(2, ".artwork", 20px, 15px, ());
+            }
+        }
+    }
+}

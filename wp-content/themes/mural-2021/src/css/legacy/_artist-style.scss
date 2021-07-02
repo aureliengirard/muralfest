@@ -36,11 +36,6 @@
 
 				figure{
 					overflow: hidden;
-					&:hover{
-						+ .description h4 a{
-							color: $color_pink;
-						}
-					}
 
 					a{
 						display: inline-block;
@@ -55,7 +50,6 @@
 								right: 0;
 								left:0;
 								bottom:0;
-								background:$color-gradient-orange;
 								opacity: 0;
 								@include hover-transition;
 							}
@@ -84,9 +78,6 @@
 						a{
 							color: inherit;
 
-							&:hover{
-								color: $color_pink;
-							}
 						}
 					}
 
@@ -94,10 +85,6 @@
 						font-size: 1.8rem;
 						max-width: 100%; /* IE fix */
 					}
-                    .readmore{
-						margin-top: auto;
-						max-width: 100%; /* IE fix */
-                    }
 				}
 			}
 		}
@@ -113,7 +100,6 @@
 				color: #000000;
 			}
 			.styles{
-				color: $color_pink;
 				font-weight: 700;
                 font-size: 1.8rem;
 				span{
@@ -220,7 +206,6 @@
 					display: flex;
 					align-items: center;
 					padding: 1rem;
-					background-color:$color_pink;
 					position: relative;
 
 					@include media-screen(1400px){
@@ -240,7 +225,6 @@
 					top:0;
 					bottom:0;
 					color:#fff;
-					background-color:$color_pink;
 					display: flex;
 					max-width: 180px;
 					align-items: center;
@@ -254,7 +238,6 @@
 
 					@include media-screen(1400px){
 						display:block;
-						color:$color_pink;
 						font-size: 2rem;
 						padding:0 1em;
 						background-color:transparent;

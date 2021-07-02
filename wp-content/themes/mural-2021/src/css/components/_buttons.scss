@@ -6,19 +6,23 @@
 */
 
 %btn {
-    border: 2px solid;
-    padding: $spacing $spacing*4.5;
-    border-radius: $spacing*3;
-    text-decoration: none;
-    font-weight: 700;
+    display: block;
+    padding: $spacing*2.5 $spacing*6;
+    border-radius: $spacing*6;
+    font-weight: 600;
     text-transform: uppercase;
-    margin: 20px 0;
-    font-size: 1.375em;
-    font-family: var(--basePrimaryFont);
+    //margin: 20px 0;
+    font-size: 1em;
+    line-height: 1.2;
     transition: all .15s ease-in-out;
+    cursor: pointer;
+
+    color: var(--couleurRouge);
+    background-color: var(--couleurJaune);
 
     @include hover-focus-active{
-
+        color: var(--couleurJaune);
+        background-color: var(--couleurRouge);
     }
 
     svg{
@@ -27,12 +31,8 @@
     }
 }
 
-.btn{
-    @extend %btn;
-}
-
 .content-wrapper{
-    button{
+    button,.button{
         @extend %btn;
     }
 
@@ -63,12 +63,11 @@ nav {
 }
 
 $btn_styles:
-"blanc" var(--couleurBlanc) var(--couleurNoir),
-"bleu" var(--couleurBleu) var(--couleurJaune),
-"noir" var(--couleurNoir) var(--couleurBlanc),
-"jaune" var(--couleurJaune) var(--couleurRouge),
-"jaune-alt" var(--couleurJaune) var(--couleurBleu),
-"rouge" var(--couleurRouge) var(--couleurJaune);
+"white" var(--couleurBlanc) var(--couleurNoir),
+"blue" var(--couleurBleu) var(--couleurJaune),
+"black" var(--couleurNoir) var(--couleurBlanc),
+"yellow" var(--couleurJaune) var(--couleurRouge),
+"red" var(--couleurRouge) var(--couleurJaune);
 
 @each $btn-name, $color, $color-alt in $btn_styles {
 
@@ -96,5 +95,16 @@ $btn_styles:
 
     .btn--#{$btn-name}{
         @extend %btn__#{$btn-name};
+    }
+}
+
+.readmore{
+	font-weight: 600;
+    color: var(--couleurNoir);
+    display:block;
+	@include hover-transition;
+
+    @include hover-focus-active{
+        color: var(--couleurRouge);
     }
 }

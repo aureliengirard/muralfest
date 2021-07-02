@@ -24,13 +24,15 @@
             </div>
             <div class="right-col">
                 <h1>{{post.title}}</h1>
+
                 <h3 class="artist">
                     <span>{{ __('By:', 'site-theme') }}</span> <a href="{{ artiste.link }}">{{ artiste.title }}</a></h3>
                 <p class="date">{{ __('Year of completion:', 'site-theme') }} {{post.annee}}</p>
-                {% if post.ajoute_description %}
+
+                {% if post.ajoute_description == true %}
                      {{ post.meta('description_de_loeuvre') }}
                 {% else %}
-                    {{ artist.meta('biographie') }}
+                    {{ artiste.meta('biographie') }}
                 {% endif %}
 
                 {%- include 'components/module_share.twig' with  { link: post.link, title: post.title } -%}
@@ -38,4 +40,13 @@
         </section>
     </div>
 </section>
+{% endblock %}
+
+
+{% block map_scripts %}
+    <script type="text/javascript" id="map-single-artwork">
+        /* <![CDATA[ */
+        var mapData = {"current_url_without_params":"{{current_url_without_params}}","themeURI":"{{themeURI}}","homeURL":"{{homeURL}}","siteName":"{{ site.title }}","gmap":{"address":"{{ mapData_gmap.address }}","lat":"{{ mapData_gmap.lat }}","lng":"{{ mapData_gmap.lng }}"},"year":"{{ mapData_year }}","childURI":"{{ themeURI }}"};
+        /* ]]> */
+    </script>
 {% endblock %}

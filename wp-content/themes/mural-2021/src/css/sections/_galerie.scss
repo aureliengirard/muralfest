@@ -1,0 +1,52 @@
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+
+
+
+    figure{
+        width: 25%;
+        //position: absolute;
+        transition: transform 0.4s ease 0s, z-index 0s ease 0.4s;
+        cursor: pointer;
+        z-index: 0;
+        padding:1em;
+        overflow: hidden;
+        max-height: 100%;
+        max-width: 100%;
+
+        a{
+            display: block;
+            height: 150px;
+        }
+
+        &:hover{
+            transition: transform 0.4s ease 0.1s, z-index 0s ease 0s;
+            z-index: 2;
+
+            + figure{
+                transition: transform 0.4s ease 0s, z-index 0s ease 0s;
+                z-index: 1;
+            }
+        }
+
+        img{
+            transform: scale(1);
+            @include hover-transition;
+            height: 100%;
+            width: auto;
+            display: block;
+            margin:0 auto;
+
+            &:hover{
+                transform : scale(1.5);
+            }
+        }
+
+        @include media-screen(768px){
+            width: calc(100% / 2);
+        }
+
+
+    }
+}

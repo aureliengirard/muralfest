@@ -1,0 +1,59 @@
+.partenaires{
+    h2{
+        text-align: center;
+        color: #000000;
+    }
+
+    .partner-wrapper{
+        @media only screen and (max-width: 767px) {
+            padding-top:0px;
+        }
+        @include cdm-grid(3, "figure", 60px, 0px, (
+            768: (
+                col: 1,
+                extras: (
+                    ".partner": (
+                        display:inline,
+                        text-align:center,
+                        background-color:rgba(255,255,255,0.9),
+                        padding:20px,
+                        margin-bottom:10px
+                    ),
+                    "img":(
+                        max-width:50vw
+                    )
+
+            )
+
+            )
+        ));
+        padding: 58px 0;
+        position: relative;
+
+        figure{
+            display: flex;
+            align-items: center;
+
+            &.snap-bottom{
+                img{
+                    position: absolute;
+                    top: 0;
+                    z-index: -1;
+                }
+            }
+
+            a{
+                opacity: 1;
+                @include hover-transition;
+
+                &:hover{
+                    opacity: 0.6;
+                }
+            }
+        }
+    }
+
+    .button-wrap{
+        text-align: center;
+    }
+}

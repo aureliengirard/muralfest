@@ -48,7 +48,6 @@ class Artworks {
 	 * Enregistre les hooks requis.
 	 */
 	private function init_hooks() {
-		add_action( 'wp_enqueue_scripts', array( $this, 'registerScripts' ), 10 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'sendDataJS' ), 30 );
 	}
 
@@ -60,17 +59,6 @@ class Artworks {
 
 	}
 
-	/**
-	 * Enregistre les styles et les scripts pour le frontend.
-	 */
-	public function registerScripts(){
-
-		// SCRIPTS
-		//wp_enqueue_script("artworks-map", get_template_directory_uri . "/src/js/vendor/map-arts.js", array('jquery'), '1.0.0', true);
-
-	}
-
-
 
 	/**
 	 * Envoie des variables vers certains scripts.
@@ -79,62 +67,11 @@ class Artworks {
 	public function sendDataJS(){
 		// Localize the script with new data
 		wp_localize_script( 'artworks-map', 'artworks', $this->get_artworks() );
+
 		wp_localize_script( 'artworks-map', 'translation_map', array(
 			'readmore' => __('Learn more +', 'site-theme'),
 			'by' => __('By:', 'site-theme')
 		));
-
-		$traduction = array(
-			'itineraire' => __('Directions to this place', 'custom_theme'),
-			'adresse' => __('Address', 'custom_theme'),
-			'emailError' => __('Please enter a valid email address.', 'custom_theme'),
-			'mail_mess_1' => __( 'Processing your request. Please wait.', 'custom_theme'),
-			'mail_mess_success' => __( 'Your email address has been added. Thank you!', 'custom_theme'),
-		);
-
-		$traduction = apply_filters( 'php_traduction_to_js', $traduction );
-
-		wp_localize_script( 'script', 'traduction', $traduction );
-		wp_localize_script( 'map-script', 'traduction', $traduction );
-
-		// general data
-		$cdmConf = array(
-			'mobile_width' => 768
-		);
-
-		$cdmConf = apply_filters( 'php_cdmConf_js', $cdmConf );
-
-		wp_localize_script( 'theme-utils', 'cdmConf', $cdmConf );
-
-		// script.js
-		$phpData = array(
-			'current_url_without_params' =>	get_permalink(),
-			'THEMEURI' => get_template_directory_uri(),
-			'homeURL' => esc_url( home_url( '/' ) ),
-			'siteName' => esc_attr( get_bloginfo( 'name', 'display' ) ),
-			'lang' => 'fr'
-		);
-
-		if( defined('ICL_LANGUAGE_CODE') ){
-			$phpData['lang'] = ICL_LANGUAGE_CODE;
-		}
-
-		$phpData = apply_filters( 'php_data_to_scriptjs', $phpData );
-
-		wp_localize_script( 'script', 'phpData', $phpData );
-
-		// map.js
-		$mapData = array(
-			'current_url_without_params' =>	get_permalink(),
-			'themeURI' => get_template_directory_uri(),
-			'homeURL' => esc_url( home_url( '/' ) ),
-			'siteName' => esc_attr( get_bloginfo( 'name', 'display' ) ),
-			'gmap' => get_field('adresse', 'options')
-		);
-
-		$mapData = apply_filters( 'php_data_to_mapjs', $mapData );
-
-		wp_localize_script( 'map-script', 'mapData', $mapData );
     }
 
 

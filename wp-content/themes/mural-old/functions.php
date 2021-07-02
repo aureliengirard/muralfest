@@ -88,7 +88,7 @@ function theme_enqueue_styles() {
 		true
 	);
 
-	wp_enqueue_script("map",
+	wp_enqueue_script("map-script",
 		CHILDURI."/js/map.js",
 		array('theme-utils'),
 		wp_get_theme()->get('Version'),
@@ -174,6 +174,17 @@ function theme_fonts_url() {
 	return $fonts_url;
 }// function
 
+/**
+ * Envoi plus de variable PHP au script map.js
+ *
+ */
+function add_script_data($phpData){
+    $phpData['siteURL'] = esc_url( home_url( '/' ) );
+	$phpData['childURI'] = CHILDURI;
+
+    return $phpData;
+}
+add_filter('php_data_to_scriptjs', 'add_script_data', 10, 1 );
 
 /**
  * Envoi plus de variable PHP au script map.js
@@ -193,20 +204,6 @@ function add_map_data($mapData){
     return $mapData;
 }
 add_filter('php_data_to_mapjs', 'add_map_data', 10, 1 );
-
-
-/**
- * Envoi plus de variable PHP au script map.js
- *
- */
-function add_script_data($phpData){
-    $phpData['siteURL'] = esc_url( home_url( '/' ) );
-	$phpData['childURI'] = CHILDURI;
-
-    return $phpData;
-}
-add_filter('php_data_to_scriptjs', 'add_script_data', 10, 1 );
-
 
 /**
  * Ajoute une Classe pour les images flush.

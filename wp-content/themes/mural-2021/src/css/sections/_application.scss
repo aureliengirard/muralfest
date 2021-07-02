@@ -1,0 +1,54 @@
+
+.application{
+	padding: 0;
+
+	@media only screen and (max-width: 1200px) {
+		figure:last-child{
+			display: none;
+		}
+	}
+	@media only screen and (min-width: 768px) {
+		figure{
+			&:first-child{
+				margin-top:1vw;
+			}
+			&:last-child{
+				transform: rotate(-30deg);
+				right:-1.5vw;
+				position: relative;
+				top:1vw;
+				width:20vw;
+			}
+		}
+	}
+
+	.content{
+		display: flex;
+
+		.app-info{
+
+
+			.app-links{
+				-ms-grid-row: 2;
+				display: flex;
+
+				a{
+					opacity: 1;
+					@include hover-transition;
+
+					&:hover{
+						opacity: 0.7;
+					}
+
+					&:first-child{
+						margin-right: 5px;
+					}
+
+					&:last-child{
+						margin-left: 5px;
+					}
+				}
+			}
+		}
+	}
+}

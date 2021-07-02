@@ -138,14 +138,15 @@ class StarterSite extends TimberSite {
 			true
 		);
 
+
+		wp_enqueue_script("artworks-map", get_template_directory_uri() ."/src/js/vendor/map-arts.js", array('jquery'), '1.0.0', true);
+
 		wp_enqueue_script("map-script",
 			get_template_directory_uri() ."/src/js/vendor/map.js",
 			array('jquery'),
 			wp_get_theme()->get('Version'),
 			true
 		);
-
-		wp_enqueue_script("artworks-map", get_template_directory_uri() ."/src/js/vendor/map-arts.js", array('jquery'), '1.0.0', true);
 
 		wp_enqueue_script("script",
 			get_template_directory_uri() ."/js/script.js",
@@ -221,26 +222,6 @@ add_action( 'template_redirect', function() {
 	exit;
 } );
 */
-
-/**
- * Envoi plus de variable PHP au script map.js
- *
- */
-function add_map_data($mapData){
-	$mapInfos = get_field('adresse', 'options');
-
-	if(is_singular('artwork')){
-		$mapInfos = get_field('lieu_de_loeuvre');
-		$mapData['year'] = get_field('annee');
-	}
-
-    $mapData['gmap'] = $mapInfos;
-    $mapData['childURI'] = get_stylesheet_directory_uri();
-
-    return $mapData;
-}
-add_filter('php_data_to_mapjs', 'add_map_data', 10, 1 );
-
 
 /**
  * Envoi plus de variable PHP au script map.js
@@ -378,3 +359,9 @@ function get_artist_artworks_images($artist_id){
 
 	return $artworks_images;
 }
+
+function my_acf_google_map_api( $gmapKey ){
+    $api['key'] = 'AIzaSyDdu7rV-v4gA4aeUX6bEbKkoVD9Jy8B-E4';
+    return $api;
+}
+add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');

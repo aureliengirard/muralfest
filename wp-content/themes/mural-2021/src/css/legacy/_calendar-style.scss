@@ -9,7 +9,7 @@
 
     .ui-datepicker-header{
         border-radius: 0;
-        background: $color-yellow;
+        background: var(--couleurJaune);
         padding: 5px 10px;
         display: flex;
         align-items: center;
@@ -31,14 +31,6 @@
             background: none;
             border: none;
             cursor: pointer;
-
-            &.ui-state-hover{
-                .ui-icon{
-                    &::before{
-                        color: $color_pink;
-                    }
-                }
-            }
 
             .ui-icon{
                 background: none;
@@ -89,18 +81,13 @@
         .date-range-selected > .ui-state-active,
         .date-range-selected > .ui-state-default {
             background: none;
-            background-color: $color_blue;
         }
 
         .ui-state-highlight,
         .ui-widget-content .ui-state-highlight,
         .ui-widget-header .ui-state-highlight{
-            border-color: $color_yellow;
-            background-color: rgba($color_yellow, 0.5);
-        }
-
-        .ui-state-hover{
-            border-color: $color_pink;
+            //border-color: $color_yellow;
+            //background-color: rgba($color_yellow, 0.5);
         }
     }
 
@@ -123,7 +110,7 @@
         }
         @media only screen and (max-width: 380px) {
             button{
-                padding:10px 3px; 
+                padding:10px 3px;
             }
         }
     }

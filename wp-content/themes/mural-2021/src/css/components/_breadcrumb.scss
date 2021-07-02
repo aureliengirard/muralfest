@@ -1,0 +1,10 @@
+
+/// Style breadcrumb et bouton de retour
+.content-wrapper .single-navigation{
+	display: flex;
+	justify-content: space-between;
+
+	.back-btn + .breadcrumb{
+		margin-left: 15px;
+	}
+}

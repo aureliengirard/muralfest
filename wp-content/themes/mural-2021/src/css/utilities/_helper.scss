@@ -46,22 +46,16 @@
 
 
 $theme_colors:
-"blanc" var(--couleurBlanc),
-"bleu" var(--couleurBleu),
-"noir" var(--couleurNoir),
-"jaune" var(--couleurJaune),
-"rouge" var(--couleurRouge);
+"white" var(--couleurBlanc),
+"blue" var(--couleurBleu),
+"black" var(--couleurNoir),
+"yellow" var(--couleurJaune),
+"red" var(--couleurRouge);
 
 @each $bg-name, $color in $theme_colors {
 
     .bg--#{$bg-name}{
         background-color: $color;
-
-        @if $bg-name == "or" {
-            a{
-                color: var(--couleurBlanc);
-            }
-        }
     }
 }
 

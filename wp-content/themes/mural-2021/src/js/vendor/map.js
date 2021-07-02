@@ -8,9 +8,9 @@ $(function(){
 			geocoder = new google.maps.Geocoder();
 			var lat = mapData.gmap.lat;
 			var lng = mapData.gmap.lng;
-			
+
 			var markerPos = new google.maps.LatLng(lat, lng);
-			
+
 			var featureOpts = [
 				{
 					"featureType": "administrative",
@@ -136,7 +136,7 @@ $(function(){
 					]
 				}
 			];
-			
+
 			var mapOptions = {
 				zoom: 13,
 				scrollwheel : false,
@@ -149,26 +149,26 @@ $(function(){
 				},
 				mapTypeId: MY_MAPTYPE_ID
 			};// mappOptions
-			
+
 			map = new google.maps.Map(document.getElementById('gmap'), mapOptions);
-			
-			
+
+
 			var styledMapOptions = {
 				name: 'Custom Style'
 			};//StyledMapOptions
-			
+
 			var customMapType = new google.maps.StyledMapType(featureOpts, styledMapOptions);
-			
+
 			map.mapTypes.set(MY_MAPTYPE_ID, customMapType);
 
 			var color = '#1097a6';
 			var currentDate = new Date();
-			
+
 			if(mapData.year == currentDate.getFullYear()){
 				color = '#04d3ff';
 				currentYear = true;
 			}
-			
+
 			var markerMap = new google.maps.Marker({
 				position: markerPos,
 				map: map,
@@ -184,15 +184,15 @@ $(function(){
 					strokeWeight: 2
 				}
 			});// A marker
-			
+
 			markerMap.addListener('click', function() {
 				window.open('https://www.google.ca/maps/dir//'+encodeURIComponent(mapData.gmap.address), '_blank');
-				
+
 			});
 		}// init
 
 		google.maps.event.addDomListener(window, 'load', initialize);
-		
+
 	}else{
 		$('#gmap').hide();
 	}

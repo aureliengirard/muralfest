@@ -1,0 +1,58 @@
+.articles_du_blog{
+    h2{
+        text-align: center;
+        color: #000000;
+        margin-bottom: 55px;
+    }
+
+    .articles{
+        background-color: #ffffff;
+        @include cdm-grid(3, ".article", 30px, 30px, (
+            768: (
+                col: 1
+            )
+        ));
+
+        .article{
+            .content{
+                padding: 0;
+            }
+
+        }
+    }
+
+    .button-wrap{
+        text-align: center;
+    }
+}
+
+.articles_du_blog{
+    margin-bottom:30px;
+    .content{
+        .articles{
+            .article{
+                display:flex;
+                flex-direction: column;
+                .description{
+                    display:flex;
+                    flex-grow: 1;
+                    flex-direction: column;
+
+
+                    @include media-screen(768px){
+                        width:80%;
+                        margin:0 auto;
+                    }
+
+                }
+                figure{
+
+                    @include media-screen(768px){
+                        width:80%;
+                        margin: 0 auto;
+                    }
+                }
+            }
+        }
+    }
+}

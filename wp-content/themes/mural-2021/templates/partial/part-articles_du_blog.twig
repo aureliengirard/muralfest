@@ -1,11 +1,13 @@
 <div class="content">
-    {% if inner_item.acf_fc_layout == 'articles_du_blog' %}
+    <div class="row">
+        {% if inner_item.acf_fc_layout == 'articles_du_blog' %}
         <h2>{{__('Latest posts', 'site-theme')}}</h2>
-    {% else %}
+        {% else %}
         <h2>{{__('You may also like', 'site-theme')}}</h2>
-    {% endif %}
+        {% endif %}
+    </div>
 
-    <div class="articles">
+    <div class="row articles">
 
         {%- if inner_item.acf_fc_layout == 'articles_du_blog' -%}
 
@@ -23,8 +25,10 @@
 
     </div>
 
-    <div class="button-wrap">
-        <a href="{{options.home_blog}}" class="button">{{ __('View', 'site-theme') }}</a>
+    <div class="row">
+        <div class="button-wrap">
+            <a href="{{options.home_blog}}" class="button">{{ __('View', 'site-theme') }}</a>
+        </div>
     </div>
 
 </div>

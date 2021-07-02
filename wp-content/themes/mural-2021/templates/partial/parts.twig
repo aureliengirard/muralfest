@@ -1,9 +1,8 @@
 {% for item in content_items -%}
-    {%- set class -%}bgcolor-{{item.couleur}}{%- endset -%}
+    {%- set class -%}bg--{{item.couleur}}{%- endset -%}
 
     {%- for inner_item in item.contenu -%}
-    <section class="{{class}}">
-    <section class="{{inner_item.acf_fc_layout}}">
+    <section class="{{inner_item.acf_fc_layout}} {% if class != "bg--white" %}{{class}}{% endif %}">
         {%- if inner_item.acf_fc_layout == 'application' -%}
             {% include "partial/part-application.twig" -%}
         {%- elseif inner_item.acf_fc_layout == 'texte_bouton' -%}
@@ -32,7 +31,6 @@
             {%- include "partial/part-image_pleine_largeur.twig" -%}
         {%- endif -%}
     </section>
-    </section>
-    Nom:{{item.nom_de_la_section}} - Layout name: {{inner_item.acf_fc_layout}} Loop:{{loop.index}}
+    {# Nom:{{item.nom_de_la_section}} - Layout name: {{inner_item.acf_fc_layout}} Loop:{{loop.index}} #}
     {%- endfor -%}
 {%- endfor %}

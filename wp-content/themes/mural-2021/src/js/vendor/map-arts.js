@@ -6,7 +6,7 @@ $(function(){
 
 		function initialize() {
 			geocoder = new google.maps.Geocoder();
-			
+
 			var featureOpts = [
 				{
 					"featureType": "administrative",
@@ -132,7 +132,7 @@ $(function(){
 					]
 				}
 			];
-					
+
 			var mapOptions = {
 				zoom: 13,
 				scrollwheel : false,
@@ -144,15 +144,15 @@ $(function(){
 				},
 				mapTypeId: MY_MAPTYPE_ID
 			};// mappOptions
-			
+
 			map = new google.maps.Map(document.getElementById('gmap-arts'), mapOptions);
 
 			var styledMapOptions = {
 				name: 'Custom Style'
 			};//StyledMapOptions
-			
+
 			var customMapType = new google.maps.StyledMapType(featureOpts, styledMapOptions);
-			
+
 			map.mapTypes.set(MY_MAPTYPE_ID, customMapType);
 
 			var bounds = new google.maps.LatLngBounds();
@@ -162,19 +162,19 @@ $(function(){
 			$.each(artworks, function(id, artwork){
 				lat = artwork.coords.lat;
 				lng = artwork.coords.lng;
-		
+
 				var markerPos = new google.maps.LatLng(lat, lng);
-				
+
 				var color = '#1f4968';
 				var currentYear = false;
-				
+
 				var currentDate = new Date();
-				
+
 				if(artwork.date == currentDate.getFullYear()){
 					color = '#dea1d9';
 					currentYear = true;
 				}
-				
+
 				var infoContent = '';
 				infoContent += '<div class="artwork-data'+(currentYear ? ' this-year' : '')+'">';
 				infoContent +=		'<div class="col-wrapper">';
@@ -197,16 +197,18 @@ $(function(){
 				infoContent += 			'</div>';
 				infoContent += 		'</div>';
 				infoContent += '</div>';
-				
+
 				var infowindow = new google.maps.InfoWindow({
 					content: infoContent
 				});
-				
+
+				/*
 				google.maps.event.addListener(infowindow, 'domready', function () {
 					twttr.widgets.load();
 				})
 				infoWindows.push(infowindow);
-				
+				*/
+
 				var markerMap = new google.maps.Marker({
 					markerid: id,
 					position: markerPos,
@@ -226,14 +228,14 @@ $(function(){
 
 				map.markers.push(markerMap);
 				bounds.extend(markerMap.position);
-				
+
 				markerMap.addListener('click', function() {
 					for (var i=0;i<infoWindows.length;i++) {
 						infoWindows[i].close();
 					}
 
 					infowindow.open(map, markerMap);
-					
+
 				});
 			});
 
@@ -244,7 +246,7 @@ $(function(){
 						var offsetMap = $('#gmap-arts').offset();
 
 						$("html, body").animate({ scrollTop: offsetMap.top - 10 }, "slow");
-						
+
 						return false;
 					}
 				});
@@ -255,7 +257,7 @@ $(function(){
 			});
 
 			map.fitBounds(bounds);
-			
+
 		}// init
 
 		google.maps.event.addDomListener(window, 'load', initialize);

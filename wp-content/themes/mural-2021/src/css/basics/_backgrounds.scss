@@ -1,0 +1,52 @@
+.content-wrapper{
+
+    .bg--blue{
+        h1,h2,h3,h4,h5,h6,p {
+            color: var(--couleurJaune);
+        }
+
+        .button{
+
+            color: var(--couleurRouge);
+            background-color: var(--couleurJaune);
+
+            @include hover-focus-active{
+                background-color: var(--couleurRouge);
+                color: var(--couleurJaune);
+            }
+        }
+    }
+
+    .bg--red{
+        h1,h2,h3,h4,h5,h6,p {
+            color: var(--couleurJaune);
+        }
+
+        .button{
+
+            color: var(--couleurJaune);
+            background-color: var(--couleurBleu);
+
+            @include hover-focus-active{
+                color: var(--couleurRouge);
+                background-color: var(--couleurJaune);
+            }
+        }
+    }
+
+    .bg--yellow{
+        h1,h2,h3,h4,h5,h6,p {
+            color: var(--couleurRouge);
+        }
+
+        .button{
+
+            color: var(--couleurJaune);
+            background-color: var(--couleurBleu);
+
+            @include hover-focus-active{
+                background-color: var(--couleurRouge);
+            }
+        }
+    }
+}

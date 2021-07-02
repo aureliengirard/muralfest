@@ -1,7 +1,7 @@
 {%- set image_gauche = TimberImage(options.image_gauche) -%}
 {%- set image_droite = TimberImage(options.image_droite) -%}
 
-<div class="content">
+<div class="row content">
     {% if image_gauche -%}
     <figure>
         <img src="{{ image_gauche.src }}" alt="{{ image_gauche.alt }}" />

@@ -19,13 +19,14 @@
 @import "../../node_modules/magnific-popup/dist/magnific-popup.css";
 @import '../../node_modules/aos/dist/aos.css';
 
+// Basics
+@import 'basics/_variables.scss';
+@import 'basics/_fonts.scss';
+@import 'basics/_typography.scss';
+@import 'basics/_backgrounds.scss';
+
 // Legacy
 @import 'legacy/style.scss';
-
-// Basics
-@import 'basics/_fonts.scss';
-@import 'basics/_variables.scss';
-@import 'basics/_typography.scss';
 
 // Base
 @import 'base/_general.scss';
@@ -33,19 +34,41 @@
 @import 'Base/_grid.scss';
 
 // Components
+@import 'components/_breadcrumb.scss';
 @import 'components/_buttons.scss';
 @import 'components/_card.scss';
 @import 'components/_embed.scss';
+@import 'components/_footer.scss';
 @import 'components/_forms.scss';
 @import 'components/_lists.scss';
 @import 'components/_table.scss';
 @import 'components/_slick.scss';
+@import 'components/_nav.scss';
 @import 'components/_magnificPopup.scss';
+@import 'components/_pagination.scss';
+
+// Sections
+.content-wrapper{
+    @import 'sections/_appels-a-laction.scss';
+    @import 'sections/_application.scss';
+    @import 'sections/_articles-du-blog.scss';
+    @import 'sections/_carte-dynamique.scss';
+    @import 'sections/_deux-colonnes.scss';
+    @import 'sections/_evenements-a-venir.scss';
+    @import 'sections/_formulaire-infolettre.scss';
+    @import 'sections/_galerie.scss';
+    @import 'sections/_image-pleine-largeur.scss';
+    @import 'sections/_partenaires.scss';
+    @import 'sections/_section-banner.scss';
+    @import 'sections/_texte-bouton.scss';
+    @import 'sections/_titre-section.scss';
+    @import 'sections/_video.scss';
+}
 
 // Layout
-@import 'layouts/_footer.scss';
+@import 'layouts/_404.scss';
 @import 'layouts/_hero.scss';
-@import 'layouts/_nav.scss';
+@import 'layouts/_page-map.scss';
 @import 'layouts/_splash-page.scss';
 @import 'layouts/_single-post.scss';
 

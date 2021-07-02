@@ -160,7 +160,7 @@ input {
     }
 
     &[type="submit"] {
-        @extend %btn__noir;
+        @extend %btn__black;
     }
 
     &:focus{
@@ -293,4 +293,41 @@ input {
 
 .gform_confirmation_wrapper {
     text-align: center;
+}
+
+
+// LEGACY
+/* Style des formulaires */
+@include placeholderColor(#ffffff);
+
+input{
+	border: 2px solid transparent;
+	font-size: 2.6rem;
+	color: #ffffff;
+	font-weight: 700;
+	padding: 12px 15px;
+	background-color: #000000;
+    border-radius: 0px;
+	width: 100%;
+	max-width: 100%;
+	min-width: 0;
+	@include hover-transition;
+
+	&:focus{
+		border-color: #000000;
+		background-color: #ffffff;
+		color: #000000;
+	}
+}
+
+textarea{
+	resize: vertical;
+	min-height: 150px;
+
+	@extend input;
+}
+
+input[type=checkbox],
+input[type=radio]{
+	border: 1px solid #b1b1b1;
 }
