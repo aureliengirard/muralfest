@@ -120,7 +120,7 @@ textarea {
 select{
     -webkit-appearance: none;
     -moz-appearance: none;
-    background: url(../assets/SemiArrowDown-tiny.svg) no-repeat transparent;
+    //background: url(../assets/SemiArrowDown-tiny.svg) no-repeat transparent;
     background-position: calc(100% - 1em) 50%;
     border-bottom: 1px solid #a7a8a9;
     outline: none;
@@ -155,12 +155,12 @@ input {
 
     &[type="reset"],
     &[type="submit"] {
-        @extend %btn;
+        //@extend %btn;
         cursor: pointer;
     }
 
     &[type="submit"] {
-        @extend %btn__black;
+        //@extend %btn__black;
     }
 
     &:focus{

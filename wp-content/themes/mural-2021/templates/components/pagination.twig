@@ -1,23 +1,23 @@
 {% if blog_posts.pagination.pages is not empty %}
-    <div class="pagination-block">
+    <div class="row pagination-block">
         <ul class="pagination">
             {% if pagination.pages|first and pagination.pages|first.current != true %}
-                <li class="first btn">
-                    <a href="{{ pagination.pages|first.link }}">First</a>
+                <li class="first">
+                    <a href="{{ pagination.pages|first.link }}">&lt;&lt;</a>
                 </li>
             {% else %}
-                <li class="first btn disabled">
-                    <a>First</a>
+                <li class="first disabled">
+                    <a>&lt;&lt;</a>
                 </li>
             {% endif %}
 
             {% if pagination.prev %}
-                <li class="prev btn">
-                    <a href="{{ pagination.prev.link }}">Previous</a>
+                <li class="prev">
+                    <a href="{{ pagination.prev.link }}">&lt;</a>
                 </li>
             {% else %}
-                <li class="prev btn disabled">
-                    <a>Previous</a>
+                <li class="prev disabled">
+                    <a>&lt;</a>
                 </li>
             {% endif %}
 
@@ -34,25 +34,25 @@
             {% endfor %}
 
             {% if pagination.next %}
-                <li class="next btn">
+                <li class="next">
                     <a href="{{ pagination.next.link }}">
-                        Next
+                    	&gt;
                     </a>
                 </li>
             {% else %}
-                <li class="next btn disabled">
+                <li class="next disabled">
                     <a>
-                        Next
+                        &gt;
                     </a>
                 </li>
             {% endif %}
             {% if pagination.pages|last and pagination.pages|last.current != true %}
-                <li class="last btn">
-                    <a href="{{ pagination.pages|last.link }}">Last</a>
+                <li class="last">
+                    <a href="{{ pagination.pages|last.link }}">&gt;&gt;</a>
                 </li>
             {% else %}
-                <li class="last btn disabled">
-                    <a>Last</a>
+                <li class="last disabled">
+                    <a>&gt;&gt;</a>
                 </li>
             {% endif %}
         </ul>

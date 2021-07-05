@@ -3,9 +3,11 @@ import fonts from '../fonts/fonts.js';
 import "jquery";
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
+import 'select2';
 
 import functionsInit from './functionsInit.js';
 import sliderInit from './sliderInit.js';
+import filtersInit from './filtersInit.js';
 
 //Legacy JS
 //import datepickerFrCA from './vendor/datepicker-fr-CA.js';
@@ -31,5 +33,6 @@ $(window).on("scroll", function () {
 function init() {
     functionsInit();
     sliderInit();
+    filtersInit();
 }
 init();

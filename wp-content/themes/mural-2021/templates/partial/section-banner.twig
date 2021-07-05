@@ -3,31 +3,31 @@
 {% set right_banner = page.meta('banniere_droite') %}
 <div class="banner">
     {% if page.nombre_dimage == true %}
-        {% if left_banner.banniere %}
+            {% if left_banner.banniere %}
             <figure class="left-banner">
                 {% if left_banner.banniere %}
-                    {% set banniere = Image(left_banner.banniere) %}
-                    {% set banniere_url = banniere.src %}
-                    {% set reponsize_sizes = "1280,960,800,768,720,640,512,414,375,360" %}
+                {% set banniere = Image(left_banner.banniere) %}
+                {% set banniere_url = banniere.src %}
+                {% set reponsize_sizes = "1280,960,800,768,720,640,512,414,375,360" %}
 
-                    {% include 'components/reponsive_img.twig' with  { img: banniere, img_url: banniere_url, reponsize_sizes: reponsize_sizes} %}
+                {% include 'components/reponsive_img.twig' with  { img: banniere, img_url: banniere_url, reponsize_sizes: reponsize_sizes} %}
                 {% endif %}
 
                 {% if left_banner.contenu_banniere %}
-                    <div class="banner-overlay">
-                        {{ left_banner.contenu_banniere }}
-                    </div>
+                <div class="banner-overlay">
+                    {{ left_banner.contenu_banniere }}
+                </div>
                 {% endif %}
             </figure>
-        {% else %}
+            {% else %}
             <div class="left-banner">
                 <div class="banner-overlay">
                     {{ left_banner.contenu_banniere }}
                 </div>
             </div>
-        {% endif %}
-        <figure class="right-banner">
+            {% endif %}
             {% if right_banner.banniere %}
+            <figure class="right-banner">
 
                 {% set banniere = Image(right_banner.banniere) %}
                 {% set banniere_url = banniere.src %}
@@ -35,30 +35,25 @@
 
                 {% include 'components/reponsive_img.twig' with  { img: banniere, img_url: banniere_url, reponsize_sizes: reponsize_sizes} %}
 
-            {% endif %}
-            {% if right_banner.contenu_banniere %}
+                {% endif %}
+                {% if right_banner.contenu_banniere %}
                 <div class="banner-overlay">
                     {{ right_banner.contenu_banniere }}
                 </div>
+            </figure>
             {% endif %}
-        </figure>
     {% elseif page.banniere %}
         {% set banniere = Image(page.meta('banniere')) %}
         {% set banniere_url = banniere.src %}
-        {% set reponsize_sizes = "1280,960,800,768,720,640,512,414,375,360" %}
+
         <div class="single-banner-wrap">
-            <figure class="single-banner with-overlay" style="background-image:url('{{banniere_url|resize(1920,0) }}')">
+            <figure class="single-banner with-overlay" style="background-image:url('{{banniere_url|resize(1920,400) }}')">
                 {% if page.contenu_banniere %}
-                    {% if page.banniere %}
-
-                        {% include 'components/reponsive_img.twig' with  { img: banniere, img_url: banniere_url, reponsize_sizes: reponsize_sizes} %}
-
-                    {% endif %}
-                {% endif %}
-                {% if page.contenu_banniere %}
-                    <div class="banner-overlay  animated fadeInLeft">
+                <div class="row content">
+                    <div class="banner-overlay">
                         {{page.contenu_banniere}}
                     </div>
+                </div>
                 {% endif %}
             </figure>
         </div>

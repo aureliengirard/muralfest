@@ -6,8 +6,10 @@
 
 {% if page.content %}
     <section class="basic-content">
-        <div class="content">
-            {{ page.content }}
+        <div class=" row">
+            <div class="rte">
+                {{ page.content }}
+            </div>
         </div>
     </section>
 {% endif %}
@@ -19,7 +21,7 @@
 
         {% if artist_posts -%}
 
-            <section class="artists">
+            <section class="artists row">
 
                 {%- for artist_post in artist_posts %}
 
@@ -27,16 +29,23 @@
 
                     {% if current_year == NULL %}
                         {% set current_year = artist_year %}
-
-                        <h2 class="artists-year">{{current_year}}</h2>
-                        <div class="artists-wrap">
+                        <div class="row">
+                            <div class="section__title">
+                                <h2 class="lg">{{current_year}}</h2>
+                            </div>
+                        </div>
+                        <div class="row card__wrapper">
                     {% endif %}
 
                     {% if current_year != artist_year %}
                         {% set current_year = artist_year %}
                         </div>
-                        <h2 class="artists-year">{{current_year}}</h2>
-                        <div class="artists-wrap">
+                        <div class="row">
+                            <div class="section__title">
+                                <h2 class="artists-year">{{current_year}}</h2>
+                            </div>
+                        </div>
+                        <div class="row card__wrapper">
                     {% endif %}
 
                     {% include 'components/tease_artist-article.twig'  %}
@@ -46,7 +55,7 @@
 
             </section>
 
-            {% include 'components/pagination.twig' with { pagination: blog_posts.pagination({show_all: false, mid_size: 2, end_size: 3}) } %}
+            {% include 'components/pagination.twig' with { pagination: blog_posts.pagination({show_all: false, mid_size: 2, end_size: 2}) } %}
 
         {%- else -%}
 

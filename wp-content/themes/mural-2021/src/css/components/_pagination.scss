@@ -1,33 +1,35 @@
 
 /// Style paginations
-.content-wrapper section{
+.content-wrapper{
+
     .pagination{
-        .page-numbers{
-			text-align: center;
-			margin-bottom:20px;
-			margin-top:20px;
+        display: flex;
+        margin: $spacing-md*3 auto;
+        flex-flow: row wrap;
 
-			li{
-				display:inline;
-                 margin-left:28px;
-				a, span{
-					padding: 10px;
-					font-weight: 600;
-                    font-size: 2.1rem;
-				}
+        li{
+            margin-left: 10px;
+            margin-right: 10px;
+            font-size: 1.25em;
 
-				&:before{
-					content:none;
-				}
-			}
-        }
-        @media only screen and (max-width: 768px) {
-            .page-numbers{
-                padding-left:0px;
-                li{
-                 margin-left:0px;
-                }
+            &.disabled{
+                display: none;
             }
         }
+
+        a:not(.dots){
+            color: var(--couleurJaune);
+            @include hover-transition;
+
+            &.current{
+                color: var(--couleurRouge);
+                font-weight: 600;
+            }
+
+            &:hover{
+                color: var(--couleurRouge);
+            }
+        }
+
     }
 }

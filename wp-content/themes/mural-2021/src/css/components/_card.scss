@@ -2,12 +2,15 @@
     flex: 75%;
     margin-top:20px;
     max-width: 400px;
+    margin-bottom: $spacing-xl;
 
     @include media-breakpoint-up(md){
         flex: 30%;
     }
 
     &__wrapper {
+        margin-bottom: -$spacing-xl;
+        
         @include media-breakpoint-up(md) {
             justify-content: space-between;
         }

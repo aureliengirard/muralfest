@@ -84,17 +84,6 @@ $(function(){
 	});
 
 
-	// Slider exemple - https://owlcarousel2.github.io/OwlCarousel2/
-	$(document).ready(function(){
-		$(".owl-carousel").owlCarousel({
-			items: 1,
-			loop: true,
-			autoplay: true,
-			autoplayTimeout: 5000,
-			smartSpeed: 500,
-			center: true,
-		});
-	});
 	/// ajout la classe mobile sur le mobile pour menu mobile sur Ipad
     $(window).on('load resize',function() {
         if(!isMobile()){
@@ -129,7 +118,6 @@ $(function(){
 	});
 
 
-
 	/* inscription a l'infolettre */
 	$('.infolettre, .newsletter').submit(function(e){
 		e.preventDefault();
@@ -161,60 +149,6 @@ $(function(){
 		}
 	});
 
-	$('.content-wrap .background-parallax .img-parallax').each(function (index, element) {
-		parallax($(this), $(this).parents('.background-parallax'));
-	});
-
-	if($('#sidebar .img-parallax').length){
-		parallax($('#sidebar .img-parallax'), $('#sidebar'));
-	}
-
-
-	/*************/
-	/* ANIMATION */
-	/*************/
-	// add class .toAnimate to html element with a animate.css effect class
-	// when on screen, the animation will execute
-
-	$(document).ready(function(){
-		$(window).on('scroll load', function(event) {
-			$('.toAnimate').each(function(index, el) {
-				if($(this).isOnScreen() === true){
-					$(this).removeClass('toAnimate').addClass('animating');
-					var elem_class = $(this).attr('class');
-					var pos = elem_class.search('animS_');
-
-					$(this).one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e) {
-						$(this).removeClass('animating').addClass('animated');
-					});
-
-					if(pos !== -1){
-						var anim_name = elem_class.substring(pos, elem_class.indexOf(" ", pos));
-						$(this).removeClass(anim_name);
-
-						anim_name = anim_name.replace('animS_', '');
-
-						$(this).addClass(anim_name);
-					}
-				}
-			});
-		});
-	});
-
-	$(window).load(function() {
-		var i = 0;
-
-		$('.gallery').each(function(){
-			$(this).find('figure a').colorbox({
-				rel: 'gallery-'+i,
-				maxWidth: "95%",
-				maxHeight: "95%",
-				current: ""
-			});
-
-			i++;
-		});
-	});
 });
 
 $.urlParam = function (name) {

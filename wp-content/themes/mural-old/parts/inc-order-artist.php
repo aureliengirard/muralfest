@@ -16,11 +16,11 @@ if (isset($_GET['years'])) {
                     $years = $years['choices'];
                 ?>
                 <select name="years" id="filter-years" placeholder="<?php _e('Years', 'site-theme'); ?>">
-                   
+
                    <option value=""></option>
 
                     <?php foreach ($years as $year):
-                    
+
                         $selected = false;
                         if($year_value == $year){
                             $selected = true;

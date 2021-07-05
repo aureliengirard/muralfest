@@ -45,7 +45,7 @@ class StarterSite extends TimberSite {
 		$context['options'] = get_fields('options');
 
 		$context['nav_menu'] = new TimberMenu('Menu Principal EN');
-		$context['secondary_nav_menu'] = new TimberMenu('Navigation FR');
+		$context['secondary_nav_menu'] = new TimberMenu('Secondary Nav');
         $context['footer_menu'] = new TimberMenu('footer_menu');
 
 		// post

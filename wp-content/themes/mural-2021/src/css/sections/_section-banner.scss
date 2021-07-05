@@ -9,12 +9,31 @@
 		flex-direction: column;
 	}
 
-	.single-banner-wrap{
-		height: 50vh;
-		width:100%;
+	& + [class*="bg--"]{
+		margin-top: 0;
+	}
 
-		@media only screen and (max-width: 767px) {
-			height: 35vh;
+	.single-banner-wrap{
+		width:100%;
+	}
+
+	.single-banner{
+		background-size:cover;
+		background-position: center;
+		width:100%;
+		height:50vh;
+		max-height: 400px;
+		//position: fixed;
+		z-index: 0;
+
+		.banner-overlay{
+			h1{
+				color: var(--couleurJaune);
+			}
+		}
+
+		.content{
+			@include align-items(center);
 		}
 	}
 
@@ -30,25 +49,6 @@
 			&.left-banner .banner-overlay p a{
 				margin-bottom:5px;
 			}
-		}
-
-
-		.banner-overlay{
-			position: absolute;
-			top: 50%;
-			transform: translateY(-50%);
-			left: 90px;
-
-			.pays{
-
-				font-weight: 300;
-				color:#e7e7e7;
-				padding-left:5px;
-				font-size:50%;
-				display: inline-block;
-			}
-
-
 		}
 
 		&.left-banner{
@@ -105,44 +105,6 @@
 			display:block;
 			img{
 				width:100%;
-			}
-		}
-		&.single-banner{
-			background-size:cover;
-			background-position: center;
-			width:100%;
-			height:50vh;
-			position: fixed;
-			z-index: 0;
-
-			@media only screen and (max-width: 767px) {
-				&.with-overlay{
-					height:35vh;
-					h1{
-						font-size:4rem;
-					}
-					img{
-						display:block;
-						/*max-width: none;
-						height: 100vw;
-						left:calc(100vw / -50vw);
-						position: relative;*/
-					}
-				}
-			}
-
-			.banner-overlay{
-				top: 100px;
-				left: 100px;
-
-				@media only screen and (max-width: 767px) {
-					top: 50px;
-					left: 15px;
-				}
-
-				h1{
-					color: #ffffff;
-				}
 			}
 		}
 	}

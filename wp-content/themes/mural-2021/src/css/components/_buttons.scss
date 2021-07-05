@@ -32,17 +32,10 @@
     }
 }
 
+.navbar-extra,
 .content-wrapper{
-    button,.button{
+    button:not(.select2-selection__clear),.button{
         @extend %btn;
-    }
-
-    .btn{
-        margin-top: $spacing/2;
-
-        + .btn{
-            margin-left: $spacing/2;
-        }
     }
 }
 
@@ -50,12 +43,6 @@
 
     .btn{
         display: inline-block;
-    }
-}
-
-nav {
-    .btn {
-
     }
 }
 

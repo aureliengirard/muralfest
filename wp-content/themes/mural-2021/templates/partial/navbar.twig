@@ -12,17 +12,32 @@
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon">
-                {% include '/svg/icon-navbar.svg' %}
+                {% include '/svg/icon_navbar.svg' %}
             </span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent" role="navigation" aria-label="Main">
+
+            <ul class="navbar-overnav">
+                {% for item in secondary_nav_menu.get_items %}
+                    <li class="nav-item">
+                        <a class="nav-link {{ item.class }} {% if item.current %}active{% endif %}" href="{{ item.link }}">
+                            <span class="">{{ item.title }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+
             <ul class="navbar-nav">
+
                 <!-- CREATE MEGA MENU IF MENU ITEM HAS CHILDREN -->
                 {% for item in nav_menu.get_items %}
+                {% set item_title = item.title|split(' ',2) %}
                 {% if item.children %}
                 <li class="nav-item dropdown">
                     <a class="nav-link {{ item.class }} {% if item.current %}active {% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="">{{ item.title }}</span>
+                        <span>{{ item_title[0] }}</span>
+                        <span>{{ item_title[1] }}</span>
+                        {%- include "/svg/icon_plus.svg" -%}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <ul>
@@ -38,11 +53,20 @@
                 <!-- CREATE NORMAL MENU LINK IF ITEM DOESN'T HAVE CHILDREN -->
                 <li class="nav-item">
                     <a class="nav-link {{ item.class }} {% if item.current %}active{% endif %}" href="{{ item.link }}">
-                        <span class="">{{ item.title }}</span>
+                        <span>{{ item_title[0] }}</span>
+                        <span>{{ item_title[1] }}</span>
                     </a>
                 </li>
                 {% endif %}
                 {% endfor %}
+            </ul>
+            <ul class="navbar-extra">
+                <li class="nav-item">
+                    <a class="button btn__yellow btn__has-icon" href="{{ item.link }}">Boutique</a>
+                </li>
+                <li class="nav-item">
+                    <a class="button btn__yellow btn__has-icon" href="{{ item.link }}">Billets</a>
+                </li>
             </ul>
         </div>
     </div>
