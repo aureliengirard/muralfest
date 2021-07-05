@@ -1,0 +1,35 @@
+.card {
+    flex: 75%;
+    margin-top:20px;
+    max-width: 400px;
+
+    @include media-breakpoint-up(md){
+        flex: 30%;
+    }
+
+    &__wrapper {
+        @include media-breakpoint-up(md) {
+            justify-content: space-between;
+        }
+    }
+
+    &__header {
+        background-color: var(--couleurJaune);
+        color: var(--couleurRouge);
+        margin-left: 20px;
+    }
+
+    figure{
+        overflow: hidden;
+        transform: translate3d(-20px, -20px, 0);
+    }
+
+    &__body{
+        padding-top: 50px;
+
+        p{
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+    }
+}

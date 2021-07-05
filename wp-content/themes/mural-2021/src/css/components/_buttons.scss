@@ -7,7 +7,7 @@
 
 %btn {
     display: block;
-    padding: $spacing*2.5 $spacing*6;
+    padding: $spacing*1.75 $spacing*8;
     border-radius: $spacing*6;
     font-weight: 600;
     text-transform: uppercase;
@@ -16,6 +16,7 @@
     line-height: 1.2;
     transition: all .15s ease-in-out;
     cursor: pointer;
+    position: relative;
 
     color: var(--couleurRouge);
     background-color: var(--couleurJaune);
@@ -98,11 +99,22 @@ $btn_styles:
     }
 }
 
+.button-wrap{
+	text-align: center;
+    margin-top: 75px;
+    width: 100%;
+
+    .button {
+        display: inline-block;
+    }
+}
+
 .readmore{
-	font-weight: 600;
-    color: var(--couleurNoir);
     display:block;
+    color: var(--couleurNoir);
+    font-weight: 600;
 	@include hover-transition;
+    text-transform: uppercase;
 
     @include hover-focus-active{
         color: var(--couleurRouge);

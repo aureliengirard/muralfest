@@ -7,78 +7,12 @@
 			}
 		}
 
-		.button-wrap{
-			text-align: center;
-		}
 	}
 
 	.list-programs{
 		min-height: 350px;
 	}
 
-	section{
-		.programs{
-			@include cdm-grid(3, ".program", 30px, 30px, (
-				768: (
-					col: 1
-				)
-			));
-			.program{
-                display: flex;
-                flex-direction: column;
-				background-color: #ffffff;
-
-				figure{
-					overflow: hidden;
-
-                    @include media-screen(768px){
-                        text-align: center;
-                    }
-				}
-
-				.description{
-					text-align: center;
-					padding: 20px 15px;
-                    display: flex;
-					flex-direction: column;
-					align-items: center;
-					flex-grow: 1;
-
-					.event-infos{
-						margin-bottom: 0;
-					}
-
-					h4{
-						max-width: 100%; /* IE fix */
-
-						a{
-							color: inherit;
-							display: block;
-						}
-					}
-
-					p{
-						font-size: 1.8rem;
-						max-width: 100%; /* IE fix */
-					}
-
-				}
-			}
-		}
-
-		.content{
-			.event-infos{
-				font-size: 1.8rem;
-				font-weight: 600;
-
-				.venue{
-					font-weight: 700;
-					text-transform: uppercase;
-					display: block;
-				}
-			}
-		}
-	}
 }
 
 .single-program{

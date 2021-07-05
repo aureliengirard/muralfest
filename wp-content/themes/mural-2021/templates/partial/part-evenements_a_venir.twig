@@ -1,10 +1,16 @@
 {% set events = Post(inner_item.evenements) %}
 
-<div class="row content">
-    <h2>{{ __('Events', 'site-theme') }}</h2>
+<div class="content">
+    <div class="row">
+
+        <div class="section__title">
+            <h2>{{ __('Events', 'site-theme') }}</h2>
+        </div>
+
+    </div>
 
     {% if events %}
-        <div class="programs">
+        <div class="row programs card__wrapper">
             {% for event_post in events %}
                 {% include 'components/tease_program-article.twig' %}
             {% endfor %}
@@ -12,8 +18,10 @@
         </div>
     {% endif %}
 
-    <div class="button-wrap">
-        <a href="{{ options.home_program }}" class="button">{{ __('View all events', 'site-theme') }}</a>
+    <div class="row">
+        <div class="button-wrap">
+            <a href="{{ options.home_program }}" class="button">{{ __('View all events', 'site-theme') }}</a>
+        </div>
     </div>
 
 </div>
