@@ -1,15 +1,20 @@
 {%- set image_gauche = TimberImage(options.image_gauche) -%}
 {%- set image_droite = TimberImage(options.image_droite) -%}
 
-<div class="row content">
+<div class="row">
     {% if image_gauche -%}
-    <figure>
-        <img src="{{ image_gauche.src }}" alt="{{ image_gauche.alt }}" />
+    <figure class="app-image">
+        <img src="{{ image_gauche.src }}" alt="{{ image_gauche.alt }}" width="{{ image_gauche.width }}" height="{{ image_gauche.height }}" />
     </figure>
     {%- endif %}
 
     <div class="app-info">
-        <h3>{{ options.texte_pour_liens }}</h3>
+        <div class="app-content rte">
+            <h3 class="h2 lg">{{ options.texte_pour_liens }}</h3>
+            {% if options.texte_app_desc -%}
+                <p>{{ options.texte_app_desc }}</p>
+            {%- endif %}
+        </div>
         <div class="app-links">
             <a href="{{ options.app_store }}" target="_blank" rel="noopener">
                 {%- if ICL_LANGUAGE_CODE == 'en' -%}
@@ -26,11 +31,15 @@
                 {%- endif -%}
             </a>
         </div>
+
+        {%- if image_droite -%}
+        <div class="app-partner">
+            <h4>{{ __('Presented by', 'site-theme') }}</h4>
+            <figure>
+                <img src="{{ image_droite.src }}" alt="{{ image_droite.alt }}" />
+            </figure>
+        </div>
+        {%- endif -%}
     </div>
 
-    {% if image_droite -%}
-    <figure>
-        <img src="{{ image_droite.src }}" alt="{{ image_droite.alt }}" />
-    </figure>
-    {% endif %}
 </div>

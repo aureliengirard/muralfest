@@ -21,7 +21,7 @@
 
         {% if event_posts -%}
 
-            <section class="programs">
+            <section class="row programs card__wrapper">
 
                 {%- for event_post in event_posts %}
                     {% include 'components/tease_program-article.twig' %}
@@ -29,7 +29,7 @@
 
             </section>
 
-            {% include 'components/pagination.twig' with { pagination: blog_posts.pagination({show_all: false, mid_size: 2, end_size: 3}) } %}
+            {% include 'components/pagination.twig' with { pagination: event_posts.pagination({show_all: false, mid_size: 2, end_size: 3}) } %}
 
         {%- else -%}
 

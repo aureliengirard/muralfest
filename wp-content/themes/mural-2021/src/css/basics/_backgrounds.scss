@@ -9,9 +9,11 @@
 
             color: var(--couleurRouge);
             background-color: var(--couleurJaune);
+            border-color: var(--couleurJaune);
 
             @include hover-focus-active{
                 background-color: var(--couleurRouge);
+                border-color: var(--couleurRouge);
                 color: var(--couleurJaune);
             }
         }
@@ -26,10 +28,12 @@
 
             color: var(--couleurJaune);
             background-color: var(--couleurBleu);
+            border-color: var(--couleurBleu);
 
             @include hover-focus-active{
                 color: var(--couleurRouge);
                 background-color: var(--couleurJaune);
+                border-color: var(--couleurJaune);
             }
         }
     }
@@ -42,10 +46,12 @@
         .button{
 
             color: var(--couleurJaune);
+            border-color: var(--couleurBleu);
             background-color: var(--couleurBleu);
 
             @include hover-focus-active{
                 background-color: var(--couleurRouge);
+                border-color: var(--couleurRouge);
             }
         }
     }

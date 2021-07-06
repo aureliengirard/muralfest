@@ -34,7 +34,7 @@
                 {% set item_title = item.title|split(' ',2) %}
                 {% if item.children %}
                 <li class="nav-item dropdown">
-                    <a class="nav-link {{ item.class }} {% if item.current %}active {% endif %}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link {{ item.class }} {% if item.current %}active {% endif %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span>{{ item_title[0] }}</span>
                         <span>{{ item_title[1] }}</span>
                         {%- include "/svg/icon_plus.svg" -%}
@@ -62,10 +62,10 @@
             </ul>
             <ul class="navbar-extra">
                 <li class="nav-item">
-                    <a class="button btn__yellow btn__has-icon" href="{{ item.link }}">Boutique</a>
+                    <a class="button btn--black btn__has-icon" href="{{ item.link }}">Boutique</a>
                 </li>
                 <li class="nav-item">
-                    <a class="button btn__yellow btn__has-icon" href="{{ item.link }}">Billets</a>
+                    <a class="button btn__has-icon" href="{{ item.link }}">Billets</a>
                 </li>
             </ul>
         </div>

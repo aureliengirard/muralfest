@@ -11,7 +11,6 @@
         &[class*="bg--"]{
             padding-top: $spacing * 6.5;
             padding-bottom: $spacing-md * 2;
-
         }
 
         section{
@@ -26,8 +25,8 @@
     width: 100%;
     max-width: var(--WidthContainerArea);
     display: flex;
-    padding-left: $c12Gutter;
-    padding-right: $c12Gutter;
+    padding-left: $spacing-xl;
+    padding-right: $spacing-xl;
     margin:0 auto;
 
     &.full-width{

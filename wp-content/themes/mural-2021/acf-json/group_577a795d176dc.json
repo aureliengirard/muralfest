@@ -283,30 +283,6 @@
             "mime_types": ""
         },
         {
-            "key": "field_5cc70141f1e15",
-            "label": "fleur",
-            "name": "fleur",
-            "type": "image",
-            "instructions": "s'affiche dans le footer",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "id",
-            "preview_size": "medium",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
-        },
-        {
             "key": "field_58e918eb102a1",
             "label": "Courriel",
             "name": "courriel",
@@ -363,7 +339,7 @@
         },
         {
             "key": "field_577aa0198bc90",
-            "label": "Paramètres",
+            "label": "Footer Extra",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -378,10 +354,10 @@
             "endpoint": 0
         },
         {
-            "key": "field_58e91b8168441",
-            "label": "Liaison articles pages",
-            "name": "liaison_cpt_pages",
-            "type": "repeater",
+            "key": "field_60e4a93f2ba13",
+            "label": "Sub Footer Link 1",
+            "name": "sub_footer_link_1",
+            "type": "link",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -390,89 +366,13 @@
                 "class": "",
                 "id": ""
             },
-            "collapsed": "",
-            "min": 0,
-            "max": 0,
-            "layout": "row",
-            "button_label": "Ajouter une liaison",
-            "sub_fields": [
-                {
-                    "key": "field_58e91bb168442",
-                    "label": "Article personnalisé",
-                    "name": "article_personnalise",
-                    "type": "select",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "choices": {
-                        "post": "Post",
-                        "artwork": "Œuvre",
-                        "artist": "Artiste",
-                        "partner": "Partenaire",
-                        "program": "Événement",
-                        "venue": "Lieu"
-                    },
-                    "default_value": false,
-                    "allow_null": 0,
-                    "multiple": 0,
-                    "ui": 1,
-                    "ajax": 0,
-                    "return_format": "value",
-                    "placeholder": ""
-                },
-                {
-                    "key": "field_58e91c2e68443",
-                    "label": "Page",
-                    "name": "page",
-                    "type": "post_object",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "post_type": [
-                        "page"
-                    ],
-                    "taxonomy": [],
-                    "allow_null": 0,
-                    "multiple": 0,
-                    "return_format": "id",
-                    "ui": 1
-                },
-                {
-                    "key": "field_58fd27b9c56f0",
-                    "label": "Afficher dans le menu",
-                    "name": "afficher_menu",
-                    "type": "true_false",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "message": "",
-                    "default_value": 0,
-                    "ui": 1,
-                    "ui_on_text": "",
-                    "ui_off_text": ""
-                }
-            ]
+            "return_format": "array"
         },
         {
-            "key": "field_5ada0bb45e483",
-            "label": "Image de fond sidebar",
-            "name": "image_de_fond_sidebar",
-            "type": "image",
+            "key": "field_60e4a96f2ba15",
+            "label": "Sub Footer Link 2",
+            "name": "sub_footer_link_2",
+            "type": "link",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -481,16 +381,22 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "id",
-            "preview_size": "thumbnail",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
+            "return_format": "array"
+        },
+        {
+            "key": "field_60e4a96e2ba14",
+            "label": "Sub Footer Link 3",
+            "name": "sub_footer_link_3",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
         },
         {
             "key": "field_5ad75f014c377",
@@ -542,7 +448,7 @@
         },
         {
             "key": "field_5ad75f584c37a",
-            "label": "Texte pour liens",
+            "label": "Titre appel à l'action",
             "name": "texte_pour_liens",
             "type": "text",
             "instructions": "",
@@ -560,12 +466,31 @@
             "maxlength": ""
         },
         {
+            "key": "field_60e47ea253d57",
+            "label": "Description Appel à l'action",
+            "name": "texte_app_desc",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
             "key": "field_5ad75f794c37b",
-            "label": "Image gauche",
+            "label": "Image app",
             "name": "image_gauche",
             "type": "image",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -585,7 +510,7 @@
         },
         {
             "key": "field_5ad75f8f4c37c",
-            "label": "Image droite",
+            "label": "logo partnaire",
             "name": "image_droite",
             "type": "image",
             "instructions": "",
@@ -805,5 +730,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1624995220
+    "modified": 1625599167
 }

@@ -5,7 +5,7 @@
 * Since we are in partials scss, we can get specific and add fonts, colors, etc.
 */
 
-$padding: 10px;
+$padding: $spacing;
 
 %input{
     $font : 16;
@@ -33,7 +33,7 @@ $padding: 10px;
     }
 }
 
-form {
+form:not(.program-filters) {
     label {
         //display: none;
     }
@@ -109,71 +109,72 @@ form {
             }
         }
     }
-}
 
-
-textarea {
-    @extend %input;
-    height: $padding * 15;
-}
-
-select{
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    //background: url(../assets/SemiArrowDown-tiny.svg) no-repeat transparent;
-    background-position: calc(100% - 1em) 50%;
-    border-bottom: 1px solid #a7a8a9;
-    outline: none;
-
-    .form_field &,
-    .gfield &{
+    textarea {
         @extend %input;
-        min-height: 3.1em;
+        height: $padding * 15;
     }
 
-    &:focus {
+    select{
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        //background: url(../assets/SemiArrowDown-tiny.svg) no-repeat transparent;
+        background-position: calc(100% - 1em) 50%;
+        border-bottom: 1px solid #a7a8a9;
+        outline: none;
+
         .form_field &,
         .gfield &{
-            border-radius: 6px 6px 0 0;
+            @extend %input;
+            min-height: 3.1em;
+        }
+
+        &:focus {
+            .form_field &,
+            .gfield &{
+                border-radius: 6px 6px 0 0;
+            }
         }
     }
+
+    input {
+        &[type="phone"],
+        &[type="email"],
+        &[type="text"]{
+            @extend %input;
+        }
+
+        &[type="checkbox"],
+        &[type="radio"]{
+            //width: $gutter;
+            height: 1.2em;
+            margin: 0 $padding 0 0;
+        }
+
+        &[type="reset"],
+        &[type="submit"] {
+            //@extend %btn;
+            cursor: pointer;
+        }
+
+        &[type="submit"] {
+            //@extend %btn__black;
+        }
+
+        &:focus{
+            outline: none;
+        }
+
+        &[disabled="true"]{
+            pointer-events: none;
+            //color: $gray-300;
+            border-color: #D3D3D4;
+        }
+
+    }
 }
 
-input {
-    &[type="phone"],
-    &[type="email"],
-    &[type="text"]{
-        @extend %input;
-    }
 
-    &[type="checkbox"],
-    &[type="radio"]{
-        //width: $gutter;
-        height: 1.2em;
-        margin: 0 $padding 0 0;
-    }
-
-    &[type="reset"],
-    &[type="submit"] {
-        //@extend %btn;
-        cursor: pointer;
-    }
-
-    &[type="submit"] {
-        //@extend %btn__black;
-    }
-
-    &:focus{
-        outline: none;
-    }
-
-    &[disabled="true"]{
-        pointer-events: none;
-        //color: $gray-300;
-        border-color: #D3D3D4;
-    }
-
-}
 
 //Gravity Form Styling
 .gform{

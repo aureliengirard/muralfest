@@ -15,6 +15,10 @@
         max-height: 100%;
         max-width: 100%;
 
+        @include media-breakpoint-up(xxl) {
+            width: 20%;            
+        }
+
         a{
             display: block;
             height: 150px;

@@ -5,7 +5,7 @@
 {% include "partial/section-banner.twig" %}
 
     <section class="partners bgcolor-white">
-        <div class="content">
+        <div class="content row">
             {% for item in tiers %}
                 {% set has_posts = false %}
                 {% for partenaire in partner_posts %}
@@ -14,7 +14,7 @@
                     {% endif %}
                 {% endfor %}
                 {% if has_posts == true %}
-                <section class="tier">
+                <section class="tier row">
                     {% for partenaire in partner_posts %}
                         {% if item.title in partenaire.terms|join(', ') %}
 

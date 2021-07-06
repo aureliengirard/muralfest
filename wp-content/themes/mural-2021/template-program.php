@@ -35,7 +35,6 @@ if (isset($_GET['category'])) {
 
 $context['caterogy_value'] = $caterogy_value;
 
-
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 $args = array(
 	'post_type' => array( 'program' ),

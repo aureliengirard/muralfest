@@ -7,7 +7,7 @@
 
 %btn {
     display: block;
-    padding: $spacing*1.75 $spacing*8;
+    padding: $spacing*1.65 $spacing*8;
     border-radius: $spacing*6;
     font-weight: 600;
     text-transform: uppercase;
@@ -20,10 +20,14 @@
 
     color: var(--couleurRouge);
     background-color: var(--couleurJaune);
+    border-color: var(--couleurJaune);
+    border-width: 2px;
+    border-style: solid;
 
     @include hover-focus-active{
         color: var(--couleurJaune);
         background-color: var(--couleurRouge);
+        border-color: var(--couleurRouge);
     }
 
     svg{
@@ -36,6 +40,12 @@
 .content-wrapper{
     button:not(.select2-selection__clear),.button{
         @extend %btn;
+    }
+}
+
+.navbar-extra {
+    button{
+        padding: $spacing*1.65 $spacing*4.5;
     }
 }
 
@@ -60,8 +70,14 @@ $btn_styles:
 @each $btn-name, $color, $color-alt in $btn_styles {
 
     %btn__#{$btn-name} {
-        color: $color;
-        border-color: $color;
+        color: $color-alt;
+        background-color: $color;
+
+        @if $btn-name == "white" {
+            border-color: $color-alt;
+        } @else {
+            border-color: $color;
+        }
 
         svg{
             fill:$color;
@@ -72,8 +88,14 @@ $btn_styles:
         }
 
         @include hover-focus-active{
-            color: $color-alt;
-            background-color: $color;
+            color: $color;
+            background-color: $color-alt;
+
+            @if $btn-name == "black" or  $btn-name == "white" {
+                border-color: $color;
+            } @else {
+                border-color: $color-alt;
+            }
 
             #fill{
                 fill:$color-alt;
@@ -81,7 +103,8 @@ $btn_styles:
         }
     }
 
-    .btn--#{$btn-name}{
+    .navbar-extra .btn--#{$btn-name},
+    .content-wrapper .btn--#{$btn-name}{
         @extend %btn__#{$btn-name};
     }
 }
@@ -90,7 +113,9 @@ $btn_styles:
 	text-align: center;
     margin-top: 75px;
     width: 100%;
+}
 
+.button-wrap, .rte{
     .button {
         display: inline-block;
     }

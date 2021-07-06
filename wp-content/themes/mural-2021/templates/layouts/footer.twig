@@ -1,39 +1,72 @@
-<div class="footer-wrapper">
-	<div class="content">
+<div class="footer--wrapper">
 
-        <div class="home-link">
-            <img src="{{ TimberImage(options.logo_blanc).src | resize(150,0) }}" alt="{{ site.title }}" width="150" height="{{ TimberImage(options.logo_blanc).height | resize(150,0) }}">
-        </div>
-		<div class="info-sup-wrapper">
-            {% if options.logo_lndmrk %}
-			<div class="lndmrk-wrapper">
-				<p class="footer-lndmrk">{{__('created by', 'site-theme')}}</p>
-                <img src="{{ TimberImage(options.logo_lndmrk).src }}" alt="{{ TimberImage(options.logo_lndmrk).alt }}" width="{{ TimberImage(options.logo_lndmrk).width }}" height="{{ TimberImage(options.logo_lndmrk).height }}">
+	<div class="row footer__main">
+		<div class="footer__logo">
+			<img src="{{ TimberImage(options.logo).src | resize(220,0) }}" alt="{{ site.title }}" width="{{ TimberImage(options.logo_blanc).height | resize(220,0) }}" height="{{ TimberImage(options.logo_blanc).height | resize(220,0) }}">
+		</div>
+		<div class="footer__partners">
+			{% if options.logo_lndmrk %}
+			<div class="footer__partners-wrapper">
+				<h4>{{__('Created by', 'site-theme')}}</h4>
+				<img src="{{ TimberImage(options.logo_lndmrk).src }}" alt="{{ TimberImage(options.logo_lndmrk).alt }}" width="{{ TimberImage(options.logo_lndmrk).width }}" height="{{ TimberImage(options.logo_lndmrk).height }}">
 			</div>
-            {% endif %}
-            {% if options.boulevard %}
-			<figure class="boulevard-wrapper">
-                <img src="{{ TimberImage(options.boulevard).src }}" alt="{{ TimberImage(options.boulevard).alt }}" width="{{ TimberImage(options.boulevard).width }}" height="{{ TimberImage(options.boulevard).height }}">
+			{% endif %}
+			{% if options.boulevard %}
+			<figure class="footer__partners-wrapper">
+				<h4>{{__('Founding partner', 'site-theme')}}</h4>
+				<img src="{{ TimberImage(options.boulevard).src }}" alt="{{ TimberImage(options.boulevard).alt }}" width="{{ TimberImage(options.boulevard).width }}" height="{{ TimberImage(options.boulevard).height }}">
 			</figure>
-            {% endif %}
+			{% endif %}
 		</div>
 
-		<ul class="sociaux">
-            {% include 'components/social_networks.twig' %}
+		<ul class="footer__social">
+			{% include 'components/social_networks.twig' %}
 		</ul>
 
-		<nav class="navigation footer-navigation" role="navigation">
-            <ul class="nav-menu">
-            {% for item in footer_menu.get_items %}
-                {# CREATE NORMAL MENU LINK IF ITEM DOESN'T HAVE CHILDREN #}
-                <li class="nav-item{% if item.current %} active{% endif %} {{ item.class }}">
-                    <a class="nav-link" href="{{ item.link }}">
-                        <span class="">{{ item.title }}</span>
-                    </a>
-                </li>
-            {% endfor %}
-            </ul>
+		<nav class="navigation footer__navigation" role="navigation">
+			<ul class="nav-menu">
+				{% for item in footer_menu.get_items %}
+				{# CREATE NORMAL MENU LINK IF ITEM DOESN'T HAVE CHILDREN #}
+				<li class="nav-item{% if item.current %} active{% endif %} {{ item.class }}">
+					<a class="nav-link" href="{{ item.link }}">
+						<span class="">{{ item.title }}</span>
+					</a>
+				</li>
+				{% endfor %}
+			</ul>
 		</nav>
-
 	</div>
+
+	<div class="row footer__sub">
+		<div class="footer__extra">
+			<ul>
+				<li class="footer__copyright"><span>&copy; {{"now"|date('Y')}} {{site.title}}</span></li>
+				{% if options.sub_footer_link_1 %}
+					{% set link = options.sub_footer_link_1 %}
+					<li class="footer__extra-link">
+						<a class="link" href="{{ link.url }}" target="{{ link.target }}">
+							<span>{{ link.title }}</span>
+						</a>
+					</li>
+				{% endif %}
+				{% if options.sub_footer_link_2 %}
+					{% set link = options.sub_footer_link_2 %}
+					<li class="footer__extra-link">
+						<a class="link" href="{{ link.url }}" target="{{ link.target }}">
+							<span>{{ link.title }}</span>
+						</a>
+					</li>
+				{% endif %}
+				{% if options.sub_footer_link_3 %}
+					{% set link = options.sub_footer_link_3 %}
+					<li class="footer__extra-link">
+						<a class="link" href="{{ link.url }}" target="{{ link.target }}">
+							<span>{{ link.title }}</span>
+						</a>
+					</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+
 </div>

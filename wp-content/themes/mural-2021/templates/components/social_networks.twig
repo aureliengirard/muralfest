@@ -1,13 +1,13 @@
 
 {% if options.facebook %}
-	<li><a href="{{options.facebook}}" target="_blank"><i class="fab fa-facebook">FB</i></a></li>
+	<li><a href="{{options.facebook}}" target="_blank">{% include '/svg/icon_fb.svg' %}</a></li>
 {% endif %}
 {% if options.instagram %}
-	<li><a href="{{options.instagram}}" target="_blank"><i class="fab fa-facebook">IN</i></a></li>
+	<li><a href="{{options.instagram}}" target="_blank">{% include '/svg/icon_in.svg' %}</a></li>
 {% endif %}
 {% if options.twitter %}
-	<li><a href="{{options.twitter}}" target="_blank"><i class="fab fa-facebook">TW</i></a></li>
+	<li><a href="{{options.twitter}}" target="_blank">{% include '/svg/icon_tw.svg' %}</a></li>
 {% endif %}
 {% if options.youtube %}
-	<li><a href="{{options.youtube}}" target="_blank"><i class="fab fa-facebook">YT</i></a></li>
+	<li><a href="{{options.youtube}}" target="_blank">{% include '/svg/icon_yt.svg' %}</a></li>
 {% endif %}
