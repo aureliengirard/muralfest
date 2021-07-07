@@ -11,7 +11,7 @@ $padding: $spacing;
     $font : 16;
     $lh : 26;
 
-    font-size: 1rem;
+    font-size: 1.3em;
     line-height: ($lh / $font);
     letter-spacing: 0.5px;
     font-family: var(--baseFont);
@@ -22,8 +22,8 @@ $padding: $spacing;
     border-width: 0 0 3px;
     border-radius: 0;
     position: relative;
-    @include placeholders (var(--couleurNoir), 600, 1em, var(--baseFont), none);
-    background-color: var(--couleurBlanc);
+    @include placeholders (inherit, 500, 26px, var(--basePrimaryFont), none);
+    background-color: transparent;
     transition: all .25s ease;
 
     &:focus,
@@ -53,61 +53,6 @@ form:not(.program-filters) {
         //color: $red;
         margin-top: $padding;
         font-size: 1rem;
-    }
-
-    &.newsletter{
-        position: relative;
-        display: inline-flex;
-        width: 100%;
-        max-width: 525px;
-        margin-top: $spacing / 2;
-        flex-wrap: wrap;
-        -webkit-flex-wrap: wrap;
-
-        .validation_error{
-            display: none;
-        }
-
-        .gform_fields,
-        .gfield{
-            margin: 0;
-        }
-
-        .gfield{
-
-            .validation_message{
-                text-align: center;
-                padding: .75em 1.75em;
-            }
-        }
-
-        .gform_body{
-            @include media-breakpoint-only(sm){
-                min-width: 100%;
-            }
-
-            flex: 2;
-        }
-
-        .gform_footer{
-            margin: $padding * 2 0 0 0;
-            min-width: 100%;
-
-            @include media-breakpoint-up(md){
-                min-width: auto;
-                margin: 0 0 0 $padding * 3;
-            }
-        }
-
-        [type="submit"]{
-            font-size: 1rem;
-            padding: .675em;
-            background-color: transparent;
-
-            @include hover-focus{
-                border-color: var(--couleurOr);
-            }
-        }
     }
 
     textarea {
@@ -193,11 +138,9 @@ form:not(.program-filters) {
         @include flexbox;
 
         [type="submit"]{
-            margin-left: auto;
-
-            @include media-breakpoint-up(lg){
-                margin-right: auto;
-            }
+            margin-right: auto;
+            margin-top: $spacing*3;
+            width: auto;
         }
     }
 
@@ -257,7 +200,7 @@ form:not(.program-filters) {
 
     select,
     textarea,
-    input:not([type=checkbox]):not([type=radio]){
+    input:not([type=checkbox]):not([type=radio]):not([type=submit]){
         width: 100%;
     }
 
@@ -296,39 +239,3 @@ form:not(.program-filters) {
     text-align: center;
 }
 
-
-// LEGACY
-/* Style des formulaires */
-@include placeholderColor(#ffffff);
-
-input{
-	border: 2px solid transparent;
-	font-size: 2.6rem;
-	color: #ffffff;
-	font-weight: 700;
-	padding: 12px 15px;
-	background-color: #000000;
-    border-radius: 0px;
-	width: 100%;
-	max-width: 100%;
-	min-width: 0;
-	@include hover-transition;
-
-	&:focus{
-		border-color: #000000;
-		background-color: #ffffff;
-		color: #000000;
-	}
-}
-
-textarea{
-	resize: vertical;
-	min-height: 150px;
-
-	@extend input;
-}
-
-input[type=checkbox],
-input[type=radio]{
-	border: 1px solid #b1b1b1;
-}

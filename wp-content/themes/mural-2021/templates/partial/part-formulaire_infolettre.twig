@@ -1,11 +1,15 @@
-<div class="row content">
-    {% if inner_item.titre %}
-        <h3>{{inner_item.titre}}</h3>
-    {% endif %}
-
-    {{inner_item.texte}}
-
-    <button class="button">{{__('Email', 'site-theme')}}</button>
-
-
+<div class="row">
+    <div class="content">
+        <div class="col-md-4 newsletter__title">
+            <h3 class="h2 lg">{{options.newsletter_title}}</h3>
+        </div>
+        <div class="col-md-4 newsletter__content">
+            <p>{{ options.newsletter_content }}</p>
+        </div>
+        <div class="col-md-4 newsletter__form">
+            {% filter shortcodes %}
+            [gravityform id="{{ options.newsletter_form_id }}" title="false" description="false" ajax="true" tabindex="20"]
+            {% endfilter %}
+        </div>
+    </div>
 </div>

@@ -8,4 +8,19 @@
 	.back-btn + .breadcrumb{
 		margin-left: 15px;
 	}
+
+	.breadcrumb{
+
+		a {
+			font-weight: 500;
+
+			@include hover-focus{
+				color: var(--couleurBleu) !important;
+			}
+
+			&:visited {
+				color: inherit;
+			}
+		}
+	}
 }

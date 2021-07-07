@@ -2,7 +2,7 @@
 
 {% if inner_item.titre %}
 <div class="row">
-    <div class="section__title">
+    <div class="col-12 section__title">
         <h2>{{ inner_item.titre }}</h2>
     </div>
 </div>
@@ -10,18 +10,19 @@
 
 {% if inner_item.appel_a_laction %}
 <div class="row cta-wrapper card__wrapper">
+
     {% for item in inner_item.appel_a_laction %}
-    <div class="cta card">
+    <div class="col cta card">
         <div class="card__header">
             <figure>
                 <a href="{{item.lien_page}}">
                     {% set image = TimberImage(item.image) %}
                     <img class="lazyload"
-                        data-srcset="{{ image.src|resize(400,260) }} 400w,{{ image.src|resize(300, 195) }} 300w,{{ image.src|resize(250, 162) }} 250w,{{ image.src|resize(175, 114) }} 175w,{{ image.src|resize(150, 98) }} 150w"
-                        data-sizes="auto"
-                        width="400"
-                        height="260"
-                        alt="{{ item.title }}">
+                    data-srcset="{{ image.src|resize(400,260) }} 400w,{{ image.src|resize(300, 195) }} 300w,{{ image.src|resize(250, 162) }} 250w,{{ image.src|resize(175, 114) }} 175w,{{ image.src|resize(150, 98) }} 150w"
+                    data-sizes="auto"
+                    width="400"
+                    height="260"
+                    alt="{{ item.title }}">
                 </a>
             </figure>
             <div class="card__title">

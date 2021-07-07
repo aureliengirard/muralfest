@@ -15,14 +15,23 @@
    $paged = 1;
  }
 
+$mycat = "";
+if (array_key_exists('category', $_GET)) {
+    $mycat = $_GET['category'];
+}
+
  $posts_arg = array(
 	 'post_type' => array( 'post' ),
 	 'posts_per_page' => get_option( 'posts_per_page' ),
 	 'nopaging' => false,
 	 'paged' => $paged,
+     'order' => 'ASC',
+     'category_name' => $mycat,
  );
 
  $context['blog_posts'] = new Timber\PostQuery( $posts_arg );
+
+ $context['filtered_cat'] = $mycat;
 
  $taxonomy = array(
  	'taxonomy' => 'category',

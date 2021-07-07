@@ -338,6 +338,52 @@
             "height": ""
         },
         {
+            "key": "field_60e5ef926c9d5",
+            "label": "Nav Extra",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_60e5efbc6c9d6",
+            "label": "Nav Button Shop",
+            "name": "nav_shop",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_60e5efd76c9d7",
+            "label": "Nav Button Billets",
+            "name": "nav_tickets",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
             "key": "field_577aa0198bc90",
             "label": "Footer Extra",
             "name": "",
@@ -534,7 +580,7 @@
         },
         {
             "key": "field_60c2469a29f91",
-            "label": "Post Type Locations",
+            "label": "Post Type Elements",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -568,6 +614,30 @@
             "allow_null": 0,
             "allow_archives": 1,
             "multiple": 0
+        },
+        {
+            "key": "field_60e5e9250e112",
+            "label": "Accueil blogue banner background",
+            "name": "home_blog_bg",
+            "type": "image",
+            "instructions": "Specs: Jpg, 1920px x 400px",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 1920,
+            "min_height": 400,
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
         },
         {
             "key": "field_60c24e533d56c",
@@ -655,6 +725,79 @@
         },
         {
             "key": "field_60a40b3480f42",
+            "label": "Newsletter",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_60e5eedb58960",
+            "label": "Titre",
+            "name": "newsletter_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_60e5eeeb58961",
+            "label": "Content",
+            "name": "newsletter_content",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_60e5ef0558962",
+            "label": "Form ID",
+            "name": "newsletter_form_id",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_60e5eec55895f",
             "label": "Splash Page",
             "name": "",
             "type": "tab",
@@ -730,5 +873,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1625599167
+    "modified": 1625681912
 }

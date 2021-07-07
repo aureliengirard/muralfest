@@ -9,7 +9,8 @@
     }
 
     &__wrapper {
-        margin-bottom: -$spacing-xl;
+        margin-bottom: -$spacing-xl !important;
+
 
         @include media-breakpoint-up(md) {
             justify-content: space-between;
@@ -21,7 +22,7 @@
             max-width: 400px;
         }
 
-        + .row {
+        + .row:not(.pagination-block) {
             margin-top: $spacing-md*4;
 
             .button-wrap{

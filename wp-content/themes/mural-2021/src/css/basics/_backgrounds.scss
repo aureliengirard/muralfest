@@ -5,6 +5,13 @@
             color: var(--couleurJaune);
         }
 
+        @include placeholderColor(var(--couleurJaune));
+
+        input:not([type=checkbox]):not([type=radio]):not([type=submit]){
+            border-color: var(--couleurJaune);
+            color: var(--couleurJaune);
+        }
+
         .button{
 
             color: var(--couleurRouge);
@@ -21,6 +28,13 @@
 
     .bg--red{
         h1,h2,h3,h4,h5,h6,p {
+            color: var(--couleurJaune);
+        }
+
+        @include placeholderColor(var(--couleurJaune));
+
+        input:not([type=checkbox]):not([type=radio]):not([type=submit]){
+            border-color: var(--couleurJaune);
             color: var(--couleurJaune);
         }
 
@@ -41,7 +55,15 @@
     .bg--yellow{
         h1,h2,h3,h4,h5,h6,p {
             color: var(--couleurRouge);
+            color: var(--couleurRouge);
         }
+
+        @include placeholderColor(var(--couleurRouge));
+
+        input:not([type=checkbox]):not([type=radio]):not([type=submit]){
+            border-color: var(--couleurRouge);
+        }
+
 
         .button{
 

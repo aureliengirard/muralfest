@@ -187,7 +187,7 @@
                     "return_format": "id",
                     "preview_size": "medium",
                     "library": "all",
-                    "min_width": 950,
+                    "min_width": 650,
                     "min_height": "",
                     "min_size": "",
                     "max_width": "",
@@ -223,11 +223,13 @@
                 "param": "post_type",
                 "operator": "==",
                 "value": "page"
-            },
+            }
+        ],
+        [
             {
                 "param": "post_template",
-                "operator": "!=",
-                "value": "page-splash.php"
+                "operator": "==",
+                "value": "template-blog.php"
             }
         ]
     ],
@@ -237,7 +239,7 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
-    "modified": 1620910590
+    "modified": 1625690274
 }

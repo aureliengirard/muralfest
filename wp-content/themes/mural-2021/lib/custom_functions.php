@@ -19,7 +19,7 @@ function get_breadcrumb($parent_taxonomy_label=false, $parent_taxonomy_link=fals
     if (is_category() || is_single() || is_tax()) {
         echo $divider;
 
-        if ( get_post_type() == 'artwork' || $link_artwork != '' ){
+        if ( get_post_type() == 'artwork' ){
 
             echo "<a href='" . $link_artwork . " '>" . __('Dynamic Map', 'site-theme') . " </a>" ;
 
@@ -37,7 +37,7 @@ function get_breadcrumb($parent_taxonomy_label=false, $parent_taxonomy_link=fals
 
             echo $divider;
 
-        } elseif ( get_post_type() == 'post' ){
+        } elseif ( is_single() ){
 
             echo "<a href='" . $link_blog . " '>" . __('Blog', 'site-theme') . "</a>" ;
 

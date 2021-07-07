@@ -2,6 +2,13 @@
 
 {% set content_items = post.meta('contenu_avec_fond') %}
 
+{% set multiple_cat = false %}
+{%- for categorie in post.categories -%}
+    {% if loop.index > 1 %}
+        {% set multiple_cat = true %}
+    {% endif %}
+{%- endfor -%}
+
 {% block content %}
 
     <div class="basic-content">
@@ -19,17 +26,19 @@
 
             </section>
 
-            <section class="content-blogt row">
+            <section class="content-blog row">
 
-                <div class="article__conten">
+                <div class="article__content">
                     <h1>{{ post.title }}</h1>
-                    <p class="date">{{ post.date | date('j F Y') }}</p>
-                    <p class="post-categories">{{ __('categories', 'site-theme') }} :
-                        {%- for categorie in post.categories -%}
-                        <a href='{{categorie.link}}'>{{categorie.title}}</a>
-                        {%- endfor -%}
+                    <p>
+                        <span class="date"><strong>{{ __('Date', 'site-theme') }}: </strong>{{ post.date | date('j F Y') }}</span> |
+                        <span class="post-categories"><strong>{% if multiple_cat == true %}{{ __('Categories', 'site-theme') }}{% else %}{{ __('Category', 'site-theme') }}{% endif %}: </strong>
+                            {%- for categorie in post.categories -%}<a href='{{categorie.link}}'>{{categorie.title}}</a>{% if loop.last == false %} - {% endif %}{%- endfor -%}
+                        </span>
                     </p>
+            </section>
 
+            <section class="content-blog row">
                     {% include "partial/parts.twig" %}
 
                     {%- include 'components/module_share.twig' with  { link: post.link, title: post.title } -%}

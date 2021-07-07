@@ -25,17 +25,20 @@
     width: 100%;
     max-width: var(--WidthContainerArea);
     display: flex;
-    padding-left: $spacing-xl;
-    padding-right: $spacing-xl;
     margin:0 auto;
 
-    &.full-width{
-        max-width:none;
+    @include media-breakpoint-up(lg){
+        padding-left: $spacing * 3.5;
+        padding-right: $spacing * 3.5;
     }
 
-    .row{
+    &.full-width,.row{
         padding-left: 0;
         padding-right: 0;
+    }
+
+    &.full-width {
+        max-width:var(--WidthNavArea);
     }
 }
 

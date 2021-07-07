@@ -8,7 +8,7 @@
 
         <section class="col-wrapper article__header row">
 
-            <div class="left-col">
+            <div class="col left-col">
                 <figure>
                     {% set thumbnail = Image(image_id).src %}
                     <img class="lazyload"
@@ -20,7 +20,7 @@
                 </figure>
             </div>
 
-            <div class="right-col">
+            <div class="col right-col">
                 <h1>{{post.title}}</h1>
 
                 {% set country = post.pays_dorigine %}
@@ -32,7 +32,7 @@
                     <p class="country country_{{site.language}}"><span>{{ __('Native country:', 'site-theme') }}</span> {% if 'fr_' in site.language %}{{ country_fr }}{% else %}{{ country_en }}{% endif %}</p>
                 {% endif %}
 
-                <div class="article__socials">
+                <div class="article__cta">
                     {% if post.siteweb %}
                     <a class="button btn--sm artist-socials" href="{{post.siteweb}}" target="_blank" rel="nofollow">{{ __('Website', 'site-theme') }}</a>
                     {% endif %}

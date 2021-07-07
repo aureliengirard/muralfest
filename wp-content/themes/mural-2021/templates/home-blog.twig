@@ -2,11 +2,19 @@
 
 
 {% block content %}
-{% include "partial/section-banner.twig" %}
-
+<div class="banner">
+    <div class="single-banner-wrap">
+        <figure class="single-banner with-overlay" style="background-image:url('{{ TimberImage(options.home_blog_bg).src | resize(1920,400) }}')">
+            <div class="row content">
+                <div class="banner-overlay">
+                    <h1>{{post.title}}{% if filtered_cat != "" %} | {{ __('Category:', 'site-theme') }}{{filtered_cat}}{% endif %}</h1>
+                </div>
+            </div>
+        </figure>
+    </div>
+</div>
 <div class="content">
     {% if blog_posts -%}
-
         {% include 'partial/filters-blog.twig' %}
 
         <section class="row articles card__wrapper">

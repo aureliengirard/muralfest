@@ -39,7 +39,7 @@
         font-size: 1.875em;
     }
 
-    @include media-breakpoint-up(xxl){
+    @include media-breakpoint-up(lg){
         font-size: 3em;
     }
 }
@@ -179,6 +179,10 @@
         &:hover{
             color: var(--couleurBleu);
         }
+
+        &:visited {
+            color: var(--couleurRouge);
+        }
     }
 }
 
@@ -186,7 +190,6 @@ header a {
     text-decoration: none;
     color: inherit;
 }
-
 
 .section__title{
     margin-bottom: $spacing-xl;

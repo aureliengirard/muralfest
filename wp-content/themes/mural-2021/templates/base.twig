@@ -38,6 +38,11 @@
 	      {% block content %}
 	        Sorry, no content
 	      {% endblock %}
+	  		{% if options.newsletter_form_id %}
+			<section class="formulaire_infolettre bg--blue">
+				{%- include "partial/part-formulaire_infolettre.twig" -%}
+			</section>
+			{% endif %}
 	    </main>
 
 		{# Site Footer #}

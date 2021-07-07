@@ -4,7 +4,7 @@
     {% endif %}
 
     {% if inner_item.partenaires %}
-        <div class="partner-wrapper">
+        <div class="col-12 partner-wrapper">
 
             {% for item in inner_item.partenaires %}
                 {%- if item.acf_fc_layout == 'partenaire' -%}
@@ -43,7 +43,7 @@
             {% endfor %}
         </div>
 
-        <div class="button-wrap">
+        <div class="col-12 button-wrap">
             <a href="{{options.home_partners}}" class="button">{{ __('View all partners', 'site-theme') }}</a>
         </div>
     {% endif %}
