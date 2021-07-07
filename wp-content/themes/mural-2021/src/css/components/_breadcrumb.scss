@@ -3,6 +3,7 @@
 .content-wrapper .single-navigation{
 	display: flex;
 	justify-content: space-between;
+	margin-top: $spacing * 4;
 
 	.back-btn + .breadcrumb{
 		margin-left: 15px;

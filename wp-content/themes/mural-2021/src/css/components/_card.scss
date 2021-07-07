@@ -43,6 +43,11 @@
     figure{
         overflow: hidden;
         transform: translate3d(-20px, -20px, 0);
+        @include hover-transition;
+
+        &:hover{
+            transform: translate3d(-20px, 20px, 0);
+        }
     }
 
     &__body{

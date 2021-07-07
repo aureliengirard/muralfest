@@ -27,7 +27,6 @@ html {
 
 body {
   background: var(--couleurBlanc);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=0 );
   color: var(--couleurNoir);
   font-family: var(--basePrimaryFont);
   font-size: var(--baseFontSize);
@@ -36,7 +35,7 @@ body {
 
   @media screen and (min-width: 1921px){
       position: relative;
-      max-width: var(--WidthContainerArea);
+      max-width: var(--WidthContentArea);
       margin-left: auto !important;
       margin-right: auto !important;
       overflow-x: hidden;

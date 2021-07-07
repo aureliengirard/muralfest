@@ -1,0 +1,40 @@
+
+.module_share{
+
+	.social-links{
+		display:flex;
+		flex-flow:row wrap;
+        @include justify-content(flex-start);
+        @include align-items(center);
+	}
+
+    h4{
+        margin: $spacing-md 0 $spacing;
+    }
+
+	li{
+		margin: 0 $spacing;
+
+		&:first-of-type{
+			margin-left: 0;
+		}
+
+		&:last-of-type{
+			margin-right: 0;
+		}
+	}
+
+     svg {
+         display: block;
+     }
+
+     a{
+         @include hover-transition;
+
+         &:hover{
+             svg {
+                 fill: var(--couleurJaune);
+             }
+         }
+     }
+}

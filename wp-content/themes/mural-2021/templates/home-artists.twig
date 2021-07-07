@@ -16,12 +16,12 @@
 
 {% include 'partial/filters-artists.twig' %}
 
-<section class="list-artists">
+<div class="list-artists">
     <div class="content">
 
         {% if artist_posts -%}
 
-            <section class="artists row">
+            <section class="row artists card__wrapper">
 
                 {%- for artist_post in artist_posts %}
 
@@ -59,7 +59,7 @@
 
         {%- else -%}
 
-            <section class="no-content">
+            <section class="row no-content">
                 <div class="content">
                     <p>{{__('No post found.', 'site-theme')}}</p>
                 </div>
@@ -70,6 +70,6 @@
         {% do fn('wp_reset_postdata') %}
 
     </div>
-</section>
+</div>
 
 {% endblock %}

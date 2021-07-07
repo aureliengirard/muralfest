@@ -267,67 +267,6 @@ a{
 }
 
 
-/// Style partage
-.artwork-data{
-	.sharing{
-		.sharing-item-container{
-			justify-content: left;
-		}
-		a{
-			&:last-of-type{
-				margin-left:0px;
-			}
-		}
-
-	}
-}
-
-.sharing,
-.content-wrapper section .content .sharing{
-	padding: 10px 0;
-	font-size: 0;
-
-	.sharing-item-container{
-		display:flex;
-		flex:wrap;
-		justify-content:center;
-	}
-
-	.icon-twitter-wrapper{
-		padding-left:1rem;
-	}
-
-	p{
-		font-size: 1.4rem;
-		margin: 0;
-		font-weight: 700;
-		margin-bottom:1em;
-		width: 100%;
-	}
-
-	i{
-		font-size:3rem;
-		margin-left:30px;
-		margin-top: -2px;//alignement avec les liens de fb et twitter
-	}
-
-	a{
-		display: inline-block;
-		font-size: 1.6rem;
-		color: #000000;
-		margin: 0 8px;
-
-		&:first-of-type{
-			margin-left: 0;
-		}
-
-		&:last-of-type{
-			margin-right: 0;
-		}
-	}
-}
-
-
 @import "colorbox-style";
 @import "calendar-style";
 @import "program-style";

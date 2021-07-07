@@ -25,4 +25,29 @@
             }
         }
     }
+
+    figure{
+        img{
+            width: 100%;
+        }
+    }
+
+    .article__socials {
+        margin-bottom: -$spacing;
+
+        .button{
+            padding: $spacing * 1.5;
+            margin-right: $spacing * 1;
+            margin-bottom: $spacing * 1;
+            display: inline-block;
+            border-radius: 2.5px;
+            font-size: 0.875em;
+            line-height: 1;
+            font-weight: 700;
+
+            &:nth-last-child(1){
+                margin-right: 0;
+            }
+        }
+    }
 }

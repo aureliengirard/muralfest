@@ -108,19 +108,6 @@
 			max-width: 45%;
 		}
 
-		ul {
-		    display: flex;
-		    justify-content: flex-end;
-		}
-
-		li {
-		    padding: 0 1.25vw;
-
-			&:nth-last-child(1){
-				padding-right: 0;
-			}
-		}
-
 		a{
 			color: var(--couleurNoir);
 		}
@@ -134,7 +121,13 @@
 		}
 
 		li {
-			padding: 0 1.125vw;
+			@include media-breakpoint-between(lg,xxxl){
+				padding: 0 1.125vw;
+			}
+
+			@include media-breakpoint-up(xxxl){
+				padding: 0 $spacing * 2.25;
+			}
 
 			&:nth-last-child(1){
 				padding-right: 0;

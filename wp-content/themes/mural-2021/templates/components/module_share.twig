@@ -1,15 +1,9 @@
-<div class="sharing">
-	<p>{{ __('Share:', 'site-theme') }}</p>
-	<div class="sharing-item-container">
-
-		<iframe src="https://www.facebook.com/plugins/like.php?href={{link}}&width=153&layout=button_count&action=like&size=small&show_faces=false&share=true&height=46&appId" width="140" height="46" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
-
-		<div class="icon-twitter-wrapper">
-			<a class="twitter-share-button" href="https://twitter.com/intent/tweet?source=webclient&amp;original_referer={{link}}&amp;text={{title}}&amp;url={{link}}" target="_blank">Tweet</a>
-		</div>
-		<a href="mailto:?subject={{title}}&amp;body={{title}}%0D%0A{{link}}" target="_blank">
-			<i class="fa fa-envelope" aria-hidden="true"></i>
-		</a>
-	</div>
+<div class="module_share">
+	<h4>{{ __('Share:', 'site-theme') }}</h4>
+	<ul class="social-links">
+	  <li><a class="social-links__link social-links__link--facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ link }}&t={{ title }}" title="Share on Facebook" target="_blank">{% include '/svg/icon_fb.svg' %}</a></li>
+	  <li><a class="social-links__link social-links__link--twitter" href="https://twitter.com/intent/tweet?source={{ link }}&text={{ title }}:{{ link }}" target="_blank" title="Tweet">{% include '/svg/icon_tw.svg' %}</a></li>
+	  <li><a class="social-links__link social-links__link--email" href="mailto:?subject={{ title }}&body={{ title }}:%20{{ link }}" target="_blank" title="Send email">{% include '/svg/icon_email.svg' %}</a></li>
+	</ul>
 
 </div>

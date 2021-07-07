@@ -1,5 +1,5 @@
 {% if pagination.pages is not empty %}
-    <div class="row pagination-block">
+    <section class="row pagination-block">
         <ul class="pagination">
             {% if pagination.pages|first and pagination.pages|first.current != true %}
                 <li class="first">
@@ -56,5 +56,5 @@
                 </li>
             {% endif %}
         </ul>
-    </div>
+    </section>
 {% endif %}

@@ -24,4 +24,11 @@
 
  $context['blog_posts'] = new Timber\PostQuery( $posts_arg );
 
+ $taxonomy = array(
+ 	'taxonomy' => 'category',
+ 	'orderby' => 'term_order',
+ 	'order' => 'ASC'
+ );
+ $context['terms'] = Timber::get_terms($taxonomy);
+
  Timber::render('templates/home-blog.twig', $context);

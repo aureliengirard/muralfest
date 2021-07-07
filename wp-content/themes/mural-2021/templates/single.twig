@@ -4,12 +4,12 @@
 
 {% block content %}
 
-    <section class="basic-content">
+    <div class="basic-content">
         <div class="content">
 
             {% include '/components/single-navigation.twig' %}
 
-            <div class="content-blog">
+            <section class="article__img row">
                 <figure>
 					{%- set img = Image(post.meta('image_a_la_une')) -%}
 					{%- set img_url = img.src -%}
@@ -17,24 +17,30 @@
 					{%- include 'components/reponsive_img.twig' with  { img: img, img_url: img_url, reponsize_sizes: reponsize_sizes} -%}
                 </figure>
 
-                <h1>{{ post.title }}</h1>
-                <p class="date">{{ post.date | date('j F Y') }}</p>
-                <p class="post-categories">{{ __('categories', 'site-theme') }} :
-					{%- for categorie in post.categories -%}
-					    <a href='{{categorie.link}}'>{{categorie.title}}</a>
-					{%- endfor -%}
-				</p>
+            </section>
 
-                {% include "partial/parts.twig" %}
+            <section class="content-blogt row">
 
-                {%- include 'components/module_share.twig' with  { link: post.link, title: post.title } -%}
+                <div class="article__conten">
+                    <h1>{{ post.title }}</h1>
+                    <p class="date">{{ post.date | date('j F Y') }}</p>
+                    <p class="post-categories">{{ __('categories', 'site-theme') }} :
+                        {%- for categorie in post.categories -%}
+                        <a href='{{categorie.link}}'>{{categorie.title}}</a>
+                        {%- endfor -%}
+                    </p>
 
+                    {% include "partial/parts.twig" %}
 
-                <section class="articles_du_blog">
-					{% include "partial/part-articles_du_blog.twig" with  { link: post.link, title: post.title } %}
-                </section>
-            </div>
+                    {%- include 'components/module_share.twig' with  { link: post.link, title: post.title } -%}
+                </div>
+
+            </section>
+
+            <section class="articles_du_blog">
+				{% include "partial/part-articles_du_blog.twig" with  { link: post.link, title: post.title } %}
+            </section>
         </div>
-    </section>
+    </div>
 
 {% endblock %}

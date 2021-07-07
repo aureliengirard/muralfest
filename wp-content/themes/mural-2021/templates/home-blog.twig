@@ -2,34 +2,32 @@
 
 
 {% block content %}
+{% include "partial/section-banner.twig" %}
 
-<section class="content">
+<div class="content">
     {% if blog_posts -%}
 
-        <section class="articles_du_blog">
+        {% include 'partial/filters-blog.twig' %}
 
-            <div class="articles">
+        <section class="row articles card__wrapper">
 
-
-                {%- for blog_post in blog_posts %}
-                    {% include 'components/tease_blog-article.twig' %}
-                {% endfor -%}
-
-            </div>
-
-            {% include 'components/pagination.twig' with { pagination: blog_posts.pagination({show_all: false, mid_size: 2, end_size: 3}) } %}
+            {%- for blog_post in blog_posts %}
+                {% include 'components/tease_blog-article.twig' %}
+            {% endfor -%}
 
         </section>
 
+        {% include 'components/pagination.twig' with { pagination: blog_posts.pagination({show_all: false, mid_size: 2, end_size: 3}) } %}
+
     {%- else -%}
 
-        <section class="no-content">
+        <section class="row no-content">
             <div class="content">
                 <p>{{__('No post found.', 'site-theme')}}</p>
             </div>
         </section>
 
     {%- endif %}
-</section>
+</div>
 
 {% endblock %}
