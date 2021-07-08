@@ -14,6 +14,13 @@
         padding-right: $spacing * 3;
     }
 
+    .newsletter__title {
+
+        @include media-breakpoint-up(md) {
+            border-right: 1px solid var(--couleurJaune);
+        }
+    }
+
     p{
         font-size: 1.25em;
         margin: 0;

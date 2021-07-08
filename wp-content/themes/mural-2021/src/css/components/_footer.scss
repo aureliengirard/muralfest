@@ -1,15 +1,10 @@
 
 /// style footer
 #footer{
-	@media only screen and (min-width:768px){
-		z-index: 11;
-		background-color: #fff;
-	}
 
 	.row{
 		padding-left: $spacing-md;
 		padding-right: $spacing-md;
-		@include flexbox;
 		@include flex-flow(row wrap);
 		@include align-items(center);
 		@include justify-content(space-between);
@@ -21,8 +16,8 @@
 
 		@include media-breakpoint-up(md){
 			max-width: var(--WidthNavArea);
-			padding-left: $spacing * 6;
-			padding-right: $spacing * 6;
+			padding-left: $spacing * 4;
+			padding-right: $spacing * 4;
 		}
 	}
 
@@ -34,7 +29,7 @@
 	.footer__sub{
 		text-transform: uppercase;
 		font-weight: 500;
-		font-size: .925em;
+		font-size: .875em;
 	}
 
 	.footer__main{
@@ -58,7 +53,7 @@
 	.footer__partners {
 		flex: auto;
 	    max-width: max-content;
-	    margin: 0 auto 0 $spacing-xl*2;
+	    margin: 0 auto 0 5.2vw;
 
 		.footer__partners-wrapper {
 			&:first-child{
@@ -91,7 +86,7 @@
 		margin: 0 auto;
 
 		li{
-			margin: 0 $spacing*1.5;
+			margin: 0 $spacing*1;
 		}
 
 		a:hover {
@@ -126,7 +121,7 @@
 			}
 
 			@include media-breakpoint-up(xxxl){
-				padding: 0 $spacing * 2.25;
+				padding: 0 1.1vw;
 			}
 
 			&:nth-last-child(1){

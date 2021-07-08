@@ -59,6 +59,10 @@
     font-size: 1em;
     font-weight: 600;
     text-transform: uppercase;
+
+    @include media-breakpoint-up(md){
+        font-size: 1.3em;
+    }
 }
 
 %paragraph {

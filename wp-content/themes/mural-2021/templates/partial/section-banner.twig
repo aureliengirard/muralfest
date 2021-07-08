@@ -1,60 +1,14 @@
-
-{% set left_banner = page.meta('banniere_gauche') %}
-{% set right_banner = page.meta('banniere_droite') %}
 <div class="banner row full-width">
+    {% set banniere = Image(page.meta('banniere')) %}
+    {% set banniere_url = banniere.src %}
 
-    {% if page.nombre_dimage == true %}
-        {% if left_banner.banniere %}
-            <div class="col-lg-8 left-banner">
-                {% if left_banner.banniere %}
-                {% set banniere = Image(left_banner.banniere) %}
-                {% set banniere_url = banniere.src %}
-                {% set reponsize_sizes = "1280,960,800,768,720,640,512,414,375,360" %}
-
-                {% include 'components/reponsive_img.twig' with  { img: banniere, img_url: banniere_url, reponsize_sizes: reponsize_sizes} %}
-                {% endif %}
-
-                {% if left_banner.contenu_banniere %}
-                <div class="banner-overlay">
-                    {{ left_banner.contenu_banniere }}
-                </div>
-                {% endif %}
+    <div class="col-12 single-banner with-overlay" style="background-image:url('{{banniere_url|resize(1920,400) }}')">
+        {% if page.contenu_banniere %}
+        <div class="row content">
+            <div class="col banner-overlay">
+                {{page.contenu_banniere}}
             </div>
-        {% else %}
-            <div class="col-lg-8 left-banner">
-                <div class="banner-overlay">
-                    {{ left_banner.contenu_banniere }}
-                </div>
-            </div>
-        {% endif %}
-        {% if right_banner.banniere %}
-            <div class="col-lg-4 right-banner">
-
-                {% set banniere = Image(right_banner.banniere) %}
-                {% set banniere_url = banniere.src %}
-                {% set reponsize_sizes = "1280,960,800,768,720,640,512,414,375,360" %}
-
-                {% include 'components/reponsive_img.twig' with  { img: banniere, img_url: banniere_url, reponsize_sizes: reponsize_sizes} %}
-
-                {% if right_banner.contenu_banniere %}
-                <div class="banner-overlay">
-                    {{ right_banner.contenu_banniere }}
-                </div>
-                {% endif %}
-            </div>
-        {% endif %}
-    {% elseif page.banniere %}
-        {% set banniere = Image(page.meta('banniere')) %}
-        {% set banniere_url = banniere.src %}
-
-        <div class="col-12 single-banner with-overlay" style="background-image:url('{{banniere_url|resize(1920,400) }}')">
-            {% if page.contenu_banniere %}
-            <div class="row content">
-                <div class="col banner-overlay">
-                    {{page.contenu_banniere}}
-                </div>
-            </div>
-            {% endif %}
         </div>
-    {% endif %}
+        {% endif %}
+    </div>
 </div>
