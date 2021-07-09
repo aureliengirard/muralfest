@@ -40,7 +40,7 @@
                 },
                 {
                     "key": "field_5ae1fefbd3af2",
-                    "label": "Nom de la section",
+                    "label": "Nom de la section (et Anchor ID)",
                     "name": "nom_de_la_section",
                     "type": "text",
                     "instructions": "Permet d'identifier cette section. Ne s'affiche pas sur le site.",
@@ -179,5 +179,5 @@
     ],
     "active": true,
     "description": "",
-    "modified": 1624378207
+    "modified": 1625868771
 }

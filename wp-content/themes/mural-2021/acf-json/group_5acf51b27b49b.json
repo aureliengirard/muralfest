@@ -68,20 +68,16 @@
                 "param": "post_type",
                 "operator": "==",
                 "value": "page"
-            }
-        ],
-        [
-            {
-                "param": "post_template",
-                "operator": "!=",
-                "value": "template-blog.php"
-            }
-        ],
-        [
+            },
             {
                 "param": "post_template",
                 "operator": "!=",
                 "value": "template-home.php"
+            },
+            {
+                "param": "post_template",
+                "operator": "!=",
+                "value": "template-blog.php"
             }
         ]
     ],
@@ -93,5 +89,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1625756133
+    "modified": 1625867929
 }

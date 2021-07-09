@@ -12,11 +12,11 @@
             <div class="row inner__wrapper">
                 <div class="col-lg-12 hero__festival">
                     {% set reponsize_sizes = "1280,960,800,768,720,640,512,414,375,360" %}
-                    {% include 'components/reponsive_img.twig' with  { img: logo, img_url: logo_url, reponsize_sizes: reponsize_sizes} %}
-                    <h4 class="hero__date">{{left_banner.date}}</h4>
+                    {#{% include 'components/reponsive_img.twig' with  { img: logo, img_url: logo_url, reponsize_sizes: reponsize_sizes} %}#}
+                    <h4 class="h2 lg hero__date">{{left_banner.date}}</h4>
                 </div>
                 {% if left_banner.artiste_colonne_1 %}
-                <div class="col-lg-6 hero__artist">
+                <div class="col-md-8 hero__artist">
                     <h3 class="h4">{{ left_banner.titre_colonne_1 }}</h3>
                     <ul>
                     {% for item in left_banner.artiste_colonne_1 %}
@@ -27,12 +27,13 @@
                 </div>
                 {% endif %}
                 {% if left_banner.artiste_colonne_2 %}
-                <div class="col-lg-6 hero__artist">
+                <div class="col-md-4 hero__artist">
                     <h3 class="h4">{{ left_banner.titre_colonne_2 }}</h3>
                     <ul>
                     {% for item in left_banner.artiste_colonne_2 %}
                         {% set artiste = item.item_artiste %}
-                        <li> <a href="{{ artiste.url }}">{{ artiste.title }}</a></li>
+
+                        <li> {% if artiste.url != "#" %}<a href="{{ artiste.url }}">{% endif %}{{ artiste.title }}{% if artiste.url != "#" %}</a>{% endif %}</li>
                     {% endfor %}
                     </ul>
                 </div>

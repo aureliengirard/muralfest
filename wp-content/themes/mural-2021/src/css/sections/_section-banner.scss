@@ -21,7 +21,7 @@
 			height:50vh;
 			max-height: 400px;
 			@include align-items(center);
-	
+
 			.banner-overlay{
 				h1{
 					color: var(--couleurJaune);
@@ -37,7 +37,8 @@
 		.left-banner{
 			background-size: cover;
 			padding: $spacing*4 $spacing*2;
-
+			display: inherit;
+			@include align-items(center);
 
 			@include media-breakpoint-up(lg){
 				padding: $spacing-xl $spacing*4;
@@ -47,32 +48,37 @@
 				width:100%;
 			}
 
-			.hero__date {
-				text-align: right;
-				text-transform: uppercase;
-			}
+			.hero__date { }
 
 			.hero__artist{
-				margin-top: $spacing*1.5;
+				margin-top: $spacing-xl;
+
+				&:nth-child(2) {
+					@include media-breakpoint-up(md) {
+						    padding-right: 7.5vw;
+					}
+
+					ul {
+						column-count: 2;
+						column-gap: 20px;
+					}
+				}
 
 				h3{
 					margin-bottom: $spacing * 4;
+					font-weight: 800;
 				}
 
-				ul {
-					column-count: 2;
-					column-gap: 20px;
-				}
 
 				li {
 					letter-spacing: -0.025em;
-					font-weight: 700;
-					padding-bottom: $spacing/2;
+					font-weight: 600;
+					padding-bottom: $spacing;
 					text-transform: uppercase;
 					line-height: 1;
 
 					@include media-breakpoint-up(md) {
-						font-size: 1.25em;
+						font-size: 1.125em;
 					}
 				}
 

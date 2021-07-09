@@ -61,12 +61,16 @@
                 {% endfor %}
             </ul>
             <ul class="navbar-extra">
+                {% if options.nav_shop %}
                 <li class="nav-item">
-                    <a class="button btn--black btn__has-icon" href="{{ item.link }}">{%- include "/svg/icon_shop.svg" -%} Boutique</a>
+                    <a class="button btn--black btn__has-icon" href="{{ options.nav_shop.url }}">{%- include "/svg/icon_shop.svg" -%} {{ options.nav_shop.title }}</a>
                 </li>
+                {% endif %}
+                {% if options.nav_tickets %}
                 <li class="nav-item">
-                    <a class="button btn__has-icon" href="{{ item.link }}">{%- include "/svg/icon_ticket.svg" -%} Billets</a>
+                    <a class="button btn__has-icon" href="{{ options.nav_tickets.url }}">{%- include "/svg/icon_ticket.svg" -%} {{ options.nav_tickets.title }}</a>
                 </li>
+                {% endif %}
             </ul>
         </div>
     </div>
