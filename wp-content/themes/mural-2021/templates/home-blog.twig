@@ -1,16 +1,13 @@
 {% extends "base.twig" %}
 
-
 {% block content %}
 <div class="banner">
-    <div class="single-banner-wrap">
-        <figure class="single-banner with-overlay" style="background-image:url('{{ TimberImage(options.home_blog_bg).src | resize(1920,400) }}')">
-            <div class="row content">
-                <div class="banner-overlay">
-                    <h1>{{post.title}}{% if filtered_cat != "" %} | {{ __('Category:', 'site-theme') }}{{filtered_cat}}{% endif %}</h1>
-                </div>
+    <div class="single-banner with-overlay" style="background-image:url('{{ TimberImage(options.home_blog_bg).src | resize(1920,400) }}')">
+        <div class="row content">
+            <div class="col-12 banner-overlay">
+                <h1>{{post.title}}{% if filtered_cat != "" %} | {{ __('Category:', 'site-theme') }}{{filtered_cat}}{% endif %}</h1>
             </div>
-        </figure>
+        </div>
     </div>
 </div>
 <div class="content">

@@ -1,11 +1,11 @@
-<div class="banner row full-width">
+<div class="banner">
     {% set banniere = Image(page.meta('banniere')) %}
     {% set banniere_url = banniere.src %}
 
-    <div class="col-12 single-banner with-overlay" style="background-image:url('{{banniere_url|resize(1920,400) }}')">
+    <div class="single-banner with-overlay" style="background-image:url('{{banniere_url|resize(1920,400) }}')">
         {% if page.contenu_banniere %}
         <div class="row content">
-            <div class="col banner-overlay">
+            <div class="col-12 banner-overlay">
                 {{page.contenu_banniere}}
             </div>
         </div>

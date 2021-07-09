@@ -58,6 +58,7 @@ form:not(.program-filters) {
     textarea {
         @extend %input;
         height: $padding * 15;
+        border-width: 3px;
     }
 
     select{
@@ -127,10 +128,10 @@ form:not(.program-filters) {
     &_body{}
 
     &_fields{
-        @include flexbox;
-        @include flex-flow(wrap);
-        @include justify-content(space-between);
-        //margin: $gutter-sm*-1 0;
+        width: 100%;
+        display: grid;
+        grid-row-gap: $spacing*2;
+        grid-template-columns: repeat(12,1fr);
     }
 
     &_footer{
@@ -159,6 +160,7 @@ form:not(.program-filters) {
 .gfield{
     //margin: $gutter-sm/2 0;
     width: 100%;
+    grid-column: 1/-1;
 
     @include media-breakpoint-up(md){
         //margin: $gutter-sm 0;

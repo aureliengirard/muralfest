@@ -5,7 +5,7 @@
 
     .content{
         display: inherit;
-        
+
         @include media-breakpoint-up(lg){
             margin: 0 $spacing*-3;
             @include align-items(center);
@@ -21,6 +21,16 @@
 
         @include media-breakpoint-up(md) {
             border-right: 1px solid var(--couleurJaune);
+        }
+    }
+
+    .newsletter__form {
+        [type="text"]:not(:active):not(:focus) {
+            background-image: url('../../images/icon_letter.png');
+            background-size: 38px 28px;
+            background-repeat: no-repeat;
+            padding-left: 60px !important;
+            background-position: 0 50%;
         }
     }
 

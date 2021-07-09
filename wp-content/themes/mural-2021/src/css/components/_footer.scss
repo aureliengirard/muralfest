@@ -19,6 +19,11 @@
 			padding-left: $spacing * 4;
 			padding-right: $spacing * 4;
 		}
+
+		@include media-breakpoint-up(xxxl){
+			padding-left: $spacing * 6;
+			padding-right: $spacing * 6;
+		}
 	}
 
 	a {

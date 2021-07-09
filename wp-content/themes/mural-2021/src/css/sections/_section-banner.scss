@@ -1,30 +1,10 @@
 
 /// Style de la bannière
 .banner{
-	justify-content: center;
 	@include hover-transition;
 
 	& + [class*="bg--"]{
 		margin-top: 0;
-	}
-
-	.col-12{
-		background-size:cover;
-		background-position: center;
-		height:50vh;
-		max-height: 400px;
-		//position: fixed;
-		z-index: 0;
-
-		.banner-overlay{
-			h1{
-				color: var(--couleurJaune);
-			}
-		}
-
-		.content{
-			@include align-items(center);
-		}
 	}
 
 	[class*="col-12"]{
@@ -32,6 +12,25 @@
 		display: inherit;
 		padding: 0;
 
+	}
+
+	.single-banner {
+		.row {
+			background-size:cover;
+			background-position: center;
+			height:50vh;
+			max-height: 400px;
+			@include align-items(center);
+	
+			.banner-overlay{
+				h1{
+					color: var(--couleurJaune);
+				}
+			}
+
+			.content{
+			}
+		}
 	}
 
 	&--home{
