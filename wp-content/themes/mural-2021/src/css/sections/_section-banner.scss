@@ -37,7 +37,12 @@
 	&--home{
 		.left-banner{
 			background-size: cover;
-			padding: $spacing-xl $spacing*4;
+			padding: $spacing*4 $spacing*2;
+
+
+			@include media-breakpoint-up(lg){
+				padding: $spacing-xl $spacing*4;
+			}
 
 			img{
 				width:100%;
@@ -55,16 +60,21 @@
 					margin-bottom: $spacing * 4;
 				}
 
+				ul {
+					column-count: 2;
+					column-gap: 20px;
+				}
+
 				li {
 					letter-spacing: -0.025em;
-					font-size: 1.5em;
-					transform: scale(1, 1.75);
-					font-weight: 800;
-					-webkit-transform: scale(1, 1.75); /* Safari and Chrome */
-					-moz-transform: scale(1, 1.75); /* Firefox */
-					-ms-transform: scale(1, 1.75); /* IE 9+ */
-					-o-transform: scale(1, 1.75); /* Opera */
-					padding: $spacing*0.25;
+					font-weight: 700;
+					padding-bottom: $spacing/2;
+					text-transform: uppercase;
+					line-height: 1;
+
+					@include media-breakpoint-up(md) {
+						font-size: 1.25em;
+					}
 				}
 
 				a{
@@ -79,10 +89,11 @@
 
 		}
 		.right-banner{
-			display:block;
+			display:inherit;
 			padding: 0;
 			img{
 				width:100%;
+				margin: auto;
 			}
 		}
 

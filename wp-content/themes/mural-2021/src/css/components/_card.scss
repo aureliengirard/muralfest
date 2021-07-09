@@ -1,18 +1,22 @@
 .card {
-    flex: 75%;
-    margin-top:20px;
-    max-width: 400px;
-    margin-bottom: $spacing-md * 3;
+    flex: 100%;
+    margin-top: $spacing*2;
+    margin-bottom: $spacing*4;
 
     @include media-breakpoint-up(md){
         flex: 30%;
+        max-width: 400px;
+        margin-bottom: $spacing-md * 3;
+        margin-left: $spacing*1.5;
+        margin-right: $spacing*1.5;
     }
 
     &__wrapper {
-        margin-bottom: -$spacing-xl !important;
+        margin-bottom: -$spacing-md !important;
 
 
         @include media-breakpoint-up(md) {
+            margin-bottom: -$spacing-xl !important;
             justify-content: space-between;
         }
 
@@ -23,7 +27,11 @@
         }
 
         + .row:not(.pagination-block) {
-            margin-top: $spacing-md*4;
+            margin-top: $spacing*4;
+
+            @include media-breakpoint-up(md) {
+                margin-top: $spacing-xl*2;
+            }
 
             .button-wrap{
                 margin-top: 0;
@@ -52,11 +60,20 @@
     }
 
     &__body{
-        padding-top: 50px;
+        padding-top: $spacing-md;
+
+        @include media-breakpoint-up(md){
+            padding-top: $spacing-xl;
+        }
 
         p{
-            margin-top: 30px;
-            margin-bottom: 30px;
+            margin-top: $spacing*1.5;
+            margin-bottom: $spacing*1.5;
+
+            @include media-breakpoint-up(md){
+                margin-top: $spacing*3;
+                margin-bottom: $spacing*3;
+            }
         }
     }
 }

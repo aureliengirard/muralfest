@@ -196,11 +196,20 @@ header a {
 }
 
 .section__title{
-    margin-bottom: $spacing-xl;
+    margin-bottom: $spacing*2;
+
+    @include media-breakpoint-up(md) {
+        margin-bottom: $spacing-xl;
+    }
 }
 
 .section__sub-title{
-    margin-top: $spacing-md;
-    margin-bottom: $spacing-md;
+    margin-top: $spacing * 1.5;
+    margin-bottom: $spacing * 1.5;
+
+    @include media-breakpoint-up(md) {
+        margin-top: $spacing-md;
+        margin-bottom: $spacing-md;
+    }
 }
 

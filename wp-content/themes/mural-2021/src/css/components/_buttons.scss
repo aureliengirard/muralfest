@@ -28,11 +28,26 @@
         color: var(--couleurJaune);
         background-color: var(--couleurRouge);
         border-color: var(--couleurRouge);
+
+        svg{
+            fill:var(--couleurJaune);
+
+            path,
+            #fill{
+                fill:var(--couleurJaune);
+            }
+        }
     }
 
+
+}
+
+.btn__has-icon{
     svg{
-        height: 1.25em;
+        margin: -15px 0;
         width: auto;
+        vertical-align: middle;
+        transform: translateX(-25px);
     }
 }
 
@@ -75,17 +90,28 @@ $btn_styles:
 
         @if $btn-name == "white" {
             border-color: $color-alt;
+
+            svg{
+                fill:$color;
+
+                path,
+                #fill{
+                    fill:$color;
+                }
+            }
         } @else {
             border-color: $color;
-        }
 
-        svg{
-            fill:$color;
+            svg{
+                fill:$color-alt;
 
-            #fill{
-                fill:$color;
+                path,
+                #fill{
+                    fill:$color-alt;
+                }
             }
         }
+
 
         @include hover-focus-active{
             color: $color;
@@ -93,13 +119,24 @@ $btn_styles:
 
             @if $btn-name == "black" or  $btn-name == "white" {
                 border-color: $color;
+
+                svg{
+                    path,
+                    #fill{
+                        fill:$color;
+                    }
+                }
             } @else {
                 border-color: $color-alt;
+
+                svg{
+                    path,
+                    #fill{
+                        fill:$color;
+                    }
+                }
             }
 
-            #fill{
-                fill:$color-alt;
-            }
         }
     }
 

@@ -2,6 +2,10 @@
     margin-bottom: 0;
 
     & + section{
-        margin-top: 50px;
+        margin-top: $spacing-md;
+
+        @include media-breakpoint-up(lg){
+            margin-top: $spacing-xl;
+        }
     }
 }

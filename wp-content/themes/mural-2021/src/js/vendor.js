@@ -1,6 +1,7 @@
 import fonts from '../fonts/fonts.js';
 
 import "jquery";
+import "jquery-ui";
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import 'select2';

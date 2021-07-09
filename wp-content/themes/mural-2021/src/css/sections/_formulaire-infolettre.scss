@@ -4,9 +4,12 @@
     }
 
     .content{
-        margin: 0 $spacing*-3;
         display: inherit;
-        @include align-items(center);
+        
+        @include media-breakpoint-up(lg){
+            margin: 0 $spacing*-3;
+            @include align-items(center);
+        }
     }
 
     .col-md-4{
