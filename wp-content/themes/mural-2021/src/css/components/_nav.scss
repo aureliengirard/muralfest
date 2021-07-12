@@ -5,16 +5,19 @@ nav{
 
 %nav-link {
     display: block;
-    padding: 0 1vw;
     text-decoration: none;
     transition: all .25s ease-in;
     text-transform: uppercase;
-    font-weight: 600;
-    text-align: center;
+    //text-align: center;
     color: var(--couleurNoir);
 
-    @include media-breakpoint-between(lg,xxxl){
+    @include media-breakpoint-between(lg,xl) {
+        font-size: 0.925em;
+    }
+
+    @include media-breakpoint-up(lg) {
         padding: 0 1vw;
+        font-weight: 600;
     }
 
     @include media-breakpoint-up(xxxl){
@@ -27,8 +30,10 @@ nav{
     }
 
     span{
-        display: block;
-        text-align: left;
+        @include media-breakpoint-up(lg) {
+            text-align: left;
+            display: block;
+        }
     }
 
     &:hover,
@@ -44,12 +49,13 @@ nav{
     text-decoration: none;
     transition: all .25s ease-in;
     text-transform: uppercase;
-    font-weight: 600;
     font-size: 0.9em;
     text-align: left;
     color: var(--couleurNoir);
 
     @include media-breakpoint-up(lg){
+        font-weight: 600;
+
         .is_sticky &{
             font-size: 14px;
         }
@@ -80,7 +86,7 @@ nav{
     }
 
     .container-fluid{
-        padding: $spacing*2.5 $spacing * 1.5;
+        padding: $spacing*2;
         @include flexbox;
         @include align-items(center);
         @include justify-content(space-between);
@@ -91,7 +97,11 @@ nav{
             overflow-x: hidden;
         }
 
-        @include media-breakpoint-up(md){
+        @include media-breakpoint-only(lg) {
+            padding: $spacing*3;
+        }
+
+        @include media-breakpoint-up(xl){
             padding: $spacing-xl $spacing*4;
         }
 
@@ -104,21 +114,29 @@ nav{
         .navbar-collapse{
 
             @include media-breakpoint-down(md) {
-                padding: 8px 32px;
-                background: #fff;
-                position: absolute;
-                top: 99%;
-                left: 0;
-                width: 100%;
+                @include flexbox;
+                @include flex-flow(column);
+                padding: $spacing*3 $spacing*2 $spacing*4;
+                background: var(--couleurBlanc);
+                position: fixed;
+                top: $spacing-xl*2;
+                left: 20%;
+                width: 80%;
                 bottom: 0;
                 z-index: 1001;
-                min-height: calc(100vh - 74px);
+                min-height: calc(100vh - 100px);
                 transform: translateX(0);
                 transition: transform 0.2s cubic-bezier(0.9, 0, 0.1, 0.9);
                 overflow-y: scroll;
+                border-left: 1px solid var(--couleurNoir);
 
                 &:not(.show) {
                     transform: translateX(100%);
+                }
+
+                .admin-bar & {
+                    top: $spacing-xl*2 + 46px;
+                    min-height: calc(100vh - 145px);
                 }
             }
         }
@@ -143,18 +161,6 @@ nav{
             @include media-breakpoint-down(md) {
                 width: 100%;
             }
-        }
-
-        .nav-item:not(.nav-item-child){
-            @include media-breakpoint-down(md) {
-                font-weight: 600;
-                border-width: 0 0 3px 0;
-                border-color: var(--couleurNoir);
-                border-style: solid;
-                padding: 1em 0 !important;
-                width: 100%;
-            }
-
         }
 
         .nav-item-child .nav-link{
@@ -212,14 +218,20 @@ nav{
 
     img{
         transition: all .25s ease;
-        height: 70px;
+        width: 130px;
+        height: auto;
 
-        @include media-breakpoint-up(md){
-            height: 80px;
+        @include media-breakpoint-only(md){
+            width: 160px;
         }
 
-        @include media-breakpoint-up(lg){
+        @include media-breakpoint-only(lg){
+            width: 195px;
+        }
+
+        @include media-breakpoint-up(xl){
             height: 100px;
+            width: auto;
         }
     }
 }
@@ -245,7 +257,28 @@ nav{
     }
 }
 
+.navbar-overnav,
 .navbar-nav{
+
+    .nav-item:not(.nav-item-child){
+        @include media-breakpoint-down(md) {
+            font-weight: 500;
+            font-size: 0.875em;
+            border-width: 0 0 1px 0;
+            border-color: var(--couleurNoir);
+            border-style: solid;
+            padding: $spacing 0;
+            width: 100%;
+        }
+    }
+}
+
+.navbar-nav{
+
+    @include media-breakpoint-down(md) {
+        order: -1;
+    }
+
     @include media-breakpoint-up(lg) {
         justify-content: center;
         flex: auto;
@@ -253,7 +286,15 @@ nav{
 
     .nav{
         &-item{
-            @include media-breakpoint-between(lg,xxxl){
+            @include media-breakpoint-only(lg) {
+                padding: 0 0.6vw;
+            }
+
+            @include media-breakpoint-between(xl,xxl){
+                padding: 0 1.2vw;
+            }
+
+            @include media-breakpoint-between(xxl,xxxl){
                 padding: 0 1.8vw;
             }
 
@@ -289,6 +330,7 @@ nav{
         border: 0;
     }
 
+    .wpml-ls-item,
     .wpml-ls-link{
         @extend %nav-link;
         margin-right: -$spacing;
@@ -360,14 +402,37 @@ nav{
 
     .menu-item-has-children {
         position: relative;
-        padding-right: 3.9vw;
+        padding-right: $spacing*3;
         cursor: pointer;
+
+        @include media-breakpoint-up(xl){
+            padding-right: 3.9vw;
+        }
+
+        &[aria-expanded="true"]{
+            svg g g:first-child{
+                opacity: 0;
+            }
+        }
 
         svg {
             position: absolute;
             top: 50%;
-            right: 1vw;
+            right: 0.5vw;
             transform: translateY(-50%);
+
+            @include media-breakpoint-up(xl) {
+                right: 1vw;
+            }
+
+            @include media-breakpoint-down(lg) {
+                height: $spacing*2;
+                width: $spacing*2;
+            }
+
+            g{
+                @include hover-transition;
+            }
         }
     }
 }
@@ -375,15 +440,56 @@ nav{
 .navbar-extra{
     flex: initial;
 
+    @include media-breakpoint-down(md) {
+        margin-top: $spacing*2;
+    }
+
     .button{
-        display: inline-block;
-        padding-left: $spacing*6;
-        padding-right: $spacing*6;
+        text-align: center;
+
+        @include media-breakpoint-only(lg){
+            padding-left: $spacing*3;
+            padding-right: $spacing*3;
+        }
+
+        @include media-breakpoint-only(xl){
+            padding-left: $spacing*4;
+            padding-right: $spacing*4;
+        }
+
+        @include media-breakpoint-up(xxl) {
+            padding-left: $spacing*6;
+            padding-right: $spacing*6;
+        }
+
+        @include media-breakpoint-up(lg) {
+            display: inline-block;
+        }
+    }
+
+    .btn__has-icon  svg {
+        @include media-breakpoint-only(lg){
+            transform: translateX(-15px);
+        }
     }
 
     .nav-item{
         &:nth-last-child(n+2) {
-            margin-right: $spacing * 2;
+            @include media-breakpoint-down(md) {
+                padding-bottom: $spacing;
+            }
+
+            @include media-breakpoint-up(lg) {
+                margin-right: $spacing * 1;
+            }
+
+            @include media-breakpoint-up(xl) {
+                margin-right: $spacing * 1.5;
+            }
+
+            @include media-breakpoint-up(xxl) {
+                margin-right: $spacing * 2;
+            }
         }
     }
 }
@@ -394,19 +500,49 @@ nav{
         flex: 100%;
         justify-content: flex-end;
         min-width: 100%;
-        transform: translateY(-$spacing*2.5);
+        transform: translateY(-$spacing*1);
+    }
+
+    @include media-breakpoint-up(xl){
+        transform: translateY(-$spacing*1.5);
     }
 
     .nav-link{
         @extend %nav-link;
-        padding: 0;
-        font-weight: 500;
-        font-size: 0.9em;
+
+        @include media-breakpoint-up(lg){
+            padding: 0;
+            font-weight: 500;
+            font-size: 0.9em;
+        }
     }
 
     .nav-item{
         &:nth-last-child(n+2) {
-            margin-right: $spacing * 4;
+            @include media-breakpoint-up(lg) {
+                margin-right: $spacing * 2;
+            }
+        }
+    }
+}
+
+.nav-lang{
+    line-height: 0;
+}
+.wpml-ls-statics-shortcode_actions.wpml-ls {
+    padding: 0;
+    border: 0;
+
+    a {
+        line-height: var(--baseLineHeight);
+        padding: 0;
+        font-weight: 500;
+        color: inherit;
+        font-size: 0.9em;
+        text-transform: uppercase;
+
+        @include media-breakpoint-down(md){
+            font-weight: 600;
         }
     }
 }

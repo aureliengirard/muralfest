@@ -108,29 +108,6 @@ if(!function_exists('run_once')){
 }
 
 
-if(!function_exists('language_selector')){
-	/**
-	 * Affiche un sélecteur de langue utilisant WPML.
-	 *
-	 * @var String $display Type d'affichage des langues. (ex: full name, code, flag, etc.)
-	 */
-	function language_selector($display = 'native_name'){
-		if(function_exists('icl_get_languages')){
-			$languages = icl_get_languages('skip_missing=0&orderby=code');
-			if(!empty($languages)){
-				foreach($languages as $l){
-					if(!$l['active']) {
-						echo '<li><a href="'.$l['url'].'" class="lang"> ';
-						echo $l[$display];
-						echo '</a></li>';
-					}
-				}
-			}
-		}
-	}
-}
-
-
 if(!function_exists('totQueryCount')){
 	/**
 	 * Affiche le nombre total de résultat de la query.

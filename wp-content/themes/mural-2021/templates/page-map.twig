@@ -5,7 +5,7 @@
 
     <section class="basic-content">
         <div class="row">
-            <div class="rte">
+            <div class="col-12 rte">
                 {{ page.content }}
             </div>
         </div>
@@ -15,7 +15,7 @@
 
     <section class="artwork-list">
         <div class="row">
-            <div class="section__title">
+            <div class="col-12 section__title">
                 <h2>{{ __('Works list', 'site-theme') }}</h2>
             </div>
         </div>
@@ -31,7 +31,7 @@
             {% endfor %}
 
             {% for year in years|sort|reverse %}
-                <article class="year-artworks">
+                <article class="col-12 year-artworks">
                     <div class="section__sub-title">
                         <h3>{{year}}</h3>
                     </div>

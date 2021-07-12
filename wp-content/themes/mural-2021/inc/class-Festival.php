@@ -95,7 +95,7 @@ class Festival {
         add_action( 'after_setup_theme', array( $this, 'addImagesSizes' ), 0 );
         add_action( 'init', array( $this, 'tier_image_sizes' ), 10 );
 
-        add_action( 'CPT-ready', array( $this, 'register_festival_CPT') );
+        //add_action( 'CPT-ready', array( $this, 'register_festival_CPT') );
         add_filter('acf/load_field/name=festival', array( $this, 'add_all_festival_to_select' ) );
         add_filter('acf/load_field/name=annee', array( $this, 'dynamic_add_year' ) );
         add_filter('display_post_states', array( $this, 'add_post_state_festival' ), 10, 2);

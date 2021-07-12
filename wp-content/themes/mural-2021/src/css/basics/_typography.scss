@@ -5,8 +5,12 @@
     line-height: 1.1;
     text-transform: uppercase;
 
-    @include media-breakpoint-only(md){
-        font-size: 3.5em;
+    @include media-breakpoint-up(md){
+        font-size: 2.75em;
+    }
+
+    @include media-breakpoint-up(xl){
+        font-size: 3.25em;
     }
 
     @include media-breakpoint-up(xxl){
@@ -36,21 +40,29 @@
     text-transform: uppercase;
 
     @include media-breakpoint-up(md){
-        font-size: 1.875em;
+        font-size: 2em;
     }
 
-    @include media-breakpoint-up(lg){
+    @include media-breakpoint-up(xl){
+        font-size: 2.5em;
+    }
+
+    @include media-breakpoint-up(xxl){
         font-size: 3em;
     }
 }
 
 %heading-h3 {
-    font-size: 1.25em;
+    font-size: 1.125em;
     font-weight: 600;
     margin-bottom: $spacing/3;
     text-transform: uppercase;
 
-    @include media-breakpoint-up(md){
+    @include media-breakpoint-up(xl){
+        font-size: 1.25em;
+    }
+
+    @include media-breakpoint-up(xl){
         font-size: 1.5em;
     }
 }
@@ -196,9 +208,9 @@ header a {
 }
 
 .section__title{
-    margin-bottom: $spacing*2;
+    margin-bottom: $spacing-md;
 
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(lg) {
         margin-bottom: $spacing-xl;
     }
 }
@@ -207,7 +219,7 @@ header a {
     margin-top: $spacing * 1.5;
     margin-bottom: $spacing * 1.5;
 
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(lg) {
         margin-top: $spacing-md;
         margin-bottom: $spacing-md;
     }

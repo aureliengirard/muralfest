@@ -7,6 +7,7 @@ const functionsInit = function() {
         }
     });
 
+    /*
     $(document).ready(function(){
       $(".dropdown a").click(function(e){
           e.stopPropagation();
@@ -18,6 +19,7 @@ const functionsInit = function() {
           }
       });
     });
+    */
 
     var gallery_popup = $('.gallery');
     gallery_popup.magnificPopup({

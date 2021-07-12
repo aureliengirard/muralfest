@@ -544,15 +544,11 @@
 	flex-wrap: wrap;
 
 	#{$child}{
-		width: calc(100% / #{$col} - ((#{$col-gap} * #{$col - 1}) / #{$col})); /* On divise la largeur totale disponible également entre toutes les colonnes, puis on soustrait à chaque colonnes le gap désiré */
-		margin-right: $col-gap;
+		width: calc(100% / #{$col}); /* On divise la largeur totale disponible également entre toutes les colonnes, puis on soustrait à chaque colonnes le gap désiré */
+		padding-right: $col-gap;
 		margin-bottom: $row-gap;
-
-		/* On retire le margin right pour que la dernière colonne arrive égale au contenu. */
-		&:nth-child(#{$col}n){
-			margin-right: 0px;
-		}
 	}
+
 	$responsive: map-sort($responsive, "desc"); // Ordonne le tableau en order décroissant.
 	$oldcol: $col; // Garde la dernière colonne dans une variable pour retirer le margin-right:0px;
 	$passedBreakpoints: (none: (col: $col)); // Tous les breakpoints déjà appliqués pour tous les changer si on change le gap des colonnes. Inclut la colonne de base.
@@ -575,33 +571,9 @@
 			$row-gap: if(map-get($data, row-gap), map-get($data, row-gap), $row-gap);
 
 			#{$child}{
-				width: calc(100% / #{$newcol} - ((#{$col-gap} * #{$newcol - 1}) / #{$newcol}));
-				margin-right: $col-gap;
+				width: calc(100% / #{$newcol});
+				padding-right: $col-gap;
 				margin-bottom: $row-gap;
-
-				// Si le gap est changé, on le change pour toute les colonnes antérieures.
-				@if($gapChanged){
-					$break: false; // Il n'existe pas de break en SASS, on le fait donc custom.
-					@each $subBreakpoint, $subData in $passedBreakpoints{
-						@if($subBreakpoint == $breakpoint){
-							$break: true;
-						}
-
-						@if($break == false){
-							&:nth-child(#{map-get($subData, col)}n){ // reset toutes les valeurs précédentes au nouveau gap.
-								margin-right: $col-gap;
-							}
-						}
-					}
-				}@else{
-					&:nth-child(#{$oldcol}n){ // Reset valeur précédente seulement.
-						margin-right: $col-gap;
-					}
-				}
-
-				&:nth-child(#{$newcol}n){
-					margin-right: 0px;
-				}
 			}
 
 			$extras: if(map-get($data, extras), map-get($data, extras), null); // Permet l'ajout de style custom dans le media query.

@@ -33,6 +33,10 @@ body {
   font-weight: $font-weight-normal;
   line-height: var(--baseLineHeight);
 
+  @include media-breakpoint-down(md) {
+      overflow-x: hidden;
+  }
+
   @media screen and (min-width: 1921px){
       position: relative;
       max-width: var(--WidthContentArea);

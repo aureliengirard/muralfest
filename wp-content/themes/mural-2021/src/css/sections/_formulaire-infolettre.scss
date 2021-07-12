@@ -5,6 +5,7 @@
 
     .content{
         display: inherit;
+        flex-wrap: inherit;
 
         @include media-breakpoint-up(lg){
             margin: 0 $spacing*-3;
@@ -12,7 +13,7 @@
         }
     }
 
-    .col-md-4{
+    .col-xl-4{
         padding-left: $spacing * 3;
         padding-right: $spacing * 3;
     }
@@ -25,6 +26,10 @@
     }
 
     .newsletter__form {
+        @include media-breakpoint-between(md,lg){
+            margin-top: $spacing*2;
+        }
+
         [type="text"]:not(:active):not(:focus) {
             background-image: url('../../images/icon_letter.png');
             background-size: 38px 28px;
@@ -35,7 +40,10 @@
     }
 
     p{
-        font-size: 1.25em;
         margin: 0;
+
+        @include media-breakpoint-up(lg){
+            font-size: 1.25em;
+        }
     }
 }

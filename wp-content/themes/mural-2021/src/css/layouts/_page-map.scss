@@ -7,7 +7,17 @@
 
     .content{
         .artwork-col{
-            @include cdm-grid(5, ".artwork", 20px, 15px, ());
+            @include cdm-grid(5, ".artwork", 20px, 15px, (
+                1439px: (
+                    col: 4
+                ),
+                991: (
+                    col: 3
+                ),
+                767: (
+                    col: 2
+                )
+            ));
 
             .artwork{
                 span{

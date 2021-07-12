@@ -114,3 +114,25 @@ function get_back_button(){
 		echo '<a class="readmore back-btn" href="'. $url .'">< '. __('Back', 'custom_theme') .'</a>';
 	}
 }
+
+function language_selector($display = 'native_name'){
+    if(function_exists('icl_get_languages')){
+        $languages = icl_get_languages('skip_missing=0&orderby=code');
+        if(!empty($languages)){
+            foreach($languages as $l){
+                if(!$l['active']) {
+                    echo '<li><a href="'.$l['url'].'" class="lang"> ';
+                    echo $l[$display];
+                    echo '</a></li>';
+                }
+            }
+        }
+    }
+}
+if(!function_exists('language_selector')){
+	/**
+	 * Affiche un sélecteur de langue utilisant WPML.
+	 *
+	 * @var String $display Type d'affichage des langues. (ex: full name, code, flag, etc.)
+	 */
+}

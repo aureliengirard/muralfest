@@ -10,7 +10,6 @@
 	[class*="col-12"]{
 		position: relative;
 		display: inherit;
-		padding: 0;
 
 	}
 
@@ -18,9 +17,14 @@
 		.row {
 			background-size:cover;
 			background-position: center;
-			height:50vh;
-			max-height: 400px;
+			height:200px;
+			min-height: 200px;
 			@include align-items(center);
+
+			@include media-breakpoint-up(md) {
+				height:50vh;
+				max-height: 400px;
+			}
 
 			.banner-overlay{
 				h1{
@@ -96,6 +100,11 @@
 		.right-banner{
 			display:inherit;
 			padding: 0;
+
+			@include media-breakpoint-down(md){
+				display: none;
+			}
+
 			img{
 				width:100%;
 				margin: auto;
