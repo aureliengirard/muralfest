@@ -8,7 +8,7 @@
 
             {% set link = inner_item.bouton %}
             {%- if link -%}
-            <a class="button" href="{{link.url}}">{{link.title}}</a>
+                {%- include 'components/button.twig' with  { link_title: link.title, link_url: link.url, color_cta: "", add_icon: inner_item.add_icon, icon: inner_item.icon} -%}
             {%- endif -%}
         </div>
     </div>

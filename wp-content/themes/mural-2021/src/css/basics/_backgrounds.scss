@@ -18,10 +18,28 @@
             background-color: var(--couleurJaune);
             border-color: var(--couleurJaune);
 
+            svg{
+                fill: var(--couleurRouge);
+
+                path,
+                #fill{
+                    fill: var(--couleurRouge);
+                }
+            }
+
             @include hover-focus-active{
+                color: var(--couleurJaune);
                 background-color: var(--couleurRouge);
                 border-color: var(--couleurRouge);
-                color: var(--couleurJaune);
+
+                svg{
+                    fill: var(--couleurJaune);
+
+                    path,
+                    #fill{
+                        fill: var(--couleurJaune);
+                    }
+                }
             }
         }
     }
@@ -48,6 +66,24 @@
                 color: var(--couleurRouge);
                 background-color: var(--couleurJaune);
                 border-color: var(--couleurJaune);
+
+                svg{
+                    fill: var(--couleurRouge);
+
+                    path,
+                    #fill{
+                        fill: var(--couleurRouge);
+                    }
+                }
+            }
+
+            svg{
+                fill: var(--couleurJaune);
+
+                path,
+                #fill{
+                    fill: var(--couleurJaune);
+                }
             }
         }
     }
@@ -70,6 +106,15 @@
             color: var(--couleurJaune);
             border-color: var(--couleurBleu);
             background-color: var(--couleurBleu);
+
+            svg{
+                fill: var(--couleurJaune);
+
+                path,
+                #fill{
+                    fill: var(--couleurJaune);
+                }
+            }
 
             @include hover-focus-active{
                 background-color: var(--couleurRouge);

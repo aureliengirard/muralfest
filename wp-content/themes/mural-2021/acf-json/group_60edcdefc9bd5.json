@@ -3,33 +3,6 @@
     "title": "Style | Bouton",
     "fields": [
         {
-            "key": "field_60edcdf04d45c",
-            "label": "Couleur du CTA",
-            "name": "color_cta",
-            "type": "radio",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "white": "Blanc",
-                "yellow": "Jaune",
-                "red": "Rouge",
-                "blue": "Bleu",
-                "black": "Noir"
-            },
-            "allow_null": 0,
-            "other_choice": 0,
-            "default_value": "blanc",
-            "layout": "horizontal",
-            "return_format": "value",
-            "save_other_choice": 0
-        },
-        {
             "key": "field_60edcdf04d552",
             "label": "Ajouter un icone",
             "name": "add_icon",
@@ -106,5 +79,5 @@
     "hide_on_screen": "",
     "active": false,
     "description": "",
-    "modified": 1626198004
+    "modified": 1626207539
 }

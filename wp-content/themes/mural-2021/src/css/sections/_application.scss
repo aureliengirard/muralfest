@@ -3,6 +3,19 @@
 	overflow: visible;
 	padding: 0;
 
+	.app-image,
+	.app-info {
+		@include media-breakpoint-down(sm) {
+			padding-left: $spacing * 2;
+			padding-right: $spacing * 2;
+		}
+
+		@include media-breakpoint-only(md) {
+			padding-left: $spacing * 4;
+			padding-right: $spacing * 4;
+		}
+	}
+
 	.app-image{
 		flex: 100%;
 		position: relative;
@@ -30,19 +43,14 @@
 	}
 	.app-info{
 		flex: 100%;
-
-		@include media-breakpoint-down(md) {
-			padding-left: $spacing * 2;
-			padding-right: $spacing * 2;
-		}
+		display: inherit;
+		flex-flow: row wrap;
 
 		@include media-breakpoint-up(lg){
+			padding-left: $spacing-md;
 			flex: 80%;
 		}
 
-		display: inherit;
-		flex-flow: row wrap;
-		padding-left: $spacing-md;
 	}
 
 	.app-content{

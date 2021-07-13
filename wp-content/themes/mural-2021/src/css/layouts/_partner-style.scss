@@ -1,0 +1,26 @@
+.partners{
+
+    .section__title{
+        text-align: center;
+        margin-top: $spacing-xl
+    }
+
+    .tier{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+        align-items: center;
+
+        .partner{
+            padding: 20px 15px;
+            width:20%;
+
+            @media only screen and (max-width: 767px) {
+				padding-bottom:20px;
+                width: 50%;
+                text-align: center;
+			}
+        }
+    }
+}

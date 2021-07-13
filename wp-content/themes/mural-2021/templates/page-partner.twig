@@ -14,7 +14,10 @@
                     {% endif %}
                 {% endfor %}
                 {% if has_posts == true %}
-                <section class="tier row">
+                <div class="col-12 section__title">
+                    <h2>{{ item.title }}</h2>
+                </div>
+                <div class="col-12 tier">
                     {% for partenaire in partner_posts %}
                         {% if item.title in partenaire.terms|join(', ') %}
 
@@ -35,7 +38,7 @@
 
                         {% endif %}
                     {% endfor %}
-                </section>
+                </div>
                 {% endif %}
 
             {% endfor %}

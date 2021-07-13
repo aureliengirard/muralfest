@@ -81,15 +81,22 @@
 	.footer__partners {
 		flex: auto;
 	    max-width: max-content;
-		margin: 0 auto 0 5.2vw;
+		margin: 0 auto;
+
+		@include media-breakpoint-down(sm){
+			margin-top: $spacing*4;
+		}
 
 		@include media-breakpoint-up(lg){
-			margin: 0 auto;
 			max-width: 13%;
 		}
 
 		@include media-breakpoint-between(xl,xxl){
 			margin: 0 auto 0 3.9vw;
+		}
+
+		@include media-breakpoint-up(xxxl){
+			margin: 0 auto 0 5.2vw;
 		}
 
 		.footer__partners-wrapper {
@@ -118,6 +125,10 @@
 			font-weight: inherit;
 			margin-bottom: $spacing * 1.5;
 
+			@include media-breakpoint-down(sm){
+				text-align: center;
+			}
+
 			@include media-breakpoint-up(lg) {
 				margin-bottom: $spacing-md;
 			}
@@ -133,6 +144,10 @@
 
 		img{
 			height: auto;
+
+			@include media-breakpoint-down(sm){
+				margin: auto;
+			}
 
 			@include media-breakpoint-down(lg){
 				width: 100%;
@@ -202,9 +217,10 @@
 
 			@include media-breakpoint-down(sm){
 				font-size: 0.75em;
+				text-align: center;
 			}
 
-			@include media-breakpoint-down(xl){
+			@include media-breakpoint-between(md,xl){
 				font-size: 0.925em;
 			}
 

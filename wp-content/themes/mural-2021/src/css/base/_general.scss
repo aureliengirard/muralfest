@@ -64,13 +64,30 @@ body {
   }
 }
 
-img {
-    max-width: 100%;
+
+
+iframe{
+	max-width: 100%;
+}
+
+figure{
+	margin: 0;
+}
+
+img{
+	width: auto;
+	height: auto;
+	max-width: 100%;
     display: block;
 }
 
-section{
-    position: relative;
+main{
+	flex-grow: 1;
+}
+
+a{
+	outline: none !important;
+
 }
 
 .image__wrapper{

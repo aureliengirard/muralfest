@@ -17,30 +17,34 @@
             {% include '/components/single-navigation.twig' %}
 
             <section class="article__img row">
-                <figure>
-					{%- set img = Image(post.meta('image_a_la_une')) -%}
-					{%- set img_url = img.src -%}
-					{%- set reponsize_sizes = "1920,1440,1366,1280,1170,960,800,768,720,640,512,414,375,360" -%}
-					{%- include 'components/reponsive_img.twig' with  { img: img, img_url: img_url, reponsize_sizes: reponsize_sizes} -%}
-                </figure>
+                <div class="col-12">
+                    <figure>
+                        {%- set img = Image(post.meta('image_a_la_une')) -%}
+                        {%- set img_url = img.src -%}
+                        {%- set reponsize_sizes = "1920,1440,1366,1280,1170,960,800,768,720,640,512,414,375,360" -%}
+                        {%- include 'components/reponsive_img.twig' with  { img: img, img_url: img_url, reponsize_sizes: reponsize_sizes} -%}
+                    </figure>
+                </div>
 
             </section>
 
             <section class="content-blog row">
 
-                <div class="article__content">
-                    <h1>{{ post.title }}</h1>
+                <div class="col-12 article__content">
+                    <h1 class="sm">{{ post.title }}</h1>
                     <p>
                         <span class="date"><strong>{{ __('Date', 'site-theme') }}: </strong>{{ post.date | date('j F Y') }}</span> |
                         <span class="post-categories"><strong>{% if multiple_cat == true %}{{ __('Categories', 'site-theme') }}{% else %}{{ __('Category', 'site-theme') }}{% endif %}: </strong>
                             {%- for categorie in post.categories -%}<a href='{{categorie.link}}'>{{categorie.title}}</a>{% if loop.last == false %} - {% endif %}{%- endfor -%}
                         </span>
                     </p>
+                </div>
             </section>
 
             <section class="content-blog row">
-                    {% include "partial/parts.twig" %}
+                {% include "partial/parts.twig" %}
 
+                <div class="col-12">
                     {%- include 'components/module_share.twig' with  { link: post.link, title: post.title } -%}
                 </div>
 

@@ -3,8 +3,14 @@
 .content-wrapper{
     //max-width: 95%;
     max-width: var(--WidthContentArea);
+    min-height: 1px;
+	word-wrap: break-word;
+	background-color: #ffffff;
+	position: relative;
+	z-index: 1;
 
     section{
+        position: relative;
         margin-top: $spacing * 4;
         margin-bottom: $spacing * 4;
 

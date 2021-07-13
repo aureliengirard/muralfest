@@ -11,35 +11,37 @@
 {% set id = blog_post.id %}
 
 <div class="col-auto program card">
-    {% if thumbnail %}
-    <div class="card__header">
+    <div class="card__content">
+        {% if thumbnail %}
+        <div class="card__header">
 
-        <figure>
-            <a href="{{link}}">
-                <img class="lazyload"
+            <figure>
+                <a href="{{link}}">
+                    <img class="lazyload"
                     data-srcset="{{ thumbnail|resize(600, 400) }} 600w,{{ thumbnail|resize(380, 279) }} 380w,{{ thumbnail|resize(300, 200) }} 300w,{{ thumbnail|resize(150, 100) }} 150w,{{ thumbnail|resize(250, 166) }} 250w,{{ thumbnail|resize(175, 116) }} 175w"
                     data-sizes="auto"
                     width="380"
                     height="279"
                     alt="{{ title }}">
-            </a>
-        </figure>
-    </div>
-    {% endif %}
+                </a>
+            </figure>
+        </div>
+        {% endif %}
 
-    <div class="description card__body">
-        <h3><a href="{{link}}">{{title}}</a></h3>
-        <p class="event-infos">
-            <span class="date">
-            {%- if date_de_fin != event_date -%}
-                {{- event_date | date('j F') }} {{__('to', 'dates événement', 'site-theme')}} {{ date_de_fin | date('j F Y') }}
-            {%- else -%}
-                {{- event_date | date('j F, Y') }}
-            {%- endif -%}
-            </span>
-            <span class="venue">{{lieu.title}}</span>
-        </p>
-        <p>{{preview|truncate(60)}}</p>
-        <a class="readmore" href="{{link}}">{{__('Learn more +', 'site-theme')}}</a>
+        <div class="description card__body">
+            <h3><a href="{{link}}">{{title}}</a></h3>
+            <p class="event-infos">
+                <span class="date">
+                    {%- if date_de_fin != event_date -%}
+                    {{- event_date | date('j F') }} {{__('to', 'dates événement', 'site-theme')}} {{ date_de_fin | date('j F Y') }}
+                    {%- else -%}
+                    {{- event_date | date('j F, Y') }}
+                    {%- endif -%}
+                </span>
+                <span class="venue">{{lieu.title}}</span>
+            </p>
+            <p>{{preview|truncate(60)}}</p>
+            <a class="readmore" href="{{link}}">{{__('Learn more +', 'site-theme')}}</a>
+        </div>
     </div>
 </div>

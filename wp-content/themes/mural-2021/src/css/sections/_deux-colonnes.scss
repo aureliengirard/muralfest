@@ -1,0 +1,9 @@
+.deux_colonnes {
+    .col__wrapper{
+        .col-md-6:nth-child(2){
+            @include media-breakpoint-down(sm){
+                margin-top: $spacing*2;
+            }
+        }
+    }
+}
