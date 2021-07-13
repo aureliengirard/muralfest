@@ -33,7 +33,7 @@
                 <div class="col-12 article__content">
                     <h1 class="sm">{{ post.title }}</h1>
                     <p>
-                        <span class="date"><strong>{{ __('Date', 'site-theme') }}: </strong>{{ post.date | date('j F Y') }}</span> |
+                        <span class="date"><strong>{{ __('Date', 'site-theme') }}: </strong>{{ post.date | date('j F Y') }}</span><span class="divider"> | </span>
                         <span class="post-categories"><strong>{% if multiple_cat == true %}{{ __('Categories', 'site-theme') }}{% else %}{{ __('Category', 'site-theme') }}{% endif %}: </strong>
                             {%- for categorie in post.categories -%}<a href='{{categorie.link}}'>{{categorie.title}}</a>{% if loop.last == false %} - {% endif %}{%- endfor -%}
                         </span>

@@ -137,6 +137,11 @@
 
 	.footer__logo{
 		flex: auto;
+	    max-width: max-content;
+
+		@include media-breakpoint-only(md){
+			margin-right: auto;
+		}
 
 		@include media-breakpoint-up(lg) {
 			max-width: 14%;
@@ -168,6 +173,10 @@
 			order: -1;
 			margin-bottom: $spacing*4;
 			min-width: 100%;
+		}
+
+		@include media-breakpoint-only(md){
+			margin-right: 0;
 		}
 
 		li{

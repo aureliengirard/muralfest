@@ -72,13 +72,18 @@
     }
 
     .content-blog{
-        figure{
-
-            img{
-                margin-left: auto;
-                margin-right: auto;
+        .date,.post-categories{
+            @include media-breakpoint-down(sm){
+                display: block;
             }
         }
+        
+        .divider{
+            @include media-breakpoint-down(sm){
+                display: none;
+            }
+        }
+
     }
     .blog-categories{
         a{

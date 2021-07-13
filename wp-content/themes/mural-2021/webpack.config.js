@@ -60,7 +60,8 @@ const config = {
         new MiniCssExtractPlugin({
             filename: "css/[name].min.css"
         })
-    ]
+    ],
+    mode: 'development'
     //devtool: 'inline-source-map'
 };
 module.exports = config;

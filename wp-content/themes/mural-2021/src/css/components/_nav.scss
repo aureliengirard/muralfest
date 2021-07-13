@@ -1,8 +1,5 @@
 
 // STYLING NAV IN GENERAL.
-nav{
-}
-
 %nav-link {
     display: block;
     text-decoration: none;
@@ -83,7 +80,52 @@ nav{
     top: 0;
     width: 100%;
     z-index: 101;
-    transition: background .25s ease;
+    transition: all .15s ease;
+    background-color: var(--couleurBlanc);
+
+    &.is_sticky{
+        position: fixed;
+
+        .container-fluid {
+            -webkit-box-shadow: 0px 10px 15px -5px rgba(0,0,0,.25);
+            -moz-box-shadow: 0px 10px 15px -5px rgba(0,0,0,.25);
+            box-shadow: 0px 10px 15px -5px rgba(0,0,0,.25);
+
+            @include media-breakpoint-only(lg) {
+                padding: $spacing*2 $spacing*3;
+            }
+
+            @include media-breakpoint-between(xl,xxl){
+                padding: $spacing-md $spacing*4;
+            }
+
+            @include media-breakpoint-up(xxxl){
+                padding: $spacing-md $spacing*6;
+            }
+        }
+
+        & + main{
+            @include media-breakpoint-down(sm){
+                margin-top: $spacing*8;
+            }
+
+            @include media-breakpoint-only(md){
+                margin-top: $spacing-xl*2;
+            }
+
+            @include media-breakpoint-only(lg) {
+                margin-top: $spacing*10.4;
+            }
+
+            @include media-breakpoint-between(xl,xxl){
+                margin-top: $spacing*12.8;
+            }
+
+            @include media-breakpoint-up(xxxl){
+                margin-top: $spacing*14.5;
+            }
+        }
+    }
 
     @include media-breakpoint-up(lg){
         left: 0;
@@ -96,6 +138,7 @@ nav{
         @include align-items(center);
         @include justify-content(space-between);
         max-width: var(--WidthNavArea);
+        @include hover-transition(padding,0.15s);
 
         @include media-breakpoint-down(md){
             max-width: 100vw;
@@ -114,71 +157,78 @@ nav{
             padding: $spacing-xl $spacing*6;
         }
     }
+}
 
-    &-expand-lg {
-        .navbar-collapse{
+.navbar-collapse {
+    @include media-breakpoint-up(lg) {
+        flex: auto;
+        display: inherit;
+        flex-flow: wrap;
+    }
 
-            @include media-breakpoint-down(md) {
-                @include flexbox;
-                @include flex-flow(column);
-                padding: $spacing*3 $spacing*2 $spacing*4;
-                background: var(--couleurBlanc);
-                position: fixed;
-                top: $spacing-xl*2.8;
-                left: 20%;
-                width: 80%;
-                bottom: 0;
-                z-index: 1001;
-                min-height: calc(100vh - 100px);
-                transform: translateX(0);
-                transition: transform 0.2s cubic-bezier(0.9, 0, 0.1, 0.9);
-                overflow-y: scroll;
-                border-left: 1px solid var(--couleurNoir);
+    .nav-item:not(.nav-item-child){
+        @include media-breakpoint-down(md) {
+            width: 100%;
+        }
+    }
 
-                &:not(.show) {
-                    transform: translateX(100%);
-                }
+    .nav-item-child .nav-link{
+        font-size: inherit;
+    }
 
-                .admin-bar & {
-                    top: $spacing-xl*2 + 46px;
-                    min-height: calc(100vh - 145px);
-                    top: $spacing-xl*2.8 + 32px;
+    @include media-breakpoint-down(md) {
+        @include flexbox;
+        @include flex-wrap(wrap);
+        padding: $spacing*3 $spacing*2 $spacing*4;
+        background: var(--couleurBlanc);
+        position: fixed;
+        top: $spacing-xl*2.4;
+        left: 20%;
+        width: 80%;
+        bottom: 0;
+        z-index: 1001;
+        min-height: calc(100vh - 100px);
+        transform: translateX(0);
+        transition: transform 0.2s cubic-bezier(0.9, 0, 0.1, 0.9);
+        overflow-y: scroll;
+        border-left: 1px solid var(--couleurNoir);
+        @include hover-transition(0.15s,top);
 
-                    @include media-breakpoint-down(sm){
-                        top: $spacing-xl*2 + 46px;
-                    }
-                }
-            }
-
-            @include media-breakpoint-down(sm){
-                top: $spacing-xl*2;
-            }
+        &:not(.show) {
+            transform: translateX(100%);
         }
 
-        @include media-breakpoint-up(lg) {
+        .admin-bar & {
+            top: $spacing-xl*2.4 + 32px;
+            min-height: calc(100vh - 145px);
+        }
 
-            .navbar-toggler {
-                display: none
+        .is_sticky & {
+            z-index: -1;
+            top: $spacing-xl*2;
+
+            .admin-bar & {
+                top: $spacing-xl*2 + 32px;
+                min-height: calc(100vh - 145px);
             }
         }
     }
 
-    &-collapse {
-        @include media-breakpoint-up(lg) {
-            flex: auto;
-            display: inherit;
-            flex-flow: wrap;
+    @include media-breakpoint-down(sm){
+        top: $spacing*9;
+
+        .admin-bar &{
+            min-height: calc(100vh - 146px);
+            top: $spacing-xl*2 + 46px;
         }
 
+        .is_sticky &{
+            top: $spacing*8;
 
-        .nav-item:not(.nav-item-child){
-            @include media-breakpoint-down(md) {
-                width: 100%;
+            .admin-bar & {
+                min-height: calc(100vh - 126px);
+                top: $spacing*8 + 46px;
             }
-        }
-
-        .nav-item-child .nav-link{
-            font-size: inherit;
         }
     }
 }
@@ -197,6 +247,10 @@ nav{
 
     @include hover-focus() {
         text-decoration: none;
+    }
+
+    @include media-breakpoint-up(lg) {
+        display: none
     }
 
     &-icon {
@@ -223,7 +277,6 @@ nav{
     }
 }
 
-
 .navbar-brand{
     display: inline-block;
     line-height: inherit;
@@ -236,13 +289,21 @@ nav{
     img{
         height: auto;
         width: auto;
+        @include hover-transition;
 
         @include media-breakpoint-down(md){
             height: 80px;
+            .is_sticky &{
+                height: 60px;
+            }
         }
 
         @include media-breakpoint-down(sm){
-            height: 60px;
+            height: 50px;
+
+            .is_sticky &{
+                height: 40px;
+            }
         }
 
         @include media-breakpoint-only(lg){
@@ -255,14 +316,19 @@ nav{
 .navbar-extra,
 .navbar-nav{
     @include flexbox;
-    @include align-items(center);
-    @include flex-direction(column);
-    padding-left: 0;
-    margin-bottom: 0;
-    list-style: none;
+
+    @include media-breakpoint-down(md){
+        @include flex-flow(wrap);
+        flex: 100%;
+        min-width: 100%;
+    }
 
     @include media-breakpoint-up(lg){
-        flex-direction: row;
+        @include align-items(center);
+        @include flex-direction(row);
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
     }
 }
 
@@ -324,12 +390,6 @@ nav{
 
         &-link{
             @extend %nav-link;
-
-            .is_sticky &{
-                @include media-breakpoint-up(lg){
-                    font-size: 14px;
-                }
-            }
         }
 
     }
@@ -531,10 +591,18 @@ nav{
     }
 
     .nav-item{
+        overflow: hidden;
+        @include hover-transition;
+        max-height: 100%;
+
         &:nth-last-child(n+2) {
             @include media-breakpoint-up(lg) {
                 margin-right: $spacing * 2;
             }
+        }
+
+        .is_sticky &{
+            max-height: 0;
         }
     }
 }
