@@ -94,6 +94,7 @@
             margin-right: $spacing * 2;
             flex: 1 1 auto;
             width: auto !important;
+            max-width: 33%;
 
             .select2-selection{
                 padding:$spacing $spacing*4;

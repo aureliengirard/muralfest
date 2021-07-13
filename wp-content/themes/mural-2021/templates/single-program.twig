@@ -57,18 +57,18 @@
                     </p>
 
                     {% if has_artists == true %}
-                    <h3 class="artist">
+                    <h4 class="artist">
                         <span>{{ __('By:', 'site-theme') }}</span>
                         {% for artist in artists %}
                         <a href="{{artist.link}}">{{artist.title}}</a>
                         {%- if loop.index == 2 %} {{ __('and', 'site-theme') }} {% elseif loop.last == false %}, {% endif %}
                         {% endfor %}
-                    </h3>
+                    </h4>
                     {% endif %}
 
                     <div class="article__cta">
                     {% if post.lien_billets %}
-                    <a class="button smaller" href="{{post.lien_billets}}" target="_blank" rel="nofollow">{{ __('Buy your ticket', 'site-theme') }}</a>
+                    <a class="button smaller btn__has-icon btn--ticket btn--red" href="{{post.lien_billets}}" target="_blank" rel="nofollow">{%- include "/svg/icon_shop.svg" -%} {{ __('Buy your ticket', 'site-theme') }}</a>
                     {% endif %}
 
                     {% if post.lien_evenement_facebook %}

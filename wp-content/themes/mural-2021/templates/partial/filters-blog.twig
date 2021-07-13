@@ -1,26 +1,28 @@
 <section class="filters">
     <div class="content row">
-        <form class="program-filters" action="{{ page.link }}">
+        <div class="col-12">
+            <form class="program-filters" action="{{ page.link }}">
 
-            <select name="category" placeholder="{{ __('Categories', 'site-theme') }}">
+                <select name="category" placeholder="{{ __('Categories', 'site-theme') }}">
 
-                 <option value=""></option>
+                     <option value=""></option>
 
-                 {% for term in terms %}
-                    {% set selected = false %}
-                    {% if caterogy_value == term %}
-                        {% set selected = true %}
-                    {% endif %}
+                     {% for term in terms %}
+                        {% set selected = false %}
+                        {% if caterogy_value == term %}
+                            {% set selected = true %}
+                        {% endif %}
 
-                    <option value="{{term.title | replace({' ': '-'}) }}" {%- if selected == true %} selected="selected"{% endif %}>{{ term.title }}</option>
+                        <option value="{{term.title | replace({' ': '-'}) }}" {%- if selected == true %} selected="selected"{% endif %}>{{ term.title }}</option>
 
-                 {% endfor %}
+                     {% endfor %}
 
-            </select>
+                </select>
 
-            {% do fn('wp_reset_postdata') %}
+                {% do fn('wp_reset_postdata') %}
 
-            <button type="submit" class="button">{{ __('Filter', 'site-theme') }}</button>
-        </form>
+                <button type="submit" class="button">{{ __('Filter', 'site-theme') }}</button>
+            </form>
+        </div>
     </div>
 </section>

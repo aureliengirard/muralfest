@@ -7,20 +7,6 @@ const functionsInit = function() {
         }
     });
 
-    /*
-    $(document).ready(function(){
-      $(".dropdown a").click(function(e){
-          e.stopPropagation();
-          let nextEl = this.nextElementSibling;
-          if(nextEl.classList.contains('show')){
-              nextEl.classList.remove('show');
-          } else{
-              nextEl.classList.add('show');
-          }
-      });
-    });
-    */
-
     var gallery_popup = $('.gallery');
     gallery_popup.magnificPopup({
         delegate: 'a',

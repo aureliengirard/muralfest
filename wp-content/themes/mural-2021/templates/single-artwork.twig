@@ -9,8 +9,8 @@
 
         {% include '/components/single-navigation.twig' %}
 
-        <section class="col-wrapper">
-            <div class="left-col">
+        <section class="col-wrapper article__header row">
+            <div class="col-lg-6 left-col">
                 <figure>
                     {%- set img = TimberImage(post.image_de_loeuvre) -%}
                     {% set thumbnail = Image(img).src %}
@@ -22,11 +22,12 @@
                         alt="{{ post.title }}">
                 </figure>
             </div>
-            <div class="right-col">
+            <div class="col-lg-6 right-col">
                 <h1>{{post.title}}</h1>
 
                 <h3 class="artist">
-                    <span>{{ __('By:', 'site-theme') }}</span> <a href="{{ artiste.link }}">{{ artiste.title }}</a></h3>
+                    <span>{{ __('By:', 'site-theme') }}</span> <a href="{{ artiste.link }}">{{ artiste.title }}</a>
+                </h3>
                 <p class="date">{{ __('Year of completion:', 'site-theme') }} {{post.annee}}</p>
 
                 {% if post.ajoute_description == true %}
@@ -41,7 +42,6 @@
     </div>
 </div>
 {% endblock %}
-
 
 {% block map_scripts %}
     <script type="text/javascript" id="map-single-artwork">

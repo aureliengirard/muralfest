@@ -7,7 +7,7 @@
 {% if page.content %}
     <section class="basic-content">
         <div class=" row">
-            <div class="rte">
+            <div class="col-12 rte">
                 {{ page.content }}
             </div>
         </div>
@@ -21,7 +21,7 @@
 
         {% if artist_posts -%}
 
-            <section class="row artists card__wrapper">
+            <section class="artists">
 
                 {%- for artist_post in artist_posts %}
 
@@ -30,7 +30,7 @@
                     {% if current_year == NULL %}
                         {% set current_year = artist_year %}
                         <div class="row">
-                            <div class="section__title">
+                            <div class="col-12 section__title">
                                 <h2 class="lg artists-year">{{current_year}}</h2>
                             </div>
                         </div>

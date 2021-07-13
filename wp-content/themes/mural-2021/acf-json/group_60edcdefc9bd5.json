@@ -1,11 +1,11 @@
 {
-    "key": "group_5ad7430b51700",
-    "title": "Style | Background",
+    "key": "group_60edcdefc9bd5",
+    "title": "Style | Bouton",
     "fields": [
         {
-            "key": "field_5ad627e392d43",
-            "label": "Couleur",
-            "name": "couleur",
+            "key": "field_60edcdf04d45c",
+            "label": "Couleur du CTA",
+            "name": "color_cta",
             "type": "radio",
             "instructions": "",
             "required": 0,
@@ -19,7 +19,8 @@
                 "white": "Blanc",
                 "yellow": "Jaune",
                 "red": "Rouge",
-                "blue": "Bleu"
+                "blue": "Bleu",
+                "black": "Noir"
             },
             "allow_null": 0,
             "other_choice": 0,
@@ -29,13 +30,21 @@
             "save_other_choice": 0
         },
         {
-            "key": "field_5ad64c6f5c5db",
-            "label": "Ajouter une image",
-            "name": "ajouter_une_image",
+            "key": "field_60edcdf04d552",
+            "label": "Ajouter un icone",
+            "name": "add_icon",
             "type": "true_false",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_60edcdf04d45c",
+                        "operator": "==",
+                        "value": "white"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -48,16 +57,16 @@
             "ui_off_text": ""
         },
         {
-            "key": "field_5ad6283892d44",
-            "label": "Image de fond",
-            "name": "image_de_fond",
-            "type": "image",
-            "instructions": "L'image doit avoir une hauteur supérieur au contenu.",
-            "required": 1,
+            "key": "field_60edce4a945f3",
+            "label": "Choix de l'icone",
+            "name": "icon",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
             "conditional_logic": [
                 [
                     {
-                        "field": "field_5ad64c6f5c5db",
+                        "field": "field_60edcdf04d552",
                         "operator": "==",
                         "value": "1"
                     }
@@ -68,16 +77,16 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "id",
-            "preview_size": "thumbnail",
-            "library": "all",
-            "min_width": 1920,
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
+            "choices": {
+                "shop": "Panier",
+                "ticket": "Billet"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "blanc",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
         }
     ],
     "location": [
@@ -97,5 +106,5 @@
     "hide_on_screen": "",
     "active": false,
     "description": "",
-    "modified": 1626197700
+    "modified": 1626198004
 }

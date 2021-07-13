@@ -1,0 +1,24 @@
+
+/// Style breadcrumb et bouton de retour
+.content-wrapper .single-navigation{
+	display: flex;
+	justify-content: space-between;
+	margin-top: $spacing * 4;
+    margin-bottom: 0;
+
+	.breadcrumb{
+        text-align: right;
+
+		a {
+			font-weight: 500;
+
+			@include hover-focus{
+				color: var(--couleurBleu) !important;
+			}
+
+			&:visited {
+				color: inherit;
+			}
+		}
+	}
+}

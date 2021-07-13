@@ -8,16 +8,6 @@
             flex-direction: column;
         }
 
-        .left-col,
-        .right-col{
-            max-width: 50%;
-            flex: 50%;
-            @include media-screen(){
-                width: 100%;
-                flex: 100%;
-            }
-        }
-
         .right-col{
             padding-left: 30px;
             @include media-screen(){
@@ -34,8 +24,8 @@
     }
 
     .article__cta {
-        margin-bottom: -$spacing;
         margin-top: $spacing*2;
+        margin-bottom: $spacing*2;
 
         .button{
             padding: $spacing * 1.5;
@@ -51,74 +41,48 @@
                 margin-right: 0;
             }
         }
+
+        .btn__has-icon{
+
+            svg{
+                transform: translateX(-10px);
+            }
+        }
     }
 
-    .artist{
+    .artist,
+    .styles,
+    .country{
+        font-weight: 700;
+
         span{
+            font-size: 0.6em;
             font-weight: 400;
         }
     }
-}
 
-.single-post{
-	.content-wrapper{
-		section{
-			.content-blog{
-                figure{
+    .content-blog{
+        figure{
 
-                    img{
-                        margin-left: auto;
-                        margin-right: auto;
-                    }
-                }
-			}
-			.blog-categories{
-				a{
-					font-size: 1.6rem;
+            img{
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    }
+    .blog-categories{
+        a{
+            font-size: 1.6rem;
+        }
+    }
 
-				}
-			}
-		}
-		.sharing{
-			display:inline-block;
-			text-align:center;
-			width:100%;
-			margin-bottom:20px;
+    .program-description {
+        &:nth-last-child(n+2){
+            margin-bottom: $spacing*4;
+        }
 
-			p{
-				margin-bottom:1em;
-			}
-
-			i{
-				font-size:2.5rem;
-			}
-		}
-		.col-wrapper{
-			display: flex;
-
-			.left-col{
-				max-width: 50%;
-			}
-			.right-col{
-				padding-left: 30px;
-
-				.content{
-					padding-left: 0;
-					padding-right: 0;
-				}
-			}
-
-			@include media-screen(){
-				flex-direction: column;
-
-				.left-col{
-					max-width: none;
-				}
-
-				.right-col{
-					padding-left: 0;
-				}
-			}
-		}
-	}
+        & + section {
+            margin-top: 0;
+        }
+    }
 }

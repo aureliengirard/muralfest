@@ -34,7 +34,7 @@
 @import 'Base/_grid.scss';
 
 // Components
-@import 'components/_breadcrumb.scss';
+//@import 'components/_breadcrumb.scss';
 @import 'components/_buttons.scss';
 @import 'components/_card.scss';
 @import 'components/_embed.scss';
@@ -48,6 +48,7 @@
 @import 'components/_magnificPopup.scss';
 @import 'components/_module_share.scss';
 @import 'components/_pagination.scss';
+@import 'components/_single-navigation.scss';
 
 // Sections
 .content-wrapper{
@@ -59,6 +60,7 @@
     @import 'sections/_evenements-a-venir.scss';
     @import 'sections/_formulaire-infolettre.scss';
     @import 'sections/_galerie.scss';
+    @import 'sections/_image_et_texte.scss';
     @import 'sections/_image-pleine-largeur.scss';
     @import 'sections/_partenaires.scss';
     @import 'sections/_section-banner.scss';

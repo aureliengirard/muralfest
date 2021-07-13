@@ -8,7 +8,7 @@
 
         <section class="col-wrapper article__header row">
 
-            <div class="col left-col">
+            <div class="col-lg-6 left-col">
                 <figure>
                     {% set thumbnail = Image(image_id).src %}
                     <img class="lazyload"
@@ -20,16 +20,16 @@
                 </figure>
             </div>
 
-            <div class="col right-col">
+            <div class="col-lg-6 right-col">
                 <h1>{{post.title}}</h1>
 
                 {% set country = post.pays_dorigine %}
                 {% if post.terms %}
-                    <h3 class="styles">{{ post.terms( {query:{taxonomy:'style', orderby:'name', order: 'ASC'}} )|join(', ') }}</h3>
+                    <h4 class="styles">{{ post.terms( {query:{taxonomy:'style', orderby:'name', order: 'ASC'}} )|join(', ') }}</h4>
                 {% endif %}
 
                 {% if country %}
-                    <p class="country country_{{site.language}}"><span>{{ __('Native country:', 'site-theme') }}</span> {% if 'fr_' in site.language %}{{ country_fr }}{% else %}{{ country_en }}{% endif %}</p>
+                    <h4 class="country country_{{site.language}}"><span>{{ __('Native country:', 'site-theme') }}</span> {% if 'fr_' in site.language %}{{ country_fr }}{% else %}{{ country_en }}{% endif %}</h4>
                 {% endif %}
 
                 <div class="article__cta">
@@ -49,16 +49,18 @@
                     <a class="button btn--sm twitter artist-socials" href="{{post.twitter}}" target="_blank" rel="nofollow">{{ __('Twitter', 'site-theme') }}</a>
                     {% endif %}
 
-                    {%- include 'components/module_share.twig' with  { link: post.link, title: post.title } -%}
                 </div>
+
+                <div class="bio article__content">
+                    {{ post.meta('biographie') }}
+                </div>
+
+                {%- include 'components/module_share.twig' with  { link: post.link, title: post.title } -%}
             </div>
 
         </section>
-
-        <section class="bio row article__content">
-            {{ post.meta('biographie') }}
-        </section>
     </div>
+
     <div class="post-nav-wrapper">
         <div class="arrow-container prev-link"><a href="{{post.prev.link}}"><i class="far fa-angle-left"></i> <span>{{post.prev.title}}</span></a></div>
         <div class="arrow-container next-link"><a href="{{post.nest.link}}"><i class="far fa-angle-right"></i> <span>{{post.next.title}}</span></a></div>

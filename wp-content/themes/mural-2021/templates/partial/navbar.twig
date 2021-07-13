@@ -5,7 +5,7 @@
             {% if fn('is_front_page') %}
                 <h1>
             {% endif %}
-                <img src="{{TimberImage(options.logo).src| resize(0,115) }}" alt="{{site.title}}">
+                <img src="{{TimberImage(options.logo).src| resize(0,115) }}" alt="{{site.title}}" width="{{ TimberImage(options.logo).width | resize(0,115) }}" height="115">
             {% if fn('is_front_page') %}
                 </h1>
             {% endif %}
@@ -66,7 +66,7 @@
             <ul class="navbar-extra">
                 {% if options.nav_shop %}
                 <li class="nav-item">
-                    <a class="button btn--black btn__has-icon" href="{{ options.nav_shop.url }}">{%- include "/svg/icon_shop.svg" -%} {{ options.nav_shop.title }}</a>
+                    <a class="button btn--black btn__has-icon btn--ticket" href="{{ options.nav_shop.url }}">{%- include "/svg/icon_shop.svg" -%} {{ options.nav_shop.title }}</a>
                 </li>
                 {% endif %}
                 {% if options.nav_tickets %}

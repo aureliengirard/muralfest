@@ -1,0 +1,35 @@
+{% set link = inner_item.bouton %}
+{% set image_block %}
+	<div class="col-lg-6 image-container">
+		{%- set img = TimberImage(inner_item.image) -%}
+		{%- set img_url = img.src -%}
+		{%- set reponsize_sizes = "1920,1440,1366,1280,960,800,768,720,640,512,414,375,360" -%}
+
+		{%- include 'components/reponsive_img.twig' with  { img: img, img_url: img_url, reponsize_sizes: reponsize_sizes} -%}
+	</div>
+{% endset %}
+
+{% set text_block %}
+	<div class="col-lg-6 rte">
+		{% if inner_item.titre_section %}
+			<h2 class="lg">{{inner_item.titre_section}}</h2>
+		{% endif %}
+
+		{{inner_item.texte}}
+
+		{%- if link -%}
+		{%- include 'components/button.twig' with  { link_title: link.title, link_url: link.url, color_cta: inner_item.color_cta, add_icon: inner_item.add_icon, icon: inner_item.icon} -%}
+		<a class="button" href="{{link.url}}">{{link.title}}</a>
+		{%- endif -%}
+	</div>
+{% endset %}
+
+<div class="row full-width content">
+	{% if inner_item.img_position == false %}
+		{{image_block}}
+		{{text_block}}
+	{% else %}
+		{{text_block}}
+		{{image_block}}
+	{% endif %}
+</div>

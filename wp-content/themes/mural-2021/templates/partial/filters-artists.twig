@@ -1,25 +1,27 @@
 
 <section class="filters">
     <div class="content row">
-        <form class="program-filters artist-filters" action="{{ page.link }}">
+        <div class="col-12">    
+            <form class="program-filters artist-filters" action="{{ page.link }}">
                 <select name="years" id="filter-years" placeholder="{{ __('Years', 'site-theme') }}">
 
-                   <option value=""></option>
+                    <option value=""></option>
 
-                   {% for year in years %}
-                       {% set selected = false %}
-                       {% if year_value == year %}
-                           {% set selected = true %}
-                       {% endif %}
+                    {% for year in years %}
+                    {% set selected = false %}
+                    {% if year_value == year %}
+                    {% set selected = true %}
+                    {% endif %}
 
-                       <option value="{{ year }}" {%- if selected == true %} selected="selected"{% endif %}>{{ year }}</option>
-                   {% endfor %}
+                    <option value="{{ year }}" {%- if selected == true %} selected="selected"{% endif %}>{{ year }}</option>
+                    {% endfor %}
 
                 </select>
 
-            {% do fn('wp_reset_postdata') %}
+                {% do fn('wp_reset_postdata') %}
 
-            <button type="submit" class="button">{{ __('Filter', 'site-theme') }}</button>
-        </form>
+                <button type="submit" class="button">{{ __('Filter', 'site-theme') }}</button>
+            </form>
+        </div>
     </div>
 </section>

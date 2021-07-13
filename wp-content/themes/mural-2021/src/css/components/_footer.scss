@@ -81,10 +81,15 @@
 	.footer__partners {
 		flex: auto;
 	    max-width: max-content;
+		margin: 0 auto 0 5.2vw;
 
-		@include media-breakpoint-up(md){
+		@include media-breakpoint-up(lg){
+			margin: 0 auto;
+			max-width: 13%;
+		}
 
-			margin: 0 auto 0 5.2vw;
+		@include media-breakpoint-between(xl,xxl){
+			margin: 0 auto 0 3.9vw;
 		}
 
 		.footer__partners-wrapper {
@@ -92,6 +97,10 @@
 				margin-bottom: $spacing-md;
 
 				@include media-breakpoint-up(lg) {
+					margin-bottom: $spacing * 3.75;
+				}
+
+				@include media-breakpoint-up(xl) {
 					margin-bottom: $spacing-xl;
 				}
 			}
@@ -117,23 +126,17 @@
 
 	.footer__logo{
 		flex: auto;
-		max-width: max-content;
+
+		@include media-breakpoint-up(lg) {
+			max-width: 14%;
+		}
 
 		img{
-			width: 130px;
 			height: auto;
 
-			@include media-breakpoint-only(md){
-				width: 160px;
-			}
-
-			@include media-breakpoint-only(lg){
-				width: 195px;
-			}
-
-			@include media-breakpoint-up(xl){
-				height: 100px;
-				width: auto;
+			@include media-breakpoint-down(lg){
+				width: 100%;
+				max-width: fit-content;
 			}
 		}
 	}
@@ -154,6 +157,10 @@
 
 		li{
 			margin: 0 $spacing*1;
+
+			@include media-breakpoint-between(lg,xl){
+				margin: 0 $spacing*0.75;
+			}
 		}
 
 		a:hover {
@@ -168,8 +175,12 @@
 		@include media-breakpoint-down(md){
 			display: none;
 		}
+		@include media-breakpoint-between(md,xl) {
+			flex: auto;
+			max-width: 50%;
+		}
 
-		@include media-breakpoint-up(lg) {
+		@include media-breakpoint-up(xxl) {
 			flex: 45%;
 			max-width: 45%;
 		}
@@ -193,12 +204,20 @@
 				font-size: 0.75em;
 			}
 
+			@include media-breakpoint-down(xl){
+				font-size: 0.925em;
+			}
+
 			@include media-breakpoint-between(lg,xxxl){
+				padding: 0 $spacing*0.5;
+			}
+
+			@include media-breakpoint-up(xl){
 				padding: 0 1.125vw;
 			}
 
 			@include media-breakpoint-up(xxxl){
-				padding: 0 1.1vw;
+				padding: 0 $spacing;
 			}
 
 			&:nth-last-child(1){

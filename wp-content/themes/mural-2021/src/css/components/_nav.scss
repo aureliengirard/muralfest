@@ -56,9 +56,14 @@ nav{
     @include media-breakpoint-up(lg){
         font-weight: 600;
 
-        .is_sticky &{
+        /*.is_sticky &{
             font-size: 14px;
-        }
+        }*/
+    }
+
+    @include media-breakpoint-down(md){
+        color: var(--couleurGris);
+        padding-left: $spacing;
     }
 
     &:visited{
@@ -119,7 +124,7 @@ nav{
                 padding: $spacing*3 $spacing*2 $spacing*4;
                 background: var(--couleurBlanc);
                 position: fixed;
-                top: $spacing-xl*2;
+                top: $spacing-xl*2.8;
                 left: 20%;
                 width: 80%;
                 bottom: 0;
@@ -137,7 +142,16 @@ nav{
                 .admin-bar & {
                     top: $spacing-xl*2 + 46px;
                     min-height: calc(100vh - 145px);
+                    top: $spacing-xl*2.8 + 32px;
+
+                    @include media-breakpoint-down(sm){
+                        top: $spacing-xl*2 + 46px;
+                    }
                 }
+            }
+
+            @include media-breakpoint-down(sm){
+                top: $spacing-xl*2;
             }
         }
 
@@ -188,7 +202,6 @@ nav{
     &-icon {
         display: inline-block;
         width: 36px;
-        height: 12px;
         vertical-align: middle;
         content: "";
         background: no-repeat center center;
@@ -216,22 +229,24 @@ nav{
     line-height: inherit;
     white-space: nowrap;
 
-    img{
-        transition: all .25s ease;
-        width: 130px;
-        height: auto;
+    @include media-breakpoint-up(lg){
+        max-width: 14%;
+    }
 
-        @include media-breakpoint-only(md){
-            width: 160px;
+    img{
+        height: auto;
+        width: auto;
+
+        @include media-breakpoint-down(md){
+            height: 80px;
+        }
+
+        @include media-breakpoint-down(sm){
+            height: 60px;
         }
 
         @include media-breakpoint-only(lg){
-            width: 195px;
-        }
-
-        @include media-breakpoint-up(xl){
-            height: 100px;
-            width: auto;
+            width: 100%;
         }
     }
 }
@@ -245,12 +260,6 @@ nav{
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
-
-    @include media-breakpoint-only(md){
-        max-width: 450px;
-        margin: auto;
-        height: 100%;
-    }
 
     @include media-breakpoint-up(lg){
         flex-direction: row;
@@ -348,16 +357,18 @@ nav{
 
             @include media-breakpoint-up(lg){
                 position: absolute;
-                top: calc(100% + 15px);
+                top: calc(100% + #{$spacing*2});
                 left: 0;
                 right: 1px;
-                padding-left: 55px;
                 display: none;
                 z-index: 999;
                 width: 100%;
-                padding: $spacing*2 0  $spacing*2  $spacing*5.5;
+                padding: $spacing*2 $spacing*3.5 $spacing*2 $spacing*5.5;
                 margin: 0;
                 background-color: rgba(255,255,255,1);
+                -webkit-box-shadow: 0px 10px 15px -5px rgba(0,0,0,.25);
+                -moz-box-shadow: 0px 10px 15px -5px rgba(0,0,0,.25);
+                box-shadow: 0px 10px 15px -5px rgba(0,0,0,.25);
             }
 
             ul{
@@ -450,11 +461,13 @@ nav{
         @include media-breakpoint-only(lg){
             padding-left: $spacing*3;
             padding-right: $spacing*3;
+            font-size: 0.925em;
         }
 
         @include media-breakpoint-only(xl){
             padding-left: $spacing*4;
             padding-right: $spacing*4;
+            font-size: 0.925em;
         }
 
         @include media-breakpoint-up(xxl) {
