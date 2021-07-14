@@ -7,12 +7,13 @@
 			<div class="row">
 				<div class="col-md-9">
 					<h1>
-						<span>{{ __('Error 404', 'site-theme') }}</span>
-						{{ options.headline_404 }}
+						<span>{{ __('Error 404 | ', 'site-theme') }}</span>
+						{{ options.error_title }}
 					</h1>
-					{% if options.cta_link_404 %}
+					<h3>{{ options.error_message }}</h3>
+					{% if options.error_label %}
 					<div class="section__cta">
-						<a href="{{ options.cta_link_404 }}" class="button">{{ options.cta_label_404 }}</a>
+						<a href="{{ options.error_link }}" class="button">{{ options.error_label }}</a>
 					</div>
 					{% endif %}
 				</div>
