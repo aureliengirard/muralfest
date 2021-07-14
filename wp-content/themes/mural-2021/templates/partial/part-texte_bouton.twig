@@ -1,12 +1,13 @@
+{% set link = inner_item.bouton %}
+
 <div class="text-button-wrapper">
     <div class="row content">
         <div class="col-12 content">
 
             {%- if inner_item.texte -%}
-            <h3 class="h2 lg{%- if link == "" %} text--center{% endif %}">{{inner_item.texte}}</h3>
+            <h3 class="h2 lg{%- if link %}{% else %} text--center{% endif %}">{{inner_item.texte}}</h3>
             {%- endif -%}
 
-            {% set link = inner_item.bouton %}
             {%- if link -%}
                 {%- include 'components/button.twig' with  { link_title: link.title, link_url: link.url, color_cta: "", add_icon: inner_item.add_icon, icon: inner_item.icon} -%}
             {%- endif -%}
