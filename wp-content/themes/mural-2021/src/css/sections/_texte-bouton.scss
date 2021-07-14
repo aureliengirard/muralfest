@@ -12,6 +12,8 @@
 	}
 
 	.button {
+		min-width: fit-content;
+		
 		@include media-breakpoint-down(sm){
 			margin-top: $spacing*2;
 		}

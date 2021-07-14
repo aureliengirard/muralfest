@@ -124,7 +124,7 @@
     h4, .h4 {
         @extend %heading-h4;
     }
-    
+
     h1,h2,h3,h4,h5,h6{
 		hyphens: none;
 	}
@@ -164,13 +164,16 @@
 
     * + {
 
-        h2,h3{
+        h2,h3,h4{
             margin-top: $spacing;
         }
     }
 
     h2{
-        margin-bottom: $spacing * .75;
+
+        &:nth-last-child(n+2){
+            margin-bottom: $spacing-md;
+        }
     }
 
     h3{

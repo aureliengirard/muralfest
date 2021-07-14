@@ -129,10 +129,16 @@ function language_selector($display = 'native_name'){
         }
     }
 }
+
 if(!function_exists('language_selector')){
 	/**
 	 * Affiche un sélecteur de langue utilisant WPML.
 	 *
 	 * @var String $display Type d'affichage des langues. (ex: full name, code, flag, etc.)
 	 */
+}
+
+function get_current_language() {
+    $lang = ICL_LANGUAGE_CODE;
+    echo $lang;
 }

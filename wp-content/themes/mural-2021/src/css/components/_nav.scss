@@ -423,6 +423,7 @@
                 display: none;
                 z-index: 999;
                 width: 100%;
+                min-width: fit-content;
                 padding: $spacing*2 $spacing*3.5 $spacing*2 $spacing*5.5;
                 margin: 0;
                 background-color: rgba(255,255,255,1);

@@ -17,14 +17,14 @@
         </div>
         <div class="app-links">
             <a href="{{ options.app_store }}" target="_blank" rel="noopener">
-                {%- if ICL_LANGUAGE_CODE == 'en' -%}
+                {%- if "en-" in site.language_attributes -%}
                     <img src="{{ theme.link }}/images/app-store.png" alt="App Store" />
                 {%- else -%}
                     <img src="{{ theme.link }}/images/app-store-fr.png" alt="App Store" />
                 {%- endif -%}
             </a>
             <a href="{{ options.google_play }}" target="_blank" rel="noopener">
-                {%- if ICL_LANGUAGE_CODE == 'en' -%}
+                {%- if "en-" in site.language_attributes -%}
                     <img src="{{ theme.link }}/images/google-play.png" alt="Google Play" />
                 {%- else -%}
                     <img src="{{ theme.link }}/images/google-play-fr.png" alt="Google Play" />

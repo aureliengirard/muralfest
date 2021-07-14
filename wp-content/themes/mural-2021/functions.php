@@ -82,6 +82,7 @@ class StarterSite extends TimberSite {
 		$twig->addExtension( new Twig_Extension_StringLoader() );
 		$twig->addFunction( new Timber\Twig_Function( 'get_breadcrumb', 'get_breadcrumb' ) );
 		$twig->addFunction( new Timber\Twig_Function( 'get_back_button', 'get_back_button' ) );
+		$twig->addFunction( new Timber\Twig_Function( 'get_current_language', 'get_current_language' ) );
 
 		return $twig;
 	}
