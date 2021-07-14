@@ -29,6 +29,13 @@
         width: auto;
     }
 
+    p &{
+
+        @include media-breakpoint-up(md){
+            display: inline-block;
+        }
+    }
+
     @include hover-focus-active{
         color: var(--couleurJaune);
         background-color: var(--couleurRouge);
