@@ -3,7 +3,7 @@
         <div class="col-12 content">
 
             {%- if inner_item.texte -%}
-            <h3 class="h2 lg {%- if link == "" -%}text--center{% endif %}">{{inner_item.texte}}</h3>
+            <h3 class="h2 lg{%- if link == "" %} text--center{% endif %}">{{inner_item.texte}}</h3>
             {%- endif -%}
 
             {% set link = inner_item.bouton %}
