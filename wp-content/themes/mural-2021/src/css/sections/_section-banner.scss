@@ -54,9 +54,12 @@
 
 			.hero__date { }
 
-			.hero__cta{
+			.hero__cta {
 				margin-top: $spacing-md;
-				font-weight: 700;
+
+				h4{
+					font-weight: 700;
+				}
 			}
 
 			.hero__artist{
