@@ -38,9 +38,14 @@
                 </div>
                 {% endif %}
 
-                {% if left_banner.cta %}
-                <div class="col-12">
-                    {%- include 'components/button.twig' with  { link_title: left_banner.cta.title, link_url: left_banner.cta.url, color_cta: "", add_icon: left_banner.add_icon, icon: left_banner.icon} -%}
+                {% set cta = left_banner.cta %}
+                {% if cta %}
+                <div class="col-12 hero__cta">
+                    {% if cta.url != "#" %}
+                        {%- include 'components/button.twig' with  { link_title: cta.title, link_url: cta.url, color_cta: "btn--black", add_icon: left_banner.add_icon, icon: left_banner.icon} -%}
+                    {% else %}
+                        <h4>{{cta.title}}</h4>
+                    {% endif %}
                 </div>
                 {% endif %}
             </div>

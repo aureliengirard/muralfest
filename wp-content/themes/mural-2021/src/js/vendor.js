@@ -1,4 +1,4 @@
-import "jquery";
+//import "jquery";
 //import "jquery-ui";
 import 'lazysizes';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';

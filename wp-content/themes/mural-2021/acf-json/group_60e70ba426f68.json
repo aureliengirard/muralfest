@@ -184,6 +184,27 @@
                         "id": ""
                     },
                     "return_format": "array"
+                },
+                {
+                    "key": "field_60ef17340413f",
+                    "label": "CTA Styles",
+                    "name": "cta_styles",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "clone": [
+                        "group_60edcdefc9bd5"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0
                 }
             ]
         },
@@ -267,5 +288,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1625868497
+    "modified": 1626281845
 }

@@ -104,42 +104,6 @@ class StarterSite extends TimberSite {
 			wp_enqueue_script("google-map", "//maps.googleapis.com/maps/api/js?key=". $gmapKey ."&v=3.exp&libraries=places", array('jquery'), '3.0.0');
 		}
 
-		wp_enqueue_script("jqueryui-js",
-			"//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js",
-			array('jquery'),
-			wp_get_theme()->get('Version'),
-			true
-		);
-
-		wp_enqueue_script("select2",
-			"//cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js",
-			array('jquery'),
-			wp_get_theme()->get('Version'),
-			true
-		);
-
-		wp_enqueue_script("datepicker-fr",
-			get_template_directory_uri() ."/src/js/vendor/datepicker-fr-CA.js",
-			array('jqueryui-js'),
-			wp_get_theme()->get('Version'),
-			true
-		);
-
-		wp_enqueue_script("daterange",
-			get_template_directory_uri() ."/src/js/vendor/daterange-calendar.js",
-			array('jqueryui-js'),
-			wp_get_theme()->get('Version'),
-			true
-		);
-
-		wp_enqueue_script("colorbox",
-			get_template_directory_uri() ."/src/js/vendor/jquery.colorbox-min.js",
-			array('jquery'),
-			wp_get_theme()->get('Version'),
-			true
-		);
-
-
 		wp_enqueue_script("artworks-map", get_template_directory_uri() ."/src/js/vendor/map-arts.js", array('jquery'), '1.0.0', true);
 
 		wp_enqueue_script("map-script",
