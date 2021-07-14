@@ -219,7 +219,7 @@
 
         .admin-bar &{
             min-height: calc(100vh - 146px);
-            top: $spacing-xl*2 + 46px;
+            top: $spacing*9 + 46px;
         }
 
         .is_sticky &{
@@ -602,7 +602,9 @@
         }
 
         .is_sticky &{
-            max-height: 0;
+            @include media-breakpoint-up(lg){
+                max-height: 0;
+            }
         }
     }
 }

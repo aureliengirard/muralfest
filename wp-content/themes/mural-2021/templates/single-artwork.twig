@@ -12,7 +12,12 @@
         <section class="col__wrapper article__header row">
             <div class="col-lg-6 left-col">
                 <figure>
-                    {%- set img = TimberImage(post.image_de_loeuvre) -%}
+                    {% if post.image_de_loeuvre %}
+                        {%- set img = TimberImage(post.image_de_loeuvre) -%}
+                    {% else %}
+                        {%- set img = TimberImage(artiste.image_de_lartiste) -%}
+                    {% endif %}
+
                     {% set thumbnail = Image(img).src %}
                     <img class="lazyload"
                         data-srcset="{{ thumbnail|resize(1200, 800) }} 1200w,{{ thumbnail|resize(1024, 682) }} 1024w,{{ thumbnail|resize(600, 400) }} 600w,{{ thumbnail|resize(300, 200) }} 300w,{{ thumbnail|resize(150, 100) }} 150w,{{ thumbnail|resize(250, 166) }} 250w,{{ thumbnail|resize(175, 116) }} 175w"
@@ -23,12 +28,12 @@
                 </figure>
             </div>
             <div class="col-lg-6 right-col">
-                <h1>{{post.title}}</h1>
+                <h1 class="sm">{{post.title}}</h1>
 
                 <h3 class="artist">
                     <span>{{ __('By:', 'site-theme') }}</span> <a href="{{ artiste.link }}">{{ artiste.title }}</a>
                 </h3>
-                <p class="date">{{ __('Year of completion:', 'site-theme') }} {{post.annee}}</p>
+                <h4 class="date"><span>{{ __('Year of completion:', 'site-theme') }}</span> {{post.annee}}</h4>
 
                 {% if post.ajoute_description == true %}
                      {{ post.meta('description_de_loeuvre') }}

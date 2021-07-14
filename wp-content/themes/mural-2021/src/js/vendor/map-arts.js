@@ -177,13 +177,13 @@ $(function(){
 
 				var infoContent = '';
 				infoContent += '<div class="artwork-data'+(currentYear ? ' this-year' : '')+'">';
-				infoContent +=		'<div class="col-wrapper">';
-				infoContent +=			'<div class="left-col">';
+				infoContent +=		'<div class="row">';
+				infoContent +=			'<div class="col-md-4">';
 				infoContent +=  			'<figure>';
 				infoContent += 					'<a href="'+artwork.link+'">'+artwork.thumbnail+'</a>';
 				infoContent += 				'</figure>';
 				infoContent += 			'</div>';
-				infoContent +=			'<div class="right-col">';
+				infoContent +=			'<div class="col-md-8">';
 				infoContent +=  			'<div class="artwork-infos">';
 				infoContent +=  				'<h4><a href="'+artwork.link+'">'+artwork.title+'</a></h4>';
 				infoContent +=  				'<p class="artist"><span>'+translation_map.by+'</span> <a href="'+artwork.artist.link+'">'+artwork.artist.name+'</a></p>';

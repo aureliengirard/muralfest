@@ -139,6 +139,10 @@
 		flex: auto;
 	    max-width: max-content;
 
+		@include media-breakpoint-down(sm){
+			margin: auto;
+		}
+
 		@include media-breakpoint-only(md){
 			margin-right: auto;
 		}
