@@ -47,7 +47,7 @@
  	'has_archive' => false,
  	'show_in_menu' => true,
  	'hierarchical' => false,
- 	'menu_position' => 5,
+ 	'menu_position' => 3,
  	'menu_icon' => 'dashicons-art',
  	'supports' => array('title', 'editor' ),
  	'rewrite' => $rewrite,
@@ -73,7 +73,7 @@
  	'has_archive' => false,
  	'show_in_menu' => true,
  	'hierarchical' => false,
- 	'menu_position' => 5,
+ 	'menu_position' => 4,
  	'menu_icon' => 'dashicons-id',
  	'supports' => array('title', 'editor', 'thumbnail', ),
  	'rewrite' => $rewrite,
@@ -99,7 +99,7 @@
  	'has_archive' => false,
  	'show_in_menu' => true,
  	'hierarchical' => false,
- 	'menu_position' => 5,
+ 	'menu_position' => 7,
  	'menu_icon' => 'dashicons-groups',
     'publicly_queryable'  => false,
     'exclude_from_search' => true,
@@ -134,6 +134,34 @@
  );
  register_post_type('program', $args);
 
+ // Mural à l'année
+ $labels = array(
+ 	'name' => __('Évènements hors festival'),
+ 	'singular_name' => __('Évènement'),
+ 	'plural_name' => __('Évènements'),
+ 	'add_new_item' => __('Ajouter un évènement'),
+ 	'new_item' => __('Nouvel évènement'),
+ );
+ $rewrite = array(
+ 	'slug' => 'over-the-year',
+ 	'with_front' => true,
+ 	'pages' => true,
+ );
+ $args = array(
+ 	'labels' => $labels,
+ 	'public' => true,
+ 	'has_archive' => false,
+ 	'show_in_menu' => true,
+ 	'hierarchical' => false,
+ 	'menu_position' => 6,
+    'menu_icon' => 'dashicons-location-alt',
+    'supports' => array('title', 'editor'),
+    'publicly_queryable'  => false,
+    'exclude_from_search' => true,
+ 	'rewrite' => $rewrite,
+ );
+ register_post_type('over-the-year', $args);
+
  // Venue
  $labels = array(
  	'name' => __('Lieux'),
@@ -153,7 +181,7 @@
  	'has_archive' => false,
  	'show_in_menu' => true,
  	'hierarchical' => false,
- 	'menu_position' => 5,
+ 	'menu_position' => 8,
     'menu_icon' => 'dashicons-location-alt',
     'supports' => array('title', 'editor'),
     'publicly_queryable'  => false,
@@ -161,3 +189,4 @@
  	'rewrite' => $rewrite,
  );
  register_post_type('venue', $args);
+

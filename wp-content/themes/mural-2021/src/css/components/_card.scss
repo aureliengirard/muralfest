@@ -11,7 +11,7 @@
     @include media-breakpoint-up(lg){
         flex: 30%;
         max-width: 400px;
-        margin-bottom: $spacing-md * 3;
+        margin-bottom: $spacing * 6;
         margin-left: $spacing*1.5;
         margin-right: $spacing*1.5;
     }
@@ -21,7 +21,7 @@
         .card__content{
             @include media-breakpoint-down(sm){
                 padding-bottom: $spacing*2;
-                border-bottom: 1px solid #bbbbbb;
+                border-bottom: 1px solid var(--colorBorder);
             }
         }
     }
@@ -83,6 +83,35 @@
                 }
             }
         }
+
+        .event-infos{
+            margin-bottom: $spacing*4;
+            position: relative;
+
+            span{
+                display: block;
+
+                &:first-child{
+                    font-weight: 600;
+                }
+
+                &:nth-last-child(1){
+                    font-size: 1.3em;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                }
+            }
+
+            &:after{
+                content: " ";
+                position: absolute;
+                height: 1px;
+                width: 40%;
+                left: 0;
+                bottom: -$spacing*1.5;
+                background-color: var(--couleurNoir);
+            }
+        }
     }
 
     &__body{
@@ -99,6 +128,22 @@
             @include media-breakpoint-up(md){
                 margin-top: $spacing*3;
                 margin-bottom: $spacing*3;
+            }
+        }
+    }
+
+    &__cta{
+        @include flexbox;
+        @include flex-flow(row wrap);
+        @include justify-content(space-between);
+        margin-top: $spacing*3;
+        padding-right: $spacing-md;
+
+        .readmore{
+            color: var(--couleurRouge);
+
+            @include hover-focus{
+                color: var(--couleurBleu);
             }
         }
     }

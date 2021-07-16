@@ -4,6 +4,7 @@
 {% set date_de_fin = event_post.date_de_fin %}
 {% set event_date = event_post.event_date %}
 {% set lieu = Post(event_post.lieu) %}
+{% set ticket = event_post.lien_billets %}
 
 {% set preview = event_post.resume %}
 {% set thumbnail = Image(event_post.image_de_levenement).src %}
@@ -18,10 +19,10 @@
             <figure>
                 <a href="{{link}}">
                     <img class="lazyload"
-                    data-srcset="{{ thumbnail|resize(600, 400) }} 600w,{{ thumbnail|resize(380, 279) }} 380w,{{ thumbnail|resize(300, 200) }} 300w,{{ thumbnail|resize(150, 100) }} 150w,{{ thumbnail|resize(250, 166) }} 250w,{{ thumbnail|resize(175, 116) }} 175w"
+                    data-srcset="{{ thumbnail|resize(600, 400) }} 600w,{{ thumbnail|resize(400, 267) }} 380w,{{ thumbnail|resize(300, 200) }} 300w,{{ thumbnail|resize(150, 100) }} 150w,{{ thumbnail|resize(250, 166) }} 250w,{{ thumbnail|resize(175, 116) }} 175w"
                     data-sizes="auto"
-                    width="380"
-                    height="279"
+                    width="300"
+                    height="200"
                     alt="{{ title }}">
                 </a>
             </figure>
@@ -29,6 +30,8 @@
         {% endif %}
 
         <div class="description card__body">
+            {%- if heure_de_debut %} | {{ heure_de_debut|date('H:i') }}{%- endif %}
+            {%- if heure_de_fin %} {{__('to', 'dates événement', 'site-theme')}} {{ heure_de_fin|date('H:i') }}{% endif %}
             <h3><a href="{{link}}">{{title}}</a></h3>
             <p class="event-infos">
                 <span class="date">
@@ -40,8 +43,14 @@
                 </span>
                 <span class="venue">{{lieu.title}}</span>
             </p>
-            <p>{{preview|truncate(60)}}</p>
-            <a class="readmore" href="{{link}}">{{__('Learn more +', 'site-theme')}}</a>
+            {#<p>{{preview|truncate(60)}}</p>#}
+            <div class="card__cta">
+                <a class="readmore" href="{{link}}">{{__('Learn more >', 'site-theme')}}</a>
+                {% if ticket %}
+                <span class="divider">|</span>
+                <a class="readmore" href="{{ticket}}">{{__('Tickets >', 'site-theme')}}</a>
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>

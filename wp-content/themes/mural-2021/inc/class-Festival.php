@@ -95,9 +95,8 @@ class Festival {
         add_action( 'after_setup_theme', array( $this, 'addImagesSizes' ), 0 );
         add_action( 'init', array( $this, 'tier_image_sizes' ), 10 );
 
-        //add_action( 'CPT-ready', array( $this, 'register_festival_CPT') );
         add_filter('acf/load_field/name=festival', array( $this, 'add_all_festival_to_select' ) );
-        add_filter('acf/load_field/name=annee', array( $this, 'dynamic_add_year' ) );
+        //add_filter('acf/load_field/name=annee', array( $this, 'dynamic_add_year' ) );
         add_filter('display_post_states', array( $this, 'add_post_state_festival' ), 10, 2);
 
         add_action( 'admin_init', array($this, 'add_festival_columns') );
@@ -280,26 +279,6 @@ class Festival {
         return $field;
     }
 
-
-    /**
-     * Ajoute dans le select de l'année toutes les années depuis la création du festival.
-     *
-     * @param Array $field
-     * @return Array
-     */
-	public function dynamic_add_year( $field ){
-        // reset choices
-        $field['choices'] = array();
-
-		$current_year = (Int) date('Y');
-		$starting_year = 2013;
-
-		for ($i=$current_year; $i >= $starting_year; $i--) {
-			$field['choices'][$i] = $i;
-		}
-
-        return $field;
-    }
 
 
     /**

@@ -47,9 +47,8 @@
                             {{- event_date | date('j F, Y') }}
                             {%- endif -%}
 
-                            {%- if heure_de_debut %} | {{ heure_de_debut|date('H:i') }}
+                            {%- if heure_de_debut %} | {{ heure_de_debut|date('H:i') }}{%- endif %}
                             {%- if heure_de_fin %} {{__('to', 'dates événement', 'site-theme')}} {{ heure_de_fin|date('H:i') }}{% endif %}
-                            {%- endif %}
                         </span>
                         {% if lieu %}
                         <span class="venue">| {{lieu.title}}</span>

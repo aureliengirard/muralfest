@@ -65,7 +65,7 @@
 
 .navbar-extra,
 .content-wrapper{
-    button:not(.select2-selection__clear),.button{
+    button:not(.select2-selection__clear):not(.slick-arrow),.button{
         @extend %btn;
     }
 }

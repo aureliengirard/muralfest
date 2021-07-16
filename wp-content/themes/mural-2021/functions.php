@@ -79,7 +79,10 @@ class StarterSite extends TimberSite {
 	function add_to_twig( $twig ) {
 		require_once('lib/custom_functions.php');
 		/* this is where you can add your own functions to twig */
-		$twig->addExtension( new Twig_Extension_StringLoader() );
+
+		//$twig->addExtension(new Twig_Extensions_Extension_Intl());
+		$twig->addExtension(new Twig_Extension_StringLoader());
+
 		$twig->addFunction( new Timber\Twig_Function( 'get_breadcrumb', 'get_breadcrumb' ) );
 		$twig->addFunction( new Timber\Twig_Function( 'get_back_button', 'get_back_button' ) );
 		$twig->addFunction( new Timber\Twig_Function( 'get_current_language', 'get_current_language' ) );
@@ -154,7 +157,7 @@ function wrap_gform_cdata_open( $content = '' ) {
 
 	$content = 'document.addEventListener( "DOMContentLoaded", function() { ';
 	return $content;
-}
+};
 
 add_filter( 'gform_cdata_close', 'wrap_gform_cdata_close', 99 );
 	function wrap_gform_cdata_close( $content = '' ) {
@@ -164,7 +167,18 @@ add_filter( 'gform_cdata_close', 'wrap_gform_cdata_close', 99 );
 
 	$content = ' }, false );';
 	return $content;
-}
+};
+
+add_filter( 'timber/twig', function( $twig ) {
+    $twig->addFilter( new Twig_SimpleFilter( 'date_from_format', function( $date, $input_format, $output_format ) {
+        return date_i18n(
+            $output_format,
+            DateTime::createFromFormat( $input_format, $date )->getTimeStamp()
+        );
+    } ) );
+
+    return $twig;
+});
 
 //To create ACF Options page, just uncomment below:
 if(function_exists('acf_add_options_page')) {

@@ -27,6 +27,30 @@
             "mime_types": ""
         },
         {
+            "key": "field_60f1979b543a4",
+            "label": "Image de thumbnail",
+            "name": "image_de_thumbnail",
+            "type": "image",
+            "instructions": "<em>Si vide, l'image de l'événement sera utilisé<\/em><\/br>\r\nSpecs : .Jpg, 600px X 400px",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
             "key": "field_5acb9e320535d",
             "label": "Date",
             "name": "event_date",
@@ -128,7 +152,7 @@
                 "id": ""
             },
             "choices": {
-                "9": "Festival"
+                "639": "Festival"
             },
             "default_value": [],
             "allow_null": 0,
@@ -168,6 +192,13 @@
                 "operator": "==",
                 "value": "program"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "over-the-year"
+            }
         ]
     ],
     "menu_order": 0,
@@ -178,5 +209,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1623862510
+    "modified": 1626445821
 }
