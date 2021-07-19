@@ -6,14 +6,6 @@
 
 {% include "partial/section-banner.twig" %}
 
-{% if page.content %}
-    <section class="basic-content">
-        <div class="content">
-            {{ page.content }}
-        </div>
-    </section>
-{% endif %}
-
 <div class="content home-program">
 
     {% if event_posts -%}
@@ -22,7 +14,8 @@
             <div class="row">
                 <div class="col-12">
 
-                    <h2>WELCOME TO THE MURAL MAIN ZONE</h2>
+                    {{ page.content }}
+
                     <div class="date_container">
                         {%- set dates -%}
                         {%- for event_post in event_posts -%}
