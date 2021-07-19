@@ -171,7 +171,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "over-the-year"
+                "value": "over_the_year"
             }
         ]
     ],
@@ -186,5 +186,5 @@
     ],
     "active": true,
     "description": "",
-    "modified": 1626383286
+    "modified": 1626722827
 }
