@@ -143,7 +143,7 @@
  	'new_item' => __('Nouvel évènement'),
  );
  $rewrite = array(
- 	'slug' => 'over-the-year',
+ 	'slug' => 'mural-year-long',
  	'with_front' => true,
  	'pages' => true,
  );
