@@ -5,9 +5,16 @@
 {% set event_date = event_post.event_date %}
 {% set lieu = Post(event_post.lieu) %}
 {% set ticket = event_post.lien_billets %}
-
 {% set preview = event_post.resume %}
-{% set thumbnail = Image(event_post.image_de_levenement).src %}
+
+{% set image_de_thumbnail = Image(event_post.image_de_thumbnail).src %}
+{% set image_de_levenement = Image(event_post.image_de_levenement).src %}
+
+{% if image_de_thumbnail %}
+    {% set thumbnail = image_de_thumbnail %}
+{% else %}
+    {% set thumbnail = image_de_levenement %}
+{% endif %}
 
 {% set id = blog_post.id %}
 
@@ -30,20 +37,17 @@
         {% endif %}
 
         <div class="description card__body">
-            {%- if heure_de_debut %} | {{ heure_de_debut|date('H:i') }}{%- endif %}
-            {%- if heure_de_fin %} {{__('to', 'dates événement', 'site-theme')}} {{ heure_de_fin|date('H:i') }}{% endif %}
-            <h3><a href="{{link}}">{{title}}</a></h3>
-            <p class="event-infos">
-                <span class="date">
-                    {%- if date_de_fin != event_date -%}
-                    {{- event_date | date('j F') }} {{__('to', 'dates événement', 'site-theme')}} {{ date_de_fin | date('j F Y') }}
-                    {%- else -%}
-                    {{- event_date | date('j F, Y') }}
-                    {%- endif -%}
+            <div class="event-infos">
+                <span class="category">
+                {{ event_post.terms( {query:{taxonomy:'event-category', orderby:'name', order: 'ASC'}} )|join(', ') }}
                 </span>
-                <span class="venue">{{lieu.title}}</span>
-            </p>
-            {#<p>{{preview|truncate(60)}}</p>#}
+                <span class="time">
+                {%- if heure_de_debut %}{{ heure_de_debut|date('H:i') }}{%- endif %}
+                {%- if heure_de_fin %} - {{ heure_de_fin|date('H:i') }}{% endif %}
+                </span>
+            </div>
+            <h3 class="md"><a href="{{link}}">{{title}}</a></h3>
+            <h3 class="lg" title="{{title}}"><a href="{{link}}">{{title|truncate(4)}}</a></h3>
             <div class="card__cta">
                 <a class="readmore" href="{{link}}">{{__('Learn more >', 'site-theme')}}</a>
                 {% if ticket %}
