@@ -2607,10 +2607,6 @@ table {
     border-color: var(--couleurNoir);
     border-style: solid; } }
 
-.navbar-nav .wpml-ls-legacy-list-horizontal {
-  padding: 0;
-  border: 0; }
-
 .navbar-nav .wpml-ls-item,
 .navbar-nav .wpml-ls-link {
   margin-right: -10px; }
@@ -2771,6 +2767,8 @@ table {
     @media (max-width: 991.98px) {
       .wpml-ls-statics-shortcode_actions.wpml-ls a {
         font-weight: 600; } }
+    .wpml-ls-statics-shortcode_actions.wpml-ls a span {
+      vertical-align: top; }
 
 /**
  * Simple fade transition,
@@ -3496,11 +3494,17 @@ table {
 .home-program #date-selector {
   background-color: #eeeeee;
   border: 0;
-  padding: 15px 20px 15px 20px;
+  padding: 15px 50px 15px 60px;
   border-radius: 60px;
   text-transform: uppercase;
   font-weight: 600;
-  text-align: center; }
+  text-align: center;
+  background-image: url(../../images/icon_arrow-down.png), url(../../images/icon_date-selector.png);
+  background-position: calc(100% - 15px) 50%, 15px 50%;
+  background-repeat: no-repeat;
+  background-size: 20px,30px;
+  -webkit-appearance: none;
+  -moz-appearance: none; }
   .home-program #date-selector option {
     font-size: 16px;
     text-transform: initial; }

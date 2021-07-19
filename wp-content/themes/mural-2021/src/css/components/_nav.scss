@@ -394,11 +394,6 @@
 
     }
 
-    .wpml-ls-legacy-list-horizontal{
-        padding: 0;
-        border: 0;
-    }
-
     .wpml-ls-item,
     .wpml-ls-link{
         @extend %nav-link;
@@ -627,6 +622,10 @@
 
         @include media-breakpoint-down(md){
             font-weight: 600;
+        }
+
+        span{
+            vertical-align: top;
         }
     }
 }
