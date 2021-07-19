@@ -160,7 +160,7 @@
     'exclude_from_search' => true,
  	'rewrite' => $rewrite,
  );
- register_post_type('over-the-year', $args);
+ register_post_type('over_the_year', $args);
 
  // Venue
  $labels = array(

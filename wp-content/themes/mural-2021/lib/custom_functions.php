@@ -38,7 +38,7 @@ function get_breadcrumb($parent_taxonomy_label=false, $parent_taxonomy_link=fals
 
             echo $divider;
 
-        } elseif ( get_post_type() == 'over-the-year' ) {
+        } elseif ( get_post_type() == 'over_the_year' ) {
 
             echo "<a href='" . $link_over_the_year . " '>" . __('Over the year', 'site-theme') . " </a>" ;
 
