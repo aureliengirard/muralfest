@@ -139,30 +139,6 @@
             "ui": 1
         },
         {
-            "key": "field_5acbacf02cdac",
-            "label": "Festival",
-            "name": "festival",
-            "type": "select",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "639": "Festival"
-            },
-            "default_value": [],
-            "allow_null": 0,
-            "multiple": 0,
-            "ui": 0,
-            "ajax": 0,
-            "return_format": "value",
-            "placeholder": ""
-        },
-        {
             "key": "field_5ad0d19a501ae",
             "label": "Lieu",
             "name": "lieu",
@@ -209,5 +185,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1626445821
+    "modified": 1626714332
 }

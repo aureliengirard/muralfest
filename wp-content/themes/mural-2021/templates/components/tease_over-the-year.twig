@@ -3,6 +3,8 @@
 {% set link = event_post.link %}
 {% set date_de_fin = event_post.date_de_fin %}
 {% set event_date = event_post.event_date %}
+{% set heure_de_debut = event_post.heure_de_debut %}
+{% set heure_de_fin = event_post.heure_de_fin %}
 {% set lieu = Post(event_post.lieu) %}
 {% set ticket = event_post.lien_billets %}
 {% set preview = event_post.resume %}
@@ -18,7 +20,7 @@
 
 {% set id = blog_post.id %}
 
-<div class="col-12 over-the-year card card--full-width">
+<div class="col-12 over-the-year card card--full-width {{card_class}}">
     <div class="card__content">
         {% if thumbnail %}
         <div class="card__header">
@@ -37,17 +39,24 @@
         {% endif %}
 
         <div class="description card__body">
+            <h3><a href="{{link}}">{{title}}</a></h3>
             <div class="event-infos">
                 <span class="category">
                 {{ event_post.terms( {query:{taxonomy:'event-category', orderby:'name', order: 'ASC'}} )|join(', ') }}
                 </span>
+                <span class="date">
+                {%- if date_de_fin != event_date -%}
+                    {% if event_post.terms %}<span class="divider"> | </span>{% endif %}{{- event_date | date('j F') }} {{__('to', 'dates événement', 'site-theme')}} {{ date_de_fin | date('j F Y') }}
+                {%- else -%}
+                    {% if event_post.terms %}<span class="divider"> | </span>{% endif %}{{- event_date | date('j F, Y') }}
+                {%- endif -%}
+                </span>
                 <span class="time">
-                {%- if heure_de_debut %}{{ heure_de_debut|date('H:i') }}{%- endif %}
+                {%- if heure_de_debut %}{% if event_date %}<span class="divider"> | </span>{% endif %}{{ heure_de_debut|date('H:i') }}{%- endif %}
                 {%- if heure_de_fin %} - {{ heure_de_fin|date('H:i') }}{% endif %}
                 </span>
             </div>
-            <h3 class="md"><a href="{{link}}">{{title}}</a></h3>
-            <h3 class="lg" title="{{title}}"><a href="{{link}}">{{title|truncate(4)}}</a></h3>
+            <p>{{preview}}</p>
             <div class="card__cta">
                 <a class="readmore" href="{{link}}">{{__('Learn more >', 'site-theme')}}</a>
                 {% if ticket %}

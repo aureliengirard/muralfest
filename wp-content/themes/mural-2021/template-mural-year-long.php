@@ -8,21 +8,6 @@ $context = Timber::get_context();
 $post = Timber::query_post();
 $context['page'] = $post;
 
-$date_value = '';
-if(isset($_GET['date'])){
-    $date_value = $_GET['date'];
-}
-$context['date_value'] = $date_value;
-
-$context['artist_value'] = $artist_value;
-
-$caterogy_value = '';
-if (isset($_GET['category'])) {
-    $caterogy_value = sanitize_text_field ($_GET['category']);
-}
-
-$context['caterogy_value'] = $caterogy_value;
-
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 $args = array(
 	'post_type' => array( 'over-the-year' ),

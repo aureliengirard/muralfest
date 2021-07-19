@@ -1533,16 +1533,20 @@ template {
   margin-top: 20px;
   margin-bottom: 40px; }
   @media (min-width: 768px) {
-    .card {
+    .card:not(.card--full-width) {
       flex: 50%;
       margin-bottom: 75px; } }
   @media (min-width: 992px) {
-    .card {
+    .card:not(.card--full-width) {
       flex: 30%;
       max-width: 400px;
       margin-bottom: 60px;
       margin-left: 15px;
       margin-right: 15px; } }
+  @media (min-width: 768px) {
+    .card.card--full-width {
+      margin-top: 0;
+      margin-bottom: 0; } }
   @media (max-width: 767.98px) {
     .card:nth-last-child(n+2) .card__content {
       padding-bottom: 20px;
@@ -1571,7 +1575,8 @@ template {
   .card__header {
     background-color: var(--couleurJaune);
     color: var(--couleurRouge);
-    margin-left: 20px; }
+    margin-left: 20px;
+    height: fit-content; }
     .card__header img {
       width: 100%; }
   .card figure {
@@ -1581,28 +1586,6 @@ template {
     transition: all 0.15s; }
     .card figure:hover {
       text-decoration: none; }
-  @media (min-width: 992px) {
-    .card.program figure:hover {
-      transform: translate3d(-20px, 20px, 0); } }
-  .card.program .event-infos {
-    margin-bottom: 40px;
-    position: relative; }
-    .card.program .event-infos span {
-      display: block; }
-      .card.program .event-infos span:first-child {
-        font-weight: 600; }
-      .card.program .event-infos span:nth-last-child(1) {
-        font-size: 1.3em;
-        font-weight: 500;
-        text-transform: uppercase; }
-    .card.program .event-infos:after {
-      content: " ";
-      position: absolute;
-      height: 1px;
-      width: 40%;
-      left: 0;
-      bottom: -15px;
-      background-color: var(--couleurNoir); }
   .card__body {
     padding-top: 25px; }
     @media (min-width: 768px) {
@@ -1633,6 +1616,59 @@ template {
       color: var(--couleurRouge); }
       .card__cta .readmore:hover, .card__cta .readmore:focus {
         color: var(--couleurBleu); }
+  @media (min-width: 992px) {
+    .card.program figure:hover {
+      transform: translate3d(-20px, 20px, 0); } }
+  .card.program .event-infos {
+    margin-bottom: 40px;
+    position: relative; }
+    .card.program .event-infos span {
+      display: block; }
+      .card.program .event-infos span:first-child {
+        font-weight: 600; }
+      .card.program .event-infos span:nth-last-child(1) {
+        font-size: 1.3em;
+        font-weight: 500;
+        text-transform: uppercase; }
+    .card.program .event-infos:after {
+      content: " ";
+      position: absolute;
+      height: 1px;
+      width: 40%;
+      left: 0;
+      bottom: -15px;
+      background-color: var(--couleurNoir); }
+  @media (min-width: 768px) {
+    .card.over-the-year:nth-last-child(n+2) {
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--colorBorder); }
+    .card.over-the-year.card--even .card__body {
+      order: -1;
+      padding-right: 50px; }
+    .card.over-the-year.card--odd .card__body {
+      padding-left: 50px; }
+    .card.over-the-year .card__content {
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-flow: row;
+      /* Safari 6.1+ */
+      flex-flow: row;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-align-content: center;
+      align-content: center; }
+    .card.over-the-year .card__header {
+      flex: 33%;
+      max-width: 33%; }
+    .card.over-the-year .card__body {
+      flex: 67%;
+      max-width: 67%;
+      padding: 25px 0 25px 0;
+      margin-top: -20px; } }
 
 .embed-responsive {
   position: relative;

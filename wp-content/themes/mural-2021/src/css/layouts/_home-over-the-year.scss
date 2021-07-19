@@ -1,0 +1,11 @@
+.home-over-the-year{
+    .over-the-year__wrapper{
+
+        .row{
+
+            @include media-breakpoint-up(md){
+                //padding: $spacing*2 $spacing*8 0;
+            }
+        }
+    }
+}
