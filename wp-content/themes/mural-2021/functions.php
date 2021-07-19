@@ -27,6 +27,7 @@ class StarterSite extends TimberSite {
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
 		add_action( 'init', array( $this, 'register_api' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'loadScripts' ) );
+		add_action( 'after_switch_theme', 'my_rewrite_flush' );
 		parent::__construct();
 	}
 
@@ -39,6 +40,11 @@ class StarterSite extends TimberSite {
 	}
 	function register_api() {
 		//require('inc/mural-api.php');
+	}
+
+	function my_rewrite_flush() {
+	    register_post_types();
+	    flush_rewrite_rules();
 	}
 
 	function add_to_context( $context ) {
