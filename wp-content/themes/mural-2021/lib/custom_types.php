@@ -156,7 +156,7 @@
  	'menu_position' => 6,
     'menu_icon' => 'dashicons-location-alt',
     'supports' => array('title', 'editor'),
-    'publicly_queryable'  => false,
+    'publicly_queryable'  => true,
     'exclude_from_search' => true,
  	'rewrite' => $rewrite,
  );
@@ -189,4 +189,3 @@
  	'rewrite' => $rewrite,
  );
  register_post_type('venue', $args);
-

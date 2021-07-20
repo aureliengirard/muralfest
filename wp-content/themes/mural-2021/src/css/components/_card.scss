@@ -120,6 +120,7 @@
     }
 
     &.program {
+
         figure {
             &:hover{
                 @include media-breakpoint-up(lg){
@@ -155,6 +156,31 @@
                 bottom: -$spacing*1.5;
                 background-color: var(--couleurNoir);
             }
+        }
+
+        h3{
+            font-size: 1.25em;
+            font-weight: 700;
+
+            &.md{
+                @include media-breakpoint-up(lg){
+                    display: none;
+                }
+            }
+
+            &.lg{
+                @include media-breakpoint-down(md){
+                    display: none;
+                }
+            }
+        }
+
+        .card__body{
+            padding-top: $spacing-md;
+        }
+
+        .divider{
+            display: inline-block !important;
         }
     }
 

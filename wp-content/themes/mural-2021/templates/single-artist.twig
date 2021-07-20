@@ -9,15 +9,17 @@
         <section class="col__wrapper article__header row">
 
             <div class="col-lg-6 left-col">
-                <figure>
-                    {% set thumbnail = Image(image_id).src %}
-                    <img class="lazyload"
+                {% set thumbnail = Image(image_id).src %}
+                {% if thumbnail %}
+                    <figure>
+                        <img class="lazyload"
                         data-srcset="{{ thumbnail|resize(600,0) }} 600w,{{ thumbnail|resize(300,0) }} 300w,{{ thumbnail|resize(150,0) }} 150w,{{ thumbnail|resize(250,0) }} 250w,{{ thumbnail|resize(175,0) }} 175w"
                         data-sizes="auto"
                         width="600"
                         height="400"
                         alt="{{ title }}">
-                </figure>
+                    </figure>
+                {% endif %}
             </div>
 
             <div class="col-lg-6 right-col">

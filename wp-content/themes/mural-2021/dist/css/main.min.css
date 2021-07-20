@@ -1638,6 +1638,19 @@ template {
       left: 0;
       bottom: -15px;
       background-color: var(--couleurNoir); }
+  .card.program h3 {
+    font-size: 1.25em;
+    font-weight: 700; }
+    @media (min-width: 992px) {
+      .card.program h3.md {
+        display: none; } }
+    @media (max-width: 991.98px) {
+      .card.program h3.lg {
+        display: none; } }
+  .card.program .card__body {
+    padding-top: 25px; }
+  .card.program .divider {
+    display: inline-block !important; }
   @media (min-width: 768px) {
     .card.over-the-year:nth-last-child(n+2) {
       margin-bottom: 40px;
@@ -3054,19 +3067,6 @@ table {
           padding-bottom: 20px; } }
     .programs__slider .card:nth-last-child(1) {
       margin-bottom: 0; }
-    .programs__slider .card h3 {
-      font-size: 1.25em;
-      font-weight: 700; }
-      @media (min-width: 992px) {
-        .programs__slider .card h3.md {
-          display: none; } }
-      @media (max-width: 991.98px) {
-        .programs__slider .card h3.lg {
-          display: none; } }
-    .programs__slider .card .card__body {
-      padding-top: 25px; }
-    .programs__slider .card .divider {
-      display: inline-block !important; }
 
 .content-wrapper .appels_a_laction a {
   display: block;

@@ -25,9 +25,7 @@ class StarterSite extends TimberSite {
 		add_filter( 'get_twig', array( $this, 'add_to_twig' ) );
 		add_action( 'init', array( $this, 'register_post_types' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
-		add_action( 'init', array( $this, 'register_api' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'loadScripts' ) );
-		add_action( 'after_switch_theme', 'my_rewrite_flush' );
 		parent::__construct();
 	}
 
@@ -37,14 +35,6 @@ class StarterSite extends TimberSite {
 
 	function register_taxonomies() {
 		require('lib/custom_taxonomies.php');
-	}
-	function register_api() {
-		//require('inc/mural-api.php');
-	}
-
-	function my_rewrite_flush() {
-	    register_post_types();
-	    flush_rewrite_rules();
 	}
 
 	function add_to_context( $context ) {
@@ -62,6 +52,7 @@ class StarterSite extends TimberSite {
 		);
 		$context['blog_posts'] = new Timber\PostQuery($args);
 
+		// program
 		$args = array(
 			'post_type'=> 'program',
 			'post__in' => get_sub_field('evenements'),
