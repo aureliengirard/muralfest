@@ -1,0 +1,160 @@
+{
+    "key": "group_5ad0c485cfee9",
+    "title": "Information sur l'artiste",
+    "fields": [
+        {
+            "key": "field_5ad0c48fa5a69",
+            "label": "Pays d'origine",
+            "name": "pays_dorigine",
+            "type": "country",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": "AF : Afghanistan\r\nZA : Afrique du Sud\r\nAL : Albanie\r\nDZ : Algérie\r\nDE : Allemagne\r\nAD : Andorre\r\nAO : Angola\r\nAI : Anguilla\r\nAQ : Antarctique\r\nAG : Antigua-et-Barbuda\r\nSA : Arabie saoudite\r\nAR : Argentine\r\nAM : Arménie\r\nAW : Aruba\r\nAU : Australie\r\nAT : Autriche\r\nAZ : Azerbaïdjan\r\nBS : Bahamas\r\nBH : Bahreïn\r\nBD : Bangladesh\r\nBB : Barbade\r\nBE : Belgique\r\nBZ : Belize\r\nBJ : Bénin\r\nBM : Bermudes\r\nBT : Bhoutan\r\nBY : Biélorussie\r\nBO : Bolivie\r\nBA : Bosnie-Herzégovine\r\nBW : Botswana\r\nBR : Brésil\r\nBN : Brunéi Darussalam\r\nBG : Bulgarie\r\nBF : Burkina Faso\r\nBI : Burundi\r\nKH : Cambodge\r\nCM : Cameroun\r\nCA : Canada\r\nCV : Cap-Vert\r\nEA : Ceuta et Melilla\r\nCL : Chili\r\nCN : Chine\r\nCY : Chypre\r\nCO : Colombie\r\nKM : Comores\r\nCG : Congo-Brazzaville\r\nCD : Congo-Kinshasa\r\nKP : Corée du Nord\r\nKR : Corée du Sud\r\nCR : Costa Rica\r\nCI : Côte d’Ivoire\r\nHR : Croatie\r\nCU : Cuba\r\nCW : Curaçao\r\nDK : Danemark\r\nDG : Diego Garcia\r\nDJ : Djibouti\r\nDM : Dominique\r\nEG : Égypte\r\nSV : El Salvador\r\nAE : Émirats arabes unis\r\nEC : Équateur\r\nER : Érythrée\r\nES : Espagne\r\nEE : Estonie\r\nVA : État de la Cité du Vatican\r\nFM : États fédérés de Micronésie\r\nUS : États-Unis\r\nET : Éthiopie\r\nFJ : Fidji\r\nFI : Finlande\r\nFR : France\r\nGA : Gabon\r\nGM : Gambie\r\nGE : Géorgie\r\nGH : Ghana\r\nGI : Gibraltar\r\nGR : Grèce\r\nGD : Grenade\r\nGL : Groenland\r\nGP : Guadeloupe\r\nGU : Guam\r\nGT : Guatemala\r\nGG : Guernesey\r\nGN : Guinée\r\nGQ : Guinée équatoriale\r\nGW : Guinée-Bissau\r\nGY : Guyana\r\nGF : Guyane française\r\nHT : Haïti\r\nHN : Honduras\r\nHU : Hongrie\r\nCX : Île Christmas\r\nAC : Île de l’Ascension\r\nIM : Île de Man\r\nNF : Île Norfolk\r\nAX : Îles Åland\r\nKY : Îles Caïmans\r\nIC : Îles Canaries\r\nCC : Îles Cocos\r\nCK : Îles Cook\r\nFO : Îles Féroé\r\nGS : Îles Géorgie du Sud et Sandwich du Sud\r\nFK : Îles Malouines\r\nMP : Îles Mariannes du Nord\r\nMH : Îles Marshall\r\nUM : Îles mineures éloignées des États-Unis\r\nSB : Îles Salomon\r\nTC : Îles Turques-et-Caïques\r\nVG : Îles Vierges britanniques\r\nVI : Îles Vierges des États-Unis\r\nIN : Inde\r\nID : Indonésie\r\nIQ : Irak\r\nIR : Iran\r\nIE : Irlande\r\nIS : Islande\r\nIL : Israël\r\nIT : Italie\r\nJM : Jamaïque\r\nJP : Japon\r\nJE : Jersey\r\nJO : Jordanie\r\nKZ : Kazakhstan\r\nKE : Kenya\r\nKG : Kirghizistan\r\nKI : Kiribati\r\nXK : Kosovo\r\nKW : Koweït\r\nRE : La Réunion\r\nLA : Laos\r\nLS : Lesotho\r\nLV : Lettonie\r\nLB : Liban\r\nLR : Libéria\r\nLY : Libye\r\nLI : Liechtenstein\r\nLT : Lituanie\r\nLU : Luxembourg\r\nMK : Macédoine\r\nMG : Madagascar\r\nMY : Malaisie\r\nMW : Malawi\r\nMV : Maldives\r\nML : Mali\r\nMT : Malte\r\nMA : Maroc\r\nMQ : Martinique\r\nMU : Maurice\r\nMR : Mauritanie\r\nYT : Mayotte\r\nMX : Mexique\r\nMD : Moldavie\r\nMC : Monaco\r\nMN : Mongolie\r\nME : Monténégro\r\nMS : Montserrat\r\nMZ : Mozambique\r\nMM : Myanmar\r\nNA : Namibie\r\nNR : Nauru\r\nNP : Népal\r\nNI : Nicaragua\r\nNE : Niger\r\nNG : Nigéria\r\nNU : Niue\r\nNO : Norvège\r\nNC : Nouvelle-Calédonie\r\nNZ : Nouvelle-Zélande\r\nOM : Oman\r\nUG : Ouganda\r\nUZ : Ouzbékistan\r\nPK : Pakistan\r\nPW : Palaos\r\nPA : Panama\r\nPG : Papouasie-Nouvelle-Guinée\r\nPY : Paraguay\r\nNL : Pays-Bas\r\nBQ : Pays-Bas caribéens\r\nPE : Pérou\r\nPH : Philippines\r\nPN : Pitcairn\r\nPL : Pologne\r\nPF : Polynésie française\r\nPR : Porto Rico\r\nPT : Portugal\r\nQA : Qatar\r\nHK : R.A.S. chinoise de Hong Kong\r\nMO : R.A.S. chinoise de Macao\r\nCF : République centrafricaine\r\nDO : République dominicaine\r\nCZ : République tchèque\r\nRO : Roumanie\r\nGB : Royaume-Uni\r\nRU : Russie\r\nRW : Rwanda\r\nEH : Sahara occidental\r\nBL : Saint-Barthélemy\r\nKN : Saint-Christophe-et-Niévès\r\nSM : Saint-Marin\r\nMF : Saint-Martin (partie française)\r\nSX : Saint-Martin (partie néerlandaise)\r\nPM : Saint-Pierre-et-Miquelon\r\nVC : Saint-Vincent-et-les-Grenadines\r\nSH : Sainte-Hélène\r\nLC : Sainte-Lucie\r\nWS : Samoa\r\nAS : Samoa américaines\r\nST : Sao Tomé-et-Principe\r\nSN : Sénégal\r\nRS : Serbie\r\nSC : Seychelles\r\nSL : Sierra Leone\r\nSG : Singapour\r\nSK : Slovaquie\r\nSI : Slovénie\r\nSO : Somalie\r\nSD : Soudan\r\nSS : Soudan du Sud\r\nLK : Sri Lanka\r\nSE : Suède\r\nCH : Suisse\r\nSR : Suriname\r\nSJ : Svalbard et Jan Mayen\r\nSZ : Swaziland\r\nSY : Syrie\r\nTJ : Tadjikistan\r\nTW : Taïwan\r\nTZ : Tanzanie\r\nTD : Tchad\r\nTF : Terres australes françaises\r\nIO : Territoire britannique de l’océan Indien\r\nPS : Territoires palestiniens\r\nTH : Thaïlande\r\nTL : Timor oriental\r\nTG : Togo\r\nTK : Tokelau\r\nTO : Tonga\r\nTT : Trinité-et-Tobago\r\nTA : Tristan da Cunha\r\nTN : Tunisie\r\nTM : Turkménistan\r\nTR : Turquie\r\nTV : Tuvalu\r\nUA : Ukraine\r\nUY : Uruguay\r\nVU : Vanuatu\r\nVE : Venezuela\r\nVN : Vietnam\r\nWF : Wallis-et-Futuna\r\nYE : Yémen\r\nZM : Zambie\r\nZW : Zimbabwe",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "return_format": "code",
+            "default_value": "",
+            "placeholder": "Select a country"
+        },
+        {
+            "key": "field_5aeb0f481de34",
+            "label": "Dernière année de participation",
+            "name": "annee",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "2021": 2021,
+                "2020": 2020,
+                "2019": 2019,
+                "2018": 2018,
+                "2017": 2017,
+                "2016": 2016,
+                "2015": 2015,
+                "2014": 2014,
+                "2013": 2013
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5ad0c5a8a5a6a",
+            "label": "Biographie",
+            "name": "biographie",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5ad0c5c0a5a6b",
+            "label": "Siteweb",
+            "name": "siteweb",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5ad0c5dea5a6c",
+            "label": "Instagram",
+            "name": "instagram",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5ad0c5e8a5a6d",
+            "label": "Facebook",
+            "name": "facebook",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5ad0c5efa5a6e",
+            "label": "Twitter",
+            "name": "twitter",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "artist"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1626812380
+}
