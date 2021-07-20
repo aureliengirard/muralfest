@@ -7,7 +7,7 @@ function get_breadcrumb($parent_taxonomy_label=false, $parent_taxonomy_link=fals
     $link_artist = get_field('home_artist', 'options');
     $link_partner = get_field('home_partners', 'options');
     $link_program = get_field('home_program', 'options');
-    $link_over_the_year = get_field('over_the_year', 'options');
+    $link_over_the_year = get_field('home_over_the_year', 'options');
 
     $divider = " / ";
 
@@ -40,7 +40,7 @@ function get_breadcrumb($parent_taxonomy_label=false, $parent_taxonomy_link=fals
 
         } elseif ( get_post_type() == 'over_the_year' ) {
 
-            echo "<a href='" . $link_over_the_year . " '>" . __('Over the year', 'site-theme') . " </a>" ;
+            echo "<a href='" . $link_over_the_year . " '>" . __('Mural year-round', 'site-theme') . " </a>" ;
 
             echo $divider;
 
