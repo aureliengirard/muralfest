@@ -101,8 +101,8 @@
 					letter-spacing: -0.025em;
 					font-weight: 600;
 					padding-bottom: $spacing;
-					//text-transform: uppercase;
-					font-variant: small-caps;
+					text-transform: uppercase;
+					//font-variant: small-caps;
 					line-height: 1;
 
 					@include media-breakpoint-up(md) {
