@@ -16,11 +16,27 @@
             padding: 20px 15px;
             width:20%;
 
+            &.featured{
+                width: 33%;
+
+                img{
+                    width: 100%;
+                }
+            }
+
             @media only screen and (max-width: 767px) {
 				padding-bottom:20px;
                 width: 50%;
                 text-align: center;
+
+                &.featured{
+                    width: 100%;
+                }
 			}
+
+            img{
+                margin: auto;
+            }
         }
     }
 }
