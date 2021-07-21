@@ -117,9 +117,11 @@ function get_back_button(){
 
 	$other_lang_url = apply_filters( 'wpml_permalink', get_the_permalink(), $other_lang );
 
+    echo '<div class="col-md-3">';
 	if($url && $url != $other_lang_url){
-		echo '<a class="col-md-3 readmore back-btn" href="'. $url .'">< '. __('Back', 'custom_theme') .'</a>';
+		echo '<a class="readmore back-btn" href="'. $url .'">< '. __('Back', 'custom_theme') .'</a>';
 	}
+    echo '</div>';
 }
 
 function language_selector($display = 'native_name'){

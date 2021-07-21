@@ -14,9 +14,11 @@
 	}
 
 	.single-banner {
+		background-size:cover;
+		background-position: center;
+		background-repeat: no-repeat;
+
 		.row {
-			background-size:cover;
-			background-position: center;
 			height:200px;
 			min-height: 200px;
 			@include align-items(center);
@@ -99,7 +101,8 @@
 					letter-spacing: -0.025em;
 					font-weight: 600;
 					padding-bottom: $spacing;
-					text-transform: uppercase;
+					//text-transform: uppercase;
+					font-variant: small-caps;
 					line-height: 1;
 
 					@include media-breakpoint-up(md) {
