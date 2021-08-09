@@ -210,7 +210,9 @@
 
     &.lg{
         p{
-            font-size: 1.25em;
+            @include media-breakpoint-up(lg){
+                font-size: 1.25em;
+            }
         }
     }
 }
