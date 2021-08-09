@@ -1,9 +1,11 @@
 {% if reponsize_sizes %}{% set reponsize_sizes = reponsize_sizes|split(',') %}{% endif %}
 {% if height %}{{height}}{% else %}{% set height = 0 %}{% endif %}
 
+
 <img class="lazyload"
     src="{{img_url}}"
     class="lazyload"
+    {% if max_width %} style="max-width: {{max_width}}px;" {% endif %}
     data-srcset="{% for size in reponsize_sizes -%}{{ img_url|resize(size,height) }} {{size}}w{% if loop.last %}{% else %},{% endif %}{%- endfor %}"
     data-sizes="auto"
     width="{{img.width}}"

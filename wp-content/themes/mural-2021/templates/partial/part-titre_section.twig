@@ -1,5 +1,10 @@
+{% set title_alignment = "" %}
+{% if inner_item.centrer == true %}
+	{% set title_alignment = " text--center" %}
+{% endif %}
+
 <div class="row content">
-	<div class="col-12 texte-bloc{{inner_item.centrer}}">
+	<div class="col-12 texte-bloc{{title_alignment}}">
 		<h2>{{inner_item.titre}}</h2>
 	</div>
 </div>

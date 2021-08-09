@@ -1,5 +1,14 @@
+{% set texte_pleine_largeur = inner_item.texte_pleine_largeur %}
+{% set paragraph = "<p>" %}
+{% set paragraph_lg = "<p class='lg'>" %}
+
+{% set texte_size = ""  %}
+{% if inner_item.big_paragraph == true %}
+	{% set texte_size = " lg"  %}
+{% endif %}
+
 <div class="row content">
-	<div class="col-12 rte">
-		{{inner_item.texte_pleine_largeur}}
+	<div class="col-12 rte{{texte_size}}">
+		{{ texte_pleine_largeur }}
 	</div>
 </div>

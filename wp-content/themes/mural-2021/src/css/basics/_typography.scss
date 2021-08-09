@@ -207,6 +207,12 @@
             color: var(--couleurRouge);
         }
     }
+
+    &.lg{
+        p{
+            font-size: 1.25em;
+        }
+    }
 }
 
 header a {
