@@ -64,6 +64,43 @@ class ameUtils {
 		}
 		return null;
 	}
+
+	/**
+	 * Capitalize the first character of every word. Supports UTF-8.
+	 *
+	 * @param string $input
+	 * @return string
+	 */
+	public static function ucWords($input) {
+		static $hasUnicodeSupport = null, $charset = 'UTF-8';
+		if ( $hasUnicodeSupport === null ) {
+			//We need the mbstring extension and PCRE UTF-8 support.
+			$hasUnicodeSupport = function_exists('mb_list_encodings')
+				&& (@preg_match('/\pL/u', 'a') === 1)
+				&& function_exists('get_bloginfo');
+
+			if ( $hasUnicodeSupport ) {
+				//Technically, the encoding can change if something switches WP to a different site
+				//in the middle of a request, but we'll ignore that possibility.
+				$charset = get_bloginfo('charset');
+				$hasUnicodeSupport = in_array($charset, mb_list_encodings()) && ($charset === 'UTF-8');
+			}
+		}
+
+		if ( $hasUnicodeSupport ) {
+			$totalLength = mb_strlen($input);
+			$words = preg_split('/([\s\-_]++)/u', $input, null, PREG_SPLIT_DELIM_CAPTURE);
+			$output = array();
+			foreach ($words as $word) {
+				$firstCharacter = mb_substr($word, 0, 1, $charset);
+				//In old PHP versions, you must specify a non-null length to get the rest of the string.
+				$remainder = mb_substr($word, 1, $totalLength, $charset);
+				$output[] = mb_strtoupper($firstCharacter, $charset) . $remainder;
+			}
+			return implode('', $output);
+		}
+		return ucwords($input);
+	}
 }
 
 class ameFileLock {
@@ -145,5 +182,215 @@ class ameFileLock {
 
 	public function __destruct() {
 		$this->release();
+	}
+}
+
+class ameOrderedMap implements Iterator, Countable {
+	/**
+	 * @var ameLinkedListNode[]
+	 */
+	private $nodesByKey = array();
+
+	/**
+	 * @var ameLinkedListNode|null
+	 */
+	private $head = null;
+	/**
+	 * @var ameLinkedListNode|null
+	 */
+	private $tail = null;
+	/**
+	 * @var ameLinkedListNode|null
+	 */
+	private $currentNode = null;
+
+	/**
+	 * @param array $items
+	 * @return $this
+	 */
+	public function addAll($items) {
+		foreach ($items as $key => $item) {
+			$this->set($key, $item);
+		}
+		return $this;
+	}
+
+	/**
+	 * @param string $previousKey
+	 * @param array $items
+	 * @return $this
+	 */
+	public function insertAllAfter($previousKey, $items) {
+		if ( !isset($this->nodesByKey[$previousKey]) ) {
+			return $this->addAll($items);
+		}
+
+		$previousNode = $this->nodesByKey[$previousKey];
+		foreach ($items as $key => $value) {
+			if ( isset($this->nodesByKey[$key]) ) {
+				$node = $this->nodesByKey[$key];
+			} else {
+				$node = new ameLinkedListNode($value, $key);
+				$this->nodesByKey[$key] = $node;
+			}
+
+			$this->insertNodeAfter($previousNode, $node);
+			$previousNode = $node;
+		}
+
+		return $this;
+	}
+
+	/**
+	 * @param string $previousKey
+	 * @param string $key
+	 * @param mixed $item
+	 * @return $this
+	 */
+	public function insertAfter($previousKey, $key, $item) {
+		return $this->insertAllAfter($previousKey, array($key => $item));
+	}
+
+	private function insertNodeAfter($previousNode, $newNode) {
+		$newNode->previous = $previousNode;
+		$newNode->next = $previousNode->next;
+		if ( $newNode->next !== null ) {
+			$newNode->next->previous = $newNode;
+		}
+
+		$previousNode->next = $newNode;
+
+		if ( $this->tail === $previousNode ) {
+			$this->tail = $newNode;
+		}
+	}
+
+	/**
+	 * @param string $nextKey
+	 * @param string $key
+	 * @param $item
+	 * @return $this
+	 */
+	public function insertBefore($nextKey, $key, $item) {
+		if ( !isset($this->nodesByKey[$nextKey]) ) {
+			return $this->set($key, $item);
+		}
+
+		$nextNode = $this->nodesByKey[$nextKey];
+		$previousNode = $nextNode->previous;
+
+		if ( isset($this->nodesByKey[$key]) ) {
+			$node = $this->nodesByKey[$key];
+		} else {
+			$node = new ameLinkedListNode($item, $key);
+			$this->nodesByKey[$key] = $node;
+		}
+
+		$node->next = $nextNode;
+		$node->previous = $previousNode;
+
+		$nextNode->previous = $node;
+		if ( $previousNode !== null ) {
+			$previousNode->next = $node;
+		}
+
+		if ( $this->head === $nextNode ) {
+			$this->head = $node;
+		}
+
+		return $this;
+	}
+
+	public function set($key, $item) {
+		if ( isset($this->nodesByKey[$key]) ) {
+			$this->nodesByKey[$key]->value = $item;
+		} else {
+			$this->append($key, $item);
+		}
+		return $this;
+	}
+
+	private function append($key, $item) {
+		$node = new ameLinkedListNode($item, $key);
+		$this->nodesByKey[$key] = $node;
+
+		if ( $this->tail === null ) {
+			$this->head = $node;
+			$this->tail = $node;
+		} else {
+			$this->insertNodeAfter($this->tail, $node);
+			$this->tail = $node;
+		}
+
+		return $this;
+	}
+
+	public function current() {
+		return $this->currentNode->value;
+	}
+
+	public function next() {
+		if ( $this->currentNode !== null ) {
+			$this->currentNode = $this->currentNode->next;
+		}
+	}
+
+	public function key() {
+		return $this->currentNode->key;
+	}
+
+	public function valid() {
+		return ($this->currentNode !== null);
+	}
+
+	public function rewind() {
+		$this->currentNode = $this->head;
+	}
+
+	public function count() {
+		return count($this->nodesByKey);
+	}
+
+	/**
+	 * Filter the map using a callback function.
+	 * Returns a new map that contains only the items for which the callback function returns a truthy value.
+	 *
+	 * @param callable $predicate
+	 * @return ameOrderedMap
+	 */
+	public function filter($predicate) {
+		$result = new self();
+		foreach($this as $key => $value) {
+			if ( call_user_func($predicate, $value, $key) ) {
+				$result->append($key, $value);
+			}
+		}
+		return $result;
+	}
+}
+
+class ameLinkedListNode {
+	/**
+	 * @var string
+	 */
+	public $key;
+
+	/**
+	 * @var mixed
+	 */
+	public $value;
+
+	/**
+	 * @var self|null
+	 */
+	public $next = null;
+	/**
+	 * @var self|null
+	 */
+	public $previous = null;
+
+	public function __construct($value, $key = '') {
+		$this->value = $value;
+		$this->key = $key;
 	}
 }

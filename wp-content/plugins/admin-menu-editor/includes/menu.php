@@ -155,6 +155,11 @@ abstract class ameMenu {
 			$menu['component_visibility'] = $visibility;
 		}
 
+		//Copy heading settings.
+		if ( isset($arr['menu_headings']) ) {
+			$menu['menu_headings'] = $arr['menu_headings'];
+		}
+
 		//Copy the "modified icons" flag.
 		if ( isset($arr['has_modified_dashicons']) ) {
 			$menu['has_modified_dashicons'] = (bool)$arr['has_modified_dashicons'];
@@ -163,6 +168,11 @@ abstract class ameMenu {
 		//Copy the pre-generated list of virtual capabilities.
 		if ( isset($arr['prebuilt_virtual_caps']) ) {
 			$menu['prebuilt_virtual_caps'] = $arr['prebuilt_virtual_caps'];
+		}
+
+		//Copy the modification timestamp.
+		if ( isset($arr['last_modified_on']) ) {
+			$menu['last_modified_on'] = substr(strval($arr['last_modified_on']), 0, 100);
 		}
 
 		foreach(self::$custom_loaders as $callback) {
@@ -217,6 +227,7 @@ abstract class ameMenu {
 	 */
 	public static function to_json($menu) {
 		$menu = self::add_format_header($menu);
+		//todo: Maybe use wp_json_encode() instead. At least one user had invalid UTF-8 characters in their menu.
 		$result = json_encode($menu);
 		if ( !is_string($result) ) {
 			$message = sprintf(
