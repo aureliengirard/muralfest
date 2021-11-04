@@ -1,11 +1,17 @@
 <?php
 
 final class ITSEC_Debug {
-	public static function print_r( $data, $args = array() ) {
-		echo "<style>.wp-admin .it-debug-print-r { margin-left: 170px; } .wp-admin #wpcontent .it-debug-print-r { margin-left: 0; }</style>\n";
-		echo "<pre style='color:black;background:white;padding:15px;font-family:\"Courier New\",Courier,monospace;font-size:12px;white-space:pre-wrap;text-align:left;max-width:100%;' class='it-debug-print-r'>";
-		echo self::get_print_r( $data, $args );
-		echo "</pre>\n";
+	public static function print_r( $data, $args = array(), $echo = true ) {
+		$html = "<style>.wp-admin .it-debug-print-r { margin-left: 170px; } .wp-admin #wpcontent .it-debug-print-r { margin-left: 0; }</style>\n";
+		$html .= "<pre style='color:black;background:white;padding:15px;font-family:\"Courier New\",Courier,monospace;font-size:12px;white-space:pre-wrap;text-align:left;max-width:100%;' class='it-debug-print-r'>";
+		$html .= self::get_print_r( $data, $args );
+		$html .= "</pre>\n";
+
+		if ( $echo ) {
+			echo $html;
+		}
+
+		return $html;
 	}
 
 	public static function get_print_r( $data, $args = array() ) {
@@ -240,6 +246,7 @@ final class ITSEC_Debug {
 				$flags = ENT_COMPAT;
 
 				if ( defined( 'ENT_HTML401' ) ) {
+					// phpcs:ignore PHPCompatibility.PHP.NewConstants.ent_html401Found -- Ensure that Tide doesn't reduce compatibility because of this code which is meant to improve compatibility.
 					$flags |= ENT_HTML401;
 				}
 
@@ -255,15 +262,36 @@ final class ITSEC_Debug {
 			return '<strong>null</strong>';
 		}
 
-		if ( is_object( $data ) ) {
-			$class_name = get_class( $data );
+		if ( is_object( $data ) || 'object' === gettype( $data ) ) {
+			if ( ! is_object( $data ) || '__PHP_Incomplete_Class' === get_class( $data ) ) {
+				// Special handling for objects for classes that are not loaded.
+				$vars = get_object_vars( $data );
+
+				$class_name = $vars['__PHP_Incomplete_Class_Name'];
+			} else {
+				$class_name = get_class( $data );
+			}
+
 			$retval = "<strong>Object</strong> $class_name";
 
 			if ( ! $expand_objects || ( $depth == $max_depth ) ) {
 				return $retval;
 			}
 
-			$vars = get_object_vars( $data );
+			if ( isset( $vars ) ) {
+				// Special handling for objects for classes that are not loaded.
+				unset( $vars['__PHP_Incomplete_Class_Name'] );
+				$new_vars = array();
+
+				foreach ( $vars as $key => $val ) {
+					$key = substr( $key, strlen( $class_name ) + 2 );
+					$new_vars[$key] = $val;
+				}
+
+				$vars = $new_vars;
+			} else {
+				$vars = get_object_vars( $data );
+			}
 
 			if ( empty( $vars ) ) {
 				$vars = '';

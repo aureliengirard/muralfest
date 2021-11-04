@@ -1,23 +1,61 @@
 <?php
-/**
- * Notification Center Validator.
- */
 
-class ITSEC_Notification_Center_Validator extends ITSEC_Validator {
+use iThemesSecurity\Config_Validator;
+
+class ITSEC_Notification_Center_Validator extends Config_Validator {
 
 	private $current_tags = array();
 	private $tag_errors = array();
 
-	public function get_id() {
-		return 'notification-center';
-	}
+	protected function validate_settings() {
+		parent::validate_settings();
 
-	protected function sanitize_settings() {
-		$this->vars_to_skip_validate_matching_fields = array( 'last_sent', 'data', 'resend_at', 'mail_errors', 'admin_emails' );
-		$this->set_previous_if_empty( array( 'last_sent', 'data', 'resend_at', 'admin_emails' ) );
+		if ( ! $this->can_save() ) {
+			return;
+		}
 
-		if ( ! isset( $this->settings['mail_errors'] ) ) {
-			$this->settings['mail_errors'] = $this->previous_settings['mail_errors'];
+		if ( $this->sanitize_setting( 'array', 'default_recipients', esc_html__( 'Default Recipients', 'better-wp-security' ) ) ) {
+			if ( empty( $this->settings['default_recipients']['user_list'] ) ) {
+				$this->add_error( new WP_Error(
+					'itsec-validator-notification-center-invalid-type-default_recipients[user_list]-non-empty',
+					esc_html__( 'Selecting "Default Recipients" is required.', 'better-wp-security' )
+				) );
+
+				if ( ITSEC_Core::is_interactive() ) {
+					$this->set_can_save( false );
+				}
+			} else {
+				$users_and_roles = $this->get_available_admin_users_and_roles();
+				$valid_contacts  = $users_and_roles['users'] + $users_and_roles['roles'];
+
+				$contact_errors = array();
+
+				foreach ( $this->settings['default_recipients']['user_list'] as $i => $contact ) {
+					if ( isset( $valid_contacts[ $contact ] ) ) {
+						continue;
+					}
+
+					if ( in_array( $contact, $this->previous_settings['default_recipients']['user_list'], true ) ) {
+						unset( $this->settings['default_recipients']['user_list'][ $i ] );
+					} else {
+						// Only error for new entries.
+						$contact_errors[] = $contact;
+					}
+				}
+
+				$this->settings['default_recipients']['user_list'] = array_values( $this->settings['default_recipients']['user_list'] );
+
+				if ( $contact_errors ) {
+					$this->add_error( new WP_Error(
+						'itsec-validator-notification-center-invalid-type-default_recipients[user_list]-invalid-contacts',
+						wp_sprintf( esc_html__( 'Unknown Default Recipients contacts, %l.', 'better-wp-security' ), $contact_errors )
+					) );
+
+					if ( ITSEC_Core::is_interactive() ) {
+						$this->set_can_save( false );
+					}
+				}
+			}
 		}
 
 		if ( ! $this->sanitize_setting( 'array', 'notifications', esc_html__( 'Notifications', 'better-wp-security' ) ) ) {
@@ -36,7 +74,7 @@ class ITSEC_Notification_Center_Validator extends ITSEC_Validator {
 			$strings = ITSEC_Core::get_notification_center()->get_notification_strings( $notification );
 
 			if ( ITSEC_Notification_Center::R_USER_LIST !== $config['recipient'] && ITSEC_Notification_Center::R_USER_LIST_ADMIN_UPGRADE !== $config['recipient'] ) {
-				unset( $settings['user_list'] );
+				unset( $settings['user_list'], $settings['recipient_type'] );
 			} else {
 				if ( ! is_array( $settings['user_list'] ) ) {
 					$settings['user_list'] = array();
@@ -47,11 +85,20 @@ class ITSEC_Notification_Center_Validator extends ITSEC_Validator {
 
 				$contact_errors = array();
 
-				foreach ( $settings['user_list'] as $contact ) {
-					if ( ! isset( $valid_contacts[ $contact ] ) ) {
+				foreach ( $settings['user_list'] as $i => $contact ) {
+					if ( isset( $valid_contacts[ $contact ] ) ) {
+						continue;
+					}
+
+					if ( in_array( $contact, $this->previous_settings['notifications'][ $notification ]['user_list'], true ) ) {
+						unset( $settings['user_list'][ $i ] );
+					} else {
+						// Only error for new entries.
 						$contact_errors[] = $contact;
 					}
 				}
+
+				$settings['user_list'] = array_values( $settings['user_list'] );
 
 				if ( ITSEC_Notification_Center::R_USER_LIST_ADMIN_UPGRADE === $config['recipient'] && isset( $settings['previous_emails'] ) ) {
 					foreach ( $settings['previous_emails'] as $previous_email ) {
@@ -65,6 +112,19 @@ class ITSEC_Notification_Center_Validator extends ITSEC_Validator {
 					$this->add_error( new WP_Error(
 						'itsec-validator-notification-center-invalid-type-notifications[user_list]-invalid-contacts',
 						wp_sprintf( esc_html__( 'Unknown contacts for %1$s, %2$l.', 'better-wp-security' ), $strings['label'], $contact_errors )
+					) );
+
+					if ( ITSEC_Core::is_interactive() ) {
+						$this->set_can_save( false );
+					}
+				}
+
+				if ( ! isset( $settings['recipient_type'] ) ) {
+					$settings['recipient_type'] = 'default';
+				} elseif ( ! in_array( $settings['recipient_type'], array( 'default', 'custom' ), true ) ) {
+					$this->add_error( new WP_Error(
+						'itsec-validator-notification-center-invalid-type-notifications[recipient_type]-array',
+						wp_sprintf( esc_html__( 'Unknown recipient type for %s.', 'better-wp-security' ), $strings['label'] )
 					) );
 
 					if ( ITSEC_Core::is_interactive() ) {
@@ -122,14 +182,6 @@ class ITSEC_Notification_Center_Validator extends ITSEC_Validator {
 
 			if ( empty( $config['optional'] ) ) {
 				unset( $settings['enabled'] );
-			} else {
-				if ( 'false' === $settings['enabled'] ) {
-					$settings['enabled'] = false;
-				} elseif ( 'true' === $settings['enabled'] ) {
-					$settings['enabled'] = true;
-				} else {
-					$settings['enabled'] = (bool) $settings['enabled'];
-				}
 			}
 
 			if ( ! is_array( $config['schedule'] ) ) {
@@ -241,8 +293,10 @@ class ITSEC_Notification_Center_Validator extends ITSEC_Validator {
 		$available_roles = array();
 		$available_users = array();
 
+		require_once( ITSEC_Core::get_core_dir() . '/lib/class-itsec-lib-canonical-roles.php' );
+
 		foreach ( $roles->roles as $role => $details ) {
-			if ( isset( $details['capabilities']['manage_options'] ) && ( true === $details['capabilities']['manage_options'] ) ) {
+			if ( 'administrator' === ITSEC_Lib_Canonical_Roles::get_canonical_role_from_role( $role ) ) {
 				$available_roles["role:$role"] = translate_user_role( $details['name'] );
 
 				$users = get_users( array( 'role' => $role ) );
@@ -309,4 +363,4 @@ class ITSEC_Notification_Center_Validator extends ITSEC_Validator {
 	}
 }
 
-ITSEC_Modules::register_validator( new ITSEC_Notification_Center_Validator() );
+ITSEC_Modules::register_validator( new ITSEC_Notification_Center_Validator( ITSEC_Modules::get_config( 'notification-center' ) ) );

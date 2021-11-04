@@ -12,11 +12,7 @@
 final class ITSEC_Files {
 	static $instance = false;
 
-	private function __construct() {
-
-		add_action( 'itsec-new-blacklisted-ip', array( $this, 'quick_ban' ) );
-
-	}
+	private function __construct() {}
 
 	public static function get_instance() {
 		if ( ! self::$instance ) {
@@ -46,8 +42,13 @@ final class ITSEC_Files {
 		$result = ITSEC_Lib_Config_File::update_wp_config();
 		$success = ! is_wp_error( $result );
 
-		if ( $add_responses && is_wp_error( $result ) ) {
-			ITSEC_Response::add_error( $result );
+		if ( $add_responses ) {
+			if ( is_wp_error( $result ) ) {
+				ITSEC_Response::set_success( false );
+				ITSEC_Response::add_error( $result );
+			} else {
+				ITSEC_Response::set_success();
+			}
 		}
 
 		return $success;
@@ -62,15 +63,28 @@ final class ITSEC_Files {
 
 		if ( $add_responses ) {
 			if ( is_wp_error( $result ) ) {
+				ITSEC_Response::set_success( false );
 				ITSEC_Response::add_error( $result );
+				ITSEC_Lib_Config_File::get_server_config_file_path();
+			} else {
+				ITSEC_Response::set_success();
 
-				$file = ITSEC_Lib_Config_File::get_server_config_file_path();
-			} else if ( 'nginx' === $server ) {
-				ITSEC_Response::add_message( __( 'You must restart your NGINX server for the changes to take effect.', 'better-wp-security' ) );
+				if ( 'nginx' === $server ) {
+					ITSEC_Response::add_info( __( 'You must restart your NGINX server for the changes to take effect.', 'better-wp-security' ) );
+				}
 			}
 		}
 
 		return $success;
+	}
+
+	/**
+	 * Flush files to the filesystem on a schedule.
+	 *
+	 * @param ITSEC_Job $job
+	 */
+	public static function flush_files( ITSEC_Job $job ) {
+		self::regenerate_server_config( false );
 	}
 
 	/**
@@ -101,61 +115,5 @@ final class ITSEC_Files {
 
 		ITSEC_Lib_Config_File::reset_wp_config();
 		ITSEC_Lib_Config_File::reset_server_config();
-	}
-
-	/**
-	 * Process quick ban of host.
-	 *
-	 * Immediately adds the supplied host to the .htaccess file for banning.
-	 *
-	 * @since 4.0.0
-	 *
-	 * @param string $host the host to ban
-	 *
-	 * @return bool true on success or false on failure
-	 */
-	public function quick_ban( $host ) {
-		$host = trim( $host );
-
-		require_once( ITSEC_Core::get_core_dir() . '/lib/class-itsec-lib-ip-tools.php' );
-
-		if ( ! ITSEC_Lib_IP_Tools::validate( $host ) ) {
-			return false;
-		}
-
-
-		$host_rule = '# ' . __( 'Quick ban IP. Will be updated on next formal rules save.', 'better-wp-security' ) . "\n";
-
-		if ( 'nginx' === ITSEC_Lib::get_server() ) {
-			$host_rule .= "\tdeny $host;\n";
-		} else if ( 'apache' === ITSEC_Lib::get_server() ) {
-			$dhost = str_replace( '.', '\\.', $host ); //re-define $dhost to match required output for SetEnvIf-RegEX
-
-			$host_rule .= "SetEnvIF REMOTE_ADDR \"^$dhost$\" DenyAccess\n"; //Ban IP
-			$host_rule .= "SetEnvIF X-FORWARDED-FOR \"^$dhost$\" DenyAccess\n"; //Ban IP from Proxy-User
-			$host_rule .= "SetEnvIF X-CLUSTER-CLIENT-IP \"^$dhost$\" DenyAccess\n"; //Ban IP for Cluster/Cloud-hosted WP-Installs
-			$host_rule .= "<IfModule mod_authz_core.c>\n";
-			$host_rule .= "\t<RequireAll>\n";
-			$host_rule .= "\t\tRequire all granted\n";
-			$host_rule .= "\t\tRequire not env DenyAccess\n";
-			$host_rule .= "\t\tRequire not ip $host\n";
-			$host_rule .= "\t</RequireAll>\n";
-			$host_rule .= "</IfModule>\n";
-			$host_rule .= "<IfModule !mod_authz_core.c>\n";
-			$host_rule .= "\tOrder allow,deny\n";
-			$host_rule .= "\tAllow from all\n";
-			$host_rule .= "\tDeny from env=DenyAccess\n";
-			$host_rule .= "\tDeny from $host\n";
-			$host_rule .= "</IfModule>\n";
-		}
-
-		require_once( ITSEC_Core::get_core_dir() . '/lib/class-itsec-lib-config-file.php' );
-		$result = ITSEC_Lib_Config_File::append_server_config( $host_rule );
-
-		if ( is_wp_error( $result ) ) {
-			return false;
-		}
-
-		return true;
 	}
 }

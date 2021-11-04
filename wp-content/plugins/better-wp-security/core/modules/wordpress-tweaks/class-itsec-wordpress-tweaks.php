@@ -87,30 +87,15 @@ final class ITSEC_WordPress_Tweaks {
 			add_filter( 'authenticate', array( $this, 'block_multiauth_attempts' ), 0, 3 );
 		}
 
-		//remove wlmanifest link if turned on
-		if ( $this->settings['wlwmanifest_header'] ) {
-			remove_action( 'wp_head', 'wlwmanifest_link' );
-		}
-
-		//remove rsd link from header if turned on
-		if ( $this->settings['edituri_header'] ) {
-			remove_action( 'wp_head', 'rsd_link' );
-		}
-
 		//Disable XML-RPC
-		if ( 2 == $this->settings['disable_xmlrpc'] ) {
+		if ( 'disable' === $this->settings['disable_xmlrpc'] ) {
 			add_filter( 'xmlrpc_enabled', '__return_null' );
 			add_filter( 'bloginfo_url', array( $this, 'remove_pingback_url' ), 10, 2 );
-		} else if ( 1 == $this->settings['disable_xmlrpc'] ) { // Disable pingbacks
+		} else if ( 'disable_pingbacks' === $this->settings['disable_xmlrpc'] ) {
 			add_filter( 'xmlrpc_methods', array( $this, 'xmlrpc_methods' ) );
 		}
 
 		add_filter( 'rest_dispatch_request', array( $this, 'filter_rest_dispatch_request' ), 10, 4 );
-
-		//Process remove login errors
-		if ( $this->settings['login_errors'] ) {
-			add_filter( 'login_errors', '__return_null' );
-		}
 
 		//Process require unique nicename
 		if ( $this->settings['force_unique_nicename'] ) {
@@ -121,11 +106,48 @@ final class ITSEC_WordPress_Tweaks {
 		if ( $this->settings['disable_unused_author_pages'] ) {
 			add_action( 'template_redirect', array( $this, 'disable_unused_author_pages' ) );
 		}
+	}
 
-		if ( $this->settings['block_tabnapping'] ) {
-			add_action( 'wp_enqueue_scripts', array( $this, 'add_block_tabnapping_script' ) );
-			add_action( 'admin_enqueue_scripts', array( $this, 'add_block_tabnapping_script' ) );
+	public function deinit() {
+		$this->remove_config_hooks();
+
+		// Functional code for the valid_user_login_type setting.
+		if ( 'email' === $this->settings['valid_user_login_type'] ) {
+			remove_action( 'login_init', array( $this, 'add_gettext_filter' ) );
+			remove_filter( 'authenticate', array( $this, 'add_gettext_filter' ), 0 );
+			add_filter( 'authenticate', 'wp_authenticate_username_password', 20 );
+		} else if ( 'username' === $this->settings['valid_user_login_type'] ) {
+			remove_action( 'login_init', array( $this, 'add_gettext_filter' ) );
+			remove_filter( 'authenticate', array( $this, 'add_gettext_filter' ), 0 );
+			add_filter( 'authenticate', 'wp_authenticate_email_password', 20 );
 		}
+
+		// Functional code for the allow_xmlrpc_multiauth setting.
+		if ( defined( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST && ! $this->settings['allow_xmlrpc_multiauth'] ) {
+			remove_filter( 'authenticate', array( $this, 'block_multiauth_attempts' ), 0 );
+		}
+
+		//Disable XML-RPC
+		if ( 'disable' === $this->settings['disable_xmlrpc'] ) {
+			remove_filter( 'xmlrpc_enabled', '__return_null' );
+			remove_filter( 'bloginfo_url', array( $this, 'remove_pingback_url' ), 10 );
+		} else if ( 'disable_pinbacks' === $this->settings['disable_xmlrpc'] ) { // Disable pingbacks
+			remove_filter( 'xmlrpc_methods', array( $this, 'xmlrpc_methods' ) );
+		}
+
+		remove_filter( 'rest_dispatch_request', array( $this, 'filter_rest_dispatch_request' ), 10 );
+
+		//Process require unique nicename
+		if ( $this->settings['force_unique_nicename'] ) {
+			remove_action( 'user_profile_update_errors', array( $this, 'force_unique_nicename' ), 10 );
+		}
+
+		//Process remove extra author archives
+		if ( $this->settings['disable_unused_author_pages'] ) {
+			remove_action( 'template_redirect', array( $this, 'disable_unused_author_pages' ) );
+		}
+
+		remove_filter( 'rest_request_after_callbacks', array( $this, 'filter_taxonomies_response' ) );
 	}
 
 	/**
@@ -203,13 +225,27 @@ final class ITSEC_WordPress_Tweaks {
 			return $result;
 		}
 
+		if ( function_exists( 'rest_authorization_required_code' ) ) {
+			$code = rest_authorization_required_code();
+		} else {
+			$code = is_user_logged_in() ? 403 : 401;
+		}
+
+		$error = new WP_Error( 'itsec_rest_api_access_restricted', __( 'You do not have sufficient permission to access this endpoint. Access to REST API requests is restricted by iThemes Security settings.', 'better-wp-security' ), array(
+			'status' => $code,
+		) );
+
 		// Each of the following endpoints can be restricted based on a simple capability check.
 		$endpoint_caps = array(
 			'comments'   => 'moderate_comments',
 			'statuses'   => 'edit_posts',
-			'taxonomies' => 'edit_terms',
 			'types'      => 'edit_posts',
 		);
+
+		if ( version_compare( $GLOBALS['wp_version'], '4.7.0', '<' ) ) {
+			// We need the request_after_callbacks filter to perform this blocking. So fallback to a more general edit_posts capability when this hook isn't available.
+			$endpoint_caps['taxonomies'] = 'edit_posts';
+		}
 
 		foreach ( $endpoint_caps as $endpoint => $cap ) {
 			if ( $endpoint === $route_parts[2] ) {
@@ -217,8 +253,14 @@ final class ITSEC_WordPress_Tweaks {
 					return $result;
 				}
 
-				return new WP_Error( 'itsec_rest_api_access_restricted', __( 'You do not have sufficient permission to access this endpoint. Access to REST API requests is restricted by iThemes Security settings.', 'better-wp-security' ) );
+				return $error;
 			}
+		}
+
+		if ( 'taxonomies' === $route_parts[2] ) {
+			add_filter( 'rest_request_after_callbacks', array( $this, 'filter_taxonomies_response' ), 10, 3 );
+
+			return $result;
 		}
 
 		if ( 'users' === $route_parts[2] ) {
@@ -232,7 +274,7 @@ final class ITSEC_WordPress_Tweaks {
 				return $result;
 			}
 
-			return new WP_Error( 'itsec_rest_api_access_restricted', __( 'You do not have sufficient permission to access this endpoint. Access to REST API requests is restricted by iThemes Security settings.', 'better-wp-security' ) );
+			return $error;
 		}
 
 
@@ -259,7 +301,7 @@ final class ITSEC_WordPress_Tweaks {
 					if ( current_user_can( $taxonomy->cap->edit_terms ) ) {
 						return $result;
 					} else {
-						return new WP_Error( 'itsec_rest_api_access_restricted', __( 'You do not have sufficient permission to access this endpoint. Access to REST API requests is restricted by iThemes Security settings.', 'better-wp-security' ) );
+						return $error;
 					}
 				}
 			}
@@ -281,7 +323,7 @@ final class ITSEC_WordPress_Tweaks {
 					if ( current_user_can( $post_type->cap->edit_posts ) ) {
 						return $result;
 					} else {
-						return new WP_Error( 'itsec_rest_api_access_restricted', __( 'You do not have sufficient permission to access this endpoint. Access to REST API requests is restricted by iThemes Security settings.', 'better-wp-security' ) );
+						return $error;
 					}
 				}
 			}
@@ -294,10 +336,73 @@ final class ITSEC_WordPress_Tweaks {
 		return $result;
 	}
 
+	/**
+	 * Filter the taxonomies response to exclude taxonomies the user does not have edit permission for.
+	 *
+	 * @param WP_REST_Response|WP_Error $response
+	 * @param array                     $handler
+	 * @param WP_REST_Request           $request
+	 *
+	 * @return WP_REST_Response|WP_Error
+	 */
+	public function filter_taxonomies_response( $response, $handler, $request ) {
 
-	public function add_block_tabnapping_script() {
-		wp_enqueue_script( 'blankshield', plugins_url( 'js/blankshield/blankshield.min.js', __FILE__ ), array(), ITSEC_Core::get_plugin_build(), true );
-		wp_enqueue_script( 'itsec-wt-block-tabnapping', plugins_url( 'js/block-tabnapping.js', __FILE__ ), array( 'blankshield' ), ITSEC_Core::get_plugin_build(), true );
+		if ( is_wp_error( $response ) ) {
+			return $response;
+		}
+
+		$route       = strtolower( $request->get_route() );
+		$route_parts = explode( '/', trim( $route, '/' ) );
+
+		if ( 'wp' !== $route_parts[0] || ! isset( $route_parts[2] ) || 'taxonomies' !== $route_parts[2] ) {
+			return $response;
+		}
+
+		if ( function_exists( 'rest_authorization_required_code' ) ) {
+			$code = rest_authorization_required_code();
+		} else {
+			$code = is_user_logged_in() ? 403 : 401;
+		}
+
+		$error = new WP_Error( 'itsec_rest_api_access_restricted', __( 'You do not have sufficient permission to access this endpoint. Access to REST API requests is restricted by iThemes Security settings.', 'better-wp-security' ), array(
+			'status' => $code,
+		) );
+
+		$data = $response->get_data();
+
+		if ( isset( $route_parts[3] ) ) {
+			if ( ! $taxonomy = get_taxonomy( $route_parts[3] ) ) {
+				return $response;
+			}
+
+			if ( ! current_user_can( $taxonomy->cap->assign_terms ) ) {
+				return $error;
+			}
+
+			return $response;
+		}
+
+		foreach ( $data as $i => $taxonomy_data ) {
+			if ( ! isset( $taxonomy_data['slug'] ) ) {
+				continue;
+			}
+
+			if ( ! $taxonomy = get_taxonomy( $taxonomy_data['slug'] ) ) {
+				continue;
+			}
+
+			if ( ! current_user_can( $taxonomy->cap->assign_terms ) ) {
+				unset( $data[ $i ] );
+			}
+		}
+
+		if ( ! $data ) {
+			return $error;
+		}
+
+		$response->set_data( $data );
+
+		return $response;
 	}
 
 	/**
@@ -325,7 +430,7 @@ final class ITSEC_WordPress_Tweaks {
 
 		status_header( 405 );
 		header( 'Content-Type: text/plain' );
-		die( __( 'XML-RPC services are disabled on this site.' ) );
+		die( __( 'XML-RPC services are disabled on this site.', 'better-wp-security' ) );
 	}
 
 	/**

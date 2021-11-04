@@ -54,20 +54,21 @@ var itsecUtil = {
 
 	processAjaxResponse: function( a, status, b, module, method, data, callback ) {
 		var results = {
-			'module':        module,
-			'method':        method,
-			'data':          data,
-			'status':        status,
-			'jqxhr':         null,
-			'success':       false,
-			'response':      null,
-			'errors':        [],
-			'warnings':      [],
-			'messages':      [],
-			'infos':         [],
-			'functionCalls': [],
-			'redirect':      false,
-			'closeModal':    true
+			'module':          module,
+			'method':          method,
+			'data':            data,
+			'status':          status,
+			'jqxhr':           null,
+			'success':         false,
+			'response':        null,
+			'errors':          [],
+			'warnings':        [],
+			'messages':        [],
+			'infos':           [],
+			'functionCalls':   [],
+			'storeDispatches': [],
+			'redirect':        false,
+			'closeModal':      true
 		};
 
 
@@ -81,6 +82,7 @@ var itsecUtil = {
 			results.messages = a.messages;
 			results.infos = a.infos;
 			results.functionCalls = a.functionCalls;
+			results.storeDispatches = a.storeDispatches;
 			results.redirect = a.redirect;
 			results.closeModal = a.closeModal;
 		} else if ( a.responseText ) {
@@ -146,6 +148,30 @@ var itsecUtil = {
 				}
 			}
 		}
+
+		itsecUtil.handleStoreDispatches( results.storeDispatches );
+	},
+
+	handleStoreDispatches: function( dispatches ) {
+		if ( !wp.data ) {
+			return;
+		}
+
+		for ( var i = 0; i < dispatches.length; i++ ) {
+			var dispatch = dispatches[ i ];
+			var key = dispatch.store,
+				action = dispatch.action,
+				args = dispatch.args;
+
+			var store = wp.data.dispatch( key );
+
+			if ( ! store ) {
+				console.warn( 'Unable to call store dispatch. The store does not exist.', dispatch );
+				continue;
+			}
+
+			store[ action ].apply( store, args );
+		}
 	},
 
 	getUrlParameter: function( name ) {
@@ -166,6 +192,42 @@ var itsecUtil = {
 		}
 		// If the requested parameter doesn't exist, return false
 		return false;
-	}
+	},
 
+	buildNotices: function ( response, asAlt ) {
+		var notices = [],
+			types = ['error', 'warning', 'message', 'info'];
+
+		for ( var i = 0; i < types.length; i++ ) {
+			for ( var j = 0; j < response[types[i] + 's'].length; j++ ) {
+				notices.push( itsecUtil.makeNotice( response[types[i] + 's'][j], types[i], asAlt ) );
+			}
+		}
+
+		return notices;
+	},
+
+	makeNotice: function ( message, type, asAlt ) {
+		type = type === 'message' ? 'success' : type;
+
+		var className = 'notice notice-' + type;
+
+		if ( asAlt ) {
+			className += ' notice-alt';
+		}
+
+		return jQuery( '<div>', { class: className } )
+			.append( jQuery( '<p>', { html: message } ) );
+	},
+
+	displayNotices: function ( response, $container, asAlt ) {
+		var notices = itsecUtil.buildNotices( response, asAlt );
+
+		for ( var i = 0; i < notices.length; i++ ) {
+			(function ( $notice ) {
+				$container.append( $notice );
+				setTimeout( function () {$notice.remove();}, 10000 );
+			})( notices[i].clone() );
+		}
+	},
 };

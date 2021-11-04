@@ -6,20 +6,36 @@
  * Description: Take the guesswork out of WordPress security. iThemes Security offers 30+ ways to lock down WordPress in an easy-to-use WordPress security plugin.
  * Author: iThemes
  * Author URI: https://ithemes.com
- * Version: 6.9.2
+ * Version: 8.0.2
  * Text Domain: better-wp-security
  * Network: True
  * License: GPLv2
+ * Requires PHP: 7.0
+ * Requires at least: 5.7
  */
 
-function itsec_load_textdomain() {
-
-	if ( function_exists( 'get_user_locale' ) && is_admin() ) {
-		$locale = get_user_locale();
-	} else {
-		$locale = get_locale();
+if ( version_compare( phpversion(), '7.0.0', '<' ) ) {
+	function itsec_free_minimum_php_version_notice() {
+		echo '<div class="notice notice-error"><p>' . esc_html__( 'iThemes Security requires PHP 7.0 or higher.', 'better-wp-security' ) . '</p></div>';
 	}
 
+	add_action( 'admin_notices', 'itsec_free_minimum_php_version_notice' );
+
+	return;
+}
+
+if ( version_compare( $GLOBALS['wp_version'], '5.7', '<' ) ) {
+	function itsec_minimum_wp_version_notice() {
+		echo '<div class="notice notice-error"><p>' . esc_html__( 'iThemes Security requires WordPress 5.7 or later.', 'better-wp-security' ) . '</p></div>';
+	}
+
+	add_action( 'admin_notices', 'itsec_minimum_wp_version_notice' );
+
+	return;
+}
+
+function itsec_load_textdomain() {
+	$locale = determine_locale();
 	$locale = apply_filters( 'plugin_locale', $locale, 'better-wp-security' );
 
 	load_textdomain( 'better-wp-security', WP_LANG_DIR . "/plugins/better-wp-security/better-wp-security-$locale.mo" );
@@ -33,6 +49,9 @@ if ( isset( $itsec_dir ) || class_exists( 'ITSEC_Core' ) ) {
 	return;
 }
 
+if ( file_exists( __DIR__ . '/vendor-prod/autoload.php' ) ) {
+	require_once( __DIR__ . '/vendor-prod/autoload.php' );
+}
 
 $itsec_dir = dirname( __FILE__ );
 

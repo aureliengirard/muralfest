@@ -4,8 +4,8 @@ Donate link: https://yoa.st/1up
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: SEO, XML sitemap, Content analysis, Readability, Schema
-Tested up to: 5.7
-Stable tag: 16.5
+Tested up to: 5.8
+Stable tag: 17.5
 Requires PHP: 5.6.20
 
 Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the Yoast SEO plugin.
@@ -42,7 +42,7 @@ We know content is king, that's why Yoast SEO is famous for its **state-of-the-a
 
 * **SEO analysis**: an invaluable tool while writing SEO-friendly content with the right (focus) keyphrases in mind.
 * **Readability analysis**: ensures that humans and search engines can read and understand your content.
-* **Full language support** for: English, German, French, Dutch, Spanish, Italian, Russian, Indonesian, Polish, Portuguese, Arabic, Swedish, Hebrew, Hungarian, Turkish and Czech.
+* **Full language support** for: English, German, French, Dutch, Spanish, Italian, Russian, Indonesian, Polish, Portuguese, Arabic, Swedish, Hebrew, Hungarian, Turkish, Czech, Norwegian, Slovak and Greek.
 * **A Google preview**, which shows what your listings will look like in the search results. Even on mobile devices!
 * **Innovative Schema blocks** for the WordPress block editor, so that your FAQ and HowTo content can be shown directly in the search results. Plus a breadcrumbs block to guide your users.
 * **[Premium] Internal linking blocks** to easily improve the structure of your content. Easily add a **table of contents block**, a **related links block**, a **subpages** block, or **siblings block**! Plus, we’ll keep adding these easy-to-add blocks to improve your site structure.
@@ -52,6 +52,7 @@ We know content is king, that's why Yoast SEO is famous for its **state-of-the-a
 * **[Premium]** Optimize your article for different word forms of your keyphrases, as the singular and plural. But also different verb forms, synonyms, and related keyphrases. This makes for more natural content!
 * **[Premium]** Automatic internal linking suggestions: write your article and get automatic suggested posts to link to!
 * **[Premium]** An orphaned content filter to detect posts that have no links pointing towards them!
+* **[Premium]** SEO workouts to make working on your site as easy as ABC. These SEO workflows will get your site into shape in no time!
 
 #### KEEP YOUR SITE IN PERFECT SHAPE
 
@@ -108,6 +109,7 @@ Yoast SEO integrates seamlessly into a range of themes and plugins. We work part
 * The [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/) plugin, when you also activate the [ACF Content Analysis for Yoast SEO](https://wordpress.org/plugins/acf-content-analysis-for-yoast-seo/) plugin.
 * The [Elementor](https://wordpress.org/plugins/elementor/) website builder.
 * [Zapier](https://zapier.com/apps/yoast-seo/integrations), which helps you automate your publishing flow.
+* [Algolia](https://wordpress.org/plugins/wp-search-with-algolia/) integration to improve the quality of your site search.
 
 ### BUG REPORTS
 
@@ -234,58 +236,38 @@ Your question has most likely been answered on our help center: [yoast.com/help/
 
 == Changelog ==
 
-= 16.5 =
-Release Date: June 15th, 2021
+= 17.5 =
+Release Date: November 2nd, 2021
 
-Yoast SEO 16.5 is out today! This release comes with a number of fixes and enhancements. For instance, easier social media settings, better understanding of the Turkish and Czech languages and improvements to the breadcrumbs schema output. Read all about it in [our release post](https://yoa.st/release-16-5)!
-
-Enhancements:
-
-* Improves passive voice recognition for Turkish.
-* Improves accuracy of the Czech passive voice assessment by separating clauses based on punctuation marks, and by expanding the list of stopwords.
-* Changes the breadcrumbs schema output so Google can understand it better.
-* Moves the social settings for the homepage from the Social > Facebook tab, to Search Appearance > General.
-* Improves the organization of the Search Appearance > General tab, with distinct collapsibles for the Title Separator, the Homepage settings and the Schema.org settings.
-* Introduces a notice to be displayed in Search Appearance > General in place of the Social settings for the Homepage when Open Graph is disabled.
-* Introduces an image validation warning for the Homepage social image and the Default social image to warn about unsupported file extensions.
-* Improves spacing, headings and toggle labels in the Search Appearance settings, and makes the forms more consistent.
-* Less is more: removes a whole bunch of ads from the Yoast SEO admin screens.
-* Optimizes subscription validations made by Premium add-ons.
-* Improves the truncation of the `primary_focus_keyword` field in the database to handle multibyte characters. Props to [rickhurst](https://github.com/rickhurst).
-* Introduces a partial integration of the Yoast SEO meta box in the Web Stories WordPress editor. Props to [swissspidy](https://github.com/swissspidy).
-
-Bugfixes:
-
-* Fixes a bug where `max-image-preview:large` would be output in the robots meta tag in combination with `noimage`.
-
-Other:
-
-* Moves the 'Force rewrite titles' toggle into a separate paper in the General Search Appearance settings.
-
-= 16.4 =
-Release Date: June 1st, 2021
-
-Meet Yoast SEO 16.4: This brand-new version of Yoast SEO comes with a rewritten language analysis, plus a newly supported language: Czech. People who write in this language can now fully use our tools to improve their content. We hope you enjoy this update! Read more about what’s new in Yoast SEO 16.4 in [our release post](https://yoa.st/release-16-4)!
+Say hello to Yoast SEO 17.5! Or maybe γεια would fit better, as this release introduces Greek readability support. Plus: you’ll also be able to find | and ~ title separators again. Happy updating! Read more about what's new in Yoast SEO 17.5 in [our release post in English](https://yoa.st/release-17-5) or [our release post in Spanish](https://yoa.st/release-17-5-spanish)!
 
 Enhancements:
 
-* Completes the readability analysis for Czech by adding the transition words, sentence beginnings and passive voice assessments.
-* Improves keyphrase recognition in Czech by filtering out function words such as `dvou`, `tvému`, `nějaký`.
-* Improves the accuracy of passive voice detection in Portuguese.
-* Adds the missing Polish transition word `jak wiemy` (props to @jarekherisz).
-* Makes all twitter meta tags self-closing, for the sake of consistency and to allow pages to pass validation in some tools.
-* Improves the UX consistency between the notification counter in the admin bar and in the sidebar.
-* Makes the notification counter in the admin bar a closer match to the counter the sidebar.
+* Completes the readability analysis for Greek by adding the transition words, sentence beginnings and passive voice assessments.
+* Improves keyword detection for Greek by adding a function words list.
+* Reduces the right padding of the collapsible sidebar buttons to match the block editor's new styling.
+* Restores the `|` and `~` separators.
+* Reduces the right padding of the collapsible sidebar buttons to match Gutenberg's new styling.
 
 Bugfixes:
 
-* Fixes a bug where new feature notification couldn't be dismissed.
-* Fixes a bug where the primary term for custom post types was not always properly set for posts edited in the Gutenberg editor.
-* Fixes a bug where the schema output could be incorrect on terms with the same ID as the static posts page.
+* Fixes a bug where the analysis highlight button would be visible on tags, categories, and custom taxonomies even though we don't support highlighting for those types.
+* Fixes a bug where links to items on the same page were incorrectly identified as links to other pages, leading to an incorrect result on the Link keyphrase assessment.
 
-Other:
+= 17.4 =
+Release Date: October 19th, 2021
 
-* Adds a missing space to the feedback text in the keyphrase in introduction assessment.
+Yoast SEO 17.4 is out today! This release comes with several fixes and enhancements to help database performance on larger sites by cleaning up data and streamlining retrieval. Happy updating! Read more about what's new in Yoast SEO 17.4 in [our release post](https://yoa.st/release-17-4)!
+
+Enhancements:
+
+* Improves two queries used to determine whether or not a site has been fully processed using our SEO data optimization. This should prevent potential slowdowns in extremely large sites.
+
+Bugfixes:
+
+* Fixes a bug where the `url` property in the search page schema would be empty.
+* Fixes a bug where a duplicate canonical tag was output for web stories created with the Web Stories plugin. Props to [swissspidey](https://github.com/swissspidy).
+* Fixes a bug where a race condition could occur that caused the rewrite rules to be flushed on every page request when using a persistent cache like Redis. This may speed up your site’s load times if it’s using persistent caching.
 
 = Earlier versions =
 For the changelog of earlier versions, please refer to [the changelog on yoast.com](https://yoa.st/yoast-seo-changelog).

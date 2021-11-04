@@ -1,7 +1,10 @@
 <?php
 
+use iThemesSecurity\Module_Config;
+
 abstract class ITSEC_Scheduler {
 
+	const S_TWICE_HOURLY = 'twice-hourly';
 	const S_HOURLY = 'hourly';
 	const S_FOUR_DAILY = 'four-daily';
 	const S_TWICE_DAILY = 'twice-daily';
@@ -16,6 +19,9 @@ abstract class ITSEC_Scheduler {
 
 	/** @var array */
 	protected $loops = array();
+
+	/** @var bool */
+	private $is_running = false;
 
 	/**
 	 * Schedule a recurring event.
@@ -65,7 +71,7 @@ abstract class ITSEC_Scheduler {
 	 * @param string $id   The event ID.
 	 * @param array  $data Event data.
 	 * @param array  $opts
-	 *  - fire_at: Manually specify the first time the event should be fired.
+	 *                     - fire_at: Manually specify the first time the event should be fired.
 	 */
 	public function schedule_loop( $id, $data = array(), $opts = array() ) {
 		$start = isset( $opts['fire_at'] ) ? $opts['fire_at'] : ITSEC_Core::get_current_time_gmt() + 60 * mt_rand( 1, 30 );
@@ -110,7 +116,7 @@ abstract class ITSEC_Scheduler {
 	 *
 	 * The data specified needs to be identical to the data the single event was scheduled with.
 	 *
-	 * @param string     $id The event ID to unschedule.
+	 * @param string     $id   The event ID to unschedule.
 	 * @param array|null $data Unschedules the event with the given data. Pass null to delete any and all events matching the ID.
 	 *
 	 * @return bool
@@ -137,6 +143,7 @@ abstract class ITSEC_Scheduler {
 	 *  - id: The ID the event was scheduled with.
 	 *  - data: The data the event was scheduled with.
 	 *  - fire_at: The time the event should be fired.
+	 *  - hash: The event's data hash.
 	 *
 	 * @return array
 	 */
@@ -166,11 +173,39 @@ abstract class ITSEC_Scheduler {
 	abstract public function run_single_event( $id, $data = array() );
 
 	/**
+	 * Run a single event by it's hash.
+	 *
+	 * @param string $id
+	 * @param string $hash
+	 *
+	 * @return void
+	 */
+	abstract public function run_single_event_by_hash( $id, $hash );
+
+	/**
+	 * Run any events that are due now.
+	 *
+	 * @param int $now
+	 *
+	 * @return void
+	 */
+	abstract public function run_due_now( $now = 0 );
+
+	/**
 	 * Code executed on every page load to setup the scheduler.
 	 *
 	 * @return void
 	 */
 	abstract public function run();
+
+	/**
+	 * Check whether the scheduler is currently executing an event.
+	 *
+	 * @return bool
+	 */
+	final public function is_running() {
+		return $this->is_running;
+	}
 
 	/**
 	 * Manually trigger modules to register their scheduled events.
@@ -187,6 +222,71 @@ abstract class ITSEC_Scheduler {
 		 * @param ITSEC_Scheduler $this
 		 */
 		do_action( 'itsec_scheduler_register_events', $this );
+		$this->register_events_for_module( ':active' );
+	}
+
+	/**
+	 * Registers events for a given module using the "scheduling.php" module file.
+	 *
+	 * @param string $module The module specifier. For example ':active' or 'global'.
+	 */
+	public function register_events_for_module( $module ) {
+		ITSEC_Modules::load_module_file( 'scheduling.php', $module, function ( $fn ) {
+			if ( ! is_callable( $fn ) ) {
+				_doing_it_wrong( 'scheduling.php', __( 'An iThemes Security module\'s scheduling.php file must return a callable.', 'better-wp-security' ), '5.8.0' );
+
+				return;
+			}
+
+			$fn( $this );
+		} );
+
+		foreach ( ITSEC_Modules::get_config_list( $module ) as $config ) {
+			$this->register_events_for_config( $config );
+		}
+	}
+
+	/**
+	 * Registers events based on a module configuration.
+	 *
+	 * @param Module_Config $config The config to use.
+	 */
+	public function register_events_for_config( Module_Config $config ) {
+		foreach ( $config->get_scheduling() as $id => $definition ) {
+			if ( $conditional_schema = $definition['conditional'] ?? [] ) {
+				$settings = ITSEC_Modules::get_settings( $config->get_id() );
+
+				$validated = rest_validate_value_from_schema( $settings, $conditional_schema );
+				$sanitized = is_wp_error( $validated ) ? $validated : rest_sanitize_value_from_schema( $settings, $conditional_schema );
+				$is_active = ! is_wp_error( $validated ) && ! is_wp_error( $sanitized );
+
+				if ( ! $is_active ) {
+					$this->unschedule( $id );
+					continue;
+				}
+			}
+
+			$schedule = $definition['schedule'];
+			$data     = $definition['data'] ?? [];
+			$opts     = $definition['opts'] ?? [];
+
+			if ( isset( $opts['fire_at'] ) ) {
+				$opts['fire_at'] = ITSEC_Core::get_current_time_gmt() + $opts['fire_at'];
+			}
+
+			$this->schedule( $schedule, $id, $data, $opts );
+		}
+	}
+
+	/**
+	 * Unregisters events for a given module.
+	 *
+	 * @param Module_Config $config The config to use.
+	 */
+	public function unregister_events_for_config( Module_Config $config ) {
+		foreach ( $config->get_scheduling() as $id => $definition ) {
+			$this->unschedule( $id );
+		}
 	}
 
 	/**
@@ -197,6 +297,15 @@ abstract class ITSEC_Scheduler {
 	 */
 	public function register_custom_schedule( $slug, $interval ) {
 		$this->custom_schedules[ $slug ] = $interval;
+	}
+
+	/**
+	 * Get a registered custom schedules.
+	 *
+	 * @return array
+	 */
+	public function get_custom_schedules() {
+		return $this->custom_schedules;
 	}
 
 	/**
@@ -261,12 +370,28 @@ abstract class ITSEC_Scheduler {
 	 * @param ITSEC_Job $job
 	 */
 	protected final function call_action( ITSEC_Job $job ) {
-		/**
-		 * Fires when a scheduled job should be executed.
-		 *
-		 * @param ITSEC_Job $job
-		 */
-		do_action( "itsec_scheduled_{$job->get_id()}", $job );
+		$interactive = ITSEC_Core::is_interactive();
+		ITSEC_Core::set_interactive( false );
+		$this->is_running = true;
+
+		try {
+			/**
+			 * Fires when a scheduled job should be executed.
+			 *
+			 * @param ITSEC_Job $job
+			 */
+			do_action( "itsec_scheduled_{$job->get_id()}", $job );
+		} catch ( Exception $e ) {
+			ITSEC_Log::add_fatal_error( 'scheduler', 'unhandled-exception', array(
+				'exception' => (string) $e,
+				'job'       => $job->get_id(),
+				'data'      => $job->get_data(),
+			) );
+			$job->reschedule_in( 500 );
+		}
+
+		$this->is_running = false;
+		ITSEC_Core::set_interactive( $interactive );
 	}
 
 	/**
@@ -289,6 +414,8 @@ abstract class ITSEC_Scheduler {
 	 */
 	final public function get_schedule_interval( $schedule ) {
 		switch ( $schedule ) {
+			case self::S_TWICE_HOURLY:
+				return HOUR_IN_SECONDS / 2;
 			case self::S_HOURLY:
 				return HOUR_IN_SECONDS;
 			case self::S_FOUR_DAILY:
@@ -311,5 +438,16 @@ abstract class ITSEC_Scheduler {
 	 */
 	public function uninstall() {
 
+	}
+
+	/**
+	 * Reset the scheduler.
+	 *
+	 * This unregisters all events, and re-registers them.
+	 */
+	public function reset() {
+		$this->uninstall();
+		$this->run();
+		$this->register_events();
 	}
 }
