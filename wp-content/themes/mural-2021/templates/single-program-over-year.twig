@@ -1,0 +1,92 @@
+{% extends "base.twig" %}
+
+{% set content_items = post.meta('contenu_avec_fond') %}
+{% set liens_externe = post.liens_externe %}
+{% set artists = Post(post.artiste) %}
+{% set has_artists = false %}
+{% for artist in artists %}
+    {% if loop.first %}{% set has_artists = true %}{% endif %}
+{% endfor %}
+{% set lieu = post.lieu %}
+{% set date_de_fin = post.date_de_fin %}
+{% set event_date = post.event_date %}
+{% set heure_de_debut = post.heure_de_debut %}
+{% set heure_de_fin = post.heure_de_fin %}
+
+{% block content %}
+
+    <div class="basic-content single-post">
+        <div class="content">
+
+            {% include '/components/single-navigation.twig' %}
+            <section class="article__img row">
+                <div class="col-12">
+
+                    <figure>
+                        {%- set img = TimberImage(post.image_de_levenement) -%}
+                        {%- set img_url = img.src -%}
+                        {%- set reponsize_sizes = "1920,1440,1366,1280,1170,960,800,768,720,640,512,414,375,360" -%}
+                        {%- include 'components/reponsive_img.twig' with  { img: img, img_url: img_url, reponsize_sizes: reponsize_sizes} -%}
+                    </figure>
+                </div>
+            </section>
+
+
+            <section class="row program-description">
+                <div class="col-12">
+
+                    <h1 class="sm">{{ post.title }}</h1>
+
+                    {%- include 'components/module_share.twig' with  { link: post.link, title: post.title } -%}
+
+                    <p class="event-infos">
+                        <span class="date">
+                            {%- if date_de_fin != event_date -%}
+                            {{- event_date | date('j F') }} {{__('to', 'dates événement', 'site-theme')}} {{ date_de_fin | date('j F Y') }}
+                            {%- else -%}
+                            {{- event_date | date('j F, Y') }}
+                            {%- endif -%}
+
+                            {%- if heure_de_debut %} | {{ heure_de_debut|date('H:i') }}{%- endif %}
+                            {%- if heure_de_fin %} {{__('to', 'dates événement', 'site-theme')}} {{ heure_de_fin|date('H:i') }}{% endif %}
+                        </span>
+                        {% if lieu %}
+                        <span class="venue">| {{lieu}}</span>
+                        {% endif %}
+                    </p>
+
+                    {% if has_artists == true %}
+                    <h4 class="artist">
+                        <span>{{ __('By:', 'site-theme') }}</span>
+                        {% for artist in artists %}
+                        <a href="{{artist.link}}">{{artist.title}}</a>
+                        {%- if loop.index == 2 %} {{ __('and', 'site-theme') }} {% elseif loop.last == false %}, {% endif %}
+                        {% endfor %}
+                    </h4>
+                    {% endif %}
+
+                    <div class="article__cta">
+                    {% if post.lien_billets %}
+                    <a class="button smaller btn__has-icon btn--ticket btn--red" href="{{post.lien_billets}}" target="_blank" rel="nofollow">{%- include "/svg/icon_shop.svg" -%} {{ __('Buy your ticket', 'site-theme') }}</a>
+                    {% endif %}
+
+                    {% if post.lien_evenement_facebook %}
+                    <a class="button smaller" href="{{post.lien_evenement_facebook}}" target="_blank" rel="nofollow">{{ __('View Facebook event', 'site-theme') }}</a>
+                    {% endif %}
+
+                    {% if liens_externe %}
+                    <a class="button smaller" href="{{liens_externe.url}}" target="{{liens_externe.target}}">{{liens_externe.title}}</a>
+                    {% endif %}
+
+                    {% if post.lien_playlist %}
+                    <a class="button smaller playlist" href="{{post.lien_playlist}}" target="_blank" rel="nofollow">{{ __('Listen to the playlist', 'site-theme') }}</a>
+                    {% endif %}
+                    </div>
+                </div>
+            </section>
+
+            {% include "partial/parts.twig" %}
+        </div>
+    </div>
+
+{% endblock %}

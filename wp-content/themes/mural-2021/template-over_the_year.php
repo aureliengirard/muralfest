@@ -11,19 +11,8 @@ $context['page'] = $post;
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 $args = array(
 	'post_type' => array( 'over_the_year' ),
-	'posts_per_page' => 20,
-	'orderby' => array(
-		'order_event' => 'ASC',
-		'order_start_time' => 'ASC'
-	),
-	'meta_query' => array(
-		'order_event' => array(
-			'key' => 'event_date'
-		),
-		'order_start_time' => array(
-			'key' => 'heure_de_debut'
-		)
-	)
+	'posts_per_page' => 10,
+	'order' => 'DESC'
 );
 
 $query = new WP_Query( $args );

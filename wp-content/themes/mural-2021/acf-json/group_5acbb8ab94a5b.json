@@ -16,8 +16,8 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
-            "maxlength": 150,
+            "placeholder": "Max 300 caractères",
+            "maxlength": 300,
             "rows": "",
             "new_lines": ""
         }
@@ -60,5 +60,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1626722832
+    "modified": 1637588867
 }

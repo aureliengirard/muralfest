@@ -1,13 +1,13 @@
 {
-    "key": "group_5acb9ddfc814e",
-    "title": "Information sur l'événement",
+    "key": "group_619b93a6ea866",
+    "title": "Information sur l'événement à l'année",
     "fields": [
         {
-            "key": "field_5acb9e150535c",
+            "key": "field_619b93a789a36",
             "label": "Image de l'événement",
             "name": "image_de_levenement",
             "type": "image",
-            "instructions": "",
+            "instructions": "Specs : .Jpg, 1340px width, (max height 1340px)",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -22,41 +22,17 @@
             "min_height": "",
             "min_size": "",
             "max_width": "",
-            "max_height": "",
+            "max_height": 1340,
             "max_size": "",
             "mime_types": ""
         },
         {
-            "key": "field_60f1979b543a4",
-            "label": "Image de thumbnail",
-            "name": "image_de_thumbnail",
-            "type": "image",
-            "instructions": "<em>Si vide, l'image de l'événement sera utilisé<\/em><\/br>\r\nSpecs : .Jpg, 600px X 400px",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array",
-            "preview_size": "thumbnail",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
-        },
-        {
-            "key": "field_5acb9e320535d",
-            "label": "Date",
+            "key": "field_619b93a789b93",
+            "label": "Date (optionnelle)",
             "name": "event_date",
             "type": "date_picker",
             "instructions": "",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -68,12 +44,12 @@
             "first_day": 1
         },
         {
-            "key": "field_5ad8beb9be768",
-            "label": "Date de fin",
+            "key": "field_619b93a789c06",
+            "label": "Date de fin (optionnelle)",
             "name": "date_de_fin",
             "type": "date_picker",
             "instructions": "",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -85,11 +61,11 @@
             "first_day": 1
         },
         {
-            "key": "field_5ad0d44bc3d96",
+            "key": "field_619b93a789c88",
             "label": "Heure de début",
             "name": "heure_de_debut",
             "type": "time_picker",
-            "instructions": "",
+            "instructions": "optionnelle",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -101,11 +77,11 @@
             "return_format": "H:i:s"
         },
         {
-            "key": "field_5ad0d210501af",
+            "key": "field_619b93a789cf4",
             "label": "Heure de fin",
             "name": "heure_de_fin",
             "type": "time_picker",
-            "instructions": "",
+            "instructions": "optionnelle",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -117,7 +93,7 @@
             "return_format": "H:i:s"
         },
         {
-            "key": "field_5acbc12921b88",
+            "key": "field_619b93a789d80",
             "label": "Artiste",
             "name": "artiste",
             "type": "post_object",
@@ -139,26 +115,23 @@
             "ui": 1
         },
         {
-            "key": "field_5ad0d19a501ae",
+            "key": "field_619b93a789dfb",
             "label": "Lieu",
             "name": "lieu",
-            "type": "post_object",
+            "type": "text",
             "instructions": "",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "post_type": [
-                "venue"
-            ],
-            "taxonomy": [],
-            "allow_null": 0,
-            "multiple": 0,
-            "return_format": "id",
-            "ui": 1
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -166,7 +139,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "program"
+                "value": "over_the_year"
             }
         ]
     ],
@@ -178,5 +151,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1637585907
+    "modified": 1637586210
 }
