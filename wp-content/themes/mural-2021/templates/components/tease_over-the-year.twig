@@ -41,23 +41,31 @@
         <div class="description card__body">
             <h3><a href="{{link}}">{{title}}</a></h3>
             <div class="event-infos">
-                <span class="category">
-                {{ event_post.terms( {query:{taxonomy:'event-category', orderby:'name', order: 'ASC'}} )|join(', ') }}
+                {% if event_post.terms %}
+                    <span class="category">
+                        {{ event_post.terms( {query:{taxonomy:'event-category', orderby:'name', order: 'ASC'}} )|join(', ') }}
+                    </span>
+                {% endif %}
+                {% if  event_date != null %}
+                    <span class="date">
+                        {%- if date_de_fin != event_date and date_de_fin != null -%}
+                        {% if event_post.terms %}<span class="divider"> | </span>{% endif %}{{- event_date | date('j F') }} {{__('to', 'dates événement', 'site-theme')}} {{ date_de_fin | date('j F Y') }}
+                        {%- elseif event_date != null -%}
+                        {% if event_post.terms %}<span class="divider"> | </span>{% endif %}{{- event_date | date('j F, Y') }}
+                        {%- endif -%}
+                    </span>
+                {% endif %}
+                {% if heure_de_debut %}
+                    <span class="time">
+                        {%- if heure_de_debut %}{% if event_date or event_post.terms %}<span class="divider"> | </span>{% endif %}{{ heure_de_debut|date('H:i') }}{%- endif %}
+                        {%- if heure_de_fin %} - {{ heure_de_fin|date('H:i') }}{% endif %}
+                    </span>
+                {% endif %}
+                {%- if lieu %}
+                    <span class="location">
+                    {% if event_date or heure_de_debut or event_post.terms %}<span class="divider"> | </span>{% endif %}{{ lieu }}
                 </span>
-                <span class="date">
-                {%- if date_de_fin != event_date and date_de_fin != null -%}
-                    {% if event_post.terms %}<span class="divider"> | </span>{% endif %}{{- event_date | date('j F') }} {{__('to', 'dates événement', 'site-theme')}} {{ date_de_fin | date('j F Y') }}
-                {%- elseif event_date != null -%}
-                    {% if event_post.terms %}<span class="divider"> | </span>{% endif %}{{- event_date | date('j F, Y') }}
-                {%- endif -%}
-                </span>
-                <span class="time">
-                {%- if heure_de_debut %}{% if event_date or event_post.terms %}<span class="divider"> | </span>{% endif %}{{ heure_de_debut|date('H:i') }}{%- endif %}
-                {%- if heure_de_fin %} - {{ heure_de_fin|date('H:i') }}{% endif %}
-                </span>
-                <span class="location">
-                {%- if lieu %}{% if event_date or heure_de_debut or event_post.terms %}<span class="divider"> | </span>{% endif %}{{ lieu }}{%- endif %}
-                </span>
+                {%- endif %}
             </div>
             {% if preview %}
                 <p>{{preview}}</p>

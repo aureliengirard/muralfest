@@ -40,16 +40,18 @@
                     {%- include 'components/module_share.twig' with  { link: post.link, title: post.title } -%}
 
                     <p class="event-infos">
+                        {% if  event_date != null %}
                         <span class="date">
-                            {%- if date_de_fin != event_date -%}
-                            {{- event_date | date('j F') }} {{__('to', 'dates événement', 'site-theme')}} {{ date_de_fin | date('j F Y') }}
-                            {%- else -%}
-                            {{- event_date | date('j F, Y') }}
+                            {%- if date_de_fin != event_date and date_de_fin != null -%}
+                                {% if event_post.terms %}<span class="divider"> | </span>{% endif %}{{- event_date | date('j F') }} {{__('to', 'dates événement', 'site-theme')}} {{ date_de_fin | date('j F Y') }}
+                            {%- elseif event_date != null -%}
+                                {% if event_post.terms %}<span class="divider"> | </span>{% endif %}{{- event_date | date('j F, Y') }}
                             {%- endif -%}
 
                             {%- if heure_de_debut %} | {{ heure_de_debut|date('H:i') }}{%- endif %}
                             {%- if heure_de_fin %} {{__('to', 'dates événement', 'site-theme')}} {{ heure_de_fin|date('H:i') }}{% endif %}
                         </span>
+                        {% endif %}
                         {% if lieu %}
                         <span class="venue">| {{lieu}}</span>
                         {% endif %}
