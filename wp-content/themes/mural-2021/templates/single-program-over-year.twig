@@ -53,7 +53,8 @@
                         </span>
                         {% endif %}
                         {% if lieu %}
-                        <span class="venue">| {{lieu}}</span>
+
+                        <span class="venue">{% if event_date or heure_de_debut or event_post.terms %} | {% endif %}{{ lieu }}</span>
                         {% endif %}
                     </p>
 
