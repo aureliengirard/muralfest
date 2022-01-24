@@ -25,7 +25,8 @@ if (array_key_exists('category', $_GET)) {
 	 'posts_per_page' => get_option( 'posts_per_page' ),
 	 'nopaging' => false,
 	 'paged' => $paged,
-     'order' => 'ASC',
+     'orderby', 'date',
+     'order' => 'DESC',
      'category_name' => $mycat,
  );
 

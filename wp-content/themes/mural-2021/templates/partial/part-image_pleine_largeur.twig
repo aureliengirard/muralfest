@@ -1,7 +1,7 @@
 
 {%- set lien = inner_item.lien -%}
 <div class="row">
-    <figure class="col-12">
+    <figure class="{% if is_blog_post == true %}col-xl-10 col-12{% else %}col-12{% endif %}">
         {% if lien -%}
         <a href="{{ lien.url }}" target="{{ lien.target }}">
             {%- endif %}

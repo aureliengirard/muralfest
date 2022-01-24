@@ -42,7 +42,7 @@
             </section>
 
             <section class="content-blog row">
-                {% include "partial/parts.twig" %}
+                {% include "partial/parts.twig" with { is_blog_post: true } %}
 
                 <div class="col-12">
                     {%- include 'components/module_share.twig' with  { link: post.link, title: post.title } -%}

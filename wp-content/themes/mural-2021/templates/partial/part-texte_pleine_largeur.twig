@@ -8,7 +8,7 @@
 {% endif %}
 
 <div class="row content">
-	<div class="col-12 rte{{texte_size}}">
+	<div class="{% if is_blog_post == true %}col-xl-10 col-12{% else %}col-12{% endif %} rte{{texte_size}}">
 		{{ texte_pleine_largeur }}
 	</div>
 </div>
