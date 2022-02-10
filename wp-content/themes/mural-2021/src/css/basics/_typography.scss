@@ -218,6 +218,10 @@
     ul, ol {
         margin-left: 20px;
         list-style-position: outside;
+
+        li {
+            padding: 3px 0;
+        }
     }
     ul {
        list-style-type: disc;
