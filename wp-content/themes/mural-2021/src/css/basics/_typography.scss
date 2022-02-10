@@ -216,23 +216,23 @@
         }
     }
     ul, ol {
-        margin-left: 20px;
-        list-style-position: outside;
-
+        margin-left: 10px;
         li {
             padding: 3px 0;
+            display: list-item;
+            margin-left: 10px;
         }
     }
-    ul {
+    ul li {
        list-style-type: disc;
     }
-    ol {
+    ol li {
        list-style-type: decimal;
     }
-    ul ul, ol ul {
+    ul ul li, ol ul li {
        list-style-type: circle;
     }
-    ol ol, ul ol {
+    ol ol li, ul ol li {
        list-style-type: lower-latin;
     }
 }
