@@ -45,14 +45,14 @@
 							{% endif %}
 							</h1>
 							{% if page.rsvp_link.url %}
-							<a class="btn btn--jaune" href="{{ page.rsvp_link.url }}" target="{{ page.rsvp_link.target }}"> {% include 'svg/facebook.svg' %}<span>{{ page.rsvp_link.title }}</span></a>
+							<a class="btn btn--jaune" href="{{ page.rsvp_link.url }}" target="{{ page.rsvp_link.target }}"> {% include 'svg/icon_fb.svg' %}<span>{{ page.rsvp_link.title }}</span></a>
 							{% endif %}
 							<div class="splash__social">
 								{% if page.fb_link %}
-									<a class="link_fb" href="{{page.fb_link.url}}" title="{{page.fb_link.title}}" target="{{page.fb_link.target}}">{% include 'svg/icon_facebook.svg' %}</a>
+									<a class="link_fb" href="{{page.fb_link.url}}" title="{{page.fb_link.title}}" target="{{page.fb_link.target}}">{% include 'svg/icon_fb.svg' %}</a>
 								{% endif %}
 								{% if page.insta_link %}
-									<a class="link_in" href="{{page.insta_link.url}}" title="{{page.insta_link.title}}" target="{{page.insta_link.target}}">{% include 'svg/icon_instagram.svg' %}</a>
+									<a class="link_in" href="{{page.insta_link.url}}" title="{{page.insta_link.title}}" target="{{page.insta_link.target}}">{% include 'svg/icon_in.svg' %}</a>
 								{% endif %}
 							</div>
 						</div>
