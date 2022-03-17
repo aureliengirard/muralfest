@@ -10,6 +10,26 @@
 	<article class="post-type-{{page.post_type}}" id="post-{{page.ID}}">
 		<section class="splash">
 			<div class="container-fluid">
+				<div class="row row__background">
+					{% for artiste in artistes %}
+						<div class="splash__event--imagery col-12" data-target="{{ artiste.event_name | replace({' ': "-"}) | url_encode }}" style="display: none;">
+							{% set thumbnail = Image(artiste.event_photo).src %}
+							{% set alt -%}
+							{{ artiste.event_date }} — {{ artiste.event_name }} — {{ artiste.event_subtitle }}
+							{%- endset %}
+							{% if thumbnail != null %}
+
+							<img class="lazyload splash__event--img"
+							data-srcset="{{ thumbnail|resize(900, 600) }} 900w,{{ thumbnail|resize(700, 467) }} 700w,{{ thumbnail|resize(600, 400) }} 600w,{{ thumbnail|resize(400, 267) }} 400w,{{ thumbnail|resize(300, 200) }} 300w"
+							data-sizes="auto"
+							width="700"
+							height="467"
+							alt="{{ alt }}">
+							{{ artiste.event_tag }}
+						{% endif %}
+						</div>
+					{% endfor %}
+				</div>
 				<div class="row row__header">
 					<div class="col-12">
 						<h1>
@@ -22,52 +42,44 @@
 						</h1>
 					</div>
 				</div>
-				<div class="row row__background">
-					{% for artiste in artistes %}
-					{{ artiste.event_photo }}
-					{{ artiste.event_tag }}
-					{% endfor %}
-				</div>
 				<div class="row row__body">
-					<div class="col-lg-3">
 
-					</div>
-					<div class="col-lg-3">
-						<p>{{extra_info}}</p>
-						<h3>
+					<div class="col-lg-5">
+						<p class="description">{{extra_info}}</p>
+						<h2 class="cta">
 							<a href="{{rsvp_link.url}}" title="{{rsvp_link.title}}" target="{{rsvp_link.target}}">{{rsvp_link.title}}</a>
-						</h3>
-						<ul>
-							{% for artiste in artistes %}
-							<li class="splash__event">
+						</h2>
+						<ul class="splash__artists">
+							{% for artiste in artistes -%}
+							<li class="splash__event" data-name="{{ artiste.event_name | replace({' ': "-"}) | url_encode }}">
 								<h3>{{ artiste.event_date }} — {{ artiste.event_name }}</h3>
 								<p>{{ artiste.event_subtitle }}</p>
 							</li>
-							{% endfor %}
+							{%- endfor %}
 						</ul>
 					</div>
-					<div class="col-lg-3">
+					<div class="col-lg-5">
 						<div class="row">
 							<div class="col-lg-12 splash__logo">
 								<img src="{{TimberImage(options.logo).src| resize(0,115) }}" alt="{{site.title}}" width="{{ TimberImage(options.logo).width | resize(0,115) }}" height="115">
 							</div>
-							<div class="col-lg-12">
+							<div class="col-lg-12 splash__extra">
 								<div class="splash__language">
 									{% do action('icl_language_selector') %}
 								</div>
 								<div class="splash__social">
-									{% if page.fb_link %}
+									{% if page.fb_link -%}
 									<a class="link_fb" href="{{page.fb_link.url}}" title="{{page.fb_link.title}}" target="{{page.fb_link.target}}">{% include 'svg/icon_fb.svg' %}</a>
-									{% endif %}
-									{% if page.insta_link %}
+									{%- endif -%}
+									{%- if page.insta_link -%}
 									<a class="link_in" href="{{page.insta_link.url}}" title="{{page.insta_link.title}}" target="{{page.insta_link.target}}">{% include 'svg/icon_in.svg' %}</a>
-									{% endif %}
-									{% if page.yt_link %}
+									{%- endif -%}
+									{%- if page.yt_link -%}
 									<a class="link_in" href="{{page.yt_link.url}}" title="{{page.yt_link.title}}" target="{{page.yt_link.target}}">{% include 'svg/icon_in.svg' %}</a>
-									{% endif %}
-									{% if page.tw_link %}
+									{%- endif -%}
+									{%- if page.tw_link -%}
 									<a class="link_in" href="{{page.tw_link.url}}" title="{{page.tw_link.title}}" target="{{page.tw_link.target}}">{% include 'svg/icon_in.svg' %}</a>
-									{% endif %}
+									{%- endif -%}
 								</div>
 							</div>
 						</div>
@@ -76,4 +88,23 @@
 			</div>
 		</section>
 	</article>
+{% endblock %}
+{% block scripts %}
+<script type="text/javascript">
+$(document).ready(function() {
+	// Load random Event
+	var eventArray = [{% for artiste in artistes %}'{{ artiste.event_name | replace({' ': "-"}) | url_encode }}'{% if loop.last != true  %},{% endif %}{% endfor %}];
+	var eventActive = eventArray[Math.floor(Math.random() * eventArray.length)];
+	var target = '[data-target="' + eventActive + '"]';
+	$(target).show("fast");
+
+	//Update event onclick
+	$(".splash__event").on('click mouseover', function(){
+		var data_name = $(this).attr("data-name");
+		var clickTarget = '[data-target="' + data_name + '"]';
+		$(clickTarget).siblings().hide();
+		$(clickTarget).show("fast");
+	});
+});
+</script>
 {% endblock %}

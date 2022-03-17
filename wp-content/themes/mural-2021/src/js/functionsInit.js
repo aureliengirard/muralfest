@@ -28,7 +28,7 @@ const functionsInit = function() {
     }
 
     var $header = document.querySelector('.navbar');
-
+    /*
     function onScroll() {
       if (window.pageYOffset) {
         $header.classList.add('is_sticky');
@@ -36,7 +36,7 @@ const functionsInit = function() {
         $header.classList.remove('is_sticky');
       }
     }
-
+    */
     window.addEventListener('scroll', throttle(onScroll, 25));
 
     var gallery_popup = $('.gallery');

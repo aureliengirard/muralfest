@@ -20,22 +20,22 @@
 
 {% endblock %}
 
-	{% block extra_header_scripts %}
-	{% endblock %}
+	{%- block extra_header_scripts %}
+	{% endblock -%}
 
 	<body class="{{body_class}}" data-template="base.twig">
 		<a name="top"></a>
-		{% include 'partial/tracking.twig' with { 'location': 'body' } %}
+		{%- include 'partial/tracking.twig' with { 'location': 'body' } -%}
 
 		{# Site Main Content #}
 	    <main id="main-content" class="content-wrapper">
-	      {% block content %}
+	      {%- block content %}
 	        Sorry, no content
-	      {% endblock %}
+	      {% endblock -%}
 	    </main>
 
-		{% block styles %}
-		{% endblock %}
+		{%- block styles %}
+		{% endblock -%}
 
 		{{ function('wp_footer') }}
 		<script type="text/javascript" src="{{ theme.link }}/dist/js/vendor.min.js"></script>

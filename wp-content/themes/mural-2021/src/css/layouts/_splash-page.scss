@@ -14,18 +14,31 @@
         padding: 0;
         margin: 0;
         .row{
-            padding: 0;
             max-width: none;
         }
     }
-    .container-fluid { padding: 0; }
+    .container-fluid {
+        padding: 0;
+        @include media-breakpoint-up(lg) {
+            min-height: 40.25vw;
+            height: 100vh;
+            max-height: 100vh;
+        }
+
+        > .row {
+            padding: 15px 0;
+            position: absolute;
+            left: 0;
+            right: 0;
+        }
+     }
 
 
     h1{
-        font-size: 9.5vw;
-        font-weight: 400;
-        text-transform: unset;
+        line-height: 0.89;
+        font-weight: 500;
         @include media-breakpoint-up(lg) {
+            font-size: 9.5vw;
             display: flex;
             justify-content: space-between;
         }
@@ -43,10 +56,86 @@
         }
     }
 
+    h2, h3 {
+        font-weight: 400;
+        @include media-breakpoint-up(lg){
+            font-size: 3.0625vw;
+        }
+    }
+
+    .cta{
+        margin-bottom: 25px;
+        a {
+            border-bottom: 0.125vw solid #3F3F3F;
+        }
+    }
+
+    p.description {
+        font-size: 1.5em;
+        line-height: 1.15;
+
+        @include media-breakpoint-up(lg) {
+            font-size: 1.3vw;
+        }
+    }
+
+    .row__background {
+        top: 0;
+        bottom: 0;
+    }
+    .row__header {
+        margin-bottom: auto;
+        top: 0;
+    }
+    .row__body {
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-top: auto;
+        bottom: 0;
+    }
+
+    &__artists {
+
+    }
+    &__event {
+        h3, p { line-height: 1.1; cursor: pointer; }
+        p {
+            margin: 0;
+            font-size: 1.5em;
+
+            @include media-breakpoint-up(lg) {
+                font-size: 1.3vw;
+            }
+        }
+
+        &:nth-last-child(n + 2) {
+            margin-bottom: 10px;
+        }
+
+        &--img {
+            margin: auto;
+            min-width: 35%;
+            height: auto;
+        }
+        &--imagery {
+            height: 100%;
+            display: inherit;
+        }
+    }
+
+    &__extra {
+        display: inherit;
+        justify-content: flex-end;
+    }
+    &__logo img {
+        margin-left: auto;
+        margin-bottom: 50px;
+    }
     &__social {
         @include flexbox;
         @include justify-content(center);
         @include flex-flow(row wrap);
+        max-width: fit-content;
 
         a{
             width: 50px;
@@ -54,7 +143,8 @@
         }
 
         svg {
-            height: 50px;
+            height: 30px;
+            width: 30px;
             display: block;
             transition: transform .15s ease-in-out;
 

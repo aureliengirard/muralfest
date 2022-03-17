@@ -582,8 +582,7 @@ img.mfp-img {
 .content-wrapper h1, .content-wrapper .h1 {
   font-size: 2em;
   font-weight: 900;
-  line-height: 1.1;
-  text-transform: uppercase; }
+  line-height: 1.1; }
   @media (min-width: 768px) {
     .content-wrapper h1, .content-wrapper .h1 {
       font-size: 2.75em; } }
@@ -597,8 +596,7 @@ img.mfp-img {
 .content-wrapper h2, .content-wrapper .h2 {
   font-size: 1.5em;
   line-height: 1.1;
-  font-weight: 300;
-  text-transform: uppercase; }
+  font-weight: 300; }
   @media (min-width: 768px) {
     .content-wrapper h2, .content-wrapper .h2 {
       font-size: 1.875em; } }
@@ -609,8 +607,7 @@ img.mfp-img {
 .content-wrapper h1.sm, .content-wrapper .h1.sm, .content-wrapper h2.lg, .content-wrapper .h2.lg {
   font-size: 1.5em;
   line-height: 1.1;
-  font-weight: 900;
-  text-transform: uppercase; }
+  font-weight: 900; }
   @media (min-width: 768px) {
     .content-wrapper h1.sm, .content-wrapper .h1.sm, .content-wrapper h2.lg, .content-wrapper .h2.lg {
       font-size: 2em; } }
@@ -624,8 +621,7 @@ img.mfp-img {
 .content-wrapper h3, .content-wrapper .h3 {
   font-size: 1.125em;
   font-weight: 600;
-  margin-bottom: 3.33333px;
-  text-transform: uppercase; }
+  margin-bottom: 3.33333px; }
   @media (min-width: 1200px) {
     .content-wrapper h3, .content-wrapper .h3 {
       font-size: 1.25em; } }
@@ -636,8 +632,7 @@ img.mfp-img {
 .content-wrapper h4, .content-wrapper .h4, .form_field .gsection_title,
 .gfield .gsection_title {
   font-size: 1em;
-  font-weight: 600;
-  text-transform: uppercase; }
+  font-weight: 600; }
   @media (min-width: 768px) {
     .content-wrapper h4, .content-wrapper .h4, .form_field .gsection_title,
     .gfield .gsection_title {
@@ -660,8 +655,7 @@ img.mfp-img {
   hyphens: none; }
 
 .content-wrapper h2, .content-wrapper h3, .content-wrapper h4 {
-  font-family: var(--basePrimaryFont);
-  text-transform: uppercase; }
+  font-family: var(--basePrimaryFont); }
 
 .content-wrapper h2 a, .content-wrapper h3 a, .content-wrapper h4 a {
   color: inherit; }
@@ -3669,18 +3663,27 @@ table {
   padding: 0;
   margin: 0; }
   .content-wrapper .splash .row {
-    padding: 0;
     max-width: none; }
 
 .splash .container-fluid {
   padding: 0; }
+  @media (min-width: 992px) {
+    .splash .container-fluid {
+      min-height: 40.25vw;
+      height: 100vh;
+      max-height: 100vh; } }
+  .splash .container-fluid > .row {
+    padding: 15px 0;
+    position: absolute;
+    left: 0;
+    right: 0; }
 
 .splash h1 {
-  font-size: 9.5vw;
-  font-weight: 400;
-  text-transform: unset; }
+  line-height: 0.89;
+  font-weight: 500; }
   @media (min-width: 992px) {
     .splash h1 {
+      font-size: 9.5vw;
       display: flex;
       justify-content: space-between; } }
   @media (max-width: 991.98px) {
@@ -3691,6 +3694,69 @@ table {
       flex: auto; } }
   .splash h1 span:nth-child(2) {
     text-align: right; }
+
+.splash h2, .splash h3 {
+  font-weight: 400; }
+  @media (min-width: 992px) {
+    .splash h2, .splash h3 {
+      font-size: 3.0625vw; } }
+
+.splash .cta {
+  margin-bottom: 25px; }
+  .splash .cta a {
+    border-bottom: 0.125vw solid #3F3F3F; }
+
+.splash p.description {
+  font-size: 1.5em;
+  line-height: 1.15; }
+  @media (min-width: 992px) {
+    .splash p.description {
+      font-size: 1.3vw; } }
+
+.splash .row__background {
+  top: 0;
+  bottom: 0; }
+
+.splash .row__header {
+  margin-bottom: auto;
+  top: 0; }
+
+.splash .row__body {
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: auto;
+  bottom: 0; }
+
+.splash__event h3, .splash__event p {
+  line-height: 1.1;
+  cursor: pointer; }
+
+.splash__event p {
+  margin: 0;
+  font-size: 1.5em; }
+  @media (min-width: 992px) {
+    .splash__event p {
+      font-size: 1.3vw; } }
+
+.splash__event:nth-last-child(n + 2) {
+  margin-bottom: 10px; }
+
+.splash__event--img {
+  margin: auto;
+  min-width: 35%;
+  height: auto; }
+
+.splash__event--imagery {
+  height: 100%;
+  display: inherit; }
+
+.splash__extra {
+  display: inherit;
+  justify-content: flex-end; }
+
+.splash__logo img {
+  margin-left: auto;
+  margin-bottom: 50px; }
 
 .splash__social {
   display: -webkit-box;
@@ -3703,12 +3769,14 @@ table {
   -ms-justify-content: center;
   -webkit-flex-flow: row wrap;
   /* Safari 6.1+ */
-  flex-flow: row wrap; }
+  flex-flow: row wrap;
+  max-width: fit-content; }
   .splash__social a {
     width: 50px;
     margin: 0 10px; }
   .splash__social svg {
-    height: 50px;
+    height: 30px;
+    width: 30px;
     display: block;
     transition: transform .15s ease-in-out; }
     .splash__social svg:hover {
