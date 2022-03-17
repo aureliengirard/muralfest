@@ -70,6 +70,11 @@
                 "value": "page"
             },
             {
+                "param": "page_template",
+                "operator": "!=",
+                "value": "page-splash.php"
+            },
+            {
                 "param": "post_template",
                 "operator": "!=",
                 "value": "template-home.php"
@@ -89,5 +94,6 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1625867929
+    "show_in_rest": 0,
+    "modified": 1647471835
 }

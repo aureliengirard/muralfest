@@ -34,6 +34,7 @@
     "@popperjs/core": "^2.9.2",
     "aos": "^2.3.4",
     "bootstrap": "^4.4.1",
+    "caniuse-lite": "^1.0.30001317",
     "jquery": "^3.6.0",
     "jquery-colorbox": "^1.6.4",
     "jquery-lazy": "^1.7.7",

@@ -1,66 +1,79 @@
 {% extends "base-landing.twig" %}
 
-{% set img_col_1 = Image(page.img_col_1) %}
-{% set img_col_2 = Image(page.img_col_2) %}
-{% set img_col_3 = Image(page.logo_col_3) %}
-{% set content_col_3 = page.meta('content_col_3') %}
+{% set title_name = page.title_name %}
+{% set title_date = page.title_date %}
+{% set extra_info = page.extra_info %}
+{% set rsvp_link = page.rsvp_link %}
+{% set artistes = page.meta('artistes') %}
 
 {% block content %}
 	<article class="post-type-{{page.post_type}}" id="post-{{page.ID}}">
-
 		<section class="splash">
 			<div class="container-fluid">
-				<div class="row">
-
-					{% set image_url = img_col_1.src %}
-					<div class="col-lg-6 col-xl-4 poster aos-init bg--bleu" data-aos="fade-right" style="background-image:url({{image_url}});">
-
-						<img
-						srcset="{{ image_url | resize(360,0) | relative }} 150w,{{ image_url | resize(510,0) | relative }} 500w,{{ image_url | resize(660,0) | relative }} 600w,{{ image_url|resize(810,0) | relative }} 750w,{{ image_url|resize(960,0) | relative }} 900w"
-						sizes="auto"
-						alt="{{ img_col_1.alt }}">
+				<div class="row row__header">
+					<div class="col-12">
+						<h1>
+							<span>
+								{{- title_name -}}
+							</span>
+							<span>
+								{{- title_date -}}
+							</span>
+						</h1>
+					</div>
+				</div>
+				<div class="row row__background">
+					{% for artiste in artistes %}
+					{{ artiste.event_photo }}
+					{{ artiste.event_tag }}
+					{% endfor %}
+				</div>
+				<div class="row row__body">
+					<div class="col-lg-3">
 
 					</div>
-
-					{% set image_url = img_col_2.src %}
-					<div class="col-lg-6 col-xl-4 poster aos-init" data-aos="fade-up" style="background-image:url({{image_url}});">
-
-							<img
-							srcset="{{ image_url | resize(360,0) | relative }} 150w,{{ image_url | resize(510,0) | relative }} 500w,{{ image_url | resize(660,0) | relative }} 600w,{{ image_url|resize(810,0) | relative }} 750w,{{ image_url|resize(960,0) | relative }} 900w"
-							sizes="auto"
-							alt="{{ site.title }}">
-
+					<div class="col-lg-3">
+						<p>{{extra_info}}</p>
+						<h3>
+							<a href="{{rsvp_link.url}}" title="{{rsvp_link.title}}" target="{{rsvp_link.target}}">{{rsvp_link.title}}</a>
+						</h3>
+						<ul>
+							{% for artiste in artistes %}
+							<li class="splash__event">
+								<h3>{{ artiste.event_date }} — {{ artiste.event_name }}</h3>
+								<p>{{ artiste.event_subtitle }}</p>
+							</li>
+							{% endfor %}
+						</ul>
 					</div>
-
-					<div class="col-lg-12 col-xl-4 content aos-init bg--rouge" data-aos="fade-left">
-						<div class="content__wrapper rte">
-							<h1>
-								{% set image_url = img_col_3.src %}
-							<img class="lazyload logo"
-							srcset="{{ image_url | resize(315,0) | relative }} 315w,{{ image_url | resize(365,0) | relative }} 365w,{{ image_url | resize(415,0) | relative }} 415w,{{ image_url|resize(465,0) | relative }} 465w,{{ image_url|resize(515,0) | relative }} 515w"
-							sizes="auto"
-							alt="{{ img_col_1.alt }}">
-							{% if page.date_col_3 %}
-								<span>{{page.date_col_3}}</span>
-							{% endif %}
-							</h1>
-							{% if page.rsvp_link.url %}
-							<a class="btn btn--jaune" href="{{ page.rsvp_link.url }}" target="{{ page.rsvp_link.target }}"> {% include 'svg/icon_fb.svg' %}<span>{{ page.rsvp_link.title }}</span></a>
-							{% endif %}
-							<div class="splash__social">
-								{% if page.fb_link %}
+					<div class="col-lg-3">
+						<div class="row">
+							<div class="col-lg-12 splash__logo">
+								<img src="{{TimberImage(options.logo).src| resize(0,115) }}" alt="{{site.title}}" width="{{ TimberImage(options.logo).width | resize(0,115) }}" height="115">
+							</div>
+							<div class="col-lg-12">
+								<div class="splash__language">
+									{% do action('icl_language_selector') %}
+								</div>
+								<div class="splash__social">
+									{% if page.fb_link %}
 									<a class="link_fb" href="{{page.fb_link.url}}" title="{{page.fb_link.title}}" target="{{page.fb_link.target}}">{% include 'svg/icon_fb.svg' %}</a>
-								{% endif %}
-								{% if page.insta_link %}
+									{% endif %}
+									{% if page.insta_link %}
 									<a class="link_in" href="{{page.insta_link.url}}" title="{{page.insta_link.title}}" target="{{page.insta_link.target}}">{% include 'svg/icon_in.svg' %}</a>
-								{% endif %}
+									{% endif %}
+									{% if page.yt_link %}
+									<a class="link_in" href="{{page.yt_link.url}}" title="{{page.yt_link.title}}" target="{{page.yt_link.target}}">{% include 'svg/icon_in.svg' %}</a>
+									{% endif %}
+									{% if page.tw_link %}
+									<a class="link_in" href="{{page.tw_link.url}}" title="{{page.tw_link.title}}" target="{{page.tw_link.target}}">{% include 'svg/icon_in.svg' %}</a>
+									{% endif %}
+								</div>
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</section>
-
 	</article>
 {% endblock %}
