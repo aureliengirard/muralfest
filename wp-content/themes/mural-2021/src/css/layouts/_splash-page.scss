@@ -191,6 +191,7 @@
     &__extra {
         display: inherit;
         justify-content: flex-end;
+        margin-top: 25px;
     }
     &__logo {
 
@@ -218,12 +219,33 @@
         }
     }
 
+    &__language {
+        display: inherit;
+
+        @include media-breakpoint-up(down) {
+            margin-right: auto !important;
+        }
+
+        .wpml-ls {
+            margin: auto 25px auto 0;
+        }
+
+        a {
+            font-size: 1.25em !important;
+            text-transform: capitalize !important;
+            font-weight: 400 !important;
+
+            @include media-breakpoint-up(md) {
+                font-size: 1.875em !important;
+            }
+        }
+    }
+
     &__social {
         @include flexbox;
         @include justify-content(center);
         @include flex-flow(row wrap);
         max-width: fit-content;
-        margin-top: 25px;
 
         a{
             width: fit-content;
@@ -253,7 +275,7 @@
         margin-top: 10px;
 
         @include media-breakpoint-up(lg) {
-            margin-top: 25px;
+            margin-top: 15px;
         }
 
         p {
