@@ -222,7 +222,7 @@
     &__language {
         display: inherit;
 
-        @include media-breakpoint-up(down) {
+        @include media-breakpoint-down(md) {
             margin-right: auto !important;
         }
 
