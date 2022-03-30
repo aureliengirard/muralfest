@@ -62,12 +62,12 @@
 
         @include media-breakpoint-up(lg) {
             font-size: 9.5vw;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 500;
         }
         @include media-breakpoint-up(xl) {
             font-size: 8vw;
-            font-weight: 500;
-            display: flex;
-            justify-content: space-between;
         }
 
         span {
@@ -221,7 +221,7 @@
         }
 
         &--desktop {
-            @include media-breakpoint-down(lg) {
+            @include media-breakpoint-down(md) {
                 display: none;
             }
         }
