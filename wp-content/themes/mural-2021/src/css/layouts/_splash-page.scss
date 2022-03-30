@@ -51,10 +51,17 @@
     h1{
         line-height: 0.89;
         font-weight: 400;
-        font-size: 15vw;
+        font-size: 13.5vw;
+
+        img {
+            min-width: 20vw;
+            @include media-breakpoint-up(lg) {
+                margin-top: 15px;
+            }
+        }
 
         @include media-breakpoint-up(lg) {
-            font-size: 9.5vw;
+            font-size: 8vw;
             font-weight: 500;
             display: flex;
             justify-content: space-between;
@@ -220,13 +227,10 @@
     }
 
     &__language {
-        display: inherit;
+        text-align: right;
 
-        @include media-breakpoint-down(md) {
-            margin-right: auto !important;
-        }
         .wpml-ls {
-            margin: auto 25px auto 0;
+            margin: auto 0;
         }
         a {
             font-size: 1.25em !important;
@@ -248,6 +252,8 @@
         a{
             width: fit-content;
             margin: 0 10px;
+            line-height: 30px;
+            font-size: 1.5em;
 
             &:nth-last-child(1) {
                 margin-right: 0;
@@ -278,6 +284,22 @@
 
         p {
             margin-bottom: 0;
+        }
+    }
+
+    &__partner{
+        display: inherit;
+        flex-flow: row wrap;
+        justify-content: center;
+        margin-top: 25px;
+
+        picture{
+            padding: 6.5px;
+        }
+
+        img {
+            max-height: 25px;
+            width: auto;
         }
     }
 }

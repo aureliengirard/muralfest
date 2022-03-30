@@ -60,6 +60,25 @@
             "maxlength": ""
         },
         {
+            "key": "field_6244b6b78b21c",
+            "label": "contact",
+            "name": "contact",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "default_value": "",
+            "delay": 0
+        },
+        {
             "key": "field_609e686970842",
             "label": "RSVP Link",
             "name": "rsvp_link",
@@ -105,9 +124,9 @@
             "return_format": "array"
         },
         {
-            "key": "field_623230ca04f5f",
-            "label": "Twitter Link",
-            "name": "tw_link",
+            "key": "field_623230db04f60",
+            "label": "Youtube Link",
+            "name": "yt_link",
             "type": "link",
             "instructions": "",
             "required": 0,
@@ -120,9 +139,9 @@
             "return_format": "array"
         },
         {
-            "key": "field_623230db04f60",
-            "label": "Youtube Link",
-            "name": "yt_link",
+            "key": "field_623230ca04f5f",
+            "label": "RSVP Link",
+            "name": "tw_link",
             "type": "link",
             "instructions": "",
             "required": 0,
@@ -259,6 +278,33 @@
                     "mime_types": ""
                 }
             ]
+        },
+        {
+            "key": "field_6244ab98be191",
+            "label": "Partenaires",
+            "name": "partners",
+            "type": "gallery",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "insert": "append",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
         }
     ],
     "location": [
@@ -281,5 +327,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1647473243
+    "modified": 1648670514
 }

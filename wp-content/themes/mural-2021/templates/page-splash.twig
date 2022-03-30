@@ -4,7 +4,9 @@
 {% set title_date = page.title_date %}
 {% set extra_info = page.extra_info %}
 {% set rsvp_link = page.rsvp_link %}
+{% set contact = page.meta('contact') %}
 {% set artistes = page.meta('artistes') %}
+{% set partners = page.meta('partners') %}
 
 {% block content %}
 	<article class="post-type-{{page.post_type}}" id="post-{{page.ID}}">
@@ -34,7 +36,8 @@
 					<div class="col-12">
 						<h1>
 							<span>
-								{{- title_name -}}
+								<img src="{{TimberImage(options.logo).src }}" alt="{{site.title}}">
+								<!-- {{- title_name -}} -->
 							</span>
 							<span>
 								{{- title_date -}}
@@ -45,9 +48,11 @@
 				<div class="row row__body">
 
 					<div class="col-lg-5">
+						<!--
 						<div class="splash__logo  splash__logo--mobile">
 							<img src="{{TimberImage(options.logo).src }}" alt="{{site.title}}">
 						</div>
+						-->
 						<p class="description">{{extra_info}}</p>
 						<h2 class="cta">
 							<a href="{{rsvp_link.url}}" title="{{rsvp_link.title}}" target="{{rsvp_link.target}}">{{rsvp_link.title}}</a>
@@ -66,13 +71,10 @@
 					</div>
 					<div class="col-lg-5">
 						<div class="row">
-							<div class="col-lg-12 splash__logo splash__logo--desktop">
-								<img src="{{TimberImage(options.logo).src }}" alt="{{site.title}}">
+							<div class="col-lg-12 splash__language">
+								{% do action('icl_language_selector') %}
 							</div>
 							<div class="col-lg-12 splash__extra">
-								<div class="splash__language">
-									{% do action('icl_language_selector') %}
-								</div>
 								<div class="splash__social">
 									{% if page.fb_link -%}
 									<a class="link_fb" href="{{page.fb_link.url}}" title="{{page.fb_link.title}}" target="{{page.fb_link.target}}">{% include 'svg/icon_facebook.svg' %}</a>
@@ -84,14 +86,34 @@
 									<a class="link_in" href="{{page.yt_link.url}}" title="{{page.yt_link.title}}" target="{{page.yt_link.target}}">{% include 'svg/icon_youtube.svg' %}</a>
 									{%- endif -%}
 									{%- if page.tw_link -%}
-									<a class="link_in" href="{{page.tw_link.url}}" title="{{page.tw_link.title}}" target="{{page.tw_link.target}}">{% include 'svg/icon_twitter.svg' %}</a>
+									<a class="link_in" href="{{page.tw_link.url}}" title="{{page.tw_link.title}}" target="{{page.tw_link.target}}">{{page.tw_link.title}}</a>
 									{%- endif -%}
 								</div>
 							</div>
 							<div class="col-lg-12 splash__contact">
-								<p>contact / presse : <a href="mailto:info@muralfestival.com">info@muralfestival.com</a></p>
+								{{- contact -}}
 							</div>
 						</div>
+					</div>
+					<div class="col-lg-12 splash__partner">
+						{% for partner in partners -%}
+							{% set partner_img = Image(partner) %}
+							{% set thumbnail = Image(partner_img).src %}
+							<picture>
+								<source srcset="{{ thumbnail|towebp }}" type="image/webp">
+								<source srcset="{{ thumbnail|tojpg }}" type="image/jpeg">
+							   	<img class="lazyload partner__img"
+									data-srcset="
+										{{- thumbnail|tojpg }}|retina(0.5) }} 0.5x,
+										{{- thumbnail|tojpg }}|retina(1) }} 1x,
+										{{- thumbnail|tojpg }}|retina(2) }} 2x,
+										{{- thumbnail|tojpg }}|retina(3) }} 3x"
+						   			data-sizes="auto"
+		   							width="auto"
+		   							height="50"
+		   							alt="{{ partner_img.alt }}">
+							</picture>
+						{%- endfor %}
 					</div>
 				</div>
 			</div>
