@@ -203,31 +203,6 @@
         justify-content: flex-end;
         margin-top: 25px;
     }
-    &__logo {
-
-        img {
-            margin-left: auto;
-            @include media-breakpoint-down(lg) {
-                max-width: 25%;
-                height: auto;
-            }
-            @include media-breakpoint-up(lg) {
-                margin-bottom: 50px;
-            }
-        }
-
-        &--desktop {
-            @include media-breakpoint-down(lg) {
-                display: none;
-            }
-        }
-
-        &--mobile {
-            @include media-breakpoint-up(lg) {
-                display: none;
-            }
-        }
-    }
 
     &__language {
         text-align: right;
@@ -242,6 +217,18 @@
 
             @include media-breakpoint-up(md) {
                 font-size: 1.875em !important;
+            }
+        }
+
+        &--desktop {
+            @include media-breakpoint-down(lg) {
+                display: none;
+            }
+        }
+
+        &--mobile {
+            @include media-breakpoint-up(lg) {
+                display: none;
             }
         }
     }
