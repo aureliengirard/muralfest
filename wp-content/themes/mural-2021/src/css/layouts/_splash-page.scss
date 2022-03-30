@@ -61,6 +61,9 @@
         }
 
         @include media-breakpoint-up(lg) {
+            font-size: 9.5vw;
+        }
+        @include media-breakpoint-up(xl) {
             font-size: 8vw;
             font-weight: 500;
             display: flex;
