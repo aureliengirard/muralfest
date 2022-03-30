@@ -284,15 +284,15 @@
         margin-top: 25px;
 
         picture{
-            padding: 6.5px;
+            padding: 5px;
         }
 
         img {
             width: auto;
-            max-height: 20px;
+            max-height: 10px;
 
             @include media-breakpoint-up(lg) {
-                max-height: 25px;
+                max-height: 15px;
             }
         }
     }
