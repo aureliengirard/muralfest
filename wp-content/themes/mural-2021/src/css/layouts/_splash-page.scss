@@ -71,13 +71,13 @@
         }
 
         @include media-breakpoint-up(lg) {
-            font-size: 9.5vw;
+            font-size: 9vw;
             display: flex;
             justify-content: space-between;
             font-weight: 500;
         }
         @include media-breakpoint-up(xl) {
-            font-size: 8vw;
+            font-size: 7.5vw;
         }
 
         span {
