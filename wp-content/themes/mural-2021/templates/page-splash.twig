@@ -27,7 +27,6 @@
 							width="700"
 							height="467"
 							alt="{{ alt }}">
-							{{ artiste.event_tag }}
 						{% endif %}
 						</div>
 					{% endfor %}
@@ -101,7 +100,7 @@
 					<div class="col-lg-12 splash__partner">
 						{% for partner in partners -%}
 							{% set partner_img = Image(partner) %}
-							{% set thumbnail = Image(partner_img).src %}
+							{% set thumbnail = partner_img.src %}
 							<picture>
 								<source srcset="{{ thumbnail|towebp }}" type="image/webp">
 								<source srcset="{{ thumbnail|tojpg }}" type="image/jpeg">
@@ -141,4 +140,24 @@ $(document).ready(function() {
 	});
 });
 </script>
+{% endblock %}
+{% block styles %}
+<style media="screen">
+{% for artiste in artistes %}
+{% if Image(artiste.event_tag).src != "" %}
+@media screen and (min-width: 768px) {
+	[data-target="{{ artiste.event_name | replace({' ': "-"}) | url_encode }}"] {
+		background-image: url('{{ Image(artiste.event_tag).src }}');
+	}
+}
+{% endif %}
+{% if Image(artiste.event_tag_mobile).src != "" %}
+@media screen and (max-width: 767px) {
+	[data-target="{{ artiste.event_name | replace({' ': "-"}) | url_encode }}"]:before {
+		background-image: url('{{ Image(artiste.event_tag_mobile).src }}');
+	}
+}
+{% endif %}
+{% endfor %}
+</style>
 {% endblock %}

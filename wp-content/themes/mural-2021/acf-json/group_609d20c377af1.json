@@ -255,7 +255,7 @@
                 },
                 {
                     "key": "field_62326b977dade",
-                    "label": "Tag",
+                    "label": "Tag Desktop",
                     "name": "event_tag",
                     "type": "image",
                     "instructions": "",
@@ -269,12 +269,36 @@
                     "return_format": "array",
                     "preview_size": "medium",
                     "library": "all",
-                    "min_width": 0,
-                    "min_height": 0,
-                    "min_size": 0,
-                    "max_width": 0,
-                    "max_height": 0,
-                    "max_size": 0,
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_6246238e43467",
+                    "label": "Tag Mobile",
+                    "name": "event_tag_mobile",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
                     "mime_types": ""
                 }
             ]
@@ -327,5 +351,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1648670514
+    "modified": 1648763996
 }

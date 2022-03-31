@@ -44,7 +44,12 @@
             @include media-breakpoint-up(lg) {
                 padding: 15px 0;
                 position: absolute;
+
+                &.row__background {
+                    padding: 0 !important;
+                }
             }
+
         }
      }
 
@@ -54,8 +59,13 @@
         font-size: 13.5vw;
 
         img {
-            min-width: 20vw;
+            height: auto;
+            @include media-breakpoint-down(md) {
+                min-width: 20vw;
+                max-width: 60vw;
+            }
             @include media-breakpoint-up(lg) {
+                max-width: 20vw;
                 margin-top: 15px;
             }
         }
@@ -86,11 +96,15 @@
 
     h2, h3 {
         font-weight: 500;
-        font-size: 2.125em;
+        font-size: 1.5em;
+
+        @include media-breakpoint-between(md,lg){
+            font-size: 2.125em;
+        }
 
         @include media-breakpoint-up(lg){
             font-weight: 400;
-            font-size: 3.0625vw;
+            font-size: 2.5vw;
         }
     }
 
@@ -195,6 +209,27 @@
         &--imagery {
             height: 100%;
             display: inherit;
+
+            @include media-breakpoint-down(sm) {
+                position: unset !important;
+
+                &:before {
+                    content: " ";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    background-position: 100%;
+                    background-size: 100% auto;
+                    background-repeat: no-repeat;
+                    height: 100vh;
+                    z-index: -1;
+                }
+            }
+            @include media-breakpoint-up(md) {
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
         }
     }
 
@@ -281,7 +316,7 @@
         display: inherit;
         flex-flow: row wrap;
         justify-content: center;
-        margin-top: 25px;
+        margin-top: 40px;
 
         picture{
             padding: 5px;
