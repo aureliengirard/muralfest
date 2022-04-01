@@ -316,10 +316,32 @@
         display: inherit;
         flex-flow: row wrap;
         justify-content: center;
+        align-items: center;
+        align-content: center;
         margin-top: 40px;
 
         picture{
             padding: 5px;
+
+
+            &:nth-child(4) img {
+                max-height: 15px;
+                @include media-breakpoint-up(lg) {
+                    max-height: 20px;
+                }
+            }
+            &:nth-child(5) img {
+                max-height: 20px;
+                @include media-breakpoint-up(lg) {
+                    max-height: 25px;
+                }
+            }
+            &:nth-child(11) img {
+                max-height: 17.5px;
+                @include media-breakpoint-up(lg) {
+                    max-height: 22.5px;
+                }
+            }
         }
 
         img {
