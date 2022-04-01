@@ -227,8 +227,9 @@
                 }
             }
             @include media-breakpoint-up(md) {
-                background-size: 100% auto;
+                background-size: auto 100%;
                 background-repeat: no-repeat;
+                background-position: 100% 50%;
             }
         }
     }
