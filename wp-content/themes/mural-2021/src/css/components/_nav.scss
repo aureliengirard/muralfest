@@ -234,7 +234,7 @@
 }
 
 .navbar-toggler {
-    padding: $spacing/4 $spacing/4;
+    padding: calc($spacing/4) calc($spacing/4);
     line-height: 1;
     @include flexbox;
     background-color: transparent; // remove default button style

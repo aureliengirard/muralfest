@@ -31,4 +31,4 @@ $fs-basic-mobile: 16;
 */
 
 $font-weight-normal : 400;
-$line-height-base : 28 / $fs-basic;
+$line-height-base : calc(28 / $fs-basic);

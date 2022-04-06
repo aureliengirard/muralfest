@@ -12,7 +12,7 @@ $padding: $spacing;
     $lh : 26;
 
     font-size: 1em;
-    line-height: ($lh / $font);
+    line-height: calc($lh / $font);
     letter-spacing: 0.5px;
     font-family: var(--baseFont);
     //color: $black;
@@ -44,7 +44,7 @@ form:not(.program-filters) {
 
     .validation_error{
         font-size: 1em;
-        font-family:: var(--baseFont);
+        font-family: var(--baseFont);
         font-weight: 600;
         color: var(--couleurNoir);
         padding: $padding;
