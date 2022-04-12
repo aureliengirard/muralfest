@@ -10,26 +10,26 @@
     }
 
     @include media-breakpoint-up(xl){
-        font-size: 3.25em;
+        font-size: 9.25vw;
     }
-
+    
     @include media-breakpoint-up(xxl){
-        font-size: 4.1em;
+        //font-size: 4.1em;
     }
 }
 
 %heading-h2 {
     font-size: 1.5em;
-    line-height: 1.1;
-    font-weight: 300;
+    line-height: 1.15;
+    font-weight: 400;
     //text-transform: uppercase;
-
+    
     @include media-breakpoint-up(md){
-        font-size: 1.875em;
+        font-size: 7.25vw;
     }
-
+    
     @include media-breakpoint-up(xxl){
-        font-size: 2.5em;
+        //font-size: 2.5em;
     }
 }
 
@@ -38,15 +38,15 @@
     line-height: 1.1;
     font-weight: 900;
     //text-transform: uppercase;
-
+    
     @include media-breakpoint-up(md){
         font-size: 2em;
     }
-
+    
     @include media-breakpoint-up(xl){
         font-size: 2.375em;
     }
-
+    
     @include media-breakpoint-up(xxl){
         font-size: 2.75em;
     }
@@ -56,12 +56,12 @@
     font-size: 1.125em;
     font-weight: 600;
     margin-bottom: calc($spacing / 3);
-
+    
     @include media-breakpoint-up(xl){
-        font-size: 1.25em;
+        font-size: 58vw;
     }
-
-    @include media-breakpoint-up(xl){
+    
+    @include media-breakpoint-up(xxl){
         font-size: 1.5em;
     }
 }
@@ -77,8 +77,8 @@
 }
 
 %paragraph {
-    $font : 20;
-    $lh : 36;
+    $font : 22;
+    $lh : 25.15;
 
     font-size: 1em;
     line-height: calc($lh / $font);
@@ -89,11 +89,15 @@
     color: var(--couleurGris);
 
     .lg{
-        font-size: 1.125em;
+        font-size: 1.363636em;
     }
 
     &:nth-child(1){
         margin-top: 0;
+    }
+
+    @include media-breakpoint-up(xl){
+        //font-size: 7.25vw;
     }
 }
 

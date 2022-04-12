@@ -4,27 +4,27 @@
 {% set id = artist_post.id %}
 {% set biographie = artist_post.meta('biographie') %}
 
-{% set thumbnail = Image(artist_post.image_de_lartiste).src %}
+{% set thumbnail = Image(artist_post.image_de_lartiste) %}
 
 <div class="col-auto article artist_post artist card">
 
     <div class="card__content">
+        {% if thumbnail %}
         <div class="card__header">
 
             <figure>
                 <a href="{{link}}">
 
-                    {% if thumbnail %}
                     <img class="lazyload"
-                    data-srcset="{{ thumbnail|resize(600, 400) }} 600w,{{ thumbnail|resize(400, 267) }} 400w,{{ thumbnail|resize(300, 200) }} 300w,{{ thumbnail|resize(150, 100) }} 150w,{{ thumbnail|resize(250, 166) }} 250w,{{ thumbnail|resize(175, 116) }} 175w"
+                    data-srcset="{{ thumbnail.src|resize(776, 584) }} 775w, {{ thumbnail.src|resize(518, 390) }} 517w"
                     data-sizes="auto"
-                    width="600"
-                    height="400"
+                    width="517"
+                    height="389"
                     alt="{{ title }}">
-                    {% endif %}
                 </a>
             </figure>
         </div>
+        {% endif %}
 
         <div class="description card__body rte">
             <h3><a href="{{ link }}">{{ title }}</a></h3>

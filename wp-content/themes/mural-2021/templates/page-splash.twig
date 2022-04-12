@@ -133,9 +133,10 @@ $(document).ready(function() {
 
 	//Update event onclick
 	$(".splash__event").on('click mouseover', function(){
+		var splash_event_imagery = $(".splash__event--imagery");
+		$(splash_event_imagery).hide();
 		var data_name = $(this).attr("data-name");
 		var clickTarget = '[data-target="' + data_name + '"]';
-		$(clickTarget).siblings().hide();
 		$(clickTarget).show("fast");
 	});
 });
@@ -153,7 +154,7 @@ $(document).ready(function() {
 {% endif %}
 {% if Image(artiste.event_tag_mobile).src != "" %}
 @media screen and (max-width: 767px) {
-	[data-target="{{ artiste.event_name | replace({' ': "-"}) | url_encode }}"]:before {
+	[data-target="{{ artiste.event_name | replace({' ': "-"}) | url_encode }}"].splash__event--imagery:before {
 		background-image: url('{{ Image(artiste.event_tag_mobile).src }}');
 	}
 }

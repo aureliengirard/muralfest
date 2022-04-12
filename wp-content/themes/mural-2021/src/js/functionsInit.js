@@ -37,7 +37,7 @@ const functionsInit = function() {
       }
     }
     */
-    window.addEventListener('scroll', throttle(onScroll, 25));
+    //window.addEventListener('scroll', throttle(onScroll, 25));
 
     var gallery_popup = $('.gallery');
     gallery_popup.magnificPopup({
