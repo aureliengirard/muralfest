@@ -1,0 +1,37 @@
+{% set group_id = random(a, z) %}
+
+<section id="{{id}}{% if block.id %}_{{ block.id }}{% endif %}" class="faq">
+    {% if block_anchor != "" %}
+        <div id="{{block_anchor}}" class="anchor--target"></div>
+    {% endif %}
+    <div class="container">
+        <div class="row content">
+            <div class="col-lg-12 content collapse__wrapper faq-collapse">
+                <h2 class="{% if h2_size == "base" %}{% elseif h2_size != "base" %}{{ h2_size }}{% else %}sm{% endif %}">{{ title }}</h2>
+                <div id="faq__wrapper" class="collapse__wrapper faq__wrapper">
+
+					{% for faqs in faq %}
+
+                        <div class="faq__single collapse__single" itemprop="mainEntity" itemtype="https://schema.org/Question">
+                            <div class="faq__header" id="heading_{{ group_id }}{{ loop.index }}">
+                                <div class="faq__header--inner collapsed" data-toggle="collapse" data-target="#collapse_{{ group_id }}{{ loop.index }}" aria-expanded="true" aria-controls="collapse_{{ group_id }}{{ loop.index }}">
+                                    <h3 class="sm faq__title" itemprop="name">
+                                        {{ faqs.title }}
+                                    </h3>
+                                </div>
+                            </div>
+                            <div id="collapse_{{ group_id }}{{ loop.index }}" class="collapse collapse__content faq__content" aria-labelledby="heading_{{ group_id }}{{ loop.index }}" data-parent="#faq__wrapper" style="" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <div class="faq__body collapse__body" itemprop="text">
+                                    {{ faqs.content }}
+                                </div>
+                            </div>
+                        </div>
+
+					{% endfor %}
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
