@@ -174,12 +174,19 @@ $btn_styles:
 
 .readmore{
     display:block;
+    font-size: 0.8em;
     color: var(--couleurNoir);
-    font-weight: 600;
 	@include hover-transition;
-    text-transform: uppercase;
+    display: flex;
+    height: 22px;
+    flex-flow: row wrap;
+
+    svg{
+        max-height: 1em;
+        margin: auto 0;
+    }
 
     @include hover-focus-active{
-        color: var(--couleurRouge);
+        //color: var(--couleurRouge);
     }
 }

@@ -26,10 +26,12 @@
         </div>
         {% endif %}
 
-        <div class="description card__body rte">
+        <div class="description card__body">
             <h3><a href="{{ link }}">{{ title }}</a></h3>
-            {{ biographie|truncate(20) }}
-            <a class="readmore" href="{{ link }}">{{__('Learn more +', 'site-theme')}}</a>
+            <div class="card__teaser">
+                {{ biographie|striptags|truncate(20) }}
+            </div>
+            <a class="readmore" href="{{ link }}">{{__('Learn more', 'site-theme')}}{% include 'svg/icon_arrows.svg' with  {class: 'readmore__icon'} %}</a>
         </div>
     </div>
 </div>

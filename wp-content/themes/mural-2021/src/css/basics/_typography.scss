@@ -23,9 +23,17 @@
     line-height: 1.15;
     font-weight: 400;
     //text-transform: uppercase;
+
+    
+    &.md{
+    }
     
     @include media-breakpoint-up(md){
         font-size: 7.25vw;
+
+        &.md{
+            font-size: 6vw;
+        }
     }
     
     @include media-breakpoint-up(xxl){
@@ -114,10 +122,6 @@
 
     h2, .h2 {
         @extend %heading-h2;
-
-        &.lg{
-            @extend %heading-h1-small;
-        }
     }
 
     h3, .h3 {
@@ -198,9 +202,9 @@
     }
 
     a {
-        font-weight: 600;
         color: var(--couleurRouge);
         transition: color .15s ease-in-out;
+        text-decoration: underline;
 
         &:hover{
             color: var(--couleurBleu);
@@ -250,6 +254,13 @@ header a {
 
     @include media-breakpoint-up(lg) {
         margin-bottom: $spacing-xl;
+    }
+
+    &--underlined {
+        h2{
+            border-bottom: 1px solid var(--couleurNoir);
+            padding-bottom: $spacing-md;
+        }
     }
 }
 

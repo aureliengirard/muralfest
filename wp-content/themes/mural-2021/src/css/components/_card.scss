@@ -10,11 +10,9 @@
         }
 
         @include media-breakpoint-up(lg){
-            flex: 30%;
-            max-width: 400px;
+            flex: 32.5%;
+            max-width: 32.5%;
             margin-bottom: $spacing * 6;
-            margin-left: $spacing*1.5;
-            margin-right: $spacing*1.5;
         }
     }
 
@@ -37,9 +35,10 @@
 
     &__wrapper {
         margin-bottom: -$spacing-md !important;
-
-
+        
         @include media-breakpoint-up(md) {
+            padding-left: $spacing-xl;
+            padding-right: $spacing-xl;
             margin-bottom: -$spacing-xl !important;
             justify-content: space-between;
         }
@@ -50,8 +49,8 @@
             max-width: 50%;
 
             @include media-breakpoint-up(lg) {
-                flex: 30%;
-                max-width: 400px;
+                flex: 32.5%;
+                max-width: 32.5%;
             }
         }
 
@@ -81,41 +80,36 @@
         }
     }
 
-    figure{
-    }
 
     &__body{
-        padding-top: $spacing-md;
+        padding-top: $spacing*1.5;
 
         @include media-breakpoint-up(md){
-            padding-top: $spacing-xl;
+            padding-top: $spacing-md;
         }
 
-        p{
-            margin-top: $spacing*1.5;
-            margin-bottom: $spacing*1.5;
-
-            @include media-breakpoint-up(md){
-                margin-top: $spacing*3;
-                margin-bottom: $spacing*3;
-            }
-        }
     }
 
+    &__teaser {
+        margin-top: $spacing*1.5;
+        
+        @include media-breakpoint-up(md){
+            margin-top: $spacing-md;
+        }
+        @include media-breakpoint-up(xl){
+            line-height: 1.1;
+            height: 3.3em;
+        }
+    }
+    .readmore {
+        margin-top: calc($spacing / 3);
+    }
     &__cta{
         @include flexbox;
         @include flex-flow(row wrap);
         @include justify-content(space-between);
         margin-top: $spacing*3;
-        padding-right: $spacing-md;
-
-        .readmore{
-            color: var(--couleurRouge);
-
-            @include hover-focus{
-                color: var(--couleurBleu);
-            }
-        }
+        padding-right: $spacing-md;   
     }
 
     &.program {
