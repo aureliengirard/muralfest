@@ -18,7 +18,7 @@
         }
 
         a:not(.dots){
-            color: var(--couleurJaune);
+            color: var(--couleurNoir);
             @include hover-transition;
 
             &.current{

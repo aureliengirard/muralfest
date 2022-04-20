@@ -1,14 +1,20 @@
-<div class="banner">
+<section class="banner">
     {% set banniere = Image(page.meta('banniere')) %}
     {% set banniere_url = banniere.src %}
+    {% set contenu_banniere = page.contenu_banniere %}
 
-    <div class="single-banner with-overlay" style="background-image:url('{{banniere_url|resize(1920,400) }}')">
-        {% if page.contenu_banniere %}
-        <div class="row content">
-            <div class="col-12 banner-overlay">
-                {{page.contenu_banniere}}
+    <div class="single-banner with-overlay" style="background-image:url('{{banniere_url }}')">
+        <div class="row">
+            <div class="col-12 banner__title">
+                <h1>
+                {{- title -}}
+                </h1>
             </div>
+            {% if contenu_banniere %}
+            <div class="col-12 banner__content rte">
+                <p class="lg">{{- contenu_banniere -}}</p>
+            </div>
+            {% endif %}
         </div>
-        {% endif %}
     </div>
-</div>
+</section>

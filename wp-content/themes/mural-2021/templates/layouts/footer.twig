@@ -1,5 +1,9 @@
 <div class="footer--wrapper">
-
+	{% if options.newsletter_form_id %}
+		<section class="formulaire_infolettre">
+			{%- include "partial/part-formulaire_infolettre.twig" -%}
+		</section>
+	{% endif %}
 	<div class="row footer__main">
 		<div class="footer__logo">
 			<img src="{{ TimberImage(options.logo).src | resize(220,0) }}" alt="{{ site.title }}" width="220" height="{{ TimberImage(options.logo).height | resize(220,0) }}">

@@ -61,7 +61,6 @@
     @import 'sections/_carte-dynamique.scss';
     @import 'sections/_deux-colonnes.scss';
     @import 'sections/_evenements-a-venir.scss';
-    @import 'sections/_formulaire-infolettre.scss';
     @import 'sections/_galerie.scss';
     @import 'sections/_image_et_texte.scss';
     @import 'sections/_image-pleine-largeur.scss';
@@ -71,6 +70,7 @@
     @import 'sections/_titre-section.scss';
     @import 'sections/_video.scss';
 }
+@import 'sections/_formulaire-infolettre.scss';
 
 // Layout
 @import 'layouts/_404.scss';

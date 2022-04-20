@@ -2,39 +2,52 @@
 /// Style de la bannière
 .banner{
 	@include hover-transition;
+	margin-top: 0;
+	margin-bottom: 0;
 
-	& + [class*="bg--"]{
+	& + section{
 		margin-top: 0;
+
+        @include media-breakpoint-up(lg){
+            margin-top: 0;
+        }
 	}
 
 	[class*="col-12"]{
 		position: relative;
-		display: inherit;
-
+		//display: inherit;
 	}
 
 	.single-banner {
 		background-size:cover;
 		background-position: center;
 		background-repeat: no-repeat;
+		
+		@include media-breakpoint-up(md) {
+			background-position: center left;
+		}
 
 		.row {
 			height:200px;
 			min-height: 200px;
-			@include align-items(center);
 
 			@include media-breakpoint-up(md) {
-				height:50vh;
-				max-height: 400px;
+				height:28.65vw;
+				max-height: 550px;
+				min-height: 300px;
 			}
 
-			.banner-overlay{
-				h1{
-					color: var(--couleurJaune);
-				}
-			}
+			.banner__title {
+				padding-top: 5.2vw;
+				padding-left: 7vw;
+				margin-bottom: auto;
+			 }
 
-			.content{
+			.banner__content{
+				margin-top: auto;
+				margin-left: auto;
+				text-align: right;
+				max-width: 50%;
 			}
 		}
 	}

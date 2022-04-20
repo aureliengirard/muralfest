@@ -66,12 +66,12 @@
             <ul class="navbar-extra">
                 {% if options.nav_shop %}
                 <li class="nav-item">
-                    <a class="button btn--black btn__has-icon btn--ticket" href="{{ options.nav_shop.url }}">{%- include "/svg/icon_shop.svg" -%} {{ options.nav_shop.title }}</a>
+                    <a class="button btn--shop" href="{{ options.nav_shop.url }}">{{ options.nav_shop.title }}</a>
                 </li>
                 {% endif %}
                 {% if options.nav_tickets %}
                 <li class="nav-item">
-                    <a class="button btn__has-icon" href="{{ options.nav_tickets.url }}">{%- include "/svg/icon_ticket.svg" -%} {{ options.nav_tickets.title }}</a>
+                    <a class="button btn--ticket" href="{{ options.nav_tickets.url }}">{{ options.nav_tickets.title }}</a>
                 </li>
                 {% endif %}
             </ul>

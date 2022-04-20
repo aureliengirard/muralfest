@@ -2,21 +2,21 @@
 
     .bg--blue{
         h1,h2,h3,h4,h5,h6,p {
-            color: var(--couleurJaune);
+            color: var(--couleurNoir);
         }
 
-        @include placeholderColor(var(--couleurJaune));
+        @include placeholderColor(var(--couleurNoir));
 
         input:not([type=checkbox]):not([type=radio]):not([type=submit]){
-            border-color: var(--couleurJaune);
-            color: var(--couleurJaune);
+            border-color: var(--couleurNoir);
+            color: var(--couleurNoir);
         }
 
         .button{
 
             color: var(--couleurRouge);
-            background-color: var(--couleurJaune);
-            border-color: var(--couleurJaune);
+            background-color: var(--couleurNoir);
+            border-color: var(--couleurNoir);
 
             svg{
                 fill: var(--couleurRouge);
@@ -28,16 +28,16 @@
             }
 
             @include hover-focus-active{
-                color: var(--couleurJaune);
+                color: var(--couleurNoir);
                 background-color: var(--couleurRouge);
                 border-color: var(--couleurRouge);
 
                 svg{
-                    fill: var(--couleurJaune);
+                    fill: var(--couleurNoir);
 
                     path,
                     #fill{
-                        fill: var(--couleurJaune);
+                        fill: var(--couleurNoir);
                     }
                 }
             }
@@ -46,26 +46,26 @@
 
     .bg--red{
         h1,h2,h3,h4,h5,h6,p {
-            color: var(--couleurJaune);
+            color: var(--couleurNoir);
         }
 
-        @include placeholderColor(var(--couleurJaune));
+        @include placeholderColor(var(--couleurNoir));
 
         input:not([type=checkbox]):not([type=radio]):not([type=submit]){
-            border-color: var(--couleurJaune);
-            color: var(--couleurJaune);
+            border-color: var(--couleurNoir);
+            color: var(--couleurNoir);
         }
 
         .button{
 
-            color: var(--couleurJaune);
-            background-color: var(--couleurBleu);
-            border-color: var(--couleurBleu);
+            color: var(--couleurNoir);
+            //background-color: var(--couleurNoir);
+            //border-color: var();
 
             @include hover-focus-active{
                 color: var(--couleurRouge);
-                background-color: var(--couleurJaune);
-                border-color: var(--couleurJaune);
+                background-color: var(--couleurNoir);
+                border-color: var(--couleurNoir);
 
                 svg{
                     fill: var(--couleurRouge);
@@ -78,11 +78,11 @@
             }
 
             svg{
-                fill: var(--couleurJaune);
+                fill: var(--couleurNoir);
 
                 path,
                 #fill{
-                    fill: var(--couleurJaune);
+                    fill: var(--couleurNoir);
                 }
             }
         }
@@ -103,16 +103,16 @@
 
         .button{
 
-            color: var(--couleurJaune);
-            border-color: var(--couleurBleu);
-            background-color: var(--couleurBleu);
+            color: var(--couleurNoir);
+            border-color: var(--couleurNoir);
+            background-color: var(--couleurNoir);
 
             svg{
-                fill: var(--couleurJaune);
+                fill: var(--couleurNoir);
 
                 path,
                 #fill{
-                    fill: var(--couleurJaune);
+                    fill: var(--couleurNoir);
                 }
             }
 

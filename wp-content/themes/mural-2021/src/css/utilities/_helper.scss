@@ -53,9 +53,9 @@
 
 $theme_colors:
 "white" var(--couleurBlanc),
-"blue" var(--couleurBleu),
+"blue" var(--couleurNoir),
 "black" var(--couleurNoir),
-"yellow" var(--couleurJaune),
+"yellow" var(--couleurNoir),
 "red" var(--couleurRouge);
 
 @each $bg-name, $color in $theme_colors {

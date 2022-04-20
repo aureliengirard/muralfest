@@ -16,10 +16,10 @@ $padding: $spacing;
     letter-spacing: 0.5px;
     font-family: var(--baseFont);
     //color: $black;
-    padding: .675em 1em .675em 0.5em;
+    padding: 15px 0.5em 15px 0;
     border-style: solid;
     border-color: var(--couleurNoir);
-    border-width: 0 0 3px;
+    border-width: 0 0 1px;
     border-radius: 0;
     position: relative;
     background-color: transparent;
@@ -28,12 +28,6 @@ $padding: $spacing;
 
     @include media-breakpoint-up(md){
         @include placeholders (inherit, 500, 26px, var(--basePrimaryFont), none);
-    }
-
-    &:focus,
-    &:active{
-        border-width: 0 0 3px;
-        border-color: var(--couleurOr);
     }
 }
 

@@ -29,7 +29,7 @@
         <div class="description card__body">
             <h3><a href="{{ link }}">{{ title }}</a></h3>
             <div class="card__teaser">
-                {{ biographie|striptags|truncate(20) }}
+                {{ biographie|striptags|truncate(15) }}
             </div>
             <a class="readmore" href="{{ link }}">{{__('Learn more', 'site-theme')}}{% include 'svg/icon_arrows.svg' with  {class: 'readmore__icon'} %}</a>
         </div>

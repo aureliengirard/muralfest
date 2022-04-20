@@ -4,33 +4,11 @@
     display: block;
     text-decoration: none;
     transition: all .25s ease-in;
-    text-transform: uppercase;
     //text-align: center;
     color: var(--couleurNoir);
 
-    @include media-breakpoint-between(lg,xl) {
-        font-size: 0.925em;
-    }
-
-    @include media-breakpoint-up(lg) {
-        padding: 0 1vw;
-        font-weight: 600;
-    }
-
-    @include media-breakpoint-up(xxxl){
-        padding: 0 $spacing * 2;
-    }
-
-
     .is_sticky &{
         //font-size: 16px;
-    }
-
-    span{
-        @include media-breakpoint-up(lg) {
-            text-align: left;
-            display: block;
-        }
     }
 
     &:hover,
@@ -81,7 +59,6 @@
     width: 100%;
     z-index: 101;
     transition: all .15s ease;
-    background-color: var(--couleurBlanc);
 
     &.is_sticky{
         position: fixed;
@@ -322,33 +299,24 @@
         flex: 100%;
         min-width: 100%;
     }
-
     @include media-breakpoint-up(lg){
-        @include align-items(center);
         @include flex-direction(row);
         padding-left: 0;
         margin-bottom: 0;
         list-style: none;
     }
 }
-
 .navbar-overnav,
-.navbar-nav{
-
-    .nav-item:not(.nav-item-child){
-        @include media-breakpoint-down(md) {
-            font-weight: 500;
-            font-size: 0.875em;
-            border-width: 0 0 1px 0;
-            border-color: var(--couleurNoir);
-            border-style: solid;
-            padding: $spacing 0;
-            width: 100%;
-        }
+.navbar-extra{
+    @include media-breakpoint-up(lg){
+        @include align-items(center);
     }
 }
 
 .navbar-nav{
+    @include media-breakpoint-up(lg){
+        @include align-items(flex-start);
+    }
 
     @include media-breakpoint-down(md) {
         order: -1;
@@ -361,29 +329,12 @@
 
     .nav{
         &-item{
-            @include media-breakpoint-only(lg) {
-                padding: 0 0.6vw;
-            }
+            width: 8.5vw;
+            max-width: 175px;
+            min-width: 100px;
 
-            @include media-breakpoint-between(xl,xxl){
-                padding: 0 1.2vw;
-            }
-
-            @include media-breakpoint-between(xxl,xxxl){
-                padding: 0 1.8vw;
-            }
-
-            @include media-breakpoint-up(xxxl){
-                padding: 0 $spacing * 3.5;
-            }
-
-            &:nth-child(n+2){
-
-                @include media-breakpoint-up(lg){
-                    border-width: 0 0 0 1px;
-                    border-color: var(--couleurNoir);
-                    border-style: solid;
-                }
+            @include media-breakpoint-up(xl) {
+                margin: 0 max(10px, 2.075vw);
             }
         }
 
@@ -449,32 +400,12 @@
             }
         }
 
-        &-item{
-
-            &:nth-child(n+2){
-
-                @include media-breakpoint-up(lg){
-                    border-width: 2px 0 0 0;
-                    border-color: var(--couleurJaune);
-                    border-style: solid;
-                }
-            }
-
-        }
-
         &-link{
             @extend %dropdown-link;
         }
     }
 
     .menu-item-has-children {
-        position: relative;
-        padding-right: $spacing*3;
-        cursor: pointer;
-
-        @include media-breakpoint-up(xl){
-            padding-right: 3.9vw;
-        }
 
         &[aria-expanded="true"]{
             svg g g:first-child{
@@ -483,23 +414,6 @@
         }
 
         svg {
-            position: absolute;
-            top: 50%;
-            right: 0.5vw;
-            transform: translateY(-50%);
-
-            @include media-breakpoint-up(xl) {
-                right: 1vw;
-            }
-
-            @include media-breakpoint-down(lg) {
-                height: $spacing*2;
-                width: $spacing*2;
-            }
-
-            g{
-                @include hover-transition;
-            }
         }
     }
 }
@@ -513,33 +427,7 @@
 
     .button{
         text-align: center;
-
-        @include media-breakpoint-only(lg){
-            padding-left: $spacing*3;
-            padding-right: $spacing*3;
-            font-size: 0.925em;
-        }
-
-        @include media-breakpoint-only(xl){
-            padding-left: $spacing*4;
-            padding-right: $spacing*4;
-            font-size: 0.925em;
-        }
-
-        @include media-breakpoint-up(xxl) {
-            padding-left: $spacing*6;
-            padding-right: $spacing*6;
-        }
-
-        @include media-breakpoint-up(lg) {
-            display: inline-block;
-        }
-    }
-
-    .btn__has-icon  svg {
-        @include media-breakpoint-only(lg){
-            transform: translateX(-15px);
-        }
+        padding: $spacing $spacing*1.5;
     }
 
     .nav-item{
@@ -549,15 +437,15 @@
             }
 
             @include media-breakpoint-up(lg) {
-                margin-right: $spacing * 1;
+                margin-right: $spacing * 2;
             }
 
             @include media-breakpoint-up(xl) {
-                margin-right: $spacing * 1.5;
+                margin-right: $spacing * 3;
             }
 
             @include media-breakpoint-up(xxl) {
-                margin-right: $spacing * 2;
+                margin-right: $spacing * 4;
             }
         }
     }
@@ -581,8 +469,7 @@
 
         @include media-breakpoint-up(lg){
             padding: 0;
-            font-weight: 500;
-            font-size: 0.9em;
+            font-size: 0.82em;
         }
     }
 
@@ -608,21 +495,13 @@
 .nav-lang{
     line-height: 0;
 }
+
 .wpml-ls-statics-shortcode_actions.wpml-ls {
     padding: 0;
     border: 0;
 
     a {
-        line-height: var(--baseLineHeight);
-        padding: 0;
-        font-weight: 500;
-        color: inherit;
-        font-size: 0.9em;
-        text-transform: uppercase;
-
-        @include media-breakpoint-down(md){
-            font-weight: 600;
-        }
+        @extend %nav-link;
 
         span{
             vertical-align: top;

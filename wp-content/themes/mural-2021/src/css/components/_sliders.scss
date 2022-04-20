@@ -22,7 +22,7 @@
         @include hover-focus;
 
         &:hover{
-            background-color: var(--couleurJaune);
+            background-color: var(--couleurNoir);
         }
 
         @include media-breakpoint-up(md){

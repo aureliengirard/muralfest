@@ -1,7 +1,7 @@
 
 {% set left_banner = page.meta('banniere_gauche') %}
 {% set right_banner = page.meta('banniere_droite') %}
-<div class="banner banner--home row full-width">
+<section class="banner banner--home row full-width">
 
         {% set banniere = Image(left_banner.banniere) %}
         {% set banniere_url = banniere.src %}
@@ -52,7 +52,7 @@
 
         </div>
 
-        <div class="col-lg-4 right-banner bg--{{right_banner.couleur}}">
+        <div class="col-lg-4 right-banner">
 
             {% set banniere = Image(right_banner.banniere) %}
             {% set banniere_url = banniere.src %}
@@ -67,4 +67,4 @@
             {% endif %}
         </div>
 
-</div>
+</section>

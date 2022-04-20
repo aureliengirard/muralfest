@@ -7,10 +7,9 @@
 
 %btn {
     display: block;
-    padding: $spacing*1.65 $spacing*4;
-    border-radius: $spacing*6;
-    font-weight: 600;
-    text-transform: uppercase;
+    padding: $spacing $spacing*1.5;
+    color: var(--couleurNoir);
+    font-weight: 400;
     text-align: center;
     font-size: 1em;
     line-height: 1.2;
@@ -18,9 +17,7 @@
     cursor: pointer;
     position: relative;
     width: 100%;
-    color: var(--couleurRouge);
-    background-color: var(--couleurJaune);
-    border-color: var(--couleurJaune);
+    border-color: var(--couleurNoir);
     border-width: 2px;
     border-style: solid;
 
@@ -36,18 +33,10 @@
         }
     }
 
-    @include hover-focus-active{
-        color: var(--couleurJaune);
-        background-color: var(--couleurRouge);
-        border-color: var(--couleurRouge);
-
-        svg{
-            fill:var(--couleurJaune);
-
-            path,
-            #fill{
-                fill:var(--couleurJaune);
-            }
+    @include media-breakpoint-up(md) {
+        @include hover-focus-active{
+            color: var(--couleurMauve);
+            border-color: var(--couleurMauve);
         }
     }
 
@@ -70,12 +59,6 @@
     }
 }
 
-.navbar-extra {
-    button{
-        padding: $spacing*1.65 $spacing*4.5;
-    }
-}
-
 .btn__wrapper{
 
     .btn{
@@ -89,10 +72,10 @@
 
 $btn_styles:
 "white" var(--couleurBlanc) var(--couleurNoir),
-"blue" var(--couleurBleu) var(--couleurJaune),
+"blue" var(--couleurNoir) var(--couleurNoir),
 "black" var(--couleurNoir) var(--couleurBlanc),
-"yellow" var(--couleurJaune) var(--couleurRouge),
-"red" var(--couleurRouge) var(--couleurJaune);
+"yellow" var(--couleurNoir) var(--couleurRouge),
+"red" var(--couleurRouge) var(--couleurNoir);
 
 @each $btn-name, $color, $color-alt in $btn_styles {
 

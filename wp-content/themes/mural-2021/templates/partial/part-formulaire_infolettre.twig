@@ -1,12 +1,10 @@
 <div class="row">
     <div class="content">
-        <div class="col-md-6 col-lg-4 col-xl-4 newsletter__title">
-            <h3 class="h2 lg">{{options.newsletter_title}}</h3>
+        <div class="col-md-12 col-lg-8 newsletter__title">
+            <h2>{{options.newsletter_title}}</h2>
+            <p class="lg">{{ options.newsletter_content }}</p>
         </div>
-        <div class="col-md-6 col-lg-8 col-xl-4 newsletter__content">
-            <p>{{ options.newsletter_content }}</p>
-        </div>
-        <div class="col-md-12 col-xl-4 newsletter__form">
+        <div class="col-md-12 col-lg-4 newsletter__form">
             {% filter shortcodes %}
             [gravityform id="{{ options.newsletter_form_id }}" title="false" description="false" ajax="true" tabindex="20"]
             {% endfilter %}

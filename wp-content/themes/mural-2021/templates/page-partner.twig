@@ -2,47 +2,47 @@
 
 {% block content %}
 
-{% include "partial/section-banner.twig" %}
+{% include "partial/section-banner.twig" with {'title': page.title}  %}
 
-    <section class="partners bgcolor-white">
-        <div class="content row">
-            {% for item in tiers %}
-                {% set has_posts = false %}
+<section class="partners bgcolor-white">
+    <div class="content row">
+        {% for item in tiers %}
+            {% set has_posts = false %}
+            {% for partenaire in partner_posts %}
+                {% if item.title in partenaire.terms|join(', ') %}
+                    {% set has_posts = true %}
+                {% endif %}
+            {% endfor %}
+            {% if has_posts == true %}
+            <div class="col-12 section__title section__title--underlined">
+                <h2 class="md">{{ item.title }}</h2>
+            </div>
+            <div class="col-12 tier">
                 {% for partenaire in partner_posts %}
                     {% if item.title in partenaire.terms|join(', ') %}
-                        {% set has_posts = true %}
+
+                    <figure class="partner {%- if partenaire.featured_partner %} featured{% endif %}">
+
+                        {% if partenaire.site_web %}
+                            <a href="{{partenaire.site_web}}" title="{{__("View's website", "site-theme")}}{{partenaire.title}}" target="_blank">
+                        {% endif %}
+                            {%- set img = TimberImage(partenaire.logo) -%}
+                            {%- set img_url = img.src -%}
+                            {%- set reponsize_sizes = "768,720,640,512,414,375,281,211,170,128" -%}
+                            {%- include 'components/reponsive_img.twig' with  { img: img, img_url: img_url, reponsize_sizes: reponsize_sizes} -%}
+
+                        {% if partenaire.site_web %}
+                            </a>
+                        {% endif %}
+                    </figure>
+
                     {% endif %}
                 {% endfor %}
-                {% if has_posts == true %}
-                <div class="col-12 section__title">
-                    <h2>{{ item.title }}</h2>
-                </div>
-                <div class="col-12 tier">
-                    {% for partenaire in partner_posts %}
-                        {% if item.title in partenaire.terms|join(', ') %}
+            </div>
+            {% endif %}
 
-                        <figure class="partner {%- if partenaire.featured_partner %} featured{% endif %}">
-
-                            {% if partenaire.site_web %}
-                                <a href="{{partenaire.site_web}}" title="{{__("View's website", "site-theme")}}{{partenaire.title}}" target="_blank">
-                            {% endif %}
-                                {%- set img = TimberImage(partenaire.logo) -%}
-                                {%- set img_url = img.src -%}
-                                {%- set reponsize_sizes = "768,720,640,512,414,375,360" -%}
-                                {%- include 'components/reponsive_img.twig' with  { img: img, img_url: img_url, reponsize_sizes: reponsize_sizes} -%}
-
-                            {% if partenaire.site_web %}
-                                </a>
-                            {% endif %}
-                        </figure>
-
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                {% endif %}
-
-            {% endfor %}
-        </div>
-    </section>
+        {% endfor %}
+    </div>
+</section>
 
 {% endblock %}

@@ -1,7 +1,6 @@
 .partners{
 
     .section__title{
-        text-align: center;
         margin-top: $spacing-xl
     }
 
@@ -11,23 +10,45 @@
         flex-wrap: wrap;
         margin-bottom: 40px;
         align-items: center;
+        margin-bottom: -30px;
+
+        @include media-breakpoint-up(md) {
+            margin-bottom: 0;
+        }
 
         .partner{
-            padding: 20px 15px;
-            width:20%;
+            padding: 0 0 60px 0;
+            max-width:calc(20% - 2.16%);
+            flex:calc(20% - 2.16%);
+            text-align: center;
+            
+            @include media-breakpoint-up(md) {
+                margin-left: 2.7%;
+                
+                &:nth-child(1),
+                &:nth-child(6n) {
+                    margin-left: 0;
+                }
+            }
 
             &.featured{
-                width: 33%;
+                width:calc(30% - 45px);
 
                 img{
                     width: 100%;
                 }
             }
 
-            @media only screen and (max-width: 767px) {
+            @include media-breakpoint-down(md) {
 				padding-bottom:20px;
-                width: 50%;
+                max-width: calc(50% - 25px);
+                flex: calc(50% - 25px);
                 text-align: center;
+                padding: 0 0 30px 0;
+
+                &:nth-child(2n) {
+                    margin-left: 50px;
+                }
 
                 &.featured{
                     width: 100%;
@@ -36,6 +57,8 @@
 
             img{
                 margin: auto;
+                width: auto;
+                max-height: 215px;
             }
         }
     }

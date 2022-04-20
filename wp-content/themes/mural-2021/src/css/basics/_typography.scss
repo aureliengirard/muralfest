@@ -1,43 +1,17 @@
 
 %heading-h1 {
-    font-size: 2em;
-    font-weight: 900;
+    font-size:max(54px, 9.25vw);
     line-height: 1.1;
-    //text-transform: uppercase;
-
-    @include media-breakpoint-up(md){
-        font-size: 2.75em;
-    }
-
-    @include media-breakpoint-up(xl){
-        font-size: 9.25vw;
-    }
-    
-    @include media-breakpoint-up(xxl){
-        //font-size: 4.1em;
-    }
+    font-weight: 400;
 }
 
 %heading-h2 {
-    font-size: 1.5em;
+    font-size:max(48px, 7.25vw);
     line-height: 1.15;
     font-weight: 400;
     //text-transform: uppercase;
-
-    
     &.md{
-    }
-    
-    @include media-breakpoint-up(md){
-        font-size: 7.25vw;
-
-        &.md{
-            font-size: 6vw;
-        }
-    }
-    
-    @include media-breakpoint-up(xxl){
-        //font-size: 2.5em;
+        font-size: max(40px, 3.02vw);
     }
 }
 
@@ -94,10 +68,10 @@
     margin: 1em 0;
     font-weight: 500;
     font-family: var(--basePrimaryFont);
-    color: var(--couleurGris);
+    color: var(--couleurNoir);
 
-    .lg{
-        font-size: 1.363636em;
+    &.lg{
+        font-size: max(1.125em, 1.5625vw);
     }
 
     &:nth-child(1){
@@ -110,19 +84,23 @@
 }
 
 // HEADINGS CSS
+h1, .h1 {
+    @extend %heading-h1;
+
+    &.sm{
+        @extend %heading-h1-small;
+    }
+}
+
+h2, .h2 {
+    @extend %heading-h2;
+}
+
+p{
+    @extend %paragraph;
+}
 .content-wrapper{
 
-    h1, .h1 {
-        @extend %heading-h1;
-
-        &.sm{
-            @extend %heading-h1-small;
-        }
-    }
-
-    h2, .h2 {
-        @extend %heading-h2;
-    }
 
     h3, .h3 {
         @extend %heading-h3;
@@ -145,10 +123,6 @@
         a{
             color: inherit;
         }
-    }
-
-    p{
-        @extend %paragraph;
     }
 
     blockquote{
@@ -202,16 +176,16 @@
     }
 
     a {
-        color: var(--couleurRouge);
+        color: var(--couleurNoir);
         transition: color .15s ease-in-out;
         text-decoration: underline;
 
         &:hover{
-            color: var(--couleurBleu);
+            color: var(--couleurMauve);
         }
 
         &:visited {
-            color: var(--couleurRouge);
+            color: var(--couleurMauve);
         }
     }
 

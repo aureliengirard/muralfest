@@ -400,6 +400,30 @@
             "endpoint": 0
         },
         {
+            "key": "field_62606b53d0263",
+            "label": "Background image",
+            "name": "footer_bg_img",
+            "type": "image",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": ".200",
+            "mime_types": ".jpg,.png"
+        },
+        {
             "key": "field_60e4a93f2ba13",
             "label": "Sub Footer Link 1",
             "name": "sub_footer_link_1",
@@ -894,5 +918,6 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1626722245
+    "show_in_rest": 0,
+    "modified": 1650486312
 }

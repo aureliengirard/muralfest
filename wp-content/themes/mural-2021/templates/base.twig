@@ -36,15 +36,10 @@
 	      {% block content %}
 	        Sorry, no content
 	      {% endblock %}
-	  		{% if options.newsletter_form_id %}
-			<section class="formulaire_infolettre bg--blue">
-				{%- include "partial/part-formulaire_infolettre.twig" -%}
-			</section>
-			{% endif %}
 	    </main>
 
 		{# Site Footer #}
-		<footer id="footer" class="site-footer" role="contentinfo">
+		<footer id="footer" class="site-footer" role="contentinfo"{% if TimberImage(options.footer_bg_img) %} style="background-image:url('{{ TimberImage(options.footer_bg_img).src }}')"{% endif %}>
 	        {% block footer %}
 	            {% include 'layouts/footer.twig' %}
 	        {% endblock %}

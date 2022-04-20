@@ -2,7 +2,7 @@
 
 {% block content %}
 
-{% include "partial/section-banner.twig" %}
+{% include "partial/section-banner.twig" with {'title': page.title}  %}
 
 {% if page.content %}
     <section class="basic-content">

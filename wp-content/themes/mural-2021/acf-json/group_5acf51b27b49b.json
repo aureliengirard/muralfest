@@ -41,15 +41,7 @@
             "type": "wysiwyg",
             "instructions": "Laisser vide pour ne rien afficher.",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5ad6147b45843",
-                        "operator": "!=",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -58,7 +50,7 @@
             "default_value": "",
             "tabs": "all",
             "toolbar": "full",
-            "media_upload": 1,
+            "media_upload": 0,
             "delay": 0
         }
     ],
@@ -95,5 +87,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1647471835
+    "modified": 1650469425
 }
