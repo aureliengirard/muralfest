@@ -4,41 +4,19 @@
 <div class="row col__wrapper {%- if inner_item.largeur_complete == true %} full-width{% endif %}">
     {% if colonne_de_gauche %}
         <div class="col-md-6">
-            {%- set classes -%}bgcolor-{{colonne_de_gauche.couleur}}{%- endset -%}
-            {% if colonne_de_gauche.ajouter_une_image and colonne_de_gauche.ajouter_du_parallax %}
-                {%- set parallax -%}background-parallax{%- endset -%}
-            {% endif %}
-            {% if colonne_de_gauche.content_width %}
-                {%- set content_width -%} content-width{%- endset -%}
-            {% endif %}
-            <section class="{{classes}}{{parallax}}{{content_width}}">
-                {% set contenu_colonne = colonne_de_gauche.contenu_colonne %}
-                {% if contenu_colonne %}
-                <div class="col-content">
-                    {% include "partial/sub_parts.twig" %}
-                </div>
-                {% endif %}
-            </section>
+        {% set contenu_colonne = colonne_de_gauche.contenu_colonne %}
+        {% if contenu_colonne %}
+            {% include "partial/sub_parts.twig" %}
+        {% endif %}
         </div>
     {% endif %}
 
     {% if colonne_de_droite %}
         <div class="col-md-6">
-            {%- set classes -%}bgcolor-{{colonne_de_droite.couleur}}{%- endset -%}
-            {% if colonne_de_droite.ajouter_une_image and colonne_de_droite.ajouter_du_parallax %}
-                {%- set parallax -%}background-parallax{%- endset -%}
+            {% set contenu_colonne = colonne_de_droite.contenu_colonne %}
+            {% if contenu_colonne %}
+                {% include "partial/sub_parts.twig" %}
             {% endif %}
-            {% if colonne_de_droite.content_width %}
-                {%- set content_width -%} content-width{%- endset -%}
-            {% endif %}
-            <section class="{{classes}}{{parallax}}{{content_width}}">
-                {% set contenu_colonne = colonne_de_droite.contenu_colonne %}
-                {% if contenu_colonne %}
-                <div class="col-content">
-                    {% include "partial/sub_parts.twig" %}
-                </div>
-                {% endif %}
-            </section>
         </div>
     {% endif %}
 </div>

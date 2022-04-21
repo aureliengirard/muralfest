@@ -6,7 +6,7 @@
 {% set fav_icon = options.fav_icon %}
 <head>
     <meta charset="{{ site.charset }}" />
-    <title>{% if wp_title %}{{ wp_title }} - {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
+    <title>{% if wp_title %}{{ wp_title|replace({",": ""}) }} - {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
     <link rel="stylesheet" href="{{ site.theme.link }}/style.css" type="text/css" media="screen" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

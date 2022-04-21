@@ -3,7 +3,7 @@
 
 {% block content %}
 
-    {% include "partial/section-banner.twig" %}
+    {% include "partial/section-banner.twig" with {'title': page.title}  %}
     {% include "partial/parts.twig" %}
 
 {% endblock %}

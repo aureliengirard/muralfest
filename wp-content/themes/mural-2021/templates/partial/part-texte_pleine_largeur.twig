@@ -7,8 +7,16 @@
 	{% set texte_size = " lg"  %}
 {% endif %}
 
+
+{% if is_sub_parts != true %}
 <div class="row content">
 	<div class="{% if is_blog_post == true %}col-xl-10 col-12{% else %}col-12{% endif %} rte{{texte_size}}">
+{% else %}
+	<div class="rte{{texte_size}}">
+{% endif %}
 		{{ texte_pleine_largeur }}
+		{{is_sub_parts}}
 	</div>
+{% if is_sub_parts != true %}
 </div>
+{% endif %}

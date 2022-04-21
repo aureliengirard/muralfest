@@ -43,6 +43,12 @@
         }
     }
 
+    p {
+        @include media-breakpoint-up(lg) {
+            max-width: 70%;
+        }
+    }
+
     .newsletter__form {
         @include media-breakpoint-between(md,lg){
             margin-top: $spacing*2;

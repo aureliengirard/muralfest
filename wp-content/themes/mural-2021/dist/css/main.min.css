@@ -669,7 +669,7 @@ img.mfp-img {
   }
 }
 
-#footer p {
+.content-wrapper p, #footer p {
   font-size: 1em;
   line-height: 1.1431818182;
   letter-spacing: 0.25px;
@@ -678,10 +678,10 @@ img.mfp-img {
   font-family: var(--basePrimaryFont);
   color: var(--couleurNoir);
 }
-#footer p.lg {
+.content-wrapper p.lg, #footer p.lg {
   font-size: max(1.125em, 1.5625vw);
 }
-#footer p:nth-child(1) {
+.content-wrapper p:nth-child(1), #footer p:nth-child(1) {
   margin-top: 0;
 }
 .content-wrapper h1, .content-wrapper h2, .content-wrapper h3, .content-wrapper h4, .content-wrapper h5, .content-wrapper h6 {
@@ -710,6 +710,9 @@ img.mfp-img {
 }
 .rte * + h2, .rte * + h3, .rte * + h4 {
   margin-top: 10px;
+}
+.rte h2 {
+  font-size: max(40px, 3.02vw);
 }
 .rte h2:nth-last-child(n+2) {
   margin-bottom: 25px;
@@ -1455,7 +1458,7 @@ template {
 * STYLING BUTTONS.
 * Since we are in partials scss, we can get specific and add fonts, colors, etc.
 */
-.navbar-extra button:not(.select2-selection__clear):not(.slick-arrow), .navbar-extra .button,
+.gform_button, .navbar-extra button:not(.select2-selection__clear):not(.slick-arrow), .navbar-extra .button,
 .content-wrapper button:not(.select2-selection__clear):not(.slick-arrow),
 .content-wrapper .button {
   display: block;
@@ -1474,15 +1477,14 @@ template {
   border-style: solid;
 }
 @media (min-width: 768px) {
-  .navbar-extra button:not(.select2-selection__clear):not(.slick-arrow), .navbar-extra .button,
+  .gform_button, .navbar-extra button:not(.select2-selection__clear):not(.slick-arrow), .navbar-extra .button,
 .content-wrapper button:not(.select2-selection__clear):not(.slick-arrow),
 .content-wrapper .button {
-    padding: 16.5px 80px;
     width: auto;
   }
 }
 @media (min-width: 768px) {
-  p .navbar-extra button:not(.select2-selection__clear):not(.slick-arrow), .navbar-extra p button:not(.select2-selection__clear):not(.slick-arrow), p .navbar-extra .button, .navbar-extra p .button,
+  p .gform_button, p .navbar-extra button:not(.select2-selection__clear):not(.slick-arrow), .navbar-extra p button:not(.select2-selection__clear):not(.slick-arrow), p .navbar-extra .button, .navbar-extra p .button,
 p .content-wrapper button:not(.select2-selection__clear):not(.slick-arrow),
 .content-wrapper p button:not(.select2-selection__clear):not(.slick-arrow),
 p .content-wrapper .button,
@@ -1491,11 +1493,11 @@ p .content-wrapper .button,
   }
 }
 @media (min-width: 768px) {
-  .navbar-extra button:hover:not(.select2-selection__clear):not(.slick-arrow), .navbar-extra .button:hover,
+  .gform_button:hover, .navbar-extra button:hover:not(.select2-selection__clear):not(.slick-arrow), .navbar-extra .button:hover,
 .content-wrapper button:hover:not(.select2-selection__clear):not(.slick-arrow),
-.content-wrapper .button:hover, .navbar-extra button:focus:not(.select2-selection__clear):not(.slick-arrow), .navbar-extra .button:focus,
+.content-wrapper .button:hover, .gform_button:focus, .navbar-extra button:focus:not(.select2-selection__clear):not(.slick-arrow), .navbar-extra .button:focus,
 .content-wrapper button:focus:not(.select2-selection__clear):not(.slick-arrow),
-.content-wrapper .button:focus, .navbar-extra button:active:not(.select2-selection__clear):not(.slick-arrow), .navbar-extra .button:active,
+.content-wrapper .button:focus, .gform_button:active, .navbar-extra button:active:not(.select2-selection__clear):not(.slick-arrow), .navbar-extra .button:active,
 .content-wrapper button:active:not(.select2-selection__clear):not(.slick-arrow),
 .content-wrapper .button:active {
     color: var(--couleurBlanc);
@@ -1503,15 +1505,12 @@ p .content-wrapper .button,
   }
 }
 
-.btn__has-icon svg {
-  margin: -15px 0;
-  width: auto;
-  vertical-align: middle;
-  transform: translateX(-25px);
-}
-
 .btn__wrapper .btn {
   display: inline-block;
+}
+
+.gform_button {
+  background-color: transparent;
 }
 
 .navbar-extra .btn--white,
@@ -1728,6 +1727,13 @@ p .content-wrapper .button,
   max-height: 1em;
   margin: auto 0;
 }
+.readmore:hover circle, .readmore:focus circle, .readmore:active circle {
+  fill: var(--couleurNoir);
+}
+.readmore:hover path, .readmore:focus path, .readmore:active path {
+  fill: var(--couleurBlanc);
+}
+
 .card {
   flex: 100%;
   margin-top: 20px;
@@ -3965,9 +3971,20 @@ table tbody tr {
   }
 }
 .content-wrapper .banner .single-banner .row .banner__title {
-  padding-top: 5.2vw;
-  padding-left: 7vw;
   margin-bottom: auto;
+}
+.content-wrapper .banner .single-banner .row .banner__title h1 {
+  padding-top: 5.2vw;
+}
+.content-wrapper .banner .single-banner .row .banner__title h1:not(.split--title) {
+  padding-left: 7vw;
+}
+.content-wrapper .banner .single-banner .row .banner__title h1.split--title span {
+  display: block;
+  line-height: 0.8;
+}
+.content-wrapper .banner .single-banner .row .banner__title h1.split--title span:nth-child(2) {
+  padding-left: 33.3%;
 }
 .content-wrapper .banner .single-banner .row .banner__content {
   margin-top: auto;
@@ -4160,6 +4177,11 @@ table tbody tr {
 @media (max-width: 767.98px) {
   .formulaire_infolettre h2 {
     margin-bottom: 25px;
+  }
+}
+@media (min-width: 992px) {
+  .formulaire_infolettre p {
+    max-width: 70%;
   }
 }
 @media (min-width: 768px) and (max-width: 1199.98px) {

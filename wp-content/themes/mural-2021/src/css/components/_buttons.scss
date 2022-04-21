@@ -22,7 +22,6 @@
     border-style: solid;
 
     @include media-breakpoint-up(md){
-        padding: $spacing*1.65 $spacing*8;
         width: auto;
     }
 
@@ -43,15 +42,6 @@
 
 }
 
-.btn__has-icon{
-    svg{
-        margin: -15px 0;
-        width: auto;
-        vertical-align: middle;
-        transform: translateX(-25px);
-    }
-}
-
 .navbar-extra,
 .content-wrapper{
     button:not(.select2-selection__clear):not(.slick-arrow),.button{
@@ -67,7 +57,8 @@
 }
 
 .gform_button{
-    //@extend .btn;
+    background-color: transparent;
+    @extend %btn;
 }
 
 $btn_styles:
@@ -168,8 +159,13 @@ $btn_styles:
         max-height: 1em;
         margin: auto 0;
     }
-
+    
     @include hover-focus-active{
-        //color: var(--couleurRouge);
+        circle {
+            fill: var(--couleurNoir);
+        }
+        path {
+            fill: var(--couleurBlanc);
+        }
     }
 }

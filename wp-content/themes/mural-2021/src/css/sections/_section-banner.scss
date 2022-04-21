@@ -38,9 +38,26 @@
 			}
 
 			.banner__title {
-				padding-top: 5.2vw;
-				padding-left: 7vw;
 				margin-bottom: auto;
+				
+				h1 {
+					padding-top: 5.2vw;
+					
+					&:not(.split--title) {
+						padding-left: 7vw;
+					}
+					&.split--title {
+						span {
+							display: block;
+							line-height: 0.8;
+							&:nth-child(1) {
+							}
+							&:nth-child(2) {
+								padding-left: 33.3%;
+							}
+						}
+				}
+				}
 			 }
 
 			.banner__content{

@@ -2,12 +2,22 @@
     {% set banniere = Image(page.meta('banniere')) %}
     {% set banniere_url = banniere.src %}
     {% set contenu_banniere = page.contenu_banniere %}
+    {% set titles = "" %}
+    {% if ',' in title %}
+        {% set titles = title|split(',') %}
+    {% endif %}
 
     <div class="single-banner with-overlay" style="background-image:url('{{banniere_url }}')">
         <div class="row">
             <div class="col-12 banner__title">
-                <h1>
-                {{- title -}}
+                <h1 {%- if titles != empty %} class="split--title"{%- endif -%}>
+                {%- if titles != empty -%}
+                    {% for title in titles -%}
+                        <span>{{- title -}}</span>
+                    {%- endfor %}
+                {%- else -%}
+                   <span>{{- title -}}</span>
+                {%- endif -%}
                 </h1>
             </div>
             {% if contenu_banniere %}
