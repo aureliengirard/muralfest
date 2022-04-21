@@ -1,17 +1,22 @@
 {% extends "base.twig" %}
 
-{% set content_items = post.meta('contenu_avec_fond') %}
-{% set liens_externe = post.liens_externe %}
-{% set artists = Post(post.artiste) %}
-{% set has_artists = false %}
+{%- set content_items = post.meta('contenu_avec_fond') %}
+{%- set liens_externe = post.liens_externe %}
+{%- set artists = Post(post.artiste) %}
+{%- set has_artists = false %}
 {% for artist in artists %}
-    {% if loop.first %}{% set has_artists = true %}{% endif %}
+    {% if loop.first %}{%- set has_artists = true %}{% endif %}
 {% endfor %}
-{% set lieu = Post(post.lieu) %}
-{% set date_de_fin = post.date_de_fin %}
-{% set event_date = post.event_date %}
-{% set heure_de_debut = post.heure_de_debut %}
-{% set heure_de_fin = post.heure_de_fin %}
+{%- set date_de_fin = post.date_de_fin %}
+{%- set event_date = post.event_date %}
+{%- set heure_de_debut = post.heure_de_debut %}
+{%- set heure_de_fin = post.heure_de_fin %}
+
+{%- set lieu = Post(post.lieu) %}
+{%- set lieu_string %}
+{%- for lieu in lieu.adresse %}{{- lieu }},{% endfor -%}
+{%- endset %}
+{%- set lieu_string = lieu_string|split(',') %}
 
 {% block content %}
 
@@ -51,7 +56,9 @@
                             {%- if heure_de_fin %} {{__('to', 'dates événement', 'site-theme')}} {{ heure_de_fin|date('H:i') }}{% endif %}
                         </span>
                         {% if lieu %}
-                        <span class="venue">| {{lieu.title}}</span>
+                        <span class="venue">
+                            {%- if lieu.adresse != null %}<a href="https://maps.google.com/?q={{lieu_string[4]}},{{lieu_string[5]}}" target="_blank">{% endif %} | {{ lieu.title -}}{%- if lieu.adresse != null %}</a>{% endif %}
+                        </span>
                         {% endif %}
                     </p>
 

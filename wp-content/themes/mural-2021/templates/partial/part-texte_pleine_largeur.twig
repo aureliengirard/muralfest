@@ -2,20 +2,18 @@
 {% set paragraph = "<p>" %}
 {% set paragraph_lg = "<p class='lg'>" %}
 
-{% set texte_size = ""  %}
+{%- set texte_size = ""  %}
 {% if inner_item.big_paragraph == true %}
 	{% set texte_size = " lg"  %}
-{% endif %}
+{% endif -%}
 
-
-{% if is_sub_parts != true %}
+{%- if is_sub_parts != true %}
 <div class="row content">
 	<div class="{% if is_blog_post == true %}col-xl-10 col-12{% else %}col-12{% endif %} rte{{texte_size}}">
 {% else %}
 	<div class="rte{{texte_size}}">
 {% endif %}
 		{{ texte_pleine_largeur }}
-		{{is_sub_parts}}
 	</div>
 {% if is_sub_parts != true %}
 </div>

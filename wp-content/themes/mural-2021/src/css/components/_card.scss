@@ -126,6 +126,13 @@
             span{
                 display: block;
             }
+
+            .venue {
+                font-weight: 600;
+                a {
+                    color: var(--couleurNoir);
+                }
+            }
         }
         
         h3 {

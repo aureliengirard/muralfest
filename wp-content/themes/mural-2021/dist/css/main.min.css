@@ -1851,6 +1851,12 @@ p .content-wrapper .button,
 .card.program .event-infos span {
   display: block;
 }
+.card.program .event-infos .venue {
+  font-weight: 600;
+}
+.card.program .event-infos .venue a {
+  color: var(--couleurNoir);
+}
 @media (min-width: 768px) {
   .card.program h3 {
     min-height: 4em;
@@ -3716,6 +3722,18 @@ table tbody tr {
     align-items: center;
     -webkit-align-content: center;
     align-content: center;
+  }
+}
+@media (min-width: 992px) {
+  .content-wrapper .deux_colonnes .col__wrapper {
+    padding-left: calc(2.6vw + 35px);
+    padding-right: calc(2.6vw + 35px);
+  }
+}
+@media (min-width: 992px) {
+  .content-wrapper .deux_colonnes .col__wrapper [class*=col-] {
+    padding-left: 2.6vw;
+    padding-right: 2.6vw;
   }
 }
 @media (max-width: 767.98px) {

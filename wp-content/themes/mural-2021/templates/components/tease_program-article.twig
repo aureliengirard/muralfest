@@ -1,24 +1,28 @@
+{%- set title = event_post.title %}
+{%- set link = event_post.link %}
+{%- set date_de_fin = event_post.date_de_fin %}
+{%- set event_date = event_post.event_date %}
+{%- set ticket = event_post.lien_billets %}
+{%- set heure_de_debut = event_post.heure_de_debut %}
+{%- set heure_de_fin = event_post.heure_de_fin %}
+{%- set preview = event_post.resume %}
 
-{% set title = event_post.title %}
-{% set link = event_post.link %}
-{% set date_de_fin = event_post.date_de_fin %}
-{% set event_date = event_post.event_date %}
-{% set lieu = Post(event_post.lieu) %}
-{% set ticket = event_post.lien_billets %}
-{% set heure_de_debut = event_post.heure_de_debut %}
-{% set heure_de_fin = event_post.heure_de_fin %}
-{% set preview = event_post.resume %}
-
-{% set image_de_thumbnail = Image(event_post.image_de_thumbnail).src %}
-{% set image_de_levenement = Image(event_post.image_de_levenement).src %}
+{%- set image_de_thumbnail = Image(event_post.image_de_thumbnail).src %}
+{%- set image_de_levenement = Image(event_post.image_de_levenement).src %}
 
 {% if image_de_thumbnail %}
-    {% set thumbnail = image_de_thumbnail %}
+    {%- set thumbnail = image_de_thumbnail %}
 {% else %}
-    {% set thumbnail = image_de_levenement %}
+    {%- set thumbnail = image_de_levenement %}
 {% endif %}
 
-{% set id = blog_post.id %}
+{%- set id = blog_post.id %}
+
+{%- set lieu = Post(event_post.lieu) %}
+{%- set lieu_string %}
+{%- for lieu in lieu.adresse %}{{- lieu }},{% endfor -%}
+{%- endset %}
+{%- set lieu_string = lieu_string|split(',') %}
 
 <div class="col-auto program card">
     <div class="card__content">
@@ -44,12 +48,19 @@
                 <span class="category">
                 {{ event_post.terms( {query:{taxonomy:'event-category', orderby:'name', order: 'ASC'}} )|join(', ') }}
                 </span>
+                {% if lieu %}
+                    <span class="venue">
+                    {%- if lieu.adresse != null %}<a href="https://maps.google.com/?q={{lieu_string[4]}},{{lieu_string[5]}}" target="_blank">{% endif %}
+                    {{- lieu.title -}}
+                    {%- if lieu.adresse != null %}</a>{% endif %}
+                    </span>
+                {% endif %}
                 <span class="time">
-                {%- if heure_de_debut %}{{ heure_de_debut|date('H:i') }}{%- endif %}
-                {%- if heure_de_fin %} - {{ heure_de_fin|date('H:i') }}{% endif %}
+                    {%- if heure_de_debut %}{{ heure_de_debut|date('H:i') }}{%- endif %}
+                    {%- if heure_de_fin %} - {{ heure_de_fin|date('H:i') }}{% endif %}
                 </span>
             </div>
-            <h3><a href="{{link}}">{{title}}</a></h3>
+            <h3 class="md"><a href="{{link}}">{{title}}</a></h3>
             <div class="card__cta">
                 {% if ticket %}
                 <a class="readmore" href="{{ticket}}">{{__('Tickets', 'site-theme')}}</a>
