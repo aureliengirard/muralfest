@@ -28,16 +28,40 @@ const functionsInit = function() {
     }
 
     var $header = document.querySelector('.navbar');
-    /*
+
     function onScroll() {
-      if (window.pageYOffset) {
+      var Heightcalculate = $('#nav').height();
+      var scroll = $(window).scrollTop();
+      if (scroll >= 1 ) {
         $header.classList.add('is_sticky');
+        $('#phantom').show();
+        $('#phantom').css('height', Heightcalculate+'px');
       } else {
         $header.classList.remove('is_sticky');
+        $('#phantom').hide();
       }
     }
-    */
-    //window.addEventListener('scroll', throttle(onScroll, 25));
+    window.addEventListener('scroll', throttle(onScroll, 25));
+
+    $(".menu-item-has-children").on('click', function (e){
+
+      var nextEl = this.nextElementSibling;
+
+      if(nextEl.classList.contains('dropdown-menu')){
+          $("dropdown-menu").each(function(){
+              let dropdown = $("dropdown-menu");
+              if(dropdown.hasClass('show')){
+                dropdown.removeClass('show');
+              }
+          });
+          e.stopPropagation();
+          if(nextEl.classList.contains('show')){
+              nextEl.classList.remove('show');
+          } else{
+              nextEl.classList.add('show');
+          }
+      }
+    });    
 
     var gallery_popup = $('.gallery');
     gallery_popup.magnificPopup({

@@ -135,7 +135,7 @@ $(function(){
 
 			var mapOptions = {
 				zoom: 13,
-				scrollwheel : false,
+				scrollwheel : true,
 				zoomControl: true,
 				disableDefaultUI: true,
 				labelContent: '',
@@ -162,16 +162,15 @@ $(function(){
 			$.each(artworks, function(id, artwork){
 				lat = artwork.coords.lat;
 				lng = artwork.coords.lng;
-
 				var markerPos = new google.maps.LatLng(lat, lng);
 
-				var color = '#1f4968';
+				var color = '#4a4a4a';
 				var currentYear = false;
 
 				var currentDate = new Date();
 
 				if(artwork.date == currentDate.getFullYear()){
-					color = '#dea1d9';
+					color = '#ff69d4';
 					currentYear = true;
 				}
 

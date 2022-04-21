@@ -17,7 +17,7 @@ $(function(){
 					"elementType": "all",
 					"stylers": [
 						{
-							"saturation": "-100"
+							"saturation": "-50"
 						}
 					]
 				},
@@ -35,10 +35,10 @@ $(function(){
 					"elementType": "all",
 					"stylers": [
 						{
-							"saturation": -100
+							"saturation": "-50"
 						},
 						{
-							"lightness": 65
+							"lightness": "65"
 						},
 						{
 							"visibility": "on"
@@ -50,7 +50,7 @@ $(function(){
 					"elementType": "all",
 					"stylers": [
 						{
-							"saturation": -100
+							"saturation": "-100"
 						},
 						{
 							"lightness": "50"
@@ -151,7 +151,6 @@ $(function(){
 			};// mappOptions
 
 			map = new google.maps.Map(document.getElementById('gmap'), mapOptions);
-
 
 			var styledMapOptions = {
 				name: 'Custom Style'

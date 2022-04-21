@@ -671,7 +671,7 @@ img.mfp-img {
 
 .content-wrapper p, #footer p {
   font-size: 1em;
-  line-height: 1.1431818182;
+  line-height: 1.2727272727;
   letter-spacing: 0.25px;
   margin: 1em 0;
   font-weight: 500;
@@ -2775,6 +2775,7 @@ table tbody tr {
   width: 100%;
   z-index: 101;
   transition: all 0.15s ease;
+  background-color: var(--couleurGris);
 }
 .navbar.is_sticky {
   position: fixed;
@@ -4248,70 +4249,29 @@ table tbody tr {
 .artwork-list .content .artwork-col {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 .artwork-list .content .artwork-col .artwork {
-  width: calc(100% / 5);
-  /* On divise la largeur totale disponible également entre toutes les colonnes, puis on soustrait à chaque colonnes le gap désiré */
-  padding-right: 20px;
-  margin-bottom: 15px;
+  width: 100%;
 }
-@media only screen and (max-width: 1439px) {
+@media (min-width: 768px) {
   .artwork-list .content .artwork-col .artwork {
-    width: calc(100% / 4);
-    padding-right: 20px;
-    margin-bottom: 15px;
-  }
-}
-@media only screen and (max-width: 991px) {
-  .artwork-list .content .artwork-col .artwork {
-    width: calc(100% / 3);
-    padding-right: 20px;
-    margin-bottom: 15px;
-  }
-}
-@media only screen and (max-width: 767px) {
-  .artwork-list .content .artwork-col .artwork {
-    width: calc(100% / 2);
-    padding-right: 20px;
-    margin-bottom: 15px;
+    width: calc(50% - 11px);
+    border-top: 2px solid var(--couleurNoir);
   }
 }
 .artwork-list .content .artwork-col .artwork span {
   cursor: pointer;
   position: relative;
-  margin-left: 30px;
-  display: inline-block;
+  display: inline-flex;
   -webkit-transition: all 0.15s;
   transition: all 0.15s;
+  align-items: center;
+  padding: 20px 0;
 }
-.artwork-list .content .artwork-col .artwork span:hover {
-  text-decoration: none;
+.artwork-list .content .artwork-col .artwork span svg {
+  margin-right: 25px;
 }
-.artwork-list .content .artwork-col .artwork span:before {
-  content: "»";
-  color: var(--couleurRouge);
-  font-size: 1.3333em;
-  font-weight: 800;
-  display: inline-block;
-  text-indent: -30px;
-  transition: all 0.15s ease-in-out;
-}
-.artwork-list .content .artwork-col .artwork span:hover:before {
-  text-indent: -20px;
-}
-@media only screen and (max-width: 767px) {
-  .artwork-list .content .artwork-col {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .artwork-list .content .artwork-col .artwork {
-    width: calc(100% / 2);
-    /* On divise la largeur totale disponible également entre toutes les colonnes, puis on soustrait à chaque colonnes le gap désiré */
-    padding-right: 20px;
-    margin-bottom: 15px;
-  }
-}
-
 .partners .section__title {
   margin-top: 50px;
 }
@@ -4776,6 +4736,7 @@ table tbody tr {
 .single-post .artist,
 .single-post .styles,
 .single-post .date,
+.single-post .venue,
 .single-post .post-categories,
 .single-post .country {
   font-weight: 700;
@@ -4783,6 +4744,7 @@ table tbody tr {
 .single-post .artist span,
 .single-post .styles span,
 .single-post .date span,
+.single-post .venue span,
 .single-post .post-categories span,
 .single-post .country span {
   font-weight: 400;
@@ -4793,10 +4755,19 @@ table tbody tr {
   .single-post .artist span,
 .single-post .styles span,
 .single-post .date span,
+.single-post .venue span,
 .single-post .post-categories span,
 .single-post .country span {
     font-size: 0.6em;
   }
+}
+.single-post .artist a,
+.single-post .styles a,
+.single-post .date a,
+.single-post .venue a,
+.single-post .post-categories a,
+.single-post .country a {
+  color: var(--couleurNoir);
 }
 .single-post .content-blog .date, .single-post .content-blog .post-categories {
   display: inline-block;

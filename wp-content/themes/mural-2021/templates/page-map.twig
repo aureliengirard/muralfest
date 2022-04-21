@@ -11,7 +11,14 @@
         </div>
     </section>
 
-    <div id="gmap-arts"></div>
+    <section class="basic-content">
+        <div class="row">
+            <div class="col-12">
+                <div id="gmap-arts"></div>
+            </div>
+        </div>
+    </section>
+
 
     <section class="artwork-list">
         <div class="row">
@@ -33,31 +40,20 @@
             {% for year in years|sort|reverse %}
                 <article class="col-12 year-artworks">
                     <div class="section__sub-title">
-                        <h3>{{year}}</h3>
+                        <h3 class="h2 md">{{year}}</h3>
                     </div>
                     <div class="artwork-col">
                     {% for artwork_post in artwork_posts %}
                         {% set date = artwork_post.annee %}
                         {% if date == year %}
                             <div class="artwork">
-                                <span data-markerid="{{artwork_post.id}}">{{artwork_post.title}}</span>
+                                <span data-markerid="{{artwork_post.id}}">{% include 'svg/icon_arrows.svg' with  {class: 'readmore__icon'} %} {{artwork_post.title}}</span>
                             </div>
                         {% endif %}
                     {% endfor %}
                 </div>
             </article>
             {% endfor %}
-
-{#
-            {% for year in artworks_by_years %}
-            <div class="year-artworks">
-                <h3>{{year}}</h3>
-                <section class="artwork-col">
-
-                </section>
-            </div>
-            {% endfor %}
-#}
         </div>
     </section>
 

@@ -24,9 +24,10 @@
         <div class="content">
 
             {% include '/components/single-navigation.twig' %}
-            <section class="article__img row">
-                <div class="col-12">
 
+            <section class="col__wrapper article__header row">
+
+                <div class="col-lg-6 left-col">
                     <figure>
                         {%- set img = TimberImage(post.image_de_levenement) -%}
                         {%- set img_url = img.src -%}
@@ -34,12 +35,8 @@
                         {%- include 'components/reponsive_img.twig' with  { img: img, img_url: img_url, reponsize_sizes: reponsize_sizes} -%}
                     </figure>
                 </div>
-            </section>
 
-
-            <section class="row program-description">
-                <div class="col-12">
-
+                <div class="col-lg-6 right-col">
                     <h1 class="sm">{{ post.title }}</h1>
 
                     {%- include 'components/module_share.twig' with  { link: post.link, title: post.title } -%}
@@ -57,7 +54,7 @@
                         </span>
                         {% if lieu %}
                         <span class="venue">
-                            {%- if lieu.adresse != null %}<a href="https://maps.google.com/?q={{lieu_string[4]}},{{lieu_string[5]}}" target="_blank">{% endif %} | {{ lieu.title -}}{%- if lieu.adresse != null %}</a>{% endif %}
+                            {%- if lieu.adresse != null %} | <a href="https://maps.google.com/?q={{lieu_string[4]}},{{lieu_string[5]}}" target="_blank">{% endif %}{{ lieu.title -}}{%- if lieu.adresse != null %}</a>{% endif %}
                         </span>
                         {% endif %}
                     </p>
@@ -74,7 +71,7 @@
 
                     <div class="article__cta">
                     {% if post.lien_billets %}
-                    <a class="button smaller btn__has-icon btn--ticket btn--red" href="{{post.lien_billets}}" target="_blank" rel="nofollow">{%- include "/svg/icon_shop.svg" -%} {{ __('Buy your ticket', 'site-theme') }}</a>
+                    <a class="button smaller" href="{{post.lien_billets}}" target="_blank" rel="nofollow">{{ __('Buy your ticket', 'site-theme') }}</a>
                     {% endif %}
 
                     {% if post.lien_evenement_facebook %}
@@ -89,10 +86,13 @@
                     <a class="button smaller playlist" href="{{post.lien_playlist}}" target="_blank" rel="nofollow">{{ __('Listen to the playlist', 'site-theme') }}</a>
                     {% endif %}
                     </div>
+
                 </div>
+
             </section>
 
-            {% include "partial/parts.twig" %}
+            {%- include "partial/parts.twig" -%}
+
         </div>
     </div>
 

@@ -65,7 +65,19 @@ function get_breadcrumb($parent_taxonomy_label=false, $parent_taxonomy_link=fals
 
         if(is_single()) {
             $post = $queried_object;
-            echo "<span class='active'>" . $post->post_title . "</span>";
+            $text = $post->post_title;
+            $chars = 45;
+
+            if (strlen($text) <= $chars) {
+                return $text;
+            }
+            $text = $text." ";
+            $text = substr($text,0,$chars);
+            $text = substr($text,0,strrpos($text,' '));
+            $text = $text."...";
+
+            echo "<span class='active'>" . $text . "</span>";
+
         } elseif(is_tax()) {
             $taxonomy = $queried_object;
             echo "<span class='active'>" . $taxonomy->name . "</span>";

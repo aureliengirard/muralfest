@@ -7,46 +7,35 @@
 
     .content{
         .artwork-col{
-            @include cdm-grid(5, ".artwork", 20px, 15px, (
-                1439px: (
-                    col: 4
-                ),
-                991: (
-                    col: 3
-                ),
-                767: (
-                    col: 2
-                )
-            ));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
 
             .artwork{
+                width: 100%;
+
+                @include media-breakpoint-up(md) {
+                    width: calc(calc(100% / 2) - 11px);
+                    border-top: 2px solid var(--couleurNoir);
+                }
                 span{
                     cursor: pointer;
                     position: relative;
-                    margin-left: 30px;
-                    display: inline-block;
-                    @include hover-transition;
+                    display: inline-flex;
+                    -webkit-transition: all 0.15s;
+                    transition: all 0.15s;
+                    align-items: center;
+                    padding: ($spacing * 2) 0;
 
-                    &:before{
-                        content: '»';
-                        color: var(--couleurRouge);
-                        font-size: 1.3333em;
-                        font-weight: 800;
-                        display: inline-block;
-                        text-indent: -30px;
-                        transition: all .15s ease-in-out;
+                    svg {
+                        margin-right: $spacing-md;
                     }
 
                     &:hover{
-
                         &:before{
-                            text-indent: -20px;
                         }
                     }
                 }
-            }
-             @media only screen and (max-width: 767px) {
-                   @include cdm-grid(2, ".artwork", 20px, 15px, ());
             }
         }
     }

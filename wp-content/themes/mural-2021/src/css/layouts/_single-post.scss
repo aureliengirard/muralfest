@@ -55,6 +55,7 @@
     .artist,
     .styles,
     .date,
+    .venue,
     .post-categories,
     .country{
         font-weight: 700;
@@ -67,6 +68,10 @@
             @include media-breakpoint-up(md){
                 font-size: 0.6em;
             }
+        }
+
+        a {
+            color: var(--couleurNoir);
         }
     }
 
