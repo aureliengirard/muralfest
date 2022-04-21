@@ -40,7 +40,7 @@
     margin-bottom: calc($spacing / 3);
     
     @include media-breakpoint-up(xl){
-        font-size: 58vw;
+        font-size: 5.8vw;
     }
     
     @include media-breakpoint-up(xxl){
@@ -84,23 +84,28 @@
 }
 
 // HEADINGS CSS
-h1, .h1 {
-    @extend %heading-h1;
-
-    &.sm{
-        @extend %heading-h1-small;
+#footer {
+    h2, .h2 {
+        @extend %heading-h2;
+    }
+    
+    p{
+        @extend %paragraph;
     }
 }
 
-h2, .h2 {
-    @extend %heading-h2;
-}
-
-p{
-    @extend %paragraph;
-}
 .content-wrapper{
-
+    h1, .h1 {
+        @extend %heading-h1;
+    
+        &.sm{
+            @extend %heading-h1-small;
+        }
+    }
+    
+    h2, .h2 {
+        @extend %heading-h2;
+    }
 
     h3, .h3 {
         @extend %heading-h3;

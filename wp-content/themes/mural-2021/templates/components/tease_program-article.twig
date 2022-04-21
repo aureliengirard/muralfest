@@ -49,14 +49,12 @@
                 {%- if heure_de_fin %} - {{ heure_de_fin|date('H:i') }}{% endif %}
                 </span>
             </div>
-            <h3 class="md"><a href="{{link}}">{{title}}</a></h3>
-            <h3 class="lg" title="{{title}}"><a href="{{link}}">{{title|truncate(4)}}</a></h3>
+            <h3><a href="{{link}}">{{title}}</a></h3>
             <div class="card__cta">
-                <a class="readmore" href="{{link}}">{{__('Learn more >', 'site-theme')}}</a>
                 {% if ticket %}
-                <span class="divider">|</span>
-                <a class="readmore" href="{{ticket}}">{{__('Tickets >', 'site-theme')}}</a>
+                <a class="readmore" href="{{ticket}}">{{__('Tickets', 'site-theme')}}</a>
                 {% endif %}
+                <a class="readmore" href="{{link}}">{{__('Learn more', 'site-theme')}}{% include 'svg/icon_arrows.svg' with  {class: 'readmore__icon'} %}</a>
             </div>
         </div>
     </div>

@@ -20,7 +20,7 @@
 
 {% set id = event_post.id %}
 
-<div class="col-auto program card card--slider">
+<div class="col-auto program card card--slider card--full-width">
     <div class="card__content">
         {% if thumbnail %}
         <div class="card__header">
@@ -51,13 +51,11 @@
                 </span>
             </div>
             <h3 class="md"><a href="{{link}}">{{title}}</a></h3>
-            <h3 class="lg" title="{{title}}"><a href="{{link}}">{{title|truncate(4)}}</a></h3>
             <div class="card__cta">
-                <a class="readmore" href="{{link}}">{{__('Learn more >', 'site-theme')}}</a>
                 {% if ticket %}
-                <span class="divider">|</span>
-                <a class="readmore" href="{{ticket}}">{{__('Tickets >', 'site-theme')}}</a>
+                <a class="readmore" href="{{ticket}}">{{__('Tickets', 'site-theme')}}</a>
                 {% endif %}
+                <a class="readmore" href="{{link}}">{{__('Learn more', 'site-theme')}}{% include 'svg/icon_arrows.svg' with  {class: 'readmore__icon'} %}</a>
             </div>
         </div>
     </div>

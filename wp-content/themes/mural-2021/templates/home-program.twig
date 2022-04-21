@@ -4,17 +4,15 @@
 
 {% block content %}
 
-{% include "partial/section-banner.twig" %}
+{% include "partial/section-banner.twig" with {'title': page.title}  %}
 
 <div class="content home-program">
 
     {% if event_posts -%}
 
-        <section>
+        <section class="program__date">
             <div class="row">
                 <div class="col-12">
-
-                    {{ page.content }}
 
                     <div class="date_container">
                         {%- set dates -%}
@@ -30,22 +28,20 @@
                         {%- endfor -%}
                         {%- endset -%}
 
-                        <div class="">
-                            <select id="date-selector" name="date_container">
-                                <option value="">{{__('Go to date', 'site-theme')}}</option>
-                                {% for date in dates|split('|') %}
-                                {% if date != "" %}
-                                <option value="{{loop.index0}}">{{- date -}}</option>
-                                {% endif %}
-                                {% endfor %}
-                            </select>
-                        </div>
+                        <select id="date-selector" name="date_container">
+                            <option value="">{{__('Go to date', 'site-theme')}}</option>
+                            {% for date in dates|split('|') %}
+                            {% if date != "" %}
+                            <option value="{{loop.index0}}">{{- date -}}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="">
+        <section class="program__cards">
             <div class="row">
 
                 <div class="col-lg-12 programs programs__slider card__wrapper">
@@ -62,10 +58,10 @@
                     <div class="column__wrapper">
                         {% endif %}
 
-                        <div class="column__date">
+                        <h2 class="md column__date">
                             <span>{{current_date|date("l")}}</span>
                             <span>{{current_date|date("d F Y")}}</span>
-                        </div>
+                        </h2>
 
                         {% endif %}
 

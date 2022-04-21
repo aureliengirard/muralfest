@@ -35,8 +35,8 @@
 
     @include media-breakpoint-up(md) {
         @include hover-focus-active{
-            color: var(--couleurMauve);
-            border-color: var(--couleurMauve);
+            color: var(--couleurBlanc);
+            background-color: var(--couleurNoir);
         }
     }
 

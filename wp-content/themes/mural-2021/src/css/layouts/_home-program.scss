@@ -3,19 +3,20 @@
         margin-bottom: $spacing-xl;
     }
 
+    .date_container {
+        text-align: right;
+    }
+
     #date-selector{
-        background-color: #eeeeee;
+        background-color: transparent;
         border: 0;
-        padding: 15px 50px 15px 60px;
-        border-radius: 60px;
-        text-transform: uppercase;
-        font-weight: 600;
-        text-align: center;
+        padding: 10px 50px 10px 0px;
+        text-align: right;
         // icons styling
-        background-image: url(../../images/icon_arrow-down.png),url(../../images/icon_date-selector.png);
-        background-position: calc(100% - 15px) 50%,15px 50%;
+        background-image: url(../../images/icon_arrow-down.png);
+        background-position: calc(100% - 15px) 50%;
         background-repeat: no-repeat;
-        background-size: 20px,30px;
+        background-size: 20px;
         -webkit-appearance: none;
         -moz-appearance: none;
 
