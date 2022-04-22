@@ -1,11 +1,47 @@
 .articles_du_blog {
+    .button-wrap {
+        text-align: right;
+    }
+    
+    .card {
+        @include media-breakpoint-up(md) {
 
-    .button:after {
-        content: "+";
-        position: absolute;
-        right: 30px;
-        font-weight: 400;
-        line-height: 1;
-        font-size: 1.25em;
+            .card__content {
+                display: flex;
+                flex-flow: row wrap;
+                padding: $spacing-md 0;
+                border-bottom: 2px solid var(--couleurNoir);
+                align-items: center;
+            }
+
+            .card__header {
+                flex: 25%;
+                max-width: 25%;
+            }
+
+            .card__body {
+                flex: 75%;
+                max-width: 75%;
+                padding-top: 0;
+                display: inherit;
+                flex-flow: inherit;
+                align-items: inherit;
+                padding-left: $spacing*2;
+            }
+
+            h3 {
+                font-size: max(40px, 3.02vw);
+                flex: 75%;
+                max-width: 75%;
+                min-height: auto;
+            }
+            .readmore {
+                flex: 25%;
+                max-width: 25%;
+                text-align: right;
+                text-align: right;
+                display: block;
+            }
+        }
     }
 }

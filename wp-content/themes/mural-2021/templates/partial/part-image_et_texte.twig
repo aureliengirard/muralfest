@@ -18,7 +18,7 @@
 		{{inner_item.texte}}
 
 		{%- if link -%}
-		{%- include 'components/button.twig' with  { link_title: link.title, link_url: link.url, color_cta: "", add_icon: inner_item.add_icon, icon: inner_item.icon} -%}
+		{%- include 'components/button.twig' with  { link_title: link.title, link_url: link.url} -%}
 		{%- endif -%}
 	</div>
 {% endset %}

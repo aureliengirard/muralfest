@@ -26,15 +26,8 @@
                 </a>
             </figure>
             <div class="card__title">
-                <h3><a href="{{ item.lien_page }}">{{ item.titre }}</a></h3>
+                <h3><a class="readmore" href="{{ item.lien_page }}">{{ item.titre }}{% include 'svg/icon_arrows.svg' with  {class: 'readmore__icon'} %}</a></h3>
             </div>
-        </div>
-
-        <div class="description">
-            {% if item.meta('description') %}
-            {{ item.meta('description') }}
-            <a class="readmore" href="{{ item.lien_page }}">{{__('Read more', 'site-theme')}}</a>
-            {% endif %}
         </div>
     </div>
     {% endfor %}

@@ -1,10 +1,17 @@
 {% set title_alignment = "" %}
+{% set titles = inner_item.titre %}
 {% if inner_item.centrer == true %}
 	{% set title_alignment = " text--center" %}
 {% endif %}
 
+{% set  titles= titles|split(',') %}
+
 <div class="row content">
-	<div class="col-12 texte-bloc{{title_alignment}}">
-		<h2>{{inner_item.titre}}</h2>
+	<div class="col-12 texte-bloc {% if inner_item.centrer == true %}rte{{title_alignment}}{% endif %}">
+		<h2 class="{% if inner_item.centrer == false %}split--title{% endif %}">
+			{% for title in titles -%}
+				<span>{{- title -}}</span>
+			{%- endfor %}
+		</h2>
 	</div>
 </div>

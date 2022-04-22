@@ -1,26 +1,10 @@
 .appels_a_laction{
 
-    a{
-        display: block;
-        position: relative;
-    }
-
     figure{
         overflow: hidden;
     }
 
     .card__title {
-        padding: 0 30px 20px;
-    }
-
-    .card__title{
-        a:after{
-            content: "+";
-            position: absolute;
-            right: 0;
-            font-size: 40px;
-            font-weight: 200;
-            line-height: 1;
-        }
+        padding: $spacing*4 0 0;
     }
 }

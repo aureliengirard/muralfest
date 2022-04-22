@@ -5,6 +5,10 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		z-index: 1;
+		
+		&:nth-child(1) { margin-bottom: $spacing;}
+		&:nth-child(2) { margin-top: $spacing;}
 
 		@include media-breakpoint-down(sm){
 			flex-direction: column;

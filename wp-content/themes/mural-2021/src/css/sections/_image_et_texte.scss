@@ -56,15 +56,9 @@
     .image-container{
         padding-left: 0;
         padding-right: 0;
-        margin-top: $spacing * -4;
 
         @include media-breakpoint-down(md){
             order: -1;
-        }
-
-        @include media-breakpoint-up(lg){
-            margin-top: $spacing * -6.5;
-            margin-bottom: $spacing-md * -2;
         }
 
         img{

@@ -37,10 +37,10 @@
             "return_format": "array"
         },
         {
-            "key": "field_60edcf4ac9ad1",
-            "label": "Style Bouton",
-            "name": "style_bouton",
-            "type": "clone",
+            "key": "field_62630db50ad6b",
+            "label": "Position du bouton",
+            "name": "btn_position",
+            "type": "radio",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -49,13 +49,41 @@
                 "class": "",
                 "id": ""
             },
-            "clone": [
-                "group_60edcdefc9bd5"
-            ],
-            "display": "seamless",
-            "layout": "block",
-            "prefix_label": 0,
-            "prefix_name": 0
+            "choices": {
+                "before": "Avant le titre",
+                "after": "Après le titre"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "after",
+            "layout": "vertical",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_62630dd60ad6c",
+            "label": "Alignement du bouton",
+            "name": "btn_alignment",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "left": "Gauche",
+                "center": "Centre",
+                "right": "Droite"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "center",
+            "layout": "vertical",
+            "return_format": "value",
+            "save_other_choice": 0
         }
     ],
     "location": [
@@ -80,5 +108,6 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1626207609
+    "show_in_rest": 0,
+    "modified": 1650658993
 }

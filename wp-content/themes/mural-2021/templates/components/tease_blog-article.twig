@@ -11,7 +11,7 @@
 {% endif %}
 {% set id = blog_post.id %}
 
-<div class="col-auto article blog_post card">
+<div class="col-auto article blog_post card{% if card_width %} {{card_width}}{% endif %}">
     <div class="card__content">
         <div class="card__header">
             <figure>

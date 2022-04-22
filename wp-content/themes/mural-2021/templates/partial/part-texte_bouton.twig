@@ -1,16 +1,34 @@
 {% set link = inner_item.bouton %}
+{% set btn_alignment = inner_item.btn_alignment %}
+{% set btn_position = inner_item.btn_position %}
+{% set titles = inner_item.texte %}
+
+{% set  titles= titles|split(',') %}
 
 <div class="text-button-wrapper">
     <div class="row content">
-        <div class="col-12 content">
-
+        {%- if btn_position == "before" %}
+            <div class="col-12 content">
+                {%- if link -%}
+                    {%- include 'components/button.twig' with  { link_title: link.title, link_url: link.url, color_cta: "", add_icon: inner_item.add_icon, icon: inner_item.icon} -%}
+                {%- endif -%}
+            </div>
+        {% endif -%}
+        <div class="col-12">
             {%- if inner_item.texte -%}
-            <h3 class="h2 lg{%- if link %}{% else %} text--center{% endif %}">{{inner_item.texte}}</h3>
-            {%- endif -%}
-
-            {%- if link -%}
-                {%- include 'components/button.twig' with  { link_title: link.title, link_url: link.url, color_cta: "", add_icon: inner_item.add_icon, icon: inner_item.icon} -%}
+                <h2 class="split--title">
+                    {% for title in titles -%}
+                        <span>{{- title -}}</span>
+                    {%- endfor %}
+                </h2>
             {%- endif -%}
         </div>
+        {%- if btn_position == "after" %}
+        <div class="col-12 content">
+            {%- if link -%}
+                {%- include 'components/button.twig' with  { link_title: link.title, link_url: link.url, color_cta: "", alignment: btn_alignment } -%}
+            {%- endif -%}
+        </div>
+        {% endif -%}
     </div>
 </div>

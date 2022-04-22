@@ -2,13 +2,7 @@
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ site.url }}">
             <!-- GET LOGO FROM OPTIONS PAGE -->
-            {% if fn('is_front_page') %}
-                <h1>
-            {% endif %}
-                <img src="{{TimberImage(options.logo).src| resize(0,115) }}" alt="{{site.title}}" width="{{ TimberImage(options.logo).width | resize(0,115) }}" height="115">
-            {% if fn('is_front_page') %}
-                </h1>
-            {% endif %}
+            <img src="{{TimberImage(options.logo).src| resize(0,115) }}" alt="{{site.title}}" width="{{ TimberImage(options.logo).width | resize(0,115) }}" height="115">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon">

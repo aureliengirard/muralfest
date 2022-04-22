@@ -1,20 +1,22 @@
-{%- set image_gauche = TimberImage(options.image_gauche) -%}
-{%- set image_droite = TimberImage(options.image_droite) -%}
+{%- set img_app = TimberImage(options.image_gauche) -%}
+{%- set titles = options.texte_pour_liens -%}
+{% set titles = titles|split(',') %}
 
 <div class="row">
-    {% if image_gauche -%}
-    <figure class="app-image">
-        <img src="{{ image_gauche.src }}" alt="{{ image_gauche.alt }}" width="{{ image_gauche.width }}" height="{{ image_gauche.height }}" />
-    </figure>
-    {%- endif %}
 
-    <div class="app-info">
-        <div class="app-content rte">
-            <h3 class="h2 lg">{{ options.texte_pour_liens }}</h3>
-            {% if options.texte_app_desc -%}
-                <p>{{ options.texte_app_desc }}</p>
-            {%- endif %}
-        </div>
+
+    <div class="col-auto">
+        <h3 class="h2">{{ titles[0] }}</h3>
+
+        {% if img_app -%}
+        <figure class="app-image">
+            <img src="{{ img_app.src }}" alt="{{ img_app.alt }}" width="{{ img_app.width }}" height="{{ img_app.height }}" />
+        </figure>
+        {%- endif %}
+
+    </div>
+    <div class="col-auto">
+        <h3 class="h2">{{ titles[1] }}</h3>
         <div class="app-links">
             <a href="{{ options.app_store }}" target="_blank" rel="noopener">
                 {%- if "en-" in site.language_attributes -%}
@@ -31,15 +33,6 @@
                 {%- endif -%}
             </a>
         </div>
-
-        {%- if image_droite -%}
-        <div class="app-partner">
-            <h4>{{ __('Presented by', 'site-theme') }}</h4>
-            <figure>
-                <img src="{{ image_droite.src }}" alt="{{ image_droite.alt }}" />
-            </figure>
-        </div>
-        {%- endif -%}
     </div>
 
 </div>

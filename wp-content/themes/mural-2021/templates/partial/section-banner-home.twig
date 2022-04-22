@@ -1,23 +1,23 @@
 
 {% set left_banner = page.meta('banniere_gauche') %}
 {% set right_banner = page.meta('banniere_droite') %}
-<section class="banner banner--home row full-width">
+<section class="banner banner--home row">
 
         {% set banniere = Image(left_banner.banniere) %}
         {% set banniere_url = banniere.src %}
         {% set logo = Image(left_banner.logo) %}
         {% set logo_url = Image(left_banner.logo) %}
-        <div class="col-lg-8 left-banner"{% if left_banner.banniere %} style="background-image: url('{{banniere_url}}');"{% endif %}>
+
+        {% set visual_sum %}{%- for item in left_banner.artiste_colonne_1 %}{% if loop.first %}{{loop.length}}{% endif %}{% endfor -%}{% endset %}
+        {% set music_sum %}{%- for item in left_banner.artiste_colonne_2 %}{% if loop.first %}{{loop.length}}{% endif %}{% endfor -%}{% endset %}
+
+        <div class="col-lg-4 left-banner"> 
 
             <div class="row inner__wrapper">
-                <div class="col-lg-12 hero__festival">
-                    {% set reponsize_sizes = "1280,960,800,768,720,640,512,414,375,360" %}
-                    {#{% include 'components/reponsive_img.twig' with  { img: logo, img_url: logo_url, reponsize_sizes: reponsize_sizes} %}#}
-                    <h4 class="h2 lg hero__date">{{left_banner.date}}</h4>
-                </div>
+
                 {% if left_banner.artiste_colonne_1 %}
-                <div class="col-md-8 hero__artist">
-                    <h3 class="h4">{{ left_banner.titre_colonne_1 }}</h3>
+                <div class="col-md-6 hero__artist hero__artist--visual">
+                    <h3 class="h4">{{ left_banner.titre_colonne_1 }}<sup>{{visual_sum}}</sup></h3>
                     <ul>
                     {%- for item in left_banner.artiste_colonne_1 %}
                         {%- set artiste = item.item_artiste -%}
@@ -26,9 +26,10 @@
                     </ul>
                 </div>
                 {% endif %}
+
                 {% if left_banner.artiste_colonne_2 %}
-                <div class="col-md-4 hero__artist">
-                    <h3 class="h4">{{ left_banner.titre_colonne_2 }}</h3>
+                <div class="col-md-6 hero__artist hero__artist--music">
+                    <h3 class="h4">{{ left_banner.titre_colonne_2 }}<sup>{{music_sum}}</sup></h3>
                     <ul>
                     {%- for item in left_banner.artiste_colonne_2 %}
                         {%- set artiste = item.item_artiste -%}
@@ -38,33 +39,12 @@
                 </div>
                 {% endif %}
 
-                {% set cta = left_banner.cta %}
-                {% if cta %}
-                <div class="col-12 hero__cta">
-                    {% if cta.url != "#" %}
-                        {%- include 'components/button.twig' with  { link_title: cta.title, link_url: cta.url, color_cta: "btn--black", add_icon: left_banner.add_icon, icon: left_banner.icon} -%}
-                    {% else %}
-                        <h4>{{cta.title}}</h4>
-                    {% endif %}
-                </div>
-                {% endif %}
             </div>
 
         </div>
 
-        <div class="col-lg-4 right-banner">
-
-            {% set banniere = Image(right_banner.banniere) %}
-            {% set banniere_url = banniere.src %}
-            {% set reponsize_sizes = "1280,960,800,768,720,640,512,414,375,360" %}
-
-            {% include 'components/reponsive_img.twig' with  { img: banniere, img_url: banniere_url, reponsize_sizes: reponsize_sizes} %}
-
-            {% if right_banner.contenu_banniere %}
-            <div class="banner-overlay">
-                {{ right_banner.contenu_banniere }}
-            </div>
-            {% endif %}
+        <div class="col-lg-8 right-banner">
+            <h1 class="hero__date">{{left_banner.date}}</h1>
         </div>
 
 </section>

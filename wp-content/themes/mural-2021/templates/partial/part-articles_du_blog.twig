@@ -3,10 +3,21 @@
 
         <div class="col-12 section__title">
             {%- if inner_item.acf_fc_layout == 'articles_du_blog' -%}
-            <h2>{{__('Latest posts', 'site-theme')}}</h2>
+                {% set titles %}
+                    {{__('Latest, posts', 'site-theme')}}
+                {% endset %}
             {%- else -%}
-            <h2>{{__('You may also like', 'site-theme')}}</h2>
-            {%- endif -%}
+                {% set titles %}
+                    {{__('You may, also like', 'site-theme')}}
+                {% endset %}
+            {% endif %}
+            {% set titles = titles|split(',') %}
+            
+            <h2 class="split--title">
+                {% for title in titles -%}
+                   <span>{{- title -}}</span>
+                {%- endfor %}
+            </h2>
         </div>
 
     </div>
@@ -16,22 +27,22 @@
         {%- if inner_item.acf_fc_layout == 'articles_du_blog' -%}
 
             {%- for blog_post in blog_posts %}
-                {% include 'components/tease_blog-article.twig' %}
+                {% include 'components/tease_blog-article.twig' with {card_width: 'card--full-width' } %}
             {% endfor -%}
 
         {%- else -%}
 
             {%- for blog_post in blog_articles %}
-                {% include 'components/tease_blog-article.twig' %}
+                {% include 'components/tease_blog-article.twig' with {card_width: 'card--full-width' } %}
             {% endfor -%}
 
         {%- endif -%}
 
     </div>
 
-    <div class="row">
-        <div class="col-12 button-wrap">
-            <a href="{{options.home_blog}}" class="button">{{ __('See all posts', 'site-theme') }}</a>
+    <div class="row cta-block">
+        <div class="col-12 button-wrap rte">
+            <a href="{{options.home_blog}}" class="cta__blog">{{ __('See all posts', 'site-theme') }}</a>
         </div>
     </div>
 

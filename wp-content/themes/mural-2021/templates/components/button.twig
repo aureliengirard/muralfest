@@ -1,4 +1,4 @@
-<a class="button{% if add_icon %} btn__has-icon{% endif %}{% if color_cta %} {{color_cta}}{% endif %}" href="{{link_url}}">
+<a class="button{% if alignment %} btn__{{alignment}}{% endif %}" href="{{link_url}}">
     {%- if add_icon == true and icon == "ticket" %}{%- include "/svg/icon_ticket.svg" -%}{% elseif add_icon == true and icon == "shop" %}{%- include "/svg/icon_shop.svg" -%}{% endif -%}
     {{- link_title -}}
 </a>

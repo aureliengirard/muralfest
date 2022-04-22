@@ -20,6 +20,7 @@
     border-color: var(--couleurNoir);
     border-width: 2px;
     border-style: solid;
+    text-decoration: none;
 
     @include media-breakpoint-up(md){
         width: auto;
@@ -52,6 +53,12 @@
     .btn{
         display: inline-block;
     }
+}
+
+@include media-breakpoint-up(md) {
+    .btn__left { margin-right: auto; }
+    .btn__center { margin-left: auto; margin-right: auto; }
+    .btn__right { margin-left: auto; }
 }
 
 .gform_button{
