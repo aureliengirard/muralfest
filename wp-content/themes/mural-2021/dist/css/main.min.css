@@ -621,24 +621,7 @@ img.mfp-img {
 }
 
 .content-wrapper h1.sm, .content-wrapper .h1.sm {
-  font-size: 1.5em;
-  line-height: 1.1;
-  font-weight: 900;
-}
-@media (min-width: 768px) {
-  .content-wrapper h1.sm, .content-wrapper .h1.sm {
-    font-size: 2em;
-  }
-}
-@media (min-width: 1200px) {
-  .content-wrapper h1.sm, .content-wrapper .h1.sm {
-    font-size: 2.375em;
-  }
-}
-@media (min-width: 1440px) {
-  .content-wrapper h1.sm, .content-wrapper .h1.sm {
-    font-size: 2.75em;
-  }
+  font-size: max(48px, 7.25vw);
 }
 
 .content-wrapper h3, .content-wrapper .h3 {
@@ -4793,6 +4776,10 @@ table tbody tr {
 }
 .single-post .program-description + section {
   margin-top: 0;
+}
+
+.single-program .module_share h3 {
+  margin-top: 25px;
 }
 
 @media (min-width: 992px) {
