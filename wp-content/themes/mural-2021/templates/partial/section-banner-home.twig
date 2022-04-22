@@ -1,50 +1,94 @@
 
-{% set left_banner = page.meta('banniere_gauche') %}
-{% set right_banner = page.meta('banniere_droite') %}
-<section class="banner banner--home row">
+{%- set left_banner = page.meta('banniere_gauche') %}
+{%- set banniere = Image(left_banner.bg_img) %}
+<section class="banner banner--home row" {%-if banniere %} style="background-image:url('{{ banniere.src }}')"{%- endif %}>
+    <div class="col-12 hero__event--imageries">
+     {%- if left_banner.artiste_colonne_1 %}
+     {%- for item in left_banner.artiste_colonne_1 %}
+        {%- set thumbnail = Image(item.event_photo).src %}
+        {%- if thumbnail != null -%}{%- set artiste = item.item_artiste -%}
+        <div class="hero__event--imagery" data-target="{{ artiste.title | replace({' ': "-"}) | url_encode }}" style="display: none;">
+                <img class="lazyload hero__event--img"
+                data-srcset="{{ thumbnail|resize(900, 600) }} 900w,{{ thumbnail|resize(700, 467) }} 700w,{{ thumbnail|resize(600, 400) }} 600w,{{ thumbnail|resize(400, 267) }} 400w,{{ thumbnail|resize(300, 200) }} 300w"
+                data-sizes="auto"
+                width="700"
+                height="467"
+                alt="artiste.title">
+        </div>
+        {%- endif %}
+    {%- endfor %}
+    {%- endif %}
+     {%- if left_banner.artiste_colonne_2 %}
+     {%- for item in left_banner.artiste_colonne_2 %}
+        {%- set thumbnail = Image(item.event_photo).src %}
+        {%- if thumbnail != null %}{%- set artiste = item.item_artiste -%}
+        <div class="hero__event--imagery" data-target="{{ artiste.title | replace({' ': "-"}) | url_encode }}" style="display: none;">
+                <img class="lazyload hero__event--img"
+                data-srcset="{{ thumbnail|resize(900, 600) }} 900w,{{ thumbnail|resize(700, 467) }} 700w,{{ thumbnail|resize(600, 400) }} 600w,{{ thumbnail|resize(400, 267) }} 400w,{{ thumbnail|resize(300, 200) }} 300w"
+                data-sizes="auto"
+                width="700"
+                height="467"
+                alt="artiste.title">
+        </div>
+        {%- endif %}
+    {%- endfor %}
+    {%- endif %}
 
-        {% set banniere = Image(left_banner.banniere) %}
-        {% set banniere_url = banniere.src %}
-        {% set logo = Image(left_banner.logo) %}
-        {% set logo_url = Image(left_banner.logo) %}
+    {%- set visual_sum %}{%- for item in left_banner.artiste_colonne_1 %}{%- if loop.first %}{{loop.length}}{%- endif %}{%- endfor -%}{%- endset %}
+    {%- set music_sum %}{%- for item in left_banner.artiste_colonne_2 %}{%- if loop.first %}{{loop.length}}{%- endif %}{%- endfor -%}{%- endset %}
+    </div>
 
-        {% set visual_sum %}{%- for item in left_banner.artiste_colonne_1 %}{% if loop.first %}{{loop.length}}{% endif %}{% endfor -%}{% endset %}
-        {% set music_sum %}{%- for item in left_banner.artiste_colonne_2 %}{% if loop.first %}{{loop.length}}{% endif %}{% endfor -%}{% endset %}
+    <div class="col-lg-4 left-banner"> 
 
-        <div class="col-lg-4 left-banner"> 
+        <div class="row inner__wrapper">
 
-            <div class="row inner__wrapper">
-
-                {% if left_banner.artiste_colonne_1 %}
-                <div class="col-md-6 hero__artist hero__artist--visual">
-                    <h3 class="h4">{{ left_banner.titre_colonne_1 }}<sup>{{visual_sum}}</sup></h3>
-                    <ul>
-                    {%- for item in left_banner.artiste_colonne_1 %}
-                        {%- set artiste = item.item_artiste -%}
-                        <li> {% if artiste.url != "#" %}<a href="{{ artiste.url }}">{% endif %}{{ artiste.title }}{% if artiste.url != "#" %}</a>{% endif %}</li>
-                    {% endfor -%}
-                    </ul>
-                </div>
-                {% endif %}
-
-                {% if left_banner.artiste_colonne_2 %}
-                <div class="col-md-6 hero__artist hero__artist--music">
-                    <h3 class="h4">{{ left_banner.titre_colonne_2 }}<sup>{{music_sum}}</sup></h3>
-                    <ul>
-                    {%- for item in left_banner.artiste_colonne_2 %}
-                        {%- set artiste = item.item_artiste -%}
-                        <li> {% if artiste.url != "#" %}<a href="{{ artiste.url }}">{% endif %}{{ artiste.title }}{% if artiste.url != "#" %}</a>{% endif %}</li>
-                    {% endfor -%}
-                    </ul>
-                </div>
-                {% endif %}
-
+            {%- if left_banner.artiste_colonne_1 %}
+            <div class="col-md-6 hero__artist hero__artist--visual">
+                <h3>{{ left_banner.titre_colonne_1 }}<sup>{{visual_sum}}</sup></h3>
+                <ul class="hero__artists">
+                {%- for item in left_banner.artiste_colonne_1 %}
+                    {%- set artiste = item.item_artiste -%}
+                    <li class="hero__event" data-name="{{ artiste.title | replace({' ': "-"}) | url_encode }}">{%- if artiste.url != "#" %}<a href="{{ artiste.url }}">{%- endif %}{{ artiste.title }}{%- if artiste.url != "#" %}</a>{%- endif %}</li>
+                {%- endfor -%}
+                </ul>
             </div>
+            {%- endif %}
+
+            {%- if left_banner.artiste_colonne_2 %}
+            <div class="col-md-6 hero__artist hero__artist--music">
+                <h3>{{ left_banner.titre_colonne_2 }}<sup>{{music_sum}}</sup></h3>
+                <ul class="hero__artists">
+                {%- for item in left_banner.artiste_colonne_2 %}
+                    {%- set artiste = item.item_artiste -%}
+                    <li class="hero__event" data-name="{{ artiste.title | replace({' ': "-"}) | url_encode }}"> {%- if artiste.url != "#" %}<a href="{{ artiste.url }}">{%- endif %}{{ artiste.title }}{%- if artiste.url != "#" %}</a>{%- endif %}</li>
+                {%- endfor -%}
+                </ul>
+            </div>
+            {% endif %}
 
         </div>
 
-        <div class="col-lg-8 right-banner">
-            <h1 class="hero__date">{{left_banner.date}}</h1>
-        </div>
+    </div>
 
+    <div class="col-lg-8 right-banner">
+        <h1 class="hero__date">{{left_banner.date}}</h1>
+    </div>
+<script type="text/javascript">
+    var eventArray = [
+        {%- for item in left_banner.artiste_colonne_1 -%}
+        {%- set artiste = item.item_artiste -%}
+        {%- set thumbnail = Image(item.event_photo).src -%}
+        {%- if thumbnail != null -%}{%- set artiste = item.item_artiste -%}
+        '{{ artiste.title | replace({' ': "-"}) | url_encode }}',
+        {%- endif -%}
+        {%- endfor -%}
+        {%- for item in left_banner.artiste_colonne_2 -%}
+        {%- set artiste = item.item_artiste -%}
+        {%- set thumbnail = Image(item.event_photo).src -%}
+        {%- if thumbnail != null -%}{%- set artiste = item.item_artiste -%}
+        '{{ artiste.title | replace({' ': "-"}) | url_encode }}'{% if loop.last != true  %},{% endif %}
+        {%- endif -%}
+        {%- endfor -%}'a'
+    ];
+</script>
 </section>

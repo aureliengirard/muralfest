@@ -8,3 +8,22 @@
     {% include "partial/parts.twig" %}
 
 {% endblock %}
+{%- block scripts -%}
+<script type="text/javascript">
+$(document).ready(function() {
+	// Load random Event
+	var eventActive = eventArray[Math.floor(Math.random() * eventArray.length)];
+	var target = '[data-target="' + eventActive + '"]';
+	$(target).show("fast");
+
+	//Update event onclick
+	$(".hero__event").on('click mouseover', function(){
+		var splash_event_imagery = $(".hero__event--imagery");
+		$(splash_event_imagery).hide();
+		var data_name = $(this).attr("data-name");
+		var clickTarget = '[data-target="' + data_name + '"]';
+		$(clickTarget).show("fast");
+	});
+});
+</script>
+{%- endblock -%}

@@ -3565,8 +3565,36 @@ table tbody tr {
   margin-bottom: 0;
 }
 
+@media (min-width: 768px) {
+  .content-wrapper .appels_a_laction .card:hover figure a::after, .content-wrapper .appels_a_laction .card:focus figure a::after, .content-wrapper .appels_a_laction .card:active figure a::after {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+  }
+  .content-wrapper .appels_a_laction .card:hover circle, .content-wrapper .appels_a_laction .card:focus circle, .content-wrapper .appels_a_laction .card:active circle {
+    fill: var(--couleurNoir);
+  }
+  .content-wrapper .appels_a_laction .card:hover path, .content-wrapper .appels_a_laction .card:focus path, .content-wrapper .appels_a_laction .card:active path {
+    fill: var(--couleurBlanc);
+  }
+}
 .content-wrapper .appels_a_laction figure {
   overflow: hidden;
+  position: relative;
+}
+.content-wrapper .appels_a_laction figure a::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  bottom: 50%;
+  right: 50%;
+  background-image: url("../../images/MAINSCOEUR_MAUVE.png");
+  background-size: cover;
+  z-index: -1;
+  transition: all ease-in-out 0.15s;
 }
 .content-wrapper .appels_a_laction .card__title {
   padding: 40px 0 0;
@@ -3984,20 +4012,24 @@ table tbody tr {
 }
 .content-wrapper .banner--home {
   min-height: 90vh;
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 @media (min-width: 768px) {
   .content-wrapper .banner--home h1 {
     text-align: right;
   }
 }
+.content-wrapper .banner--home h3 {
+  margin-bottom: 10px;
+  font-weight: 400;
+}
 .content-wrapper .banner--home .left-banner {
   padding-top: 15vh;
 }
 .content-wrapper .banner--home .left-banner .hero__artist {
   margin-top: 50px;
-}
-.content-wrapper .banner--home .left-banner .hero__artist h3 {
-  margin-bottom: 25px;
 }
 .content-wrapper .banner--home .left-banner .hero__artist li {
   letter-spacing: -0.025em;
@@ -4032,6 +4064,24 @@ table tbody tr {
 .content-wrapper .banner--home .right-banner img {
   width: 100%;
   margin: auto;
+}
+.content-wrapper .banner--home .hero__event--imageries {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+}
+.content-wrapper .banner--home .hero__event--imagery {
+  margin: auto;
+  min-width: 35%;
+  max-width: 40%;
+  height: auto;
+  z-index: 2;
+}
+.content-wrapper .banner--home img.hero__event--img {
+  width: 100%;
+  height: auto;
 }
 .content-wrapper .texte_bouton {
   padding: 15px 0;

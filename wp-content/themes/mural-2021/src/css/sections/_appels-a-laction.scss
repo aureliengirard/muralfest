@@ -1,7 +1,42 @@
 .appels_a_laction{
 
+    .card {
+        @include media-breakpoint-up(md) {
+
+            @include hover-focus-active {
+                figure a::after {
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    z-index: 10;
+                }
+    
+                circle {
+                    fill: var(--couleurNoir);
+                }
+                path {
+                    fill: var(--couleurBlanc);
+                }
+            }
+        }
+    }
     figure{
         overflow: hidden;
+        position: relative;
+        
+        a::after{
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            bottom: 50%;
+            right: 50%;
+            background-image: url('../../images/MAINSCOEUR_MAUVE.png');
+            background-size: cover;
+            z-index: -1;
+            transition: all ease-in-out 0.15s;
+        }
     }
 
     .card__title {

@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_60e70ba4c21ab",
-            "label": "Bannière gauche",
+            "label": "Contenu",
             "name": "banniere_gauche",
             "type": "group",
             "instructions": "",
@@ -18,9 +18,9 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_60e70ba510811",
-                    "label": "Image de fond",
-                    "name": "banniere",
+                    "key": "field_62632a22a37b5",
+                    "label": "Image de background",
+                    "name": "bg_img",
                     "type": "image",
                     "instructions": "",
                     "required": 0,
@@ -33,7 +33,7 @@
                     "return_format": "array",
                     "preview_size": "medium",
                     "library": "all",
-                    "min_width": 960,
+                    "min_width": "",
                     "min_height": "",
                     "min_size": "",
                     "max_width": "",
@@ -43,7 +43,7 @@
                 },
                 {
                     "key": "field_60e70e02e7a9b",
-                    "label": "Date",
+                    "label": "Titre",
                     "name": "date",
                     "type": "text",
                     "instructions": "",
@@ -62,7 +62,7 @@
                 },
                 {
                     "key": "field_60e70e39e7a9d",
-                    "label": "Titre Colonne 1",
+                    "label": "Titre Artistes Visuels",
                     "name": "titre_colonne_1",
                     "type": "text",
                     "instructions": "",
@@ -80,27 +80,8 @@
                     "maxlength": ""
                 },
                 {
-                    "key": "field_60e70e41e7a9e",
-                    "label": "Titre Colonne 2",
-                    "name": "titre_colonne_2",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "50",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
-                },
-                {
                     "key": "field_60e70e45e7a9f",
-                    "label": "Artiste Colonne 1",
+                    "label": "Artistes Visuels",
                     "name": "artiste_colonne_1",
                     "type": "repeater",
                     "instructions": "",
@@ -131,12 +112,55 @@
                                 "id": ""
                             },
                             "return_format": ""
+                        },
+                        {
+                            "key": "field_62632a04a37b4",
+                            "label": "Photo de l'artiste",
+                            "name": "event_photo",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "preview_size": "medium",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ""
                         }
                     ]
                 },
                 {
+                    "key": "field_60e70e41e7a9e",
+                    "label": "Titre Artistes Musicaux",
+                    "name": "titre_colonne_2",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
                     "key": "field_60e70e71e7aa1",
-                    "label": "Artiste Colonne 2",
+                    "label": "Artiste Artistes Musicaux",
                     "name": "artiste_colonne_2",
                     "type": "repeater",
                     "instructions": "",
@@ -167,6 +191,30 @@
                                 "id": ""
                             },
                             "return_format": "array"
+                        },
+                        {
+                            "key": "field_62632a6cc80b5",
+                            "label": "Photo de l'artiste",
+                            "name": "event_photo",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "preview_size": "medium",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": ""
                         }
                     ]
                 },
@@ -207,68 +255,6 @@
                     "prefix_name": 0
                 }
             ]
-        },
-        {
-            "key": "field_60e70ba4c21fc",
-            "label": "Bannière droite",
-            "name": "banniere_droite",
-            "type": "group",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "100",
-                "class": "",
-                "id": ""
-            },
-            "layout": "block",
-            "sub_fields": [
-                {
-                    "key": "field_60e70ba543cbd",
-                    "label": "Bannière",
-                    "name": "banniere",
-                    "type": "image",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "id",
-                    "preview_size": "medium",
-                    "library": "all",
-                    "min_width": 650,
-                    "min_height": "",
-                    "min_size": "",
-                    "max_width": "",
-                    "max_height": "",
-                    "max_size": "",
-                    "mime_types": ""
-                },
-                {
-                    "key": "field_60e70e8ee7aa3",
-                    "label": "Style de fond",
-                    "name": "style_de_fond",
-                    "type": "clone",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "clone": [
-                        "field_5ad627e392d43"
-                    ],
-                    "display": "seamless",
-                    "layout": "block",
-                    "prefix_label": 0,
-                    "prefix_name": 0
-                }
-            ]
         }
     ],
     "location": [
@@ -288,5 +274,6 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1626281845
+    "show_in_rest": 0,
+    "modified": 1650666136
 }
