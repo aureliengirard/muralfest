@@ -21,13 +21,9 @@
             color: var(--couleurNoir);
             @include hover-transition;
 
-            &.current{
-                color: var(--couleurRouge);
-                font-weight: 600;
-            }
-
+            &.current,
             &:hover{
-                color: var(--couleurRouge);
+                color: var(--couleurMauve);
             }
         }
 

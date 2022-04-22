@@ -4,7 +4,7 @@
 }
 /// Style sur la map
 #gmap-arts{
-    height: 500px;
+    height: max(600px,85vh);
 
     .artwork-data{
         max-width: calc(100vw - 53px);

@@ -31,8 +31,8 @@
         </div>
         <div class="card__body description">
             <h3><a href="{{link}}">{{title}}</a></h3>
-            <p>{{preview}}</p>
-            <a class="readmore" href="{{link}}">{{__('read more', 'site-theme')}}<span> ></span></a>
+            {#} <p>{{preview}}</p> {#}
+            <a class="readmore" href="{{link}}">{{__('Read more', 'site-theme')}}{% include 'svg/icon_arrows.svg' with  {class: 'readmore__icon'} %}</a>
         </div>
     </div>
 </div>

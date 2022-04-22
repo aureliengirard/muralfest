@@ -23,10 +23,10 @@
     .content{
         display: inherit;
         flex-wrap: inherit;
-        width: 100%;
+        margin: 0 $spacing*-1.5;
+        width: calc(100% + $spacing*3);
 
         @include media-breakpoint-up(lg){
-            margin: 0 $spacing*-1.5;
             @include align-items(center);
         }
     }

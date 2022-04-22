@@ -1,3 +1,15 @@
+.page-template-template-maps {
+    section.basic-content {
+        margin-top: $spacing-md;
+
+        @include media-breakpoint-up(lg) {
+            margin-top: $spacing * 4;
+        }
+    }
+    .wp-block-columns {
+        margin-bottom: 0;
+    }
+}
 .artwork-list{
 
     .year-artworks{
@@ -13,10 +25,10 @@
 
             .artwork{
                 width: 100%;
+                border-top: 2px solid var(--couleurNoir);
 
                 @include media-breakpoint-up(md) {
                     width: calc(calc(100% / 2) - 11px);
-                    border-top: 2px solid var(--couleurNoir);
                 }
                 span{
                     cursor: pointer;

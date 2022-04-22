@@ -6,16 +6,6 @@
     transition: all .25s ease-in;
     //text-align: center;
     color: var(--couleurNoir);
-
-    .is_sticky &{
-        //font-size: 16px;
-    }
-
-    &:hover,
-    &.active,
-    &.current-menu-parent{
-        //color: var(--couleurOr);
-    }
 }
 
 %dropdown-link{
@@ -70,37 +60,11 @@
             box-shadow: 0px 10px 15px -5px rgba(0,0,0,.25);
 
             @include media-breakpoint-only(lg) {
-                padding: $spacing*2 $spacing*3;
+                padding: $spacing*1.5 $spacing*3;
             }
 
-            @include media-breakpoint-between(xl,xxl){
-                padding: $spacing-md $spacing*4;
-            }
-
-            @include media-breakpoint-up(xxxl){
-                padding: $spacing-md $spacing*6;
-            }
-        }
-
-        & + main{
-            @include media-breakpoint-down(sm){
-                margin-top: $spacing*8;
-            }
-
-            @include media-breakpoint-only(md){
-                margin-top: $spacing-xl*2;
-            }
-
-            @include media-breakpoint-only(lg) {
-                margin-top: $spacing*10.4;
-            }
-
-            @include media-breakpoint-between(xl,xxl){
-                margin-top: $spacing*12.8;
-            }
-
-            @include media-breakpoint-up(xxxl){
-                margin-top: $spacing*14.5;
+            @include media-breakpoint-up(xl){
+                padding: $spacing*1.5 $spacing*6;
             }
         }
     }
@@ -124,15 +88,15 @@
         }
 
         @include media-breakpoint-only(lg) {
-            padding: $spacing*3;
+            padding: $spacing-md $spacing*3;
         }
 
         @include media-breakpoint-up(xl){
-            padding: $spacing-xl $spacing*4;
+            padding: $spacing-md $spacing*4;
         }
 
         @include media-breakpoint-up(xxxl){
-            padding: $spacing-xl $spacing*6;
+            padding: $spacing-md $spacing*6;
         }
     }
 }
@@ -142,6 +106,7 @@
         flex: auto;
         display: inherit;
         flex-flow: wrap;
+        align-items: center;
     }
 
     .nav-item:not(.nav-item-child){
@@ -265,7 +230,7 @@
     }
 
     img{
-        height: auto;
+        max-height: 100px;
         width: auto;
         @include hover-transition;
 
@@ -273,6 +238,12 @@
             height: 80px;
             .is_sticky &{
                 height: 60px;
+            }
+        }
+
+        .is_sticky &{
+            @include media-breakpoint-up(lg){
+                max-height: 60px;
             }
         }
 

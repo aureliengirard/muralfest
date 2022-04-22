@@ -35,27 +35,14 @@
 }
 
 %heading-h3 {
-    font-size: 1.125em;
+    font-size: max(1.125em, 1.5625vw);
     font-weight: 600;
     margin-bottom: calc($spacing / 3);
-    
-    @include media-breakpoint-up(xl){
-        font-size: 5.8vw;
-    }
-    
-    @include media-breakpoint-up(xxl){
-        font-size: 1.5em;
-    }
 }
 
 %heading-h4 {
     font-size: 1em;
     font-weight: 600;
-    //text-transform: uppercase;
-
-    @include media-breakpoint-up(md){
-        font-size: 1.3em;
-    }
 }
 
 %paragraph {
@@ -70,16 +57,14 @@
     font-family: var(--basePrimaryFont);
     color: var(--couleurNoir);
 
+    @include media-breakpoint-up(md){
     &.lg{
-        font-size: max(1.125em, 1.5625vw);
-    }
+            font-size: max(1.125em, 1.5625vw);
+        }
+    }   
 
     &:nth-child(1){
         margin-top: 0;
-    }
-
-    @include media-breakpoint-up(xl){
-        //font-size: 7.25vw;
     }
 }
 
@@ -105,6 +90,17 @@
     
     h2, .h2 {
         @extend %heading-h2;
+
+        &.split--title {
+            span {
+                display: block;
+                line-height: 0.8;
+
+                &:nth-child(2) {
+                    text-align: right
+                }
+            }
+        }
     }
 
     h3, .h3 {

@@ -22,6 +22,10 @@
             margin-bottom: $spacing*2;
         }
 
+        .artist-socials {
+            margin-right: $spacing;
+        }
+
         .button{
             padding: $spacing * 1.5;
             margin-bottom: $spacing * 1;
@@ -52,27 +56,12 @@
         }
     }
 
-    .artist,
-    .styles,
-    .date,
-    .venue,
-    .post-categories,
-    .country{
-        font-weight: 700;
+    .medium {
+        margin-bottom: 1rem;
+    }
 
-        span{
-            font-weight: 400;
-            font-size: 0.875em;
-            padding-right: $spacing*0.5;
-
-            @include media-breakpoint-up(md){
-                font-size: 0.6em;
-            }
-        }
-
-        a {
-            color: var(--couleurNoir);
-        }
+    .country span {
+        display: block;
     }
 
     .content-blog{
@@ -107,6 +96,39 @@
 
         & + section {
             margin-top: 0;
+        }
+    }
+
+}
+
+.single-artist {
+    .single-navigation {
+        @include media-breakpoint-up(lg) {
+            padding-left: calc(2.6vw + 35px);
+        }
+
+        [class*=col-] {
+            @include media-breakpoint-up(lg) {
+                padding-left: 5.2vw;
+            }
+        }
+    }
+    .artist-bio {
+        @include media-breakpoint-up(lg) {
+            padding-left: calc(2.6vw + 35px);
+        }
+
+        [class*=col-] {
+            @include media-breakpoint-up(lg) {
+                padding-left: 5.2vw;
+            }
+        }
+        .col-md-6 {
+            &:nth-child(2){
+            @include media-breakpoint-down(sm){
+                margin-top: $spacing*2;
+            }
+        }
         }
     }
 }

@@ -1,7 +1,7 @@
 {% extends "base.twig" %}
 
 {% block content %}
-{% include "partial/section-banner.twig" %}
+{% include "partial/section-banner.twig" with {'title': page.title}  %}
 
     <section class="basic-content">
         <div class="row">
@@ -22,8 +22,16 @@
 
     <section class="artwork-list">
         <div class="row">
-            <div class="col-12 section__title">
-                <h2>{{ __('Works list', 'site-theme') }}</h2>
+            <div class="col-12">
+                {% set art_titles %}
+                {{- __('Works, list', 'site-theme') -}}
+                {% endset %}
+                {% set art_titles = art_titles|split(',') %}
+                <h2 class="split--title">
+                    {% for title in art_titles -%}
+                        <span>{{- title -}}</span>
+                    {%- endfor %}
+                </h2>
             </div>
         </div>
         <div class="row content">

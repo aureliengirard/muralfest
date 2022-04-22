@@ -1,9 +1,8 @@
 <div class="module_share">
-	<h4>{{ __('Share:', 'site-theme') }}</h4>
+	<h3>{{ __('Share', 'site-theme') }}</h3>
 	<ul class="social-links">
-	  <li><a class="social-links__link social-links__link--facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ link }}&t={{ title }}" title="Share on Facebook" target="_blank">{% include '/svg/icon_fb.svg' %}</a></li>
-	  <li><a class="social-links__link social-links__link--twitter" href="https://twitter.com/intent/tweet?source={{ link }}&text={{ title }}:{{ link }}" target="_blank" title="Tweet">{% include '/svg/icon_tw.svg' %}</a></li>
-	  <li><a class="social-links__link social-links__link--email" href="mailto:?subject={{ title }}&body={{ title }}:%20{{ link }}" target="_blank" title="Send email">{% include '/svg/icon_email.svg' %}</a></li>
+	  <li><a class="social-links__link social-links__link--facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ link }}&t={{ title }}" title="{{ __('Share on Facebook', 'site-theme') }}" target="_blank">{% include '/svg/icon_fb.svg' %}</a></li>
+	  <li><a class="social-links__link social-links__link--twitter" href="https://twitter.com/intent/tweet?source={{ link }}&text={{ title }}:{{ link }}" target="_blank" title="{{ __('Share on Twitter', 'site-theme') }}">{% include '/svg/icon_tw.svg' %}</a></li>
+	  <li><a class="social-links__link social-links__link--email" href="mailto:?subject={{ title }}&body={{ title }}:%20{{ link }}" target="_blank" title="{{ __('Share by Email', 'site-theme') }}">{% include '/svg/icon_email.svg' %}</a></li>
 	</ul>
-
 </div>

@@ -8,8 +8,9 @@
         @include align-items(center);
 	}
 
-    h4{
-        margin: $spacing-md 0 $spacing;
+    h3{
+        margin: $spacing-xl 0 $spacing;
+        font-weight: 400;
     }
 
 	li{
@@ -26,6 +27,7 @@
 
      svg {
          display: block;
+        height: $spacing * 3;
      }
 
      a{
@@ -37,7 +39,7 @@
 
          &:hover{
              svg {
-                 fill: var(--couleurNoir);
+                 fill: var(--couleurMauve);
              }
          }
      }

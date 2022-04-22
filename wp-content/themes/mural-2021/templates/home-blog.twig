@@ -1,15 +1,41 @@
 {% extends "base.twig" %}
 
 {% block content %}
+{% set title -%}
+{{post.title}}{% if filtered_cat != "" %},{{filtered_cat}}{% endif %}
+{% endset %}
+
 <div class="banner">
-    <div class="single-banner with-overlay" style="background-image:url('{{ TimberImage(options.home_blog_bg).src | resize(1920,400) }}')">
-        <div class="row content">
-            <div class="col-12 banner-overlay">
-                <h1>{{post.title}}{% if filtered_cat != "" %} | {{ __('Category:', 'site-theme') }}{{filtered_cat}}{% endif %}</h1>
+    {% set banniere = TimberImage(options.home_blog_bg) %}
+    {% set banniere_url = banniere.src %}
+    {% set contenu_banniere = page.contenu_banniere %}
+    {% set titles = "" %}
+    {% if ',' in title %}
+        {% set titles = title|split(',') %}
+    {% endif %}
+
+    <div class="single-banner with-overlay" style="background-image:url('{{banniere_url }}')">
+        <div class="row">
+            <div class="col-12 banner__title">
+                <h1 {%- if titles != empty %} class="split--title"{%- endif -%}>
+                {%- if titles != empty -%}
+                    {% for title in titles -%}
+                        <span>{{- title -}}</span>
+                    {%- endfor %}
+                {%- else -%}
+                   <span>{{- title -}}</span>
+                {%- endif -%}
+                </h1>
             </div>
+            {% if contenu_banniere %}
+            <div class="col-12 banner__content rte">
+                <p class="lg">{{- contenu_banniere -}}</p>
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>
+
 <div class="content">
     {% if blog_posts -%}
         {% include 'partial/filters-blog.twig' %}

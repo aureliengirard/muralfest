@@ -6,8 +6,8 @@
     background-position: top center;
 
 	.row{
-		padding-left: $spacing-md;
-		padding-right: $spacing-md;
+		padding-left: $spacing*2;
+		padding-right: $spacing*2;
 		@include flex-flow(row wrap);
 		@include align-items(flex-start);
 		@include justify-content(space-between);

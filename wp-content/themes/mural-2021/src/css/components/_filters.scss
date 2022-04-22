@@ -55,11 +55,25 @@
     }
 }
 
-
-.filters{
+section.filters{
     overflow: visible;
     z-index: 11;
 
+    margin-top: $spacing * 2;
+    margin-bottom: $spacing * 2;
+
+    @include media-breakpoint-up(lg){
+        margin-top: $spacing * 4;
+        margin-bottom: $spacing * 4;
+    }
+
+    & + section {
+        margin-top: $spacing * 2;
+    
+        @include media-breakpoint-up(lg){
+            margin-top: $spacing * 4;
+        } 
+    }
 
     .program-filters{
         display: flex;
