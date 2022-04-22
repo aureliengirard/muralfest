@@ -101,6 +101,12 @@
 
 }
 
+.single-program {
+    .module_share h3 {
+        margin-top: $spacing-md;
+    }
+}
+
 .single-artist {
     .single-navigation {
         @include media-breakpoint-up(lg) {
