@@ -3994,7 +3994,7 @@ table tbody tr {
 }
 @media (min-width: 992px) {
   .content-wrapper .banner--home h1 {
-    font-size: max(48px, 8.25vw);
+    font-size: max(48px, 7.75vw);
     text-align: right;
     margin-left: auto;
   }
