@@ -1,9 +1,20 @@
 
 {% set colonne_de_gauche = inner_item.colonne_de_gauche %}
+{% set colonne_de_centre = inner_item.colonne_de_centre %}
 {% set colonne_de_droite = inner_item.colonne_de_droite %}
-<div class="row col__wrapper {%- if inner_item.largeur_complete == true %} full-width{% endif %}">
+{% set vertical_centered = inner_item.vertical_centered %}
+{% set mobile_first = inner_item.mobile_first %}
+
+{% set col_classes = "" %}
+{% if layout == "deux_colonnes" %}
+    {% set col_classes = "col-md-6" %}
+{% elseif layout == "trois_colonnes" %}
+    {% set col_classes = "col-lg-4" %}
+{% endif %}
+
+<div class="row col__wrapper mobile_first--{{mobile_first}} {%- if inner_item.largeur_complete == true %} full-width{% endif %}{%- if vertical_centered == true %} row__vertical-centered{% endif -%}">
     {% if colonne_de_gauche %}
-        <div class="col-md-6">
+        <div class="{{col_classes}}">
         {% set contenu_colonne = colonne_de_gauche.contenu_colonne %}
         {% if contenu_colonne %}
             {% include "partial/sub_parts.twig" %}
@@ -11,8 +22,17 @@
         </div>
     {% endif %}
 
+    {% if colonne_de_centre %}
+        <div class="{{col_classes}}">
+            {% set contenu_colonne = colonne_de_centre.contenu_colonne %}
+            {% if contenu_colonne %}
+                {% include "partial/sub_parts.twig" %}
+            {% endif %}
+        </div>
+    {% endif %}
+
     {% if colonne_de_droite %}
-        <div class="col-md-6">
+        <div class="{{col_classes}}">
             {% set contenu_colonne = colonne_de_droite.contenu_colonne %}
             {% if contenu_colonne %}
                 {% include "partial/sub_parts.twig" %}

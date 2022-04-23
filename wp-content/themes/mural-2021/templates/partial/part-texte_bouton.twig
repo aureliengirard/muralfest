@@ -10,7 +10,7 @@
         {%- if btn_position == "before" %}
             <div class="col-12 content">
                 {%- if link -%}
-                    {%- include 'components/button.twig' with  { link_title: link.title, link_url: link.url, color_cta: "", add_icon: inner_item.add_icon, icon: inner_item.icon} -%}
+                {%- include 'components/button.twig' with  { link_title: link.title, link_url: link.url, alignment: btn_alignment } -%}
                 {%- endif -%}
             </div>
         {% endif -%}
@@ -26,7 +26,7 @@
         {%- if btn_position == "after" %}
         <div class="col-12 content">
             {%- if link -%}
-                {%- include 'components/button.twig' with  { link_title: link.title, link_url: link.url, color_cta: "", alignment: btn_alignment } -%}
+                {%- include 'components/button.twig' with  { link_title: link.title, link_url: link.url, alignment: btn_alignment } -%}
             {%- endif -%}
         </div>
         {% endif -%}

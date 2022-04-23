@@ -33,6 +33,18 @@
         }
     }
 
+    @include media-breakpoint-up(md) {
+
+        @include hover-focus-active {
+            circle {
+                fill: var(--couleurNoir);
+            }
+            path {
+                fill: var(--couleurBlanc);
+            }
+        }
+    }
+
     &__wrapper {
         margin-bottom: -$spacing-md !important;
         

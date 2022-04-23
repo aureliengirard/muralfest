@@ -87,8 +87,10 @@
 		background-repeat: no-repeat;
 
 		h1 {
-			@include media-breakpoint-up(md) {
+			@include media-breakpoint-up(lg) {
+				font-size: max(48px, 8.25vw);
 				text-align: right;
+				margin-left: auto;
 			}
 		}
 		h3 {
@@ -97,7 +99,7 @@
 		}
 
 		.left-banner{
-			padding-top: 15vh;
+			padding-top: 10vh;
 
 			.hero__artist{
 				margin-top: $spacing-xl;
@@ -109,6 +111,7 @@
 
 					@include media-breakpoint-up(md) {
 						font-size: 0.825em;
+						display: block;
 					}
 				}
 
@@ -139,16 +142,23 @@
 		.hero__event--imageries {
 			position: absolute;
 			top: 50%;
-			transform: translateY(-50%);
+			transform: translateY(-33.33%);
 			left: 0;
 			right: 0;
 		}
+		
 		.hero__event--imagery {
 			margin: auto;
 			min-width: 35%;
 			max-width: 40%;
 			height: auto;
 			z-index: 2;
+
+			@include media-breakpoint-down(lg) {
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+			}
 		}
 		img.hero__event--img {
 			width: 100%;

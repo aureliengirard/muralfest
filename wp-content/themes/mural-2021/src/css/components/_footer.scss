@@ -24,7 +24,7 @@
 		}
 
 		@include media-breakpoint-up(lg){
-			@include align-items(center);
+			@include align-items(flex-start);
 		}
 
 		@include media-breakpoint-up(xl){
@@ -40,13 +40,6 @@
 
 	a {
 		@include hover-transition;
-	}
-
-	.footer__main,
-	.footer__sub{
-		text-transform: uppercase;
-		font-weight: 500;
-		font-size: .875em;
 	}
 
 	.footer__main{
@@ -96,73 +89,12 @@
 			padding-bottom: $spacing*8;
 		}
 
-		span,a{
-			color: #777777;
-		}
-
 		a:hover {
 			color: var(--couleurNoir);
 		}
 	}
 
-	.footer__partners {
-		flex: auto;
-	    max-width: max-content;
-		margin: 0 auto;
-
-		@include media-breakpoint-down(sm){
-			margin-top: $spacing*4;
-		}
-
-		@include media-breakpoint-up(lg){
-			max-width: 13%;
-		}
-
-		@include media-breakpoint-between(xl,xxl){
-			margin: 0 auto 0 3.9vw;
-		}
-
-		@include media-breakpoint-up(xxxl){
-			margin: 0 auto 0 5.2vw;
-		}
-
-		.footer__partners-wrapper {
-			&:first-child{
-				margin-bottom: $spacing-md;
-
-				@include media-breakpoint-up(lg) {
-					margin-bottom: $spacing * 3.75;
-				}
-
-				@include media-breakpoint-up(xl) {
-					margin-bottom: $spacing-xl;
-				}
-			}
-
-			&:nth-last-child(1){
-
-				@include media-breakpoint-up(lg) {
-					margin-bottom: -$spacing*8;
-				}
-			}
-		}
-
-		h4 {
-		    line-height: 1;
-			font-weight: inherit;
-			margin-bottom: $spacing * 1.5;
-
-			@include media-breakpoint-down(sm){
-				text-align: center;
-			}
-
-			@include media-breakpoint-up(lg) {
-				margin-bottom: $spacing-md;
-			}
-		}
-	}
-
-	.footer__logo{
+	.footer__col--1{
 		flex: auto;
 	    max-width: max-content;
 
@@ -176,6 +108,50 @@
 
 		@include media-breakpoint-up(lg) {
 			max-width: 14%;
+		}
+	}
+
+	.footer__col--2 {
+		flex: auto;
+	    max-width: max-content;
+		margin-left: auto;
+		margin-right: auto;
+
+		@include media-breakpoint-up(lg) {
+			max-width: 80%;
+		}
+	}
+
+	.footer__sub-row {
+		min-width: 100%;
+		flex: 100%;
+		display: flex;
+		flex-flow: row wrap;
+
+		&:nth-child(2) {
+			margin-top: $spacing*4;
+			@include justify-content(space-between);
+			@include align-items(center);
+		}
+	}
+
+
+	.footer__partners {
+				
+		.footer__partners-wrapper {
+			display: inherit;
+			flex-flow: row wrap;
+			align-items: center;
+
+			&:nth-child(n + 2) {
+				margin-left: $spacing-xl;
+			}
+		}
+
+		h4 {
+		    line-height: 1;
+			font-weight: inherit;
+			margin-right: $spacing*2;
 		}
 
 		img{
@@ -197,14 +173,8 @@
 		max-width: max-content;
 		display: inherit;
 		@include flex-flow(row wrap);
-		@include justify-content(center);
-		margin: 0 auto;
-
-		@include media-breakpoint-down(sm){
-			order: -1;
-			margin-bottom: $spacing*4;
-			min-width: 100%;
-		}
+		@include justify-content(flex-end);
+		@include align-items(center);
 
 		@include media-breakpoint-only(md){
 			margin-right: 0;
@@ -218,35 +188,31 @@
 			}
 		}
 
+		svg {
+			height: 35px;
+			width: auto;
+		}
+
 		a:hover {
 			svg {
 				fill: var(--couleurNoir);
 			}
 		}
 	}
-
-
+	
 	.footer__navigation{
+		margin: auto;
 		@include media-breakpoint-down(md){
 			display: none;
 		}
-		@include media-breakpoint-between(md,xl) {
-			flex: auto;
-			max-width: 50%;
-		}
-
-		@include media-breakpoint-up(xxl) {
-			flex: 45%;
-			max-width: 45%;
-		}
-
+	
 		a{
 			color: var(--couleurNoir);
+			&:hover{
+				color: var(--couleurNoir);
+			}
 		}
-	}
 
-	.footer__navigation,
-	.footer__extra {
 		ul {
 			display: flex;
 			justify-content: flex-end;
@@ -255,38 +221,26 @@
 		li {
 			padding: 0 1vw;
 
-			@include media-breakpoint-down(sm){
-				font-size: 0.75em;
-				text-align: center;
-			}
-
-			@include media-breakpoint-between(md,xl){
-				font-size: 0.925em;
-			}
-
-			@include media-breakpoint-between(lg,xxxl){
-				padding: 0 $spacing*0.5;
-			}
-
 			@include media-breakpoint-up(xl){
-				padding: 0 1.125vw;
+				padding: 0 max(10px, 1.75vw);
 			}
 
-			@include media-breakpoint-up(xxxl){
-				padding: 0 $spacing;
+			&:nth-child(1){
+				padding-left: 0;
 			}
-
 			&:nth-last-child(1){
 				padding-right: 0;
 			}
 		}
 
-		a{
-			&:hover{
-				color: var(--couleurNoir);
-			}
+		span {
+			display: block;
 		}
 	}
-
+	.footer__copyright {
+		font-size: .8em;
+		@include justify-content(flex-end);
+		margin-top: $spacing*3;
+	}
 
 }

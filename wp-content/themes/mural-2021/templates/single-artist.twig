@@ -28,7 +28,7 @@
             <div class="col-lg-6 right-col">
                 {% set country = post.pays_dorigine %}
                 {% if country %}
-                    <h3 class="h2 md country country_{{site.language}}"><span>{{ __('Native country ', 'site-theme') }}</span> {% if 'fr_' in site.language %}{{ country_fr }}{% else %}{{ country_en }}{% endif %}</h3>
+                    <h3 class="h2 md country country_{{site.language}}"><span>{{ __('Country ', 'site-theme') }}</span> {% if 'fr_' in site.language %}{{ country_fr }}{% else %}{{ country_en }}{% endif %}</h3>
                 {% endif %}
 
                 <div class="article__cta rte">

@@ -51,6 +51,10 @@
     &.full-width {
         max-width:var(--WidthNavArea);
     }
+
+    &.row__vertical-centered {
+        @include align-items(center);
+    }
 }
 
 [class*="col-"]:not(.col-content){

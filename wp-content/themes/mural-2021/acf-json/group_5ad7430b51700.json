@@ -3,32 +3,6 @@
     "title": "Style | Background",
     "fields": [
         {
-            "key": "field_5ad627e392d43",
-            "label": "Couleur",
-            "name": "couleur",
-            "type": "radio",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "white": "Blanc",
-                "yellow": "Jaune",
-                "red": "Rouge",
-                "blue": "Bleu"
-            },
-            "allow_null": 0,
-            "other_choice": 0,
-            "default_value": "blanc",
-            "layout": "horizontal",
-            "return_format": "value",
-            "save_other_choice": 0
-        },
-        {
             "key": "field_5ad64c6f5c5db",
             "label": "Ajouter une image",
             "name": "ajouter_une_image",
@@ -37,7 +11,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
@@ -64,7 +38,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "",
+                "width": "67",
                 "class": "",
                 "id": ""
             },
@@ -97,5 +71,6 @@
     "hide_on_screen": "",
     "active": false,
     "description": "",
-    "modified": 1626197700
+    "show_in_rest": 0,
+    "modified": 1650727928
 }

@@ -171,6 +171,37 @@
                     "min": "",
                     "max": ""
                 },
+                "layout_62641c09dd02f": {
+                    "key": "layout_62641c09dd02f",
+                    "name": "trois_colonnes",
+                    "label": "Trois colonnes",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_62641c09dd030",
+                            "label": "Trois colonnes",
+                            "name": "trois_colonnes",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_62641b0ab7c09"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
                 "5acbb7eb63305": {
                     "key": "5acbb7eb63305",
                     "name": "video",
@@ -541,5 +572,6 @@
     ],
     "active": false,
     "description": "",
-    "modified": 1623341003
+    "show_in_rest": 0,
+    "modified": 1650727977
 }

@@ -1,0 +1,141 @@
+{
+    "key": "group_5a97285102fb4",
+    "title": "Section | Deux colonnes",
+    "fields": [
+        {
+            "key": "field_5a97287c89073",
+            "label": "Colonne de gauche",
+            "name": "colonne_de_gauche",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "layout": "row",
+            "sub_fields": [
+                {
+                    "key": "field_5ad7443ef27d3",
+                    "label": "Contenu colonne",
+                    "name": "contenu_colonne",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "clone": [
+                        "group_5ad743a1bccd8"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0
+                }
+            ]
+        },
+        {
+            "key": "field_5a9728d289079",
+            "label": "Colonne de droite",
+            "name": "colonne_de_droite",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "layout": "row",
+            "sub_fields": [
+                {
+                    "key": "field_5ad74454f27d4",
+                    "label": "Contenu colonne",
+                    "name": "contenu_colonne",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "clone": [
+                        "group_5ad743a1bccd8"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0
+                }
+            ]
+        },
+        {
+            "key": "field_5cc84046bcf1a",
+            "label": "largeur complète",
+            "name": "largeur_complete",
+            "type": "true_false",
+            "instructions": "si vous cocher la case, le deux colonnes prendra tout la largeur de la page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_6264240441050",
+            "label": "Première colonne sur mobile",
+            "name": "mobile_first",
+            "type": "radio",
+            "instructions": "col_1 : Colonne de gauche\r\ncol_2 : Colonne de droite",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": [],
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "col_1",
+            "layout": "vertical",
+            "return_format": "value",
+            "save_other_choice": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "partial > part-deux_colonnes.twig",
+    "show_in_rest": 0,
+    "modified": 1650730022
+}

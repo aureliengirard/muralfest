@@ -28,13 +28,15 @@
 
                 <!-- CREATE MEGA MENU IF MENU ITEM HAS CHILDREN -->
                 {% for item in nav_menu.get_items %}
-                {% set item_title = item.title|split(' ',2) %}
+                {% set item_title = item.title|split(',') %}
                 {% if item.children %}
                 <li class="nav-item dropdown">
                     <a class="nav-link {{ item.class }} {% if item.current %}active {% endif %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span>{{ item_title[0] }}</span>
-                        <span>{{ item_title[1] }}</span>
-                        {%- include "/svg/icon_plus.svg" -%}
+                        {% if item_title[1] != null %}
+                            <span class="">{{ item_title[1] }}</span>
+                        {% endif %}
+                        {%- include "/svg/icon_arrow-nav.svg" -%}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <ul>
@@ -51,7 +53,9 @@
                 <li class="nav-item">
                     <a class="nav-link {{ item.class }} {% if item.current %}active{% endif %}" href="{{ item.link }}">
                         <span>{{ item_title[0] }}</span>
-                        <span>{{ item_title[1] }}</span>
+                        {% if item_title[1] != null %}
+                            <span class="">{{ item_title[1] }}</span>
+                        {% endif %}
                     </a>
                 </li>
                 {% endif %}

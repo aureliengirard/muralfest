@@ -82,6 +82,23 @@ const functionsInit = function() {
         }
     });
 
+    $(document).ready(function() {
+      // Load random Event
+      var eventActive = eventArray[Math.floor(Math.random() * eventArray.length)];
+      var target = '[data-target="' + eventActive + '"]';
+      $(target).show("fast");
+    
+      //Update event onclick
+      $(".hero__event").on('click mouseover', function(){
+        var splash_event_imagery = $(".hero__event--imagery");
+        var data_name = $(this).attr("data-name");
+        var clickTarget = '[data-target="' + data_name + '"]';
+        $(splash_event_imagery).hide();
+        $(clickTarget).show("fast");
+        $(clickTarget).siblings().hide();
+      });
+    });
+
 };
 
 export default functionsInit;

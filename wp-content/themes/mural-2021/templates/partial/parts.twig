@@ -13,7 +13,9 @@
         {%- elseif inner_item.acf_fc_layout == 'titre_section' -%}
             {%- include "partial/part-titre_section.twig" -%}
         {%- elseif inner_item.acf_fc_layout == 'deux_colonnes' -%}
-            {%- include "partial/part-deux_colonnes.twig" -%}
+            {%- include "partial/part-deux_colonnes.twig" with { layout: 'deux_colonnes' } -%}
+        {%- elseif inner_item.acf_fc_layout == 'trois_colonnes' -%}
+            {%- include "partial/part-deux_colonnes.twig" with { layout: 'trois_colonnes' } -%}
         {%- elseif inner_item.acf_fc_layout == 'formulaire_infolettre' -%}
             {%- include "partial/part-formulaire_infolettre.twig" -%}
         {%- elseif inner_item.acf_fc_layout == 'articles_du_blog' -%}
