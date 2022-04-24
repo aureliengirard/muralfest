@@ -60,8 +60,16 @@
         margin-bottom: 1rem;
     }
 
-    .country span {
-        display: block;
+    .h2 {
+        span, a {
+            display: block;
+        }
+
+        &.artist a{
+            &:hover {
+                color: var(--couleurMauve) !important;
+            }
+        }
     }
 
     .content-blog{
@@ -105,36 +113,58 @@
     .module_share h3 {
         margin-top: $spacing-md;
     }
+
+    .program-description {
+        [class*=col-] {
+            &:nth-child(n + 2) {
+                @include media-breakpoint-up(xl) {
+                    padding-left: 5.2vw;
+                }
+            }
+            &:nth-child(2) {
+                @include media-breakpoint-between(lg,xl) {
+                    padding-left: 5.2vw;
+                }
+            }
+        }
+    }
 }
 
+.single.single-post,
+.single-artwork,
 .single-artist {
     .single-navigation {
-        @include media-breakpoint-up(lg) {
+        @include media-breakpoint-up(xxl) {
             padding-left: calc(2.6vw + 35px);
         }
 
         [class*=col-] {
-            @include media-breakpoint-up(lg) {
+            @include media-breakpoint-up(xl) {
                 padding-left: 5.2vw;
             }
         }
     }
-    .artist-bio {
-        @include media-breakpoint-up(lg) {
+    .article__header {
+        @include media-breakpoint-up(xxl) {
             padding-left: calc(2.6vw + 35px);
         }
 
         [class*=col-] {
-            @include media-breakpoint-up(lg) {
+            @include media-breakpoint-up(xl) {
                 padding-left: 5.2vw;
+            }
+            &:nth-child(3) {
+                @include media-breakpoint-between(lg,xl) {
+                    padding-left: 5.2vw;
+                }
             }
         }
         .col-md-6 {
-            &:nth-child(2){
-            @include media-breakpoint-down(sm){
-                margin-top: $spacing*2;
+            &:nth-child(n + 2){
+                @include media-breakpoint-down(sm){
+                    margin-top: $spacing*2;
+                }
             }
-        }
         }
     }
 }

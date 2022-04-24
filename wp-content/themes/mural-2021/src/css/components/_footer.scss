@@ -170,12 +170,14 @@
 
 	.footer__social{
 		flex: auto;
-		max-width: max-content;
 		display: inherit;
 		@include flex-flow(row wrap);
 		@include justify-content(flex-end);
 		@include align-items(center);
-
+		
+		@include media-breakpoint-up(xl){
+			max-width: max-content;
+		}
 		@include media-breakpoint-only(md){
 			margin-right: 0;
 		}
@@ -202,7 +204,7 @@
 	
 	.footer__navigation{
 		margin: auto;
-		@include media-breakpoint-down(md){
+		@include media-breakpoint-down(lg){
 			display: none;
 		}
 	

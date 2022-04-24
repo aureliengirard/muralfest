@@ -10,6 +10,9 @@
         {% include '/components/single-navigation.twig' %}
 
         <section class="col__wrapper article__header row">
+            <div class="col-lg-12 section__title">
+                <h1>{{post.title}}</h1>
+            </div>
             <div class="col-lg-6 left-col">
                 <figure>
                     {% if post.image_de_loeuvre %}
@@ -28,12 +31,10 @@
                 </figure>
             </div>
             <div class="col-lg-6 right-col">
-                <h1 class="sm">{{post.title}}</h1>
-
-                <h3 class="artist">
-                    <span>{{ __('By:', 'site-theme') }}</span> <a href="{{ artiste.link }}">{{ artiste.title }}</a>
+                <h3 class="md h2 artist rte">
+                    <span>{{ __('By', 'site-theme') }}</span> <a href="{{ artiste.link }}">{{ artiste.title }}</a>
                 </h3>
-                <h4 class="date"><span>{{ __('Year of completion:', 'site-theme') }}</span> {{post.annee}}</h4>
+                <h4 class="h3 date"><span>{{ __('Year of completion:', 'site-theme') }}</span> {{post.annee}}</h4>
 
                 {% if post.ajoute_description == true %}
                      {{ post.meta('description_de_loeuvre') }}

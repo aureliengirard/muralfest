@@ -2,7 +2,7 @@
 
 {% block content %}
 {% set title -%}
-{{post.title}}{% if filtered_cat != "" %},{{filtered_cat}}{% endif %}
+{{post.title}}{{cat_title}}{% if filtered_cat != "" %},{{filtered_cat}}{% endif %}
 {% endset %}
 
 <div class="banner">
@@ -38,7 +38,9 @@
 
 <div class="content">
     {% if blog_posts -%}
+        {% if is_category != true %}
         {% include 'partial/filters-blog.twig' %}
+        {% endif %}
 
         <section class="row articles card__wrapper">
 

@@ -49,7 +49,7 @@
                     {% endif %}
                 </div>
                 {% if post.terms %}
-                    <h4 class="medium">{{ __('Medium(s): ', 'site-theme') }}{{ post.terms( {query:{taxonomy:'style', orderby:'name', order: 'ASC'}} )|join(', ') }}</h4>
+                    <h4 class="h3 medium">{{ __('Medium(s): ', 'site-theme') }}{{ post.terms( {query:{taxonomy:'style', orderby:'name', order: 'ASC'}} )|join(', ') }}</h4>
                 {% endif %}
 
                 <div class="bio article__content">

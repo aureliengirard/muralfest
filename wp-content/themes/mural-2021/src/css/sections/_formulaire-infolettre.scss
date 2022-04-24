@@ -1,6 +1,6 @@
 #footer .formulaire_infolettre {
     .row{
-        @include media-breakpoint-up(md) {
+        @include media-breakpoint-up(xxl) {
             max-width: var(--WidthContainerArea);
         }
     }

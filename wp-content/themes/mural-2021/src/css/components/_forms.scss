@@ -11,23 +11,23 @@ $padding: $spacing;
     $font : 16;
     $lh : 26;
 
-    font-size: 1em;
+    font-size: max(1.125em, 1.5625vw);
     line-height: calc($lh / $font);
     letter-spacing: 0.5px;
     font-family: var(--baseFont);
-    //color: $black;
+    color: var(--couleurNoir);
     padding: 15px 0.5em 15px 0;
     border-style: solid;
     border-color: var(--couleurNoir);
-    border-width: 0 0 1px;
+    border-width: 0 0 2px;
     border-radius: 0;
     position: relative;
     background-color: transparent;
     transition: all .25s ease;
-    @include placeholders (inherit, 500, 18px, var(--basePrimaryFont), none);
+    @include placeholders (inherit, 500, 1.125em, var(--basePrimaryFont), none);
 
-    @include media-breakpoint-up(md){
-        @include placeholders (inherit, 500, 26px, var(--basePrimaryFont), none);
+    @include media-breakpoint-up(lg){
+        @include placeholders (inherit, 500, 1.5625vw, var(--basePrimaryFont), none);
     }
 }
 
@@ -55,8 +55,8 @@ form:not(.program-filters) {
 
     textarea {
         @extend %input;
-        height: $padding * 15;
-        border-width: 3px;
+        height: 4em;
+        border-width: 0 0 2px 0;
     }
 
     select{

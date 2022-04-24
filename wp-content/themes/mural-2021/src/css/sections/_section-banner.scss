@@ -82,9 +82,13 @@
 
 	&--home{
 		min-height: 90vh;
-		background-size: auto 100%;
+		background-size: 100% auto;
 		background-position: center;
 		background-repeat: no-repeat;
+
+		@include media-breakpoint-up(xxl) {
+			background-size: auto 100%;
+		}
 
 		h1 {
 			@include media-breakpoint-up(lg) {
@@ -103,6 +107,7 @@
 
 			.hero__artist{
 				margin-top: $spacing-xl;
+				padding-left: 0;
 
 				li {
 					letter-spacing: -0.025em;
@@ -126,6 +131,7 @@
 			}
 
 		}
+
 		.right-banner{
 			display:inherit;
 			padding: 0;
@@ -142,9 +148,13 @@
 		.hero__event--imageries {
 			position: absolute;
 			top: 50%;
-			transform: translateY(-33.33%);
+			transform: translateY(-50%);
 			left: 0;
 			right: 0;
+			
+			@include media-breakpoint-up(xxl) {
+				transform: translateY(-33.33%);
+			}
 		}
 		
 		.hero__event--imagery {
@@ -155,9 +165,9 @@
 			z-index: 2;
 
 			@include media-breakpoint-down(lg) {
+				transform: translateX(-50%);
 				position: absolute;
 				left: 50%;
-				transform: translateX(-50%);
 			}
 		}
 		img.hero__event--img {

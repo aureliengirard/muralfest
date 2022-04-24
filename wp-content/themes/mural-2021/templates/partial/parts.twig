@@ -1,7 +1,9 @@
 {% for item in content_items -%}
 
     {%- for inner_item in item.contenu -%}
-    <section id="{{item.nom_de_la_section|replace({' ': '-'})}}" class="{{inner_item.acf_fc_layout}}">
+    {%- set bg_img = TimberImage(inner_item.bg_img).src %}
+
+    <section id="{{item.nom_de_la_section|replace({' ': '-'})}}" class="{{inner_item.acf_fc_layout}}" {% if bg_img != null %}style="background-image:url('{{bg_img}}');"{% endif %}>
         {%- if inner_item.acf_fc_layout == 'application' -%}
             {% include "partial/part-application.twig" -%}
         {%- elseif inner_item.acf_fc_layout == 'texte_bouton' -%}

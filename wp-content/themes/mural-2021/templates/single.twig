@@ -11,13 +11,14 @@
 
 {% block content %}
 
-    <div class="basic-content">
+    <div class="basic-content single-post">
         <div class="content">
 
             {% include '/components/single-navigation.twig' %}
 
-            <section class="article__img row">
-                <div class="col-12">
+            <section class="col__wrapper article__header article-meta row">
+
+                <div class="col-lg-6 left-col">
                     <figure>
                         {%- set img = Image(post.meta('image_a_la_une')) -%}
                         {%- set img_url = img.src -%}
@@ -26,19 +27,19 @@
                     </figure>
                 </div>
 
-            </section>
-
-            <section class="content-blog row">
-
-                <div class="col-12 article__content">
-                    <h1 class="sm">{{ post.title }}</h1>
-                    <p>
-                        <h4 class="date"><span>{{ __('Date', 'site-theme') }}: </span>{{ post.date | date('j F Y') }}</h4><span class="divider"> | </span>
-                        <h4 class="post-categories"><span>{% if multiple_cat == true %}{{ __('Categories', 'site-theme') }}{% else %}{{ __('Category', 'site-theme') }}{% endif %}: </span>
+                <div class="col-lg-6 right-col">
+                    <h1 class="h2 md">{{ post.title }}</h1>
+                    <p class="article-infos">
+                        <h4 class="h3 date"><span>{{ __('Date', 'site-theme') }}: </span>{{ post.date | date('j F Y') }}</h4>
+                        <h4 class="h3 post-categories"><span>{% if multiple_cat == true %}{{ __('Categories', 'site-theme') }}{% else %}{{ __('Category', 'site-theme') }}{% endif %}: </span>
                             {%- for categorie in post.categories -%}<a href='{{categorie.link}}'>{{categorie.title}}</a>{% if loop.last == false %} - {% endif %}{%- endfor -%}
                         </44>
                     </p>
+
+                    {%- include 'components/module_share.twig' with  { link: post.link, title: post.title } -%}
+
                 </div>
+
             </section>
 
             <section class="content-blog row">

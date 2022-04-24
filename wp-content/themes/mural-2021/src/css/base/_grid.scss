@@ -16,6 +16,11 @@
         margin-bottom: $spacing * 4;
 
         @include media-breakpoint-up(lg){
+            margin-top: $spacing * 6;
+            margin-bottom: $spacing * 6;
+        }
+
+        @include media-breakpoint-up(xl){
             margin-top: $spacing * 8;
             margin-bottom: $spacing * 8;
         }
@@ -33,7 +38,7 @@
     display: flex;
     margin:0 auto;
     
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(xxl) {
         max-width: var(--WidthContainerArea);
     }
 

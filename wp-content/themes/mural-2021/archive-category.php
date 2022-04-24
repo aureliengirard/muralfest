@@ -18,6 +18,7 @@ $templates = array( 'archive.twig', 'index.twig' );
 
 $context = Timber::get_context();
 
+$post = Timber::query_post();
 $context['posts'] = new Timber\PostQuery();
 
 $taxonomy = array(

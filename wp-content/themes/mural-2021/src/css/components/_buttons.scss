@@ -21,7 +21,7 @@
     border-width: 2px;
     border-style: solid;
     text-decoration: none;
-
+    border-radius: 4px;
     @include media-breakpoint-up(md){
         width: auto;
     }

@@ -283,13 +283,18 @@
     }
 
     .nav{
-        &-item{
-            width: 8.5vw;
-            max-width: 175px;
-            min-width: 100px;
+        &-item{      
+            @include media-breakpoint-up(lg) {
+                margin: 0 max($spacing*1.5, 2.075vw);
+                width: 8.5vw;
+                max-width: 175px;
+                min-width: 100px;
+            }
 
-            @include media-breakpoint-up(xl) {
-                margin: 0 max(10px, 2.075vw);
+            &.dropdown {
+                @include media-breakpoint-up(lg) {
+                    min-width: 130px;
+                }
             }
         }
 
@@ -318,7 +323,7 @@
 
             @include media-breakpoint-up(lg){
                 position: absolute;
-                top: calc(100% + #{$spacing*2});
+                top: calc(100%);
                 left: -$spacing*2;
                 right: 1px;
                 display: none;

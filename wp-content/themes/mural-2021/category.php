@@ -10,7 +10,7 @@ if (!isset($paged) || !$paged) {
 	$paged = 1;
 }
 
-$context['title'] = single_cat_title( '', false );
+$context['cat_title'] = single_cat_title( '', false );
 $context['is_category'] = true;
 $context['categories'] = Timber::get_terms('category');
 
