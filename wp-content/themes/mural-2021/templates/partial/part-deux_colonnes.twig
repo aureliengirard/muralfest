@@ -12,7 +12,7 @@
     {% set col_classes = "col-lg-4" %}
 {% endif %}
 
-<div class="row col__wrapper mobile_first--{{mobile_first}} {%- if inner_item.largeur_complete == true %} full-width{% endif %}{%- if vertical_centered == true %} row__vertical-centered{% endif -%}">
+<div class="row col__wrapper mobile_first--{{mobile_first}} {%- if inner_item.largeur_complete == true %} deux_colonnes__full-width{% endif %}{%- if vertical_centered == true %} row__vertical-centered{% endif -%}">
     {% if colonne_de_gauche %}
         <div class="{{col_classes}}">
         {% set contenu_colonne = colonne_de_gauche.contenu_colonne %}

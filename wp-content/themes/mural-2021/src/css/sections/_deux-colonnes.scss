@@ -1,16 +1,20 @@
 .deux_colonnes {
     .col__wrapper{
+        &:not(.deux_colonnes__full-width) {
 
-        @include media-breakpoint-up(lg) {
-            padding-left: calc(2.6vw + 35px);
-            padding-right: calc(2.6vw + 35px);
-        }
-
-        [class*=col-] {
             @include media-breakpoint-up(lg) {
-                padding-left: 2.6vw;
-                padding-right: 2.6vw;
+                padding-left: calc(2.6vw + 35px);
+                padding-right: calc(2.6vw + 35px);
             }
+    
+            [class*=col-] {
+                @include media-breakpoint-up(lg) {
+                    padding-left: 2.6vw;
+                    padding-right: 2.6vw;
+                }
+            }
+        }
+        [class*=col-] {
 
             &  > *:nth-child(n +2){
                 margin-top: $spacing-md;
@@ -23,12 +27,18 @@
                 }
             }
         }
+        &.deux_colonnes__full-width {
+            figure + .rte {
+                max-width: 520px;
+            }
+        }
         .col-md-6 {
             @include media-breakpoint-down(sm){
                 margin-top: $spacing*2;
             }
         }
     }
+
     @include media-breakpoint-down(sm) {
         .mobile_first--col_1 > [class*=col-]:nth-child(1),
         .mobile_first--col_2 > [class*=col-]:nth-child(2) {

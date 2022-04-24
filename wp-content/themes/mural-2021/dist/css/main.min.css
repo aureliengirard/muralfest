@@ -3663,13 +3663,13 @@ table tbody tr {
   margin: 2em 0;
 }
 @media (min-width: 992px) {
-  .content-wrapper .deux_colonnes .col__wrapper {
+  .content-wrapper .deux_colonnes .col__wrapper:not(.deux_colonnes__full-width) {
     padding-left: calc(2.6vw + 35px);
     padding-right: calc(2.6vw + 35px);
   }
 }
 @media (min-width: 992px) {
-  .content-wrapper .deux_colonnes .col__wrapper [class*=col-] {
+  .content-wrapper .deux_colonnes .col__wrapper:not(.deux_colonnes__full-width) [class*=col-] {
     padding-left: 2.6vw;
     padding-right: 2.6vw;
   }
@@ -3686,6 +3686,9 @@ table tbody tr {
   .content-wrapper .deux_colonnes .col__wrapper [class*=col-] > *:nth-child(n+2) {
     margin-top: 75px;
   }
+}
+.content-wrapper .deux_colonnes .col__wrapper.deux_colonnes__full-width figure + .rte {
+  max-width: 520px;
 }
 @media (max-width: 767.98px) {
   .content-wrapper .deux_colonnes .col__wrapper .col-md-6 {
