@@ -1,7 +1,11 @@
 
 {%- set lien = inner_item.lien -%}
+{% if is_sub_parts != true %}
 <div class="row">
     <figure class="{% if is_blog_post == true %}col-xl-10 col-12{% else %}col-12{% endif %}">
+{% else %}
+    <figure>
+{% endif %}
         {% if lien -%}
         <a href="{{ lien.url }}" target="{{ lien.target }}">
             {%- endif %}
@@ -16,4 +20,6 @@
         </a>
         {%- endif %}
     </figure>
+{% if is_sub_parts != true %}
 </div>
+{% endif %}

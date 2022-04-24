@@ -98,6 +98,30 @@
             "ui_off_text": ""
         },
         {
+            "key": "field_6265b47a0e4b7",
+            "label": "Centrer verticallement?",
+            "name": "vertical_centered",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "col_1": "Colonne de gauche",
+                "col_2": "Colonne de droite"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "col_1",
+            "layout": "vertical",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
             "key": "field_6264240441050",
             "label": "Première colonne sur mobile",
             "name": "mobile_first",
@@ -140,5 +164,5 @@
     "active": false,
     "description": "partial > part-deux_colonnes.twig",
     "show_in_rest": 0,
-    "modified": 1650736936
+    "modified": 1650832515
 }
