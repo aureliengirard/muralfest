@@ -33,6 +33,10 @@
     }
 
     .card__title {
-        padding: $spacing*4 0 0;
+        padding: $spacing*2 0 0;
+        @include media-breakpoint-up(lg) {
+            padding: $spacing*4 0 0;
+        }
+            
     }
 }

@@ -193,5 +193,15 @@
 			height: auto;
 		}
 
+		.cta-banner {
+			@include media-breakpoint-up(lg) {
+				display: none;
+			}
+
+			.readmore {
+				justify-content: center;
+			}
+		}
+
 	}
 }

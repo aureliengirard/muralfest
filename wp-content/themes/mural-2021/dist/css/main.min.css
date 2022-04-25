@@ -3594,7 +3594,12 @@ table tbody tr {
   transition: all ease-in-out 0.15s;
 }
 .content-wrapper .appels_a_laction .card__title {
-  padding: 40px 0 0;
+  padding: 20px 0 0;
+}
+@media (min-width: 992px) {
+  .content-wrapper .appels_a_laction .card__title {
+    padding: 40px 0 0;
+  }
 }
 .content-wrapper .application .app-image img {
   margin-left: auto;
@@ -3607,21 +3612,29 @@ table tbody tr {
 }
 .content-wrapper .application .row [class*=col-] {
   position: relative;
+  flex: 100%;
+  max-width: 100%;
 }
-.content-wrapper .application .row [class*=col-]:nth-child(1) {
-  max-width: 57.5%;
-  flex: 57.5%;
-}
-.content-wrapper .application .row [class*=col-]:nth-child(1) h3 {
-  position: absolute;
-  top: 0;
-  left: 0;
+@media (min-width: 768px) {
+  .content-wrapper .application .row [class*=col-]:nth-child(1) {
+    max-width: 57.5%;
+    flex: 57.5%;
+  }
+  .content-wrapper .application .row [class*=col-]:nth-child(1) h3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 }
 .content-wrapper .application .row [class*=col-]:nth-child(2) {
   align-self: flex-end;
-  max-width: 37.5%;
-  flex: 37.5%;
   text-align: right;
+}
+@media (min-width: 768px) {
+  .content-wrapper .application .row [class*=col-]:nth-child(2) {
+    max-width: 37.5%;
+    flex: 37.5%;
+  }
 }
 .content-wrapper .application .app-links {
   display: flex;
@@ -4159,6 +4172,14 @@ table tbody tr {
   width: 100%;
   height: auto;
 }
+@media (min-width: 992px) {
+  .content-wrapper .banner--home .cta-banner {
+    display: none;
+  }
+}
+.content-wrapper .banner--home .cta-banner .readmore {
+  justify-content: center;
+}
 .content-wrapper .texte_bouton {
   margin: 0 0;
   background-size: auto 100%;
@@ -4183,9 +4204,6 @@ table tbody tr {
 }
 .content-wrapper .texte_bouton .content {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1;
 }
 .content-wrapper .texte_bouton .content:nth-child(1) {
   margin-bottom: 10px;
@@ -4195,7 +4213,7 @@ table tbody tr {
 }
 @media (max-width: 767.98px) {
   .content-wrapper .texte_bouton .content {
-    flex-direction: column;
+    order: 2;
   }
 }
 .content-wrapper .texte_bouton .button {

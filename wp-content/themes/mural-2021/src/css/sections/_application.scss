@@ -14,20 +14,26 @@
 
 		[class*="col-"] {
 			position: relative;
+			flex: 100%;
+			max-width: 100%;;
 
 			&:nth-child(1) {
-				max-width: 57.5%;
-				flex: 57.5%;
-				h3 {
-					position: absolute;
-					top: 0;
-					left: 0;
+				@include media-breakpoint-up(md) {
+					max-width: 57.5%;
+					flex: 57.5%;
+					h3 {
+						position: absolute;
+						top: 0;
+						left: 0;
+					}
 				}
 			}
 			&:nth-child(2) {
+				@include media-breakpoint-up(md) {
+					max-width: 37.5%;
+					flex: 37.5%;
+				}
 				align-self: flex-end;
-				max-width: 37.5%;
-				flex: 37.5%;
 				text-align: right;
 			}
 		}
