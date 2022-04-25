@@ -4,7 +4,7 @@
 	background-repeat: no-repeat;
 	background-size: 250% auto;
     background-position: 35% top;
-	
+
 	@include media-breakpoint-up(lg) {
 		background-size: contain;
 		background-position: top center;
@@ -103,7 +103,7 @@
 		padding-left: 0;
 		padding-right: 0;
 		@include media-breakpoint-up(lg) {
-			display: none;
+			display: none !important;
 		}
 	}
 
@@ -301,7 +301,7 @@
 			padding: 0 1vw;
 
 			@include media-breakpoint-up(xl){
-				padding: 0 max(10px, 1.75vw);
+				padding: 0 max(10px, 1.5vw);
 			}
 
 			&:nth-child(1){

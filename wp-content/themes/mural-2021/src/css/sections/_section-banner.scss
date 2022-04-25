@@ -91,11 +91,11 @@
 			min-height: 90vh;
 		}
 		
-		@include media-breakpoint-between(lg,xl) {
+		@include media-breakpoint-up(lg) {
 			background-size: 100% auto;
 		}
 
-		@include media-breakpoint-up(xxl) {
+		@include media-breakpoint-up(xl) {
 			background-size: auto 100%;
 		}
 
@@ -168,7 +168,7 @@
 			right: 0;
 			
 			@include media-breakpoint-up(xxl) {
-				//transform: translateY(-33.33%);
+				transform: translateY(-33.33%);
 			}
 
 			@include media-breakpoint-down(md){
