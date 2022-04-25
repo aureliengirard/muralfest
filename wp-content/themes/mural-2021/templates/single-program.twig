@@ -29,7 +29,7 @@
 
                 <div class="col-lg-6 left-col">
                     <figure>
-                        {%- set img = TimberImage(post.image_de_levenement) -%}
+                        {%- set img = TimberImage(post.image_de_thumbnail) -%}
                         {%- set img_url = img.src -%}
                         {%- set reponsize_sizes = "1920,1440,1366,1280,1170,960,800,768,720,640,512,414,375,360" -%}
                         {%- include 'components/reponsive_img.twig' with  { img: img, img_url: img_url, reponsize_sizes: reponsize_sizes} -%}

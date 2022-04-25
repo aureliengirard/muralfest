@@ -7,14 +7,7 @@
 {%- set heure_de_fin = event_post.heure_de_fin %}
 {%- set preview = event_post.resume %}
 
-{%- set image_de_thumbnail = Image(event_post.image_de_thumbnail).src %}
-{%- set image_de_levenement = Image(event_post.image_de_levenement).src %}
-
-{% if image_de_thumbnail %}
-    {%- set thumbnail = image_de_thumbnail %}
-{% else %}
-    {%- set thumbnail = image_de_levenement %}
-{% endif %}
+{%- set thumbnail = Image(event_post.image_de_thumbnail).src %}
 
 {%- set id = blog_post.id %}
 
