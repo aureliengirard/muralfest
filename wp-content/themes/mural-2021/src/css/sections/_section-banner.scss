@@ -91,7 +91,7 @@
 			min-height: 90vh;
 		}
 		
-		@include media-breakpoint-between(lg,xxl) {
+		@include media-breakpoint-between(lg,xl) {
 			background-size: 100% auto;
 		}
 
