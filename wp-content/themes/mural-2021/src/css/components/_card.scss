@@ -4,10 +4,6 @@
     margin-bottom: $spacing*4;
 
     &:not(.card--full-width) {
-        @include media-breakpoint-up(md){
-            flex: 50%;
-            margin-bottom: $spacing-md * 3;
-        }
 
         @include media-breakpoint-up(lg){
             flex: 32.5%;
@@ -46,13 +42,14 @@
     }
 
     &__wrapper {
-        margin-bottom: -$spacing-md !important;
         
         @include media-breakpoint-up(md) {
             padding-left: $spacing-xl;
             padding-right: $spacing-xl;
-            margin-bottom: -$spacing-xl !important;
             justify-content: space-between;
+        }
+        @include media-breakpoint-up(lg) {
+            margin-bottom: -$spacing-xl !important;
         }
 
         &:after{

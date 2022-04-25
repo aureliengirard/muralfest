@@ -41,7 +41,7 @@
 
                     {%- include 'components/module_share.twig' with  { link: post.link, title: post.title } -%}
 
-                    <p class="event-infos">
+                    <p class="event-infos rte">
                         <span class="date">
                             {%- if date_de_fin != event_date -%}
                             {{- event_date | date('j F') }} {{__('to', 'dates événement', 'site-theme')}} {{ date_de_fin | date('j F Y') }}

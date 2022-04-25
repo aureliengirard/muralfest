@@ -62,11 +62,6 @@ section.filters{
     margin-top: $spacing * 2;
     margin-bottom: $spacing * 2;
 
-    @include media-breakpoint-up(lg){
-        margin-top: $spacing * 4;
-        margin-bottom: $spacing * 4;
-    }
-
     & + section {
         margin-top: $spacing * 2;
     
@@ -77,6 +72,7 @@ section.filters{
 
     .program-filters{
         display: flex;
+        justify-content: flex-end;
 
         #orderby-wrap{
             position: relative;
@@ -108,10 +104,11 @@ section.filters{
             margin-right: $spacing * 2;
             flex: 1 1 auto;
             width: 100% !important;
+            min-width: none;
 
             @include media-breakpoint-up(md){
                 width: auto !important;
-                max-width: 33%;
+                max-width: 25%;
             }
 
             .select2-selection{
@@ -136,7 +133,6 @@ section.filters{
         }
 
         &.artist-filters{
-            max-width:50%;
             @media only screen and (max-width: 767px) {
                 max-width: 100%;
             }

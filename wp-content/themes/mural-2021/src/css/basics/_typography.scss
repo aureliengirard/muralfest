@@ -172,11 +172,11 @@
         text-decoration: underline;
 
         &:hover{
-            color: var(--couleurMauve);
+            color: var(--couleurMauve) !important;
         }
 
         &:visited {
-            color: var(--couleurNoir);
+            color: inherit;
         }
     }
 

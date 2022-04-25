@@ -1,12 +1,10 @@
 .application{
-	.app-image {
-		img {
-			margin-left: auto;
-		}
-	}
 
 	h3 {
-		margin-bottom: $spacing*3;
+		margin-bottom: $spacing*2;
+		@include media-breakpoint-up(md) {
+			margin-bottom: $spacing*3;
+		}
 	}
 
 	.row {
@@ -18,7 +16,17 @@
 			max-width: 100%;;
 
 			&:nth-child(1) {
-				@include media-breakpoint-up(md) {
+				@include media-breakpoint-only(md) {
+					max-width: 62.5%;
+					flex: 62.5%;
+					h3 {
+						position: absolute;
+						top: 0;
+						left: $spacing*4;
+						z-index: 1;
+					}
+				}
+				@include media-breakpoint-up(lg) {
 					max-width: 57.5%;
 					flex: 57.5%;
 					h3 {
@@ -29,17 +37,43 @@
 				}
 			}
 			&:nth-child(2) {
+				align-self: flex-end;
+				text-align: right;
+
 				@include media-breakpoint-up(md) {
 					max-width: 37.5%;
 					flex: 37.5%;
 				}
-				align-self: flex-end;
-				text-align: right;
+				h3 {
+					@include media-breakpoint-down(sm) {
+						display: none;;
+					}
+				}
 			}
 		}
 	}
 
-	.app-links{
+	.app-image {
+		
+		position: relative;
+		h3 {
+			position: absolute;
+			top: 0;
+			right: 0;
+			@include media-breakpoint-up(md) {
+				display: none;
+			}
+		}
+		img {
+			@include media-breakpoint-up(md) {
+				margin-left: auto;
+			}
+
+			@include media-breakpoint-down(sm) {
+				max-width: 50%;
+				margin-right: auto;
+			}
+		}
 	}
 	
 	.app-links{
@@ -47,10 +81,11 @@
 		min-width: 40%;
 		@include align-items(center);
 		@include justify-content(flex-end);
-
+		
 		@include media-breakpoint-down(md){
+			@include justify-content(center);
 			flex: 100%;
-			margin-bottom: $spacing * 2;
+			margin-top: $spacing * 2;
 		}
 
 		a{

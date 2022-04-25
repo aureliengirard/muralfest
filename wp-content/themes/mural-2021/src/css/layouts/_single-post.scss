@@ -27,13 +27,8 @@
         }
 
         .button{
-            padding: $spacing * 1.5;
             margin-bottom: $spacing * 1;
             display: inline-block;
-            border-radius: 2.5px;
-            font-size: 0.875em;
-            line-height: 1;
-            font-weight: 700;
 
             @include media-breakpoint-up(md){
                 margin-right: $spacing * 1;
@@ -133,6 +128,7 @@
 .single.single-post,
 .single-artwork,
 .single-artist {
+    .content-blog,
     .single-navigation {
         @include media-breakpoint-up(xxl) {
             padding-left: calc(2.6vw + 35px);

@@ -49,6 +49,9 @@
                 {%- for item in left_banner.artiste_colonne_1 %}
                     {%- set artiste = item.item_artiste -%}
                     <li class="hero__event" data-name="{{ artiste.title | replace({' ': "-"}) | url_encode }}">{%- if artiste.url != "#" %}<a href="{{ artiste.url }}">{%- endif %}{{ artiste.title }}{%- if artiste.url != "#" %}</a>{%- endif %}</li>
+                    {%- if loop.last and loop.length > 13 %}
+                        <li><a class="readmore" href="{{ options.home_artist }}">{{__('See All Artists', 'site-theme')}}{% include 'svg/icon_arrows.svg' with  {class: 'readmore__icon'} %}</a></li>
+                    {% endif %}
                 {%- endfor -%}
                 </ul>
             </div>
@@ -61,6 +64,9 @@
                 {%- for item in left_banner.artiste_colonne_2 %}
                     {%- set artiste = item.item_artiste -%}
                     <li class="hero__event" data-name="{{ artiste.title | replace({' ': "-"}) | url_encode }}"> {%- if artiste.url != "#" %}<a href="{{ artiste.url }}">{%- endif %}{{ artiste.title }}{%- if artiste.url != "#" %}</a>{%- endif %}</li>
+                    {%- if loop.last and loop.length > 13 %}
+                        <li><a class="readmore" href="{{ options.home_program }}">{{__('See All Artists', 'site-theme')}}{% include 'svg/icon_arrows.svg' with  {class: 'readmore__icon'} %}</a></li>
+                    {% endif %}
                 {%- endfor -%}
                 </ul>
             </div>
@@ -72,9 +78,6 @@
 
     <div class="col-lg-8 right-banner">
         <h1 class="hero__date">{{left_banner.date}}</h1>
-    </div>
-    <div class="col-12 cta-banner">
-        <h3><a class="readmore" href="{{ options.home_artist }}">{{__('See All Artists', 'site-theme')}}{% include 'svg/icon_arrows.svg' with  {class: 'readmore__icon'} %}</a></h3>
     </div>
 <script type="text/javascript">
     var eventArray = [
