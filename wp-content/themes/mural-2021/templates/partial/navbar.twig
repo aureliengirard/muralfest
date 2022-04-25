@@ -31,7 +31,7 @@
                 {% set item_title = item.title|split(',') %}
                 {% if item.children %}
                 <li class="nav-item dropdown">
-                    <a class="nav-link {{ item.class }} {% if item.current %}active {% endif %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link {{ item.class }} {% if item.current %}active {% endif %}" id="navbarDropdown">
                         <span>{{ item_title[0] }}</span>
                         {% if item_title[1] != null %}
                             <span class="">{{ item_title[1] }}</span>

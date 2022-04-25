@@ -152,17 +152,16 @@ $btn_styles:
 }
 
 .readmore{
-    display:block;
-    font-size: 0.8em;
     color: var(--couleurNoir);
 	@include hover-transition;
     display: flex;
-    height: 22px;
     flex-flow: row wrap;
+    align-items: center;
+    height: 30px;
 
     svg{
         max-height: 1em;
-        margin: auto 0;
+        margin: auto 0 auto $spacing*.75;
     }
     
     @include hover-focus-active{

@@ -43,7 +43,7 @@
         <div class="row inner__wrapper">
 
             {%- if left_banner.artiste_colonne_1 %}
-            <div class="col-md-6 hero__artist hero__artist--visual">
+            <div class="col-6 hero__artist hero__artist--visual">
                 <h3>{{ left_banner.titre_colonne_1 }}<sup>{{visual_sum}}</sup></h3>
                 <ul class="hero__artists">
                 {%- for item in left_banner.artiste_colonne_1 %}
@@ -55,7 +55,7 @@
             {%- endif %}
 
             {%- if left_banner.artiste_colonne_2 %}
-            <div class="col-md-6 hero__artist hero__artist--music">
+            <div class="col-6 hero__artist hero__artist--music">
                 <h3>{{ left_banner.titre_colonne_2 }}<sup>{{music_sum}}</sup></h3>
                 <ul class="hero__artists">
                 {%- for item in left_banner.artiste_colonne_2 %}

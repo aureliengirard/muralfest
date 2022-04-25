@@ -104,17 +104,11 @@
         
         @include media-breakpoint-up(md){
             margin-top: $spacing-md;
+            margin-bottom: $spacing;
         }
         @include media-breakpoint-up(xl){
             line-height: 1.1;
             height: 3.3em;
-        }
-    }
-    .readmore {
-        margin-top: calc($spacing / 3);
-
-        &:nth-child(1) {
-            margin-right: $spacing-md * 3;
         }
     }
     &__cta{
@@ -157,6 +151,14 @@
 
         .divider{
             display: inline-block !important;
+        }
+
+        .readmore {
+            margin-top: calc($spacing / 3);
+    
+            &:nth-child(1) {
+                margin-right: $spacing-md * 3;
+            }
         }
     }
 
@@ -210,12 +212,6 @@
             @include media-breakpoint-up(md) {
                 min-height: 4em;
             }
-        }
-    }
-
-    &.blog_post {
-        .articles_du_blog &{
-            
         }
     }
 }

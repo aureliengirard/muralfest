@@ -81,19 +81,27 @@
 	}
 
 	&--home{
-		min-height: 90vh;
-		background-size: 100% auto;
+		background-size: auto 85%;
 		background-position: center;
 		background-repeat: no-repeat;
+		//margin-top: $spacing ;
+		
+		@include media-breakpoint-up(md) {
+			min-height: 90vh;
+		}
+		
+		@include media-breakpoint-between(lg,xxl) {
+			background-size: 100% auto;
+		}
 
 		@include media-breakpoint-up(xxl) {
 			background-size: auto 100%;
 		}
 
 		h1 {
+			text-align: right;
 			@include media-breakpoint-up(lg) {
 				font-size: max(48px, 7.75vw);
-				text-align: right;
 				margin-left: auto;
 			}
 		}
@@ -103,20 +111,32 @@
 		}
 
 		.left-banner{
-			padding-top: 10vh;
+			@include media-breakpoint-up(md) {
+				padding-top: 10vh;
+			}
 
 			.hero__artist{
-				margin-top: $spacing-xl;
 				padding-left: 0;
+				margin-top: $spacing*3;
+				
+				@include media-breakpoint-up(md) {
+					margin-top: $spacing-xl;
+				}
 
 				li {
 					letter-spacing: -0.025em;
 					padding-bottom: $spacing;
 					line-height: 1;
+					font-size: 0.825em;
 
 					@include media-breakpoint-up(md) {
-						font-size: 0.825em;
 						display: block;
+					}
+
+					@include media-breakpoint-down(md) {
+						&:nth-child(n + 14) {
+							display: none;
+						}
 					}
 				}
 
@@ -133,17 +153,11 @@
 		}
 
 		.right-banner{
-			display:inherit;
-			padding: 0;
 
 			@include media-breakpoint-down(md){
-				display: none;
+				order: -1;
 			}
 
-			img{
-				width:100%;
-				margin: auto;
-			}
 		}
 		.hero__event--imageries {
 			position: absolute;
@@ -154,6 +168,10 @@
 			
 			@include media-breakpoint-up(xxl) {
 				transform: translateY(-33.33%);
+			}
+
+			@include media-breakpoint-down(md){
+				display: none;
 			}
 		}
 		

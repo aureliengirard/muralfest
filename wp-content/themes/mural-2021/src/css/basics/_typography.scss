@@ -1,12 +1,12 @@
 
 %heading-h1 {
-    font-size:max(54px, 9.25vw);
+    font-size:max(58px, 9.25vw);
     line-height: 1.1;
     font-weight: 400;
 }
 
 %heading-h2 {
-    font-size:max(48px, 7.25vw);
+    font-size:max(58px, 7.25vw);
     line-height: 1.15;
     font-weight: 400;
     //text-transform: uppercase;
@@ -20,7 +20,7 @@
 }
 
 %heading-h3 {
-    font-size: max(1.125em, 1.5625vw);
+    font-size: max(30px, 1.5625vw);
     font-weight: 600;
     margin-bottom: calc($spacing / 3);
 }
