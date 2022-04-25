@@ -168,7 +168,7 @@
 			right: 0;
 			
 			@include media-breakpoint-up(xxl) {
-				transform: translateY(-33.33%);
+				//transform: translateY(-33.33%);
 			}
 
 			@include media-breakpoint-down(md){
