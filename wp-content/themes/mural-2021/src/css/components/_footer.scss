@@ -1,9 +1,14 @@
 
 /// style footer
 #footer{
-	background-size: contain;
-    background-repeat: no-repeat;
-    background-position: top center;
+	background-repeat: no-repeat;
+	background-size: 250% auto;
+    background-position: 35% top;
+	
+	@include media-breakpoint-up(lg) {
+		background-size: contain;
+		background-position: top center;
+	}
 
 	.row{
 		padding-left: $spacing*2;

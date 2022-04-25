@@ -136,9 +136,15 @@ const functionsInit = function() {
         var splash_event_imagery = $(".hero__event--imagery");
         var data_name = $(this).attr("data-name");
         var clickTarget = '[data-target="' + data_name + '"]';
-        $(splash_event_imagery).hide();
-        $(clickTarget).show("fast");
-        $(clickTarget).siblings().hide();
+        
+        $(splash_event_imagery).each(function(e){
+          if ($(this).attr('data-target') === data_name) {
+              $(this).show('fast');
+          } else {
+            $(this).hide('fast');
+          }
+        });
+
       });
     });
 

@@ -1,7 +1,7 @@
 <nav id="nav" class="navbar navbar-expand-lg">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ site.url }}">
-            <!-- GET LOGO FROM OPTIONS PAGE -->
+            {#  GET LOGO FROM OPTIONS PAGE #}
             <img src="{{TimberImage(options.logo).src| resize(0,115) }}" alt="{{site.title}}" width="{{ TimberImage(options.logo).width | resize(0,115) }}" height="115">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,7 +10,6 @@
             </span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent" role="navigation" aria-label="Main">
-
             <ul class="navbar-overnav">
                 {% for item in secondary_nav_menu.get_items %}
                     <li class="nav-item">
@@ -23,10 +22,8 @@
                     {% do action('icl_language_selector') %}
                 </li>
             </ul>
-
             <ul class="navbar-nav">
-
-                <!-- CREATE MEGA MENU IF MENU ITEM HAS CHILDREN -->
+                {#  CREATE MEGA MENU IF MENU ITEM HAS CHILDREN #}
                 {% for item in nav_menu.get_items %}
                 {% set item_title = item.title|split(',') %}
                 {% if item.children %}
@@ -49,7 +46,7 @@
                     </div>
                 </li>
                 {% else %}
-                <!-- CREATE NORMAL MENU LINK IF ITEM DOESN'T HAVE CHILDREN -->
+                {# CREATE NORMAL MENU LINK IF ITEM DOESN'T HAVE CHILDREN #}
                 <li class="nav-item">
                     <a class="nav-link {{ item.class }} {% if item.current %}active{% endif %}" href="{{ item.link }}">
                         <span>{{ item_title[0] }}</span>

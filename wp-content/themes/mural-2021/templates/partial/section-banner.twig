@@ -1,6 +1,8 @@
 <section class="banner">
     {% set banniere = Image(page.meta('banniere')) %}
+    {% set banniere_mobile = Image(page.meta('banniere_mobile')) %}
     {% set banniere_url = banniere.src %}
+    {% set banniere_mobile_url = banniere_mobile.src %}
     {% set contenu_banniere = page.contenu_banniere %}
     {% set titles = "" %}
     {% if ',' in title %}
@@ -28,3 +30,10 @@
         </div>
     </div>
 </section>
+{% if banniere_mobile_url != blank %}
+<style media="screen">
+    @media only screen and (max-width: 767px) {
+        .single-banner {background-image:url('{{ banniere_mobile_url }}') !important;background-size: 100% auto !important;}
+    }
+</style>
+{% endif %}

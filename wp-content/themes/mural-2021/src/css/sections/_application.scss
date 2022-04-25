@@ -2,6 +2,8 @@
 
 	h3 {
 		margin-bottom: $spacing*2;
+		z-index: 1;
+		
 		@include media-breakpoint-up(md) {
 			margin-bottom: $spacing*3;
 		}
@@ -23,7 +25,6 @@
 						position: absolute;
 						top: 0;
 						left: $spacing*4;
-						z-index: 1;
 					}
 				}
 				@include media-breakpoint-up(lg) {
@@ -60,6 +61,7 @@
 			position: absolute;
 			top: 0;
 			right: 0;
+
 			@include media-breakpoint-up(md) {
 				display: none;
 			}

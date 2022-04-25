@@ -18,17 +18,17 @@
 	}
 
 	.single-banner {
-		background-size:cover;
-		background-position: center;
 		background-repeat: no-repeat;
+		background-position: center;
+		background-size:cover;
 		
 		@include media-breakpoint-up(md) {
 			background-position: center left;
 		}
-
+		
 		.row {
-			height:200px;
-			min-height: 200px;
+			//height:200px;
+			min-height: 250px;
 
 			@include media-breakpoint-up(md) {
 				height:28.65vw;
@@ -63,11 +63,12 @@
 			 }
 
 			.banner__content{
-				margin-top: auto;
 				margin-left: auto;
 				text-align: right;
+				padding-top: $spacing-md;
 				
 				@include media-breakpoint-up(md) {
+					margin-top: auto;
 					max-width: 80%;
 				}
 				@include media-breakpoint-up(lg) {
@@ -101,7 +102,7 @@
 		h1 {
 			text-align: right;
 			@include media-breakpoint-up(lg) {
-				font-size: max(48px, 7.75vw);
+				font-size: max(48px, 7vw);
 				margin-left: auto;
 			}
 		}

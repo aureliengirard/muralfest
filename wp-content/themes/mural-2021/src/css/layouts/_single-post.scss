@@ -1,8 +1,11 @@
 .single-post {
 
     .col-lg-6{
-        &:nth-child(2){
-            @include media-breakpoint-down(md){
+        &:nth-child(n + 2){
+            @include media-breakpoint-down(sm){
+                padding-top: $spacing*2;
+            }
+            @include media-breakpoint-only(md){
                 padding-top: $spacing*4;
             }
         }
@@ -12,6 +15,12 @@
         img{
             margin: 0 auto;
             width: 100%;
+        }
+    }
+
+    .section__title{
+        @include media-breakpoint-down(md){
+            margin-bottom: 0;
         }
     }
 

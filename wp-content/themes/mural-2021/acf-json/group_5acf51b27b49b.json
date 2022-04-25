@@ -35,6 +35,37 @@
             "mime_types": ""
         },
         {
+            "key": "field_62671f8881e95",
+            "label": "Bannière Mobile",
+            "name": "banniere_mobile",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5acf55c8ca4a6",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 350,
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
             "key": "field_5acf55c8ca4a6",
             "label": "Contenu bannière",
             "name": "contenu_banniere",
@@ -87,5 +118,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1650469425
+    "modified": 1650925786
 }
