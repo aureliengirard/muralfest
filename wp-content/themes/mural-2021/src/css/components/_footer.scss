@@ -121,24 +121,30 @@
 			padding-left: 13vw;
 			padding-right: 13vw;
 		}
-
+		@include media-breakpoint-only(md){
+			margin-top: $spacing * 6;
+			padding-left: 23vw;
+			padding-right: 23vw;
+		}
+		
 		@include media-breakpoint-up(lg) {
 			max-width: 14%;
 		}
 	}
-
+	
 	.footer__col--2 {
 		flex: auto;
 		
 		@include media-breakpoint-down(sm){
+			margin-top: $spacing * 6;
 			padding-left: 13vw;
 			padding-right: 13vw;
 		}
 		
-		@include media-breakpoint-down(md){
+		@include media-breakpoint-only(md){
+			margin-top: $spacing * 6;
 			padding-left: 23vw;
 			padding-right: 23vw;
-			margin-top: $spacing * 6;
 		}
 		
 		@include media-breakpoint-up(lg) {
@@ -215,7 +221,7 @@
 			height: auto;
 
 			@include media-breakpoint-down(sm){
-				margin: auto;
+				margin: auto auto auto 0;
 			}
 
 			@include media-breakpoint-down(lg){

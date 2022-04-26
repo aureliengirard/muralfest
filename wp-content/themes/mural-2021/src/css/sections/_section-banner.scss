@@ -58,7 +58,7 @@
 							}
 							&:nth-child(2) {
 								padding-left: 20%;
-								
+
 								@include media-breakpoint-up(md) {
 									padding-left: 40%;
 								}
@@ -95,10 +95,6 @@
 		
 		@include media-breakpoint-up(lg) {
 			min-height: 90vh;
-		}
-		
-		@include media-breakpoint-up(lg) {
-			background-size: 100% auto;
 		}
 
 		@include media-breakpoint-up(xl) {
