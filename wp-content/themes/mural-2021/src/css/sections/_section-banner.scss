@@ -97,10 +97,6 @@
 			min-height: 90vh;
 		}
 
-		@include media-breakpoint-up(xl) {
-			background-size: auto 100%;
-		}
-
 		h1 {
 			text-align: right;
 			@include media-breakpoint-up(lg) {

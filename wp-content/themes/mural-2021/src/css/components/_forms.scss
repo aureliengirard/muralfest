@@ -62,15 +62,12 @@ form:not(.program-filters) {
     select{
         -webkit-appearance: none;
         -moz-appearance: none;
-        //background: url(../assets/SemiArrowDown-tiny.svg) no-repeat transparent;
-        background-position: calc(100% - 1em) 50%;
-        border-bottom: 1px solid #a7a8a9;
         outline: none;
-
-        .form_field &,
-        .gfield &{
+        
+        .gform_wrapper &{
             @extend %input;
-            min-height: 3.1em;
+            background: url(../../images/svg/icon_arrow-nav.svg) no-repeat transparent;
+            background-position: calc(100% - 10px) 50%;
         }
 
         &:focus {
@@ -118,8 +115,6 @@ form:not(.program-filters) {
     }
 }
 
-
-
 //Gravity Form Styling
 .gform{
 
@@ -145,6 +140,15 @@ form:not(.program-filters) {
     &_ajax_spinner{
         height: $padding * 2;
         width: $padding * 2;
+    }
+
+    select{
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: url(../../images/svg/icon+arrow-nav.svg) no-repeat transparent;
+        background-position: calc(100% - 1em) 50%;
+        outline: none;
+        @extend %input;
     }
 
 
