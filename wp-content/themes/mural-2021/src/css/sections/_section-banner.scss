@@ -57,7 +57,11 @@
 								}
 							}
 							&:nth-child(2) {
-								padding-left: 40%;
+								padding-left: 20%;
+								
+								@include media-breakpoint-up(md) {
+									padding-left: 40%;
+								}
 							}
 						}
 					}
