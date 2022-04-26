@@ -11,7 +11,7 @@
 
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		{% include 'partial/critical-css.twig' %}
-		<link rel="stylesheet" href="{{ theme.link }}/dist/css/main.min.css?v=1.20220425.5">
+		<link rel="stylesheet" href="{{ theme.link }}/dist/css/main.min.css?v=1.20220426">
 		{% include 'partial/tracking.twig' with { 'location': 'header' } %}
 
 	</head>
@@ -54,12 +54,10 @@
 		{%- block map_scripts -%}
 		{%- endblock -%}
 
-
-		{{- function('wp_footer') -}}
-
-		<script type="text/javascript" src="{{ theme.link }}/dist/js/vendor.min.js"></script>
-		<script type="text/javascript" src="{{ theme.link }}/dist/js/main.min.js" defer></script>
+		<script type="text/javascript" src="{{ theme.link }}/dist/js/vendor.min.js?v=1.20220426"></script>
+		<script type="text/javascript" src="{{ theme.link }}/dist/js/main.min.js?v=1.20220426" defer></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js" type="text/javascript"></script>
+		{{- function('wp_footer') -}}
 		{% block scripts %}
 
 		{% endblock %}
