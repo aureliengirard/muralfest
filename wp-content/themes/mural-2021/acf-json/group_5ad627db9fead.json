@@ -100,6 +100,25 @@
                     "prefix_name": 0
                 },
                 {
+                    "key": "field_62674ce8f8eb1",
+                    "label": "Cacher la section?",
+                    "name": "hide",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                },
+                {
                     "key": "field_5ad74f36915d8",
                     "label": "Fin accordion",
                     "name": "",
@@ -186,5 +205,6 @@
     ],
     "active": true,
     "description": "",
-    "modified": 1626722827
+    "show_in_rest": 0,
+    "modified": 1650937233
 }
