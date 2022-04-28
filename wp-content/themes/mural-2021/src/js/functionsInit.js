@@ -129,7 +129,7 @@ const functionsInit = function() {
       // Load random Event
       var eventActive = eventArray[Math.floor(Math.random() * eventArray.length)];
       var target = '[data-target="' + eventActive + '"]';
-      $(target).show("fast");
+      $(target).fadeIn("fast");
     
       //Update event onclick
       $(".hero__event").on('click mouseover', function(){
@@ -139,9 +139,9 @@ const functionsInit = function() {
         
         $(splash_event_imagery).each(function(e){
           if ($(this).attr('data-target') === data_name) {
-              $(this).show('fast');
+              $(this).fadeIn('fast');
           } else {
-            $(this).hide('fast');
+            $(this).hide();
           }
         });
 
