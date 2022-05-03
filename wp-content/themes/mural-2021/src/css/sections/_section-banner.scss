@@ -144,20 +144,18 @@
 
 					&:nth-child(1) > * { padding-top: 0;}
 					&:nth-last-child(1) > * { padding-bottom: 0;}
-					& > * { padding: 5px 0;}
+					& > * { padding: 5px 0;display: block;}
 				}
 				
 				a{
 					color: var(--couleurNoir);
-					display: block;
+					
 					@include hover-transition;
 
 					@include hover-focus{
 						color: var(--couleurRouge);
 					}
 				}
-
-				span { display: block;}
 			}
 
 		}
