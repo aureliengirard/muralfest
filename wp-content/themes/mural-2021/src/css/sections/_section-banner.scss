@@ -111,12 +111,11 @@
 
 		.left-banner{
 			@include media-breakpoint-up(lg) {
-				padding-top: 10vh;
+				padding-top: 5vh;
 			}
 
 			.hero__artist{
 				padding-left: 0;
-				margin-top: $spacing*3;
 				
 				@include media-breakpoint-up(md) {
 					margin-top: $spacing-xl;
@@ -124,7 +123,6 @@
 
 				li {
 					letter-spacing: -0.025em;
-					padding-bottom: $spacing;
 					line-height: 1;
 					font-size: 0.825em;
 
@@ -137,10 +135,21 @@
 							display: none;
 						}
 					}
+
+					&.hero__view-more {
+						@include media-breakpoint-up(lg) {
+							display: none;
+						}
+					}
+
+					&:nth-child(1) a { padding-top: 0;}
+					&:nth-last-child(1) a { padding-bottom: 0;}
+					a { padding: 5px 0;}
 				}
 
 				a{
 					color: var(--couleurNoir);
+					display: block;
 					@include hover-transition;
 
 					@include hover-focus{
@@ -180,6 +189,10 @@
 			max-width: 40%;
 			height: auto;
 			z-index: 2;
+			position: absolute;
+			left: 50%;
+			top: 0;
+			transform: translate3d(-50%, -33%, 0);
 
 			@include media-breakpoint-down(lg) {
 				transform: translateX(-50%);

@@ -140,6 +140,7 @@ const functionsInit = function() {
         $(splash_event_imagery).each(function(e){
           if ($(this).attr('data-target') === data_name) {
               $(this).fadeIn('fast');
+              $(this).siblings().hide();
           } else {
             $(this).hide();
           }

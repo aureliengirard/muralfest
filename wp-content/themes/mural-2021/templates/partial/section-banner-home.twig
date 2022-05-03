@@ -50,7 +50,7 @@
                     {%- set artiste = item.item_artiste -%}
                     <li class="hero__event" data-name="{{ artiste.title | replace({' ': "-"}) | url_encode }}">{%- if artiste.url != "#" %}<a href="{{ artiste.url }}">{%- endif %}{{ artiste.title }}{%- if artiste.url != "#" %}</a>{%- endif %}</li>
                     {%- if loop.last and loop.length > 13 %}
-                        <li><a class="readmore" href="{{ options.home_artist }}">{{__('See All Artists', 'site-theme')}}{% include 'svg/icon_arrows.svg' with  {class: 'readmore__icon'} %}</a></li>
+                        <li class="hero__view-more"><a class="readmore" href="{{ options.home_artist }}">{{__('See All Artists', 'site-theme')}}{% include 'svg/icon_arrows.svg' with  {class: 'readmore__icon'} %}</a></li>
                     {% endif %}
                 {%- endfor -%}
                 </ul>
@@ -65,7 +65,7 @@
                     {%- set artiste = item.item_artiste -%}
                     <li class="hero__event" data-name="{{ artiste.title | replace({' ': "-"}) | url_encode }}"> {%- if artiste.url != "#" %}<a href="{{ artiste.url }}">{%- endif %}{{ artiste.title }}{%- if artiste.url != "#" %}</a>{%- endif %}</li>
                     {%- if loop.last and loop.length > 13 %}
-                        <li><a class="readmore" href="{{ options.home_program }}">{{__('See All Artists', 'site-theme')}}{% include 'svg/icon_arrows.svg' with  {class: 'readmore__icon'} %}</a></li>
+                        <li class="hero__view-more"><a class="readmore" href="{{ options.home_program }}">{{__('See All Artists', 'site-theme')}}{% include 'svg/icon_arrows.svg' with  {class: 'readmore__icon'} %}</a></li>
                     {% endif %}
                 {%- endfor -%}
                 </ul>
@@ -94,7 +94,7 @@
         {%- if thumbnail != null -%}{%- set artiste = item.item_artiste -%}
         '{{ artiste.title | replace({' ': "-"}) | url_encode }}'{% if loop.last != true  %},{% endif %}
         {%- endif -%}
-        {%- endfor -%}'a'
+        {%- endfor -%}
     ];
 </script>
 </section>
