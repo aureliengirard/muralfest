@@ -23,6 +23,7 @@ if(get_field('image_de_lartiste', $artist_id)){
 }
 
 $context['image_id'] = $image_id;
+$context['artist_id'] = $artist_id;
 $context['artist_artwork'] = $artist_artwork;
 $context['artist_artwork_id'] = new Timber\Image($image_id);
 

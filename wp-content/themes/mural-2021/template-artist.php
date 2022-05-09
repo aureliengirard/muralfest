@@ -47,6 +47,19 @@ $context['years'] = $years;
  $query = new WP_Query( $args );
  $context['artist_posts'] = new Timber\PostQuery( $args );
 
+// Artworks
+$args = array(
+	'post_type'  => 'artwork',
+	'posts_per_page'  => '-1',
+	'post_status' => 'publish',
+	'orderby' => array(
+		'title' => 'ASC',
+		'date' => 'DESC'
+	 )
+);
+$context['artwork_posts'] = Timber::get_posts($args);
+
+
  global $wp_query;
 
  // Put default query object in a temp variable

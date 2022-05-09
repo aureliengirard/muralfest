@@ -19,15 +19,15 @@
 <div class="list-artists">
     <div class="content">
 
-        {% if artist_posts -%}
+        {%- if artist_posts -%}
 
             <section class="artists">
 
-                {%- for artist_post in artist_posts %}
+                {%- for artist_post in artist_posts -%}
 
-                    {% set artist_year = artist_post.annee %}
+                    {%- set artist_year = artist_post.annee -%}
 
-                    {% if current_year == NULL %}
+                    {%- if current_year == NULL -%}
                         {% set current_year = artist_year %}
                         <div class="row">
                             <div class="col-12 section__title section__title--underlined">
@@ -35,9 +35,9 @@
                             </div>
                         </div>
                         <div class="row card__wrapper">
-                    {% endif %}
+                    {%- endif -%}
 
-                    {% if current_year != artist_year %}
+                    {%- if current_year != artist_year %}
                         {% set current_year = artist_year %}
                         </div>
                         <div class="row">
@@ -46,12 +46,12 @@
                             </div>
                         </div>
                         <div class="row card__wrapper">
-                    {% endif %}
+                    {%- endif -%}
 
-                    {% include 'components/tease_artist-article.twig'  %}
+                    {%- include 'components/tease_artist-article.twig'  -%}
 
-                    {% if loop.last %}</div>{% endif %}
-                {% endfor -%}
+                    {%- if loop.last %}</div>{% endif %}
+                {%- endfor -%}
 
             </section>
 
@@ -65,11 +65,9 @@
                 </div>
             </section>
 
-        {%- endif %}
+        {%- endif -%}
 
-        {% do fn('wp_reset_postdata') %}
-
+        {%- do fn('wp_reset_postdata') -%}
     </div>
 </div>
-
 {% endblock %}

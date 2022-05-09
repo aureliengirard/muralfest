@@ -22,7 +22,7 @@
 
  $context['artworks_by_years'] = $artworks_by_years;
 
- // Partners
+ // Artworks
  $args = array(
      'post_type'  => 'artwork',
      'posts_per_page'  => '-1',

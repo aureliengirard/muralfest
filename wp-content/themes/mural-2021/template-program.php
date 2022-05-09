@@ -13,7 +13,7 @@ $args = array(
 	'posts_per_page' => 100,
 	'orderby' => array(
 		'order_event' => 'ASC',
-		'order_start_time' => 'ASC'
+		'order_start_time' => 'DSC'
 	),
 	'meta_query' => array(
 		'order_event' => array(

@@ -1,20 +1,28 @@
+{%- set artist_id = artist_post.id -%}
+{%- set title = artist_post.title -%}
+{%- set link = artist_post.link -%}
+{%- set biographie = artist_post.meta('biographie') -%}
+{%- set thumbnail = Image(artist_post.image_de_lartiste) -%}
 
-{% set title = artist_post.title %}
-{% set link = artist_post.link %}
-{% set id = artist_post.id %}
-{% set biographie = artist_post.meta('biographie') %}
-
-{% set thumbnail = Image(artist_post.image_de_lartiste) %}
+{%- set break = false -%}
+{%- set artwork_artist_id = "" %}
+{%- if thumbnail == "" %}
+    {%- for artwork_post in artwork_posts if not break -%}
+        {%- set artwork_artist_id = Post(artwork_post.artiste).id -%}
+        {%- if artist_id == artwork_artist_id -%}
+            {%- set thumbnail = Image(artwork_post.image_de_loeuvre) -%}
+            {%- set break = true -%}
+        {%- endif -%}
+    {% endfor -%}
+{%- endif -%}
 
 <div class="col-auto artist_post artist card">
-
     <div class="card__content">
-        {% if thumbnail %}
-        <div class="card__header">
 
+        {%- if thumbnail -%}
+        <div class="card__header">
             <figure>
                 <a href="{{link}}">
-
                     <img class="lazyload"
                     data-srcset="{{ thumbnail.src|resize(776, 584) }} 775w, {{ thumbnail.src|resize(518, 390) }} 517w"
                     data-sizes="auto"
@@ -24,12 +32,12 @@
                 </a>
             </figure>
         </div>
-        {% endif %}
+        {%- endif -%}
 
         <div class="description card__body">
             <h3><a href="{{ link }}">{{ title }}</a></h3>
             <div class="card__teaser">
-                {{ biographie|striptags|truncate(15) }}
+                {{- biographie|striptags|truncate(15) -}}
             </div>
             <a class="readmore" href="{{ link }}">{{__('Learn more', 'site-theme')}}{% include 'svg/icon_arrows.svg' with  {class: 'readmore__icon'} %}</a>
         </div>
