@@ -511,6 +511,37 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_627a8f955f718": {
+                    "key": "layout_627a8f955f718",
+                    "name": "faq",
+                    "label": "faq",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_627a8f955f719",
+                            "label": "faq",
+                            "name": "faq",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_5f22aa1daa8b2"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "Ajouter un élément",
@@ -573,5 +604,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1650727977
+    "modified": 1652199895
 }

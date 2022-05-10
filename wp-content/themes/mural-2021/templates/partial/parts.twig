@@ -35,6 +35,8 @@
             {%- include "partial/part-image_pleine_largeur.twig" -%}
         {%- elseif inner_item.acf_fc_layout == 'image_et_texte' -%}
             {%- include "partial/part-image_et_texte.twig" -%}
+        {%- elseif inner_item.acf_fc_layout == 'faq' -%}
+            {%- include "partial/part-faq.twig" -%}
         {%- endif -%}
     </section>
     {# Nom:{{item.nom_de_la_section}} - Layout name: {{inner_item.acf_fc_layout}} Loop:{{loop.index}} #}
