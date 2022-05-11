@@ -1,0 +1,24 @@
+{%- set title = inner_item.press_review_title -%}
+{%- set news = inner_item.meta('press_review_news') -%}
+
+<div class="row content accordion press-kit__wrapper" id="faq_block">
+    <div class="col-12 press-kit__title">
+        <h2 class="md">
+            {{- title -}}
+        </h2>
+    </div>
+    <div class="col-12">
+        {% for items in news %}
+            <div class="news__single">
+                <a class="readmore" href="{{ item.link }}" aria-label="{{- items.title|replace({'"': ''})|striptags|raw -}}" target="_blank">
+                    <h3>
+                        {{- items.title -}}
+                    </h3>
+                    <div class="icon__container">
+                    {% include 'svg/icon_arrows.svg' with  {class: 'readmore__icon'} %}
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>

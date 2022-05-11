@@ -1,0 +1,34 @@
+{%- set title = releases.title -%}
+{%- set link = releases.link.url -%}
+{%- set desc = releases.desc -%}
+{%- set thumbnail = Image(releases.img) -%}
+
+<div class="col-auto press-release_post release card">
+    <div class="card__content">
+
+        {%- if thumbnail -%}
+        <div class="card__header">
+            <figure>
+                <a href="{{link}}" target="_blank">
+                    <img class="lazyload"
+                    data-srcset="{{ thumbnail.src|resize(776, 584) }} 775w, {{ thumbnail.src|resize(518, 390) }} 517w"
+                    data-sizes="auto"
+                    width="517"
+                    height="389"
+                    alt="{{ title }}">
+                </a>
+            </figure>
+        </div>
+        {%- endif -%}
+
+        <div class="description card__body">
+            <h3><a href="{{ link }}">{{ title }}</a></h3>
+            <div class="card__teaser" >
+                <a href="{{ link }}" target="_blank">
+                    {{- desc -}}
+                </a>
+            </div>
+            <a class="readmore" href="{{ link }}" target="_blank">{{__('Read', 'site-theme')}}{% include 'svg/icon_arrows.svg' with  {class: 'readmore__icon'} %}</a>
+        </div>
+    </div>
+</div>

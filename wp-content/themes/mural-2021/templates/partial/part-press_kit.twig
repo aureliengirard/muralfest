@@ -1,0 +1,23 @@
+{%- set title = inner_item.press_kit_title -%}
+{%- set text = inner_item.press_kit_text -%}
+{%- set bouton = inner_item.press_kit_bouton -%}
+
+<div class="row content">
+	<div class="col-12 press-kit__wrapper col-content">
+		<div class="row press-kit__title">
+			<div class="col-12">
+				<h2 class="md">
+					{{- title -}}
+				</h2>
+			</div>
+		</div>
+		<div class="row press-kit__content">
+			<div class="col-lg-7 rte">
+			<p>{{text}}</p>
+			</div>
+			<div class="col-lg-5 btn__container">
+				<a class="readmore" href="{{ bouton.url }}" aria-label="{{ bouton.title }}" target="_blank">{{ bouton.title }}{% include 'svg/icon_arrows.svg' with  {class: 'readmore__icon'} %}</a>
+			</div>
+		</div>
+	</div>
+</div>

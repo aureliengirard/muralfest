@@ -1,0 +1,19 @@
+{%- set title = inner_item.press_releases_title -%}
+{%- set release = inner_item.meta('press_releases_release') -%}
+<div class="content press-release__wrapper">
+    <div class="row">
+        <div class="col-12 section__title section__title--underlined">      
+            <h2 class="md">
+                {{- title -}}
+            </h2>
+        </div>
+    </div>
+
+    <div class="row articles card__wrapper">
+
+        {%- for releases in release %}
+            {% include 'components/tease_press_release.twig' %}
+        {% endfor -%}
+
+    </div>
+</div>

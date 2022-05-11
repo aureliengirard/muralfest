@@ -1,0 +1,19 @@
+{%- set title = inner_item.press_request_title -%}
+{%- set text = inner_item.press_request_text -%}
+
+<div class="row content">
+	<div class="col-12 press-request__wrapper col-content">
+		<div class="row press-request__title">
+			<div class="col-12">
+				<h2 class="md">
+					{{- title -}}
+				</h2>
+			</div>
+		</div>
+		<div class="row press-request__content">
+			<div class="col-12 rte">
+			<p>{{text}}</p>
+			</div>
+		</div>
+	</div>
+</div>

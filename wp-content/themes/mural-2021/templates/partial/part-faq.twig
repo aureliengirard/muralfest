@@ -1,52 +1,24 @@
-{% set group_id = random(a, z) %}
-{% set faq = inner_item.faq %}
+{%- set group_id = random(a, z) -%}
+{%- set faq = inner_item.faq -%}
 
 <div class="row content accordion faq__wrapper" id="faq_block">
     <div class="col-12">
-        {% for faqs in faq %}
+        {%- for faqs in faq -%}
         <div class="faq__single" itemprop="mainEntity" itemtype="https://schema.org/Question">
             <div class="faq__header" id="{{ group_id }}{{ loop.index }}">
                 <div class="faq__header--wrapper{% if loop.index != 1 %} collapsed{% endif %}" data-toggle="collapse" data-target="#collapse{{ loop.index }}" aria-expanded="true" aria-controls="collapseOne">
                     <h3 itemprop="name">
-                        {{ faqs.question }}
+                        {{- faqs.question -}}
                     </h3>
-                    {% include 'svg/icon_faq.svg' with  {class: 'faq__icon'} %}
+                    {%- include 'svg/icon_faq.svg' with  {class: 'faq__icon'} -%}
                 </div>
             </div>
-
             <div id="collapse{{ loop.index }}" class="collapse faq__body{% if loop.index == 1 %} show{% endif %}" aria-labelledby="{{ group_id }}{{ loop.index }}" data-parent="#faq_block"  itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
                 <div class="faq__body--inner rte" itemprop="text">
-                {{ faqs.answer }}
+                {{- faqs.answer -}}
                 </div>
             </div>
         </div>
-        {% endfor %}
+        {%- endfor -%}
     </div>
-
-<!--
-    <div class="col-lg-12 collapse__wrapper faq-collapse">
-        <div id="faq__wrapper" class="collapse__wrapper faq__wrapper">
-
-            {% for faqs in faq %}
-
-                <div class="faq__single collapse__single" itemprop="mainEntity" itemtype="https://schema.org/Question">
-                    <div class="faq__header" id="heading_{{ group_id }}{{ loop.index }}">
-                        <div class="faq__header--inner collapsed" data-toggle="collapse" data-target="#collapse_{{ group_id }}{{ loop.index }}" aria-expanded="true" aria-controls="collapse_{{ group_id }}{{ loop.index }}">
-                            <h3 class="sm faq__title" itemprop="name">
-                                {{ faqs.title }}
-                            </h3>
-                        </div>
-                    </div>
-                    <div id="collapse_{{ group_id }}{{ loop.index }}" class="collapse collapse__content faq__content" aria-labelledby="heading_{{ group_id }}{{ loop.index }}" data-parent="#faq__wrapper" style="" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                        <div class="faq__body collapse__body" itemprop="text">
-                            {{ faqs.content }}
-                        </div>
-                    </div>
-                </div>
-
-            {% endfor %}
-
-        </div>
-    </div>
-    -->
 </div>

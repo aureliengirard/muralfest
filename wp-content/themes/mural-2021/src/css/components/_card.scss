@@ -78,6 +78,7 @@
 
     h3{
         font-weight: 400;
+        margin-bottom: 0;
     }
 
     &__header {
@@ -208,6 +209,21 @@
         h3 {
             @include media-breakpoint-up(md) {
                 min-height: 4em;
+            }
+        }
+    }
+    
+    &.release {
+        h3 {
+            text-decoration: underline;
+        }
+        .card__teaser {
+            a {
+                color: var(--couleurNoir);
+            }
+            
+            @include media-breakpoint-up(md) {
+                min-height: 4.4em;
             }
         }
     }

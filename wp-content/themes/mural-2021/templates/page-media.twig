@@ -1,0 +1,20 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+{% include "partial/section-banner.twig" with {'title': page.title}  %}
+
+<section id="press_kit" class="press-kit">
+    {% include "partial/part-press_kit.twig" with {'inner_item': page} -%}
+</section>
+<section id="in_the_news" class="in-the-news">
+    {% include "partial/part-in_the_news.twig" with {'inner_item': page} -%}
+</section>
+<section id="press_release" class="press-release">
+    {% include "partial/part-press_release.twig" with {'inner_item': page} -%}
+</section>
+<section id="press_request" class="press-request">
+    {% include "partial/part-press_request.twig" with {'inner_item': page} -%}
+</section>
+
+{% endblock %}
