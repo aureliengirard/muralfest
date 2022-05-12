@@ -3,6 +3,43 @@
     "title": "Template | Page Média\/Presse",
     "fields": [
         {
+            "key": "field_627aca1664986",
+            "label": "Demandes de presse",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_627aca1a64987",
+            "label": "Champs Demandes de presse",
+            "name": "press_request",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_627ad432ed58c"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 1
+        },
+        {
             "key": "field_627ac9816497f",
             "label": "Kit de presse",
             "name": "",
@@ -112,43 +149,6 @@
             "layout": "block",
             "prefix_label": 0,
             "prefix_name": 1
-        },
-        {
-            "key": "field_627aca1664986",
-            "label": "Demandes de presse",
-            "name": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
-        },
-        {
-            "key": "field_627aca1a64987",
-            "label": "Champs Demandes de presse",
-            "name": "press_request",
-            "type": "clone",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "clone": [
-                "group_627ad432ed58c"
-            ],
-            "display": "seamless",
-            "layout": "block",
-            "prefix_label": 0,
-            "prefix_name": 1
         }
     ],
     "location": [
@@ -169,5 +169,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1652225968
+    "modified": 1652389270
 }

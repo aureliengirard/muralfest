@@ -22,7 +22,7 @@
             flex:calc(20% - 2.16%);
             text-align: center;
             
-            @include media-breakpoint-up(md) {
+            @include media-breakpoint-up(lg) {
                 margin-left: 2.7%;
                 
                 &:nth-child(5n + 1) {

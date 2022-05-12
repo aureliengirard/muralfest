@@ -1,0 +1,33 @@
+{%- set title = inner_item.title -%}
+{%- set merchant = inner_item.merchant -%}
+<div class="row content">
+    {%- if title -%}
+    <div class="col-12 section__title section__title--underlined"> 
+        <h2 class="md">{{title}}</h2>
+    </div>
+    {%- endif -%}
+
+    {%- if merchant -%}
+    <div class="col-12 tier rte">
+    
+        {%- for merchants in merchant|sort -%}
+        <figure class="partner">
+
+            {%- if merchants.link -%}
+                <a href="{{merchants.link}}" title="{{__("Visit the website of", "site-theme")}} {{merchants.title}}" target="_blank">
+            {%- endif -%}
+                {%- set img = TimberImage(merchants.img) -%}
+                {%- set img_url = img.src -%}
+                {%- set reponsize_sizes = "768,720,640,512,414,375,360" -%}
+                {%- include 'components/reponsive_img.twig' with  { img: img, img_url: img_url, reponsize_sizes: reponsize_sizes} -%}
+
+            {%- if merchants.link -%}
+                </a>
+            {%- endif -%}
+            <h3>{%- if merchants.link -%}<a href="{{merchants.link}}" title="{{__("Visit the website of", "site-theme")}}{{merchants.title}}" target="_blank">{%- endif -%}{{merchants.title}}{% if merchants.link %}</a>{% endif %}</h3>
+        </figure>
+        {%- endfor -%}
+
+    </div>
+    {%- endif -%}
+</div>

@@ -542,6 +542,37 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_627d681b87db9": {
+                    "key": "layout_627d681b87db9",
+                    "name": "mural_market",
+                    "label": "Mural Market",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_627d681b87dba",
+                            "label": "Mural Market",
+                            "name": "mural_market",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_627d679c77e8f"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "button_label": "Ajouter un élément",
@@ -604,5 +635,5 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1652199895
+    "modified": 1652386978
 }
