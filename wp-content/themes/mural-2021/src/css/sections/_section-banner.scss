@@ -35,6 +35,10 @@
 				max-height: 550px;
 				min-height: 300px;
 			}
+			
+			@include media-breakpoint-up(lg) {
+				min-height: 350px;
+			}
 
 			.banner__title {
 				margin-bottom: auto;
