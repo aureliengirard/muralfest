@@ -1,6 +1,23 @@
 {% extends "base.twig" %}
 
+
 {% block content %}
+{% set thumbnail = Image(image_id).src %}
+
+{%- set artwork_artist_id = "" %}
+{%- if thumbnail == "" %}
+    {%- for artwork_post in artwork_posts if not break -%}
+        {%- set artwork_artist_id = Post(artwork_post.artiste).id -%}
+        {%- if artist_id == artwork_artist_id -%}
+            {%- set thumbnail = Image(artwork_post.image_de_loeuvre) -%}
+            {%- set break = true -%}
+        {%- elseif post.title == artwork_post.title -%}
+            {%- set thumbnail = Image(artwork_post.image_de_loeuvre) -%}
+            {%- set break = true -%}
+        {%- endif -%}
+    {% endfor -%}
+{%- endif -%}
+
 <div class="basic-content">
     <div class="content single-post">
 
@@ -12,7 +29,6 @@
                 <h1>{{post.title}}</h1>
             </div>
             <div class="col-lg-6 left-col">
-                {% set thumbnail = Image(image_id).src %}
                 {% if thumbnail %}
                     <figure>
                         <img class="lazyload"

@@ -1,4 +1,5 @@
 {%- set artist_id = artist_post.id -%}
+{%- set artist_title = artist_post.title -%}
 {%- set title = artist_post.title -%}
 {%- set link = artist_post.link -%}
 {%- set biographie = artist_post.meta('biographie') -%}
@@ -10,6 +11,9 @@
     {%- for artwork_post in artwork_posts if not break -%}
         {%- set artwork_artist_id = Post(artwork_post.artiste).id -%}
         {%- if artist_id == artwork_artist_id -%}
+            {%- set thumbnail = Image(artwork_post.image_de_loeuvre) -%}
+            {%- set break = true -%}
+        {%- elseif artist_title == artwork_post.title -%}
             {%- set thumbnail = Image(artwork_post.image_de_loeuvre) -%}
             {%- set break = true -%}
         {%- endif -%}

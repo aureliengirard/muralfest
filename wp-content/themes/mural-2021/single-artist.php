@@ -8,7 +8,7 @@ $post = Timber::query_post();
 $context['post'] = $post;
 
 
-$artist_id = icl_object_id(get_the_ID(), 'artist', false, "fr");
+$artist_id = icl_object_id(get_the_ID(), 'artist', false);
 $artist_artwork = false;
 $image_id = '';
 
@@ -22,6 +22,18 @@ if(get_field('image_de_lartiste', $artist_id)){
     }
 }
 
+// Artworks
+$args_artworks = array(
+	'post_type'  => 'artwork',
+	'posts_per_page'  => '-1',
+	'post_status' => 'publish',
+	'orderby' => array(
+		'title' => 'ASC',
+		'date' => 'DESC'
+	 )
+);
+
+$context['artwork_posts'] = Timber::get_posts($args_artworks);
 $context['image_id'] = $image_id;
 $context['artist_id'] = $artist_id;
 $context['artist_artwork'] = $artist_artwork;

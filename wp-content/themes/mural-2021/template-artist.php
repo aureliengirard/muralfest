@@ -58,8 +58,6 @@ $args = array(
 	 )
 );
 $context['artwork_posts'] = Timber::get_posts($args);
-
-
  global $wp_query;
 
  // Put default query object in a temp variable
