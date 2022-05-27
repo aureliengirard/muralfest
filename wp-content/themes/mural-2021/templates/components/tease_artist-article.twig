@@ -13,7 +13,6 @@
         {%- if artist_id == artwork_artist_id -%}
             {%- set thumbnail = Image(artwork_post.image_de_loeuvre) -%}
             {%- if thumbnail == "" %}
-            {{artist_id}}:{{artwork_artist_id}}:{{artwork_post.title}}
             {%- endif -%}
             {%- set break = true -%}
         {%- elseif artist_title == artwork_post.title -%}
